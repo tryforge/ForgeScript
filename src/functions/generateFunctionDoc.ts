@@ -1,3 +1,4 @@
+import { readFileSync } from "fs"
 import { ArgType, NativeFunction } from "../structures"
 
 export default function(fn: NativeFunction): string {
@@ -30,6 +31,20 @@ export default function(fn: NativeFunction): string {
             ].join(" | "))
         )
     } 
+
+    const code = readFileSync(`./src/native/${fn.name.slice(1)}.ts`, "utf-8")
+    args.push(`<details>
+<summary>
+    
+## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/${fn.name.slice(1)}.ts)
+    
+</summary>
+    
+\`\`\`ts
+${code}
+\`\`\`
+    
+</details>`)
 
     return args.join("\n")
 }
