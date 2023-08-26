@@ -2,7 +2,7 @@ import { ArgType, NativeFunction } from "../structures/NativeFunction"
 import { Return } from "../structures/Return"
 
 export default new NativeFunction({
-    name: "httpSetBody",
+    name: "$httpSetBody",
     description: "Sets a JSON body for the request.",
     args: [
         {
