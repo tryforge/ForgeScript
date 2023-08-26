@@ -24,10 +24,13 @@ export class CommandManager {
         return this.commands.get(type)?.filter(fn) ?? []
     }
 
-    public add(req: ICommand | Command) {
-        const cmd = req instanceof Command ? req : new Command(req)
+    public add(...commands: (ICommand | Command)[]) {
+        for (let i = 0, len = commands.length;i < len;i++) {
+            const req = commands[i] 
+            const cmd = req instanceof Command ? req : new Command(req)
             
-        const col = this.commands.ensure(cmd.type, () => new Array())
-        col.push(cmd)
+            const col = this.commands.ensure(cmd.type, () => new Array())
+            col.push(cmd)
+        }
     }
 }

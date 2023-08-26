@@ -4,8 +4,9 @@
   "description": "",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
-  "scripts": {    
+  "scripts": {
     "preinstall": "tsc",
+    "docgen": "tsc && typedoc ./src --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix",
     "test": "tsc && node dist/__tests__/runner"
   },
@@ -22,6 +23,7 @@
     "@typescript-eslint/parser": "^6.4.1",
     "dotenv": "^16.3.1",
     "eslint": "^8.47.0",
+    "typedoc": "^0.25.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
