@@ -1,0 +1,21 @@
+import { ArgType, NativeFunction } from "../structures/NativeFunction"
+import { Return } from "../structures/Return"
+
+export default new NativeFunction({
+    name: "$get",
+    description: "Get a keyword value",
+    unwrap: true,
+    args: [
+        {
+            name: "key",
+            description: "The key name",
+            rest: false,
+            type: ArgType.String,
+            required: true
+        }
+    ],
+    brackets: true,
+    execute(ctx, [ name ]) {
+        return Return.success(ctx.getKeyword(name))
+    },
+})
