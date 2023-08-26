@@ -12,7 +12,8 @@ export class CommandManager {
         this.commands.clear()
 
         for (const file of readdirSync(path, { recursive: true, withFileTypes: true }).filter(x => !x.isDirectory() && x.name.endsWith(".js"))) {
-            const path = `${file.path}/${file.name}`
+            // eslint-disable-next-line no-undef
+            const path = `${process.cwd()}/${file.path}/${file.name}`
 
             const req = require(path).default as ICommand | Command
             this.add(req)
