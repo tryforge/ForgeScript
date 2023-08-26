@@ -4,3 +4,4 @@
 ```
 $authorID
 ```
+## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/docs/functions/authorID.md)

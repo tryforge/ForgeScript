@@ -31,5 +31,7 @@ export default function(fn: NativeFunction): string {
         )
     } 
 
+    args.push(`## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/docs/functions/${fn.name.slice(1)}.md)`)
+
     return args.join("\n")
 }

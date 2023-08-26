@@ -8,3 +8,4 @@ $callFunction[name;...args]
 | :---: | :---: | :---: | :---: | :---: |
 name | String | The function name | Yes | No
 args | String | The args to call this function with | Yes | Yes
+## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/docs/functions/callFunction.md)
