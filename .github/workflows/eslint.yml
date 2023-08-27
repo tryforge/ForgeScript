@@ -17,6 +17,8 @@ jobs:
       
       - name: Set up node.js
         uses: actions/setup-node@v1
+        with:
+          node-version: '16.11.0'
       
       - name: Install node.js deps
         run: npm i eslint --save-dev
