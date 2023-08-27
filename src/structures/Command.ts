@@ -7,6 +7,7 @@ export interface ICommand {
     name?: string
     type: CommandType
     code: string
+    unprefixed?: boolean
     [x: PropertyKey]: unknown
 }
 
