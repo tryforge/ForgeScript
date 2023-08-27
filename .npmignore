@@ -2,3 +2,4 @@ src/__tests__
 dist
 \.env
 docs
+act.exe
