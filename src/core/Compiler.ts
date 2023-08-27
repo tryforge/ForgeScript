@@ -1,17 +1,27 @@
 import { CompiledFunction } from "../structures/CompiledFunction"
 import { ErrorType, ForgeError } from "../structures/ForgeError"
 
+export interface IRawField {
+    condition?: boolean
+}
+
+export interface IRawFunctionFieldDefinition {
+    required: boolean
+    fields: IRawField[]
+}
+
 export interface IRawFunction {
     name: string
     /**
      * If undefined, function has no fields.
-     * If true, fields are required.
+     * If present and required true, fields are required.
      * If false, fields are not required.
      */
-    fields?: boolean
+    args: IRawFunctionFieldDefinition | null
 }
 
 export type WrappedCode = (args: unknown[]) => string
+export type WrappedConditionCode = (lhs: unknown, rhs: unknown) => boolean
 
 export interface ICompiledFunctionField {
     value: string
@@ -19,10 +29,37 @@ export interface ICompiledFunctionField {
     resolve: WrappedCode
 }
 
+export enum OperatorType {
+    Eq = "==",
+    NotEq = "!=",
+    Lte = "<=",
+    Gte = ">=",
+    Gt = ">",
+    Lt = "<",
+}
+
+export const Operators = new Set<OperatorType>(Object.values(OperatorType) as OperatorType[])
+
+export const Conditions: Record<OperatorType, WrappedConditionCode> = {
+    "!=": (lhs, rhs) => lhs !== rhs,
+    "==": (lhs, rhs) => lhs === rhs,
+    "<": (lhs, rhs) => Number(lhs) < Number(rhs),
+    "<=": (lhs, rhs) => Number(lhs) <= Number(rhs),
+    ">": (lhs, rhs) => Number(lhs) > Number(rhs),
+    ">=": (lhs, rhs) => Number(lhs) >= Number(rhs),
+}
+
+export interface ICompiledFunctionConditionField {
+    op: OperatorType
+    lhs: ICompiledFunctionField
+    rhs: ICompiledFunctionField
+    resolve: WrappedConditionCode
+}
+
 export interface ICompiledFunction {
     id: string
     name: string
-    fields: null | ICompiledFunctionField[]
+    fields: null | (ICompiledFunctionField | ICompiledFunctionConditionField)[]
 }
 
 export interface ICompilationResult {
@@ -106,6 +143,10 @@ export class Compiler {
         }
     }
 
+    public wrapCondition(op: OperatorType) {
+        return Conditions[op]
+    }
+
     private wrap(code: string) {
         let i = 0
         const gencode = code.replace(Compiler.InvalidCharRegex, "\\$1").replaceAll(Compiler.SystemRegex, () => "${args[" + i++ + "] ?? ''}")
@@ -117,7 +158,7 @@ export class Compiler {
         const nextChar = this.peek()
 
         // Check if function requires braces but were not provided
-        if (match.fields === true && nextChar !== Compiler.Syntax.Open) {
+        if (match.args?.required === true && nextChar !== Compiler.Syntax.Open) {
             throw new ForgeError(
                 null,
                 ErrorType.MissingFields,
@@ -128,7 +169,7 @@ export class Compiler {
         const id = this.getNextId()
 
         // Now parse the function, Start with the easiest one, no braces.
-        if (match.fields === undefined || nextChar !== Compiler.Syntax.Open) {
+        if (!match.args || nextChar !== Compiler.Syntax.Open) {
             this.matchIndex++
             return this.prepareFunction({
                 id,
@@ -141,23 +182,29 @@ export class Compiler {
             return this.prepareFunction({
                 id,
                 name: match.name,
-                fields: this.parseFields(match.name)
+                fields: this.parseFields(match)
             })
         }
     }
 
-    private parseFields(fnName: string) {
+    private parseFields(match: IRawFunctionMatch) {
+        const fnName = match.name
+
         // Skip the brace.
         this.skip(1)
 
-        const fields = new Array<ICompiledFunctionField>()
+        const fields = new Array<ICompiledFunctionField | ICompiledFunctionConditionField>()
         const functions = new Array<ICompiledFunction>()
 
         let inside = ""
         let closed = false
+        let index = 0
+        let isConditionField = !!match.args!.fields[index].condition
+        let lhs: ICompiledFunctionField, rhs: ICompiledFunctionField, op: OperatorType
 
         // Now loop through till we find the brace closure.
         while (this.next() !== undefined) {
+
             const char = this.char()
             const isEscaped = char === Compiler.Syntax.Escape
 
@@ -165,15 +212,37 @@ export class Compiler {
 
             if (!isEscaped) {
                 if (char === Compiler.Syntax.Close || char === Compiler.Syntax.Separator) {
-                    fields.push({
-                        functions: [...functions],
-                        value: inside,
-                        resolve: this.wrap(inside)
-                    })
+                    if (!isConditionField) {
+                        fields.push({
+                            functions: [...functions],
+                            value: inside,
+                            resolve: this.wrap(inside)
+                        })
+                    } else {
+                        // Lastly add the rhs
+                        rhs = {
+                            value: inside,
+                            functions,
+                            resolve: this.wrap(inside)
+                        }
+
+                        // @ts-ignore
+                        if (!lhs || !op) {
+                            throw new Error(`Missing condition data for function \`${fnName}\`.`) 
+                        }
+
+                        fields.push({
+                            lhs,
+                            rhs,
+                            op,
+                            resolve: this.wrapCondition(op)
+                        })
+                    }
     
                     // Drop the text and functions.
                     inside = ""
                     functions.length = 0
+                    isConditionField = !!match.args!.fields[++index]?.condition
     
                     if (char === Compiler.Syntax.Close) {
                         closed = true
@@ -185,6 +254,36 @@ export class Compiler {
                     const fn = this.parseFunction(nextMatch)
                     functions.push(fn)
                     inside += fn.id
+                    continue
+                }
+            }
+
+            // @ts-ignore
+            if (isConditionField && op === undefined) {
+                const possibleOp = 
+                    Operators.has(`${char}${this.peek()}` as OperatorType) ?
+                        (
+                            this.skip(1),
+                            `${char}${this.char()}` as OperatorType
+                        ) :
+                        Operators.has(char as OperatorType) ?
+                            char as OperatorType :
+                            undefined
+                
+                if (possibleOp !== undefined) {
+                    op = possibleOp
+
+                    // Push to lhs
+                    lhs = {
+                        value: inside,
+                        functions,
+                        resolve: this.wrap(inside)
+                    }
+
+                    // Drop the text and functions.
+                    inside = ""
+                    functions.length = 0
+                    
                     continue
                 }
             }
