@@ -8,7 +8,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "name",
+            	name: "name",
             description: "The function name",
             rest: false,
             required: true,
