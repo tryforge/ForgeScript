@@ -18,10 +18,10 @@ jobs:
       - name: Set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '16.11.0'
+          node-version: '18.x'
       
       - name: Install node.js deps
         run: npm i eslint --save-dev
         
       - name: Run lint
-        run: npx eslint ./src/**/* -ext .ts
+        run: npx eslint ./src/**/*
