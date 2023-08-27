@@ -9,7 +9,7 @@ import { Return } from "./Return"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
-    rhs: IExtendedCompiledFunctionField
+    rhs?: IExtendedCompiledFunctionField
 }
 
 export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionField, "functions"> {
@@ -45,10 +45,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                                 ...x.lhs,
                                 functions: x.lhs.functions.map(x => new CompiledFunction(x))
                             },
-                            rhs: {
+                            rhs: x.rhs ? {
                                 ...x.rhs,
                                 functions: x.rhs.functions.map(x => new CompiledFunction(x))
-                            }
+                            } : undefined
                         }
                 )
             ) ?? null
@@ -63,7 +63,9 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             for (let i = 0, len = this.data.fields.length;i < len;i++) {
                 const field = this.data.fields[i]
                 if ("op" in field) {
-                    args.push(`${field.lhs.resolve(field.lhs.functions.map(x => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map(x => x.display))}`)
+                    if (field.rhs) {
+                        args.push(`${field.lhs.resolve(field.lhs.functions.map(x => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map(x => x.display))}`)
+                    } else args.push(field.lhs.resolve(field.lhs.functions.map(x => x.display)))
                     continue
                 }
                 args.push(field.resolve(field.functions.map(x => x.display)))
@@ -126,6 +128,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const lhs = await this.resolveCode(ctx, field.lhs.resolve, field.lhs.functions)
         if (!this.isValidReturnType(lhs)) return lhs
 
+        if (field.rhs === undefined) return Return.success(field.resolve(lhs.value, null))
+        
         const rhs = await this.resolveCode(ctx, field.rhs.resolve, field.rhs.functions)
         if (!this.isValidReturnType(rhs)) return rhs
 
