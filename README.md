@@ -106,8 +106,9 @@ The previous way to register commands can fill our index file with a lot of junk
 <summary>
 
 ## Limitations
-There's currently no known limitation.
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> Note this library reads codes from **TOP** to **BOTTOM**, and never the opposite.
 
 </summary>
+
+There's currently no known limitation.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> Note this library reads codes from **TOP** to **BOTTOM**, and never the opposite.
 </details>
