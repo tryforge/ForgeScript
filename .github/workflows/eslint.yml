@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v1
       
       - name: Install node.js deps
-        run: npm ci
+        run: npm i eslint --save-dev
         
       - name: Run lint
-        run: yarn eslint ./src/**/* -ext .ts
+        run: eslint ./src/**/* -ext .ts
