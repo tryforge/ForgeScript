@@ -23,6 +23,7 @@ export interface IArg<Type extends ArgType = ArgType, Required extends boolean =
     pointer?: number
 
     condition?: boolean
+    delimiter?: string
     
     /**
      * Defaults to false
