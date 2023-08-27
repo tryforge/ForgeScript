@@ -1,6 +1,7 @@
 {
     "ignorePatterns": [
-        "./.github"
+        "./.github",
+        "./dist"
     ],
     "env": {
         "browser": true,

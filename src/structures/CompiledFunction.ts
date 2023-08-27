@@ -1,5 +1,5 @@
 import { Guild } from "discord.js"
-import { ICompiledFunction, ICompiledFunctionField, WrappedCode } from "../core/Compiler"
+import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
 import { Context } from "./Context"
@@ -7,12 +7,17 @@ import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return } from "./Return"
 
+export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
+    lhs: IExtendedCompiledFunctionField
+    rhs: IExtendedCompiledFunctionField
+}
+
 export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionField, "functions"> {
     functions: CompiledFunction[]
 }
 
 export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fields"> {
-    fields: IExtendedCompiledFunctionField[] | null
+    fields: (IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField)[] | null
 }
 
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
@@ -27,10 +32,26 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         this.fn = FunctionManager.get(raw.name) as NativeFunction<T, Unwrap>
         this.data = {
             ...raw,
-            fields: raw.fields?.map(x => ({
-                ...x,
-                functions: x.functions.map(x => new CompiledFunction(x))
-            })) ?? null
+            fields: raw.fields?.map(
+                x => (
+                    !("op" in x) ? 
+                        {
+                            ...x,
+                            functions: x.functions.map(x => new CompiledFunction(x))
+                        } :
+                        {
+                            ...x,
+                            lhs: {
+                                ...x.lhs,
+                                functions: x.lhs.functions.map(x => new CompiledFunction(x))
+                            },
+                            rhs: {
+                                ...x.rhs,
+                                functions: x.rhs.functions.map(x => new CompiledFunction(x))
+                            }
+                        }
+                )
+            ) ?? null
         }
     }
 
@@ -41,6 +62,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
             for (let i = 0, len = this.data.fields.length;i < len;i++) {
                 const field = this.data.fields[i]
+                if ("op" in field) {
+                    args.push(`${field.lhs.resolve(field.lhs.functions.map(x => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map(x => x.display))}`)
+                    continue
+                }
                 args.push(field.resolve(field.functions.map(x => x.display)))
             }
 
@@ -61,7 +86,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         for (let i = 0, len = this.fn.data.args.length;i < len;i++) {
             const arg = this.fn.data.args[i]
             if (!arg.rest) {
-                const field = this.data.fields?.[i]
+                // Assertion because condition fields should never be executed with unwraps.
+                const field = this.data.fields?.[i] as IExtendedCompiledFunctionField
                 const resolved = await this.resolveCode(ctx, field?.resolve, field?.functions)
                 if (!this.isValidReturnType(resolved)) return resolved
                 
@@ -78,7 +104,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 }
 
                 for (let x = 0, len = fields.length;x < len;x++) {
-                    const field = fields[x]
+                    // Assertion because condition fields should never be executed with unwraps.
+                    const field = fields[x] as IExtendedCompiledFunctionField
                     const resolved = await this.resolveCode(ctx, field.resolve, field.functions)
                     if (!this.isValidReturnType(resolved)) return resolved
                     
@@ -93,6 +120,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
 
         return Return.success(args)
+    }
+
+    private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
+        const lhs = await this.resolveCode(ctx, field.lhs.resolve, field.lhs.functions)
+        if (!this.isValidReturnType(lhs)) return lhs
+
+        const rhs = await this.resolveCode(ctx, field.rhs.resolve, field.rhs.functions)
+        if (!this.isValidReturnType(rhs)) return rhs
+
+        return Return.success(field.resolve(lhs.value, rhs.value))
     }
 
     private async resolveCode(ctx: Context, resolver?: WrappedCode, functions?: CompiledFunction[]): Promise<Return> {

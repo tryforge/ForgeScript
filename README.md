@@ -51,7 +51,7 @@ const client = new ForgeClient({
     intents: [
         "GuildMessages",
         "Guilds",
-        "MessageContent" // This plugin is privileged, must be whitelisted in dev portal, in your application.
+        "MessageContent" // This intent is privileged, must be whitelisted in dev portal, in your application.
     ],
     events: [
         "messageCreate",

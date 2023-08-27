@@ -24,7 +24,12 @@ export class FunctionManager {
                 const [ name, { data }] = x
                 return {
                     name,
-                    fields: data.brackets
+                    args: data.brackets === undefined ? null : {
+                        required: data.brackets,
+                        fields: data.args!.map(x => ({
+                            condition: x.condition
+                        }))
+                    }
                 }
             }
         )

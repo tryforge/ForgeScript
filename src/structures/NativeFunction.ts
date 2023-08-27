@@ -22,6 +22,8 @@ export interface IArg<Type extends ArgType = ArgType, Required extends boolean =
      */
     pointer?: number
 
+    condition?: boolean
+    
     /**
      * Defaults to false
      */
