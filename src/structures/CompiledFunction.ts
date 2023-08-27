@@ -1,3 +1,4 @@
+import { Guild } from "discord.js"
 import { ICompiledFunction, ICompiledFunctionField, WrappedCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
@@ -55,7 +56,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     private async resolveArgs(ctx: Context): Promise<Return> {
         const args = new Array(this.fn.data.args?.length ?? 0) as UnwrapArgs<T>
 
-        if (!this.fn.data.args?.length) return Return.success(args)
+        if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields)) return Return.success(args)
         
         for (let i = 0, len = this.fn.data.args.length;i < len;i++) {
             const arg = this.fn.data.args[i]
@@ -64,7 +65,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 const resolved = await this.resolveCode(ctx, field?.resolve, field?.functions)
                 if (!this.isValidReturnType(resolved)) return resolved
                 
-                const val = await this.resolveArg(ctx, arg, resolved.value)
+                const val = await this.resolveArg(ctx, arg, resolved.value, args)
                 if (!this.isValidReturnType(val)) return val
                 args[i] = val.value as UnwrapArgs<T>[number]
             } else {
@@ -81,7 +82,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                     const resolved = await this.resolveCode(ctx, field.resolve, field.functions)
                     if (!this.isValidReturnType(resolved)) return resolved
                     
-                    const val = await this.resolveArg(ctx, arg, resolved.value)
+                    const val = await this.resolveArg(ctx, arg, resolved.value, args)
                     if (!this.isValidReturnType(val)) return val
 
                     values[x] = val.value as UnwrapArgs<T>[number]
@@ -121,7 +122,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         )
     }
 
-    private async resolveArg(ctx: Context, arg: IArg, value: unknown): Promise<Return> {
+    private async resolveArg(ctx: Context, arg: IArg, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
         const reject = this.argTypeRejection.bind(this, arg, value)
         const strValue = `${value}`
 
@@ -132,6 +133,20 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         switch (arg.type) {
             case ArgType.Number: {
                 value = Number(value)
+                break
+            }
+
+            case ArgType.Guild: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = ctx.client.guilds.cache.get(strValue)
+                if (!value) return reject()
+                break
+            }
+
+            case ArgType.Role: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = (ref[arg.pointer!] as Guild).roles.cache.get(strValue)
+                if (!value) return reject()
                 break
             }
 

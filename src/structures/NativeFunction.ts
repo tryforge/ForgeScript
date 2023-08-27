@@ -1,4 +1,4 @@
-import { User } from "discord.js"
+import { Guild, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Context } from "./Context"
 import { Return } from "./Return"
@@ -7,13 +7,20 @@ export enum ArgType {
     String,
     Number,
     User,
-    Json
+    Guild,
+    Json,
+    Role
 }
 
 export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean> {
     name: string
     description: string
     type: Type
+
+    /**
+     * Arg index to look at when a type requires a previously guild arg or depends on something.
+     */
+    pointer?: number
 
     /**
      * Defaults to false
@@ -35,7 +42,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     name: string
     description: string
     experimental?: boolean
-    
+
     /**
      * Resolves all arguments and are passed through execute params.
      */
@@ -61,7 +68,11 @@ export type GetArgType<T extends ArgType> =
                 User :
                 T extends ArgType.Json ?
                     Record<string, unknown> :
-                    null
+                    T extends ArgType.Guild ?
+                        Guild : 
+                        T extends ArgType.Role ?
+                            Role :
+                            null
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
 
