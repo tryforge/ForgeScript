@@ -1,7 +1,7 @@
 import { Collection, Message } from "discord.js"
 import { ForgeClient } from "../core/ForgeClient"
 import { Command, CommandType, ICommand } from "../structures/Command"
-import { readdirSync } from "fs"
+import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class CommandManager {
     private readonly commands = new Collection<CommandType, Command[]>()
@@ -11,7 +11,7 @@ export class CommandManager {
     public load(path: string, refresh = false) {
         this.commands.clear()
 
-        for (const file of readdirSync(path, { recursive: true, withFileTypes: true }).filter(x => !x.isDirectory() && x.name.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter(x => !x.isDirectory() && x.name.endsWith(".js"))) {
             // eslint-disable-next-line no-undef
             const path = `${process.cwd()}/${file.path}/${file.name}`
 

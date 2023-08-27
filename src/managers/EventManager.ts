@@ -3,6 +3,7 @@ import { ForgeClient } from "../core/ForgeClient"
 import { CommandType } from "../structures/Command"
 import { readdirSync } from "fs"
 import { EventHandler } from "../structures/EventHandler"
+import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class EventManager {
     public static readonly Loaded: Partial<Record<CommandType, EventHandler["listener"]>> = {}
@@ -22,7 +23,7 @@ export class EventManager {
     }
 
     public static load(path: string) {
-        for (const file of readdirSync(path, { withFileTypes: true, recursive: true }).filter(x => x.isFile() && x.name.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter(x => x.isFile() && x.name.endsWith(".js"))) {
             const req = require(`${file.path}/${file.name}`).default as EventHandler
             this.Loaded[req.name] = req.listener
         }
