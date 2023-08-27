@@ -1,5 +1,5 @@
 # $message
-> Retrieves arguments from a message command
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves arguments from a message command
 ## Usage
 ```
 $message
@@ -14,7 +14,7 @@ index | Number | Index to get arg | Yes | No
 <details>
 <summary>
     
-## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/message.ts)
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/message.ts)
     
 </summary>
     

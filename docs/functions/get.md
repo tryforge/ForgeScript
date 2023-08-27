@@ -1,5 +1,5 @@
 # $get
-> Get a keyword value
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Get a keyword value
 ## Usage
 ```
 $get[key]
@@ -10,7 +10,7 @@ key | String | The key name | Yes | No
 <details>
 <summary>
     
-## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/get.ts)
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/get.ts)
     
 </summary>
     

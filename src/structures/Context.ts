@@ -7,7 +7,7 @@ import { IRunnable } from "../core/Interpreter"
 import noop from "../functions/noop"
 import { ForgeError } from "./ForgeError"
 
-type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return
+export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return
 
 export interface IHttpOptions {
     body: string

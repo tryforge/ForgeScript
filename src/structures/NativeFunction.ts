@@ -34,7 +34,8 @@ export type NativeFunctionExecutor<T extends [...IArg[]], Unwrap extends boolean
 export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean = boolean> {
     name: string
     description: string
-
+    experimental?: boolean
+    
     /**
      * Resolves all arguments and are passed through execute params.
      */
