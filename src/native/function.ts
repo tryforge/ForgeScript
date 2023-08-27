@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$function",
     description: "Runs a function.",
     unwrap: false,
+    experimental: true,
     args: [
         {
             name: "code",

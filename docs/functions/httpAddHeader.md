@@ -1,5 +1,5 @@
 # $httpAddHeader
-> Adds an HTTP header
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Adds an HTTP header
 ## Usage
 ```
 $httpAddHeader[name;...value]
@@ -11,7 +11,7 @@ value | String | The header value | Yes | Yes
 <details>
 <summary>
     
-## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/httpAddHeader.ts)
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/httpAddHeader.ts)
     
 </summary>
     

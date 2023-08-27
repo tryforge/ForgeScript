@@ -1,5 +1,5 @@
 # $httpGet
-> Performs an http GET request, returns the status code.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Performs an http GET request, returns the status code.
 ## Usage
 ```
 $httpGet[url;variable]
@@ -11,7 +11,7 @@ variable | String | Environment variable name to load the response to | Yes | No
 <details>
 <summary>
     
-## [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/httpGet.ts)
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/httpGet.ts)
     
 </summary>
     
