@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Retrieves an user's id.",
     unwrap: true,
     execute: async function(ctx) {
+        console.log("hi")
         return Return.success(ctx.user?.id)
     }
 })

@@ -1,4 +1,7 @@
 {
+    "ignorePatterns": [
+        "./.github"
+    ],
     "env": {
         "browser": true,
         "commonjs": true,

@@ -1,0 +1,27 @@
+name: lint
+on:
+  pull_request:
+    branches: [ main, dev ]
+  push: 
+    branches: [ main, dev ]
+jobs:
+  build:
+    name: Run Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repo
+        uses: actions/checkout@v3
+        with: 
+          node-version: 16.11.0
+      
+      - name: Set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      
+      - name: Install node.js deps
+        run: npm i eslint --save-dev
+        
+      - name: Run lint
+        run: npx eslint --fix ./src/**/*.ts
