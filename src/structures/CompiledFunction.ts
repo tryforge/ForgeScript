@@ -1,5 +1,5 @@
-import { Guild } from "discord.js"
-import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
+import { BaseChannel, Guild } from "discord.js"
+import { BoolValues, ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
 import { Context } from "./Context"
@@ -21,7 +21,7 @@ export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fiel
 }
 
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    public static readonly IdRegex = /^(\d+)$/
+    public static readonly IdRegex = /^(\d{16,21})$/
 
     public readonly data: IExtendedCompiledFunction
     public readonly fn: NativeFunction<T, Unwrap>
@@ -168,7 +168,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const strValue = `${value}`
 
         if (!arg.required && !value) {
-            return Return.success(null)
+            return Return.success(value ?? null)
         }
 
         switch (arg.type) {
@@ -208,9 +208,58 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
             case ArgType.User: {
                 if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                
                 const user = await ctx.client.users.fetch(strValue).catch(noop)
+                
                 if (!user) return reject()
+                
                 value = user
+                break
+            }
+
+            case ArgType.Channel: {
+                
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                
+                const ch = ctx.client.channels.cache.get(strValue)
+                
+                if (!ch) return reject()
+                
+                value = ch
+                break
+            }
+
+            case ArgType.Message: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                
+                const ch = (ref[arg.pointer!] ?? ctx.channel) as BaseChannel | null
+                
+                if (!ch || !ch.isTextBased()) return reject()
+                
+                const msg = await ch.messages.fetch(strValue).catch(noop)
+                
+                if (!msg) return reject()
+                
+                value = msg
+                break
+            }
+
+            case ArgType.Boolean: {
+                const bool = BoolValues[strValue as keyof typeof BoolValues]
+                
+                if (bool === undefined) return reject()
+                
+                value = bool
+                
+                break
+            }
+            
+            case ArgType.Enum: {
+                const val = arg.enum![strValue]
+                
+                if (val === undefined) return reject()
+                
+                value = val
                 break
             }
 

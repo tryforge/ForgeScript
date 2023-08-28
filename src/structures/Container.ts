@@ -1,36 +1,41 @@
 import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, User } from "discord.js"
+import noop from "../functions/noop"
 
 export type Sendable = Message | User | GuildMember | Channel | Interaction
 
 export class Container {
     public content?: string
     public embeds = new Array<EmbedBuilder>()
-    public components = new Array<ActionRowBuilder<any>>()
+    public components = new Array<ActionRowBuilder<AnyComponentBuilder>>()
     public reply = false
     public ephemeral = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
 
     public async send(obj: Sendable, content?: string): Promise<unknown | null> {
-        let res: unknown
+        let res: Promise<unknown>
         const options = this.getOptions<any>(content)
 
         if (this.channel && this.channel.isTextBased()) {
-            res = await this.channel.send(options)
+            res = this.channel.send(options)
         } else if (obj instanceof Message) {
-            res = this.reply ? await obj.reply(options) : await obj.channel.send(options)
+            res = this.reply ? obj.reply(options) : obj.channel.send(options)
         } else if (obj instanceof BaseInteraction && obj.isRepliable()) {
-            res = await obj[(obj.deferred || obj.replied ? "editReply" : "reply") as "reply"](options)
+            res = obj[(obj.deferred || obj.replied ? "editReply" : "reply") as "reply"](options)
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
-            res = await obj.send(options)
+            res = obj.send(options)
         } else if (obj instanceof GuildMember || obj instanceof User) {
-            res = await obj.send(options)
+            res = obj.send(options)
         } else {
-            res = null
+            res = Promise.resolve(null)
         }
 
         this.reset()
-        return res
+        return await res.catch(noop)
+    }
+
+    public embed(index: number) {
+        return this.embeds[index] ??= new EmbedBuilder()
     }
 
     public reset() {

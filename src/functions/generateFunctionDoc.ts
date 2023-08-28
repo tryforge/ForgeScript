@@ -31,7 +31,7 @@ export default function(fn: NativeFunction): string {
             "| :---: | :---: | :---: | :---: | :---: |",
             ...fn.data.args!.map(x => [
                 x.name,
-                ArgType[x.type],
+                `${ArgType[x.type]}${x.enum ? "(" + Object.values(x.enum).filter((x: any) => isNaN(Number(x))).join(" | ") + ")" : ""}`,
                 x.description,
                 x.required ? "Yes" : "No",
                 x.rest ? "Yes": "No"

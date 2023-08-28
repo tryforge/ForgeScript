@@ -2,11 +2,12 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Evaluates given code.
 ## Usage
 ```
-$eval[...code]
+$eval[code;send]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-code | String | The code to eval | Yes | Yes
+code | String | The code to eval | Yes | No
+send | Boolean | Whether to send as new message | No | No
 <details>
 <summary>
     
@@ -29,24 +30,28 @@ export default new NativeFunction({
         {
             name: "code",
             type: ArgType.String,
-            rest: true,
+            rest: false,
             required: true,
             description: "The code to eval"
+        },
+        {
+            name: "send",
+            type: ArgType.Boolean,
+            rest: false,
+            description: "Whether to send as new message"
         }
     ],
-    async execute(ctx, [ args ]) {
-        const code = args.join(";")
-        
+    async execute(ctx, [ code, send ]) {
         try {
             const result = await Interpreter.run({
                 client: ctx.client,
                 data: Compiler.compile(code),
                 obj: ctx.obj,
                 args: ctx.args,
-                doNotSend: true
+                doNotSend: !send
             })
 
-            return result === null ? Return.stop() : Return.success(result)
+            return result === null ? Return.stop() : Return.success(send ? undefined : result)
         } catch (error: unknown) {
             console.error(error)
             return Return.error(error as Error)
