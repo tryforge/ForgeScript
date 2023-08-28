@@ -1,4 +1,4 @@
-import { BaseChannel, Guild, Message, Role, User } from "discord.js"
+import { BaseChannel, BaseInteraction, Guild, Interaction, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -20,6 +20,7 @@ export class Context {
     #guild?: Guild | null
     #channel?: BaseChannel | null
     #message?: Message | null
+    #interaction?: Interaction | null
     #role?: Role | null
     http: Partial<IHttpOptions> = {}
 
@@ -57,6 +58,13 @@ export class Context {
                 this.obj instanceof Message ? 
                     this.obj :
                     null
+    }
+
+    public get interaction() {
+        return this.#interaction ??= 
+            this.obj instanceof BaseInteraction ?
+                this.obj :
+                null
     }
 
     public get user() {
