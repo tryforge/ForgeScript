@@ -1,7 +1,7 @@
 import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, User } from "discord.js"
 import noop from "../functions/noop"
 
-export type Sendable = Message | User | GuildMember | Channel | Interaction
+export type Sendable = Message | User | GuildMember | BaseChannel | Interaction
 
 export class Container {
     public content?: string
@@ -12,7 +12,7 @@ export class Container {
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
 
-    public async send(obj: Sendable, content?: string): Promise<unknown | null> {
+    public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
 
@@ -31,7 +31,7 @@ export class Container {
         }
 
         this.reset()
-        return await res.catch(noop)
+        return await res.catch(noop) as T
     }
 
     public embed(index: number) {

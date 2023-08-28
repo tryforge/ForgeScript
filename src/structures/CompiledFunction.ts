@@ -21,7 +21,7 @@ export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fiel
 }
 
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    public static readonly IdRegex = /^(\d{16,21})$/
+    public static readonly IdRegex = /^(\d{16,23})$/
 
     public readonly data: IExtendedCompiledFunction
     public readonly fn: NativeFunction<T, Unwrap>
@@ -164,8 +164,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private async resolveArg(ctx: Context, arg: IArg, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
-        const reject = this.argTypeRejection.bind(this, arg, value)
         const strValue = `${value}`
+        const reject = this.argTypeRejection.bind(this, arg, strValue)
 
         if (!arg.required && !value) {
             return Return.success(value ?? null)
@@ -218,7 +218,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             }
 
             case ArgType.Channel: {
-                
                 if (!CompiledFunction.IdRegex.test(strValue)) return reject()
                 
                 const ch = ctx.client.channels.cache.get(strValue)
@@ -271,6 +270,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (value === null && arg.required) {
             return Return.error(this.error(ErrorType.MissingArg, this.data.name, arg.name))
         }
+
+        if (arg.check !== undefined && !arg.check(value)) return reject()
 
         return Return.success(value ?? null)
     }

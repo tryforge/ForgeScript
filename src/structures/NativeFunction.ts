@@ -36,7 +36,8 @@ export interface IArg<Type extends ArgType = ArgType, Required extends boolean =
 
     condition?: boolean
     delimiter?: string
-    
+    check?: (i: GetArgType<Type, Enum>) => boolean
+
     /**
      * Defaults to false
      */
