@@ -20,8 +20,10 @@ export class CommandManager {
         }
     }
 
-    public get(type: CommandType, fn: (cmd: Command) => boolean): Command[] {
-        return this.commands.get(type)?.filter(fn) ?? []
+    public get(type: CommandType, fn?: (cmd: Command) => boolean): Command[] {
+        const cmds = this.commands.get(type) ?? []
+        if (!fn) return cmds
+        return cmds.filter(fn)
     }
 
     public add(...commands: (ICommand | Command)[]) {
