@@ -11,7 +11,8 @@ const client = new ForgeClient({
     ],
     events: [
         "messageCreate",
-        "ready"
+        "ready",
+        "interactionCreate"
     ],
     prefixes: [
         "!"
@@ -32,6 +33,12 @@ client.commands.add({
     type: "messageCreate",
     code: "$eval[$message;true]",
     unprefixed: true
+})
+
+client.commands.add({
+    type: "interactionCreate",
+    code: `$interactionReply[Is button: $isButton | custom id: $customID;yes]
+$stop`
 })
 
 client.commands.add({

@@ -11,6 +11,7 @@ export class Container {
     public ephemeral = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
+    public fetchReply = false
 
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
@@ -43,6 +44,7 @@ export class Container {
         delete this.content
         this.reply = false
         this.ephemeral = false
+        this.fetchReply = false
         this.components.length = 0
         this.embeds.length = 0
         this.files.length = 0
@@ -50,6 +52,7 @@ export class Container {
 
     public getOptions<T>(content?: string): T {
         return (content ?? {
+            fetchReply: this.fetchReply,
             files: this.files,
             ephemeral: this.ephemeral,
             content: this.content || null,
