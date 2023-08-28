@@ -1,4 +1,4 @@
-import { BaseChannel, BaseInteraction, Guild, Interaction, Message, Role, User } from "discord.js"
+import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, Interaction, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -22,6 +22,7 @@ export class Context {
     #message?: Message | null
     #interaction?: Interaction | null
     #role?: Role | null
+    
     http: Partial<IHttpOptions> = {}
 
     #keywords: Record<string, string> = {}
@@ -168,5 +169,9 @@ export class Context {
 
     public clearEnvironment() {
         this.#environment = {}
+    }
+
+    public isSelectMenu(): this is this & { get interaction(): AnySelectMenuInteraction } {
+        return !!this.interaction && this.interaction.isAnySelectMenu()
     }
 }
