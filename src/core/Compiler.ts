@@ -233,7 +233,7 @@ export class Compiler {
                         // Lastly add the rhs
                         rhs = {
                             value: inside,
-                            functions,
+                            functions: [...functions],
                             resolve: this.wrap(inside)
                         }
 
@@ -291,7 +291,7 @@ export class Compiler {
                     // Push to lhs
                     lhs = {
                         value: inside,
-                        functions,
+                        functions: [...functions],
                         resolve: this.wrap(inside)
                     }
 

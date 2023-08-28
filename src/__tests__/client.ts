@@ -37,7 +37,7 @@ client.commands.add({
 
 client.commands.add({
     type: "interactionCreate",
-    code: `$interactionReply[Is button: $isButton | custom id: $customID;yes]
+    code: `$interactionReply[Is menu: $isAnySelectMenu | Is button: $isButton | custom id: $customID | values if menu: $selectMenuValues;yes]
 $stop`
 })
 
