@@ -1,5 +1,8 @@
 # $arrayFindIndex
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds the index of an element in the array
+
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> This feature is currently <span style="color:yellow"><strong>experimental</strong></span>.
+
 ## Usage
 ```
 $arrayFindIndex[name;variable;code]
@@ -47,6 +50,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
+    experimental: true,
     brackets: true,
     async execute(ctx) {
         const nameField = this.data.fields![0] as IExtendedCompiledFunctionField

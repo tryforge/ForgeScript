@@ -1,5 +1,8 @@
 # $arrayMap
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Maps through every element of the array and loads the results to another array
+
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> This feature is currently <span style="color:yellow"><strong>experimental</strong></span>.
+
 ## Usage
 ```
 $arrayMap[name;variable;other variable;code]
@@ -25,6 +28,7 @@ export default new NativeFunction({
     name: "$arrayMap",
     description: "Maps through every element of the array and loads the results to another array",
     unwrap: false,
+    experimental: true,
     args: [
         {
             name: "name",
