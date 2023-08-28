@@ -28,6 +28,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
+    experimental: true,
     brackets: true,
     async execute(ctx) {
         const nameField = this.data.fields![0] as IExtendedCompiledFunctionField

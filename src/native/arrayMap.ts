@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$arrayMap",
     description: "Maps through every element of the array and loads the results to another array",
     unwrap: false,
+    experimental: true,
     args: [
         {
             name: "name",
