@@ -90,7 +90,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             if (!arg.rest) {
                 // Assertion because condition fields should never be executed with unwraps.
                 const field = this.data.fields?.[i] as IExtendedCompiledFunctionField
-                const resolved = await this.resolveCode(ctx, field?.resolve, field?.functions)
+                const resolved = await this.resolveCode(ctx, field)
                 if (!this.isValidReturnType(resolved)) return resolved
                 
                 const val = await this.resolveArg(ctx, arg, resolved.value, args)
@@ -108,7 +108,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 for (let x = 0, len = fields.length;x < len;x++) {
                     // Assertion because condition fields should never be executed with unwraps.
                     const field = fields[x] as IExtendedCompiledFunctionField
-                    const resolved = await this.resolveCode(ctx, field.resolve, field.functions)
+                    const resolved = await this.resolveCode(ctx, field)
                     if (!this.isValidReturnType(resolved)) return resolved
                     
                     const val = await this.resolveArg(ctx, arg, resolved.value, args)
@@ -125,18 +125,18 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
-        const lhs = await this.resolveCode(ctx, field.lhs.resolve, field.lhs.functions)
+        const lhs = await this.resolveCode(ctx, field.lhs)
         if (!this.isValidReturnType(lhs)) return lhs
 
         if (field.rhs === undefined) return Return.success(field.resolve(lhs.value, null))
         
-        const rhs = await this.resolveCode(ctx, field.rhs.resolve, field.rhs.functions)
+        const rhs = await this.resolveCode(ctx, field.rhs)
         if (!this.isValidReturnType(rhs)) return rhs
 
         return Return.success(field.resolve(lhs.value, rhs.value))
     }
 
-    private async resolveCode(ctx: Context, resolver?: WrappedCode, functions?: CompiledFunction[]): Promise<Return> {
+    private async resolveCode(ctx: Context, { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}): Promise<Return> {
         if (!resolver || !functions) return Return.success(null)
 
         const args = new Array(functions.length)

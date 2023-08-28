@@ -87,6 +87,9 @@ export interface IRawFunctionMatch extends IRawFunction {
     index: number
 }
 
+/**
+ * REWRITE NEEDED
+ */
 export class Compiler {
     public static Syntax = {
         Open: "[",
