@@ -72,7 +72,11 @@ export default new NativeFunction({
                 ctx.setEnvironmentKey(varName, el)
                 const rt = await this["resolveCode"](ctx, code.resolve, code.functions) as Return
                 
-                if (rt.return && BoolValues[rt.value as keyof typeof BoolValues]) return Return.success(false)
+                if (rt.return) {
+                    if (!BoolValues[rt.value as keyof typeof BoolValues])
+                        continue
+                    return Return.success(false)
+                }
                 else if (!this["isValidReturnType"](rt)) return rt
             }
         }
