@@ -1,7 +1,14 @@
-import { Guild, Role, User } from "discord.js"
+import { BaseChannel, Guild, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Context } from "./Context"
 import { Return } from "./Return"
+
+export type EnumLike<T = any> = {
+    [id: string]: T | string;
+    [nu: number]: string;
+};
+
+export type GetEnum<T> = T extends EnumLike<infer P> ? P : never;
 
 export enum ArgType {
     String,
@@ -9,13 +16,18 @@ export enum ArgType {
     User,
     Guild,
     Json,
+    Enum,
+    Boolean,
+    Message,
+    Channel,
     Role
 }
 
-export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean> {
+export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean, Enum extends EnumLike = EnumLike> {
     name: string
     description: string
     type: Type
+    enum?: Enum
 
     /**
      * Arg index to look at when a type requires a previously guild arg or depends on something.
@@ -62,7 +74,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
 }
 
 export type MarkRest<T, B extends boolean> = B extends true ? T[] : T
-export type GetArgType<T extends ArgType> = 
+export type GetArgType<T extends ArgType, Enum extends EnumLike> = 
     T extends ArgType.Number ? 
         number : 
         T extends ArgType.String ?
@@ -75,11 +87,19 @@ export type GetArgType<T extends ArgType> =
                         Guild : 
                         T extends ArgType.Role ?
                             Role :
-                            null
+                            T extends ArgType.Boolean ? 
+                                boolean :
+                                T extends ArgType.Enum ? 
+                                    GetEnum<Enum> :
+                                    T extends ArgType.Channel ?
+                                        BaseChannel :
+                                        T extends ArgType.Message ?
+                                            Message<true> :
+                                            null
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
 
-export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest> ? MarkRest<MarkNullable<GetArgType<Type>, Required, Rest>, Rest> : never
+export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never
 
 export type UnwrapArgs<T> = T extends [ infer L, ...infer R ] ? [
     UnwrapArg<L>,

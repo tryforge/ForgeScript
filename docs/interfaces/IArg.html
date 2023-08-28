@@ -14,7 +14,7 @@
 <ul class="tsd-breadcrumb">
 <li><a href="../modules.html">forgescript</a></li>
 <li><a href="IArg.html">IArg</a></li></ul>
-<h1>Interface IArg&lt;Type, Required, Rest&gt;</h1></div> 
+<h1>Interface IArg&lt;Type, Required, Rest, Enum&gt;</h1></div> 
 <section class="tsd-panel">
 <h4>Type Parameters</h4>
 <ul class="tsd-type-parameter-list">
@@ -23,13 +23,15 @@
 <li>
 <h4><span class="tsd-kind-type-parameter">Required</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">boolean</span> = <span class="tsd-signature-type">boolean</span></h4></li>
 <li>
-<h4><span class="tsd-kind-type-parameter">Rest</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">boolean</span> = <span class="tsd-signature-type">boolean</span></h4></li></ul></section> 
+<h4><span class="tsd-kind-type-parameter">Rest</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">boolean</span> = <span class="tsd-signature-type">boolean</span></h4></li>
+<li>
+<h4><span class="tsd-kind-type-parameter">Enum</span><span class="tsd-signature-symbol"> extends </span><a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a> = <a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a></h4></li></ul></section> 
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
 <li><span class="target">IArg</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L15">src/structures/NativeFunction.ts:15</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L26">src/structures/NativeFunction.ts:26</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -40,6 +42,7 @@
 <div class="tsd-index-list"><a href="IArg.html#condition" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-1024"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)"></path></g></svg><span>condition?</span></a>
 <a href="IArg.html#delimiter" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>delimiter?</span></a>
 <a href="IArg.html#description" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>description</span></a>
+<a href="IArg.html#enum" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>enum?</span></a>
 <a href="IArg.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>name</span></a>
 <a href="IArg.html#pointer" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>pointer?</span></a>
 <a href="IArg.html#required" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>required?</span></a>
@@ -52,22 +55,27 @@
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>condition</span><a href="#condition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">condition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L25">src/structures/NativeFunction.ts:25</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L37">src/structures/NativeFunction.ts:37</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="delimiter" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>delimiter</span><a href="#delimiter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">delimiter</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L26">src/structures/NativeFunction.ts:26</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L38">src/structures/NativeFunction.ts:38</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="description" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>description</span><a href="#description" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L17">src/structures/NativeFunction.ts:17</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L28">src/structures/NativeFunction.ts:28</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="enum" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>enum</span><a href="#enum" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">enum</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type tsd-kind-type-parameter">Enum</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L30">src/structures/NativeFunction.ts:30</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L16">src/structures/NativeFunction.ts:16</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L27">src/structures/NativeFunction.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="pointer" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>pointer</span><a href="#pointer" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">pointer</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
@@ -75,7 +83,7 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L23">src/structures/NativeFunction.ts:23</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L35">src/structures/NativeFunction.ts:35</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="required" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>required</span><a href="#required" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">required</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type tsd-kind-type-parameter">Required</span></div>
@@ -83,7 +91,7 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L31">src/structures/NativeFunction.ts:31</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L43">src/structures/NativeFunction.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="rest" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>rest</span><a href="#rest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">rest</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type tsd-kind-type-parameter">Rest</span></div>
@@ -91,12 +99,12 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L36">src/structures/NativeFunction.ts:36</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L48">src/structures/NativeFunction.ts:48</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="type" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>type</span><a href="#type" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type tsd-kind-type-parameter">Type</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c305142/src/structures/NativeFunction.ts#L18">src/structures/NativeFunction.ts:18</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/214ddb8/src/structures/NativeFunction.ts#L29">src/structures/NativeFunction.ts:29</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -119,6 +127,7 @@
 <li><a href="#condition" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>condition</span></a></li>
 <li><a href="#delimiter" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>delimiter</span></a></li>
 <li><a href="#description" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>description</span></a></li>
+<li><a href="#enum" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>enum</span></a></li>
 <li><a href="#name" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>name</span></a></li>
 <li><a href="#pointer" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>pointer</span></a></li>
 <li><a href="#required" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>required</span></a></li>
@@ -168,8 +177,10 @@
 <li><a href="IRawFunctionMatch.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IRaw<wbr/>Function<wbr/>Match</span></a></li>
 <li><a href="IRunnable.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>IRunnable</span></a></li>
 <li><a href="../types/CommandType.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2097152"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>Command<wbr/>Type</span></a></li>
+<li><a href="../types/EnumLike.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Enum<wbr/>Like</span></a></li>
 <li><a href="../types/ExpectCallback.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Expect<wbr/>Callback</span></a></li>
 <li><a href="../types/GetArgType.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Get<wbr/>Arg<wbr/>Type</span></a></li>
+<li><a href="../types/GetEnum.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Get<wbr/>Enum</span></a></li>
 <li><a href="../types/GetErrorArgs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Get<wbr/>Error<wbr/>Args</span></a></li>
 <li><a href="../types/MarkNullable.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Mark<wbr/>Nullable</span></a></li>
 <li><a href="../types/MarkRest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2097152"></use></svg><span>Mark<wbr/>Rest</span></a></li>
