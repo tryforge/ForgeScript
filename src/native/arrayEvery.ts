@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$arrayEvery",
     description: "Loops through every element of the array with a condition that must pass every element",
     unwrap: false,
+    experimental: true,
     args: [
         {
             name: "name",

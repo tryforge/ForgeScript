@@ -1,5 +1,8 @@
 # $arrayReduce
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Reduces an array of elements and returns the result
+
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> This feature is currently <span style="color:yellow"><strong>experimental</strong></span>.
+
 ## Usage
 ```
 $arrayReduce[name;variable;other variable;code;default value]
@@ -62,6 +65,7 @@ export default new NativeFunction({
             type: ArgType.Number
         }
     ],
+    experimental: true,
     brackets: true,
     async execute(ctx) {
         const nameField = this.data.fields![0] as IExtendedCompiledFunctionField
