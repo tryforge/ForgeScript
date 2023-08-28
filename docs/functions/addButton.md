@@ -8,7 +8,12 @@ $addButton[custom ID;label;style;emoji;disabled]
 | :---: | :---: | :---: | :---: | :---: |
 custom ID | String | The custom id for this component | Yes | No
 label | String | The button label | Yes | No
-style | Enum(Primary | Secondary | Success | Danger | Link) | The style for this button | Yes | No
+style | Enum
+`Primary`
+`Secondary`
+`Success`
+`Danger`
+`Link` | The style for this button | Yes | No
 emoji | String | The emoji for this button | No | No
 disabled | Boolean | Whether to disable the button | No | No
 <details>
