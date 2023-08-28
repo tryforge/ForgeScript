@@ -3,8 +3,8 @@ import { fetch } from "undici"
 import { Return } from "../structures/Return"
 
 export default new NativeFunction({
-    name: "$httpGet",
-    description: "Performs an http GET request, returns the status code.",
+    name: "$httpRequest",
+    description: "Performs an http request, returns the status code.",
     args: [
         {
             name: "url",
@@ -12,6 +12,13 @@ export default new NativeFunction({
             type: ArgType.String,
             rest: false,
             required: true
+        },
+        {
+            name: "method",
+            description: "The method to use",
+            rest: false,
+            required: true,
+            type: ArgType.String
         },
         {
             name: "variable",
@@ -23,12 +30,14 @@ export default new NativeFunction({
     ],
     brackets: true,
     unwrap: true,
-    async execute(ctx, [ url, name ]) {
+    async execute(ctx, [ url, method, name ]) {
         const req = await fetch(url, {
-            method: "GET",
+            method,
             ...ctx.http
         })
 
+        ctx.clearHttpOptions()
+        
         const contentType = req.headers.get("content-type")?.split(";")[0]
         
         if (contentType === "application/json") {
