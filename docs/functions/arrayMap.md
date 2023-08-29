@@ -5,14 +5,14 @@
 
 ## Usage
 ```
-$arrayMap[name;variable;other variable;code]
+$arrayMap[name;variable;code;other variable]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 name | String | The variable that holds the array | Yes | No
 variable | String | The variable to load the element value to | Yes | No
-other variable | String | The other variable to load the result to | Yes | No
 code | String | The code to execute for every element | Yes | No
+other variable | String | The other variable to load the result to | Yes | No
 <details>
 <summary>
     
@@ -45,23 +45,23 @@ export default new NativeFunction({
             type: ArgType.String
         },
         {
+            name: "code",
+            description: "The code to execute for every element",
+            rest: false,
+            required: true,
+            type: ArgType.String
+        },
+        {
             name: "other variable",
             description: "The other variable to load the result to",
             rest: false,
             required: true,
             type: ArgType.String
         },
-        {
-            name: "code",
-            description: "The code to execute for every element",
-            rest: false,
-            required: true,
-            type: ArgType.String
-        }
     ],
     brackets: true,
     async execute(ctx) {
-        const [ nameField, varField, otherVarField, code ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [ nameField, varField, code, otherVarField ] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const name = await this["resolveCode"](ctx, nameField)
         if (!this["isValidReturnType"](name)) return name

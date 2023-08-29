@@ -1,13 +1,15 @@
 import { ForgeClient } from "../core/ForgeClient"
 import { config } from "dotenv"
 import { MyExtension } from "./ext"
+import { ActivityType } from "discord.js"
 config()
 
 const client = new ForgeClient({
     intents: [
         "Guilds",
         "MessageContent",
-        "GuildMessages"
+        "GuildMessages",
+        "GuildMembers"
     ],
     events: [
         "messageCreate",
@@ -17,6 +19,16 @@ const client = new ForgeClient({
     prefixes: [
         "!"
     ],
+    presence: {
+        status: "idle",
+        activities: [
+            {
+                name: "hi bro",
+                state: "hi bro",
+                type: ActivityType.Custom
+            }
+        ]
+    },
     extensions: [
         new MyExtension()
     ]

@@ -47,6 +47,7 @@ export default new NativeFunction({
                 client: ctx.client,
                 data: Compiler.compile(code),
                 obj: ctx.obj,
+                command: ctx.runtime.command,
                 args: ctx.args,
                 doNotSend: !send
             })

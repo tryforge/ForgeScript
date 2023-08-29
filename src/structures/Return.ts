@@ -30,6 +30,12 @@ export class Return<T extends ReturnType = ReturnType> {
         return new this(ReturnType.Stop, null)
     }
 
+    public static successJSON(value: Return<ReturnType.Success>) {
+        return this.success(
+            typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value
+        )
+    }
+
     public static successFormatted(value: Return<ReturnType.Success>) {
         return this.success(
             typeof value !== "string" ? 
