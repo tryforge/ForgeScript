@@ -37,7 +37,7 @@ const client = new ForgeClient({
 client.functions.add(
     "get_user",
     [ "id" ],
-    "$return[$username[$environment[id]]]"
+    "$return[$username[$env[id]]]"
 )
 
 client.commands.add({

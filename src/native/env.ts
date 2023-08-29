@@ -2,7 +2,7 @@ import { ArgType, NativeFunction } from "../structures/NativeFunction"
 import { Return } from "../structures/Return"
 
 export default new NativeFunction({
-    name: "$environment",
+    name: "$env",
     description: "Retrieve an environment value",
     args: [
         {
