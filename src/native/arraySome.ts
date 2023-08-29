@@ -48,7 +48,7 @@ export default new NativeFunction({
                 const rt = await this["resolveCode"](ctx, code) as Return
                 
                 if (rt.return) {
-                    if (!BoolValues[rt.value as keyof typeof BoolValues])
+                    if (!rt.value)
                         continue
                     return Return.success(true)
                 }

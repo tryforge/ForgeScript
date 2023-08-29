@@ -128,12 +128,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const lhs = await this.resolveCode(ctx, field.lhs)
         if (!this.isValidReturnType(lhs)) return lhs
 
-        if (field.rhs === undefined) return Return.success(field.resolve(lhs.value, null))
+        if (field.rhs === undefined) return Return.success(BoolValues[
+            field.resolve(lhs.value, null) as unknown as keyof typeof BoolValues
+        ] ?? false)
         
         const rhs = await this.resolveCode(ctx, field.rhs)
         if (!this.isValidReturnType(rhs)) return rhs
 
-        return Return.success(field.resolve(lhs.value, rhs.value))
+        return Return.success(BoolValues[
+            field.resolve(lhs.value, rhs.value) as unknown as keyof typeof BoolValues
+        ] ?? false)
     }
 
     private async resolveCode(ctx: Context, { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}): Promise<Return> {
