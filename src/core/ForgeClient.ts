@@ -12,6 +12,7 @@ export interface IForgeClientOptions extends ClientOptions {
     events?: CommandType[]
     prefixes: string[]
     functions?: string
+    optionalGuildID?: boolean
     extensions?: ForgeExtension[]
 }
 

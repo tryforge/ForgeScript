@@ -29,6 +29,7 @@ const client = new ForgeClient({
             }
         ]
     },
+    optionalGuildID: true,
     extensions: [
         new MyExtension()
     ]
