@@ -1,0 +1,28 @@
+import { ArgType, NativeFunction, Return } from "../structures"
+
+export default new NativeFunction({
+    name: "$memberDisplayColor",
+    description: "Returns the display color of a member",
+    unwrap: true,
+    brackets: false,
+    args: [
+        {
+            name: "guild ID",
+            description: "The guild to pull member from",
+            rest: false,
+            type: ArgType.Guild,
+            required: true
+        },
+        {
+            name: "user ID",
+            description: "The user to get its color",
+            rest: false,
+            type: ArgType.Member,
+            required: true
+        }
+    ],
+    execute(ctx, [ guild, member ]) {
+        member ??= ctx.member!
+        return Return.success(member?.displayHexColor)
+    },
+})

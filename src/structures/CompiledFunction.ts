@@ -198,6 +198,20 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 break
             }
 
+            case ArgType.GuildSticker: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = (ref[arg.pointer!] as Guild).stickers.fetch(strValue).catch(noop)
+                if (!value) return reject()
+                break
+            }
+
+            case ArgType.GuildEmoji: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = (ref[arg.pointer!] as Guild).emojis.cache.get(strValue) 
+                if (!value) return reject()
+                break
+            }
+
             case ArgType.String: {
                 break
             }
