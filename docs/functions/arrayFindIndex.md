@@ -73,7 +73,7 @@ export default new NativeFunction({
             
             if (rt.return) {
                 console.log(rt.value)
-                if (!BoolValues[rt.value as keyof typeof BoolValues])
+                if (!rt.value)
                     continue
                 return Return.success(i)
             } else if (!this["isValidReturnType"](rt)) return rt
