@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ variable, index ]) {
         const arr = ctx.getEnvironmentKey([ variable ])
-        return Return.success(Array.isArray(arr) ? arr.at(index) : undefined)
+        return Return.successJSON(Array.isArray(arr) ? arr.at(index) : undefined)
     },
 })
