@@ -38,6 +38,7 @@ export default new NativeFunction({
             description: "The user to set roles to",
             rest: false,
             type: ArgType.Member,
+            pointer: 0,
             required: true
         },
         {

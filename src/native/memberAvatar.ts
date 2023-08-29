@@ -18,6 +18,7 @@ export default new NativeFunction({
             description: "The user to retrieve the avatar",
             rest: false,
             required: true,
+            pointer: 0,
             type: ArgType.Member
         },
         {

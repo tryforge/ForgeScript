@@ -16,6 +16,7 @@ export default new NativeFunction({
         },
         {
             name: "user ID",
+            pointer: 0,
             description: "The user to remove roles from",
             rest: false,
             type: ArgType.Member,
