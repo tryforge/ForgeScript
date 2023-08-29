@@ -15,8 +15,11 @@ export class CommandManager {
             // eslint-disable-next-line no-undef
             const path = `${process.cwd()}/${file}`
 
-            const req = require(path).default as ICommand | Command
-            this.add(req)
+            const req = require(path)
+            if (!req) continue
+
+            if (Array.isArray(req)) this.add(...req)
+            else this.add(req.default ?? req)
         }
     }
 
