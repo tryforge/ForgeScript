@@ -70,7 +70,9 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
 
     /**
      * If undefined, function has no brackets
+     * 
      * If false, function can have brackets.
+     * 
      * If true, function must have brackets.
      */
     brackets?: boolean
