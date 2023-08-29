@@ -7,7 +7,7 @@ $arrayJoin[variable;separator]
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 variable | String | The variable the array is held on | Yes | No
-separator | String | The separator to use for every element | Yes | No
+separator | String | The separator to use for every element | No | No
 <details>
 <summary>
     
@@ -34,14 +34,13 @@ export default new NativeFunction({
             name: "separator",
             description: "The separator to use for every element",
             rest: false,
-            type: ArgType.String,
-            required: true
+            type: ArgType.String
         }
     ],
     brackets: true,
     execute(ctx, [ name, sep ]) {
         const arr = ctx.getEnvironmentKey([ name ])
-        return Return.success(Array.isArray(arr) ? arr.join(sep) : undefined)
+        return Return.success(Array.isArray(arr) ? arr.join(sep || ", ") : undefined)
     },
 })
 ```

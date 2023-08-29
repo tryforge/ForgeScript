@@ -39,6 +39,7 @@ export default new NativeFunction({
             description: "The ban to kick",
             rest: false,
             type: ArgType.Member,
+            pointer: 0,
             required: true
         },
         {

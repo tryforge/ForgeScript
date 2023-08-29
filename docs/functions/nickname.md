@@ -47,7 +47,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ guild, member ]) {
         return Return.success(
-            (member ?? ctx.member)?.nickname
+            (member ?? ctx.member)?.displayName
         )
     }
 })
