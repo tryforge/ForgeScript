@@ -1,0 +1,32 @@
+import { BaseChannel, TextChannel } from "discord.js"
+import { ArgType, NativeFunction, Return } from "../structures"
+import noop from "../functions/noop"
+
+export default new NativeFunction({
+    name: "$deleteMessage",
+    brackets: true,
+    unwrap: true,
+    description: "Delete given message ids, returns the count of messages deleted",
+    args: [
+        {
+            name: "channel ID",
+            description: "The channel to delete this message from",
+            rest: false,
+            required: true,
+            check: (i: BaseChannel) => i.isTextBased(),
+            type: ArgType.Channel
+        },
+        {
+            name: "messages",
+            description: "The messages to delete",
+            rest: true,
+            required: true,
+            pointer: 0,
+            type: ArgType.Message
+        }
+    ],
+    async execute(ctx, [ channel, messages ]) {
+        const col = await (channel as TextChannel).bulkDelete(messages, true).then(x => x.size).catch(noop) ?? 0
+        return Return.success(col)
+    },
+})
