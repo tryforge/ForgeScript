@@ -7,7 +7,9 @@ export interface ICommand {
     name?: string
     type: CommandType
     code: string
+    guildOnly?: boolean
     unprefixed?: boolean
+    aliases?: string[]
     [x: PropertyKey]: unknown
 }
 

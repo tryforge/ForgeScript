@@ -4,11 +4,13 @@ import { Context } from "../structures/Context"
 import { ReturnType } from "../structures/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
+import { Command } from "../structures"
 
 export interface IRunnable {
     client: ForgeClient
     data: IExtendedCompilationResult
     obj: Sendable
+    command: Command
     doNotSend?: boolean
     args?: string[]
 }
@@ -16,6 +18,8 @@ export interface IRunnable {
 export class Interpreter {
     public static async run(runtime: IRunnable): Promise<string | null> {
         const ctx = new Context(runtime)
+        
+        if (runtime.command.data.guildOnly && !ctx.guild) return null
         
         const args = new Array<unknown>(runtime.data.functions.length)
         

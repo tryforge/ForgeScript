@@ -30,6 +30,7 @@ client.functions.add(
 
 client.commands.add({
     name: "eval",
+    aliases: [ "ev" ],
     type: "messageCreate",
     code: "$eval[$message;true]",
     unprefixed: true
