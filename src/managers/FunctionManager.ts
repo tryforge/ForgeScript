@@ -7,9 +7,9 @@ export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
 
     public static load(path: string) {
-        for (const file of recursiveReaddirSync(path).filter(x => x.name.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const req = require(`${file.path}/${file.name}`).default as NativeFunction
+            const req = require(file).default as NativeFunction
             this.Functions.set(req.name, req)
         }
     }
