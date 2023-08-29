@@ -17,6 +17,7 @@ export default new NativeFunction({
             name: "user ID",
             description: "The user to get its join date",
             rest: false,
+            pointer: 0,
             type: ArgType.Member,
             required: true
         }

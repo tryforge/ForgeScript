@@ -38,7 +38,8 @@ export default new NativeFunction({
             description: "The user to check for perms",
             rest: false,
             type: ArgType.Member,
-            required: true
+            required: true,
+            pointer: 0
         },
         {
             name: "perms",

@@ -11,13 +11,19 @@ export default new NativeFunction({
             type: ArgType.Number,
             required: true,
             rest: false,
+        },
+        {
+            name: "end index",
+            description: "The end index",
+            rest: false,
+            type: ArgType.Number
         }
     ],
     brackets: false,
     unwrap: true,
-    execute(ctx, [ index ]) {
+    execute(ctx, [ index, end ]) {
         if (this.hasFields) {
-            return Return.success(ctx.args[index - 1])   
+            return Return.success(end ? ctx.args.slice(index, end) : ctx.args[index - 1])
         }
         return Return.success(ctx.args.join(" "))
     },

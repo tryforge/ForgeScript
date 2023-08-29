@@ -1,5 +1,5 @@
 import { readdirSync } from "fs"
-import { NativeFunction } from "../structures/NativeFunction"
+import { INativeFunction, NativeFunction } from "../structures/NativeFunction"
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
@@ -16,6 +16,10 @@ export class FunctionManager {
 
     public static get(name: string) {
         return this.Functions.get(name)!
+    }
+
+    public static toJSON(): INativeFunction<any>[] {
+        return Array.from(this.Functions.values()).map(x => x.data)
     }
     
     public static get raw(): IRawFunction[] {

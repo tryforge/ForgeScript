@@ -37,6 +37,7 @@ export default new NativeFunction({
         },
         {
             name: "user ID",
+            pointer: 0,
             description: "The user to get its color",
             rest: false,
             type: ArgType.Member,

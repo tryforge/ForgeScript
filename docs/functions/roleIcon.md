@@ -42,6 +42,7 @@ export default new NativeFunction({
             description: "The role to use to get its icon",
             rest: false,
             required: true,
+            pointer: 0,
             type: ArgType.Role
         },
         {
