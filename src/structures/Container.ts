@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, User } from "discord.js"
+import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, ModalBuilder, TextInputBuilder, User } from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 
@@ -13,7 +13,8 @@ export class Container {
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
     public fetchReply = false
-
+    public modal?: ModalBuilder
+    
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
@@ -23,7 +24,11 @@ export class Container {
         } else if (obj instanceof Message) {
             res = this.reply ? obj.reply(options) : obj.channel.send(options)
         } else if (obj instanceof BaseInteraction && obj.isRepliable()) {
-            res = obj[(obj.deferred || obj.replied ? "editReply" : "reply") as "reply"](options)
+            if (this.modal && !obj.replied && "showModal" in obj) {
+                res = obj.showModal(this.modal)
+            } else {
+                res = obj[(obj.deferred || obj.replied ? "editReply" : "reply") as "reply"](options)
+            }
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
             res = obj.send(options)
         } else if (obj instanceof GuildMember || obj instanceof User) {
@@ -43,6 +48,7 @@ export class Container {
     public reset() {
         delete this.channel
         delete this.content
+        delete this.modal
         this.reply = false
         this.ephemeral = false
         this.fetchReply = false
