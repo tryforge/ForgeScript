@@ -173,6 +173,10 @@ export class Context {
         return this.#keywords[name] = value
     }
 
+    public hasKeyword(name: string) {
+        return name in this.#keywords
+    }
+
     public clearKeywords() {
         this.#keywords = {}
     }
