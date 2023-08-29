@@ -7,8 +7,9 @@ export default new EventHandler(
         const commands = this.commands.get("interactionCreate")
 
         for (const command of commands) {
-            await Interpreter.run({
+            Interpreter.run({
                 obj: i,
+                command,
                 client: this,
                 data: command.compiled.code,
                 args: []

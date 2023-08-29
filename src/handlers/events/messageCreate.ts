@@ -11,11 +11,12 @@ export default new EventHandler(
         const args = message.content.slice(prefix?.length ?? 0).trim().split(/ +/g)
         const name = args.shift()?.toLowerCase()
 
-        const commands = this.commands.get("messageCreate", x => !x.name || (x.data.unprefixed ? x.name === name : !!prefix && x.name === name))
+        const commands = this.commands.get("messageCreate", x => !x.name || (x.data.unprefixed ? (x.name === name || (x.data.aliases?.includes(name!) ?? false)) : !!prefix && (x.name === name || (x.data.aliases?.includes(name!) ?? false))))
         
         for (const command of commands) {
-            await Interpreter.run({
+            Interpreter.run({
                 obj: message,
+                command,
                 client: this,
                 data: command.compiled.code,
                 args
