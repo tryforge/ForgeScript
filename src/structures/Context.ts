@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, Interaction, Message, Role, User } from "discord.js"
+import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildMember, Interaction, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -16,6 +16,7 @@ export interface IHttpOptions {
 }
 
 export class Context {
+    #member?: GuildMember | null
     #user?: User | null
     #guild?: Guild | null
     #channel?: BaseChannel | null
@@ -43,6 +44,15 @@ export class Context {
 
     public get args() {
         return this.runtime.args ?? []
+    }
+
+    public get member() {
+        return this.#member ??=
+            this.obj instanceof GuildMember ?
+                this.obj :
+                "member" in this.obj && this.obj.member instanceof GuildMember ? 
+                    this.obj.member :
+                    null
     }
 
     public get role() {
