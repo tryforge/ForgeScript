@@ -23,8 +23,8 @@ export class EventManager {
     }
 
     public static load(path: string) {
-        for (const file of recursiveReaddirSync(path).filter(x => x.isFile() && x.name.endsWith(".js"))) {
-            const req = require(`${file.path}/${file.name}`).default as EventHandler
+        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
+            const req = require(file).default as EventHandler
             this.Loaded[req.name] = req.listener
         }
     }
