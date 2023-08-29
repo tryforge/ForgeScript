@@ -50,8 +50,14 @@ client.commands.add({
 
 client.commands.add({
     type: "interactionCreate",
-    code: `$interactionReply[Is menu: $isAnySelectMenu | Is button: $isButton | custom id: $customID | values if menu: $selectMenuValues;yes]
-$stop`
+    code: `$if[$isButton==false;
+        $log[Not a button, modal?: $isModal, field value: $input[hello]]
+    ;
+        $log[Modal!]
+        $modal[hello;Hi bro]
+        $addTextInput[hello;wsg;Short;true]
+    ]
+    `
 })
 
 client.commands.add({
