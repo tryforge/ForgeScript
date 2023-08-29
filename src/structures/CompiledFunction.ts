@@ -191,6 +191,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 break
             }
 
+            case ArgType.Member: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = (ref[arg.pointer!] as Guild).members.fetch(strValue).catch(noop)
+                if (!value) return reject()
+                break
+            }
+
             case ArgType.String: {
                 break
             }

@@ -1,4 +1,4 @@
-import { BaseChannel, Guild, Message, Role, User } from "discord.js"
+import { BaseChannel, Guild, GuildMember, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Context } from "./Context"
 import { Return } from "./Return"
@@ -20,7 +20,8 @@ export enum ArgType {
     Boolean,
     Message,
     Channel,
-    Role
+    Role,
+    Member
 }
 
 export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean, Enum extends EnumLike = EnumLike> {
@@ -96,7 +97,9 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> =
                                         BaseChannel :
                                         T extends ArgType.Message ?
                                             Message<true> :
-                                            null
+                                            T extends ArgType.Member ?
+                                                GuildMember : 
+                                                null
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
 
