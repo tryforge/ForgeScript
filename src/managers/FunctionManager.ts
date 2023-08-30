@@ -31,7 +31,8 @@ export class FunctionManager {
                     args: data.brackets === undefined ? null : {
                         required: data.brackets,
                         fields: data.args!.map(x => ({
-                            condition: x.condition
+                            condition: x.condition,
+                            rest: x.rest
                         }))
                     }
                 }

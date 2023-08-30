@@ -37,6 +37,8 @@ const client = new ForgeClient({
     ]
 })
 
+console.log("Started")
+
 client.functions.add(
     "get_user",
     [ "id" ],
