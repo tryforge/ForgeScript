@@ -46,6 +46,10 @@ export class Context {
         return this.runtime.args ?? []
     }
 
+    public get states() {
+        return this.runtime.states
+    }
+
     public get member() {
         if (!this.obj) return null
         return this.#member ??=

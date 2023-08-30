@@ -5,6 +5,22 @@ import { ReturnType } from "../structures/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
 import { Command } from "../structures"
+import { Guild, GuildMember, Message, Role, VoiceState } from "discord.js"
+
+export interface IStates {
+    message: Message
+    voiceState: VoiceState
+    role: Role
+    member: GuildMember
+    guild: Guild
+}
+
+export type States = {
+    [K in keyof IStates]?: {
+        old?: IStates[K] | null
+        new?: IStates[K] | null
+    }
+}
 
 export interface IRunnable {
     client: ForgeClient
@@ -12,6 +28,7 @@ export interface IRunnable {
     obj: Sendable
     command: Command
     doNotSend?: boolean
+    states?: States
     args?: string[]
 }
 

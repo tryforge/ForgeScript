@@ -18,6 +18,11 @@ export default new EventHandler(
                 obj: message,
                 command,
                 client: this,
+                states: {
+                    message: {
+                        new: message
+                    } 
+                },
                 data: command.compiled.code,
                 args
             })

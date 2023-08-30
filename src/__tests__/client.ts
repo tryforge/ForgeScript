@@ -14,7 +14,9 @@ const client = new ForgeClient({
     events: [
         "messageCreate",
         "ready",
-        "interactionCreate"
+        "interactionCreate",
+        "messageUpdate",
+        "messageDelete"
     ],
     prefixes: [
         "!"
@@ -47,6 +49,22 @@ client.commands.add({
     type: "messageCreate",
     code: "$eval[$message;true]",
     unprefixed: true
+})
+
+client.commands.add({
+    type: "messageUpdate",
+    code: `
+message id $messageID updated by $username:
+old content: $oldMessage[content]
+new content: $newMessage[content]    
+`
+})
+
+client.commands.add({
+    type: "messageDelete",
+    code: `
+    a message has been deleted by $username, content: $message
+    `
 })
 
 client.commands.add({

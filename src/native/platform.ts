@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true
         },
         {
-            name: "role ID",
+            name: "guild ID",
             description: "The member id return its platform",
             rest: false,
             type: ArgType.Member,

@@ -26,11 +26,8 @@ export default new NativeFunction({
     async execute(ctx, [ code, send ]) {
         try {
             const result = await Interpreter.run({
-                client: ctx.client,
+                ...ctx.runtime,
                 data: Compiler.compile(code),
-                obj: ctx.obj,
-                command: ctx.runtime.command,
-                args: ctx.args,
                 doNotSend: !send
             })
 
