@@ -1,4 +1,4 @@
-import { Client, ClientOptions, IntentsBitField } from "discord.js"
+import { Client, ClientOptions, IntentsBitField, Partials } from "discord.js"
 import { CommandManager } from "../managers/CommandManager"
 import { CommandType } from "../structures/Command"
 import { EventManager } from "../managers/EventManager"
@@ -12,6 +12,7 @@ export interface IForgeClientOptions extends ClientOptions {
     events?: CommandType[]
     prefixes: string[]
     functions?: string
+    optionalGuildID?: boolean
     extensions?: ForgeExtension[]
 }
 
@@ -24,7 +25,19 @@ export class ForgeClient extends Client<true> {
     [x: PropertyKey]: unknown
 
     public constructor(options: IForgeClientOptions) {
-        super(options)
+        super({
+            partials: [
+                Partials.Channel,
+                Partials.GuildMember,
+                Partials.GuildScheduledEvent,
+                Partials.Message,
+                Partials.Reaction,
+                Partials.ThreadMember,
+                Partials.User
+            ],
+            ...options
+        })
+        
         this.#init()
     }
 

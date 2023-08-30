@@ -50,7 +50,9 @@ export default new NativeFunction({
         }
     ],
     unwrap: true,
-    execute(ctx, [ user, size, ext ]) {
+    async execute(ctx, [ user, size, ext ]) {
+        if (!user.banner) await user.fetch()
+
         return Return.success(
             (user ?? ctx.user)?.bannerURL({
                 extension: ext as ImageExtension || undefined,

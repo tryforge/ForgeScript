@@ -178,6 +178,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         switch (arg.type) {
             case ArgType.Number: {
                 value = Number(value)
+                if (isNaN(value as number)) return reject()
                 break
             }
 
