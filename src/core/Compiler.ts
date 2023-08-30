@@ -1,8 +1,10 @@
+import { inspect } from "util"
 import { CompiledFunction } from "../structures/CompiledFunction"
 import { ErrorType, ForgeError } from "../structures/ForgeError"
 
 export interface IRawField {
     condition?: boolean
+    rest?: boolean
 }
 
 export interface IRawFunctionFieldDefinition {
@@ -48,7 +50,6 @@ export const BoolValues = {
     yes: true,
     no: false
 } as const
-
 
 export const Conditions: Record<OperatorType, WrappedConditionCode> = {
     unknown: (lhs, rhs) => BoolValues[lhs as keyof typeof BoolValues] ?? false,
@@ -98,14 +99,14 @@ export class Compiler {
         Separator: ";"
     }
 
-    private static SystemRegex = /\[SYSTEM_FUNCTION\(\d+\)\]/gm
+    private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
     private static Functions = new Map<string, IRawFunction>()
      
     private id = 0
     private matches: Array<IRawFunctionMatch>
-    private matchIndex = 0
+
     private index = 0
 
     public constructor(private readonly code?: string) {
@@ -124,206 +125,248 @@ export class Compiler {
             functions: []
         }
 
-        const result: Omit<ICompilationResult, "resolve"> = {
-            code: "",
-            functions: []
-        }
+        let out = ""
+        const functions = new Array<ICompiledFunction>()
 
-        while (this.matches.length !== this.matchIndex) {
-            const match = this.matches[this.matchIndex]
-            const isEscaped = this.code[match.index - 1] === Compiler.Syntax.Escape
-            const index = match.index - (isEscaped ? 1 : 0)
+        while (this.matches.length !== 0) {
+            const match = this.matches.shift()!
 
-            result.code += this.code.slice(this.index === 0 ? this.index : this.index + 1, index)
-            
-            if (isEscaped) {
-                this.matchIndex++
-                this.moveTo(index)
-                continue
+            let escaped = false
+
+            while (match.index !== this.index) {
+                const char = this.next()
+                const isEscape = char === Compiler.Syntax.Escape
+                
+                if (!escaped && isEscape) {
+                    escaped = true
+                    continue
+                }
+
+                escaped = false
+                out += char
             }
 
+            if (escaped)
+                continue
+
             const fn = this.parseFunction(match)
-            result.functions.push(fn)
-            result.code += fn.id
+            out += fn.id
+            functions.push(fn)
         }
 
-        if (this.index !== this.code.length) {
-            result.code += this.code.slice(this.index + 1)
+        if (this.index !== this.code.length) out += this.code.slice(this.index)
+
+        return {
+            code: out,
+            functions,
+            resolve: this.wrap(out)
+        }
+    }
+    
+    private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
+        this.moveTo(this.index + match.name.length)
+
+        const char = this.char()
+        const usesFields = char === Compiler.Syntax.Open
+
+        const name = match.name
+        const id = this.getNextId()
+
+        if (match.args === null || (!usesFields && !match.args.required)) {
+            // Increment index if escape character, just to skip it.
+            if (char === Compiler.Syntax.Escape) 
+                this.index++
+            
+            return {
+                id,
+                name,
+                fields: null
+            }
+        }
+
+        if (match.args.required && !usesFields) {
+            this.error(`Function ${match.name} requires brackets`)
+        }
+
+        const fields = new Array<ICompiledFunctionConditionField | ICompiledFunctionField>()
+
+        for (let i = 0, len = match.args.fields.length;i < len;i++) {
+            const isLast = i + 1 === match.args.fields.length
+            const arg = match.args.fields[i]
+
+            if (arg.rest === true) {
+                for (;;) {
+                    fields.push(this.parseField(match, arg))
+                    const old = this.char()
+                    
+                    if (old !== Compiler.Syntax.Separator) break
+                }
+            } else {
+                fields.push(this.parseField(match, arg, isLast))
+            }
+
+            const old = this.back()
+            
+            if (isLast) {
+                if (old === Compiler.Syntax.Separator) {
+                    this.error(`Function ${match.name} expects ${match.args.fields.length} arguments at most`)
+                } else if (old !== Compiler.Syntax.Close) {
+                    this.error(`Function ${match.name} is missing closure bracket`)
+                }
+            } else if (old === Compiler.Syntax.Close) break
         }
 
         return {
-            ...result,
-            resolve: this.wrap(result.code)
+            id,
+            name,
+            fields
         }
     }
 
-    public wrapCondition(op: OperatorType) {
+    private parseField(match: IRawFunctionMatch, arg: IRawField, requireEndBrace = false): ICompiledFunctionField | ICompiledFunctionConditionField {
+        // Skip brace
+        this.index++
+
+        let nextMatch = this.matches[0] as IRawFunctionMatch | undefined
+
+        const condition: Partial<ICompiledFunctionConditionField> = {}
+        
+        let value = ""
+        const functions = new Array<ICompiledFunction>()
+
+        let braceClosure = false
+        let escaped = false
+        
+        for (;;) {
+            const char = this.char()
+
+            const isEscape = char === Compiler.Syntax.Escape
+            const isClosure = char === Compiler.Syntax.Close
+            const isSeparator = char === Compiler.Syntax.Separator
+
+            // Mark as escaped 
+            if (!escaped && isEscape) 
+                escaped = true
+
+            if (!escaped) {
+                if (isClosure || isSeparator) {
+                    if (isClosure) braceClosure = true
+                    break
+                } 
+                else if (arg.condition === true && condition.op === undefined) {
+                    const possibleOp = ([ char + this.peek()!, char ] as OperatorType[])
+                        .find(x => Operators.has(x))
+                    if (possibleOp !== undefined) {
+                        this.index += possibleOp.length
+                        condition.op = possibleOp
+                        
+                        condition.lhs = {
+                            functions: Array.from(functions),
+                            value,
+                            resolve: this.wrap(value)
+                        }
+    
+                        functions.length = 0
+                        value = ""
+    
+                        continue
+                    }
+                }
+            }
+
+            if (nextMatch?.index === this.index) {
+                // Remove the function that we are about to parse
+                this.matches.shift()
+
+                if (!escaped) {
+                    const fn = this.parseFunction(nextMatch)
+                    functions.push(fn)
+                    value += fn.id
+    
+                    // Next function to match
+                    nextMatch = this.matches[0]
+    
+                    continue
+                }
+            }
+
+            this.index++
+            
+            if (escaped) 
+            {
+                value += this.next()
+                escaped = false
+                continue
+            }
+
+            value += char
+        }
+        
+        if (requireEndBrace && !braceClosure) 
+        {
+            const old = this.char()
+            if (old === Compiler.Syntax.Separator) {
+                this.error(`Function ${match.name} expects ${match.args!.fields.length} arguments at most`)
+            } else if (old !== Compiler.Syntax.Close) {
+                this.error(`Function ${match.name} is missing closure bracket`)
+            }
+        } else if (braceClosure) {
+            // Skip brace closure
+            this.index++
+        }
+
+        const data = {
+            functions,
+            value,
+            resolve: this.wrap(value)
+        }
+
+        if (arg.condition === true) {
+            condition.op ??= OperatorType.None 
+            condition.resolve = this.wrapCondition(condition.op)
+
+            if (!condition.lhs) condition.lhs = data
+            else if (!condition.rhs) condition.rhs = data
+
+            return condition as ICompiledFunctionConditionField
+        }
+
+        return data
+    }
+
+    private error(str: string) {
+        throw new ForgeError(
+            null,
+            ErrorType.CompilerError,
+            str
+        )
+    }
+
+    private back() {
+        return this.code![this.index - 1]
+    }
+
+    private wrapCondition(op: OperatorType) {
         return Conditions[op]
     }
 
     private wrap(code: string) {
         let i = 0
-        const gencode = code.replace(Compiler.InvalidCharRegex, "\\$1").replaceAll(Compiler.SystemRegex, () => "${args[" + i++ + "] ?? ''}")
+        const gencode = code
+            .replace(Compiler.InvalidCharRegex, "\\$1")
+            .replace(Compiler.SystemRegex, () => {
+                return "${args[" + i++ + "] ?? ''}"
+            })
+
         return new Function("args", "return `" + gencode + "`") as WrappedCode
     }
 
-    private parseFunction(match: IRawFunctionMatch) {
-        this.moveTo(match.index + match.name.length - 1)
-        const nextChar = this.peek()
-
-        // Check if function requires braces but were not provided
-        if (match.args?.required === true && nextChar !== Compiler.Syntax.Open) {
-            throw new ForgeError(
-                null,
-                ErrorType.MissingFields,
-                match.name
-            )
-        }
-
-        const id = this.getNextId()
-
-        // Now parse the function, Start with the easiest one, no braces.
-        if (!match.args || nextChar !== Compiler.Syntax.Open) {
-            this.matchIndex++
-            return this.prepareFunction({
-                id,
-                fields: null,
-                name: match.name
-            })
-        // Parse if fields were given. 
-        } else {
-            this.matchIndex++
-            return this.prepareFunction({
-                id,
-                name: match.name,
-                fields: this.parseFields(match)
-            })
-        }
-    }
-
-    private parseFields(match: IRawFunctionMatch) {
-        const fnName = match.name
-
-        // Skip the brace.
-        this.skip(1)
-
-        const fields = new Array<ICompiledFunctionField | ICompiledFunctionConditionField>()
-        const functions = new Array<ICompiledFunction>()
-
-        let inside = ""
-        let closed = false
-        let index = 0
-        let isConditionField = !!match.args!.fields[index].condition
-        let lhs: ICompiledFunctionField, rhs: ICompiledFunctionField, op: OperatorType
-
-        // Now loop through till we find the brace closure.
-        while (this.next() !== undefined) {
-
-            const char = this.char()
-            const isEscaped = char === Compiler.Syntax.Escape
-
-            const nextMatch = this.matches[this.matchIndex]
-
-            if (!isEscaped) {
-                if (char === Compiler.Syntax.Close || char === Compiler.Syntax.Separator) {
-                    if (!isConditionField) {
-                        fields.push({
-                            functions: [...functions],
-                            value: inside,
-                            resolve: this.wrap(inside)
-                        })
-                    } else {
-                        // Lastly add the rhs
-                        rhs = {
-                            value: inside,
-                            functions: [...functions],
-                            resolve: this.wrap(inside)
-                        }
-
-                        // @ts-ignore
-                        if (!op) {
-                            lhs = rhs
-                            // @ts-ignore
-                            rhs = undefined
-                            op = OperatorType.None    
-                        }
-
-                        fields.push({
-                            // @ts-ignore
-                            lhs,
-                            rhs,
-                            op,
-                            resolve: this.wrapCondition(op)
-                        })
-                    }
-    
-                    // Drop the text and functions.
-                    inside = ""
-                    functions.length = 0
-                    isConditionField = !!match.args!.fields[++index]?.condition
-    
-                    if (char === Compiler.Syntax.Close) {
-                        closed = true
-                        break
-                    }
-    
-                    continue
-                } else if (nextMatch?.index === this.index) {
-                    const fn = this.parseFunction(nextMatch)
-                    functions.push(fn)
-                    inside += fn.id
-                    continue
-                }
-            }
-
-            // @ts-ignore
-            if (isConditionField && op === undefined) {
-                const possibleOp = 
-                    Operators.has(`${char}${this.peek()}` as OperatorType) ?
-                        (
-                            this.skip(1),
-                            `${char}${this.char()}` as OperatorType
-                        ) :
-                        Operators.has(char as OperatorType) ?
-                            char as OperatorType :
-                            undefined
-                
-                if (possibleOp !== undefined) {
-                    op = possibleOp
-
-                    // Push to lhs
-                    lhs = {
-                        value: inside,
-                        functions: [...functions],
-                        resolve: this.wrap(inside)
-                    }
-
-                    // Drop the text and functions.
-                    inside = ""
-                    functions.length = 0
-                    
-                    continue
-                }
-            }
-
-            inside += char
-        }
-
-        if (!closed) throw new Error(`Function \`${fnName}\` is missing brace closure.`)
-
-        return fields
-    }
-
-    private skip(n: number) {
-        this.index += n
-    }
-
-    private prepareFunction(func: ICompiledFunction): ICompiledFunction {
-        return func
-    }
-
     private moveTo(index: number) {
-        this.index = index
+        let out = ""
+        if (this.index >= index) return out
+
+        while (this.index !== index) out += this.next()
+        return out 
     }
 
     private getNextId() {
@@ -339,8 +382,7 @@ export class Compiler {
     }
 
     private next(): undefined | string {
-        const char = this.code![this.index++]
-        return char
+        return this.code![this.index++]
     }
 
     public static setFunctions(fns: IRawFunction[]) {
@@ -354,9 +396,5 @@ export class Compiler {
             ...result,
             functions: result.functions.map(x => new CompiledFunction(x))
         }
-    }
-
-    public static setSyntax(syntax: typeof Compiler.Syntax) {
-        this.Syntax = syntax
     }
 }

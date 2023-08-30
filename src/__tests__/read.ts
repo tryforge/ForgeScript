@@ -6,8 +6,8 @@ import { IExtendedCompiledFunctionConditionField } from "../structures"
 
 Compiler.setFunctions(FunctionManager.raw)
 
-const code = "$checkCondition[$authorID!=1096285761365610576]"
+const code = "$eval[ok;true;tt]"
 
-const compiled = Compiler.compile(code)
+const compiled = new Compiler(code)["compile"]()
 
-console.log(inspect(compiled.functions[0], { depth: 10, colors: true }))
+console.log(inspect(compiled, { depth: 10, colors: true }), compiled.resolve.toString())
