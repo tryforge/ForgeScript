@@ -1,12 +1,14 @@
-name: lint
+name: tsc
 on:
   pull_request:
-    branches: [ main, dev ]
+    branches: 
+        - "*"
   push: 
-    branches: [ main, dev ]
+    branches:
+        - '*'
 jobs:
   build:
-    name: Run Linters
+    name: Run tsc
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +23,7 @@ jobs:
           node-version: '18.x'
       
       - name: Install node.js deps
-        run: npm i eslint --save-dev
-        
-      - name: Run lint
-        run: npx eslint --fix ./src/**/*.ts
+        run: npm i eslint typescript --save-dev
+
+      - name: Run tsc
+        run: npx tsc 
