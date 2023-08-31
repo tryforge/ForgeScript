@@ -21,7 +21,10 @@ jobs:
           node-version: '18.x'
       
       - name: Install node.js deps
-        run: npm i eslint --save-dev
+        run: npm i eslint typescript --save-dev
         
       - name: Run lint
         run: npx eslint --fix ./src/**/*.ts
+
+      - name: Run TSC
+        run: tsc 
