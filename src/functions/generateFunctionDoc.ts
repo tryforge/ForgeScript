@@ -1,5 +1,5 @@
 import { readFileSync } from "fs"
-import { ArgType, NativeFunction } from "../structures"
+import { ArgType, NativeFunction } from "../"
 
 const infoImgSrc = "<img align=\"top\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300\" alt=\"image\" width=\"25\" height=\"auto\">"
 const sourceCodeImgSrc = "<img align=\"top\" src=\"https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png\" alt=\"image\" width=\"25\" height=\"auto\"> "
