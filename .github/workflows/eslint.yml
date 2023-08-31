@@ -27,4 +27,4 @@ jobs:
         run: npx eslint --fix ./src/**/*.ts
 
       - name: Run TSC
-        run: tsc 
+        run: npx tsc 
