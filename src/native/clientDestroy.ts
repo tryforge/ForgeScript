@@ -1,4 +1,4 @@
-import { NativeFunction } from "../structures"
+import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$clientDestroy",
@@ -6,5 +6,6 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx) {
         ctx.client.destroy()
+        return Return.success()
     },
 })
