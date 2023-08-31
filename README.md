@@ -10,10 +10,11 @@ Description of ForgeScript here FR
     2. [Registering Commands](#registering-commands)
         1. [Basic registering](#basic-registering)
         2. [Registering from a root folder](#registering-from-a-root-folder)
-3. [Limitations](#limitations)
-4. [Update Frequency](#update-frequency)
-5. [Function Documentation](https://github.com/tryforge/ForgeScript-V2/tree/main/docs/functions)
-6. [Library Documentation](https://tryforge.github.io/ForgeScript-V2/index.html)
+3. [Extensions](#extensions)
+4. [Limitations](#limitations)
+5. [Update Frequency](#update-frequency)
+6. [Function Documentation](https://github.com/tryforge/ForgeScript-V2/tree/main/docs/functions)
+7. [Library Documentation](https://tryforge.github.io/ForgeScript-V2/index.html)
 
 </strong>
 
