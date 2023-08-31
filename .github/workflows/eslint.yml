@@ -1,9 +1,11 @@
 name: lint
 on:
   pull_request:
-    branches: [ main, dev ]
+    branches: 
+        - "*"
   push: 
-    branches: [ main, dev ]
+    branches:
+        - '*'
 jobs:
   build:
     name: Run Linters
