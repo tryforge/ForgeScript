@@ -2,7 +2,7 @@ import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$guildPremiumTier",
+    name: "$guildBoostLevel",
     description: "Returns the server boost tier",
     brackets: false,
     args: [

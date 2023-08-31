@@ -4,8 +4,6 @@ import { EventHandler } from "../../structures/EventHandler"
 export default new EventHandler(
     "ready",
     function() {
-        console.log(`Ready on client ${this.user.displayName}`)
-
         const commands = this.commands.get("ready")
         if (commands.length) {
             for (const command of commands) {
@@ -16,6 +14,8 @@ export default new EventHandler(
                     obj: null,
                 })
             }
+        } else {
+            console.log(`Ready on client ${this.user.displayName}`)
         }
     }
 )
