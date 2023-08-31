@@ -13,8 +13,7 @@ export enum MessageProperty {
     timestamp = "timestamp"
 }
 
-export const MessageProperties = defineProperties<typeof MessageProperty, Message
->({
+export const MessageProperties = defineProperties<typeof MessageProperty, Message>({
     content: m => m?.content,
     id: m => m?.id,
     flags: (m, sep) => m?.flags.toArray().join(sep || ", "),
