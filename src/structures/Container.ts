@@ -1,8 +1,8 @@
-import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, ModalBuilder, TextInputBuilder, User, VoiceState } from "discord.js"
+import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState } from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 
-export type Sendable = null | Message | User | GuildMember | BaseChannel | Interaction | VoiceState
+export type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState
 
 export class Container {
     public content?: string
