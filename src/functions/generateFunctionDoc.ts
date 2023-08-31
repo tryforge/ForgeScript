@@ -6,7 +6,7 @@ const sourceCodeImgSrc = "<img align=\"top\" src=\"https://cdn4.iconfinder.com/d
 //const warningImgSrc = "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png\" alt=\"image\" width=\"25\" height=\"auto\">"
 const experimentalModeSrc = "<img align=\"top\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png\" alt=\"image\" width=\"25\" height=\"auto\"> This feature is currently <span style=\"color:yellow\"><strong>experimental</strong></span>."
 
-export default function(fn: NativeFunction): string {
+export default function(fn: NativeFunction, adaptedSrc?: string): string {
     const args = new Array<string>()
 
     args.push(`# ${fn.data.name}`)
@@ -39,7 +39,7 @@ export default function(fn: NativeFunction): string {
         )
     } 
 
-    const code = readFileSync(`./src/native/${fn.name.slice(1)}.ts`, "utf-8")
+    const code = readFileSync(`${adaptedSrc ?? "./src/native"}/${fn.name.slice(1)}.ts`, "utf-8")
     args.push(`<details>
 <summary>
     
