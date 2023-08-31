@@ -1,12 +1,12 @@
-# $guildPremiumTier
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the server boost tier
+# $guildShardID
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the server shard ID
 ## Usage
 ```
-$guildPremiumTier
+$guildShardID
 ```
 ---
 ```
-$guildPremiumTier[guild ID]
+$guildShardID[guild ID]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
@@ -14,7 +14,7 @@ guild ID | Guild | The guild to retrieve the data | Yes | No
 <details>
 <summary>
     
-## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/guildPremiumTier.ts)
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/guildShardID.ts)
     
 </summary>
     
@@ -23,8 +23,8 @@ import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$guildPremiumTier",
-    description: "Returns the server boost tier",
+    name: "$guildShardID",
+    description: "Returns the server shard ID",
     brackets: false,
     args: [
         {
@@ -38,7 +38,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [ guild ]) {
         return Return.success(
-            (guild ?? ctx.guild)?.premiumTier
+            (guild ?? ctx.guild)?.shardId
         )
     },
 })

@@ -9,7 +9,7 @@ export default new EventHandler(
         const prefix = this.options.prefixes.find(x => message.content.startsWith(x))
 
         const args = message.content.slice(prefix?.length ?? 0).trim().split(/ +/g)
-        const name = args.shift()?.toLowerCase()
+        const name = prefix ? args.shift()?.toLowerCase() : undefined
 
         const commands = this.commands.get("messageCreate", x => !x.name || (x.data.unprefixed ? (x.name === name || (x.data.aliases?.includes(name!) ?? false)) : !!prefix && (x.name === name || (x.data.aliases?.includes(name!) ?? false))))
         

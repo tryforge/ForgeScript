@@ -1,4 +1,4 @@
-import { BaseChannel, Guild } from "discord.js"
+import { BaseChannel, Guild, Message, parseEmoji } from "discord.js"
 import { BoolValues, ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
@@ -193,6 +193,20 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 if (!CompiledFunction.IdRegex.test(strValue)) return reject()
                 value = (ref[arg.pointer!] as Guild).roles.cache.get(strValue)
                 if (!value) return reject()
+                break
+            }
+
+            case ArgType.Reaction: {
+                const reactions = (ref[arg.pointer!] as Message).reactions
+                const parsed = parseEmoji(strValue)
+                if (!parsed) return reject()
+                
+                const identifier = parsed.id ?? parsed.name
+
+                const reaction = reactions.cache.get(identifier)
+                if (!reaction) return reject()
+
+                value = reaction
                 break
             }
 

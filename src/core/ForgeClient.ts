@@ -41,6 +41,10 @@ export class ForgeClient extends Client<true> {
         this.#init()
     }
 
+    public get autoAddEvents() {
+        return !this.options.events?.length
+    }
+
     #init() {
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length;i < len;i++) {
