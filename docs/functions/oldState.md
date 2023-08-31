@@ -6,7 +6,7 @@ $oldState[property;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-property | Enum (`channelID`, `guildID`, `authorID`, `deaf`, `selfDeaf`, `guildDeaf`, `muted`, `selfMuted`, `guildMuted`) | The property to pull | Yes | No
+property | Enum (`channelID`, `guildID`, `authorID`, `deaf`, `selfDeaf`, `guildDeaf`, `muted`, `selfMuted`, `guildMuted`, `timestamp`) | The property to pull | Yes | No
 separator | String | The separator to use in case of array | No | No
 <details>
 <summary>
