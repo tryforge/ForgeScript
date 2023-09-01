@@ -14,16 +14,6 @@ const client = new ForgeClient({
     prefixes: [
         "!"
     ],
-    presence: {
-        status: "idle",
-        activities: [
-            {
-                name: "hi bro",
-                state: "hi bro",
-                type: ActivityType.Custom
-            }
-        ]
-    },
     optionalGuildID: true,
     extensions: [
         new MyExtension()
@@ -40,7 +30,8 @@ client.functions.add(
 
 client.commands.add({
     type: Events.ClientReady,
-    code: "$log[Ready on client $username[$botID]]"
+    code: `$log[Ready on client $username[$botID]]
+    $setStatus[online;Custom;hi bro;hi bro]`
 })
 
 client.commands.add({
@@ -49,22 +40,6 @@ client.commands.add({
     type: "messageCreate",
     code: "$eval[$message;true]",
     unprefixed: true
-})
-
-client.commands.add({
-    type: "messageUpdate",
-    code: `
-message id $messageID updated by $username:
-old content: $oldMessage[content]
-new content: $newMessage[content]    
-`
-})
-
-client.commands.add({
-    type: "messageDelete",
-    code: `
-    a message has been deleted by $username, content: $message
-    `
 })
 
 client.commands.add({
