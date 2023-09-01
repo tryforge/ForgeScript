@@ -1,8 +1,8 @@
-import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState } from "discord.js"
+import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, GuildMember, Interaction, InteractionReplyOptions, Message, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState, WebhookClient } from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 
-export type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState
+export type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient
 
 export class Container {
     public content?: string
@@ -21,6 +21,8 @@ export class Container {
 
         if (this.channel && this.channel.isTextBased()) {
             res = this.channel.send(options)
+        } else if (obj instanceof WebhookClient) {
+            res = obj.send(options)
         } else if (obj instanceof Message) {
             res = this.reply ? obj.reply(options) : obj.channel.send(options)
         } else if (obj instanceof BaseInteraction && obj.isRepliable()) {

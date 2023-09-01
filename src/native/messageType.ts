@@ -1,3 +1,4 @@
+import { MessageType } from "discord.js"
 import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the message type",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.message?.type)
+        return Return.success(MessageType[ctx.message?.type!])
     },
 })

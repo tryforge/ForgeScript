@@ -6,7 +6,7 @@ import { IExtendedCompiledFunctionConditionField } from "../structures"
 
 Compiler.setFunctions(FunctionManager.raw)
 
-const code = "$eval[ok;true;tt]"
+const code = "$log[;;$authorID]"
 
 const compiled = new Compiler(code)["compile"]()
 

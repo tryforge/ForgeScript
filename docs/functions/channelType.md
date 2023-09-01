@@ -19,6 +19,7 @@ channel ID | Channel | The id of the channel | Yes | No
 </summary>
     
 ```ts
+import { ChannelType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -38,7 +39,7 @@ export default new NativeFunction({
     execute(ctx, [ ch ]) {
         const chan = ch ?? ctx.channel
         return Return.success(
-            chan.type
+            ChannelType[chan?.type]
         )
     },
 })

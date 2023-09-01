@@ -196,6 +196,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 break
             }
 
+            case ArgType.Webhook: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = await ctx.client.fetchWebhook(strValue).catch(noop)
+                if (!value) return reject()
+                break
+            }
+
             case ArgType.Reaction: {
                 const reactions = (ref[arg.pointer!] as Message).reactions
                 const parsed = parseEmoji(strValue)
