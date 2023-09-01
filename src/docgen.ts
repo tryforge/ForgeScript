@@ -12,13 +12,9 @@ for (const [, fn ] of FunctionManager["Functions"]) {
 }
 
 writeFileSync(`${path}.json`, JSON.stringify(
-    FunctionManager.toJSON(),
-    undefined,
-    4
+    FunctionManager.toJSON()
 ))
 
 writeFileSync("./docs/events.json", JSON.stringify(
-    readdirSync("./src/handlers/events").map(x => x.slice(0, -3)),
-    undefined,
-    4
+    readdirSync("./src/handlers/events").map(x => x.slice(0, -3))
 ))
