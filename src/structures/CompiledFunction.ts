@@ -203,6 +203,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 break
             }
 
+            case ArgType.Invite: {
+                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
+                value = await ctx.client.fetchInvite(strValue).catch(noop)
+                if (!value) return reject()
+                break
+            }
+
             case ArgType.Reaction: {
                 const reactions = (ref[arg.pointer!] as Message).reactions
                 const parsed = parseEmoji(strValue)
@@ -233,7 +240,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
             case ArgType.GuildEmoji: {
                 if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = (ref[arg.pointer!] as Guild).emojis.cache.get(strValue) 
+                value = ctx.client.emojis.cache.get(strValue) 
                 if (!value) return reject()
                 break
             }

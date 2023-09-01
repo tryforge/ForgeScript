@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildMember, Interaction, Message, Role, User } from "discord.js"
+import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -23,7 +23,8 @@ export class Context {
     #message?: Message | null
     #interaction?: Interaction | null
     #role?: Role | null
-    
+    #emoji?: GuildEmoji | null
+
     http: Partial<IHttpOptions> = {}
 
     #keywords: Record<string, string> = {}
@@ -58,6 +59,15 @@ export class Context {
                 "member" in this.obj && this.obj.member instanceof GuildMember ? 
                     this.obj.member :
                     null
+    }
+
+    public get emoji() {
+        if (!this.obj) return null
+
+        return this.#emoji ??= 
+            this.obj instanceof GuildEmoji ? 
+                this.obj :
+                null
     }
 
     public get role() {
