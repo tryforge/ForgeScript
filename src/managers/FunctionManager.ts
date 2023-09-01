@@ -1,5 +1,5 @@
 import { readdirSync } from "fs"
-import { INativeFunction, NativeFunction } from "../structures/NativeFunction"
+import { ArgType, INativeFunction, NativeFunction } from "../structures/NativeFunction"
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
@@ -19,7 +19,16 @@ export class FunctionManager {
     }
 
     public static toJSON(): INativeFunction<any>[] {
-        return Array.from(this.Functions.values()).map(x => x.data)
+        return Array.from(this.Functions.values()).map(x => {
+            const data = JSON.parse(JSON.stringify(x.data)) as INativeFunction<any>
+            
+            data.args?.map(x => {
+                x.type = ArgType[x.type]
+                if (x.enum) x.enum = Object.keys(x.enum).filter(x => isNaN(Number(x)))
+            })
+
+            return data
+        })
     }
     
     public static get raw(): IRawFunction[] {
