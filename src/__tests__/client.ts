@@ -2,6 +2,8 @@ import { ForgeClient } from "../core/ForgeClient"
 import { config } from "dotenv"
 import { MyExtension } from "./ext"
 import { ActivityType, Events } from "discord.js"
+import { FunctionManager } from "../managers"
+import { Compiler } from "../core"
 config()
 
 const client = new ForgeClient({
@@ -16,11 +18,12 @@ const client = new ForgeClient({
     ],
     optionalGuildID: true,
     extensions: [
-        new MyExtension()
     ]
 })
 
-console.log("Started")
+console.log(
+    "Started"
+)
 
 client.functions.add(
     "get_user",
