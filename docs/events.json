@@ -1,14 +1,1 @@
-[
-    "guildMemberAdd",
-    "guildMemberRemove",
-    "guildMemberUpdate",
-    "interactionCreate",
-    "messageCreate",
-    "messageDelete",
-    "messageUpdate",
-    "ready",
-    "roleCreate",
-    "roleDelete",
-    "roleUpdate",
-    "voiceStateUpdate"
-]
+["guildMemberAdd","guildMemberRemove","guildMemberUpdate","interactionCreate","messageCreate","messageDelete","messageUpdate","ready","roleCreate","roleDelete","roleUpdate","voiceStateUpdate"]
