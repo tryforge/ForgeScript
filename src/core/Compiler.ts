@@ -164,7 +164,7 @@ export class Compiler {
     }
     
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
-        this.moveTo(this.index + match.name.length)
+        this.moveTo(match.index + match.name.length)
 
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open
@@ -190,6 +190,9 @@ export class Compiler {
 
         const fields = new Array<ICompiledFunctionConditionField | ICompiledFunctionField>()
 
+        // Skip brace open
+        this.index++
+
         for (let i = 0, len = match.args.fields.length;i < len;i++) {
             const isLast = i + 1 === match.args.fields.length
             const arg = match.args.fields[i]
@@ -197,24 +200,25 @@ export class Compiler {
             if (arg.rest === true) {
                 for (;;) {
                     fields.push(this.parseField(match, arg))
-                    const old = this.char()
+                    if (this.char() === Compiler.Syntax.Separator) this.index++
                     
-                    if (old !== Compiler.Syntax.Separator) break
+                    if (this.char() === Compiler.Syntax.Close) break
                 }
             } else {
                 fields.push(this.parseField(match, arg, isLast))
+                if (this.char() === Compiler.Syntax.Separator) this.index++
             }
 
-            const old = this.back()
-            
+            const old = this.char()
             if (isLast) {
-                if (old === Compiler.Syntax.Separator) {
+                if (old !== Compiler.Syntax.Close) {
                     this.error(`Function ${match.name} expects ${match.args.fields.length} arguments at most`)
-                } else if (old !== Compiler.Syntax.Close) {
-                    this.error(`Function ${match.name} is missing closure bracket`)
                 }
             } else if (old === Compiler.Syntax.Close) break
         }
+
+        // Skip closure
+        this.index++
 
         return {
             id,
@@ -224,9 +228,6 @@ export class Compiler {
     }
 
     private parseField(match: IRawFunctionMatch, arg: IRawField, requireEndBrace = false): ICompiledFunctionField | ICompiledFunctionConditionField {
-        // Skip brace
-        this.index++
-
         let nextMatch = this.matches[0] as IRawFunctionMatch | undefined
 
         const condition: Partial<ICompiledFunctionConditionField> = {}
@@ -282,7 +283,7 @@ export class Compiler {
                     const fn = this.parseFunction(nextMatch)
                     functions.push(fn)
                     value += fn.id
-    
+                    
                     // Next function to match
                     nextMatch = this.matches[0]
     
@@ -300,19 +301,6 @@ export class Compiler {
             }
 
             value += char
-        }
-        
-        if (requireEndBrace && !braceClosure) 
-        {
-            const old = this.char()
-            if (old === Compiler.Syntax.Separator) {
-                this.error(`Function ${match.name} expects ${match.args!.fields.length} arguments at most`)
-            } else if (old !== Compiler.Syntax.Close) {
-                this.error(`Function ${match.name} is missing closure bracket`)
-            }
-        } else if (braceClosure) {
-            // Skip brace closure
-            this.index++
         }
 
         const data = {
