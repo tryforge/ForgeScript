@@ -278,29 +278,28 @@ export class Compiler {
             if (nextMatch?.index === this.index) {
                 // Remove the function that we are about to parse
                 this.matches.shift()
+                
 
                 if (!escaped) {
                     const fn = this.parseFunction(nextMatch)
                     functions.push(fn)
                     value += fn.id
-                    
-                    // Next function to match
-                    nextMatch = this.matches[0]
-    
-                    continue
                 }
+                
+                // Next function to match
+                nextMatch = this.matches[0]
+
+                if (!escaped)
+                    continue
             }
+
+            if (!isEscape) 
+                escaped = false
 
             this.index++
             
-            if (escaped) 
-            {
-                value += this.next()
-                escaped = false
-                continue
-            }
-
-            value += char
+            if (!escaped) 
+                value += char
         }
 
         const data = {

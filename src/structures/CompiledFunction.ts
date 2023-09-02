@@ -167,6 +167,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         )
     }
 
+    // TODO: turn arg types to methods to cache and increase performance
     private async resolveArg(ctx: Context, arg: IArg, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
         const strValue = `${value}`
         const reject = this.argTypeRejection.bind(this, arg, strValue)
