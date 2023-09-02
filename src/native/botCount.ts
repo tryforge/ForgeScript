@@ -1,7 +1,7 @@
 import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$botcount",
+    name: "$botCount",
     description: "Returns the bot count of the bot",
     unwrap: true,
     execute(ctx) {
