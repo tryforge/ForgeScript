@@ -1,6 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs"
 import { FunctionManager } from "./managers"
 import generateFunctionDoc from "./functions/generateFunctionDoc"
+import { execSync } from "child_process"
+import { argv } from "process"
 
 const FunctionNameRegex = /(name: "\$(\w+)"),?/m
 
@@ -19,7 +21,7 @@ for (const [, fn ] of FunctionManager["Functions"]) {
     }
 
     writeFileSync(`${path}/${fn.name.slice(1)}.md`, generateFunctionDoc(fn))
-    console.log(`Generated docs for ${fn.name}!`)
+    if (argv[2]) console.log(`Generated docs for ${fn.name}!`)
 }
 
 writeFileSync(`${path}.json`, JSON.stringify(
@@ -29,3 +31,7 @@ writeFileSync(`${path}.json`, JSON.stringify(
 writeFileSync("./docs/events.json", JSON.stringify(
     readdirSync("./src/handlers/events").map(x => x.slice(0, -3))
 ))
+
+if (!argv[2]) {
+    execSync("node dist/docgen.js \"stop\"", { stdio: "inherit" })
+}
