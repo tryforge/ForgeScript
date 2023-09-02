@@ -5,13 +5,16 @@ import { ReturnType } from "../structures/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
 import { Command } from "../structures"
-import { Guild, GuildMember, Message, Role, VoiceState } from "discord.js"
+import { Channel, Guild, GuildEmoji, GuildMember, Message, Role, User, VoiceState } from "discord.js"
 
 export interface IStates {
     message: Message
     voiceState: VoiceState
     role: Role
     member: GuildMember
+    emoji: GuildEmoji
+    user: User
+    channel: Channel
     guild: Guild
 }
 
