@@ -1,1 +1,1 @@
-["guildMemberAdd","guildMemberRemove","guildMemberUpdate","interactionCreate","messageCreate","messageDelete","messageUpdate","ready","roleCreate","roleDelete","roleUpdate","voiceStateUpdate"]
+["channelCreate","channelDelete","channelUpdate","emojiCreate","emojiDelete","emojiUpdate","guildCreate","guildDelete","guildMemberAdd","guildMemberRemove","guildMemberUpdate","guildUpdate","interactionCreate","messageCreate","messageDelete","messageUpdate","ready","roleCreate","roleDelete","roleUpdate","userUpdate","voiceStateUpdate"]
