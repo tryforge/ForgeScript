@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, Role, User } from "discord.js"
+import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -23,6 +23,7 @@ export class Context {
     #message?: Message | null
     #interaction?: Interaction | null
     #role?: Role | null
+    #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
 
     http: Partial<IHttpOptions> = {}
@@ -78,11 +79,20 @@ export class Context {
                 null
     }
 
+    public get reaction() {
+        if (!this.obj) return null
+
+        return this.#reaction ??=
+            this.obj instanceof MessageReaction ? 
+                this.obj :
+                null
+    }
+
     public get message() {
         if (!this.obj) return null
         return this.#message ??= 
-            "message" in this.obj ? 
-                this.obj.message :
+            "message" in this.obj && this.obj.message ? 
+                this.obj.message as Message :
                 this.obj instanceof Message ? 
                     this.obj :
                     null
