@@ -31,6 +31,7 @@ export interface IRunnable {
     obj: Sendable
     command: Command
     doNotSend?: boolean
+    extras?: unknown
     states?: States
     args?: string[]
 }
