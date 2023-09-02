@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$image",
+    version: "1.0.0",
     description: "Adds an embed image",
     unwrap: true,
     args: [

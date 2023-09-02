@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isNumber",
+    version: "1.0.0",
     description: "Whether the number is valid",
     unwrap: true,
     args: [

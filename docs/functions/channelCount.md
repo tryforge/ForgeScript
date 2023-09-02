@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelCount",
+    version: "1.0.0",
     description: "Returns the channel count of all servers",
     brackets: false,
     unwrap: true,

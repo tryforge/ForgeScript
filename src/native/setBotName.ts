@@ -2,22 +2,23 @@ import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$setBotAvatar",
-    description: "Sets the bot profile icon",
+    name: "$setBotName",
+    version: "1.0.0",
+    description: "Sets the bot name",
     brackets: true,
     unwrap: true,
     args: [
         {
-            name: "url",
-            description: "The icon url",
+            name: "name",
+            description: "The new name",
             rest: false,
             required: true,
             type: ArgType.String
         }
     ],
-    async execute(ctx, [ url ]) {
+    async execute(ctx, [ name ]) {
         return Return.success(
-            !!(await ctx.client.user.setAvatar(url).catch(noop))
+            !!(await ctx.client.user.setUsername(name).catch(noop))
         )
     },
 })

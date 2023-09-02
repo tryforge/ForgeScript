@@ -21,6 +21,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookDelete",
+    version: "1.0.0",
     description: "Deletes webhook with given id",
     brackets: true,
     unwrap: true,

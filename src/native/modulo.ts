@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$modulo",
+    version: "1.0.0",
     description: "Returns the remainder of multiple numbers",
     brackets: true,
     unwrap: true,

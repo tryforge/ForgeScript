@@ -3,7 +3,8 @@ import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
 export default new NativeFunction({
-    name: "$deleteEmojis",
+    name: "$deleteStickers",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     description: "Delete given sticker ids, returns the count of stickers deleted",

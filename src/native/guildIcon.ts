@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildIcon",
+    version: "1.0.0",
     description: "Returns the server icon",
     brackets: false,
     args: [

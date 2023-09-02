@@ -3,6 +3,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arrayEvery",
+    version: "1.0.0",
     description: "Loops through every element of the array with a condition that must pass every element",
     unwrap: false,
     experimental: true,

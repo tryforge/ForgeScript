@@ -20,6 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$wait",
+    version: "1.0.0",
     description: "Delays the code below for x milliseconds",
     brackets: true,
     unwrap: true,

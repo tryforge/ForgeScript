@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildBoostRoleID",
+    version: "1.0.0",
     description: "Returns the server boost role id",
     brackets: false,
     args: [

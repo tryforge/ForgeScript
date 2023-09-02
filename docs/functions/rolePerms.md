@@ -25,6 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$rolePerms",
+    version: "1.0.0",
     description: "Returns the role perms",
     brackets: false,
     unwrap: true,

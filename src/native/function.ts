@@ -3,6 +3,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$function",
+    version: "1.0.0",
     description: "Runs a function.",
     unwrap: false,
     experimental: true,

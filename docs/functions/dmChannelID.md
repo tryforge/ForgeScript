@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$dmChannelID",
+    version: "1.0.0",
     description: "Returns the dm channel id of an user",
     brackets: false,
     unwrap: true,

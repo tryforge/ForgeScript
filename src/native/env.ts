@@ -3,6 +3,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$env",
+    version: "1.0.0",
     description: "Retrieve an environment value",
     args: [
         {

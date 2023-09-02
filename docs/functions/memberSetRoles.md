@@ -22,6 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$memberSetRoles",
+    version: "1.0.0",
     description: "Sets roles to a member and returns bool",
     unwrap: true,
     brackets: true,

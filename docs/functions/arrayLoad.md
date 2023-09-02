@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayLoad",
+    version: "1.0.0",
     description: "Loads an array to an environment variable",
     args: [
         {

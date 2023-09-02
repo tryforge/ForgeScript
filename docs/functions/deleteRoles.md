@@ -22,6 +22,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteRoles",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     description: "Delete given role ids, returns the count of roles deleted",

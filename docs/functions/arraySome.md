@@ -22,6 +22,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arraySome",
+    version: "1.0.0",
     description: "Loops through every element of the array to find a match",
     unwrap: false,
     args: [

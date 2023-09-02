@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$userGlobalName",
+    version: "1.0.0",
     description: "Returns the global name of an user",
     unwrap: true,
     args: [

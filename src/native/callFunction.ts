@@ -4,6 +4,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$callFunction",
+    version: "1.0.0",
     description: "Calls a forge function made by the user.",
     unwrap: true,
     args: [

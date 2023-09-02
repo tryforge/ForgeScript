@@ -1,13 +1,13 @@
 # $deleteEmojis
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given sticker ids, returns the count of stickers deleted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given emoji ids, returns the count of emotes deleted
 ## Usage
 ```
-$deleteEmojis[guild ID;...stickers]
+$deleteEmojis[guild ID;...emojis]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guild ID | Guild | The guild to delete stickers from | Yes | No
-stickers | GuildSticker | The stickers to delete | Yes | Yes
+guild ID | Guild | The guild to delete emotes from | Yes | No
+emojis | GuildEmoji | The emojis to delete | Yes | Yes
 <details>
 <summary>
     
@@ -22,6 +22,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteEmojis",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     description: "Delete given emoji ids, returns the count of emotes deleted",

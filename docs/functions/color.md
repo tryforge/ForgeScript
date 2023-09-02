@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$color",
+    version: "1.0.0",
     description: "Adds an embed color",
     unwrap: true,
     args: [

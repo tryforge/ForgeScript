@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$setStatus",
+    version: "1.0.0",
     description: "Sets the client's status",
     unwrap: true,
     args: [

@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Retur
 
 export default new NativeFunction({
     name: "$or",
+    version: "1.0.0",
     description: "Validates one condition",
     unwrap: false,
     brackets: true,

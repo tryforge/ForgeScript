@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$mkdir",
+    version: "1.0.0",
     description: "Creates a directory",
     unwrap: true,
     brackets: true,

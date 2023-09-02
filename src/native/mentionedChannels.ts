@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$mentionedChannels",
+    version: "1.0.0",
     brackets: false,
     description: "Returns the mentioned channels",
     unwrap: true,

@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isSelfDeaf",
+    version: "1.0.0",
     description: "Whether a member is self deafened",
     brackets: false,
     unwrap: true,

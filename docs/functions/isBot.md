@@ -23,6 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isBot",
+    version: "1.0.0",
     description: "Whether the user is a bot",
     unwrap: true,
     args: [

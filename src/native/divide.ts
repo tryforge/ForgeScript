@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$divide",
+    version: "1.0.0",
     description: "Divides multiple numbers",
     brackets: true,
     unwrap: true,

@@ -23,6 +23,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$addMessageReactions",
+    version: "1.0.0",
     description: "Adds reactions to a message, returns amount of emojis successfully reacted",
     unwrap: true,
     brackets: true,

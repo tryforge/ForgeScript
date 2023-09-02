@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildLeave",
+    version: "1.0.0",
     description: "Leaves a guild",
     brackets: false,
     args: [

@@ -3,6 +3,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$delete",
+    version: "1.0.0",
     description: "Deletes a keyword",
     unwrap: true,
     args: [

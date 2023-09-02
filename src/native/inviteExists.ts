@@ -3,6 +3,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 
 export default new NativeFunction({
     name: "$inviteExists",
+    version: "1.0.0",
     description: "Returns whether an invite code exists",
     unwrap: true,
     brackets: true,

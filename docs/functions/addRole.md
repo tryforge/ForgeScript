@@ -28,6 +28,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$addRole",
+    version: "1.0.0",
     description: "Adds a role to a guild, returns role id if success",
     unwrap: true,
     brackets: true,

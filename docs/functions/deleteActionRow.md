@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$deleteActionRow",
+    version: "1.0.0",
     description: "Deletes an action row at given index",
     brackets: true,
     args: [

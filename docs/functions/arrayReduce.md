@@ -27,6 +27,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arrayReduce",
+    version: "1.0.0",
     description: "Reduces an array of elements and returns the result",
     unwrap: false,
     args: [

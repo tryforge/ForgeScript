@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$startsWith",
+    version: "1.0.0",
     description: "Checks whether given string starts with X string",
     unwrap: true,
     args: [

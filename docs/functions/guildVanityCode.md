@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildVanityCode",
+    version: "1.0.0",
     description: "Returns the guilds vanity code",
     unwrap: true,
     args: [

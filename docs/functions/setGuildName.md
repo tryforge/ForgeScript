@@ -20,6 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$setGuildName",
+    version: "1.0.0",
     description: "Sets a guild name, returns boolean",
     unwrap: true,
     args: [

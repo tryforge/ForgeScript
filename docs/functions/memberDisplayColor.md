@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$memberDisplayColor",
+    version: "1.0.0",
     description: "Returns the display color of a member",
     unwrap: true,
     brackets: false,

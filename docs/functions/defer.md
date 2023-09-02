@@ -16,6 +16,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$defer",
+    version: "1.0.0",
     description: "Defers this interaction",
     unwrap: false,
     async execute(ctx) {

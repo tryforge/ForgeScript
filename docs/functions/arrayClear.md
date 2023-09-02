@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayClear",
+    version: "1.0.0",
     description: "Clears all elements from an array",
     unwrap: true,
     args: [

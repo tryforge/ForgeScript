@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$sum",
+    version: "1.0.0",
     description: "Adds multiple numbers",
     brackets: true,
     unwrap: true,

@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteAllMessageReactions",
+    version: "1.0.0",
     description: "Deletes all reactions from a message, returns bool",
     unwrap: true,
     brackets: false,

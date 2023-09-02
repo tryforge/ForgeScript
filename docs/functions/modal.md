@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$modal",
+    version: "1.0.0",
     description: "Creates a modal",
     unwrap: true,
     brackets: true,

@@ -6,7 +6,7 @@ import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
 
-    public static load(path: string) {
+    public static async load(path: string) {
         for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default as NativeFunction
