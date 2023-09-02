@@ -1,4 +1,4 @@
-import { BaseChannel, Emoji, Guild, GuildEmoji, GuildMember, Invite, Message, MessageReaction, Role, Sticker, User, Webhook } from "discord.js"
+import { BaseChannel, Emoji, Guild, GuildEmoji, GuildForumTag, GuildMember, Invite, Message, MessageReaction, Role, Sticker, User, Webhook } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Context } from "./Context"
 import { Return } from "./Return"
@@ -18,6 +18,7 @@ export enum ArgType {
     Invite,
     Json,
     Enum,
+    ForumTag,
     GuildEmoji,
     Boolean,
     Reaction,
@@ -116,7 +117,9 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> =
                                                                 Webhook :
                                                                 T extends ArgType.Invite ?
                                                                     Invite : 
-                                                                    null
+                                                                    T extends ArgType.ForumTag ?
+                                                                        GuildForumTag :
+                                                                        null
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
 

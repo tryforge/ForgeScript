@@ -1,4 +1,4 @@
-import { BaseChannel, Guild, Message, parseEmoji } from "discord.js"
+import { BaseChannel, ForumChannel, Guild, Message, parseEmoji } from "discord.js"
 import { BoolValues, ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
@@ -235,6 +235,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 if (!CompiledFunction.IdRegex.test(strValue)) return reject()
                 value = await (ref[arg.pointer!] as Guild).stickers.fetch(strValue).catch(noop)
                 if (!value) return reject()
+                break
+            }
+
+            case ArgType.ForumTag: {
+                const tag = (ref[arg.pointer!] as ForumChannel).availableTags.find(x => x.id === strValue || x.name === strValue)
+                if (!tag) return reject()
+                value = tag
                 break
             }
 
