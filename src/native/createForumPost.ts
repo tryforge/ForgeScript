@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$createForumPost",
+    version: "1.0.0",
     description: "Creates a forum post, returns the post channel id",
     unwrap: true,
     args: [

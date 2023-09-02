@@ -3,6 +3,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$message",
+    version: "1.0.0",
     description: "Retrieves arguments from a message command",
     args: [
         {

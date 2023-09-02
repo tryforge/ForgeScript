@@ -23,6 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$emojiGuildID",
+    version: "1.0.0",
     description: "Returns the emoji guild id",
     brackets: false,
     unwrap: true,

@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteEmojis",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     description: "Delete given emoji ids, returns the count of emotes deleted",

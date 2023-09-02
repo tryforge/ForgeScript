@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$startTyping",
+    version: "1.0.0",
     description: "Starts typing in a channel",
     unwrap: true,
     brackets: true,

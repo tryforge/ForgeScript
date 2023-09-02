@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$sqrt",
+    version: "1.0.0",
     description: "Returns the square root of a number.",
     brackets: true,
     unwrap: true,

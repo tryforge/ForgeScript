@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$commandCount",
+    version: "1.0.0",
     description: "Returns the command count",
     brackets: false,
     args: [

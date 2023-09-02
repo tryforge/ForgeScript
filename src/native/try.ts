@@ -2,6 +2,7 @@ import { ArgType, ForgeError, IExtendedCompiledFunctionField, NativeFunction, Re
 
 export default new NativeFunction({
     name: "$try",
+    version: "1.0.0",
     experimental: true,
     description: "Handles a possible error from given code",
     unwrap: false,

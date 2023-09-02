@@ -20,6 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayUnshift",
+    version: "1.0.0",
     description: "Adds elements to the beginning of an array",
     unwrap: true,
     args: [

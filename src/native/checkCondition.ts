@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Retur
 
 export default new NativeFunction({
     name: "$checkCondition",
+    version: "1.0.0",
     description: "Checks whether a condition is valid",
     brackets: true,
     unwrap: false,

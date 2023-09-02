@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$newEmoji",
+    version: "1.0.0",
     description: "Retrieves new data from an event whose context was a emoji instance",
     brackets: true,
     unwrap: true,

@@ -20,6 +20,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 
 export default new NativeFunction({
     name: "$findEmoji",
+    version: "1.0.0",
     description: "Finds a emoji",
     brackets: true,
     args: [

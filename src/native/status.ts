@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$status",
+    version: "1.0.0",
     description: "Returns the member status",
     brackets: false,
     unwrap: true,

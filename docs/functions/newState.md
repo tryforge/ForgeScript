@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$newState",
+    version: "1.0.0",
     description: "Retrieves new data from an event whose context was a voice state instance",
     brackets: true,
     unwrap: true,

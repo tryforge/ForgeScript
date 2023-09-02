@@ -20,6 +20,7 @@ import { ArgType, ErrorType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$exec",
+    version: "1.0.0",
     brackets: true,
     description: "Runs a command in console",
     unwrap: true,

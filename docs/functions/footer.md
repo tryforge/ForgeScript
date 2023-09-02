@@ -22,6 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$footer",
+    version: "1.0.0",
     description: "Adds an embed footer",
     unwrap: true,
     args: [

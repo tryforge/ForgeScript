@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayPush",
+    version: "1.0.0",
     description: "Appends an element to an array",
     unwrap: true,
     args: [

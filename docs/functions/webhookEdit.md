@@ -23,6 +23,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookEdit",
+    version: "1.0.0",
     description: "Edits webhook with given id",
     brackets: true,
     unwrap: true,

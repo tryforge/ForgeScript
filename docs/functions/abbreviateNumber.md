@@ -24,6 +24,7 @@ const Formatter = Intl.NumberFormat("en-US", {
 
 export default new NativeFunction({
     name: "$abbreviateNumber",
+    version: "1.0.0",
     description: "Abbreviates given number",
     unwrap: true,
     args: [

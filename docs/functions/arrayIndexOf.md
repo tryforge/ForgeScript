@@ -20,6 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayIndexOf",
+    version: "1.0.0",
     description: "Gets the index of an element in the array",
     unwrap: true,
     args: [

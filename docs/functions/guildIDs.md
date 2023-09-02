@@ -23,6 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildIDs",
+    version: "1.0.0",
     description: "Returns all the guilds this bot is in",
     unwrap: true,
     brackets: false,

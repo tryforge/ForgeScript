@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$rolePosition",
+    version: "1.0.0",
     description: "Returns the role position",
     brackets: false,
     unwrap: true,

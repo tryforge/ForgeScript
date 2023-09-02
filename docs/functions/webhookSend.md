@@ -23,6 +23,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookSend",
+    version: "1.0.0",
     description: "Sends a message with a webhook",
     brackets: true,
     unwrap: true,

@@ -23,6 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$emojiAnimated",
+    version: "1.0.0",
     description: "Returns whether the emoji is animated",
     brackets: false,
     unwrap: true,

@@ -21,6 +21,7 @@ export const LinkRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[
 
 export default new NativeFunction({
     name: "$isValidLink",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     args: [

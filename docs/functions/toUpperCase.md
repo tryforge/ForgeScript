@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$toUpperCase",
+    version: "1.0.0",
     description: "Makes a string uppercase",
     unwrap: true,
     args: [

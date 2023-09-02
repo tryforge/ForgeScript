@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunc
 
 export default new NativeFunction({
     name: "$if",
+    version: "1.0.0",
     description: "Creates a if statement",
     unwrap: false,
     args: [

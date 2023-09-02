@@ -3,6 +3,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunc
 
 export default new NativeFunction({
     name: "$onlyIf",
+    version: "1.0.0",
     description: "Stop execution if condition is not matched",
     unwrap: false,
     brackets: true,

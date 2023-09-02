@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$truncateFile",
+    version: "1.0.0",
     description: "Truncates text in a file to given length",
     unwrap: true,
     brackets: true,

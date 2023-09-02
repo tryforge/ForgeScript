@@ -22,6 +22,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$async",
+    version: "1.0.0",
     description: "Runs code asynchronously, will not return any value",
     unwrap: false,
     brackets: true,

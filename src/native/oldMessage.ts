@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$oldMessage",
+    version: "1.0.0",
     description: "Retrieves old data from an event whose context was a message instance",
     brackets: true,
     unwrap: true,

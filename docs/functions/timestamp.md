@@ -25,6 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$timestamp",
+    version: "1.0.0",
     description: "Adds an embed timestamp",
     unwrap: true,
     args: [

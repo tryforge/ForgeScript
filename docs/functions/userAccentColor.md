@@ -24,6 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$userAccentColor",
+    version: "1.0.0",
     description: "Returns the user accent color",
     brackets: false,
     args: [

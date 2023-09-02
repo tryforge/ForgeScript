@@ -24,6 +24,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$removeThreadMember",
+    version: "1.0.0",
     description: "Removes a thread member",
     brackets: true,
     unwrap: true,

@@ -22,6 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arraySlice",
+    version: "1.0.0",
     description: "Slices an array and loads it to another variable",
     brackets: true,
     unwrap: true,

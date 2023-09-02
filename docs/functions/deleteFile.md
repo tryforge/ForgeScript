@@ -20,6 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$deleteFile",
+    version: "1.0.0",
     description: "Deletes a file",
     unwrap: true,
     brackets: true,

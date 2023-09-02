@@ -24,6 +24,7 @@ import { Return, ReturnType } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$username",
+    version: "1.0.0",
     description: "Retrieves an user's username.",
     brackets: false,
     args: [

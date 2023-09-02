@@ -73,6 +73,11 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     args?: [...T]
 
     /**
+     * Do not provide this.
+     */
+    version?: string
+
+    /**
      * If undefined, function has no brackets
      * 
      * If false, function can have brackets.
@@ -131,7 +136,8 @@ export type UnwrapArgs<T> = T extends [ infer L, ...infer R ] ? [
 ] : []
 
 export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    public constructor(public readonly data: INativeFunction<T, Unwrap>) {}
+    public constructor(public readonly data: INativeFunction<T, Unwrap>) {
+    }
 
     public get name() {
         return this.data.name

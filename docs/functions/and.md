@@ -19,6 +19,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Retur
 
 export default new NativeFunction({
     name: "$and",
+    version: "1.0.0",
     description: "Validates multiple conditions",
     unwrap: false,
     brackets: true,

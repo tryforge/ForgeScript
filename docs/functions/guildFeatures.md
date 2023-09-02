@@ -25,6 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildFeatures",
+    version: "1.0.0",
     description: "Returns the guild features",
     brackets: false,
     args: [

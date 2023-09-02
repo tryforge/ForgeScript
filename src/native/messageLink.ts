@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$messageLink",
+    version: "1.0.0",
     description: "Retrieves a message url",
     unwrap: true,
     brackets: false,

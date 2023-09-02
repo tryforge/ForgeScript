@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$roleIDs",
+    version: "1.0.0",
     description: "Returns the role ids of a guild",
     brackets: false,
     args: [

@@ -21,6 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isBanned",
+    version: "1.0.0",
     brackets: true,
     unwrap: true,
     description: "Whether this user is banned",

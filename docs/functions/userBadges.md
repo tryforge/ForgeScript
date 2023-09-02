@@ -25,6 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$userBadges",
+    version: "1.0.0",
     description: "Returns the public badges of an user",
     unwrap: true,
     args: [

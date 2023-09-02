@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$getMessageReactionUsers",
+    version: "1.0.0",
     description: "Gets the user ids that have reacted to a specific emoji",
     unwrap: true,
     brackets: true,

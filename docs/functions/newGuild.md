@@ -22,6 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$newGuild",
+    version: "1.0.0",
     description: "Retrieves new data from an event whose context was a guild instance",
     brackets: true,
     unwrap: true,

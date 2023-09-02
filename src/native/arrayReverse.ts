@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayReverse",
+    version: "1.0.0",
     description: "Reverses an array and loads it to another variable",
     brackets: true,
     unwrap: true,

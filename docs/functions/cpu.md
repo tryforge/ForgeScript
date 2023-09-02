@@ -18,6 +18,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$cpu",
+    version: "1.0.0",
     description: "Returns the cpu usage of the host (not accurate)",
     unwrap: false,
     execute(ctx) {

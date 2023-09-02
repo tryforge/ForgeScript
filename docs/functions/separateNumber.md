@@ -22,6 +22,7 @@ const NoNumberRegex = /[^0-9]/g
 
 export default new NativeFunction({
     name: "$separateNumber",
+    version: "1.0.0",
     description: "Separates thousands in the number",
     unwrap: true,
     args: [

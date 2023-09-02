@@ -19,6 +19,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$multi",
+    version: "1.0.0",
     description: "Multiplies multiple numbers",
     brackets: true,
     unwrap: true,

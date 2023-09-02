@@ -21,6 +21,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookToken",
+    version: "1.0.0",
     description: "Gets webhook token of given id",
     brackets: true,
     unwrap: true,

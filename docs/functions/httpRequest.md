@@ -23,6 +23,7 @@ import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$httpRequest",
+    version: "1.0.0",
     description: "Performs an http request, returns the status code.",
     args: [
         {

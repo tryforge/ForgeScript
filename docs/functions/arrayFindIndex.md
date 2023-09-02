@@ -25,6 +25,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arrayFindIndex",
+    version: "1.0.0",
     description: "Finds the index of an element in the array",
     unwrap: false,
     args: [

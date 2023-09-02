@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$mentioned",
+    version: "1.0.0",
     brackets: false,
     description: "Returns the mentioned users",
     unwrap: true,
