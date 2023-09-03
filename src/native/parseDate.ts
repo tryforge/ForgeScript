@@ -13,7 +13,7 @@ export enum DateType {
 
 export default new NativeFunction({
     name: "$parseDate",
-    version: "1.0.1",
+    version: "1.0.2",
     description: "Parses valid ms to a date",
     brackets: true,
     args: [

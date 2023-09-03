@@ -23,7 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$parseMS",
-    version: "1.0.1",
+    version: "1.0.2",
     description: "Parses valid ms to duration",
     brackets: true,
     args: [
