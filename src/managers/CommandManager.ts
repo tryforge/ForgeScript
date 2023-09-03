@@ -5,11 +5,35 @@ import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class CommandManager {
     private readonly commands = new Collection<CommandType, Command[]>()
+    private readonly paths = new Array<string>()
 
     public constructor(private readonly client: ForgeClient) {}
 
-    public load(path: string, refresh = false) {
-        this.commands.clear()
+    public refresh() {
+        for (const [ key, commands ] of this.commands) {
+            // Unload the ones added thru folders
+            const unloadable = commands.filter(x => !x.unloadable)
+            
+            // Keep unloadable
+            this.commands.set(key, unloadable)
+        }
+
+        for (const p of this.paths) {
+            for (const file of recursiveReaddirSync(p).filter(x => x.endsWith(".js"))) {
+                // eslint-disable-next-line no-undef
+                const path = `${process.cwd()}/${file}`
+                const t = delete require.cache[require.resolve(path)]
+                console.log(path, t)
+            }
+
+            // Reload these commands
+            this.load(p)
+        }
+    }
+
+    public load(path: string) {
+        if (!this.paths.includes(path)) 
+            this.paths.push(path)
 
         for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
             // eslint-disable-next-line no-undef
@@ -18,8 +42,8 @@ export class CommandManager {
             const req = require(path)
             if (!req) continue
 
-            if (Array.isArray(req)) this.add(...req)
-            else this.add(req.default ?? req)
+            if (Array.isArray(req)) this.addPath(...req)
+            else this.addPath(req.default ?? req)
         }
     }
 
@@ -35,6 +59,20 @@ export class CommandManager {
             const cmd = req instanceof Command ? req : new Command(req)
             
             const col = this.commands.ensure(cmd.type, () => new Array())
+            col.push(cmd)
+
+            if (this.client.autoAddEvents && !this.client.events.has(cmd.type)) this.client.events.load(cmd.type)
+            else if (!this.client.autoAddEvents && !this.client.events.has(cmd.type)) console.warn(`Command ${cmd.name} is executed on ${cmd.type} event, but is not being listened to, add it under Client#events option.`) 
+        }
+    }
+
+    private addPath(...commands: (ICommand | Command)[]) {
+        for (let i = 0, len = commands.length;i < len;i++) {
+            const req = commands[i] 
+            const cmd = req instanceof Command ? req : new Command(req)
+            
+            const col = this.commands.ensure(cmd.type, () => new Array())
+            cmd.unloadable = true
             col.push(cmd)
 
             if (this.client.autoAddEvents && !this.client.events.has(cmd.type)) this.client.events.load(cmd.type)

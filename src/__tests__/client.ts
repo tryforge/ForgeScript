@@ -63,5 +63,7 @@ client.commands.add({
     code: "$djsEval[$message]"
 })
 
+client.commands.load("dist/__tests__/commands")
+
 // eslint-disable-next-line no-undef
 client.login(process.env.TOKEN)
