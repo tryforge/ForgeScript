@@ -27,6 +27,7 @@ export enum ArgType {
     Role,
     Webhook,
     GuildSticker,
+    Time,
     Member
 }
 
@@ -124,7 +125,10 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> =
                                                                     Invite : 
                                                                     T extends ArgType.ForumTag ?
                                                                         GuildForumTag :
-                                                                        null
+                                                                        T extends ArgType.Time ? 
+                                                                            number :
+                                                                            null 
+                                                                            
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
 

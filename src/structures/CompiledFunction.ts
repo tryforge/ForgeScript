@@ -6,6 +6,7 @@ import { Context } from "./Context"
 import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return } from "./Return"
+import { TimeParser } from "../constants"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -180,6 +181,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             case ArgType.Number: {
                 value = Number(value)
                 if (isNaN(value as number)) return reject()
+                break
+            }
+
+            case ArgType.Time: {
+                try {
+                    value = TimeParser.parseToMS(strValue)
+                } catch (error: any) {
+                    return reject()
+                }
+
                 break
             }
 
