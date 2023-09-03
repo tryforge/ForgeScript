@@ -21,7 +21,7 @@ export interface ICompiledCommand {
 export class Command {
     public readonly compiled: ICompiledCommand
 
-    public constructor(public readonly data: ICommand) {
+    public constructor(public readonly data: ICommand, public unloadable = false) {
         this.compiled = {
             name: Compiler.compile(data.name),
             code: Compiler.compile(data.code)
