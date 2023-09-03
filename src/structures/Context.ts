@@ -139,7 +139,9 @@ export class Context {
                     this.obj.channel : 
                 this.obj instanceof BaseChannel ? 
                     this.obj :
-                    null
+                    "message" in this.obj ? 
+                        this.obj.message.channel as BaseChannel :
+                        null
     }
 
     public async handle<Args extends [...IArg[]], Unwrap extends boolean>(fn: CompiledFunction<Args, Unwrap>, cb: ExpectCallback<Args, Unwrap>): Promise<Return> {
