@@ -240,6 +240,7 @@ export class Compiler {
         
         for (;;) {
             const char = this.char()
+            if (char === undefined) this.error("Reached end of code and found no brace closure for " + match.name)
 
             const isEscape = char === Compiler.Syntax.Escape
             const isClosure = char === Compiler.Syntax.Close

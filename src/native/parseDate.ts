@@ -1,0 +1,57 @@
+import { TimeParser } from "../constants"
+import { ArgType, NativeFunction, Return } from "../structures"
+
+export enum DateType {
+    LocaleDate,
+    LocaleTime,
+    Locale,
+    Date,
+    ISO,
+    UTC,
+    Time
+}
+
+export default new NativeFunction({
+    name: "$parseDate",
+    version: "1.0.1",
+    description: "Parses valid ms to a date",
+    brackets: true,
+    args: [
+        {
+            name: "ms",
+            description: "The ms to convert to date",
+            rest: false,
+            type: ArgType.Number,
+            required: true
+        },
+        {
+            name: "type",
+            description: "The date type",
+            enum: DateType,
+            rest: false,
+            type: ArgType.Enum
+        }
+    ],
+    unwrap: true,
+    execute(ctx, [ ms, type ]) {
+        const date = new Date(ms)
+
+        return Return.success(
+            type === DateType.Date ? 
+                date.toDateString() :
+                type === DateType.ISO ? 
+                    date.toISOString() :
+                    type === DateType.Locale ?
+                        date.toLocaleString() :
+                        type === DateType.LocaleDate ?
+                            date.toLocaleDateString() :
+                            type === DateType.LocaleTime ?
+                                date.toLocaleTimeString() :
+                                type === DateType.Time ?
+                                    date.toTimeString() :
+                                    type === DateType.UTC ? 
+                                        date.toUTCString() :
+                                        null as never
+        )
+    },
+})
