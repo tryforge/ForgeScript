@@ -1,5 +1,5 @@
 # $trunc
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x
 ## Usage
 ```
 $trunc[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$trunc",
     version: "1.0.0",
-    description: "Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x.",
+    description: "Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
     brackets: true,
     unwrap: true,
     args: [

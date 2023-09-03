@@ -1,5 +1,5 @@
 # $authorID
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves an user's id.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves an user's id
 ## Usage
 ```
 $authorID
@@ -18,7 +18,7 @@ import { Return, ReturnType } from "../structures/Return"
 export default new NativeFunction({
     name: "$authorID",
     version: "1.0.0",
-    description: "Retrieves an user's id.",
+    description: "Retrieves an user's id",
     unwrap: true,
     execute: async function(ctx) {
         return Return.success(ctx.user?.id)

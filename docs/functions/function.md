@@ -1,5 +1,5 @@
 # $function
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Runs a function.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Runs a function
 
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> This feature is currently <span style="color:yellow"><strong>experimental</strong></span>.
 
@@ -24,7 +24,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$function",
     version: "1.0.0",
-    description: "Runs a function.",
+    description: "Runs a function",
     unwrap: false,
     experimental: true,
     args: [

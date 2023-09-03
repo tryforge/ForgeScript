@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$kickMember",
     version: "1.0.0",
-    description: "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed.",
+    description: "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
     args: [

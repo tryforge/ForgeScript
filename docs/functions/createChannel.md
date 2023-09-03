@@ -8,7 +8,7 @@ $createChannel[guild ID;channel name;channel type;topic;parent ID]
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to create this channel on | Yes | No
 channel name | String | The name for the channel | Yes | No
-channel type | Enum (`GuildText`, `DM`, `GuildVoice`, `GroupDM`, `GuildCategory`, `GuildNews`, `GuildNewsThread`, `GuildPublicThread`, `GuildPrivateThread`, `GuildStageVoice`, `GuildDirectory`, `GuildForum`) | The type of the channel, some are not supported. | Yes | No
+channel type | Enum (`GuildText`, `DM`, `GuildVoice`, `GroupDM`, `GuildCategory`, `GuildNews`, `GuildNewsThread`, `GuildPublicThread`, `GuildPrivateThread`, `GuildStageVoice`, `GuildDirectory`, `GuildForum`) | The type of the channel, some are not supported | Yes | No
 topic | String | The topic for the channel | No | No
 parent ID | String | The parent id for the channel | No | No
 <details>
@@ -46,7 +46,7 @@ export default new NativeFunction({
         },
         {
             name: "channel type",
-            description: "The type of the channel, some are not supported.",
+            description: "The type of the channel, some are not supported",
             rest: false,
             type: ArgType.Enum,
             enum: ChannelType,

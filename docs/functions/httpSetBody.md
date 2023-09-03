@@ -1,5 +1,5 @@
 # $httpSetBody
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Sets a JSON body for the request.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Sets a JSON body for the request
 ## Usage
 ```
 $httpSetBody[body]
@@ -21,7 +21,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$httpSetBody",
     version: "1.0.0",
-    description: "Sets a JSON body for the request.",
+    description: "Sets a JSON body for the request",
     args: [
         {
             name: "body",

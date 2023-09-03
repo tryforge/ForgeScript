@@ -1,5 +1,5 @@
 # $httpRequest
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Performs an http request, returns the status code.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Performs an http request, returns the status code
 ## Usage
 ```
 $httpRequest[url;method;variable]
@@ -24,7 +24,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$httpRequest",
     version: "1.0.0",
-    description: "Performs an http request, returns the status code.",
+    description: "Performs an http request, returns the status code",
     args: [
         {
             name: "url",

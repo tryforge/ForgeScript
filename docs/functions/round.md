@@ -1,5 +1,5 @@
 # $round
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns a supplied numeric expression rounded to the nearest integer.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns a supplied numeric expression rounded to the nearest integer
 ## Usage
 ```
 $round[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$round",
     version: "1.0.0",
-    description: "Returns a supplied numeric expression rounded to the nearest integer.",
+    description: "Returns a supplied numeric expression rounded to the nearest integer",
     brackets: true,
     unwrap: true,
     args: [
