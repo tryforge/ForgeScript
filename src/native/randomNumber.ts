@@ -29,6 +29,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ min, max, decimals ]) {
         const rnd = max ? Math.random() * (max - min) + min : Math.random() * min
-        return Return.success(decimals ? Math.floor(rnd) : rnd)
+        return Return.success(!decimals ? Math.floor(rnd) : rnd)
     },
 })
