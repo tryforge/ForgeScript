@@ -125,6 +125,21 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return Return.success(args)
     }
 
+    /**
+     * Does not account for condition fields.
+     * @param ctx 
+     * @param index 
+     * @returns 
+     */
+    private async resolveUnhandledArg(ctx: Context, index: number): Promise<Return> {
+        const field = this.data.fields![index] as IExtendedCompiledFunctionField
+        const arg = this.fn.data.args![index]
+
+        const str = await this.resolveCode(ctx, field)
+        if (!this.isValidReturnType(str)) return str
+        return this.resolveArg(ctx, arg, str.value, [] as UnwrapArgs<T>)
+    }
+
     private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
         const lhs = await this.resolveCode(ctx, field.lhs)
         if (!this.isValidReturnType(lhs)) return lhs
@@ -186,7 +201,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
             case ArgType.Time: {
                 try {
-                    value = TimeParser.parseToMS(strValue)
+                    value = !isNaN(Number(strValue)) ? Number(strValue) :  TimeParser.parseToMS(strValue)
                 } catch (error: any) {
                     return reject()
                 }
@@ -258,8 +273,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             }
 
             case ArgType.GuildEmoji: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = ctx.client.emojis.cache.get(strValue) 
+                const parsed = parseEmoji(strValue)
+                const id = parsed?.id ?? strValue
+                if (!CompiledFunction.IdRegex.test(id)) return reject()
+                value = ctx.client.emojis.cache.get(id) 
                 if (!value) return reject()
                 break
             }

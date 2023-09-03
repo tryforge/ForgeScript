@@ -1,4 +1,4 @@
-import { ColorResolvable, PermissionsString } from "discord.js"
+import { ColorResolvable, PermissionFlagsBits, PermissionsString } from "discord.js"
 import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
@@ -57,6 +57,7 @@ export default new NativeFunction({
             name: "perms",
             description: "The role perms",
             rest: true,
+            enum: PermissionFlagsBits,
             required: true,
             type: ArgType.String
         }

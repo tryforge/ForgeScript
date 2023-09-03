@@ -2,6 +2,7 @@ import { readdirSync } from "fs"
 import { ArgType, INativeFunction, NativeFunction } from "../structures/NativeFunction"
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
+import { deserialize, serialize } from "v8"
 
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
@@ -20,7 +21,10 @@ export class FunctionManager {
 
     public static toJSON(): INativeFunction<any>[] {
         return Array.from(this.Functions.values()).map(x => {
-            const data = JSON.parse(JSON.stringify(x.data)) as INativeFunction<any>
+            const d = {...x.data}
+            d.args?.forEach(x => Reflect.deleteProperty(x, "check"))
+            Reflect.deleteProperty(d, "execute")
+            const data = deserialize(serialize(d)) as INativeFunction<any>
             
             data.args?.map(x => {
                 x.type = ArgType[x.type]
