@@ -24,7 +24,8 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ color, index ]) {
-        ctx.container.embed((index ?? 1) - 1).setColor(color as ColorResolvable)
+        const col = (!isNaN(Number(color)) ? Number(color) : color.startsWith("#") ? color.slice(1) : color) as ColorResolvable
+        ctx.container.embed((index ?? 1) - 1).setColor(col)
         return Return.success()
     },
 })
