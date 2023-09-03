@@ -43,6 +43,7 @@ export default new NativeFunction({
         }
     ],
     async execute(ctx, [ code, send ]) {
+        send ??= true
         try {
             const result = await Interpreter.run({
                 ...ctx.runtime,
