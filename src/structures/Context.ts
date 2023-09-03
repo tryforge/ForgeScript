@@ -25,7 +25,7 @@ export class Context {
     #role?: Role | null
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
-
+    
     http: Partial<IHttpOptions> = {}
 
     #keywords: Record<string, string> = {}

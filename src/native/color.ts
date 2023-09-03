@@ -1,4 +1,4 @@
-import { ColorResolvable } from "discord.js"
+import { ColorResolvable, Colors } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -11,6 +11,7 @@ export default new NativeFunction({
             name: "color",
             description: "The color for the embed",
             required: true,
+            enum: Colors,
             type: ArgType.String,
             rest: false
         },

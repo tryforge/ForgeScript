@@ -13,7 +13,7 @@ icon | String | The role icon | No | No
 hoisted | Boolean | Whether the role is hoisted | No | No
 mentionable | Boolean | Whether the role is mentionable | No | No
 position | Number | The position for this role | No | No
-perms | String | The role perms | Yes | Yes
+perms | String () | The role perms | Yes | Yes
 <details>
 <summary>
     
@@ -22,7 +22,7 @@ perms | String | The role perms | Yes | Yes
 </summary>
     
 ```ts
-import { ColorResolvable, PermissionsString } from "discord.js"
+import { ColorResolvable, PermissionFlagsBits, PermissionsString } from "discord.js"
 import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
@@ -81,6 +81,7 @@ export default new NativeFunction({
             name: "perms",
             description: "The role perms",
             rest: true,
+            enum: PermissionFlagsBits,
             required: true,
             type: ArgType.String
         }

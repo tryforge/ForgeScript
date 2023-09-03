@@ -6,7 +6,7 @@ $color[color;index]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-color | String | The color for the embed | Yes | No
+color | String () | The color for the embed | Yes | No
 index | Number | The index to add this data to | No | No
 <details>
 <summary>
@@ -16,7 +16,7 @@ index | Number | The index to add this data to | No | No
 </summary>
     
 ```ts
-import { ColorResolvable } from "discord.js"
+import { ColorResolvable, Colors } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -29,6 +29,7 @@ export default new NativeFunction({
             name: "color",
             description: "The color for the embed",
             required: true,
+            enum: Colors,
             type: ArgType.String,
             rest: false
         },
