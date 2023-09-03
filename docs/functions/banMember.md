@@ -1,5 +1,5 @@
 # $banMember
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Bans a member from the guild, returns true or false depending on whether the action was successfully performed.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Bans a member from the guild, returns true or false depending on whether the action was successfully performed
 ## Usage
 ```
 $banMember[guild ID;user ID;reason;delete message seconds]
@@ -24,7 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$banMember",
     version: "1.0.0",
-    description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed.",
+    description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
     args: [

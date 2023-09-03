@@ -1,5 +1,5 @@
 # $stop
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Stops code execution.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Stops code execution
 ## Usage
 ```
 $stop
@@ -17,7 +17,7 @@ import { NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$stop",
     version: "1.0.0",
-    description: "Stops code execution.",
+    description: "Stops code execution",
     unwrap: false,
     execute() {
         return Return.stop()

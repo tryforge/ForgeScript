@@ -1,5 +1,5 @@
 # $floor
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the greatest integer less than or equal to its numeric argument.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the greatest integer less than or equal to its numeric argument
 ## Usage
 ```
 $floor[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$floor",
     version: "1.0.0",
-    description: "Returns the greatest integer less than or equal to its numeric argument.",
+    description: "Returns the greatest integer less than or equal to its numeric argument",
     brackets: true,
     unwrap: true,
     args: [

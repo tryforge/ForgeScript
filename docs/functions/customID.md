@@ -1,5 +1,5 @@
 # $customID
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves the custom id of the interaction.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves the custom id of the interaction
 ## Usage
 ```
 $customID
@@ -18,7 +18,7 @@ import { Return, ReturnType } from "../structures/Return"
 export default new NativeFunction({
     name: "$customID",
     version: "1.0.0",
-    description: "Retrieves the custom id of the interaction.",
+    description: "Retrieves the custom id of the interaction",
     unwrap: true,
     execute: async function(ctx) {
         return Return.success(ctx.interaction && "customId" in ctx.interaction ? ctx.interaction.customId : undefined)

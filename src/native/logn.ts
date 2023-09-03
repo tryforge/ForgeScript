@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$logn",
     version: "1.0.0",
-    description: "Returns the natural logarithm (base e) of a number.",
+    description: "Returns the natural logarithm (base e) of a number",
     brackets: true,
     unwrap: true,
     args: [

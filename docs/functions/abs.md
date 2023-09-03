@@ -1,5 +1,5 @@
 # $abs
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the absolute value of a number (the value without regard to whether it is positive or negative).
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the absolute value of a number (the value without regard to whether it is positive or negative)
 ## Usage
 ```
 $abs[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$abs",
     version: "1.0.1",
-    description: "Returns the absolute value of a number (the value without regard to whether it is positive or negative).",
+    description: "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",
     brackets: true,
     unwrap: true,
     args: [

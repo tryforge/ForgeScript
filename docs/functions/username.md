@@ -1,5 +1,5 @@
 # $username
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves an user's username.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves an user's username
 ## Usage
 ```
 $username
@@ -25,7 +25,7 @@ import { Return, ReturnType } from "../structures/Return"
 export default new NativeFunction({
     name: "$username",
     version: "1.0.0",
-    description: "Retrieves an user's username.",
+    description: "Retrieves an user's username",
     brackets: false,
     args: [
         {

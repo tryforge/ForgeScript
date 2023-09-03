@@ -1,5 +1,5 @@
 # $log
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Log something to console.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Log something to console
 ## Usage
 ```
 $log[...message]
@@ -21,7 +21,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$log",
     version: "1.0.0",
-    description: "Log something to console.",
+    description: "Log something to console",
     unwrap: true,
     args: [
         {

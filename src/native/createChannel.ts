@@ -25,7 +25,7 @@ export default new NativeFunction({
         },
         {
             name: "channel type",
-            description: "The type of the channel, some are not supported.",
+            description: "The type of the channel, some are not supported",
             rest: false,
             type: ArgType.Enum,
             enum: ChannelType,

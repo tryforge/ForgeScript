@@ -1,5 +1,5 @@
 # $sqrt
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the square root of a number.
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the square root of a number
 ## Usage
 ```
 $sqrt[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$sqrt",
     version: "1.0.0",
-    description: "Returns the square root of a number.",
+    description: "Returns the square root of a number",
     brackets: true,
     unwrap: true,
     args: [
