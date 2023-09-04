@@ -2,7 +2,7 @@ import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildEmo
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
-import { Return } from "./Return"
+import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../core/Interpreter"
 import noop from "../functions/noop"
 import { ForgeError } from "./ForgeError"
@@ -161,8 +161,8 @@ export class Context {
     }
 
     public handleNotSuccess(rt: Return) {
-        if (rt.return) {
-            const log = ":x: Return statements are not allowed in outer scopes."
+        if (rt.return || rt.break || rt.continue) {
+            const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
             this.alert(log).catch(console.error.bind(null, log))
         } else if (rt.error) {
             const err = rt.value as ForgeError
