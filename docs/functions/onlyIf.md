@@ -51,9 +51,10 @@ export default new NativeFunction({
             if (!this["isValidReturnType"](resolved)) return resolved
             ctx.container.content = resolved.value as string
             await ctx.container.send(ctx.obj)
+            return Return.stop()
         }
-        
-        return Return.stop()
+
+        return Return.success()
     },
 })
 ```
