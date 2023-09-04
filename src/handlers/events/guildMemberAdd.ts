@@ -1,5 +1,6 @@
 import { Interpreter } from "../../core"
 import { EventHandler } from "../../structures"
+import { InviteSystem } from "../../structures/InviteSystem"
 
 export default new EventHandler(
     {
@@ -7,6 +8,9 @@ export default new EventHandler(
         version: "1.0.1",
         description: "This event is fired when a member joins the guild",
         listener: async function(m) {
+            if (this.options.useInviteSystem)
+                await InviteSystem.findInviter(m)
+
             const commands = this.commands.get("guildMemberAdd")
     
             for (const command of commands) {

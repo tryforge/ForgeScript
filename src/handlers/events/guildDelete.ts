@@ -1,5 +1,6 @@
 import { Interpreter } from "../../core"
 import { EventHandler } from "../../structures"
+import { InviteSystem } from "../../structures/InviteSystem"
 
 export default new EventHandler(
     {
@@ -10,6 +11,9 @@ export default new EventHandler(
             "Guilds"
         ],
         listener: async function(g) {
+            if (this.options.useInviteSystem)
+                InviteSystem.uncache(g)
+                
             const commands = this.commands.get("guildDelete")
     
             for (const command of commands) {

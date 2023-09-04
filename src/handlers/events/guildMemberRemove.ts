@@ -1,6 +1,7 @@
 import { GuildMember } from "discord.js"
 import { Interpreter } from "../../core"
 import { EventHandler } from "../../structures"
+import { InviteSystem } from "../../structures/InviteSystem"
 
 export default new EventHandler(
     {
@@ -8,6 +9,9 @@ export default new EventHandler(
         version: "1.0.1",
         description: "This event is fired when a member leaves, is kicked or banned from a guild",
         listener: async function(m) {
+            if (this.options.useInviteSystem)
+                InviteSystem.deleteInviter(m)
+
             const commands = this.commands.get("guildMemberRemove")
     
             for (const command of commands) {

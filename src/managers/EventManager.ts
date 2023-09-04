@@ -16,6 +16,7 @@ export class EventManager {
         for (const eventType of events.flat()) {
             const event = EventManager.Loaded[eventType]
             if (!event) throw new Error(`Event ${eventType} is not supported.`)
+            if (this.events.has(eventType)) continue
             this.events.set(eventType, event)
             this.client.on(eventType, event.listener.bind(this.client))
         }
