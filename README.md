@@ -14,7 +14,7 @@ Description of ForgeScript here FR
 4. [Limitations](#limitations)
 5. [Update Frequency](#update-frequency)
 6. [Function Documentation](https://forge.boats/docs)
-7. [Library Documentation](https://tryforge.github.io/ForgeScript-V2/index.html)
+7. [Library Documentation](https://tryforge.github.io/ForgeScript/index.html)
 
 </strong>
 
