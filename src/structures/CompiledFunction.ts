@@ -1,11 +1,11 @@
-import { BaseChannel, ForumChannel, Guild, Message, parseEmoji } from "discord.js"
+import { BaseChannel, ForumChannel, Guild, Message, TextBasedChannel, parseEmoji } from "discord.js"
 import { BoolValues, ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
 import { Context } from "./Context"
 import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
-import { Return } from "./Return"
+import { Return, ReturnType } from "./Return"
 import { TimeParser } from "../constants"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
@@ -15,6 +15,7 @@ export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledF
 
 export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionField, "functions"> {
     functions: CompiledFunction[]
+    resolveArg?: (ctx: Context, arg: IArg, value: string, ref: Array<unknown>) => unknown | Promise<unknown>
 }
 
 export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fields"> {
@@ -94,7 +95,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 const resolved = await this.resolveCode(ctx, field)
                 if (!this.isValidReturnType(resolved)) return resolved
                 
-                const val = await this.resolveArg(ctx, arg, resolved.value, args)
+                const val = await this.resolveArg(ctx, arg, field, resolved.value, args)
                 if (!this.isValidReturnType(val)) return val
                 args[i] = val.value as UnwrapArgs<T>[number]
             } else {
@@ -112,7 +113,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                     const resolved = await this.resolveCode(ctx, field)
                     if (!this.isValidReturnType(resolved)) return resolved
                     
-                    const val = await this.resolveArg(ctx, arg, resolved.value, args)
+                    const val = await this.resolveArg(ctx, arg, field, resolved.value, args)
                     if (!this.isValidReturnType(val)) return val
 
                     values[x] = val.value as UnwrapArgs<T>[number]
@@ -137,7 +138,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
         const str = await this.resolveCode(ctx, field)
         if (!this.isValidReturnType(str)) return str
-        return this.resolveArg(ctx, arg, str.value, [] as UnwrapArgs<T>)
+        return this.resolveArg(ctx, arg, field, str.value, [] as UnwrapArgs<T>)
     }
 
     private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
@@ -183,185 +184,127 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         )
     }
 
+    private resolveNumber(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        const value = Number(str)
+        if (isNaN(value as number)) return
+        return value
+    }
+
+    private resolveString(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return str
+    }
+
+    private resolveTime(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        try {
+            return !isNaN(Number(str)) ? Number(str) :  TimeParser.parseToMS(str)
+        } catch (error: any) {
+            return
+        }
+    }
+
+    private resolveEnum(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return arg.enum![str]
+    }
+
+    private resolveBoolean(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return BoolValues[str as keyof typeof BoolValues]
+    }
+
+    private resolveMessage(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return 
+                
+        const ch = (ref[arg.pointer!] ?? ctx.channel) as BaseChannel | null
+        return (ch as TextBasedChannel || undefined)?.messages?.fetch(str).catch(noop)
+    }
+
+    private resolveChannel(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {        
+        return ctx.client.channels.cache.get(str)
+    }
+
+    private resolveGuild(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return ctx.client.guilds.cache.get(str)
+    }
+
+    private resolveJson(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        try {
+            return JSON.parse(str)
+        } catch (error: unknown) {
+            return
+        }
+    }
+
+    private resolveUser(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return 
+        return ctx.client.users.fetch(str).catch(noop)
+    }
+
+    private resolveGuildEmoji(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        const parsed = parseEmoji(str)
+        const id = parsed?.id ?? str
+        return ctx.client.emojis.cache.get(id) 
+    }
+
+    private resolveForumTag(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return (ref[arg.pointer!] as ForumChannel).availableTags.find(x => x.id === str || x.name === str)
+    }
+
+    private resolveGuildSticker(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return (ref[arg.pointer!] as Guild).stickers.fetch(str).catch(noop)
+    }
+
+    private resolveMember(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return  (ref[arg.pointer!] as Guild).members.fetch(str).catch(noop)
+    }
+
+    private resolveReaction(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        const reactions = (ref[arg.pointer!] as Message).reactions
+        const parsed = parseEmoji(str)
+        if (!parsed) return
+        
+        const identifier = parsed.id ?? parsed.name
+
+        return reactions.cache.get(identifier)
+    }
+
+    private resolveInvite(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return 
+        return ctx.client.fetchInvite(str).catch(noop)
+    }
+
+    private resolveWebhook(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        if (!CompiledFunction.IdRegex.test(str)) return 
+        return ctx.client.fetchWebhook(str).catch(noop)
+    }
+
+    private resolveRole(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+        return (ref[arg.pointer!] as Guild).roles.cache.get(str)
+    }
+
     // TODO: turn arg types to methods to cache and increase performance
-    private async resolveArg(ctx: Context, arg: IArg, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
+    private async resolveArg(ctx: Context, arg: IArg, field: IExtendedCompiledFunctionField, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
         const strValue = `${value}`
-        const reject = this.argTypeRejection.bind(this, arg, strValue)
 
         if (!arg.required && !value) {
             return Return.success(value ?? null)
         }
 
-        switch (arg.type) {
-            case ArgType.Number: {
-                value = Number(value)
-                if (isNaN(value as number)) return reject()
-                break
-            }
+        field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)]
+        
+        value = field.resolveArg(ctx, arg, strValue, ref)
+        if (value instanceof Promise) 
+            value = await value
 
-            case ArgType.Time: {
-                try {
-                    value = !isNaN(Number(strValue)) ? Number(strValue) :  TimeParser.parseToMS(strValue)
-                } catch (error: any) {
-                    return reject()
-                }
-
-                break
-            }
-
-            case ArgType.Guild: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = ctx.client.guilds.cache.get(strValue)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.Role: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = (ref[arg.pointer!] as Guild).roles.cache.get(strValue)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.Webhook: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = await ctx.client.fetchWebhook(strValue).catch(noop)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.Invite: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = await ctx.client.fetchInvite(strValue).catch(noop)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.Reaction: {
-                const reactions = (ref[arg.pointer!] as Message).reactions
-                const parsed = parseEmoji(strValue)
-                if (!parsed) return reject()
-                
-                const identifier = parsed.id ?? parsed.name
-
-                const reaction = reactions.cache.get(identifier)
-                if (!reaction) return reject()
-
-                value = reaction
-                break
-            }
-
-            case ArgType.Member: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = await (ref[arg.pointer!] as Guild).members.fetch(strValue).catch(noop)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.GuildSticker: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                value = await (ref[arg.pointer!] as Guild).stickers.fetch(strValue).catch(noop)
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.ForumTag: {
-                const tag = (ref[arg.pointer!] as ForumChannel).availableTags.find(x => x.id === strValue || x.name === strValue)
-                if (!tag) return reject()
-                value = tag
-                break
-            }
-
-            case ArgType.GuildEmoji: {
-                const parsed = parseEmoji(strValue)
-                const id = parsed?.id ?? strValue
-                if (!CompiledFunction.IdRegex.test(id)) return reject()
-                value = ctx.client.emojis.cache.get(id) 
-                if (!value) return reject()
-                break
-            }
-
-            case ArgType.String: {
-                break
-            }
-
-            case ArgType.Json: {
-                try {
-                    const json = JSON.parse(strValue)
-                    value = json
-                } catch (error: unknown) {
-                    return reject()
-                }
-
-                break
-            }
-
-            case ArgType.User: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                
-                const user = await ctx.client.users.fetch(strValue).catch(noop)
-                
-                if (!user) return reject()
-                
-                value = user
-                break
-            }
-
-            case ArgType.Channel: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                
-                const ch = ctx.client.channels.cache.get(strValue)
-                
-                if (!ch) return reject()
-                
-                value = ch
-                break
-            }
-
-            case ArgType.Message: {
-                if (!CompiledFunction.IdRegex.test(strValue)) return reject()
-                
-                const ch = (ref[arg.pointer!] ?? ctx.channel) as BaseChannel | null
-                
-                if (!ch || !ch.isTextBased()) return reject()
-                
-                const msg = await ch.messages.fetch(strValue).catch(noop)
-                
-                if (!msg) return reject()
-                
-                value = msg
-                break
-            }
-
-            case ArgType.Boolean: {
-                const bool = BoolValues[strValue as keyof typeof BoolValues]
-                
-                if (bool === undefined) return reject()
-                
-                value = bool
-                
-                break
-            }
-            
-            case ArgType.Enum: {
-                const val = arg.enum![strValue]
-                
-                if (val === undefined) return reject()
-                
-                value = val
-                break
-            }
-
-            default: {
-                throw new Error(`Unhandled arg type: ${ArgType[arg.type]}`)
-            }
-        }
+        if (value === undefined) 
+            return this.argTypeRejection(arg, strValue)
 
         if (value === null && arg.required) {
             return Return.error(this.error(ErrorType.MissingArg, this.data.name, arg.name))
         }
 
-        if (arg.check !== undefined && !arg.check(value)) return reject()
+        if (arg.check !== undefined && !arg.check(value)) 
+            return this.argTypeRejection(arg, strValue)
 
         return Return.success(value ?? null)
     }
@@ -389,5 +332,9 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private isValidReturnType(rt: Return) {
         return rt.success
+    }
+
+    public static toResolveArgString(type: ArgType) {
+        return `resolve${ArgType[type] as keyof typeof ArgType}` as const
     }
 }
