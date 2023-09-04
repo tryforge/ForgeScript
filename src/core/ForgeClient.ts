@@ -7,6 +7,11 @@ import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
 import { ForgeExtension } from "../structures/ForgeExtension"
 
+export interface IRestriction {
+    guildIDs?: string[]
+    userIDs?: string[]
+}
+
 export interface IForgeClientOptions extends ClientOptions {
     commands?: string
     events?: CommandType[]
@@ -14,6 +19,7 @@ export interface IForgeClientOptions extends ClientOptions {
     functions?: string
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
+    restrictions?: IRestriction
 }
 
 export class ForgeClient extends Client<true> {
