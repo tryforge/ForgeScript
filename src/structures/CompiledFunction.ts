@@ -184,17 +184,17 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         )
     }
 
-    private resolveNumber(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveNumber(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const value = Number(str)
         if (isNaN(value as number)) return
         return value
     }
 
-    private resolveString(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveString(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return str
     }
 
-    private resolveTime(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveTime(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         try {
             return !isNaN(Number(str)) ? Number(str) :  TimeParser.parseToMS(str)
         } catch (error: any) {
@@ -202,30 +202,30 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
     }
 
-    private resolveEnum(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveEnum(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return arg.enum![str]
     }
 
-    private resolveBoolean(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveBoolean(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return BoolValues[str as keyof typeof BoolValues]
     }
 
-    private resolveMessage(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveMessage(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return 
                 
         const ch = (ref[arg.pointer!] ?? ctx.channel) as BaseChannel | null
         return (ch as TextBasedChannel || undefined)?.messages?.fetch(str).catch(noop)
     }
 
-    private resolveChannel(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {        
+    private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {        
         return ctx.client.channels.cache.get(str)
     }
 
-    private resolveGuild(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveGuild(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return ctx.client.guilds.cache.get(str)
     }
 
-    private resolveJson(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveJson(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         try {
             return JSON.parse(str)
         } catch (error: unknown) {
@@ -233,32 +233,32 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
     }
 
-    private resolveUser(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveUser(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return 
         return ctx.client.users.fetch(str).catch(noop)
     }
 
-    private resolveGuildEmoji(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveGuildEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const parsed = parseEmoji(str)
         const id = parsed?.id ?? str
         return ctx.client.emojis.cache.get(id) 
     }
 
-    private resolveForumTag(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveForumTag(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return (ref[arg.pointer!] as ForumChannel).availableTags.find(x => x.id === str || x.name === str)
     }
 
-    private resolveGuildSticker(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveGuildSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
         return (ref[arg.pointer!] as Guild).stickers.fetch(str).catch(noop)
     }
 
-    private resolveMember(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveMember(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
         return  (ref[arg.pointer!] as Guild).members.fetch(str).catch(noop)
     }
 
-    private resolveReaction(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveReaction(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const reactions = (ref[arg.pointer!] as Message).reactions
         const parsed = parseEmoji(str)
         if (!parsed) return
@@ -268,17 +268,17 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return reactions.cache.get(identifier)
     }
 
-    private resolveInvite(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveInvite(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return 
         return ctx.client.fetchInvite(str).catch(noop)
     }
 
-    private resolveWebhook(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveWebhook(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return 
         return ctx.client.fetchWebhook(str).catch(noop)
     }
 
-    private resolveRole(...[ ctx, arg, str, ref ]: Parameters<Exclude<IExtendedCompiledFunctionField["resolveArg"], undefined>>) {
+    private resolveRole(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return (ref[arg.pointer!] as Guild).roles.cache.get(str)
     }
 
