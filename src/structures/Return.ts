@@ -5,14 +5,16 @@ export enum ReturnType {
     Error,
     Stop,
     Success,
-    Return
+    Return,
+    Break,
+    Continue
 }
 
 export type ReturnValue<T extends ReturnType> =
     T extends ReturnType.Error ? ForgeError :
     T extends ReturnType.Return ? string :
     T extends ReturnType.Success ? unknown : 
-    T extends ReturnType.Stop ? null : 
+    T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue ? null : 
     never
 
 export class Return<T extends ReturnType = ReturnType> {
@@ -28,6 +30,14 @@ export class Return<T extends ReturnType = ReturnType> {
 
     public static stop() {
         return new this(ReturnType.Stop, null)
+    }
+
+    public static break() {
+        return new this(ReturnType.Break, null)
+    }
+
+    public static continue() {
+        return new this(ReturnType.Continue, null)
     }
 
     public static successJSON(value: Return<ReturnType.Success>) {
@@ -62,5 +72,13 @@ export class Return<T extends ReturnType = ReturnType> {
 
     public get success() {
         return this.type === ReturnType.Success
+    }
+
+    public get continue() {
+        return this.type === ReturnType.Continue
+    }
+
+    public get break() {
+        return this.type === ReturnType.Break
     }
 }
