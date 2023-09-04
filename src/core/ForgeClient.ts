@@ -7,6 +7,7 @@ import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
 import { ForgeExtension } from "../structures/ForgeExtension"
 import { InviteSystem } from "../structures/InviteSystem"
+import { CooldownManager } from "../managers/CooldownManager"
 
 export interface IRestriction {
     guildIDs?: string[]
@@ -28,6 +29,7 @@ export class ForgeClient extends Client<true> {
     declare public options: (Omit<ClientOptions, "intents"> & { intents: IntentsBitField; }) & IForgeClientOptions
     public commands = new CommandManager(this)
     public events = new EventManager(this)
+    public cooldowns = new CooldownManager(this)
     public functions = new ForgeFunctionManager(this);
     // eslint-disable-next-line no-undef
     [x: PropertyKey]: unknown
