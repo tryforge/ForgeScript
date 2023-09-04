@@ -1,4 +1,4 @@
-dist/__tests__/
+*/__tests__/
 \.env
 docs
 act.exe
