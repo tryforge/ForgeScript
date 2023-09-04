@@ -17,6 +17,11 @@ const client = new ForgeClient({
     prefixes: [
         "!"
     ],
+    restrictions: {
+        userIDs: [
+            "1096285761365610576"
+        ]
+    },
     optionalGuildID: true,
     extensions: [
     ]

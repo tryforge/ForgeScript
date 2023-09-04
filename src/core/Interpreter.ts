@@ -41,7 +41,15 @@ export class Interpreter {
         const ctx = new Context(runtime)
         
         if (runtime.command.data.guildOnly && !ctx.guild) return null
-        
+        else if (runtime.client.options.restrictions !== undefined) {
+            const { guildIDs, userIDs } = runtime.client.options.restrictions
+            const guildID = ctx.guild?.id
+            const authorID = ctx.user?.id
+
+            if (userIDs?.length && (!authorID || !userIDs.includes(authorID))) return null
+            else if (guildIDs?.length && (!guildID || !guildIDs.includes(guildID))) return null
+        }
+
         const args = new Array<unknown>(runtime.data.functions.length)
         
         for (let i = 0, len = runtime.data.functions.length;i < len;i++) {
