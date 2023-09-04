@@ -6,6 +6,7 @@ import { Compiler } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
 import { ForgeExtension } from "../structures/ForgeExtension"
+import { InviteSystem } from "../structures/InviteSystem"
 
 export interface IRestriction {
     guildIDs?: string[]
@@ -17,6 +18,7 @@ export interface IForgeClientOptions extends ClientOptions {
     events?: CommandType[]
     prefixes: string[]
     functions?: string
+    useInviteSystem?: boolean
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
     restrictions?: IRestriction
@@ -52,6 +54,9 @@ export class ForgeClient extends Client<true> {
     }
 
     #init() {
+        if (this.options.useInviteSystem) 
+            InviteSystem["init"](this)
+
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length;i < len;i++) {
                 const ext = this.options.extensions[i]

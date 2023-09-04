@@ -1,12 +1,13 @@
 import { Interpreter } from "../../core"
 import { EventHandler } from "../../structures/EventHandler"
+import { InviteSystem } from "../../structures/InviteSystem"
 
 export default new EventHandler(
     {
         name: "ready",
         version: "1.0.1",
         description: "This event is fired when the bot becomes ready",
-        listener: function() {
+        listener: async function() {
             const commands = this.commands.get("ready")
             if (commands.length) {
                 for (const command of commands) {
@@ -19,6 +20,10 @@ export default new EventHandler(
                 }
             } else {
                 console.log(`Ready on client ${this.user.displayName}`)
+            }
+
+            if (this.options.useInviteSystem) {
+                await InviteSystem.cacheAll(this)
             }
         }
     }

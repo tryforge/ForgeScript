@@ -46,8 +46,8 @@ export class Interpreter {
             const guildID = ctx.guild?.id
             const authorID = ctx.user?.id
 
-            if (userIDs?.length && (!authorID || !userIDs.includes(authorID))) return null
-            else if (guildIDs?.length && (!guildID || !guildIDs.includes(guildID))) return null
+            if (userIDs?.length && (authorID && !userIDs.includes(authorID))) return null
+            else if (guildIDs?.length && (guildID && !guildIDs.includes(guildID))) return null
         }
 
         const args = new Array<unknown>(runtime.data.functions.length)

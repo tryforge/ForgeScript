@@ -12,15 +12,14 @@ const client = new ForgeClient({
         "MessageContent",
         "GuildMessages",
         "GuildMembers",
-        "DirectMessages"
+        "DirectMessages",
+        "GuildInvites"
     ],
+    useInviteSystem: true,
     prefixes: [
         "!"
     ],
     restrictions: {
-        userIDs: [
-            "1096285761365610576"
-        ]
     },
     optionalGuildID: true,
     extensions: [
@@ -36,6 +35,11 @@ client.functions.add(
     [ "id" ],
     "$return[$username[$env[id]]]"
 )
+
+client.commands.add({
+    type: Events.GuildMemberAdd,
+    code: "$sendMessage[1146874219515346984;<@$authorID> has joined using invite code $inviterCode by <@$inviterID>]"
+})
 
 client.commands.add({
     type: Events.ClientReady,
