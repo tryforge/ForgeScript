@@ -111,12 +111,12 @@ export class Context {
         return this.#user ??= 
             "user" in this.obj ? 
                 this.obj.user : 
-                "member" in this.obj ? 
-                    this.obj.member?.user ?? null : 
-                    "author" in this.obj && this.obj.author instanceof User ?
-                        this.obj.author :
-                        this.obj instanceof User ? 
-                            this.obj :
+                "author" in this.obj ?
+                    this.obj.author :
+                    this.obj instanceof User ?
+                        this.obj :
+                        "member" in this.obj ? 
+                            this.obj.member?.user ?? null : 
                             null
     }
 
