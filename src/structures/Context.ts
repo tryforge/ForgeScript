@@ -125,7 +125,7 @@ export class Context {
         if (!this.obj) return null
         return this.#guild ??= 
             "guild" in this.obj ? 
-                this.obj.guild : 
+                this.obj.guild as Guild : 
                 this.obj instanceof Guild ? 
                     this.obj :
                     null
