@@ -52,6 +52,8 @@ export class Interpreter {
 
         const args = new Array<unknown>(runtime.data.functions.length)
         
+        ctx.executionTimestamp = Date.now()
+        
         for (let i = 0, len = runtime.data.functions.length;i < len;i++) {
             const fn = runtime.data.functions[i]
             const rt = await fn.execute(ctx)
