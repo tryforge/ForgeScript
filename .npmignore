@@ -1,5 +1,5 @@
-src/__tests__
-dist
+dist/__tests__/
+src
 \.env
 docs
 act.exe

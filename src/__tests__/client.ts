@@ -11,7 +11,8 @@ const client = new ForgeClient({
         "Guilds",
         "MessageContent",
         "GuildMessages",
-        "GuildMembers"
+        "GuildMembers",
+        "DirectMessages"
     ],
     prefixes: [
         "!"

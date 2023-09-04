@@ -1,17 +1,26 @@
 {
   "name": "forgescript",
   "version": "1.0.2",
-  "description": "",
+  "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "preinstall": "tsc",
+    "prepublishOnly": "tsc",
     "docgen": "tsc && typedoc ./src --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix",
     "test": "tsc && node dist/__tests__/runner"
   },
   "keywords": [
     "bdfd",
+    "aoi.js",
+    "aoi",
+    "dbd",
+    "dbd.ts",
+    "dbd.js",
+    "easy",
+    "fast",
+    "efficient",
     "bdscript"
   ],
   "author": "ruben40000",
