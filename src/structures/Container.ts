@@ -9,6 +9,7 @@ export class Container {
     public embeds = new Array<EmbedBuilder>()
     public components = new Array<ActionRowBuilder<AnyComponentBuilder>>()
     public reply = false
+    public edit = false
     public ephemeral = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
@@ -24,7 +25,7 @@ export class Container {
         } else if (obj instanceof WebhookClient) {
             res = obj.send(options)
         } else if (obj instanceof Message) {
-            res = this.reply ? obj.reply(options) : obj.channel.send(options)
+            res = this.reply ? obj.reply(options) : this.edit ? obj.edit(options) : obj.channel.send(options)
         } else if (obj instanceof BaseInteraction && obj.isRepliable()) {
             if (this.modal && !obj.replied && "showModal" in obj) {
                 res = obj.showModal(this.modal)
@@ -54,6 +55,7 @@ export class Container {
         this.reply = false
         this.ephemeral = false
         this.fetchReply = false
+        this.edit = false
         this.components.length = 0
         this.embeds.length = 0
         this.files.length = 0

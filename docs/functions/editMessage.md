@@ -52,6 +52,7 @@ export default new NativeFunction({
     brackets: true,
     async execute(ctx, [ channel, opt, content ]) {
         ctx.container.content = content ?? undefined
+        ctx.container.edit = true
         const msg = await ctx.container.send<Message<true>>(opt)
         return Return.success(!!msg)
     },
