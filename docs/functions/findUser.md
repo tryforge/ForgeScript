@@ -16,6 +16,7 @@ return author | Boolean | Returns the current author id if none found | No | No
 </summary>
     
 ```ts
+import noop from "../functions/noop"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
 export const UserMentionCharRegex = /[<>@]/g
@@ -41,11 +42,11 @@ export default new NativeFunction({
         }
     ],
     unwrap: true,
-    execute(ctx, [ q, rt ]) {
+    async execute(ctx, [ q, rt ]) {
         const id = q.replace(UserMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
-            const u = ctx.client.users.cache.get(id)
+            const u = await ctx.client.users.fetch(id).catch(noop)
             if (u) return Return.success(u.id)
         }
 
