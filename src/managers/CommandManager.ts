@@ -23,7 +23,6 @@ export class CommandManager {
                 // eslint-disable-next-line no-undef
                 const path = `${process.cwd()}/${file}`
                 const t = delete require.cache[require.resolve(path)]
-                console.log(path, t)
             }
 
             // Reload these commands
@@ -56,6 +55,8 @@ export class CommandManager {
     public add(...commands: (ICommand | Command)[]) {
         for (let i = 0, len = commands.length;i < len;i++) {
             const req = commands[i] 
+            if (!req.type) continue
+            
             const cmd = req instanceof Command ? req : new Command(req)
             
             const col = this.commands.ensure(cmd.type, () => new Array())
