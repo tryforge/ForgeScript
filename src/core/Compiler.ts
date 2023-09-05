@@ -64,7 +64,6 @@ export const Conditions: Record<OperatorType, WrappedConditionCode> = {
 
 export interface ICompiledFunctionConditionField {
     op: OperatorType
-    not?: boolean
     lhs: ICompiledFunctionField
     rhs?: ICompiledFunctionField
     resolve: WrappedConditionCode
@@ -233,12 +232,7 @@ export class Compiler {
     private parseField(match: IRawFunctionMatch, arg: IRawField, requireEndBrace = false): ICompiledFunctionField | ICompiledFunctionConditionField {
         let nextMatch = this.matches[0] as IRawFunctionMatch | undefined
 
-        const condition: Partial<ICompiledFunctionConditionField> = {
-            not: arg.condition && this.char() === Compiler.Syntax.Exclamation ? (
-                this.index++,
-                true
-            ) : false
-        }
+        const condition: Partial<ICompiledFunctionConditionField> = {}
 
         let value = ""
         const functions = new Array<ICompiledFunction>()
