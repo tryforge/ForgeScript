@@ -22,10 +22,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true
+        },
+        {
+            name: "return author",
+            description: "Returns the current author id if none found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    async execute(ctx, [ guild, q ]) {
+    async execute(ctx, [ guild, q, rt ]) {
         const id = q.replace(MemberMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -40,7 +46,7 @@ export default new NativeFunction({
         }).catch(noop)
 
         return Return.success(
-            query ? query.at(0)?.id : undefined
+            query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined
         )
     },
 })

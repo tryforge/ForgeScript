@@ -29,6 +29,7 @@ export default new NativeFunction({
             description: "The date type",
             enum: DateType,
             rest: false,
+            required: true,
             type: ArgType.Enum
         }
     ],

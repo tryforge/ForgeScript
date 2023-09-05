@@ -7,7 +7,7 @@ $parseDate[ms;type]
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 ms | Number | The ms to convert to date | Yes | No
-type | Enum (`LocaleDate`, `LocaleTime`, `Locale`, `Date`, `ISO`, `UTC`, `Time`) | The date type | No | No
+type | Enum (`LocaleDate`, `LocaleTime`, `Locale`, `Date`, `ISO`, `UTC`, `Time`) | The date type | Yes | No
 <details>
 <summary>
     
@@ -47,6 +47,7 @@ export default new NativeFunction({
             description: "The date type",
             enum: DateType,
             rest: false,
+            required: true,
             type: ArgType.Enum
         }
     ],
