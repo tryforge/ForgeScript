@@ -2,12 +2,13 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds a member of a guild
 ## Usage
 ```
-$findMember[guild ID;query]
+$findMember[guild ID;query;return author]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to find the member on | Yes | No
 query | String | The id, mention or name to find | Yes | No
+return author | Boolean | Returns the current author id if none found | No | No
 <details>
 <summary>
     
@@ -40,10 +41,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true
+        },
+        {
+            name: "return author",
+            description: "Returns the current author id if none found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    async execute(ctx, [ guild, q ]) {
+    async execute(ctx, [ guild, q, rt ]) {
         const id = q.replace(MemberMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -58,7 +65,7 @@ export default new NativeFunction({
         }).catch(noop)
 
         return Return.success(
-            query ? query.at(0)?.id : undefined
+            query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined
         )
     },
 })

@@ -21,10 +21,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true
+        },
+        {
+            name: "return channel",
+            description: "Returns the current channel id if none found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    execute(ctx, [ guild, q ]) {
+    execute(ctx, [ guild, q, rt ]) {
         const id = q.replace(ChannelMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -36,7 +42,7 @@ export default new NativeFunction({
         return Return.success(
             guild.channels.cache.find(
                 x => x.id === id || x.name.toLowerCase() === q
-            )?.id
+            )?.id ?? (rt ? ctx.channel?.id : undefined)
         )
     },
 })

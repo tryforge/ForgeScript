@@ -2,11 +2,12 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds a user
 ## Usage
 ```
-$findUser[query]
+$findUser[query;return author]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 query | String | The id, mention or channel user to find | Yes | No
+return author | Boolean | Returns the current author id if none found | No | No
 <details>
 <summary>
     
@@ -31,10 +32,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true
+        },
+        {
+            name: "return author",
+            description: "Returns the current author id if none found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    execute(ctx, [ q ]) {
+    execute(ctx, [ q, rt ]) {
         const id = q.replace(UserMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -47,7 +54,7 @@ export default new NativeFunction({
         return Return.success(
             ctx.client.users.cache.find(
                 x => x.id === id || x.username.toLowerCase() === q
-            )?.id
+            )?.id ?? (rt ? ctx.user?.id : undefined)
         )
     },
 })

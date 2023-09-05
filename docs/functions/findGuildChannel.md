@@ -2,12 +2,13 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds a channel of a guild
 ## Usage
 ```
-$findGuildChannel[guild ID;query]
+$findGuildChannel[guild ID;query;return channel]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to find the channel on | Yes | No
 query | String | The id, mention or channel name to find | Yes | No
+return channel | Boolean | Returns the current channel id if none found | No | No
 <details>
 <summary>
     
@@ -39,10 +40,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true
+        },
+        {
+            name: "return channel",
+            description: "Returns the current channel id if none found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    execute(ctx, [ guild, q ]) {
+    execute(ctx, [ guild, q, rt ]) {
         const id = q.replace(ChannelMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -54,7 +61,7 @@ export default new NativeFunction({
         return Return.success(
             guild.channels.cache.find(
                 x => x.id === id || x.name.toLowerCase() === q
-            )?.id
+            )?.id ?? (rt ? ctx.channel?.id : undefined)
         )
     },
 })
