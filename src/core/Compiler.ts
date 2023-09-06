@@ -42,18 +42,9 @@ export enum OperatorType {
 }
 
 export const Operators = new Set<OperatorType>(Object.values(OperatorType) as OperatorType[])
-export const BoolValues = {
-    false: false,
-    true: true,
-    0: false,
-    1: true,
-    "": false,
-    yes: true,
-    no: false
-} as const
 
 export const Conditions: Record<OperatorType, WrappedConditionCode> = {
-    unknown: (lhs, rhs) => BoolValues[lhs as keyof typeof BoolValues] ?? false,
+    unknown: (lhs, rhs) => lhs === "true",
     "!=": (lhs, rhs) => lhs !== rhs,
     "==": (lhs, rhs) => lhs === rhs,
     "<": (lhs, rhs) => Number(lhs) < Number(rhs),

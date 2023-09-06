@@ -1,4 +1,3 @@
-import { BoolValues } from "../core"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

@@ -22,7 +22,6 @@ default value | Number | The default value, defaults to 0 | No | No
 </summary>
     
 ```ts
-import { BoolValues } from "../core"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

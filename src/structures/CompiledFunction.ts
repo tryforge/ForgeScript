@@ -1,5 +1,5 @@
 import { BaseChannel, ForumChannel, Guild, Message, TextBasedChannel, parseEmoji } from "discord.js"
-import { BoolValues, ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
+import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
 import { Context } from "./Context"
@@ -146,20 +146,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!this.isValidReturnType(lhs)) return lhs
 
         if (field.rhs === undefined) {
-            const res = BoolValues[
-                field.resolve(lhs.value, null) as unknown as keyof typeof BoolValues
-            ] ?? false
-            return Return.success(res)
+            return Return.success(field.resolve(lhs.value, null))
         }
         
         const rhs = await this.resolveCode(ctx, field.rhs)
         if (!this.isValidReturnType(rhs)) return rhs
 
-        const res = BoolValues[
-            field.resolve(lhs.value, rhs.value) as unknown as keyof typeof BoolValues
-        ] ?? false
-
-        return Return.success(res)
+        return Return.success(field.resolve(lhs.value, rhs.value))
     }
 
     private async resolveCode(ctx: Context, { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}): Promise<Return> {
@@ -212,7 +205,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveBoolean(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return BoolValues[str as keyof typeof BoolValues]
+        return str === "true" ? 
+            true : 
+            str === "false" ? 
+                false : 
+                undefined
     }
 
     private resolveMessage(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
