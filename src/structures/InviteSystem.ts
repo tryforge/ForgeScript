@@ -3,6 +3,7 @@ import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 import { ErrorType, ForgeError } from "./ForgeError"
 import { setTimeout } from "timers/promises"
+import { NativeEventName } from "../managers"
 
 export interface IGuildInviter {
     inviterId: string
@@ -46,7 +47,7 @@ export class InviteSystem {
             `The next intents must be enabled: ${this.RequiredIntents.join(", ")}`
         )
 
-        client.events.load(this.RequiredEvents)
+        client.events.load(NativeEventName, this.RequiredEvents)
         console.warn("The Invite System is still beta, correct functionality is not guaranteed")
     }
 
