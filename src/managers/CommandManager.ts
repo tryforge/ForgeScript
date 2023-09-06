@@ -4,7 +4,7 @@ import { Command, CommandType, ICommand } from "../structures/Command"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class CommandManager {
-    private readonly commands = new Collection<CommandType, Command[]>()
+    private readonly commands = new Collection<string, Command[]>()
     private readonly paths = new Array<string>()
 
     public constructor(private readonly client: ForgeClient) {}
@@ -44,6 +44,10 @@ export class CommandManager {
             if (Array.isArray(req)) this.addPath(...req)
             else this.addPath(req.default ?? req)
         }
+    }
+
+    public getCustom<T>(type: keyof T) {
+        return this.commands.get(type as string)
     }
 
     public get(type: CommandType, fn?: (cmd: Command) => boolean): Command[] {

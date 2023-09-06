@@ -41,7 +41,8 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ image, index ]) {
-        ctx.container.embed((index ?? 1) - 1).setImage(image)
+        if (image)
+            ctx.container.embed((index ?? 1) - 1).setImage(image)
         return Return.success()
     },
 })

@@ -2,7 +2,6 @@ import { ClientEvents, Collection, Events, GatewayIntentBits, GatewayIntentsStri
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 import { ErrorType, ForgeError } from "./ForgeError"
-import { EventHandler } from "./EventHandler"
 import { setTimeout } from "timers/promises"
 
 export interface IGuildInviter {

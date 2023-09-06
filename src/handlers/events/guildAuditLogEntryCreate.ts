@@ -1,18 +1,18 @@
 import { Interpreter } from "../../core"
-import { EventHandler } from "../../structures"
+import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 import { InviteSystem } from "../../structures/InviteSystem"
 
-export default new EventHandler(
+export default new DiscordEventHandler(
     {
         name: "guildAuditLogEntryCreate",
         version: "1.0.3",
         description: "This event is fired when a guild audit log entry is created",
-        listener: async function(g) {            
+        listener: async function(g, guild) {            
             const commands = this.commands.get("guildAuditLogEntryCreate")
     
             for (const command of commands) {
                 Interpreter.run({
-                    obj: null,
+                    obj: guild,
                     command,
                     client: this,
                     states: {
