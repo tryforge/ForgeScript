@@ -45,11 +45,15 @@ export default new NativeFunction({
     ],
     execute(ctx, [ id, label, style, emoji, disabled ]) {
         const btn = new ButtonBuilder()
-            .setCustomId(id)
             .setDisabled(disabled ?? false)
             .setStyle(style)
             .setLabel(label)
 
+        if (style === ButtonStyle.Link) 
+            btn.setURL(id)
+        else 
+            btn.setCustomId(id)
+        
         if (emoji) btn.setEmoji(emoji)
 
         ctx.container.components.at(-1)?.addComponents(btn)
