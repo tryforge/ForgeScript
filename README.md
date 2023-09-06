@@ -1,5 +1,5 @@
 # ForgeScript
-Description of ForgeScript here FR
+ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
 
 ## Index
 <strong>
@@ -13,7 +13,7 @@ Description of ForgeScript here FR
 3. [Extensions](#extensions)
 4. [Limitations](#limitations)
 5. [Update Frequency](#update-frequency)
-6. [Function Documentation](https://forge.boats/docs)
+6. [Function Documentation](https://docs.botforge.org/)
 7. [Library Documentation](https://tryforge.github.io/ForgeScript/index.html)
 
 </strong>

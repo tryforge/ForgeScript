@@ -13,7 +13,8 @@ const client = new ForgeClient({
         "GuildMessages",
         "GuildMembers",
         "DirectMessages",
-        "GuildInvites"
+        "GuildInvites",
+        "GuildModeration"
     ],
     useInviteSystem: true,
     prefixes: [
@@ -35,6 +36,20 @@ client.functions.add(
     [ "id" ],
     "$return[$username[$env[id]]]"
 )
+
+client.commands.add({
+    type: Events.GuildAuditLogEntryCreate,
+    code: `
+    $sendMessage[1148787451490476092;
+        Executor Id: $auditLog[executorID]
+        Target Id: $auditLog[targetID]
+        Action Type: $auditLog[actionType]
+        Target Type: $auditLog[targetType]
+        Changes: $auditLog[changes]
+        Extras: $auditLog[extra]
+    ]
+    `
+})
 
 client.commands.add({
     type: Events.GuildMemberAdd,

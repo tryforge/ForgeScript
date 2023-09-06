@@ -1,8 +1,8 @@
 import { MessageReaction, User } from "discord.js"
 import { Interpreter } from "../../core"
-import { EventHandler } from "../../structures"
+import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 
-export default new EventHandler(
+export default new DiscordEventHandler(
     {
         name: "messageReactionAdd",
         version: "1.0.1",

@@ -1,7 +1,7 @@
 import { Interpreter } from "../../core"
-import { EventHandler } from "../../structures/EventHandler"
+import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 
-export default new EventHandler(
+export default new DiscordEventHandler(
     {
         name: "shardReady",
         version: "1.0.1",

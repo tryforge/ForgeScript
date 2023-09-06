@@ -1,8 +1,8 @@
 import { Interpreter } from "../../core"
-import { EventHandler } from "../../structures"
+import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 import { InviteSystem } from "../../structures/InviteSystem"
 
-export default new EventHandler(
+export default new DiscordEventHandler(
     {
         name: "guildMemberAdd",
         version: "1.0.1",

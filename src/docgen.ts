@@ -30,11 +30,11 @@ writeFileSync(`${path}.json`, JSON.stringify(
 ))
 
 for (const event of Object.values(EventManager["Loaded"])) {
-    const nativePath = `./src/handlers/events/${event.name}.ts`
+    const nativePath = `./src/handlers/events/${event!.name}.ts`
     const txt = readFileSync(nativePath, "utf-8")
     
-    if (!event.data.version) {
-        event.data.version = v
+    if (!event!.data.version) {
+        event!.data.version = v
         writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n        version: "${v}",`))
     }
 }
