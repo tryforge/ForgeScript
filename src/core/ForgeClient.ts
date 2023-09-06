@@ -1,7 +1,7 @@
 import { Client, ClientOptions, IntentsBitField, Partials } from "discord.js"
 import { CommandManager } from "../managers/CommandManager"
 import { CommandType } from "../structures/Command"
-import { EventManager } from "../managers/EventManager"
+import { EventManager, NativeEventName } from "../managers/EventManager"
 import { Compiler } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
@@ -51,10 +51,6 @@ export class ForgeClient extends Client<true> {
         this.#init()
     }
 
-    public get autoAddEvents() {
-        return !this.options.events?.length
-    }
-
     #init() {
         if (this.options.useInviteSystem) 
             InviteSystem["init"](this)
@@ -78,7 +74,7 @@ export class ForgeClient extends Client<true> {
         }
 
         if (this.options.events?.length) {
-            this.events.load(this.options.events)
+            this.events.load(NativeEventName, this.options.events)
         }
     }
 

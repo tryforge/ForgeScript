@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs"
-import { EventManager, FunctionManager } from "./managers"
+import { EventManager, FunctionManager, NativeEventName } from "./managers"
 import generateFunctionDoc from "./functions/generateFunctionDoc"
 import { execSync } from "child_process"
 import { argv } from "process"
@@ -29,7 +29,7 @@ writeFileSync(`${path}.json`, JSON.stringify(
     FunctionManager.toJSON()
 ))
 
-for (const event of Object.values(EventManager["Loaded"])) {
+for (const event of Object.values(EventManager["Loaded"]![NativeEventName]!)) {
     const nativePath = `./src/handlers/events/${event!.name}.ts`
     const txt = readFileSync(nativePath, "utf-8")
     

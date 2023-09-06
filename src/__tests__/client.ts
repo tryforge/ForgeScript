@@ -16,6 +16,13 @@ const client = new ForgeClient({
         "GuildInvites",
         "GuildModeration"
     ],
+    events: [
+        "guildAuditLogEntryCreate",
+        "ready",
+        "messageCreate",
+        "guildMemberAdd",
+        "interactionCreate"
+    ],
     useInviteSystem: true,
     prefixes: [
         "!"

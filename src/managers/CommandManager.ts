@@ -65,9 +65,6 @@ export class CommandManager {
             
             const col = this.commands.ensure(cmd.type, () => new Array())
             col.push(cmd)
-
-            if (this.client.autoAddEvents && !this.client.events.has(cmd.type)) this.client.events.load(cmd.type)
-            else if (!this.client.autoAddEvents && !this.client.events.has(cmd.type)) console.warn(`Command ${cmd.name} is executed on ${cmd.type} event, but is not being listened to, add it under Client#events option.`) 
         }
     }
 
@@ -79,9 +76,6 @@ export class CommandManager {
             const col = this.commands.ensure(cmd.type, () => new Array())
             cmd.unloadable = true
             col.push(cmd)
-
-            if (this.client.autoAddEvents && !this.client.events.has(cmd.type)) this.client.events.load(cmd.type)
-            else if (!this.client.autoAddEvents && !this.client.events.has(cmd.type)) console.warn(`Command ${cmd.name} is executed on ${cmd.type} event, but is not being listened to, add it under Client#events option.`) 
         }
     }
 }
