@@ -16,9 +16,11 @@ export class EventManager {
 
     load(name: string, ...events: (string | string[])[]): void {
         for (const eventType of events.flat()) {
-            const event = EventManager.Loaded[name]?.[eventType]
+            EventManager.Loaded[name] ??= {}
+            const event = EventManager.Loaded[name]![eventType]
             if (!event) throw new Error(`Event ${name} => ${eventType} is not supported.`)
             if (this.events.get(name)?.has(eventType)) continue
+            EventManager.Loaded[name]![eventType] = event
             this.events.ensure(name, () => new Collection()).set(eventType, event)
             event.register(this.client)
         }
@@ -36,8 +38,8 @@ export class EventManager {
         }
     }
 
-    public static toJSON() {
-        return Object.values(this.Loaded).map(x => ({...x!.data}))
+    public static toJSON(name: string) {
+        return Object.values(this.Loaded[name]!).map(x => ({...x!.data}))
     }
 }
 

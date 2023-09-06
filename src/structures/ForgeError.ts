@@ -26,7 +26,7 @@ export class ForgeError<T extends ErrorType = ErrorType> extends Error {
     }
 
     public static make(fn: CompiledFunction | null, type: ErrorType, ...args: unknown[]) {
-        const res = type.replace(this.Regex, (match) => `**\`${args[Number(match.slice(1)) - 1]}\`**`)
-        return  `:x: ${res}${fn ? ` at \`${fn.display}\`` : ""}`
+        const res = type.replace(this.Regex, (match) => `**\`${`${args[Number(match.slice(1)) - 1]}`.replaceAll("\\", "\\\\").replaceAll("`", "\\`")}\`**`)
+        return  `> ${res}${fn ? ` at \`${fn.display}\`` : ""}`
     }
 }

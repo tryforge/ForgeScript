@@ -40,5 +40,5 @@ for (const event of Object.values(EventManager["Loaded"]![NativeEventName]!)) {
 }
 
 writeFileSync("./docs/events.json", JSON.stringify(
-    EventManager.toJSON()
+    EventManager.toJSON(NativeEventName)
 ))
