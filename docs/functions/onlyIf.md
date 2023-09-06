@@ -16,7 +16,7 @@ code | String | The code to execute if error | No | No
 </summary>
     
 ```ts
-import { BoolValues } from "../core"
+
 import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

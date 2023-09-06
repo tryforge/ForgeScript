@@ -21,7 +21,6 @@ other variable | String | The other variable to load the result to | Yes | No
 </summary>
     
 ```ts
-import { BoolValues } from "../core"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

@@ -20,7 +20,7 @@ code | String | The code to execute for every element | Yes | No
 </summary>
     
 ```ts
-import { BoolValues } from "../core"
+
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
