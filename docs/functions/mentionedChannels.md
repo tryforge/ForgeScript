@@ -6,11 +6,12 @@ $mentionedChannels
 ```
 ---
 ```
-$mentionedChannels[index]
+$mentionedChannels[index;return channel]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 index | Number | The index of the channel | Yes | No
+return channel | Boolean | Whether to return current channel if not found | No | No
 <details>
 <summary>
     
@@ -34,13 +35,21 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Number,
             required: true
+        },
+        {
+            name: "return channel",
+            description: "Whether to return current channel if not found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
-    execute(ctx, [ i ]) {
+    execute(ctx, [ i, rt ]) {
+        const id: string | undefined = this.hasFields ?
+            ctx.message?.mentions.channels.at(i)?.id :
+            ctx.message?.mentions.channels.map(x => x.id).join(", ")
+
         return Return.success(
-            this.hasFields ?
-                ctx.message?.mentions.channels.at(i)?.id :
-                ctx.message?.mentions.channels.map(x => x.id).join(", ")
+            id ?? (rt ? ctx.channel?.id : undefined)
         )
     },
 })

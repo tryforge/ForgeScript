@@ -194,12 +194,15 @@ export class Compiler {
                 for (;;) {
                     fields.push(this.parseField(match, arg))
                     if (this.char() === Compiler.Syntax.Separator) this.index++
-                    
-                    if (this.char() === Compiler.Syntax.Close) break
+                    else if (this.char() === Compiler.Syntax.Close) break
                 }
             } else {
                 fields.push(this.parseField(match, arg, isLast))
-                if (this.char() === Compiler.Syntax.Separator) this.index++
+                if (this.char() === Compiler.Syntax.Separator) {
+                    this.index++
+                    if (!isLast)
+                        continue
+                } 
             }
 
             const old = this.char()

@@ -1,8 +1,26 @@
+# $findGuildEmoji
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds a emoji of a guild
+## Usage
+```
+$findGuildEmoji[guild ID;query]
+```
+| Name | Type | Description | Required | Spread
+| :---: | :---: | :---: | :---: | :---: |
+guild ID | Guild | The guild to find the emoji on | Yes | No
+query | String | The id, mention or emoji name to find | Yes | No
+<details>
+<summary>
+    
+## <img align="top" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="image" width="25" height="auto">  [Source Code](https://github.com/tryforge/ForgeScript-V2/blob/main/src/native/findGuildEmoji.ts)
+    
+</summary>
+    
+```ts
 import { parseEmoji } from "discord.js"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$findGuilEmoji",
+    name: "$findGuildEmoji",
     version: "1.0.0",
     description: "Finds a emoji of a guild",
     brackets: true,
@@ -40,3 +58,6 @@ export default new NativeFunction({
         )
     },
 })
+```
+    
+</details>

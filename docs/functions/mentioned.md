@@ -6,11 +6,12 @@ $mentioned
 ```
 ---
 ```
-$mentioned[index]
+$mentioned[index;return author]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 index | Number | The index of the user | Yes | No
+return author | Boolean | Return author ID if not found | No | No
 <details>
 <summary>
     
@@ -34,13 +35,20 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Number,
             required: true
+        },
+        {
+            name: "return author",
+            description: "Return author ID if not found",
+            rest: false,
+            type: ArgType.Boolean
         }
     ],
-    execute(ctx, [ i ]) {
+    execute(ctx, [ i, rt ]) {
+        const id: string | undefined = this.hasFields ?
+            ctx.message?.mentions.users.at(i)?.id :
+            ctx.message?.mentions.users.map(x => x.id).join(", ")
         return Return.success(
-            this.hasFields ?
-                ctx.message?.mentions.users.at(i)?.id :
-                ctx.message?.mentions.users.map(x => x.id).join(", ")
+            id ?? (rt ? ctx.user?.id : undefined)
         )
     },
 })
