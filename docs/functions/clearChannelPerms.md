@@ -1,14 +1,13 @@
 # $clearChannelPerms
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Clears permission overwrites from a channel, returns bool
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Deletes all permission overwrites for given id, returns bool
 ## Usage
 ```
-$clearChannelPerms[channel ID;id;...perms]
+$clearChannelPerms[channel ID;id]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-channel ID | Channel | The channel to clear perms from | Yes | No
-id | String | The role or member id to clear these perms for | Yes | No
-perms | String () | The perms to clear from the id | Yes | Yes
+channel ID | Channel | The channel to delete perms from | Yes | No
+id | String | The role or member id to delete all perms for | Yes | No
 <details>
 <summary>
     
@@ -23,13 +22,13 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$clearChannelPerms",
     version: "1.0.3",
-    description: "Clears permission overwrites from a channel, returns bool",
+    description: "Deletes all permission overwrites for given id, returns bool",
     brackets: true,
     unwrap: true,
     args: [
         {
             name: "channel ID",
-            description: "The channel to clear perms from",
+            description: "The channel to delete perms from",
             rest: false,
             required: true,
             type: ArgType.Channel,
@@ -37,29 +36,16 @@ export default new NativeFunction({
         },
         {
             name: "id",
-            description: "The role or member id to clear these perms for",
+            description: "The role or member id to delete all perms for",
             rest: false,
             required: true,
             type: ArgType.String
         },
-        {
-            name: "perms",
-            description: "The perms to clear from the id",
-            rest: true,
-            type: ArgType.String,
-            required: true,
-            enum: PermissionFlagsBits
-        }
     ],
-    async execute(ctx, [ ch, id, perms ]) {
+    async execute(ctx, [ ch, id ]) {
         const channel = ch as TextChannel
-        
-        const obj: Partial<Record<PermissionsString, null>> = {}
-
-        perms.forEach(x => obj[x as PermissionsString] = null)
-
         return Return.success(
-            !!(await channel.permissionOverwrites.create(id, obj))
+            !!(await channel.permissionOverwrites.delete(id))
         )
     },
 })
