@@ -6,12 +6,12 @@ $memberPerms
 ```
 ---
 ```
-$memberPerms[guildID;role ID;separator]
+$memberPerms[guild ID;user ID;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guildID | Guild | The guild id to return the member from | Yes | No
-role ID | Member | The member id return its perms | Yes | No
+guild ID | Guild | The guild id to return the member from | Yes | No
+user ID | Member | The member id to return its perms | Yes | No
 separator | String | The separator to use for every perm | No | No
 <details>
 <summary>
@@ -32,15 +32,15 @@ export default new NativeFunction({
     args: [
         {
             
-            name: "guildID",
+            name: "guild ID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,
             required: true
         },
         {
-            name: "role ID",
-            description: "The member id return its perms",
+            name: "user ID",
+            description: "The member id to return its perms",
             rest: false,
             type: ArgType.Member,
             pointer: 0,

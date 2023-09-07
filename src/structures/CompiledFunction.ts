@@ -292,11 +292,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             return Return.success(value ?? null)
         }
 
-        field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)]
+        if (field !== undefined) {
+            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)]
         
-        value = field.resolveArg(ctx, arg, strValue, ref)
-        if (value instanceof Promise) 
-            value = await value
+            value = field.resolveArg(ctx, arg, strValue, ref)
+            if (value instanceof Promise) 
+                value = await value
+        }
 
         if (value === undefined) 
             return this.argTypeRejection(arg, strValue)

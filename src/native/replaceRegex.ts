@@ -51,6 +51,6 @@ export default new NativeFunction({
             return Return.success(text.replace(regex, replacement))
         }
         let i = 0
-        return Return.success(text.replace(regex, m => ++i <= amount! ? m : replacement))
+        return Return.success(text.replace(regex, m => ++i <= amount! ? replacement : m))
     }
 })

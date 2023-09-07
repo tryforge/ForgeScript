@@ -2,7 +2,7 @@ import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$banMember",
+    name: "$ban",
     version: "1.0.0",
     description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
@@ -17,7 +17,7 @@ export default new NativeFunction({
         },
         {
             name: "user ID",
-            description: "The ban to kick",
+            description: "The member to ban",
             rest: false,
             type: ArgType.Member,
             pointer: 0,
@@ -25,7 +25,7 @@ export default new NativeFunction({
         },
         {
             name: "reason",
-            description: "The reason to kick for",
+            description: "The reason to ban for",
             rest: false,
             type: ArgType.String
         },

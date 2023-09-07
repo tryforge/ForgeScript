@@ -61,7 +61,7 @@ export default new NativeFunction({
             return Return.success(text.replaceAll(match, replacement))
         }
         let i = 0
-        return Return.success(text.replace(match, m => ++i <= amount! ? m : replacement))
+        return Return.success(text.replaceAll(match, m => ++i <= amount! ? replacement : m))
     }
 })
 ```
