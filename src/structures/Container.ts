@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionReplyOptions, Invite, Message, MessageReaction, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState, WebhookClient } from "discord.js"
+import { ActionRowBuilder, AnyComponentBuilder, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageReaction, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState, WebhookClient } from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 
@@ -11,6 +11,7 @@ export class Container {
     public reply = false
     public edit = false
     public ephemeral = false
+    public update = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
     public fetchReply = false
@@ -19,6 +20,10 @@ export class Container {
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
+
+        if (!this.isValidMessage(options)) {
+            return null
+        }
 
         if (this.channel && this.channel.isTextBased()) {
             res = this.channel.send(options)
@@ -30,7 +35,7 @@ export class Container {
             if (this.modal && !obj.replied && "showModal" in obj) {
                 res = obj.showModal(this.modal)
             } else {
-                res = obj[(obj.deferred || obj.replied ? "editReply" : "reply") as "reply"](options)
+                res = obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](options)
             }
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
             res = obj.send(options)
@@ -44,6 +49,15 @@ export class Container {
         return await res.catch(noop) as T
     }
 
+    public isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions) {
+        return !!options.content?.trim() || 
+            !!options.embeds?.length || 
+            !!options.stickers?.length ||
+            !!options.files?.length ||
+            !!options.components?.length ||
+            !!options.attachments?.length
+    }
+
     public embed(index: number) {
         return this.embeds[index] ??= new EmbedBuilder()
     }
@@ -53,6 +67,7 @@ export class Container {
         delete this.content
         delete this.modal
         this.reply = false
+        this.update = false
         this.ephemeral = false
         this.fetchReply = false
         this.edit = false
@@ -62,7 +77,9 @@ export class Container {
     }
 
     public getOptions<T>(content?: string): T {
-        return (content ?? {
+        return (content ? {
+            content
+        } : {
             fetchReply: this.fetchReply,
             files: this.files,
             ephemeral: this.ephemeral,
