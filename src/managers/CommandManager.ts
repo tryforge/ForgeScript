@@ -2,6 +2,7 @@ import { Collection, Message } from "discord.js"
 import { ForgeClient } from "../core/ForgeClient"
 import { Command, CommandType, ICommand } from "../structures/Command"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
+import { FileReader } from "../core/FileReader"
 
 export class CommandManager {
     private readonly commands = new Collection<string, Command[]>()
@@ -19,7 +20,7 @@ export class CommandManager {
         }
 
         for (const p of this.paths) {
-            for (const file of recursiveReaddirSync(p).filter(x => x.endsWith(".js"))) {
+            for (const file of recursiveReaddirSync(p).filter(x => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
                 const path = `${process.cwd()}/${file}`
                 const t = delete require.cache[require.resolve(path)]
@@ -34,15 +35,15 @@ export class CommandManager {
         if (!this.paths.includes(path)) 
             this.paths.push(path)
 
-        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js") || x.endsWith(".fs"))) {
             // eslint-disable-next-line no-undef
             const path = `${process.cwd()}/${file}`
 
-            const req = require(path)
+            const req = FileReader.read(file, path)
             if (!req) continue
-
+            
             if (Array.isArray(req)) this.addPath(...req)
-            else this.addPath(req.default ?? req)
+            else this.addPath(req)
         }
     }
 
