@@ -31,7 +31,9 @@ export class FileReader {
         const obj: Record<string, unknown> = {}
 
         while ((char = this.char()) !== undefined) {
-            this.index++
+            if (this.index === 0 && char === FileReader.Syntax.Open) this.parseProperty(obj)
+            else
+                this.index++
             if (char === "\n") this.parseProperty(obj)
         }
 

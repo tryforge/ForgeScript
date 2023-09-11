@@ -1,13 +1,15 @@
 import { FileReader } from "../core/FileReader"
 
 console.log(
-    new FileReader(`
-[pepe]
-culata
+    new FileReader(`[name]
 
-[tmr]
-land bro?
-\\[hello]
-bye
+Ping
+
+[type]
+
+messageCreate
+
+[code]
+ping is $ping
 `, {}).read()
 )
