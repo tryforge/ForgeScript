@@ -28,7 +28,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ title, hyperlink, index ]) {
-        const embed = ctx.container.embed((index ?? 1) - 1).setTitle(title)
+        const embed = ctx.container.embed((index ?? 0)).setTitle(title)
         if (hyperlink) embed.setURL(hyperlink)
         return Return.success()
     },

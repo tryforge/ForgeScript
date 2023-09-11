@@ -57,7 +57,7 @@ export default new NativeFunction({
     execute(ctx, [, message, index ]) {
         index ??= 1
         return Return.success(
-            (message ?? ctx.message)?.attachments.at(index - 1)?.url
+            (message ?? ctx.message)?.attachments.at(index )?.url
         )
     },
 })

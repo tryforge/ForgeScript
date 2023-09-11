@@ -3,26 +3,31 @@ import { Context } from "./Context"
 import { ErrorType, ForgeError } from "./ForgeError"
 import { Return } from "./Return"
 
+export interface IForgeFunction {
+    name: string
+    params?: string[]
+    code: string
+}
+
 export class ForgeFunction {
     public readonly compiled: IExtendedCompilationResult
 
     public constructor(
-        public readonly name: string,
-        public readonly params: string[],
-        public readonly code: string
+        public readonly data: IForgeFunction
     ) {
-        this.compiled = Compiler.compile(code)
+        data.params ??= []
+        this.compiled = Compiler.compile(data.code)
     }
 
     async call(ctx: Context, args: string[]) {
-        if (this.params.length !== args.length) return Return.error(new ForgeError(
+        if (this.data.params!.length !== args.length) return Return.error(new ForgeError(
             null,
             ErrorType.Custom,
-            `Calling custom function ${this.name} requires ${this.params.length} arguments, received ${args.length}`
+            `Calling custom function ${this.data.name} requires ${this.data.params!.length} arguments, received ${args.length}`
         ))
 
-        for (let i = 0, len = this.params.length;i < len;i++) {
-            ctx.setEnvironmentKey(this.params[i], args[i])
+        for (let i = 0, len = this.data.params!.length;i < len;i++) {
+            ctx.setEnvironmentKey(this.data.params![i], args[i])
         }
 
         for (let i = 0, len = this.compiled.functions.length;i < len;i++) {

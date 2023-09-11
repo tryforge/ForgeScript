@@ -1,6 +1,6 @@
 import { readdirSync } from "fs"
 import { ForgeClient } from "../core/ForgeClient"
-import { ForgeFunction } from "../structures/ForgeFunction"
+import { ForgeFunction, IForgeFunction } from "../structures/ForgeFunction"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class ForgeFunctionManager {
@@ -8,18 +8,12 @@ export class ForgeFunctionManager {
     
     public constructor(
         private readonly client: ForgeClient
-    ) {
+    ) {}
 
-    }
-
-    public add(...[ name, params, code ]: ConstructorParameters<typeof ForgeFunction>) {
+    public add(options: IForgeFunction) {
         this.functions.set(
-            name,
-            new ForgeFunction(
-                name,
-                params,
-                code
-            )
+            options.name,
+            new ForgeFunction(options)
         )
     }
 
@@ -31,7 +25,7 @@ export class ForgeFunctionManager {
         for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
             const req = require(file).default as ForgeFunction | ConstructorParameters<typeof ForgeFunction>
             if (req instanceof ForgeFunction) {
-                this.functions.set(req.name, req)
+                this.functions.set(req.data.name, req)
             } else this.add(...req)
         }
     }

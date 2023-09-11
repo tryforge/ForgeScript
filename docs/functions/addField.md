@@ -56,7 +56,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ name, value, inline, index ]) {
-        ctx.container.embed((index ?? 1) - 1).addFields({
+        ctx.container.embed((index ?? 0)).addFields({
             name,
             value,
             inline: inline ?? false
