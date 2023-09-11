@@ -28,6 +28,9 @@ const client = new ForgeClient({
         "!"
     ],
     restrictions: {
+        userIDs: [
+            "1096285761365610576"
+        ]
     },
     optionalGuildID: true,
     extensions: [
@@ -73,8 +76,7 @@ client.commands.add({
     name: "eval",
     aliases: [ "ev" ],
     type: "messageCreate",
-    code: "$eval[$message;true]",
-    unprefixed: true
+    code: "$eval[$message;true]"
 })
 
 client.commands.add({
