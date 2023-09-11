@@ -1,4 +1,4 @@
-export * from "./Command"
+export * from "./BaseCommand"
 export * from "./CompiledFunction"
 export * from "./Container"
 export * from "./Context"

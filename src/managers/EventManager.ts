@@ -1,6 +1,6 @@
 import { ClientEvents, Collection } from "discord.js"
 import { ForgeClient } from "../core/ForgeClient"
-import { CommandType } from "../structures/Command"
+import { CommandType } from "../structures/BaseCommand"
 import { readdirSync } from "fs"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { BaseEventHandler } from "../structures"

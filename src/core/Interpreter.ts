@@ -4,8 +4,8 @@ import { Context } from "../structures/Context"
 import { ReturnType } from "../structures/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
-import { Command } from "../structures"
 import { Channel, Guild, GuildAuditLogsEntry, GuildEmoji, GuildMember, Invite, Message, Role, User, VoiceState } from "discord.js"
+import { BaseCommand } from "../structures"
 
 export interface IStates {
     message: Message
@@ -31,7 +31,7 @@ export interface IRunnable {
     client: ForgeClient
     data: IExtendedCompilationResult
     obj: Sendable
-    command: Command
+    command: BaseCommand<unknown>
     doNotSend?: boolean
     extras?: unknown
     states?: States
