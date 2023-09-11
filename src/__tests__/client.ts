@@ -41,12 +41,6 @@ console.log(
     "Started"
 )
 
-client.functions.add(
-    "get_user",
-    [ "id" ],
-    "$return[$username[$env[id]]]"
-)
-
 client.commands.add({
     type: Events.GuildAuditLogEntryCreate,
     code: `

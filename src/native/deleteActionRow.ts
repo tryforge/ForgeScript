@@ -16,7 +16,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [ index ]) {
-        ctx.container.components.splice(index - 1, 1)
+        ctx.container.components.splice(index , 1)
         return Return.success()
     },
 })

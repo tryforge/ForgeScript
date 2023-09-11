@@ -29,7 +29,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ text, iconURL, index ]) {
-        ctx.container.embed((index ?? 1) - 1).setFooter({
+        ctx.container.embed((index ?? 0)).setFooter({
             text,
             iconURL: iconURL ?? undefined
         })
