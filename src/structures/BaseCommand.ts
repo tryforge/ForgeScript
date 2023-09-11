@@ -3,9 +3,9 @@ import { Compiler, IExtendedCompilationResult } from "../core/Compiler"
 
 export type CommandType = keyof ClientEvents
 
-export interface ICommand {
+export interface IBaseCommand<T> {
     name?: string
-    type: CommandType
+    type: T
     code: string
     guildOnly?: boolean
     unprefixed?: boolean
@@ -18,10 +18,10 @@ export interface ICompiledCommand {
     code: IExtendedCompilationResult
 }
 
-export class Command {
+export class BaseCommand<T> {
     public readonly compiled: ICompiledCommand
 
-    public constructor(public readonly data: ICommand, public unloadable = false) {
+    public constructor(public readonly data: IBaseCommand<T>, public unloadable = false) {
         this.compiled = {
             name: Compiler.compile(data.name),
             code: Compiler.compile(data.code)

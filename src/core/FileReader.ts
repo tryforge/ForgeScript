@@ -1,5 +1,5 @@
 import { readFileSync } from "fs"
-import { Command, ErrorType, ForgeError, ICommand } from "../structures"
+import { BaseCommand, ErrorType, ForgeError, IBaseCommand } from "../structures"
 
 export class FileReader {
     public static readonly Syntax = {
@@ -20,7 +20,7 @@ export class FileReader {
         return new this(str, req).read()
     }
 
-    read(): ICommand | Command | (ICommand | Command)[] {
+    read(): IBaseCommand<any> | BaseCommand<any> | (IBaseCommand<any> | BaseCommand<any>)[] {
         if (this.req !== null) {
             if ("default" in this.req) return this.req.default
             else if (Array.isArray(this.req)) return this.req
@@ -35,7 +35,7 @@ export class FileReader {
             if (char === "\n") this.parseProperty(obj)
         }
 
-        return obj as ICommand
+        return obj as IBaseCommand<any>
     }
 
     private parseProperty(obj: Record<string, unknown>) {

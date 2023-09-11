@@ -1,11 +1,11 @@
 import { Collection, Message } from "discord.js"
 import { ForgeClient } from "../core/ForgeClient"
-import { Command, CommandType, ICommand } from "../structures/Command"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { FileReader } from "../core/FileReader"
+import { BaseCommand, IBaseCommand } from "../structures"
 
-export class CommandManager {
-    private readonly commands = new Collection<string, Command[]>()
+export class BaseCommandManager<T> {
+    private readonly commands = new Collection<T, BaseCommand<T>[]>()
     private readonly paths = new Array<string>()
 
     public constructor(private readonly client: ForgeClient) {}
@@ -23,7 +23,7 @@ export class CommandManager {
             for (const file of recursiveReaddirSync(p).filter(x => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
                 const path = `${process.cwd()}/${file}`
-                const t = delete require.cache[require.resolve(path)]
+                delete require.cache[require.resolve(path)]
             }
 
             // Reload these commands
@@ -47,34 +47,30 @@ export class CommandManager {
         }
     }
 
-    public getCustom<T>(type: keyof T) {
-        return this.commands.get(type as string)
-    }
-
-    public get(type: CommandType, fn?: (cmd: Command) => boolean): Command[] {
+    public get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[] {
         const cmds = this.commands.get(type) ?? []
         if (!fn) return cmds
         return cmds.filter(fn)
     }
 
-    public add(...commands: (ICommand | Command)[]) {
+    public add(...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
         for (let i = 0, len = commands.length;i < len;i++) {
             const req = commands[i] 
             if (!req.type) continue
             
-            const cmd = req instanceof Command ? req : new Command(req)
+            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
             
-            const col = this.commands.ensure(cmd.type, () => new Array())
+            const col = this.commands.ensure(cmd.type as T, () => new Array())
             col.push(cmd)
         }
     }
 
-    private addPath(...commands: (ICommand | Command)[]) {
+    private addPath(...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
         for (let i = 0, len = commands.length;i < len;i++) {
             const req = commands[i] 
-            const cmd = req instanceof Command ? req : new Command(req)
+            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
             
-            const col = this.commands.ensure(cmd.type, () => new Array())
+            const col = this.commands.ensure(cmd.type as T, () => new Array())
             cmd.unloadable = true
             col.push(cmd)
         }
