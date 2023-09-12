@@ -6,7 +6,10 @@ import { IExtendedCompiledFunctionConditionField } from "../structures"
 
 Compiler.setFunctions(FunctionManager.raw)
 
-const code = "$replace[1;2;;$authorID]"
+const code = `
+$modal[botinteract;Agregar un Robot]
+$addTextInput[IDinput;ID del bot;Short;yes;ID de tu Robot;;0;20]
+$addTextInput[prefixbot;Prefix del bot;Short;yes;Prefix de tu Robot;;0;5]`
 
 const compiled = new Compiler(code)["compile"]()
 
