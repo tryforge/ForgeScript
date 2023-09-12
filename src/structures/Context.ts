@@ -158,6 +158,7 @@ export class Context {
     }
 
     public alert(content: string) {
+        this.container.reset()
         return this.container.send(this.obj, content)
     }
 

@@ -57,7 +57,8 @@ export class Container {
             !!options.stickers?.length ||
             !!options.files?.length ||
             !!options.components?.length ||
-            !!options.attachments?.length
+            !!options.attachments?.length || 
+            !!this.modal
     }
 
     public embed(index: number) {
