@@ -4,6 +4,14 @@
 ```
 $reply
 ```
+---
+```
+$reply[channel ID;message ID]
+```
+| Name | Type | Description | Required | Spread
+| :---: | :---: | :---: | :---: | :---: |
+channel ID | Channel | The channel the message is at | Yes | No
+message ID | Message | The message to reply to | Yes | No
 <details>
 <summary>
     
@@ -18,10 +26,27 @@ export default new NativeFunction({
     name: "$reply",
     version: "1.0.0",
     description: "Marks the response as a reply",
-    unwrap: false,
-    execute(ctx) {
-
-        ctx.container.reply = true
+    unwrap: true,
+    brackets: false,
+    args: [
+        {
+            name: "channel ID",
+            description: "The channel the message is at",
+            rest: false,
+            required: true,
+            type: ArgType.Channel
+        },
+        {
+            name: "message ID",
+            description: "The message to reply to",
+            rest: false,
+            required: true,
+            type: ArgType.Message,
+            pointer: 0
+        }
+    ],
+    execute(ctx, [ channel, message ]) {
+        ctx.container.reference = (message ?? ctx.message)?.id
         return Return.success()
     },
 })
