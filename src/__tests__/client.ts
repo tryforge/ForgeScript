@@ -14,12 +14,14 @@ const client = new ForgeClient({
         "GuildMembers",
         "DirectMessages",
         "GuildInvites",
-        "GuildModeration"
+        "GuildModeration",
+        "GuildMessageReactions"
     ],
     events: [
         "guildAuditLogEntryCreate",
         "ready",
         "messageCreate",
+        "messageReactionAdd",
         "guildMemberAdd",
         "interactionCreate"
     ],
@@ -41,6 +43,10 @@ console.log(
     "Started"
 )
 
+client.commands.add({
+    type: Events.MessageReactionAdd,
+    code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]"
+})
 client.commands.add({
     type: Events.GuildAuditLogEntryCreate,
     code: `

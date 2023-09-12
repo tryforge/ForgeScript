@@ -128,7 +128,9 @@ export class Context {
                 this.obj.guild as Guild : 
                 this.obj instanceof Guild ? 
                     this.obj :
-                    null
+                    "message" in this.obj ? 
+                        this.obj.message.guild :
+                        null
     }
 
     public get channel() {
