@@ -85,7 +85,16 @@ client.commands.add({
     code: "$djsEval[$message]"
 })
 
+client.commands.add({
+    type: "interactionCreate",
+    code: `$onlyIf[$isAutocomplete]
+    $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
+    $addChoice[tmr;land]
+    `
+})
+
 client.commands.load("dist/__tests__/commands")
+client.applicationCommands.load("dist/__tests__/app")
 
 // eslint-disable-next-line no-undef
 client.login(process.env.TOKEN)

@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, User } from "discord.js"
+import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, User } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -224,5 +224,13 @@ export class Context {
 
     public isSelectMenu(): this is this & { get interaction(): AnySelectMenuInteraction } {
         return !!this.interaction && this.interaction.isAnySelectMenu()
+    }
+
+    public isContextCommand(): this is this & { get interaction(): ContextMenuCommandInteraction } {
+        return !!this.interaction && this.interaction.isContextMenuCommand()
+    }
+    
+    public isCommand(): this is this & { get interaction(): ChatInputCommandInteraction } {
+        return !!this.interaction && this.interaction.isChatInputCommand()
     }
 }
