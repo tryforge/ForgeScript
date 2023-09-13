@@ -28,6 +28,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@types/lodash": "^4.14.198",
     "@types/node": "^20.5.7",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
@@ -39,6 +40,7 @@
   },
   "dependencies": {
     "discord.js": "^14.13.0",
+    "lodash": "^4.17.21",
     "ms-utility": "^3.3.0",
     "undici": "^5.23.0"
   },

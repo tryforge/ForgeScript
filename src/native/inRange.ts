@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true
         },
         {
-            name: "number",
+            name: "min",
             description: "The min value",
             rest: false,
             type: ArgType.Number

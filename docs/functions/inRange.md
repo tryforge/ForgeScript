@@ -2,12 +2,12 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Whether a number is in range
 ## Usage
 ```
-$inRange[number;number;max]
+$inRange[number;min;max]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 number | Number | The number to validate | Yes | No
-number | Number | The min value | No | No
+min | Number | The min value | No | No
 max | Number | The max value | No | No
 <details>
 <summary>
@@ -34,7 +34,7 @@ export default new NativeFunction({
             required: true
         },
         {
-            name: "number",
+            name: "min",
             description: "The min value",
             rest: false,
             type: ArgType.Number
