@@ -1,0 +1,1 @@
+{"version":3,"file":"maxSafeInteger.js","sourceRoot":"","sources":["../../src/native/maxSafeInteger.ts"],"names":[],"mappings":";;AAAA,8CAA+D;AAE/D,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,iBAAiB;IACvB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,kCAAkC;IAC/C,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,mBAAM,CAAC,OAAO,CAAC,MAAM,CAAC,gBAAgB,CAAC,CAAA;IAClD,CAAC;CACJ,CAAC,CAAA"}

@@ -2,6 +2,5 @@ node_modules
 *.db
 *.sqlite
 \.env
-dist
 act.exe
 PUBLISHING.md

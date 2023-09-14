@@ -1,10 +1,10 @@
-import { ApplicationCommandData, Collection, CommandInteraction, SlashCommandBuilder } from "discord.js"
+import { ApplicationCommandData, Collection, CommandInteraction, ContextMenuCommandBuilder, SlashCommandBuilder } from "discord.js"
 import { ApplicationCommand } from "../structures/ApplicationCommand"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { ForgeClient } from "../core"
 
 export interface IApplicationCommandData {
-    data: SlashCommandBuilder | ApplicationCommandData
+    data: SlashCommandBuilder | ContextMenuCommandBuilder | ApplicationCommandData
     code: string
 }
 

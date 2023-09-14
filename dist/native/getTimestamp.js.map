@@ -1,0 +1,1 @@
+{"version":3,"file":"getTimestamp.js","sourceRoot":"","sources":["../../src/native/getTimestamp.ts"],"names":[],"mappings":";;AAAA,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,eAAe;IACrB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,4BAA4B;IACzC,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,mBAAM,CAAC,OAAO,CAAC,IAAI,CAAC,GAAG,EAAE,CAAC,CAAA;IACrC,CAAC;CACJ,CAAC,CAAA"}

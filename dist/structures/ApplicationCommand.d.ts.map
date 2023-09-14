@@ -1,0 +1,1 @@
+{"version":3,"file":"ApplicationCommand.d.ts","sourceRoot":"","sources":["../../src/structures/ApplicationCommand.ts"],"names":[],"mappings":"AAAA,OAAO,EAAY,0BAA0B,EAAE,MAAM,SAAS,CAAA;AAC9D,OAAO,EAAE,uBAAuB,EAAE,MAAM,uCAAuC,CAAA;AAE/E,qBAAa,kBAAkB;aAGQ,OAAO,EAAE,uBAAuB;IAFnE,QAAQ,EAAE,0BAA0B,CAAA;gBAED,OAAO,EAAE,uBAAuB;IAInE,IAAW,IAAI,WAEd;CACJ"}

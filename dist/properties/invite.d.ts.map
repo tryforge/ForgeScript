@@ -1,0 +1,1 @@
+{"version":3,"file":"invite.d.ts","sourceRoot":"","sources":["../../src/properties/invite.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,YAAY,CAAA;AAGnC,oBAAY,cAAc;IACtB,QAAQ,aAAa;IACrB,SAAS,cAAc;IACvB,OAAO,YAAY;IACnB,IAAI,SAAS;IACb,OAAO,YAAY;IACnB,MAAM,WAAW;IACjB,SAAS,cAAc;IACvB,IAAI,SAAS;IACb,GAAG,QAAQ;IACX,gBAAgB,qBAAqB;CACxC;AAED,eAAO,MAAM,gBAAgB,mFAW3B,CAAA"}
