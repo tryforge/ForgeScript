@@ -5,7 +5,6 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "scripts": {
-    "preinstall": "tsc",
     "prepublishOnly": "tsc",
     "docgen": "tsc && typedoc ./src --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix",

@@ -1,0 +1,1 @@
+{"version":3,"file":"nodeVersion.js","sourceRoot":"","sources":["../../src/native/nodeVersion.ts"],"names":[],"mappings":";;AAAA,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,cAAc;IACpB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,0BAA0B;IACvC,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,oCAAoC;QACpC,OAAO,mBAAM,CAAC,OAAO,CAAC,OAAO,CAAC,OAAO,CAAC,CAAA;IAC1C,CAAC;CACJ,CAAC,CAAA"}

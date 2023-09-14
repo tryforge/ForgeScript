@@ -1,0 +1,1 @@
+{"version":3,"file":"ForgeExtension.d.ts","sourceRoot":"","sources":["../../src/structures/ForgeExtension.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,qBAAqB,CAAA;AAEjD,8BAAsB,cAAc;IAChC,SAAgB,IAAI,EAAE,MAAM,CAAA;IAC5B,SAAgB,WAAW,EAAE,MAAM,CAAA;IACnC,SAAgB,OAAO,EAAE,MAAM,CAAA;aAEf,IAAI,CAAC,MAAM,EAAE,WAAW,GAAG,IAAI;CAClD"}
