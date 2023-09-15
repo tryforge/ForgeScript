@@ -25,7 +25,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute(ctx, [index, end]) {
         if (this.hasFields) {
-            return Return_1.Return.success(end ? ctx.args.slice(index, end) : ctx.args[index]);
+            return Return_1.Return.success(end ? ctx.args.slice(index, end).join(" ") : ctx.args[index]);
         }
         return Return_1.Return.success(ctx.args.join(" "));
     },
