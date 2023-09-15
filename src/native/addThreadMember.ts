@@ -41,7 +41,6 @@ export default new NativeFunction({
     ],
     async execute(ctx, [ guild, channel, member, reason ]) {
         const thread = channel as ThreadChannel
-
         const success = await thread.members.add(member, reason || undefined).catch(noop)
 
         return Return.success(

@@ -1,7 +1,7 @@
 import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField } from "../core/Compiler";
 import { Context } from "./Context";
 import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError";
-import { ArgType, IArg, NativeFunction } from "./NativeFunction";
+import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction";
 import { Return } from "./Return";
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField;
@@ -13,6 +13,12 @@ export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionFi
 }
 export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fields"> {
     fields: (IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField)[] | null;
+}
+export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number[]]> {
+    args: {
+        [P in keyof X]: UnwrapArgs<T>[X[P]];
+    };
+    return: Return;
 }
 export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     static readonly IdRegex: RegExp;
@@ -26,6 +32,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
      * @returns
      */
     private resolveArgs;
+    private resolveMultipleArgs;
     /**
      * Does not account for condition fields.
      * @param ctx

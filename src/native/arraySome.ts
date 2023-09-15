@@ -31,21 +31,17 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [ nameField, varField, code ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [ , code ] = this.data.fields! as IExtendedCompiledFunctionField[]
 
-        const name = await this["resolveCode"](ctx, nameField)
-        if (!this["isValidReturnType"](name)) return name
+        const { args: { "0": name, "1": variable }, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1)
+        if (!this["isValidReturnType"](rt)) return rt
 
-        const variable = await this["resolveCode"](ctx, varField)
-        if (!this["isValidReturnType"](variable)) return variable
-
-        const arr = ctx.getEnvironmentKey([ name.value as string ])
-        const varName = variable.value as string
+        const arr = ctx.getEnvironmentKey([ name as string ])
 
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length;i < len;i++) {
                 const el = arr[i]
-                ctx.setEnvironmentKey(varName, el)
+                ctx.setEnvironmentKey(variable, el)
                 const rt = await this["resolveCode"](ctx, code) as Return
                 
                 if (rt.return) {

@@ -31,19 +31,15 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, code] = this.data.fields;
-        const name = await this["resolveCode"](ctx, nameField);
-        if (!this["isValidReturnType"](name))
-            return name;
-        const variable = await this["resolveCode"](ctx, varField);
-        if (!this["isValidReturnType"](variable))
-            return variable;
-        const arr = ctx.getEnvironmentKey([name.value]);
-        const varName = variable.value;
+        const [, code] = this.data.fields;
+        const { args: { "0": name, "1": variable }, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const arr = ctx.getEnvironmentKey([name]);
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
-                ctx.setEnvironmentKey(varName, el);
+                ctx.setEnvironmentKey(variable, el);
                 const rt = await this["resolveCode"](ctx, code);
                 if (rt.return) {
                     if (!rt.value)

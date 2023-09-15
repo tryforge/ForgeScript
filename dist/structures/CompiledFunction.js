@@ -67,40 +67,29 @@ class CompiledFunction {
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields))
             return Return_1.Return.success(args);
         for (let i = 0, len = this.fn.data.args.length; i < len; i++) {
-            const arg = this.fn.data.args[i];
-            if (!arg.rest) {
-                // Assertion because condition fields should never be executed with unwraps.
-                const field = this.data.fields?.[i];
-                const resolved = await this.resolveCode(ctx, field);
-                if (!this.isValidReturnType(resolved))
-                    return resolved;
-                const val = await this.resolveArg(ctx, arg, field, resolved.value, args);
-                if (!this.isValidReturnType(val))
-                    return val;
-                args[i] = val.value;
-            }
-            else {
-                const fields = this.data.fields?.slice(i);
-                const values = new Array();
-                if (!fields?.length) {
-                    args[i] = values;
-                    break;
-                }
-                for (let x = 0, len = fields.length; x < len; x++) {
-                    // Assertion because condition fields should never be executed with unwraps.
-                    const field = fields[x];
-                    const resolved = await this.resolveCode(ctx, field);
-                    if (!this.isValidReturnType(resolved))
-                        return resolved;
-                    const val = await this.resolveArg(ctx, arg, field, resolved.value, args);
-                    if (!this.isValidReturnType(val))
-                        return val;
-                    values[x] = val.value;
-                }
-                args[i] = values;
-            }
+            const rt = await this.resolveUnhandledArg(ctx, i, args);
+            if (!this.isValidReturnType(rt))
+                return rt;
+            args[i] = rt.value;
         }
         return Return_1.Return.success(args);
+    }
+    async resolveMultipleArgs(ctx, ...indexes) {
+        const args = new Array(indexes.length);
+        for (let i = 0, len = indexes.length; i < len; i++) {
+            const index = indexes[i];
+            const arg = await this.resolveUnhandledArg(ctx, index, args);
+            if (!this.isValidReturnType(arg))
+                return {
+                    args,
+                    return: arg
+                };
+            args[i] = arg.value;
+        }
+        return {
+            args,
+            return: Return_1.Return.success()
+        };
     }
     /**
      * Does not account for condition fields.
@@ -108,13 +97,42 @@ class CompiledFunction {
      * @param index
      * @returns
      */
-    async resolveUnhandledArg(ctx, index) {
-        const field = this.data.fields[index];
-        const arg = this.fn.data.args[index];
+    async resolveUnhandledArg(ctx, i, ref = []) {
+        const field = this.data.fields[i];
+        const arg = this.fn.data.args[i];
         const str = await this.resolveCode(ctx, field);
         if (!this.isValidReturnType(str))
             return str;
-        return this.resolveArg(ctx, arg, field, str.value, []);
+        if (!arg.rest) {
+            // Assertion because condition fields should never be executed with unwraps.
+            const field = this.data.fields?.[i];
+            const resolved = await this.resolveCode(ctx, field);
+            if (!this.isValidReturnType(resolved))
+                return resolved;
+            const val = await this.resolveArg(ctx, arg, field, resolved.value, ref);
+            if (!this.isValidReturnType(val))
+                return val;
+            return Return_1.Return.success(val.value);
+        }
+        else {
+            const fields = this.data.fields?.slice(i);
+            const values = new Array();
+            if (!fields?.length) {
+                return Return_1.Return.success(values);
+            }
+            for (let x = 0, len = fields.length; x < len; x++) {
+                // Assertion because condition fields should never be executed with unwraps.
+                const field = fields[x];
+                const resolved = await this.resolveCode(ctx, field);
+                if (!this.isValidReturnType(resolved))
+                    return resolved;
+                const val = await this.resolveArg(ctx, arg, field, resolved.value, ref);
+                if (!this.isValidReturnType(val))
+                    return val;
+                values[x] = val.value;
+            }
+            return Return_1.Return.success(values);
+        }
     }
     async resolveCondition(ctx, field) {
         const lhs = await this.resolveCode(ctx, field.lhs);
@@ -237,7 +255,6 @@ class CompiledFunction {
     resolveRole(ctx, arg, str, ref) {
         return ref[arg.pointer].roles.cache.get(str);
     }
-    // TODO: turn arg types to methods to cache and increase performance
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
         if (!arg.required && !value) {
