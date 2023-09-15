@@ -11,4 +11,5 @@ export * from "./Return";
 export * from "./BaseEventHandler";
 export * from "./DiscordEventHandler";
 export * from "./InviteSystem";
+export * from "./ApplicationCommand";
 //# sourceMappingURL=index.d.ts.map

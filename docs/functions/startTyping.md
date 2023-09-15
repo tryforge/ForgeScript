@@ -37,9 +37,9 @@ export default new NativeFunction({
     ],
     async execute(ctx, [ ch ]) {
         const channel = ch ?? ctx.channel
-        return Return.success(
-            !!(channel.isTextBased() ? await channel.sendTyping().catch(() => null) : undefined)
-        )
+        if (channel.isTextBased())
+            await channel.sendTyping().catch(() => null)
+        return Return.success()
     },
 })
 ```

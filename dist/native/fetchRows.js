@@ -24,9 +24,9 @@ exports.default = new structures_1.NativeFunction({
             required: true
         }
     ],
-    brackets: true,
+    brackets: false,
     execute(ctx, [, msg]) {
-        ctx.container.components = msg.components.map(x => discord_js_1.ActionRowBuilder.from(x));
+        ctx.container.components = (msg ?? ctx.message)?.components.map(x => discord_js_1.ActionRowBuilder.from(x)) ?? [];
         return structures_1.Return.success();
     },
 });

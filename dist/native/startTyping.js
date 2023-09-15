@@ -19,7 +19,9 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx, [ch]) {
         const channel = ch ?? ctx.channel;
-        return structures_1.Return.success(!!(channel.isTextBased() ? await channel.sendTyping().catch(() => null) : undefined));
+        if (channel.isTextBased())
+            await channel.sendTyping().catch(() => null);
+        return structures_1.Return.success();
     },
 });
 //# sourceMappingURL=startTyping.js.map
