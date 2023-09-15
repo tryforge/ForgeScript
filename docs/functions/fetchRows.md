@@ -2,6 +2,10 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Fetch a message's components, this will override any other component added to the response
 ## Usage
 ```
+$fetchRows
+```
+---
+```
 $fetchRows[channel ID;message ID]
 ```
 | Name | Type | Description | Required | Spread
@@ -41,9 +45,9 @@ export default new NativeFunction({
             required: true
         }
     ],
-    brackets: true,
+    brackets: false,
     execute(ctx, [, msg ]) {
-        ctx.container.components = msg.components.map(x => ActionRowBuilder.from(x))
+        ctx.container.components = (msg ?? ctx.message)?.components.map(x => ActionRowBuilder.from(x)) ?? []
         return Return.success()
     },
 })

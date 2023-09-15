@@ -33,7 +33,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ n ]) {
-        return Return.success(!isNaN(Number(n)))
+        return Return.success(!!n && !isNaN(Number(n)))
     },
 })
 ```
