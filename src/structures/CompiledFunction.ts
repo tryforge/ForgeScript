@@ -22,6 +22,13 @@ export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fiel
     fields: (IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField)[] | null
 }
 
+export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number[]]> {
+    args: {
+        [P in keyof X]: UnwrapArgs<T>[X[P]]
+    }
+    return: Return
+}
+
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     public static readonly IdRegex = /^(\d{16,23})$/
 
@@ -88,42 +95,31 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields)) return Return.success(args)
         
         for (let i = 0, len = this.fn.data.args.length;i < len;i++) {
-            const arg = this.fn.data.args[i]
-            if (!arg.rest) {
-                // Assertion because condition fields should never be executed with unwraps.
-                const field = this.data.fields?.[i] as IExtendedCompiledFunctionField
-                const resolved = await this.resolveCode(ctx, field)
-                if (!this.isValidReturnType(resolved)) return resolved
-                
-                const val = await this.resolveArg(ctx, arg, field, resolved.value, args)
-                if (!this.isValidReturnType(val)) return val
-                args[i] = val.value as UnwrapArgs<T>[number]
-            } else {
-                const fields = this.data.fields?.slice(i)
-                const values = new Array()
-
-                if (!fields?.length) {
-                    args[i] = values as UnwrapArgs<T>[number]
-                    break
-                }
-
-                for (let x = 0, len = fields.length;x < len;x++) {
-                    // Assertion because condition fields should never be executed with unwraps.
-                    const field = fields[x] as IExtendedCompiledFunctionField
-                    const resolved = await this.resolveCode(ctx, field)
-                    if (!this.isValidReturnType(resolved)) return resolved
-                    
-                    const val = await this.resolveArg(ctx, arg, field, resolved.value, args)
-                    if (!this.isValidReturnType(val)) return val
-
-                    values[x] = val.value as UnwrapArgs<T>[number]
-                }
-
-                args[i] = values as UnwrapArgs<T>[number]
-            }
+            const rt = await this.resolveUnhandledArg(ctx, i, args)
+            if (!this.isValidReturnType(rt)) return rt
+            args[i] = rt.value as UnwrapArgs<T>[number]
         }
 
         return Return.success(args)
+    }
+
+    private async resolveMultipleArgs<X extends [...number[]]>(ctx: Context, ...indexes: [...X]): Promise<IMultipleArgResolve<T, X>> {
+        const args = new Array(indexes.length) as IMultipleArgResolve<T, X>["args"]
+
+        for (let i = 0, len = indexes.length;i < len;i++) {
+            const index = indexes[i]
+            const arg = await this.resolveUnhandledArg(ctx, index, args)
+            if (!this.isValidReturnType(arg)) return {
+                args,
+                return: arg
+            }
+            args[i] = arg.value as IMultipleArgResolve<T, X>["args"][number]
+        }
+
+        return {
+            args,
+            return: Return.success()
+        }
     }
 
     /**
@@ -132,13 +128,44 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
      * @param index 
      * @returns 
      */
-    private async resolveUnhandledArg(ctx: Context, index: number): Promise<Return> {
-        const field = this.data.fields![index] as IExtendedCompiledFunctionField
-        const arg = this.fn.data.args![index]
+    private async resolveUnhandledArg(ctx: Context, i: number, ref: any[] = []): Promise<Return> {
+        const field = this.data.fields![i] as IExtendedCompiledFunctionField
+        const arg = this.fn.data.args![i]
 
         const str = await this.resolveCode(ctx, field)
         if (!this.isValidReturnType(str)) return str
-        return this.resolveArg(ctx, arg, field, str.value, [] as UnwrapArgs<T>)
+
+        if (!arg.rest) {
+            // Assertion because condition fields should never be executed with unwraps.
+            const field = this.data.fields?.[i] as IExtendedCompiledFunctionField
+            const resolved = await this.resolveCode(ctx, field)
+            if (!this.isValidReturnType(resolved)) return resolved
+            
+            const val = await this.resolveArg(ctx, arg, field, resolved.value, ref as UnwrapArgs<T>)
+            if (!this.isValidReturnType(val)) return val
+            return Return.success(val.value)
+        } else {
+            const fields = this.data.fields?.slice(i)
+            const values = new Array()
+
+            if (!fields?.length) {
+                return Return.success(values) 
+            }
+
+            for (let x = 0, len = fields.length;x < len;x++) {
+                // Assertion because condition fields should never be executed with unwraps.
+                const field = fields[x] as IExtendedCompiledFunctionField
+                const resolved = await this.resolveCode(ctx, field)
+                if (!this.isValidReturnType(resolved)) return resolved
+                
+                const val = await this.resolveArg(ctx, arg, field, resolved.value, ref as UnwrapArgs<T>)
+                if (!this.isValidReturnType(val)) return val
+
+                values[x] = val.value as UnwrapArgs<T>[number]
+            }
+
+            return Return.success(values)
+        }
     }
 
     private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
@@ -284,7 +311,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return (ref[arg.pointer!] as Guild).roles.cache.get(str)
     }
 
-    // TODO: turn arg types to methods to cache and increase performance
     private async resolveArg(ctx: Context, arg: IArg, field: IExtendedCompiledFunctionField, value: unknown, ref: UnwrapArgs<T>): Promise<Return> {
         const strValue = `${value}`
 
