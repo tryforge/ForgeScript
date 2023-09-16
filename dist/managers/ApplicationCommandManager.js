@@ -7,6 +7,7 @@ exports.ApplicationCommandManager = void 0;
 const discord_js_1 = require("discord.js");
 const ApplicationCommand_1 = require("../structures/ApplicationCommand");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
+const EventManager_1 = require("./EventManager");
 class ApplicationCommandManager {
     client;
     commands = new discord_js_1.Collection();
@@ -46,6 +47,8 @@ class ApplicationCommandManager {
         return value instanceof ApplicationCommand_1.ApplicationCommand ? value : new ApplicationCommand_1.ApplicationCommand(value);
     }
     register() {
+        if (this.commands.size)
+            this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
         return this.client.application.commands.set(this.commands.map(x => x.options.data));
     }
 }
