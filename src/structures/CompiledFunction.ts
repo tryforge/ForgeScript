@@ -1,4 +1,4 @@
-import { BaseChannel, ForumChannel, Guild, Message, TextBasedChannel, parseEmoji } from "discord.js"
+import { BaseChannel, ForumChannel, Guild, Message, PermissionFlagsBits, TextBasedChannel, parseEmoji } from "discord.js"
 import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField, WrappedCode, WrappedConditionCode } from "../core/Compiler"
 import noop from "../functions/noop"
 import { FunctionManager } from "../managers/FunctionManager"
@@ -213,6 +213,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const value = Number(str)
         if (isNaN(value as number)) return
         return value
+    }
+
+    private resolvePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!(str in PermissionFlagsBits)) return
+        return str
     }
 
     private resolveString(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

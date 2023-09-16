@@ -170,6 +170,11 @@ class CompiledFunction {
             return;
         return value;
     }
+    resolvePermission(ctx, arg, str, ref) {
+        if (!(str in discord_js_1.PermissionFlagsBits))
+            return;
+        return str;
+    }
     resolveString(ctx, arg, str, ref) {
         return str;
     }

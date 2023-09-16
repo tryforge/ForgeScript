@@ -1,4 +1,4 @@
-import { BaseChannel, Emoji, Guild, GuildEmoji, GuildForumTag, GuildMember, Invite, Message, MessageReaction, Role, Sticker, User, Webhook } from "discord.js"
+import { BaseChannel, Emoji, Guild, GuildEmoji, GuildForumTag, GuildMember, Invite, Message, MessageReaction, PermissionsString, Role, Sticker, User, Webhook } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Context } from "./Context"
 import { Return } from "./Return"
@@ -16,6 +16,7 @@ export enum ArgType {
     User,
     Guild,
     Invite,
+    Permission,
     Json,
     Enum,
     ForumTag,
@@ -128,7 +129,9 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> =
                                                                         GuildForumTag :
                                                                         T extends ArgType.Time ? 
                                                                             number :
-                                                                            null 
+                                                                            T extends ArgType.Permission ?
+                                                                                PermissionsString :
+                                                                                null 
                                                                             
    
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null
