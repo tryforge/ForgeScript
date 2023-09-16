@@ -33,7 +33,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [ n ]) {
-        return Return.success(n % 1 !== 0)
+        return Return.success(n % 1 === 0)
     },
 })
 ```
