@@ -100,11 +100,7 @@ class CompiledFunction {
      * @returns
      */
     async resolveUnhandledArg(ctx, i, ref = []) {
-        const field = this.data.fields[i];
         const arg = this.fn.data.args[i];
-        const str = await this.resolveCode(ctx, field);
-        if (!this.isValidReturnType(str))
-            return str;
         if (!arg.rest) {
             // Assertion because condition fields should never be executed with unwraps.
             const field = this.data.fields?.[i];
