@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "@discordjs/builders"
+import { EmbedBuilder } from "discord.js"
 import defineProperties from "../functions/defineProperties"
 
 export enum EmbedProperty {
