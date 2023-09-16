@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [n]) {
-        return structures_1.Return.success(n % 1 !== 0);
+        return structures_1.Return.success(n % 1 === 0);
     },
 });
 //# sourceMappingURL=isInteger.js.map

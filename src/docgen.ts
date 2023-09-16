@@ -35,7 +35,7 @@ for (const event of Object.values(EventManager["Loaded"]![NativeEventName]!)) {
     
     if (!event!.data.version) {
         event!.data.version = v
-        writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n        version: "${v}",`))
+        writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`))
     }
 }
 

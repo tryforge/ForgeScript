@@ -27,7 +27,7 @@ for (const event of Object.values(managers_1.EventManager["Loaded"][managers_1.N
     const txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
     if (!event.data.version) {
         event.data.version = v;
-        (0, fs_1.writeFileSync)(nativePath, txt.replace(FunctionNameRegex, `$1,\n        version: "${v}",`));
+        (0, fs_1.writeFileSync)(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`));
     }
 }
 (0, fs_1.writeFileSync)("./docs/events.json", JSON.stringify(managers_1.EventManager.toJSON(managers_1.NativeEventName)));
