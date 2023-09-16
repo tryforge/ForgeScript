@@ -1,7 +1,8 @@
-import { ApplicationCommandData, Collection, CommandInteraction, ContextMenuCommandBuilder, SlashCommandBuilder } from "discord.js"
+import { ApplicationCommandData, Collection, CommandInteraction, ContextMenuCommandBuilder, Events, SlashCommandBuilder } from "discord.js"
 import { ApplicationCommand } from "../structures/ApplicationCommand"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { ForgeClient } from "../core"
+import { NativeEventName } from "./EventManager"
 
 export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | ApplicationCommandData
@@ -47,6 +48,7 @@ export class ApplicationCommandManager {
     }
 
     public register() {
+        if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
         return this.client.application.commands.set(this.commands.map(x => x.options.data))
     }
 }
