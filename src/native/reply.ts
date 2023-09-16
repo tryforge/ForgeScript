@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The channel the message is at",
             rest: false,
             required: true,
-            type: ArgType.Channel
+            type: ArgType.Channel,
         },
         {
             name: "message ID",
@@ -20,10 +20,10 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Message,
-            pointer: 0
-        }
+            pointer: 0,
+        },
     ],
-    execute(ctx, [ channel, message ]) {
+    execute(ctx, [channel, message]) {
         ctx.container.reference = (message ?? ctx.message)?.id
         return Return.success()
     },

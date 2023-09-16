@@ -11,33 +11,33 @@ export default new NativeFunction({
             description: "The variable the array is held on",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "index",
             description: "The start index",
             rest: false,
             required: true,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "delete count",
             description: "The number of items to delete",
             required: true,
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "elements",
             description: "The elements to insert in the deleted indexes",
             required: true,
             rest: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, index, count, elements ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name, index, count, elements]) {
+        const arr = ctx.getEnvironmentKey([name])
         if (Array.isArray(arr)) {
             arr.splice(index, count, ...elements)
         }

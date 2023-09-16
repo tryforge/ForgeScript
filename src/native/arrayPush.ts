@@ -11,19 +11,19 @@ export default new NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "values",
             description: "The values to append at the end of the array",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, values ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name, values]) {
+        const arr = ctx.getEnvironmentKey([name])
         if (Array.isArray(arr)) arr.push(...values)
         return Return.success()
     },

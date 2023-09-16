@@ -14,7 +14,7 @@ export default new NativeFunction({
             required: true,
             description: "The channel to pull message from",
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -22,19 +22,17 @@ export default new NativeFunction({
             description: "The message to get its stickers",
             rest: false,
             required: true,
-            type: ArgType.Message
+            type: ArgType.Message,
         },
         {
             name: "index",
             rest: false,
             description: "The index to get this sticker",
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    execute(ctx, [, message, index ]) {
+    execute(ctx, [, message, index]) {
         index ??= 1
-        return Return.success(
-            (message ?? ctx.message)?.stickers.at(index )?.url
-        )
+        return Return.success((message ?? ctx.message)?.stickers.at(index)?.url)
     },
 })

@@ -12,20 +12,17 @@ export default new NativeFunction({
             description: "The code to execute",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "time",
             description: "How long to wait for before running this code",
             rest: false,
-            type: ArgType.Time
-        }
+            type: ArgType.Time,
+        },
     ],
     async execute(ctx) {
-        const [
-            code,
-            rawTime
-        ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [code, rawTime] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const time: Return = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](time)) return time

@@ -11,18 +11,18 @@ export default new NativeFunction({
             description: "The variable to load it to",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "json",
             description: "The json data",
             type: ArgType.Json,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ name, json ]) {
+    execute(ctx, [name, json]) {
         ctx.setEnvironmentKey(name, json)
         return Return.success()
     },

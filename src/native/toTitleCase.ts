@@ -13,10 +13,15 @@ export default new NativeFunction({
             description: "The string to turn title case",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ m ]) {
-        return Return.success(m.split(/ +/).map(x => lodash.capitalize(x)).join(" "))
+    execute(ctx, [m]) {
+        return Return.success(
+            m
+                .split(/ +/)
+                .map((x) => lodash.capitalize(x))
+                .join(" ")
+        )
     },
 })

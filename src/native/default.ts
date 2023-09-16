@@ -12,17 +12,17 @@ export default new NativeFunction({
             description: "Left hand value",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "right hand",
             description: "Right hand value",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ lhs, rhs ]) {
+    execute(ctx, [lhs, rhs]) {
         return Return.success(lhs || rhs)
     },
 })

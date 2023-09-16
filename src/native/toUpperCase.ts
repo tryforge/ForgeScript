@@ -11,11 +11,11 @@ export default new NativeFunction({
             description: "The string to turn uppercase",
             type: ArgType.String,
             rest: true,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ values ]) {
-        return Return.success(values.join(";").toUpperCase())   
-    }
+    execute(ctx, [values]) {
+        return Return.success(values.join(";").toUpperCase())
+    },
 })

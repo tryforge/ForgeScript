@@ -15,18 +15,16 @@ export default new NativeFunction({
             rest: false,
             check: (i: BaseChannel) => "setTopic" in i,
             type: ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "topic",
             description: "The topic to set",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, topic ]) {
-        return Return.success(
-            !!(await (channel as TextChannel).setTopic(topic || null).catch(noop))
-        )
+    async execute(ctx, [channel, topic]) {
+        return Return.success(!!(await (channel as TextChannel).setTopic(topic || null).catch(noop)))
     },
 })

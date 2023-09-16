@@ -15,13 +15,12 @@ export default new NativeFunction({
             required: true,
             rest: false,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
-        }
+            check: (i: BaseChannel) => i.isTextBased(),
+        },
     ],
-    async execute(ctx, [ ch ]) {
+    async execute(ctx, [ch]) {
         const channel = ch ?? ctx.channel
-        if (channel.isTextBased())
-            await channel.sendTyping().catch(() => null)
+        if (channel.isTextBased()) await channel.sendTyping().catch(() => null)
         return Return.success()
     },
 })

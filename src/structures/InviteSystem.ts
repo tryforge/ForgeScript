@@ -1,4 +1,14 @@
-import { ClientEvents, Collection, Events, GatewayIntentBits, GatewayIntentsString, Guild, GuildMember, Invite, PartialGuildMember } from "discord.js"
+import {
+    ClientEvents,
+    Collection,
+    Events,
+    GatewayIntentBits,
+    GatewayIntentsString,
+    Guild,
+    GuildMember,
+    Invite,
+    PartialGuildMember,
+} from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 import { ErrorType, ForgeError } from "./ForgeError"
@@ -19,11 +29,7 @@ export interface IGuildInvite {
 export class InviteSystem {
     public static readonly Invites = new Collection<string, IGuildInvite[]>()
 
-    public static readonly RequiredIntents = [
-        "Guilds",
-        "GuildInvites",
-        "GuildMembers"
-    ] as GatewayIntentsString[]
+    public static readonly RequiredIntents = ["Guilds", "GuildInvites", "GuildMembers"] as GatewayIntentsString[]
 
     public static readonly RequiredEvents = [
         "inviteCreate",
@@ -32,7 +38,7 @@ export class InviteSystem {
         "guildMemberUpdate",
         "guildMemberRemove",
         "guildCreate",
-        "guildDelete"
+        "guildDelete",
     ] as (keyof ClientEvents)[]
 
     /**
@@ -41,11 +47,12 @@ export class InviteSystem {
     public static readonly Inviters = new Collection<string, Collection<string, IGuildInviter>>()
 
     private static init(client: ForgeClient) {
-        if (!client.options.intents.has(InviteSystem.RequiredIntents)) throw new ForgeError(
-            null,
-            ErrorType.Custom,
-            `The next intents must be enabled: ${this.RequiredIntents.join(", ")}`
-        )
+        if (!client.options.intents.has(InviteSystem.RequiredIntents))
+            throw new ForgeError(
+                null,
+                ErrorType.Custom,
+                `The next intents must be enabled: ${this.RequiredIntents.join(", ")}`
+            )
 
         client.events.load(NativeEventName, this.RequiredEvents)
         console.warn("The Invite System is still beta, correct functionality is not guaranteed")
@@ -61,7 +68,7 @@ export class InviteSystem {
     }
 
     public static async cacheAll(client: ForgeClient) {
-        for (const [, guild ] of client.guilds.cache) {
+        for (const [, guild] of client.guilds.cache) {
             await this.cache(guild)
         }
     }
@@ -76,13 +83,13 @@ export class InviteSystem {
 
         const arr = new Array<IGuildInvite>()
 
-        for (const [, invite ] of invites) {
+        for (const [, invite] of invites) {
             if (invite.uses === null || invite.inviterId === null) continue
 
             arr.push({
                 uses: invite.uses!,
                 code: invite.code,
-                userId: invite.inviterId
+                userId: invite.inviterId,
             })
         }
 
@@ -95,7 +102,7 @@ export class InviteSystem {
             invites.push({
                 code: invite.code,
                 userId: invite.inviterId!,
-                uses: 0
+                uses: 0,
             })
 
             return
@@ -108,7 +115,7 @@ export class InviteSystem {
     public static async inviteDeleteHandler(invite: Invite) {
         const invites = this.Invites.get(invite.guild?.id!)
         if (!invites) return
-        const index = invites.findIndex(x => x.code === invite.code)
+        const index = invites.findIndex((x) => x.code === invite.code)
         if (index !== -1) invites.splice(index, 1)
     }
 
@@ -129,10 +136,10 @@ export class InviteSystem {
 
         let used: IGuildInvite | null = null
 
-        for (let i = 0, len = oldInvites.length;i < len;i++) {
+        for (let i = 0, len = oldInvites.length; i < len; i++) {
             const old = oldInvites[i]
             const inv = newInvites.get(old.code)
-            
+
             // Invite does no longer exist
             if (!inv) {
                 continue
@@ -147,12 +154,11 @@ export class InviteSystem {
 
         if (used !== null) {
             const invitedUsers = this.Inviters.ensure(guild.id, () => new Collection())
-            
+
             invitedUsers.set(member.id, {
                 code: used.code,
-                inviterId: used.userId
+                inviterId: used.userId,
             })
-
         } else console.error(`Could not resolve the invitation used by ${member.displayName} (${member.id}).`)
     }
 }

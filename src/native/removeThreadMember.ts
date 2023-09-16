@@ -14,7 +14,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "channel ID",
@@ -22,7 +22,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isThread()
+            check: (i: BaseChannel) => i.isThread(),
         },
         {
             name: "user ID",
@@ -30,22 +30,20 @@ export default new NativeFunction({
             description: "The member to remove",
             rest: false,
             required: true,
-            type: ArgType.Member
+            type: ArgType.Member,
         },
         {
             name: "reason",
             description: "The reason to remove this member from thread",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, channel, member, reason ]) {
+    async execute(ctx, [guild, channel, member, reason]) {
         const thread = channel as ThreadChannel
 
         const success = await thread.members.remove(member.id, reason || undefined).catch(noop)
 
-        return Return.success(
-            !!success
-        )
+        return Return.success(!!success)
     },
 })

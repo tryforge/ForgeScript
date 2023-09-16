@@ -5,14 +5,12 @@ export class FileReader {
     public static readonly Syntax = {
         Open: "[",
         Close: "]",
-        Escape: "\\"
+        Escape: "\\",
     }
 
     private index = 0
 
-    public constructor(private readonly code: string, private readonly req: any) {
-
-    }
+    public constructor(private readonly code: string, private readonly req: any) {}
 
     public static read(fsPath: string, reqPath: string) {
         const str = readFileSync(fsPath, "utf-8")
@@ -32,8 +30,7 @@ export class FileReader {
 
         while ((char = this.char()) !== undefined) {
             if (this.index === 0 && char === FileReader.Syntax.Open) this.parseProperty(obj)
-            else
-                this.index++
+            else this.index++
             if (char === "\n") this.parseProperty(obj)
         }
 
@@ -58,16 +55,14 @@ export class FileReader {
 
         while ((char = this.char()) !== undefined) {
             const isEscape = char === FileReader.Syntax.Escape
-            if (isEscape && !escaped)
-                escaped = true
-            
+            if (isEscape && !escaped) escaped = true
+
             if (!escaped && char === "\n" && this.code[this.index + 1] === FileReader.Syntax.Open) {
                 this.index
                 break
             }
 
-            if (!escaped)
-                result += char
+            if (!escaped) result += char
 
             escaped = false
             this.index++
@@ -86,25 +81,21 @@ export class FileReader {
 
         while ((char = this.char()) !== undefined) {
             const isEscape = char === FileReader.Syntax.Escape
-            if (isEscape && !escaped)
-                escaped = true
-            
+            if (isEscape && !escaped) escaped = true
+
             if (!escaped && char === FileReader.Syntax.Close) {
                 closed = true
                 break
             }
 
-            if (escaped)
-                result += this.code[this.index + 1]
-            else 
-                result += char
+            if (escaped) result += this.code[this.index + 1]
+            else result += char
 
             escaped = false
             this.index++
         }
 
-        if (!closed) 
-            throw new ForgeError(null, ErrorType.CompilerError, "Property is missing closure brace")
+        if (!closed) throw new ForgeError(null, ErrorType.CompilerError, "Property is missing closure brace")
 
         this.index++
 

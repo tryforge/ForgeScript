@@ -11,12 +11,12 @@ export default new NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name]) {
+        const arr = ctx.getEnvironmentKey([name])
         if (Array.isArray(arr)) return Return.success(arr.shift())
         return Return.success()
     },

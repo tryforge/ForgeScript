@@ -17,18 +17,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: ChannelProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ prop, sep ]) {
-        return Return.success(
-            ChannelProperties[prop](ctx.states?.channel?.old, sep)
-        )
+    execute(ctx, [prop, sep]) {
+        return Return.success(ChannelProperties[prop](ctx.states?.channel?.old, sep))
     },
 })

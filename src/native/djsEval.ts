@@ -14,23 +14,18 @@ export default new NativeFunction({
             description: "The code to eval",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ arg ]) {
+    async execute(ctx, [arg]) {
         const code = arg.join(";")
         try {
             let evaled = await eval(code)
             if (typeof evaled !== "string") evaled = inspect(evaled, { depth: 1 })
             return Return.success(evaled)
         } catch (error: unknown) {
-            return Return.error(
-                this.error(
-                    ErrorType.Custom,
-                    (error as Error).message
-                )
-            )
+            return Return.error(this.error(ErrorType.Custom, (error as Error).message))
         }
     },
 })

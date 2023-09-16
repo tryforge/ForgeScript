@@ -12,12 +12,12 @@ export default new NativeFunction({
             description: "The channel name to get it's id",
             required: true,
             rest: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ args ]) {
+    execute(ctx, [args]) {
         if (!this.hasFields) return Return.success(ctx.channel?.id)
         const name = args.join(";")
-        return Return.success(ctx.client.channels.cache.find(x => "name" in x && x.name === name)?.id)
+        return Return.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id)
     },
 })

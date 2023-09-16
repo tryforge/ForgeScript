@@ -12,10 +12,10 @@ export default new NativeFunction({
             description: "The name of the keyword",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ name ]) {
+    execute(ctx, [name]) {
         return Return.success(ctx.hasKeyword(name))
     },
 })

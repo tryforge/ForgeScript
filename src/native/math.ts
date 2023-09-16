@@ -14,10 +14,10 @@ export default new NativeFunction({
             description: "The expression",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ expr ]) {
+    execute(ctx, [expr]) {
         try {
             if (MathRegex.test(expr)) return Return.success()
             return Return.success(eval(expr))

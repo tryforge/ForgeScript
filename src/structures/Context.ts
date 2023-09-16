@@ -1,4 +1,18 @@
-import { AnySelectMenuInteraction, BaseChannel, BaseInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, User } from "discord.js"
+import {
+    AnySelectMenuInteraction,
+    BaseChannel,
+    BaseInteraction,
+    ChatInputCommandInteraction,
+    ContextMenuCommandInteraction,
+    Guild,
+    GuildEmoji,
+    GuildMember,
+    Interaction,
+    Message,
+    MessageReaction,
+    Role,
+    User,
+} from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
@@ -7,7 +21,9 @@ import { IRunnable } from "../core/Interpreter"
 import noop from "../functions/noop"
 import { ForgeError } from "./ForgeError"
 
-export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return
+export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
+    args: UnwrapArgs<T>
+) => Promise<Return> | Return
 
 export interface IHttpOptions {
     body: string
@@ -25,7 +41,7 @@ export class Context {
     #role?: Role | null
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
-    
+
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
 
@@ -55,101 +71,92 @@ export class Context {
 
     public get member() {
         if (!this.obj) return null
-        return this.#member ??=
-            this.obj instanceof GuildMember ?
-                this.obj :
-                "member" in this.obj && this.obj.member instanceof GuildMember ? 
-                    this.obj.member :
-                    null
+        return (this.#member ??=
+            this.obj instanceof GuildMember
+                ? this.obj
+                : "member" in this.obj && this.obj.member instanceof GuildMember
+                ? this.obj.member
+                : null)
     }
 
     public get emoji() {
         if (!this.obj) return null
 
-        return this.#emoji ??= 
-            this.obj instanceof GuildEmoji ? 
-                this.obj :
-                null
+        return (this.#emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
     }
 
     public get role() {
         if (!this.obj) return null
-        return this.#role ??= 
-            this.obj instanceof Role ? 
-                this.obj :
-                null
+        return (this.#role ??= this.obj instanceof Role ? this.obj : null)
     }
 
     public get reaction() {
         if (!this.obj) return null
 
-        return this.#reaction ??=
-            this.obj instanceof MessageReaction ? 
-                this.obj :
-                null
+        return (this.#reaction ??= this.obj instanceof MessageReaction ? this.obj : null)
     }
 
     public get message() {
         if (!this.obj) return null
-        return this.#message ??= 
-            "message" in this.obj && this.obj.message ? 
-                this.obj.message as Message :
-                this.obj instanceof Message ? 
-                    this.obj :
-                    null
+        return (this.#message ??=
+            "message" in this.obj && this.obj.message
+                ? (this.obj.message as Message)
+                : this.obj instanceof Message
+                ? this.obj
+                : null)
     }
 
     public get interaction() {
         if (!this.obj) return null
-        return this.#interaction ??= 
-            this.obj instanceof BaseInteraction ?
-                this.obj :
-                null
+        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj : null)
     }
 
     public get user() {
         if (!this.obj) return null
-        return this.#user ??= 
-            "user" in this.obj ? 
-                this.obj.user : 
-                "author" in this.obj ?
-                    this.obj.author :
-                    this.obj instanceof User ?
-                        this.obj :
-                        "member" in this.obj ? 
-                            this.obj.member?.user ?? null : 
-                            null
+        return (this.#user ??=
+            "user" in this.obj
+                ? this.obj.user
+                : "author" in this.obj
+                ? this.obj.author
+                : this.obj instanceof User
+                ? this.obj
+                : "member" in this.obj
+                ? this.obj.member?.user ?? null
+                : null)
     }
 
     public get guild() {
         if (!this.obj) return null
-        return this.#guild ??= 
-            "guild" in this.obj ? 
-                this.obj.guild as Guild : 
-                this.obj instanceof Guild ? 
-                    this.obj :
-                    "message" in this.obj ? 
-                        this.obj.message.guild :
-                        null
+        return (this.#guild ??=
+            "guild" in this.obj
+                ? (this.obj.guild as Guild)
+                : this.obj instanceof Guild
+                ? this.obj
+                : "message" in this.obj
+                ? this.obj.message.guild
+                : null)
     }
 
     public get channel() {
         if (!this.obj) return null
-        return this.#channel ??= 
-            "channel" in this.obj ? 
-                this.obj.channel?.partial ? 
-                    null : 
-                    this.obj.channel : 
-                this.obj instanceof BaseChannel ? 
-                    this.obj :
-                    "message" in this.obj ? 
-                        this.obj.message.channel as BaseChannel :
-                        null
+        return (this.#channel ??=
+            "channel" in this.obj
+                ? this.obj.channel?.partial
+                    ? null
+                    : this.obj.channel
+                : this.obj instanceof BaseChannel
+                ? this.obj
+                : "message" in this.obj
+                ? (this.obj.message.channel as BaseChannel)
+                : null)
     }
 
-    public async handle<Args extends [...IArg[]], Unwrap extends boolean>(fn: CompiledFunction<Args, Unwrap>, cb: ExpectCallback<Args, Unwrap>): Promise<Return> {
+    public async handle<Args extends [...IArg[]], Unwrap extends boolean>(
+        fn: CompiledFunction<Args, Unwrap>,
+        cb: ExpectCallback<Args, Unwrap>
+    ): Promise<Return> {
         const unwrap = await fn["resolveArgs"](this)
-        
+
         // If not success, return error.
         if (!unwrap.success) {
             return unwrap
@@ -181,7 +188,7 @@ export class Context {
     }
 
     public setEnvironmentKey(name: string, value: unknown) {
-        return this.#environment[name] = value
+        return (this.#environment[name] = value)
     }
 
     public deleteEnvironmentKey(name: string) {
@@ -190,7 +197,7 @@ export class Context {
 
     public getEnvironmentKey(args: string[]) {
         let previous = this.#environment as any
-        for (let i = 0, len = args.length;i < len;i++) {
+        for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i]
             if (!(key in previous)) return
             previous = previous[key]
@@ -207,7 +214,7 @@ export class Context {
     }
 
     public setKeyword(name: string, value: string) {
-        return this.#keywords[name] = value
+        return (this.#keywords[name] = value)
     }
 
     public hasKeyword(name: string) {
@@ -229,7 +236,7 @@ export class Context {
     public isContextCommand(): this is this & { get interaction(): ContextMenuCommandInteraction } {
         return !!this.interaction && this.interaction.isContextMenuCommand()
     }
-    
+
     public isCommand(): this is this & { get interaction(): ChatInputCommandInteraction } {
         return !!this.interaction && this.interaction.isChatInputCommand()
     }

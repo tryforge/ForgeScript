@@ -5,16 +5,11 @@ import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class ForgeFunctionManager {
     private readonly functions = new Map<string, ForgeFunction>()
-    
-    public constructor(
-        private readonly client: ForgeClient
-    ) {}
+
+    public constructor(private readonly client: ForgeClient) {}
 
     public add(options: IForgeFunction) {
-        this.functions.set(
-            options.name,
-            new ForgeFunction(options)
-        )
+        this.functions.set(options.name, new ForgeFunction(options))
     }
 
     public get(name: string) {
@@ -22,7 +17,7 @@ export class ForgeFunctionManager {
     }
 
     public load(path: string) {
-        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
             const req = require(file).default as ForgeFunction | ConstructorParameters<typeof ForgeFunction>
             if (req instanceof ForgeFunction) {
                 this.functions.set(req.data.name, req)

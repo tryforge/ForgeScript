@@ -13,7 +13,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -21,17 +21,17 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             required: true,
-            pointer: 0
+            pointer: 0,
         },
         {
             name: "roles",
             description: "The roles to add",
             rest: true,
             type: ArgType.Role,
-            pointer: 0
-        }
+            pointer: 0,
+        },
     ],
-    async execute(ctx, [ guild, member, roles ]) {
+    async execute(ctx, [guild, member, roles]) {
         member ??= ctx.member!
         const d = await member.roles.add(roles).catch(noop)
 

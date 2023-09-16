@@ -12,22 +12,22 @@ export default new NativeFunction({
             description: "The name for this choice",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "choice value",
             description: "The value for this choice",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ name, value ]) {
+    execute(ctx, [name, value]) {
         ctx.container.choices.push({
             name,
-            value
+            value,
         })
-        
+
         return Return.success()
     },
 })

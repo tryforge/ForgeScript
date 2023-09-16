@@ -15,23 +15,23 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => !i.isDMBased()
+            check: (i: BaseChannel) => !i.isDMBased(),
         },
         {
             name: "max uses",
             description: "The max amount of uses for this invite",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    async execute(ctx, [ ch, maxUses ]) {
+    async execute(ctx, [ch, maxUses]) {
         const channel = (ch ?? ctx.channel) as TextChannel
-        const invite = await channel.createInvite({
-            maxUses: maxUses || undefined
-        }).catch(noop)
+        const invite = await channel
+            .createInvite({
+                maxUses: maxUses || undefined,
+            })
+            .catch(noop)
 
-        return Return.success(
-            invite ? invite.code : undefined
-        )
-    }
+        return Return.success(invite ? invite.code : undefined)
+    },
 })

@@ -14,7 +14,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: TextBasedChannel) => i.isTextBased()
+            check: (i: TextBasedChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -22,7 +22,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emoji",
@@ -30,35 +30,33 @@ export default new NativeFunction({
             required: true,
             pointer: 1,
             rest: false,
-            type: ArgType.Reaction
+            type: ArgType.Reaction,
         },
         {
             name: "separator",
             description: "The separator to use for every user",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, message, reaction, sep ]) {
+    async execute(ctx, [channel, message, reaction, sep]) {
         const users = new Array<string>()
 
         let afterID: undefined | string = undefined
-        
+
         if (reaction.users.cache.size <= reaction.count) {
             for (;;) {
                 const bulk = await reaction.users.fetch({
                     limit: 100,
-                    after: afterID 
+                    after: afterID,
                 })
-    
+
                 if (!bulk.size) break
                 afterID = bulk.last()?.id
-                users.push(...bulk.map(x => x.id))
+                users.push(...bulk.map((x) => x.id))
             }
         }
 
-        return Return.success(
-            users.join(sep || ", ")
-        )
+        return Return.success(users.join(sep || ", "))
     },
 })

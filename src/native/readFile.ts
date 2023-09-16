@@ -13,18 +13,18 @@ export default new NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "encoding",
             description: "The encoding to use for the text",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ path, encoding ]) {
+    execute(ctx, [path, encoding]) {
         // eslint-disable-next-line no-undef
-        const txt = readFileSync(path, { encoding: encoding as BufferEncoding || "utf-8" })
+        const txt = readFileSync(path, { encoding: (encoding as BufferEncoding) || "utf-8" })
 
         return Return.success(txt)
     },

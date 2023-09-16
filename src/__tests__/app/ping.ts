@@ -12,9 +12,9 @@ export default new ApplicationCommand({
                 autocomplete: true,
                 type: ApplicationCommandOptionType.String,
                 required: true,
-                description: "The uwu"
-            }
-        ]
+                description: "The uwu",
+            },
+        ],
     },
-    code: "uwu rawr $option[uwu]"
+    code: "uwu rawr $option[uwu]",
 })

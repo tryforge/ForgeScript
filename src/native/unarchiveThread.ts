@@ -15,22 +15,20 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isThread()
+            check: (i: BaseChannel) => i.isThread(),
         },
         {
             name: "reason",
             description: "The reason to unarchive this thread",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, reason ]) {
+    async execute(ctx, [channel, reason]) {
         const thread = channel as ThreadChannel
 
         const success = await thread.setArchived(false, reason || undefined).catch(noop)
 
-        return Return.success(
-            !!success
-        )
+        return Return.success(!!success)
     },
 })

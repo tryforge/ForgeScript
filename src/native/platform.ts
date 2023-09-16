@@ -8,12 +8,11 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            
             name: "guildID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "guild ID",
@@ -21,18 +20,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator for each platform",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ guild, member, sep ]) {
-        return Return.success(
-            Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", ")
-        )
-    }
+    execute(ctx, [guild, member, sep]) {
+        return Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "))
+    },
 })

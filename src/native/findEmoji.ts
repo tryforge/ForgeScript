@@ -12,11 +12,11 @@ export default new NativeFunction({
             description: "The id, mention or emoji name to find",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ q ]) {
+    execute(ctx, [q]) {
         const parsed = parseEmoji(q)
 
         if (CompiledFunction.IdRegex.test(q)) {
@@ -27,9 +27,7 @@ export default new NativeFunction({
         const name = parsed?.name.toLowerCase()
 
         return Return.success(
-            ctx.client.emojis.cache.find(
-                x => x.id === q || x.name?.toLowerCase() === name || x.toString() === q
-            )?.id
+            ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id
         )
     },
 })

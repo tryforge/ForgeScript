@@ -11,18 +11,18 @@ export enum VoiceStateProperty {
     muted = "muted",
     selfMuted = "selfMuted",
     guildMuted = "guildMuted",
-    timestamp = "timestamp"
+    timestamp = "timestamp",
 }
 
 export const VoiceStateProperties = defineProperties<typeof VoiceStateProperty, VoiceState>({
-    timestamp: i => i?.channel?.createdTimestamp,
-    authorID: i => i?.member?.id,
-    channelID: i => i?.channelId,
-    guildID: i => i?.guild.id,
-    deaf: i => i?.deaf ?? false,
-    guildDeaf: i => i?.serverDeaf ?? false,
-    guildMuted: i => i?.serverMute ?? false,
-    muted: i => i?.mute ?? false,
-    selfDeaf: i => i?.selfDeaf ?? false,
-    selfMuted: i => i?.selfMute ?? false
+    timestamp: (i) => i?.channel?.createdTimestamp,
+    authorID: (i) => i?.member?.id,
+    channelID: (i) => i?.channelId,
+    guildID: (i) => i?.guild.id,
+    deaf: (i) => i?.deaf ?? false,
+    guildDeaf: (i) => i?.serverDeaf ?? false,
+    guildMuted: (i) => i?.serverMute ?? false,
+    muted: (i) => i?.mute ?? false,
+    selfDeaf: (i) => i?.selfDeaf ?? false,
+    selfMuted: (i) => i?.selfMute ?? false,
 })

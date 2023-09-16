@@ -14,17 +14,17 @@ export default new NativeFunction({
             description: "The id, mention or channel user to find",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "return author",
             description: "Returns the current author id if none found",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
     unwrap: true,
-    async execute(ctx, [ q, rt ]) {
+    async execute(ctx, [q, rt]) {
         const id = q.replace(UserMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -35,9 +35,8 @@ export default new NativeFunction({
         q = q.toLowerCase()
 
         return Return.success(
-            ctx.client.users.cache.find(
-                x => x.id === id || x.username.toLowerCase() === q
-            )?.id ?? (rt ? ctx.user?.id : undefined)
+            ctx.client.users.cache.find((x) => x.id === id || x.username.toLowerCase() === q)?.id ??
+                (rt ? ctx.user?.id : undefined)
         )
     },
 })

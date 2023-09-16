@@ -17,12 +17,12 @@ export default new NativeFunction({
             name: "end index",
             description: "The end index",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: false,
     unwrap: true,
-    execute(ctx, [ index, end ]) {
+    execute(ctx, [index, end]) {
         if (this.hasFields) {
             return Return.success(end ? ctx.args.slice(index, end).join(" ") : ctx.args[index])
         }

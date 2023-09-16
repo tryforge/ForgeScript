@@ -12,14 +12,14 @@ export default new NativeFunction({
             description: "The index of the role",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ i ]) {
+    execute(ctx, [i]) {
         return Return.success(
-            this.hasFields ?
-                ctx.message?.mentions.roles.at(i)?.id :
-                ctx.message?.mentions.roles.map(x => x.id).join(", ")
+            this.hasFields
+                ? ctx.message?.mentions.roles.at(i)?.id
+                : ctx.message?.mentions.roles.map((x) => x.id).join(", ")
         )
     },
 })

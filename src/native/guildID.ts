@@ -12,12 +12,12 @@ export default new NativeFunction({
             description: "The guild name to return the id",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ args ]) {
+    execute(ctx, [args]) {
         if (!this.hasFields) return Return.success(ctx.guild?.id)
         const name = args.join(";")
-        return Return.success(ctx.client.guilds.cache.find(x => x.name === name)?.id)
+        return Return.success(ctx.client.guilds.cache.find((x) => x.name === name)?.id)
     },
 })

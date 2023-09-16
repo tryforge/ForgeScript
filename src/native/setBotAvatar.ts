@@ -13,12 +13,10 @@ export default new NativeFunction({
             description: "The icon url",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ url ]) {
-        return Return.success(
-            !!(await ctx.client.user.setAvatar(url).catch(noop))
-        )
+    async execute(ctx, [url]) {
+        return Return.success(!!(await ctx.client.user.setAvatar(url).catch(noop)))
     },
 })

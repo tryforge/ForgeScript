@@ -14,12 +14,10 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Guild,
             required: true,
-        }
+        },
     ],
-    execute(ctx, [ guild ]) {
+    execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(
-            guild.roles.cache.size
-        )
+        return Return.success(guild.roles.cache.size)
     },
 })

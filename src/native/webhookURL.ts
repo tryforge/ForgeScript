@@ -14,13 +14,11 @@ export default new NativeFunction({
             description: "The webhook id",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ id ]) {
+    async execute(ctx, [id]) {
         const web = await ctx.client.fetchWebhook(id).catch(noop)
-        return Return.success(
-            web ? web.url : web
-        )
+        return Return.success(web ? web.url : web)
     },
 })

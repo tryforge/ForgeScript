@@ -38,7 +38,7 @@ export enum OperatorType {
     Gte = ">=",
     Gt = ">",
     Lt = "<",
-    None = "unknown"
+    None = "unknown",
 }
 
 export const Operators = new Set<OperatorType>(Object.values(OperatorType) as OperatorType[])
@@ -89,14 +89,14 @@ export class Compiler {
         Close: "]",
         Escape: "\\",
         Exclamation: "!",
-        Separator: ";"
+        Separator: ";",
     }
 
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
     private static Functions = new Map<string, IRawFunction>()
-     
+
     private id = 0
     private matches: Array<IRawFunctionMatch>
 
@@ -104,19 +104,20 @@ export class Compiler {
 
     public constructor(private readonly code?: string) {
         if (code) {
-            this.matches = Array.from(code.matchAll(Compiler.Regex)).map(x => ({
+            this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
-                ...Compiler.Functions.get(x[0])!
+                ...Compiler.Functions.get(x[0])!,
             }))
         } else this.matches = []
     }
 
     private compile(): ICompilationResult {
-        if (!this.code || this.matches.length === 0) return {
-            code: this.code ?? "",
-            resolve: this.wrap(this.code ?? ""),
-            functions: []
-        }
+        if (!this.code || this.matches.length === 0)
+            return {
+                code: this.code ?? "",
+                resolve: this.wrap(this.code ?? ""),
+                functions: [],
+            }
 
         let out = ""
         const functions = new Array<ICompiledFunction>()
@@ -129,7 +130,7 @@ export class Compiler {
             while (match.index !== this.index) {
                 const char = this.next()
                 const isEscape = char === Compiler.Syntax.Escape
-                
+
                 if (!escaped && isEscape) {
                     escaped = true
                     continue
@@ -139,8 +140,7 @@ export class Compiler {
                 out += char
             }
 
-            if (escaped)
-                continue
+            if (escaped) continue
 
             const fn = this.parseFunction(match)
             out += fn.id
@@ -152,10 +152,10 @@ export class Compiler {
         return {
             code: out,
             functions,
-            resolve: this.wrap(out)
+            resolve: this.wrap(out),
         }
     }
-    
+
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
         this.moveTo(match.index + match.name.length)
 
@@ -167,13 +167,12 @@ export class Compiler {
 
         if (match.args === null || (!usesFields && !match.args.required)) {
             // Increment index if escape character, just to skip it.
-            if (char === Compiler.Syntax.Escape) 
-                this.index++
-            
+            if (char === Compiler.Syntax.Escape) this.index++
+
             return {
                 id,
                 name,
-                fields: null
+                fields: null,
             }
         }
 
@@ -186,7 +185,7 @@ export class Compiler {
         // Skip brace open
         this.index++
 
-        for (let i = 0, len = match.args.fields.length;i < len;i++) {
+        for (let i = 0, len = match.args.fields.length; i < len; i++) {
             const isLast = i + 1 === match.args.fields.length
             const arg = match.args.fields[i]
 
@@ -200,9 +199,8 @@ export class Compiler {
                 fields.push(this.parseField(match, arg, isLast))
                 if (this.char() === Compiler.Syntax.Separator) {
                     this.index++
-                    if (!isLast)
-                        continue
-                } 
+                    if (!isLast) continue
+                }
             }
 
             const old = this.char()
@@ -219,11 +217,15 @@ export class Compiler {
         return {
             id,
             name,
-            fields
+            fields,
         }
     }
 
-    private parseField(match: IRawFunctionMatch, arg: IRawField, requireEndBrace = false): ICompiledFunctionField | ICompiledFunctionConditionField {
+    private parseField(
+        match: IRawFunctionMatch,
+        arg: IRawField,
+        requireEndBrace = false
+    ): ICompiledFunctionField | ICompiledFunctionConditionField {
         let nextMatch = this.matches[0] as IRawFunctionMatch | undefined
 
         const condition: Partial<ICompiledFunctionConditionField> = {}
@@ -233,7 +235,7 @@ export class Compiler {
 
         let braceClosure = false
         let escaped = false
-        
+
         for (;;) {
             const char = this.char()
             if (char === undefined) this.error("Reached end of code and found no brace closure for " + match.name)
@@ -242,31 +244,28 @@ export class Compiler {
             const isClosure = char === Compiler.Syntax.Close
             const isSeparator = char === Compiler.Syntax.Separator
 
-            // Mark as escaped 
-            if (!escaped && isEscape) 
-                escaped = true
+            // Mark as escaped
+            if (!escaped && isEscape) escaped = true
 
             if (!escaped) {
                 if (isClosure || isSeparator) {
                     if (isClosure) braceClosure = true
                     break
-                } 
-                else if (arg.condition === true && condition.op === undefined) {
-                    const possibleOp = ([ char + this.peek()!, char ] as OperatorType[])
-                        .find(x => Operators.has(x))
+                } else if (arg.condition === true && condition.op === undefined) {
+                    const possibleOp = ([char + this.peek()!, char] as OperatorType[]).find((x) => Operators.has(x))
                     if (possibleOp !== undefined) {
                         this.index += possibleOp.length
                         condition.op = possibleOp
-                        
+
                         condition.lhs = {
                             functions: Array.from(functions),
                             value,
-                            resolve: this.wrap(value)
+                            resolve: this.wrap(value),
                         }
-    
+
                         functions.length = 0
                         value = ""
-    
+
                         continue
                     }
                 }
@@ -275,38 +274,34 @@ export class Compiler {
             if (nextMatch?.index === this.index) {
                 // Remove the function that we are about to parse
                 this.matches.shift()
-                
 
                 if (!escaped) {
                     const fn = this.parseFunction(nextMatch)
                     functions.push(fn)
                     value += fn.id
                 }
-                
+
                 // Next function to match
                 nextMatch = this.matches[0]
 
-                if (!escaped)
-                    continue
+                if (!escaped) continue
             }
 
-            if (!isEscape) 
-                escaped = false
+            if (!isEscape) escaped = false
 
             this.index++
-            
-            if (!escaped) 
-                value += char
+
+            if (!escaped) value += char
         }
 
         const data = {
             functions,
             value,
-            resolve: this.wrap(value)
+            resolve: this.wrap(value),
         }
 
         if (arg.condition === true) {
-            condition.op ??= OperatorType.None 
+            condition.op ??= OperatorType.None
             condition.resolve = this.wrapCondition(condition.op)
 
             if (!condition.lhs) condition.lhs = data
@@ -319,11 +314,7 @@ export class Compiler {
     }
 
     private error(str: string) {
-        throw new ForgeError(
-            null,
-            ErrorType.CompilerError,
-            str
-        )
+        throw new ForgeError(null, ErrorType.CompilerError, str)
     }
 
     private back() {
@@ -336,11 +327,9 @@ export class Compiler {
 
     private wrap(code: string) {
         let i = 0
-        const gencode = code
-            .replace(Compiler.InvalidCharRegex, "\\$1")
-            .replace(Compiler.SystemRegex, () => {
-                return "${args[" + i++ + "] ?? ''}"
-            })
+        const gencode = code.replace(Compiler.InvalidCharRegex, "\\$1").replace(Compiler.SystemRegex, () => {
+            return "${args[" + i++ + "] ?? ''}"
+        })
 
         return new Function("args", "return `" + gencode + "`") as WrappedCode
     }
@@ -350,7 +339,7 @@ export class Compiler {
         if (this.index >= index) return out
 
         while (this.index !== index) out += this.next()
-        return out 
+        return out
     }
 
     private getNextId() {
@@ -370,15 +359,21 @@ export class Compiler {
     }
 
     public static setFunctions(fns: IRawFunction[]) {
-        fns.map(x => this.Functions.set(x.name, x))
-        this.Regex = new RegExp(`(${Array.from(this.Functions.values()).sort((x, y) => y.name.length - x.name.length).map(x => `\\${x.name}`).join("|")})`, "gm")
+        fns.map((x) => this.Functions.set(x.name, x))
+        this.Regex = new RegExp(
+            `(${Array.from(this.Functions.values())
+                .sort((x, y) => y.name.length - x.name.length)
+                .map((x) => `\\${x.name}`)
+                .join("|")})`,
+            "gm"
+        )
     }
 
     public static compile(code?: string): IExtendedCompilationResult {
         const result = new this(code).compile()
         return {
             ...result,
-            functions: result.functions.map(x => new CompiledFunction(x))
+            functions: result.functions.map((x) => new CompiledFunction(x)),
         }
     }
 }

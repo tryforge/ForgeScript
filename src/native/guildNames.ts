@@ -12,13 +12,11 @@ export default new NativeFunction({
             description: "The separator to use for each guild",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ sep ]) {
-        return Return.success(
-            ctx.client.guilds.cache.map(x => x.name).join(sep || ", ")
-        )
+    execute(ctx, [sep]) {
+        return Return.success(ctx.client.guilds.cache.map((x) => x.name).join(sep || ", "))
     },
 })

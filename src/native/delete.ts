@@ -12,11 +12,11 @@ export default new NativeFunction({
             description: "The key name",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name ]) {
+    execute(ctx, [name]) {
         return Return.success(ctx.deleteKeyword(name))
     },
 })

@@ -11,16 +11,12 @@ export default new NativeFunction({
             description: "The emoji name to return its id",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ emoji ]) {
-        if (this.hasFields) return Return.success(
-            ctx.client.emojis.cache.find(x => x.name === emoji)?.id
-        )
+    execute(ctx, [emoji]) {
+        if (this.hasFields) return Return.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id)
 
-        return Return.success(
-            ctx.emoji?.name
-        )
+        return Return.success(ctx.emoji?.name)
     },
 })

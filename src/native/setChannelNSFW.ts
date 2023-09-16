@@ -15,18 +15,16 @@ export default new NativeFunction({
             rest: false,
             check: (i: BaseChannel) => "setNSFW" in i,
             type: ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "state",
             description: "The state to set",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    async execute(ctx, [ channel, state ]) {
-        return Return.success(
-            !!(await (channel as TextChannel).setNSFW(state || false).catch(noop))
-        )
+    async execute(ctx, [channel, state]) {
+        return Return.success(!!(await (channel as TextChannel).setNSFW(state || false).catch(noop)))
     },
 })

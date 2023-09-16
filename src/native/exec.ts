@@ -13,10 +13,10 @@ export default new NativeFunction({
             description: "The command to execute",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ command ]) {
+    async execute(ctx, [command]) {
         try {
             const exec = await execSync(command, { encoding: "utf-8" })
             return Return.success(exec)

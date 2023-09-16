@@ -9,5 +9,5 @@ export default new NativeFunction({
     execute(ctx) {
         ctx.container.components.push(new ActionRowBuilder())
         return Return.success()
-    }
+    },
 })

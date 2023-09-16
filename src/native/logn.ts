@@ -12,10 +12,10 @@ export default new NativeFunction({
             description: "Number to get its logarithm",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ n ]) {
+    execute(ctx, [n]) {
         return Return.success(Math.log(n))
     },
 })

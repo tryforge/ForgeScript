@@ -14,31 +14,31 @@ export default new NativeFunction({
             type: ArgType.Enum,
             enum: Events,
             rest: false,
-            required: true          
+            required: true,
         },
         {
             name: "name",
             description: "The command name",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "property",
             description: "The property to retrieve",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "separator",
             description: "Separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ type, name, prop, sep ]) {
-        const cmd = ctx.client.commands.get(type as keyof ClientEvents, x => x.name === name)[0]
+    execute(ctx, [type, name, prop, sep]) {
+        const cmd = ctx.client.commands.get(type as keyof ClientEvents, (x) => x.name === name)[0]
         const val = cmd.data?.[prop]
         return Return.success(Array.isArray(val) ? val.join(sep || ", ") : val)
     },

@@ -8,7 +8,7 @@ export enum DateType {
     Date,
     ISO,
     UTC,
-    Time
+    Time,
 }
 
 export default new NativeFunction({
@@ -22,7 +22,7 @@ export default new NativeFunction({
             description: "The ms to convert to date",
             rest: false,
             type: ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "type",
@@ -30,29 +30,29 @@ export default new NativeFunction({
             enum: DateType,
             rest: false,
             required: true,
-            type: ArgType.Enum
-        }
+            type: ArgType.Enum,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ ms, type ]) {
+    execute(ctx, [ms, type]) {
         const date = new Date(ms)
 
         return Return.success(
-            type === DateType.Date ? 
-                date.toDateString() :
-                type === DateType.ISO ? 
-                    date.toISOString() :
-                    type === DateType.Locale ?
-                        date.toLocaleString() :
-                        type === DateType.LocaleDate ?
-                            date.toLocaleDateString() :
-                            type === DateType.LocaleTime ?
-                                date.toLocaleTimeString() :
-                                type === DateType.Time ?
-                                    date.toTimeString() :
-                                    type === DateType.UTC ? 
-                                        date.toUTCString() :
-                                        null as never
+            type === DateType.Date
+                ? date.toDateString()
+                : type === DateType.ISO
+                ? date.toISOString()
+                : type === DateType.Locale
+                ? date.toLocaleString()
+                : type === DateType.LocaleDate
+                ? date.toLocaleDateString()
+                : type === DateType.LocaleTime
+                ? date.toLocaleTimeString()
+                : type === DateType.Time
+                ? date.toTimeString()
+                : type === DateType.UTC
+                ? date.toUTCString()
+                : (null as never)
         )
     },
 })

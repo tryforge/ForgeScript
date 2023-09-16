@@ -12,10 +12,10 @@ export default new NativeFunction({
             description: "The string to trim at the end",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ m ]) {
+    execute(ctx, [m]) {
         return Return.success(m.trimEnd())
     },
 })

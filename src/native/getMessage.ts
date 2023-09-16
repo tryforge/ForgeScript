@@ -15,7 +15,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -23,7 +23,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Message,
-            pointer: 0
+            pointer: 0,
         },
         {
             name: "property",
@@ -31,18 +31,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: MessageProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "Separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [, m, prop, sep ]) {
-        return Return.success(
-            MessageProperties[prop](m, sep || ", ")
-        )
+    execute(ctx, [, m, prop, sep]) {
+        return Return.success(MessageProperties[prop](m, sep || ", "))
     },
 })

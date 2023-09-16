@@ -1,4 +1,10 @@
-import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
+import {
+    ArgType,
+    IExtendedCompiledFunctionConditionField,
+    IExtendedCompiledFunctionField,
+    NativeFunction,
+    Return,
+} from "../structures"
 
 export default new NativeFunction({
     name: "$while",
@@ -14,15 +20,15 @@ export default new NativeFunction({
             description: "The condition to validate",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "code",
             rest: false,
             required: true,
             type: ArgType.String,
-            description: "The code to execute"
-        }
+            description: "The code to execute",
+        },
     ],
     async execute(ctx) {
         const condition = this.data.fields![0] as IExtendedCompiledFunctionConditionField
@@ -35,7 +41,7 @@ export default new NativeFunction({
 
             const exec = await this["resolveCode"](ctx, code)
             if (exec.success || exec.continue) continue
-            else if (exec.break) break 
+            else if (exec.break) break
             else return exec
         }
 

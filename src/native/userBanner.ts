@@ -12,31 +12,31 @@ export default new NativeFunction({
             description: "The user to retrieve the banner",
             rest: false,
             required: true,
-            type: ArgType.User
+            type: ArgType.User,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    async execute(ctx, [ user, size, ext ]) {
+    async execute(ctx, [user, size, ext]) {
         user ??= ctx.user!
-        
+
         if (!user?.banner) await user.fetch()
 
         return Return.success(
             user?.bannerURL({
-                extension: ext as ImageExtension || undefined,
-                size: size as ImageSize || 2048
+                extension: (ext as ImageExtension) || undefined,
+                size: (size as ImageSize) || 2048,
             })
         )
     },

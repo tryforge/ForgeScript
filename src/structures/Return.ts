@@ -7,15 +7,18 @@ export enum ReturnType {
     Success,
     Return,
     Break,
-    Continue
+    Continue,
 }
 
-export type ReturnValue<T extends ReturnType> =
-    T extends ReturnType.Error ? ForgeError :
-    T extends ReturnType.Return ? string :
-    T extends ReturnType.Success ? unknown : 
-    T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue ? null : 
-    never
+export type ReturnValue<T extends ReturnType> = T extends ReturnType.Error
+    ? ForgeError
+    : T extends ReturnType.Return
+    ? string
+    : T extends ReturnType.Success
+    ? unknown
+    : T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue
+    ? null
+    : never
 
 export class Return<T extends ReturnType = ReturnType> {
     constructor(public readonly type: T, public readonly value: ReturnValue<T>) {}
@@ -41,17 +44,11 @@ export class Return<T extends ReturnType = ReturnType> {
     }
 
     public static successJSON(value: Return<ReturnType.Success>) {
-        return this.success(
-            typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value
-        )
+        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
     }
 
     public static successFormatted(value: Return<ReturnType.Success>) {
-        return this.success(
-            typeof value !== "string" ? 
-                inspect(value, { depth: Infinity }) : 
-                value
-        )
+        return this.success(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
     }
 
     public static success(value: ReturnValue<ReturnType.Success> = null) {

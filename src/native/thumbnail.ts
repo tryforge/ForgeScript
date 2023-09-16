@@ -12,18 +12,18 @@ export default new NativeFunction({
             description: "The url for the embed thumbnail",
             required: true,
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ thumbnail, index ]) {
-        ctx.container.embed((index ?? 0)).setThumbnail(thumbnail)
+    execute(ctx, [thumbnail, index]) {
+        ctx.container.embed(index ?? 0).setThumbnail(thumbnail)
         return Return.success()
     },
 })

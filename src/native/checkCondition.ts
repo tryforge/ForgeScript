@@ -13,11 +13,14 @@ export default new NativeFunction({
             rest: false,
             condition: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx) {
-        const cond = await this["resolveCondition"](ctx, this.data.fields![0] as IExtendedCompiledFunctionConditionField)
+        const cond = await this["resolveCondition"](
+            ctx,
+            this.data.fields![0] as IExtendedCompiledFunctionConditionField
+        )
         if (!this["isValidReturnType"](cond)) return cond
         return Return.success(cond.value)
     },

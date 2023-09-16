@@ -4,7 +4,18 @@ import { Context } from "../structures/Context"
 import { ReturnType } from "../structures/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
-import { Channel, Guild, GuildAuditLogsEntry, GuildEmoji, GuildMember, Invite, Message, Role, User, VoiceState } from "discord.js"
+import {
+    Channel,
+    Guild,
+    GuildAuditLogsEntry,
+    GuildEmoji,
+    GuildMember,
+    Invite,
+    Message,
+    Role,
+    User,
+    VoiceState,
+} from "discord.js"
 import { BaseCommand } from "../structures"
 
 export interface IStates {
@@ -41,22 +52,22 @@ export interface IRunnable {
 export class Interpreter {
     public static async run(runtime: IRunnable): Promise<string | null> {
         const ctx = new Context(runtime)
-        
+
         if (runtime.command?.data.guildOnly && !ctx.guild) return null
         else if (runtime.client.options.restrictions !== undefined) {
             const { guildIDs, userIDs } = runtime.client.options.restrictions
             const guildID = ctx.guild?.id
             const authorID = ctx.user?.id
 
-            if (userIDs?.length && (authorID && !userIDs.includes(authorID))) return null
-            else if (guildIDs?.length && (guildID && !guildIDs.includes(guildID))) return null
+            if (userIDs?.length && authorID && !userIDs.includes(authorID)) return null
+            else if (guildIDs?.length && guildID && !guildIDs.includes(guildID)) return null
         }
 
         const args = new Array<unknown>(runtime.data.functions.length)
-        
+
         ctx.executionTimestamp = Date.now()
-        
-        for (let i = 0, len = runtime.data.functions.length;i < len;i++) {
+
+        for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
             const fn = runtime.data.functions[i]
             const rt = await fn.execute(ctx)
 

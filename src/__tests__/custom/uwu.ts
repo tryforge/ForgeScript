@@ -7,5 +7,5 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx) {
         return Return.success("uwu!")
-    }
+    },
 })

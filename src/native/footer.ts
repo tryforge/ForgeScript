@@ -12,26 +12,26 @@ export default new NativeFunction({
             description: "The text for the embed footer",
             required: true,
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "url",
             description: "The url for the embed footer",
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ text, iconURL, index ]) {
-        ctx.container.embed((index ?? 0)).setFooter({
+    execute(ctx, [text, iconURL, index]) {
+        ctx.container.embed(index ?? 0).setFooter({
             text,
-            iconURL: iconURL ?? undefined
+            iconURL: iconURL ?? undefined,
         })
         return Return.success()
     },
