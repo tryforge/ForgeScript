@@ -17,12 +17,12 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [content]) {
+        ctx.container.content = content || undefined;
+        ctx.container.update = true;
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj);
             return structures_1.Return.success();
         }
-        ctx.container.content = content || undefined;
-        ctx.container.update = true;
         await ctx.container.send(ctx.obj);
         return structures_1.Return.success();
     },

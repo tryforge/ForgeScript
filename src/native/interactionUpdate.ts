@@ -17,13 +17,13 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [content]) {
+        ctx.container.content = content || undefined
+        ctx.container.update = true
+        
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj)
             return Return.success()
         }
-
-        ctx.container.content = content || undefined
-        ctx.container.update = true
 
         await ctx.container.send<Message<true>>(ctx.obj)
 
