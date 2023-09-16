@@ -49,7 +49,7 @@ export default new NativeFunction({
             label: name,
             description: desc,
             value,
-            default: def ?? false,
+            default: def || false,
             emoji: emoji
                 ? (parseEmoji(emoji) as APISelectMenuOption["emoji"]) ?? {
                       name: emoji,

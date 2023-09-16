@@ -46,7 +46,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [id, label, style, emoji, disabled]) {
         const btn = new discord_js_1.ButtonBuilder()
-            .setDisabled(disabled ?? false)
+            .setDisabled(disabled || false)
             .setStyle(style)
             .setLabel(label);
         if (style === discord_js_1.ButtonStyle.Link)

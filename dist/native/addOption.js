@@ -49,7 +49,7 @@ exports.default = new structures_1.NativeFunction({
             label: name,
             description: desc,
             value,
-            default: def ?? false,
+            default: def || false,
             emoji: emoji
                 ? (0, discord_js_1.parseEmoji)(emoji) ?? {
                     name: emoji,
