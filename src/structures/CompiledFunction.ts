@@ -151,11 +151,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
      * @returns
      */
     private async resolveUnhandledArg(ctx: Context, i: number, ref: any[] = []): Promise<Return> {
-        const field = this.data.fields![i] as IExtendedCompiledFunctionField
         const arg = this.fn.data.args![i]
-
-        const str = await this.resolveCode(ctx, field)
-        if (!this.isValidReturnType(str)) return str
 
         if (!arg.rest) {
             // Assertion because condition fields should never be executed with unwraps.
