@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "custom ID",
-            description: "The button custom id to delete",
+            description: "The component's custom id to delete",
             rest: false,
             required: true,
             type: structures_1.ArgType.String
@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [id]) {
         for (let i = 0, len = ctx.container.components.length; i < len; i++) {
             const comp = ctx.container.components[i];
-            const index = comp.components.findIndex(x => "customId" in x.data && x.data.customId === id);
+            const index = comp.components.findIndex(x => "custom_id" in x.data && x.data.custom_id === id);
             if (index !== -1) {
                 comp.components.splice(index, 1);
                 break;
