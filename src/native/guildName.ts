@@ -12,13 +12,11 @@ export default new NativeFunction({
             description: "The guild to retrieve the data",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild ]) {
-        return Return.success(
-            (guild ?? ctx.guild)?.name
-        )
+    execute(ctx, [guild]) {
+        return Return.success((guild ?? ctx.guild)?.name)
     },
 })

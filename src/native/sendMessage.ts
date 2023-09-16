@@ -13,23 +13,23 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Channel,
             rest: false,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "content",
             description: "The content for the message",
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "return message ID",
             description: "Whether to return the message id of the newly sent message",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ channel, content, returnMessageID ]) {
+    async execute(ctx, [channel, content, returnMessageID]) {
         ctx.container.content = content ?? undefined
         const msg = await ctx.container.send<Message<true>>(channel)
         return Return.success(returnMessageID ? msg?.id : undefined)

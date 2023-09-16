@@ -1,5 +1,10 @@
-
-import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
+import {
+    ArgType,
+    IExtendedCompiledFunctionConditionField,
+    IExtendedCompiledFunctionField,
+    NativeFunction,
+    Return,
+} from "../structures"
 
 export default new NativeFunction({
     name: "$onlyIf",
@@ -14,20 +19,23 @@ export default new NativeFunction({
             description: "The condition to use",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "code",
             description: "The code to execute if error",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     async execute(ctx) {
-        const [ condition, code ] = this.data.fields! as [ IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField ]
+        const [condition, code] = this.data.fields! as [
+            IExtendedCompiledFunctionConditionField,
+            IExtendedCompiledFunctionField
+        ]
         const res = await this["resolveCondition"](ctx, condition)
         if (!this["isValidReturnType"](res) || res.value) return res.success ? Return.success() : res
-        
+
         if (code) {
             const resolved = await this["resolveCode"](ctx, code)
             if (!this["isValidReturnType"](resolved)) return resolved

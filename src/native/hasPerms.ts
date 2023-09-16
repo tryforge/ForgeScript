@@ -13,7 +13,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -21,17 +21,17 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             required: true,
-            pointer: 0
+            pointer: 0,
         },
         {
             name: "perms",
             description: "The perms to check for",
             rest: true,
             type: ArgType.String,
-            required: true 
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ guild, member, perms ]) {
+    execute(ctx, [guild, member, perms]) {
         return Return.success(member.permissions.has(perms as PermissionsString[]))
     },
 })

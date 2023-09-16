@@ -12,19 +12,17 @@ export default new NativeFunction({
             description: "The emoji id to return its roles",
             rest: false,
             type: ArgType.GuildEmoji,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for every role",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ emoji, sep ]) {
+    execute(ctx, [emoji, sep]) {
         emoji ?? ctx.emoji
-        return Return.success(
-            emoji?.roles.cache.map(x => x.id).join(sep || ", ")
-        )
+        return Return.success(emoji?.roles.cache.map((x) => x.id).join(sep || ", "))
     },
 })

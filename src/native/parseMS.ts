@@ -12,33 +12,35 @@ export default new NativeFunction({
             description: "The ms to convert to string",
             rest: false,
             type: ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "limit",
             description: "Limit of units to use",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "separator",
             description: "The separator to use for every unit",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "and",
             rest: false,
             description: "Whether to use and word for last unit",
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ ms, limit, sep, and ]) {
-        return Return.success(TimeParser.parseToString(ms, {
-            and: and || false,
-            limit: limit || undefined,
-            separator: sep || " "
-        }))
+    execute(ctx, [ms, limit, sep, and]) {
+        return Return.success(
+            TimeParser.parseToString(ms, {
+                and: and || false,
+                limit: limit || undefined,
+                separator: sep || " ",
+            })
+        )
     },
 })

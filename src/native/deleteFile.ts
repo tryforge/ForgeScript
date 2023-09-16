@@ -13,10 +13,10 @@ export default new NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ path ]) {
+    execute(ctx, [path]) {
         // eslint-disable-next-line no-undef
         rmSync(path, { recursive: true })
 

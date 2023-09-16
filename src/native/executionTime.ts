@@ -7,5 +7,5 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         return Return.success(Date.now() - ctx.executionTimestamp)
-    }
+    },
 })

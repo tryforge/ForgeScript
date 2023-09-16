@@ -12,18 +12,18 @@ export default new NativeFunction({
             description: "The key name",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The key value",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, args ]) {
+    execute(ctx, [name, args]) {
         ctx.setKeyword(name, args.join(";"))
         return Return.success()
     },

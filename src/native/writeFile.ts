@@ -13,25 +13,25 @@ export default new NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "text",
             description: "The text to write",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "encoding",
             description: "The encoding to use for text",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ path, data, encoding ]) {
+    execute(ctx, [path, data, encoding]) {
         // eslint-disable-next-line no-undef
-        writeFileSync(path, data, { encoding: encoding as BufferEncoding || "utf-8" })
+        writeFileSync(path, data, { encoding: (encoding as BufferEncoding) || "utf-8" })
 
         return Return.success()
     },

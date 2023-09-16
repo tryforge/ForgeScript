@@ -28,7 +28,7 @@ export interface IForgeClientOptions extends ClientOptions {
 }
 
 export class ForgeClient extends Client<true> {
-    declare public options: (Omit<ClientOptions, "intents"> & { intents: IntentsBitField; }) & IForgeClientOptions
+    public declare options: (Omit<ClientOptions, "intents"> & { intents: IntentsBitField }) & IForgeClientOptions
     public commands = new NativeCommandManager(this)
     public applicationCommands = new ApplicationCommandManager(this)
     public events = new EventManager(this)
@@ -47,20 +47,19 @@ export class ForgeClient extends Client<true> {
                 Partials.Message,
                 Partials.Reaction,
                 Partials.ThreadMember,
-                Partials.User
+                Partials.User,
             ],
-            ...options
+            ...options,
         })
-        
+
         this.#init()
     }
 
     #init() {
-        if (this.options.useInviteSystem) 
-            InviteSystem["init"](this)
+        if (this.options.useInviteSystem) InviteSystem["init"](this)
 
         if (this.options.extensions?.length) {
-            for (let i = 0, len = this.options.extensions.length;i < len;i++) {
+            for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i]
                 ext.init(this)
                 console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`)
@@ -83,11 +82,11 @@ export class ForgeClient extends Client<true> {
     }
 
     get<T>(key: string) {
-        return this[key] as T 
+        return this[key] as T
     }
 
     override login(token?: string | undefined): Promise<string> {
-        return super.login(token ?? this.options.token).then(async str => {
+        return super.login(token ?? this.options.token).then(async (str) => {
             await this.applicationCommands.register()
             return str
         })

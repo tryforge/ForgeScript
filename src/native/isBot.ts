@@ -11,13 +11,11 @@ export default new NativeFunction({
             description: "The user to check whether its a bot",
             required: true,
             rest: false,
-            type: ArgType.User
-        }
+            type: ArgType.User,
+        },
     ],
     brackets: false,
-    execute(ctx, [ user ]) {
-        return Return.success(
-            Boolean((user ?? ctx.user)?.bot)
-        )
+    execute(ctx, [user]) {
+        return Return.success(Boolean((user ?? ctx.user)?.bot))
     },
 })

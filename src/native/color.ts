@@ -13,19 +13,21 @@ export default new NativeFunction({
             required: true,
             enum: Colors,
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ color, index ]) {
-        const col = (!isNaN(Number(color)) ? Number(color) : color.startsWith("#") ? color.slice(1) : color) as ColorResolvable
-        ctx.container.embed((index ?? 0)).setColor(col)
+    execute(ctx, [color, index]) {
+        const col = (
+            !isNaN(Number(color)) ? Number(color) : color.startsWith("#") ? color.slice(1) : color
+        ) as ColorResolvable
+        ctx.container.embed(index ?? 0).setColor(col)
         return Return.success()
     },
 })

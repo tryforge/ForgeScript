@@ -14,7 +14,7 @@ export default new NativeFunction({
             required: true,
             description: "The channel to get the message from",
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -22,10 +22,10 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ channel, message ]) {
+    execute(ctx, [channel, message]) {
         const msg = message ?? ctx.message
         return Return.success(msg?.reference?.messageId)
     },

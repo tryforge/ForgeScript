@@ -11,18 +11,18 @@ export default new NativeFunction({
             description: "The text to check on",
             required: true,
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "matches",
             description: "The list of strings to try match",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ text, matches ]) {
-        return Return.success(matches.some(x => text.includes(x)))
+    execute(ctx, [text, matches]) {
+        return Return.success(matches.some((x) => text.includes(x)))
     },
 })

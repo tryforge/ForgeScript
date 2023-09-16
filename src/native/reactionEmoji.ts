@@ -6,8 +6,6 @@ export default new NativeFunction({
     description: "The emoji that was used",
     unwrap: true,
     execute(ctx) {
-        return Return.success(
-            ctx.reaction?.emoji.toString()
-        )
-    }
+        return Return.success(ctx.reaction?.emoji.toString())
+    },
 })

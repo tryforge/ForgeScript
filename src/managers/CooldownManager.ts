@@ -8,13 +8,13 @@ export interface ICooldown {
 
 export class CooldownManager {
     private readonly cooldowns = new Collection<string, ICooldown>()
-    
+
     public constructor(private readonly client: ForgeClient) {}
 
     public add(id: string, dur: number) {
         this.cooldowns.set(id, {
             startedAt: Date.now(),
-            duration: Date.now()
+            duration: Date.now(),
         })
     }
 

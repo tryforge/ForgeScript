@@ -12,14 +12,12 @@ export interface IEvent<Events, T extends keyof Events> {
 }
 
 export class BaseEventHandler<Events = Record<string, unknown[]>, T extends keyof Events = keyof Events> {
-    public constructor(
-        public readonly data: IEvent<Events, T>
-    ) {}
+    public constructor(public readonly data: IEvent<Events, T>) {}
 
     public get listener() {
         return this.data.listener
     }
-    
+
     public get description() {
         return this.data.description
     }

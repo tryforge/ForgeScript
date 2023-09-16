@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -20,10 +20,10 @@ export default new NativeFunction({
             description: "The user to get its highest role id",
             rest: false,
             type: ArgType.Member,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ guild, member ]) {
+    execute(ctx, [guild, member]) {
         member ??= ctx.member!
         return Return.success(member?.roles.highest.id)
     },

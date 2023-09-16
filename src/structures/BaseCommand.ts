@@ -24,7 +24,7 @@ export class BaseCommand<T> {
     public constructor(public readonly data: IBaseCommand<T>, public unloadable = false) {
         this.compiled = {
             name: Compiler.compile(data.name),
-            code: Compiler.compile(data.code)
+            code: Compiler.compile(data.code),
         }
     }
 

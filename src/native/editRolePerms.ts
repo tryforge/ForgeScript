@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "role ID",
@@ -20,20 +20,18 @@ export default new NativeFunction({
             type: ArgType.Role,
             description: "The role to edit perms for",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "perms",
             description: "The new perms for the role",
             rest: true,
             type: ArgType.Permission,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    async execute(ctx, [, role, perms ]) {
-        return Return.success(
-            !!(await role.setPermissions(perms).catch(noop))
-        )
+    async execute(ctx, [, role, perms]) {
+        return Return.success(!!(await role.setPermissions(perms).catch(noop)))
     },
 })

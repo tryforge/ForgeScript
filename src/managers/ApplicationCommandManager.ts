@@ -1,4 +1,11 @@
-import { ApplicationCommandData, Collection, CommandInteraction, ContextMenuCommandBuilder, Events, SlashCommandBuilder } from "discord.js"
+import {
+    ApplicationCommandData,
+    Collection,
+    CommandInteraction,
+    ContextMenuCommandBuilder,
+    Events,
+    SlashCommandBuilder,
+} from "discord.js"
 import { ApplicationCommand } from "../structures/ApplicationCommand"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { ForgeClient } from "../core"
@@ -15,7 +22,7 @@ export class ApplicationCommandManager {
     public constructor(public readonly client: ForgeClient) {}
 
     public load(path: string) {
-        for (const file of recursiveReaddirSync(path).filter(x => x.endsWith(".js"))) {
+        for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line no-undef
             const req = this.loadOne(`${process.cwd()}/${file}`)
             if (!req) continue
@@ -27,7 +34,9 @@ export class ApplicationCommandManager {
         return this.commands.get(input.commandName) ?? null
     }
 
-    public add(...values: (ApplicationCommand | IApplicationCommandData | ApplicationCommand[] | IApplicationCommandData[])[]): void {
+    public add(
+        ...values: (ApplicationCommand | IApplicationCommandData | ApplicationCommand[] | IApplicationCommandData[])[]
+    ): void {
         for (const value of values) {
             if (Array.isArray(value)) return this.add(...value)
             const resolved = this.resolve(value)
@@ -49,6 +58,6 @@ export class ApplicationCommandManager {
 
     public register() {
         if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
-        return this.client.application.commands.set(this.commands.map(x => x.options.data))
+        return this.client.application.commands.set(this.commands.map((x) => x.options.data))
     }
 }

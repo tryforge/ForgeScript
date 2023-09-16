@@ -1,9 +1,47 @@
-import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, BaseChannel, BaseInteraction, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageReaction, MessageReplyOptions, ModalBuilder, Role, TextInputBuilder, User, VoiceState, WebhookClient } from "discord.js"
+import {
+    ActionRowBuilder,
+    AnyComponentBuilder,
+    ApplicationCommandOptionChoiceData,
+    AttachmentBuilder,
+    BaseChannel,
+    BaseInteraction,
+    Channel,
+    EmbedBuilder,
+    Guild,
+    GuildEmoji,
+    GuildMember,
+    Interaction,
+    InteractionEditReplyOptions,
+    InteractionReplyOptions,
+    Invite,
+    Message,
+    MessageReaction,
+    MessageReplyOptions,
+    ModalBuilder,
+    Role,
+    TextInputBuilder,
+    User,
+    VoiceState,
+    WebhookClient,
+} from "discord.js"
 import noop from "../functions/noop"
 import { ForgeClient } from "../core"
 import { RawMessageData } from "discord.js/typings/rawDataTypes"
 
-export type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite
+export type Sendable =
+    | null
+    | Role
+    | Message
+    | User
+    | GuildMember
+    | BaseChannel
+    | Interaction
+    | VoiceState
+    | WebhookClient
+    | GuildEmoji
+    | Guild
+    | MessageReaction
+    | Invite
 
 export class Container {
     public content?: string
@@ -39,7 +77,10 @@ export class Container {
                 if (this.modal && !obj.replied && "showModal" in obj) {
                     res = obj.showModal(this.modal)
                 } else {
-                    res = obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](options)
+                    res =
+                        obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](
+                            options
+                        )
                 }
             } else {
                 res = obj.respond(this.choices)
@@ -53,22 +94,24 @@ export class Container {
         }
 
         this.reset()
-        return await res.catch(noop) as T
+        return (await res.catch(noop)) as T
     }
 
     public isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions) {
-        return !!options.content?.trim() || 
-            !!options.embeds?.length || 
+        return (
+            !!options.content?.trim() ||
+            !!options.embeds?.length ||
             !!options.stickers?.length ||
             !!options.files?.length ||
             !!options.components?.length ||
-            !!options.attachments?.length || 
+            !!options.attachments?.length ||
             !!this.modal ||
             !!this.choices.length
+        )
     }
 
     public embed(index: number) {
-        return this.embeds[index] ??= new EmbedBuilder()
+        return (this.embeds[index] ??= new EmbedBuilder())
     }
 
     public reset() {
@@ -90,18 +133,24 @@ export class Container {
     }
 
     public getOptions<T>(content?: string): T {
-        return (content ? {
+        return (
             content
-        } : {
-            reply: this.reference ? {
-                messageReference: this.reference,
-                failIfNotExists: false
-            } : undefined,
-            files: this.files,
-            ephemeral: this.ephemeral,
-            content: this.content || null,
-            components: this.components,
-            embeds: this.embeds,
-        }) as T 
+                ? {
+                      content,
+                  }
+                : {
+                      reply: this.reference
+                          ? {
+                                messageReference: this.reference,
+                                failIfNotExists: false,
+                            }
+                          : undefined,
+                      files: this.files,
+                      ephemeral: this.ephemeral,
+                      content: this.content || null,
+                      components: this.components,
+                      embeds: this.embeds,
+                  }
+        ) as T
     }
 }

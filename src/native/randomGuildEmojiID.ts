@@ -12,14 +12,12 @@ export default new NativeFunction({
             description: "The guild to get emoji from",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
-    execute(ctx, [ g ]) {
+    execute(ctx, [g]) {
         g ??= ctx.guild!
 
-        return Return.success(
-            g?.emojis.cache.randomKey()
-        )
+        return Return.success(g?.emojis.cache.randomKey())
     },
 })

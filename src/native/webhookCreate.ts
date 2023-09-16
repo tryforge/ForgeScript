@@ -15,31 +15,31 @@ export default new NativeFunction({
             type: ArgType.Channel,
             rest: false,
             required: true,
-            check: (i: BaseChannel) => "createWebhook" in i
+            check: (i: BaseChannel) => "createWebhook" in i,
         },
         {
             name: "name",
             description: "The webhook name",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "url",
             description: "The avatar url",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, name, url ]) {
+    async execute(ctx, [channel, name, url]) {
         const ch = channel as TextChannel
-        const web = await ch.createWebhook({
-            name: name,
-            avatar: url || undefined
-        }).catch(noop)
+        const web = await ch
+            .createWebhook({
+                name: name,
+                avatar: url || undefined,
+            })
+            .catch(noop)
 
-        return Return.success(
-            web ? web.id : undefined
-        )
+        return Return.success(web ? web.id : undefined)
     },
 })

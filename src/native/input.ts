@@ -12,10 +12,10 @@ export default new NativeFunction({
             description: "The custom id to get the input field value",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ id ]) {
+    execute(ctx, [id]) {
         return Return.success(
             ctx.interaction?.isModalSubmit() ? ctx.interaction.fields.getTextInputValue(id) : undefined
         )

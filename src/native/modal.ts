@@ -13,21 +13,19 @@ export default new NativeFunction({
             description: "The custom id for this modal",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "title",
             description: "The title for the modal",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ id, title ]) {
-        ctx.container.modal = new ModalBuilder()
-            .setCustomId(id)
-            .setTitle(title)
-        
+    execute(ctx, [id, title]) {
+        ctx.container.modal = new ModalBuilder().setCustomId(id).setTitle(title)
+
         return Return.success()
-    }
+    },
 })

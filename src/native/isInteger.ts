@@ -11,11 +11,11 @@ export default new NativeFunction({
             description: "The number to check",
             required: true,
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ n ]) {
+    execute(ctx, [n]) {
         return Return.success(n % 1 === 0)
     },
 })

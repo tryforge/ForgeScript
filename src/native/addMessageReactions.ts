@@ -15,7 +15,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: TextBasedChannel) => i.isTextBased()
+            check: (i: TextBasedChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -23,17 +23,17 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emojis",
             description: "The emojis to react with",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ channel, message, emojis ]) {
+    async execute(ctx, [channel, message, emojis]) {
         let count = 0
 
         for (const emoji of emojis) {

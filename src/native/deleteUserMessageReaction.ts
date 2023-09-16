@@ -15,7 +15,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: TextBasedChannel) => i.isTextBased()
+            check: (i: TextBasedChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -23,7 +23,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emoji",
@@ -31,19 +31,17 @@ export default new NativeFunction({
             rest: false,
             required: true,
             pointer: 1,
-            type: ArgType.Reaction
+            type: ArgType.Reaction,
         },
         {
             name: "user ID",
             description: "The user to delete its reaction",
             required: true,
             rest: false,
-            type: ArgType.User
-        }
+            type: ArgType.User,
+        },
     ],
-    async execute(ctx, [ ,, emoji, user ]) {
-        return Return.success(
-            !!(await emoji.users.remove(user).catch(noop))
-        )
+    async execute(ctx, [, , emoji, user]) {
+        return Return.success(!!(await emoji.users.remove(user).catch(noop)))
     },
 })

@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             required: true,
             rest: false,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -20,10 +20,10 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ g, m ]) {
+    execute(ctx, [g, m]) {
         m ??= ctx.member!
         return Return.success(m?.voice.channelId)
     },

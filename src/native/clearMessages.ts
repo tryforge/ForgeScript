@@ -16,17 +16,17 @@ export default new NativeFunction({
             required: true,
             rest: false,
             type: ArgType.Channel,
-            check: (x: BaseChannel) => "messages" in x
+            check: (x: BaseChannel) => "messages" in x,
         },
         {
             name: "amount",
             description: "The amount of messages to delete",
             rest: false,
             required: true,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    async execute(ctx, [ channel, amount ]) {
+    async execute(ctx, [channel, amount]) {
         let count = 0
 
         for (const n of splitNumber(amount, 100)) {

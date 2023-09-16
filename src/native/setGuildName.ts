@@ -11,20 +11,18 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Guild,
             required: true,
-            description: "The guild to set name"
+            description: "The guild to set name",
         },
         {
             name: "name",
             description: "The new name",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ guild, name ]) {
-        return Return.success(
-            await guild.setName(name).catch(() => false) !== false
-        ) 
+    async execute(ctx, [guild, name]) {
+        return Return.success((await guild.setName(name).catch(() => false)) !== false)
     },
 })

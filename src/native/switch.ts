@@ -13,15 +13,15 @@ export default new NativeFunction({
             description: "The value to match with",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "cases",
             rest: false,
             description: "The cases to use ($case), use $case[default;...] to add a default case",
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     async execute(ctx) {
@@ -29,13 +29,20 @@ export default new NativeFunction({
         if (!this["isValidReturnType"](match)) return match
 
         const value = match.value as string
-        const switchCases: CompiledFunction[] = (this.data.fields![1] as IExtendedCompiledFunctionField).functions.filter(x => x.data.name === _case.name)
-        const index = switchCases.findIndex(x => (x.data.fields![0] as IExtendedCompiledFunctionField).value === "default")
+        const switchCases: CompiledFunction[] = (
+            this.data.fields![1] as IExtendedCompiledFunctionField
+        ).functions.filter((x) => x.data.name === _case.name)
+        const index = switchCases.findIndex(
+            (x) => (x.data.fields![0] as IExtendedCompiledFunctionField).value === "default"
+        )
         const defaultCase = index === -1 ? null : switchCases.splice(index, 1)[0]
 
-        for (let i = 0, len = switchCases.length;i < len;i++) {
+        for (let i = 0, len = switchCases.length; i < len; i++) {
             const cas = switchCases[i]
-            const caseValue: Return = await cas["resolveCode"](ctx, cas.data.fields![0] as IExtendedCompiledFunctionField)
+            const caseValue: Return = await cas["resolveCode"](
+                ctx,
+                cas.data.fields![0] as IExtendedCompiledFunctionField
+            )
             if (!this["isValidReturnType"](caseValue)) return caseValue
 
             if (caseValue.value === value) {
@@ -43,8 +50,7 @@ export default new NativeFunction({
             }
         }
 
-        if (defaultCase) 
-            return defaultCase.execute(ctx)
+        if (defaultCase) return defaultCase.execute(ctx)
 
         return Return.success()
     },

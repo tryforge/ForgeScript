@@ -12,10 +12,10 @@ export default new NativeFunction({
             description: "The text to decode",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ text ]) {
+    execute(ctx, [text]) {
         return Return.success(decodeURI(text))
     },
 })

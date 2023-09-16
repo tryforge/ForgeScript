@@ -13,24 +13,24 @@ export default new NativeFunction({
             description: "The guild to unban a user from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
             description: "The user to unban",
             rest: false,
             type: ArgType.User,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The unban reason",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, user, reason ]) {
+    async execute(ctx, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop)
-        return Return.success(!!unbanned) 
+        return Return.success(!!unbanned)
     },
 })

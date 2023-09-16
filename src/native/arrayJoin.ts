@@ -11,18 +11,18 @@ export default new NativeFunction({
             description: "The variable the array is held on",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "separator",
             description: "The separator to use for every element",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, sep ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name, sep]) {
+        const arr = ctx.getEnvironmentKey([name])
         return Return.success(Array.isArray(arr) ? arr.join(sep || ", ") : undefined)
     },
 })

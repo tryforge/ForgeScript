@@ -12,11 +12,11 @@ export default new NativeFunction({
             description: "The value to return",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ args ]) {
+    execute(ctx, [args]) {
         return Return.return(args.join(";"))
     },
 })

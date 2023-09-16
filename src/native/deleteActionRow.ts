@@ -11,12 +11,12 @@ export default new NativeFunction({
             description: "The row index to delete",
             rest: false,
             required: true,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ index ]) {
-        ctx.container.components.splice(index , 1)
+    execute(ctx, [index]) {
+        ctx.container.components.splice(index, 1)
         return Return.success()
     },
 })

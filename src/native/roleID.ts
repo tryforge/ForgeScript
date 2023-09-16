@@ -8,12 +8,11 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            
             name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "name",
@@ -21,14 +20,14 @@ export default new NativeFunction({
             rest: true,
             type: ArgType.String,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ guild, args ]) {
+    execute(ctx, [guild, args]) {
         if (this.hasFields) {
             const name = args.join(";")
-            return Return.success(guild.roles.cache.find(x => x.name === name)?.id)
+            return Return.success(guild.roles.cache.find((x) => x.name === name)?.id)
         }
         return Return.success(ctx.role?.id)
-    }
+    },
 })

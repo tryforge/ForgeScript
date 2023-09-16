@@ -14,10 +14,10 @@ export default new NativeFunction({
             description: "The webhook id",
             rest: false,
             type: ArgType.Webhook,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ web ]) {
+    async execute(ctx, [web]) {
         await web.delete().catch(noop)
         return Return.success()
     },

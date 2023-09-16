@@ -13,17 +13,17 @@ export default new NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "length",
             description: "The new length for the file",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ path, data ]) {
+    execute(ctx, [path, data]) {
         // eslint-disable-next-line no-undef
         truncateSync(path, data)
 

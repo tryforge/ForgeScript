@@ -13,13 +13,15 @@ export default new NativeFunction({
             description: "The perms for the invite link",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ perms ]) {
-        return Return.success(ctx.client.generateInvite({
-            scopes: [ OAuth2Scopes.Bot ],
-            permissions: perms as PermissionsString[] || [ "Administrator" ]
-        }))
+    execute(ctx, [perms]) {
+        return Return.success(
+            ctx.client.generateInvite({
+                scopes: [OAuth2Scopes.Bot],
+                permissions: (perms as PermissionsString[]) || ["Administrator"],
+            })
+        )
     },
 })

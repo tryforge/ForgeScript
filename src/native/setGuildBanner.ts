@@ -11,19 +11,17 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Guild,
             required: true,
-            description: "The guild to set banner on"
+            description: "The guild to set banner on",
         },
         {
             name: "url",
             description: "The new banner",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ guild, banner ]) {
-        return Return.success(
-            await guild.setBanner(banner || null).catch(() => false) !== false
-        ) 
+    async execute(ctx, [guild, banner]) {
+        return Return.success((await guild.setBanner(banner || null).catch(() => false)) !== false)
     },
 })

@@ -6,6 +6,8 @@ export default new NativeFunction({
     description: "Returns the focused option value of the command",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).value : undefined)
+        return Return.success(
+            ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).value : undefined
+        )
     },
 })

@@ -12,20 +12,18 @@ export default new NativeFunction({
             description: "The channeol to get tags of",
             rest: false,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isThread()
+            check: (i: BaseChannel) => i.isThread(),
         },
         {
             name: "separator",
             description: "The separator to use for every tag",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: false,
-    execute(ctx, [ ch, sep ]) {
+    execute(ctx, [ch, sep]) {
         const channel = (ch ?? ctx.channel) as ThreadChannel | undefined
-        return Return.success(
-            channel?.appliedTags.join(sep || ", ")
-        )
+        return Return.success(channel?.appliedTags.join(sep || ", "))
     },
 })

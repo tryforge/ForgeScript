@@ -13,10 +13,10 @@ export default new NativeFunction({
             description: "The path for the dir",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ path ]) {
+    execute(ctx, [path]) {
         return Return.success(void mkdirSync(path))
     },
 })

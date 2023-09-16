@@ -6,8 +6,6 @@ export default new NativeFunction({
     description: "Returns a random guild ID",
     unwrap: false,
     execute(ctx) {
-        return Return.success(
-            ctx.client.guilds.cache.randomKey()
-        )
+        return Return.success(ctx.client.guilds.cache.randomKey())
     },
 })

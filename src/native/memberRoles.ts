@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -20,17 +20,22 @@ export default new NativeFunction({
             rest: false,
             pointer: 0,
             type: ArgType.Member,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for each role",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ guild, member, sep ]) {
+    execute(ctx, [guild, member, sep]) {
         member ??= ctx.member!
-        return Return.success(member?.roles.cache.filter(x => x.id !== x.guild.id).map(x => x.id).join(sep || ", "))
+        return Return.success(
+            member?.roles.cache
+                .filter((x) => x.id !== x.guild.id)
+                .map((x) => x.id)
+                .join(sep || ", ")
+        )
     },
 })

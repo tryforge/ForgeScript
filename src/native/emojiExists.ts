@@ -7,19 +7,16 @@ export default new NativeFunction({
     description: "Returns whether an emoji id exists",
     unwrap: true,
     brackets: true,
-    args: [ 
+    args: [
         {
             name: "emoji ID",
             description: "The emoji to check",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ id ]) {
-        return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            ctx.client.emojis.cache.has(id)
-        )
+    async execute(ctx, [id]) {
+        return Return.success(CompiledFunction.IdRegex.test(id) && ctx.client.emojis.cache.has(id))
     },
 })

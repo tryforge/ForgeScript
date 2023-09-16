@@ -11,14 +11,12 @@ export default new NativeFunction({
             description: "The guild to retrieve bot count from",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild ]) {
+    execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(
-            guild?.members.cache.filter(x => x.user.bot).size
-        )
-    }
+        return Return.success(guild?.members.cache.filter((x) => x.user.bot).size)
+    },
 })

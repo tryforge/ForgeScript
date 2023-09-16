@@ -13,13 +13,10 @@ export default new NativeFunction({
             description: "The channel to check",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ id ]) {
-        return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            ctx.client.channels.cache.has(id)
-        )
+    async execute(ctx, [id]) {
+        return Return.success(CompiledFunction.IdRegex.test(id) && ctx.client.channels.cache.has(id))
     },
 })

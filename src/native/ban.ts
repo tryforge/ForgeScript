@@ -4,7 +4,8 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$ban",
     version: "1.0.0",
-    description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
+    description:
+        "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
     args: [
@@ -13,7 +14,7 @@ export default new NativeFunction({
             description: "The guild to ban a member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -21,27 +22,29 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The reason to ban for",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "delete message seconds",
             description: "Delete messages from this member that were sent in this seconds time span",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    async execute(ctx, [ guild, member, reason, seconds ]) {
+    async execute(ctx, [guild, member, reason, seconds]) {
         return Return.success(
-            await member.ban({
-                reason: reason || undefined,
-                deleteMessageSeconds: seconds || undefined
-            }).catch(() => false) !== false
+            (await member
+                .ban({
+                    reason: reason || undefined,
+                    deleteMessageSeconds: seconds || undefined,
+                })
+                .catch(() => false)) !== false
         )
     },
 })

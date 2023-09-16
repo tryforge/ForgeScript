@@ -6,8 +6,6 @@ export default new NativeFunction({
     description: "The reaction author id that reacted",
     unwrap: true,
     execute(ctx) {
-        return Return.success(
-            ctx.states?.user?.new?.id
-        )
-    }
+        return Return.success(ctx.states?.user?.new?.id)
+    },
 })

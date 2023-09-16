@@ -12,11 +12,11 @@ export default new NativeFunction({
             description: "The message to log to console",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ args ]) {
+    execute(ctx, [args]) {
         console.log(...args)
         return Return.success()
     },

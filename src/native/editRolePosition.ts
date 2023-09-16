@@ -13,7 +13,7 @@ export default new NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "role ID",
@@ -21,19 +21,17 @@ export default new NativeFunction({
             type: ArgType.Role,
             description: "The role to edit position for",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "position",
             description: "The new position for the role",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [, role, pos ]) {
-        return Return.success(
-            !!(await role.setPosition(pos).catch(noop))
-        )
+    async execute(ctx, [, role, pos]) {
+        return Return.success(!!(await role.setPosition(pos).catch(noop)))
     },
 })

@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The guild to retrieve the role from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "role ID",
@@ -20,27 +20,27 @@ export default new NativeFunction({
             rest: false,
             required: true,
             pointer: 0,
-            type: ArgType.Role
+            type: ArgType.Role,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, role, size, ext ]) {
+    execute(ctx, [guild, role, size, ext]) {
         return Return.success(
             (role ?? ctx.role)?.iconURL({
-                extension: ext as ImageExtension || undefined,
-                size: size as ImageSize || 2048
+                extension: (ext as ImageExtension) || undefined,
+                size: (size as ImageSize) || 2048,
             })
         )
     },

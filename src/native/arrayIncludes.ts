@@ -11,19 +11,19 @@ export default new NativeFunction({
             description: "The variable the array is held on",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "value",
             description: "The value to check for",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, value ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name, value]) {
+        const arr = ctx.getEnvironmentKey([name])
         return Return.success(Array.isArray(arr) ? arr.includes(value) : false)
     },
 })

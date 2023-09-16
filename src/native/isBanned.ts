@@ -13,17 +13,17 @@ export default new NativeFunction({
             description: "The guild to check bans on",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
             description: "The user to check ban",
             rest: false,
             type: ArgType.User,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ guild, user ]) {
+    async execute(ctx, [guild, user]) {
         const isBanned = await guild.bans.fetch(user).catch(noop)
         return Return.success(!!isBanned)
     },

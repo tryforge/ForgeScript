@@ -15,7 +15,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: TextBasedChannel) => i.isTextBased()
+            check: (i: TextBasedChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -23,12 +23,10 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ channel, message ]) {
-        return Return.success(
-            !!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop))
-        )
+    async execute(ctx, [channel, message]) {
+        return Return.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop)))
     },
 })

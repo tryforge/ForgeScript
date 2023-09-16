@@ -14,18 +14,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: RoleProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ prop, sep ]) {
-        return Return.success(
-            RoleProperties[prop](ctx.states?.role?.old, sep)
-        )
+    execute(ctx, [prop, sep]) {
+        return Return.success(RoleProperties[prop](ctx.states?.role?.old, sep))
     },
 })

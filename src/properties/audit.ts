@@ -11,18 +11,18 @@ export enum AuditProperty {
     targetType = "targetType",
     action = "action",
     changes = "changes",
-    extra = "extra"
+    extra = "extra",
 }
 
 export const AuditProperties = defineProperties<typeof AuditProperty, GuildAuditLogsEntry>({
-    id: i => i?.id,
-    executorID: i => i?.executorId,
-    targetID: i => i?.targetId,
-    extra: i => i ? typeof i === "string" ? i : JSON.stringify(i.extra) : undefined,
-    changes: i => i ? JSON.stringify(i.changes) : undefined,
-    reason: i => i?.reason,
-    timestamp: i => i?.createdTimestamp,
-    action: i => AuditLogEvent[i?.action!],
-    actionType: i => i?.actionType,
-    targetType: i => i?.targetType,
+    id: (i) => i?.id,
+    executorID: (i) => i?.executorId,
+    targetID: (i) => i?.targetId,
+    extra: (i) => (i ? (typeof i === "string" ? i : JSON.stringify(i.extra)) : undefined),
+    changes: (i) => (i ? JSON.stringify(i.changes) : undefined),
+    reason: (i) => i?.reason,
+    timestamp: (i) => i?.createdTimestamp,
+    action: (i) => AuditLogEvent[i?.action!],
+    actionType: (i) => i?.actionType,
+    targetType: (i) => i?.targetType,
 })

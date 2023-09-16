@@ -13,10 +13,10 @@ export default new NativeFunction({
             description: "The content to use for this response",
             required: true,
             type: ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
-    async execute(ctx, [ content ]) {
+    async execute(ctx, [content]) {
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj)
             return Return.success()

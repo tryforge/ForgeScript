@@ -13,37 +13,35 @@ export default new NativeFunction({
             description: "The custom id to use for this menu",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "placeholder",
             description: "The placeholder to use for the menu",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "disabled",
             description: "Whether to keep this menu disabled",
             type: ArgType.Boolean,
-            rest: false
+            rest: false,
         },
         {
             name: "min values",
             description: "The min values to choose for the menu",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "max values",
             description: "The max values to choose for the menu",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
     ],
-    execute(ctx, [ id, placeholder, disabled, min, max ]) {
-        const menu = new StringSelectMenuBuilder()
-            .setCustomId(id)
-            .setDisabled(disabled ?? false)
+    execute(ctx, [id, placeholder, disabled, min, max]) {
+        const menu = new StringSelectMenuBuilder().setCustomId(id).setDisabled(disabled ?? false)
 
         if (placeholder) menu.setPlaceholder(placeholder)
         if (min !== null) menu.setMinValues(min)
@@ -52,5 +50,5 @@ export default new NativeFunction({
         ctx.container.components.at(-1)?.addComponents(menu)
 
         return Return.success()
-    }
+    },
 })

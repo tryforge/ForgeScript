@@ -11,27 +11,27 @@ export default new NativeFunction({
             description: "The variable to load the result to",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "variables",
             description: "The variable names to concat",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, variables ]) {
+    execute(ctx, [name, variables]) {
         const arr = new Array<unknown>()
 
-        for (let i = 0, len = variables.length;i < len;i++) {
+        for (let i = 0, len = variables.length; i < len; i++) {
             const v = variables[i]
-            const load = ctx.getEnvironmentKey([ v ])
+            const load = ctx.getEnvironmentKey([v])
             if (Array.isArray(load)) arr.push(...load)
         }
 
         ctx.setEnvironmentKey(name, arr)
-        return Return.success()  
+        return Return.success()
     },
 })

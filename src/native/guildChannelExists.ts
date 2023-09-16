@@ -7,26 +7,23 @@ export default new NativeFunction({
     description: "Returns whether an guild channel id exists",
     unwrap: true,
     brackets: true,
-    args: [ 
+    args: [
         {
             name: "guild ID",
             description: "The guild to check for the guild channel",
             type: ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "channel ID",
             description: "The role to guild channel",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, id ]) {
-        return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            guild.channels.cache.has(id)
-        )
+    async execute(ctx, [guild, id]) {
+        return Return.success(CompiledFunction.IdRegex.test(id) && guild.channels.cache.has(id))
     },
 })
