@@ -37,6 +37,13 @@ client.commands.add({
     code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
 });
 client.commands.add({
+    type: discord_js_1.Events.InteractionCreate,
+    code: `$onlyIf[$isButton]
+    $title[hello!]
+    $interactionUpdate
+    `
+});
+client.commands.add({
     type: discord_js_1.Events.GuildAuditLogEntryCreate,
     code: `
     $sendMessage[1148787451490476092;

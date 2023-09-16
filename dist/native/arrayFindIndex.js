@@ -48,7 +48,6 @@ exports.default = new structures_1.NativeFunction({
             ctx.setEnvironmentKey(varName, el);
             const rt = (await this["resolveCode"](ctx, code));
             if (rt.return) {
-                console.log(rt.value);
                 if (!rt.value)
                     continue;
                 return structures_1.Return.success(i);

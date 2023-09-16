@@ -40,6 +40,14 @@ client.commands.add({
     type: Events.MessageReactionAdd,
     code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
 })
+
+client.commands.add({
+    type: Events.InteractionCreate,
+    code: `$onlyIf[$isButton]
+    $title[hello!]
+    $interactionUpdate
+    `
+})
 client.commands.add({
     type: Events.GuildAuditLogEntryCreate,
     code: `
