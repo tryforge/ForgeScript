@@ -24,12 +24,12 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [content, returnMessageID]) {
+        ctx.container.fetchReply = returnMessageID ?? false;
+        ctx.container.content = content || undefined;
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj);
             return structures_1.Return.success();
         }
-        ctx.container.fetchReply = returnMessageID ?? false;
-        ctx.container.content = content || undefined;
         const reply = await ctx.container.send(ctx.obj);
         return structures_1.Return.success(returnMessageID ? reply?.id : undefined);
     },
