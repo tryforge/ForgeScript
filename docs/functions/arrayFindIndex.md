@@ -72,7 +72,6 @@ export default new NativeFunction({
             const rt = (await this["resolveCode"](ctx, code)) as Return
 
             if (rt.return) {
-                console.log(rt.value)
                 if (!rt.value) continue
                 return Return.success(i)
             } else if (!this["isValidReturnType"](rt)) return rt
