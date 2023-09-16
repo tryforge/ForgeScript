@@ -34,23 +34,22 @@ export default new NativeFunction({
             description: "The guild to return the emotes of",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for each emoji",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, sep ]) {
-        return Return.success(
-            (guild ?? ctx.guild)?.emojis.cache.map(x => x.toString()).join(sep || ", ")
-        )
+    execute(ctx, [guild, sep]) {
+        return Return.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "))
     },
 })
+
 ```
     
 </details>

@@ -34,46 +34,49 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.type === ChannelType.GuildForum,
-            description: "The channel to create a post on"
+            description: "The channel to create a post on",
         },
         {
             name: "title",
             description: "The post title",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "description",
             description: "The post description",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "tags",
             description: "The tags for the post",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ channel, title, desc, tags ]) {
+    async execute(ctx, [channel, title, desc, tags]) {
         const forum = channel as ForumChannel
 
         ctx.container.content = desc || undefined
-        
-        const t = await forum.threads.create({
-            appliedTags: tags,
-            name: title,
-            message: ctx.container.getOptions()
-        }).catch(noop)
+
+        const t = await forum.threads
+            .create({
+                appliedTags: tags,
+                name: title,
+                message: ctx.container.getOptions(),
+            })
+            .catch(noop)
 
         ctx.container.reset()
 
         return Return.success(t ? t.id : undefined)
     },
 })
+
 ```
     
 </details>

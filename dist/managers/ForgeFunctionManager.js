@@ -19,7 +19,7 @@ class ForgeFunctionManager {
         return this.functions.get(name);
     }
     load(path) {
-        for (const file of (0, recursiveReaddirSync_1.default)(path).filter(x => x.endsWith(".js"))) {
+        for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             const req = require(file).default;
             if (req instanceof ForgeFunction_1.ForgeFunction) {
                 this.functions.set(req.data.name, req);

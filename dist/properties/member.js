@@ -26,22 +26,22 @@ var MemberProperty;
     MemberProperty["boostingSince"] = "boostingSince";
 })(MemberProperty || (exports.MemberProperty = MemberProperty = {}));
 exports.MemberProperties = (0, defineProperties_1.default)({
-    timestamp: i => i?.joinedTimestamp,
-    displayColor: i => i?.displayHexColor,
-    displayName: i => i?.displayName,
-    avatar: i => i?.displayAvatarURL(),
-    nickname: i => i?.nickname,
-    roles: (i, sep) => i?.roles.cache.map(x => x.id).join(sep || ", "),
-    bannable: i => i?.bannable ?? false,
-    kickable: i => i?.kickable ?? false,
-    manageable: i => i?.manageable ?? false,
-    id: i => i?.id,
-    guildID: i => i?.guild.id,
-    timedOutUntil: i => i?.isCommunicationDisabled() ? i.communicationDisabledUntil.getTime() : 0,
-    timeout: i => i?.isCommunicationDisabled() ?? false,
-    status: i => i?.presence?.status,
+    timestamp: (i) => i?.joinedTimestamp,
+    displayColor: (i) => i?.displayHexColor,
+    displayName: (i) => i?.displayName,
+    avatar: (i) => i?.displayAvatarURL(),
+    nickname: (i) => i?.nickname,
+    roles: (i, sep) => i?.roles.cache.map((x) => x.id).join(sep || ", "),
+    bannable: (i) => i?.bannable ?? false,
+    kickable: (i) => i?.kickable ?? false,
+    manageable: (i) => i?.manageable ?? false,
+    id: (i) => i?.id,
+    guildID: (i) => i?.guild.id,
+    timedOutUntil: (i) => (i?.isCommunicationDisabled() ? i.communicationDisabledUntil.getTime() : 0),
+    timeout: (i) => i?.isCommunicationDisabled() ?? false,
+    status: (i) => i?.presence?.status,
     platform: (i, sep) => Object.keys(i?.presence?.clientStatus ?? {}).join(sep || ", "),
-    boosting: i => i?.premiumSinceTimestamp !== null,
-    boostingSince: i => i?.premiumSinceTimestamp ?? 0
+    boosting: (i) => i?.premiumSinceTimestamp !== null,
+    boostingSince: (i) => i?.premiumSinceTimestamp ?? 0,
 });
 //# sourceMappingURL=member.js.map

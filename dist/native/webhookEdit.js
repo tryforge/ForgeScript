@@ -17,26 +17,28 @@ exports.default = new structures_1.NativeFunction({
             description: "The webhook id",
             rest: false,
             type: structures_1.ArgType.Webhook,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The new name for the webhook",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "url",
             description: "The new avatar for the webhook",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [web, name, avatar]) {
-        const edit = await web.edit({
+        const edit = await web
+            .edit({
             avatar: avatar || undefined,
-            name: name || undefined
-        }).catch(noop_1.default);
+            name: name || undefined,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(!!edit);
     },
 });

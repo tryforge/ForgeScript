@@ -12,19 +12,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The url for the embed image",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [image, index]) {
         if (image)
-            ctx.container.embed((index ?? 0)).setImage(image);
+            ctx.container.embed(index ?? 0).setImage(image);
         return structures_1.Return.success();
     },
 });

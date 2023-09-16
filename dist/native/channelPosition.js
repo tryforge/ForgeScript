@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id of the channel to get its position",
             rest: false,
             type: structures_1.ArgType.Channel,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;

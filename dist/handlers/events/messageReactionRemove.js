@@ -6,10 +6,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "messageReactionRemove",
     version: "1.0.1",
     description: "This event is fired when an user stops reacting",
-    intents: [
-        "GuildMessageReactions",
-        "DirectMessageReactions"
-    ],
+    intents: ["GuildMessageReactions", "DirectMessageReactions"],
     listener: async function (m, user) {
         const commands = this.commands.get("messageReactionRemove");
         for (const command of commands) {
@@ -19,13 +16,13 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     user: {
-                        new: user
-                    }
+                        new: user,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
-    }
+    },
 });
 //# sourceMappingURL=messageReactionRemove.js.map

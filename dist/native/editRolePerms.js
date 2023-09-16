@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "role ID",
@@ -21,15 +21,15 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Role,
             description: "The role to edit perms for",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "perms",
             description: "The new perms for the role",
             rest: true,
             type: structures_1.ArgType.Permission,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     async execute(ctx, [, role, perms]) {

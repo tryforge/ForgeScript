@@ -17,36 +17,38 @@ exports.default = new structures_1.NativeFunction({
             description: "The channel to create the thread at",
             rest: false,
             type: structures_1.ArgType.Channel,
-            check: (i) => "threads" in i
+            check: (i) => "threads" in i,
         },
         {
             name: "name",
             description: "The name for the thread",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content to use for the starter message",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "message ID",
             description: "The message to start thread for",
             rest: false,
             pointer: 0,
-            type: structures_1.ArgType.Message
+            type: structures_1.ArgType.Message,
         },
     ],
     async execute(ctx, [channel, name, content, msg]) {
         const ch = channel;
         ctx.container.content = content || undefined;
-        const success = await ch.threads.create({
+        const success = await ch.threads
+            .create({
             name,
-            startMessage: ctx.container.getOptions()
-        }).catch(noop_1.default);
+            startMessage: ctx.container.getOptions(),
+        })
+            .catch(noop_1.default);
         ctx.container.reset();
         return structures_1.Return.success(success ? success.id : undefined);
     },

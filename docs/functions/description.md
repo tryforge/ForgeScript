@@ -29,21 +29,22 @@ export default new NativeFunction({
             description: "The description for the embed",
             required: true,
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ description, index ]) {
-        ctx.container.embed((index ?? 0)).setDescription(description)
+    execute(ctx, [description, index]) {
+        ctx.container.embed(index ?? 0).setDescription(description)
         return Return.success()
     },
 })
+
 ```
     
 </details>

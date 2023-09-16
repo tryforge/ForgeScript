@@ -28,16 +28,17 @@ export default new NativeFunction({
             description: "The key to return its value",
             required: true,
             type: ArgType.String,
-            rest: true
-        }
+            rest: true,
+        },
     ],
     brackets: true,
     unwrap: true,
-    execute(ctx, [ args ]) {
+    execute(ctx, [args]) {
         const env = ctx.getEnvironmentKey(args)
         return Return.successJSON(env)
     },
 })
+
 ```
     
 </details>

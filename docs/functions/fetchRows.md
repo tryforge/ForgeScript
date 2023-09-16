@@ -34,7 +34,7 @@ export default new NativeFunction({
             description: "The channel id to get the message from",
             rest: false,
             required: true,
-            type: ArgType.Channel
+            type: ArgType.Channel,
         },
         {
             name: "message ID",
@@ -42,15 +42,16 @@ export default new NativeFunction({
             pointer: 0,
             rest: false,
             type: ArgType.Message,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: false,
-    execute(ctx, [, msg ]) {
-        ctx.container.components = (msg ?? ctx.message)?.components.map(x => ActionRowBuilder.from(x)) ?? []
+    execute(ctx, [, msg]) {
+        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => ActionRowBuilder.from(x)) ?? []
         return Return.success()
     },
 })
+
 ```
     
 </details>

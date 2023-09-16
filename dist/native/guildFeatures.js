@@ -12,14 +12,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to retrieve the data",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "separator",
             description: "The separator to use",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {

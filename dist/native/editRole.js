@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "role ID",
@@ -21,56 +21,58 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Role,
             description: "The role to edit data",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "role name",
             description: "The new role name, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "role color",
             description: "The new role color, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "role icon",
             description: "The new role icon, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "hoisted",
             description: "Whether the role is hoisted, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.Boolean
+            type: structures_1.ArgType.Boolean,
         },
         {
             name: "mentionable",
             description: "Whether the role can be mentioned, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.Boolean
+            type: structures_1.ArgType.Boolean,
         },
         {
             name: "perms",
             description: "The new perms for the role",
             rest: true,
             type: structures_1.ArgType.Permission,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     async execute(ctx, [, role, name, color, icon, hoist, mentionable, perms]) {
-        return structures_1.Return.success(!!(await role.edit({
+        return structures_1.Return.success(!!(await role
+            .edit({
             color: color || undefined,
             hoist: hoist || undefined,
             icon: icon || undefined,
             mentionable: mentionable || undefined,
             name: name || undefined,
-            permissions: perms || undefined
-        }).catch(lodash_1.noop)));
+            permissions: perms || undefined,
+        })
+            .catch(lodash_1.noop)));
     },
 });
 //# sourceMappingURL=editRole.js.map

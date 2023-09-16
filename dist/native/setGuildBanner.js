@@ -12,18 +12,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
-            description: "The guild to set banner on"
+            description: "The guild to set banner on",
         },
         {
             name: "url",
             description: "The new banner",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx, [guild, banner]) {
-        return structures_1.Return.success(await guild.setBanner(banner || null).catch(() => false) !== false);
+        return structures_1.Return.success((await guild.setBanner(banner || null).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildBanner.js.map

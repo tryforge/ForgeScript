@@ -11,7 +11,7 @@ class CooldownManager {
     add(id, dur) {
         this.cooldowns.set(id, {
             startedAt: Date.now(),
-            duration: Date.now()
+            duration: Date.now(),
         });
     }
     delete(id) {

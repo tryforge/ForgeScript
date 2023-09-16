@@ -14,21 +14,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The custom id to find the component",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "new custom ID",
             description: "The new custom id for this component",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "label",
             description: "The button label",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "style",
@@ -36,26 +36,26 @@ exports.default = new structures_1.NativeFunction({
             enum: discord_js_1.ButtonStyle,
             type: structures_1.ArgType.Enum,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "emoji",
             rest: false,
             type: structures_1.ArgType.String,
-            description: "The emoji for this button"
+            description: "The emoji for this button",
         },
         {
             name: "disabled",
             rest: false,
             type: structures_1.ArgType.Boolean,
-            description: "Whether to disable the button"
-        }
+            description: "Whether to disable the button",
+        },
     ],
     execute(ctx, [oldId, id, label, style, emoji, disabled]) {
-        const rowIndex = ctx.container.components.findIndex(x => x.components.some(x => "custom_id" in x.data && x.data.custom_id === oldId));
+        const rowIndex = ctx.container.components.findIndex((x) => x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId));
         if (rowIndex === -1)
             return structures_1.Return.success(false);
-        const btn = ctx.container.components[rowIndex].components.find(x => "custom_id" in x.data && x.data.custom_id === oldId);
+        const btn = ctx.container.components[rowIndex].components.find((x) => "custom_id" in x.data && x.data.custom_id === oldId);
         if (!btn)
             return structures_1.Return.success(false);
         btn.setCustomId(id)

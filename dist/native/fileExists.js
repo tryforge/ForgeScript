@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The path to file or directory",
             required: true,
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [path]) {
         return structures_1.Return.success((0, fs_1.existsSync)(path));

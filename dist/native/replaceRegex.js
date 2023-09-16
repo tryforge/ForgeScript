@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The base text",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "match",
@@ -20,28 +20,28 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.String,
-            pointer: 2
+            pointer: 2,
         },
         {
             name: "flags",
             description: "The flags to use for the regex",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "new value",
             description: "The text to replace matches with",
             type: structures_1.ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "amount",
             description: "How many times to perform this replacement",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [text, raw, flags, replacement, amount]) {
@@ -51,7 +51,7 @@ exports.default = new structures_1.NativeFunction({
             return structures_1.Return.success(text.replace(regex, replacement));
         }
         let i = 0;
-        return structures_1.Return.success(text.replace(regex, m => ++i <= amount ? replacement : m));
-    }
+        return structures_1.Return.success(text.replace(regex, (m) => (++i <= amount ? replacement : m)));
+    },
 });
 //# sourceMappingURL=replaceRegex.js.map

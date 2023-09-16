@@ -18,12 +18,12 @@ class BaseCommandManager {
     refresh() {
         for (const [key, commands] of this.commands) {
             // Unload the ones added thru folders
-            const unloadable = commands.filter(x => !x.unloadable);
+            const unloadable = commands.filter((x) => !x.unloadable);
             // Keep unloadable
             this.commands.set(key, unloadable);
         }
         for (const p of this.paths) {
-            for (const file of (0, recursiveReaddirSync_1.default)(p).filter(x => x.endsWith(".js") || x.endsWith)) {
+            for (const file of (0, recursiveReaddirSync_1.default)(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
                 const path = `${process.cwd()}/${file}`;
                 delete require.cache[require.resolve(path)];
@@ -35,7 +35,7 @@ class BaseCommandManager {
     load(path) {
         if (!this.paths.includes(path))
             this.paths.push(path);
-        for (const file of (0, recursiveReaddirSync_1.default)(path).filter(x => x.endsWith(".js") || x.endsWith(".fs"))) {
+        for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
             // eslint-disable-next-line no-undef
             const path = `${process.cwd()}/${file}`;
             const req = FileReader_1.FileReader.read(file, path);

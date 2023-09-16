@@ -29,30 +29,31 @@ export default new NativeFunction({
             description: "The variable name to load this array to",
             required: true,
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "separator",
             description: "The separator to use for the array elements",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "values",
             description: "The elements of the array",
             required: true,
             rest: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
     brackets: true,
-    execute(ctx, [ name, sep, values ]) {
+    execute(ctx, [name, sep, values]) {
         ctx.setEnvironmentKey(name, values.join(";").split(sep))
         return Return.success()
     },
 })
+
 ```
     
 </details>

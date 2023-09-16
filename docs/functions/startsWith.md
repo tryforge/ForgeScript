@@ -29,21 +29,22 @@ export default new NativeFunction({
             description: "The string to check against",
             type: ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "value",
             required: true,
             description: "The value to match at the start",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ str, match ]) {
-        return Return.success(str.startsWith(match))   
-    }
+    execute(ctx, [str, match]) {
+        return Return.success(str.startsWith(match))
+    },
 })
+
 ```
     
 </details>

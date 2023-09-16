@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The text to get its length",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [str]) {
         return structures_1.Return.success(str.length);

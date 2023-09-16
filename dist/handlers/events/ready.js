@@ -25,6 +25,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
         if (this.options.useInviteSystem) {
             await InviteSystem_1.InviteSystem.cacheAll(this);
         }
-    }
+    },
 });
 //# sourceMappingURL=ready.js.map

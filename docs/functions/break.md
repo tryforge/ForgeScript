@@ -23,6 +23,7 @@ export default new NativeFunction({
         return Return.break()
     },
 })
+
 ```
     
 </details>

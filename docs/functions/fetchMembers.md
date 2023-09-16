@@ -33,15 +33,16 @@ export default new NativeFunction({
             description: "The guild to cache members of",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
-    async execute(ctx, [ guild ]) {
+    async execute(ctx, [guild]) {
         guild ??= ctx.guild!
         await guild?.members.fetch()
         return Return.success()
     },
 })
+
 ```
     
 </details>

@@ -12,13 +12,13 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to retrieve member count from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
-        }
+            type: structures_1.ArgType.Guild,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
         return structures_1.Return.success(guild?.memberCount);
-    }
+    },
 });
 //# sourceMappingURL=guildMemberCount.js.map

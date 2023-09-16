@@ -34,43 +34,46 @@ export default new NativeFunction({
             description: "The channel to create the thread at",
             rest: false,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => "threads" in i
+            check: (i: BaseChannel) => "threads" in i,
         },
         {
             name: "name",
             description: "The name for the thread",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content to use for the starter message",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "message ID",
             description: "The message to start thread for",
             rest: false,
             pointer: 0,
-            type: ArgType.Message
+            type: ArgType.Message,
         },
     ],
-    async execute(ctx, [ channel, name, content, msg ]) {
+    async execute(ctx, [channel, name, content, msg]) {
         const ch = channel as TextChannel
 
         ctx.container.content = content || undefined
-        const success = await ch.threads.create({
-            name,
-            startMessage: ctx.container.getOptions()
-        }).catch(noop)
+        const success = await ch.threads
+            .create({
+                name,
+                startMessage: ctx.container.getOptions(),
+            })
+            .catch(noop)
 
         ctx.container.reset()
 
         return Return.success(success ? success.id : undefined)
     },
 })
+
 ```
     
 </details>

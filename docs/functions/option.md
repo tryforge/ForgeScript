@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The option name to retrieve its value",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ name ]) {
+    execute(ctx, [name]) {
         return Return.success(ctx.isCommand() ? ctx.interaction.options.get(name)?.value : null)
     },
 })
+
 ```
     
 </details>

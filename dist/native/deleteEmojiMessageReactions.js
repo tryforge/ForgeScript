@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emojis",
@@ -34,8 +34,8 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             pointer: 1,
             rest: true,
-            type: structures_1.ArgType.Reaction
-        }
+            type: structures_1.ArgType.Reaction,
+        },
     ],
     async execute(ctx, [channel, message, emojis]) {
         let count = 0;

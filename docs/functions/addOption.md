@@ -34,21 +34,21 @@ export default new NativeFunction({
             description: "The option name",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "description",
             description: "The description for this option",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The value to use for this option",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "emoji",
@@ -60,20 +60,22 @@ export default new NativeFunction({
             name: "default",
             description: "Whether to set this option as default",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ name, desc, value, emoji, def ]) {
+    execute(ctx, [name, desc, value, emoji, def]) {
         const comp = ctx.container.components.at(-1)?.components[0]
-        
+
         const data: APISelectMenuOption = {
             label: name,
             description: desc,
             value,
             default: def ?? false,
-            emoji: emoji ? parseEmoji(emoji) as APISelectMenuOption["emoji"] ?? {
-                name: emoji
-            } : undefined
+            emoji: emoji
+                ? (parseEmoji(emoji) as APISelectMenuOption["emoji"]) ?? {
+                      name: emoji,
+                  }
+                : undefined,
         }
 
         if (!!comp && "addOptions" in comp) {
@@ -83,6 +85,7 @@ export default new NativeFunction({
         return Return.success()
     },
 })
+
 ```
     
 </details>

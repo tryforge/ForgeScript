@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             check: (i) => "setTopic" in i,
             type: structures_1.ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "topic",
             description: "The topic to set",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [channel, topic]) {
         return structures_1.Return.success(!!(await channel.setTopic(topic || null).catch(noop_1.default)));

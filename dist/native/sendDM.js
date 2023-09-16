@@ -13,23 +13,23 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to dm",
             rest: false,
             type: structures_1.ArgType.User,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content to send",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "return message ID",
             description: "Returns the message id of the newly created message",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     async execute(ctx, [user, content, returnMessageID]) {
-        ctx.container.content = content ?? undefined;
+        ctx.container.content = content || undefined;
         const msg = await ctx.container.send(user);
         return structures_1.Return.success(returnMessageID ? msg?.id : undefined);
     },

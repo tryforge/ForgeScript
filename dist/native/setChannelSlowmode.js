@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             check: (i) => "setRateLimitPerUser" in i,
             type: structures_1.ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "seconds",
             description: "The number of seconds per message",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [channel, seconds]) {
         return structures_1.Return.success(!!(await channel.setRateLimitPerUser(seconds || 0).catch(noop_1.default)));

@@ -30,13 +30,14 @@ export default new NativeFunction({
             description: "The string to turn kebab case",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ m ]) {
+    execute(ctx, [m]) {
         return Return.success(kebabCase(m))
     },
 })
+
 ```
     
 </details>

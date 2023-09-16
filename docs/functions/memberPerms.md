@@ -31,12 +31,11 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            
             name: "guild ID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -44,7 +43,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "separator",
@@ -52,14 +51,13 @@ export default new NativeFunction({
             type: ArgType.String,
             required: false,
             rest: false,
-        }
+        },
     ],
-    execute(ctx, [ guild, member, sep ]) {
-        return Return.success(
-            (member ?? ctx.member)?.permissions.toArray().join(sep || ", ")
-        )
-    }
+    execute(ctx, [guild, member, sep]) {
+        return Return.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "))
+    },
 })
+
 ```
     
 </details>

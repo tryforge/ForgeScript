@@ -12,18 +12,22 @@ exports.default = new structures_1.NativeFunction({
             description: "The command type to pull names from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "separator",
             description: "The separator to use for every name",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [type, sep]) {
-        return structures_1.Return.success(ctx.client.commands.get(type).map(x => x.name).filter(Boolean).join(sep || ", "));
-    }
+        return structures_1.Return.success(ctx.client.commands
+            .get(type)
+            .map((x) => x.name)
+            .filter(Boolean)
+            .join(sep || ", "));
+    },
 });
 //# sourceMappingURL=commandNames.js.map

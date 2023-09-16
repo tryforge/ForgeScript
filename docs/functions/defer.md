@@ -22,12 +22,13 @@ export default new NativeFunction({
     async execute(ctx) {
         if (ctx.interaction && ctx.interaction.isRepliable()) {
             await ctx.interaction.deferReply({
-                ephemeral: ctx.container.ephemeral
+                ephemeral: ctx.container.ephemeral,
             })
         }
         return Return.success()
     },
 })
+
 ```
     
 </details>

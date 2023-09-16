@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The guild to delete roles from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "roles",
@@ -40,12 +40,12 @@ export default new NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: ArgType.Role
-        }
+            type: ArgType.Role,
+        },
     ],
-    async execute(ctx, [ guild, roles ]) {
+    async execute(ctx, [guild, roles]) {
         let count = 0
-        for (let i = 0, len = roles.length;i < len;i++) {
+        for (let i = 0, len = roles.length; i < len; i++) {
             const role = roles[i]
             const success = await role.delete().catch(noop)
             if (success) count++
@@ -54,6 +54,7 @@ export default new NativeFunction({
         return Return.success(count)
     },
 })
+
 ```
     
 </details>

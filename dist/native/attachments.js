@@ -14,7 +14,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             description: "The channel to pull message from",
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -22,14 +22,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The message to get its attachments",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Message
+            type: structures_1.ArgType.Message,
         },
         {
             name: "index",
             rest: false,
             description: "The index to get this attachment",
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     execute(ctx, [, message, index]) {
         index ??= 1;

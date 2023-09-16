@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "Numbers to add",
             rest: true,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ numbers ]) {
+    execute(ctx, [numbers]) {
         return Return.success(numbers.reduce((x, y) => x + y))
     },
 })
+
 ```
     
 </details>

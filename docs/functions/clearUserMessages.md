@@ -35,32 +35,37 @@ export default new NativeFunction({
             required: true,
             rest: false,
             type: ArgType.Channel,
-            check: (x: BaseChannel) => "messages" in x
+            check: (x: BaseChannel) => "messages" in x,
         },
         {
             name: "user ID",
             description: "The user to delete their messages",
             required: true,
             rest: false,
-            type: ArgType.User
+            type: ArgType.User,
         },
         {
             name: "amount",
             description: "The amount of messages to delete",
             rest: false,
             required: true,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    async execute(ctx, [ channel, user, amount ]) {
+    async execute(ctx, [channel, user, amount]) {
         let count = 0
 
         for (const n of splitNumber(amount, 100)) {
             const messages = await (channel as TextChannel).messages.fetch({ limit: 100 }).catch(noop)
             if (!messages) break
 
-            const col = await (channel as TextChannel).bulkDelete(messages.filter(x => x.author.id === user.id), true).catch(noop)
-            
+            const col = await (channel as TextChannel)
+                .bulkDelete(
+                    messages.filter((x) => x.author.id === user.id),
+                    true
+                )
+                .catch(noop)
+
             if (!col) break
 
             count += col.size
@@ -69,6 +74,7 @@ export default new NativeFunction({
         return Return.success(count)
     },
 })
+
 ```
     
 </details>

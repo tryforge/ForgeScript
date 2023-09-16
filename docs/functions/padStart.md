@@ -32,26 +32,27 @@ export default new NativeFunction({
             description: "The string to pad at the start",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "max length",
             description: "The max length of the string",
             rest: false,
             required: true,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "filler",
             description: "The filler to use to pad",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
     ],
-    execute(ctx, [ str, max, filler ]) {
+    execute(ctx, [str, max, filler]) {
         return Return.success(str.padStart(max, filler || undefined))
     },
 })
+
 ```
     
 </details>

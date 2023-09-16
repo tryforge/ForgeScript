@@ -17,8 +17,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The icon url",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [url]) {
         return structures_1.Return.success(!!(await ctx.client.user.setAvatar(url).catch(noop_1.default)));

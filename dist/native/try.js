@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.String,
             required: true,
-            description: "The code to safely execute"
+            description: "The code to safely execute",
         },
         {
             name: "catch code",
@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             name: "variable",
             description: "Variable to load the error message to",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx) {

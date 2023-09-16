@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isThread()
+            check: (i) => i.isThread(),
         },
         {
             name: "reason",
             description: "The reason to unarchive this thread",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [channel, reason]) {
         const thread = channel;

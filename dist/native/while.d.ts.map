@@ -1,1 +1,1 @@
-{"version":3,"file":"while.d.ts","sourceRoot":"","sources":["../../src/native/while.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAA2E,cAAc,EAAU,MAAM,eAAe,CAAA;;;;;;;;;;;;;;;AAExI,wBAyCE"}
+{"version":3,"file":"while.d.ts","sourceRoot":"","sources":["../../src/native/while.ts"],"names":[],"mappings":"AAAA,OAAO,EACH,OAAO,EAGP,cAAc,EAEjB,MAAM,eAAe,CAAA;;;;;;;;;;;;;;;AAEtB,wBAyCE"}

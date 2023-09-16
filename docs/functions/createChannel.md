@@ -35,14 +35,14 @@ export default new NativeFunction({
             description: "The guild to create this channel on",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "channel name",
             description: "The name for the channel",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "channel type",
@@ -50,31 +50,34 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: ChannelType,
-            required: true
+            required: true,
         },
         {
             name: "topic",
             description: "The topic for the channel",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "parent ID",
             description: "The parent id for the channel",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, name, type, topic, parentId ]) {
-        const ch = await guild.channels.create({
-            type: type as GuildChannelCreateOptions["type"],
-            name,
-            topic: topic || undefined,
-            parent: parentId
-        }).catch(noop)
+    async execute(ctx, [guild, name, type, topic, parentId]) {
+        const ch = await guild.channels
+            .create({
+                type: type as GuildChannelCreateOptions["type"],
+                name,
+                topic: topic || undefined,
+                parent: parentId,
+            })
+            .catch(noop)
         return Return.success(ch ? ch.id : undefined)
     },
 })
+
 ```
     
 </details>

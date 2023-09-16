@@ -13,15 +13,15 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The header name",
             rest: false,
             type: NativeFunction_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The header value",
             rest: true,
             type: NativeFunction_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     execute(ctx, [name, values]) {

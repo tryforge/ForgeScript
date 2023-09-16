@@ -15,14 +15,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: invite_1.InviteProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [prop, sep]) {
         return structures_1.Return.success(invite_1.InviteProperties[prop](ctx.states?.invite?.old, sep));

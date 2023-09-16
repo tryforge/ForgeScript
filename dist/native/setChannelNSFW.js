@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             check: (i) => "setNSFW" in i,
             type: structures_1.ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "state",
             description: "The state to set",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     async execute(ctx, [channel, state]) {
         return structures_1.Return.success(!!(await channel.setNSFW(state || false).catch(noop_1.default)));

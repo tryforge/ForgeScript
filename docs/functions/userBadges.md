@@ -34,23 +34,22 @@ export default new NativeFunction({
             description: "The user to return its badges",
             required: true,
             rest: false,
-            type: ArgType.User
+            type: ArgType.User,
         },
         {
             name: "separator",
             description: "The separator to use for every badge",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: false,
-    async execute(ctx, [ user, sep ]) {
+    async execute(ctx, [user, sep]) {
         const flags = await (user ?? ctx.user).fetchFlags().catch(noop)
-        return Return.success(
-            flags ? flags.toArray().join(sep || ", ") : undefined    
-        )
+        return Return.success(flags ? flags.toArray().join(sep || ", ") : undefined)
     },
 })
+
 ```
     
 </details>

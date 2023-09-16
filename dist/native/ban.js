@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to ban a member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
@@ -21,26 +21,28 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The reason to ban for",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "delete message seconds",
             description: "Delete messages from this member that were sent in this seconds time span",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [guild, member, reason, seconds]) {
-        return structures_1.Return.success(await member.ban({
+        return structures_1.Return.success((await member
+            .ban({
             reason: reason || undefined,
-            deleteMessageSeconds: seconds || undefined
-        }).catch(() => false) !== false);
+            deleteMessageSeconds: seconds || undefined,
+        })
+            .catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=ban.js.map

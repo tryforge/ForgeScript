@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emoji",
@@ -34,15 +34,15 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             pointer: 1,
-            type: structures_1.ArgType.Reaction
+            type: structures_1.ArgType.Reaction,
         },
         {
             name: "user ID",
             description: "The user to delete its reaction",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User
-        }
+            type: structures_1.ArgType.User,
+        },
     ],
     async execute(ctx, [, , emoji, user]) {
         return structures_1.Return.success(!!(await emoji.users.remove(user).catch(noop_1.default)));

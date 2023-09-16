@@ -9,6 +9,6 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute: async function (ctx) {
         return Return_1.Return.success(ctx.user?.id);
-    }
+    },
 });
 //# sourceMappingURL=authorID.js.map

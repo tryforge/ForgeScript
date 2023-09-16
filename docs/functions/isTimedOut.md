@@ -34,7 +34,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -42,16 +42,15 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ guild, member ]) {
+    execute(ctx, [guild, member]) {
         member ??= ctx.member!
-        return Return.success(
-            member?.isCommunicationDisabled() ?? false
-        )
+        return Return.success(member?.isCommunicationDisabled() ?? false)
     },
 })
+
 ```
     
 </details>

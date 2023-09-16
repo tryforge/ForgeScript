@@ -14,7 +14,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
@@ -22,14 +22,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.Member
+            type: structures_1.ArgType.Member,
         },
         {
             name: "nickname",
             description: "The new nickname, leave empty to reset",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [, m, nick]) {
         return structures_1.Return.success(!!(await m.setNickname(nick).catch(lodash_1.noop || null)));

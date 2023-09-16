@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "role ID",
@@ -40,22 +40,21 @@ export default new NativeFunction({
             type: ArgType.Role,
             description: "The role to edit icon for",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "icon",
             description: "The new icon for the role",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [, role, url ]) {
-        return Return.success(
-            !!(await role.setIcon(url).catch(noop))
-        )
+    async execute(ctx, [, role, url]) {
+        return Return.success(!!(await role.setIcon(url).catch(noop)))
     },
 })
+
 ```
     
 </details>

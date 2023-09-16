@@ -32,12 +32,12 @@ export default new NativeFunction({
             rest: true,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => "delete" in i
-        }
+            check: (i: BaseChannel) => "delete" in i,
+        },
     ],
-    async execute(ctx, [ channels ]) {
+    async execute(ctx, [channels]) {
         let count = 0
-        for (let i = 0, len = channels.length;i < len;i++) {
+        for (let i = 0, len = channels.length; i < len; i++) {
             const ch = channels[i]
             const success = await ch.delete().catch(noop)
             if (success) count++
@@ -46,6 +46,7 @@ export default new NativeFunction({
         return Return.success(count)
     },
 })
+
 ```
     
 </details>

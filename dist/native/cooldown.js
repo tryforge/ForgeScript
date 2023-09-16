@@ -13,20 +13,20 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             description: "The id to assign the cooldown to, can be anything",
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "duration",
             description: "The duration of the cooldown",
             rest: false,
             type: structures_1.ArgType.Time,
-            required: true
+            required: true,
         },
         {
             name: "code",
             description: "The code to execute if the cooldown is active",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
     ],
     examples: [
@@ -37,7 +37,7 @@ Hello!
         `$c[This is a user based cooldown]
 $cooldown[$commandName_$authorID;1h;You're on cooldown.]
 Hello!
-`
+`,
     ],
     experimental: true,
     async execute(ctx) {

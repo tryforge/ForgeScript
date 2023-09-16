@@ -14,15 +14,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The match case",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "code",
             description: "Code to execute if it matches this case",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [, code]) {
         return structures_1.Return.success(code);

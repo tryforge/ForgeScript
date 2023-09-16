@@ -34,7 +34,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
             required: true,
-            description: "The code to safely execute"
+            description: "The code to safely execute",
         },
         {
             name: "catch code",
@@ -46,12 +46,12 @@ export default new NativeFunction({
             name: "variable",
             description: "Variable to load the error message to",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx) {
-        const [ tryCode, catchCode, varName ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [tryCode, catchCode, varName] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const tryExecution: Return = await this["resolveCode"](ctx, tryCode)
 
@@ -62,13 +62,14 @@ export default new NativeFunction({
                 if (!this["isValidReturnType"](name)) return name
                 if (name.value) ctx.setEnvironmentKey(name.value as string, value.message)
             }
-        
+
             return this["resolveCode"](ctx, catchCode)
         }
 
         return Return.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined)
     },
 })
+
 ```
     
 </details>

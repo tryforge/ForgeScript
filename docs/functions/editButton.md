@@ -35,21 +35,21 @@ export default new NativeFunction({
             description: "The custom id to find the component",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "new custom ID",
             description: "The new custom id for this component",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "label",
             description: "The button label",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "style",
@@ -57,26 +57,30 @@ export default new NativeFunction({
             enum: ButtonStyle,
             type: ArgType.Enum,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "emoji",
             rest: false,
             type: ArgType.String,
-            description: "The emoji for this button"
+            description: "The emoji for this button",
         },
         {
             name: "disabled",
             rest: false,
             type: ArgType.Boolean,
-            description: "Whether to disable the button"
-        }
+            description: "Whether to disable the button",
+        },
     ],
-    execute(ctx, [ oldId, id, label, style, emoji, disabled ]) {
-        const rowIndex = ctx.container.components.findIndex(x => x.components.some(x => "custom_id" in x.data && x.data.custom_id === oldId))
+    execute(ctx, [oldId, id, label, style, emoji, disabled]) {
+        const rowIndex = ctx.container.components.findIndex((x) =>
+            x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId)
+        )
         if (rowIndex === -1) return Return.success(false)
 
-        const btn = ctx.container.components[rowIndex].components.find(x => "custom_id" in x.data && x.data.custom_id === oldId) as ButtonBuilder
+        const btn = ctx.container.components[rowIndex].components.find(
+            (x) => "custom_id" in x.data && x.data.custom_id === oldId
+        ) as ButtonBuilder
 
         if (!btn) return Return.success(false)
 
@@ -85,16 +89,15 @@ export default new NativeFunction({
             .setStyle(style)
             .setLabel(label)
 
-        if (style === ButtonStyle.Link) 
-            btn.setURL(id)
-        else 
-            btn.setCustomId(id)
-        
+        if (style === ButtonStyle.Link) btn.setURL(id)
+        else btn.setCustomId(id)
+
         if (emoji) btn.setEmoji(emoji)
 
         return Return.success(true)
     },
 })
+
 ```
     
 </details>

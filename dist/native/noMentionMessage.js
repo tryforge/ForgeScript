@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 const Return_1 = require("../structures/Return");
-const NoMentionRegex = /<(@|#)(&|!)?(\d{16,23})>/g;
+const NoMentionRegex = /<(@(&|!)?|#)(\d{16,23})>/g;
 exports.default = new structures_1.NativeFunction({
     name: "$noMentionMessage",
     version: "1.0.0",
@@ -19,8 +19,8 @@ exports.default = new structures_1.NativeFunction({
             name: "end index",
             description: "The end index",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: false,
     unwrap: true,

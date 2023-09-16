@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             condition: true,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx) {
         const cond = await this["resolveCondition"](ctx, this.data.fields[0]);

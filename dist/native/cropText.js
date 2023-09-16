@@ -12,21 +12,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The text to crop",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "start index",
             description: "The start index to start cropping",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "end index",
             description: "The end index to finish cropping",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     unwrap: true,
     execute(ctx, [text, start, end]) {

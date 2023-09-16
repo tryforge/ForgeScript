@@ -35,15 +35,14 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Channel,
             required: true,
-            check: (i: BaseChannel) => i.type === ChannelType.GuildCategory
-        }
+            check: (i: BaseChannel) => i.type === ChannelType.GuildCategory,
+        },
     ],
-    execute(ctx, [ channel ]) {
-        return Return.success(
-            ((channel ?? ctx.channel) as CategoryChannel)?.children?.cache.size
-        )
+    execute(ctx, [channel]) {
+        return Return.success(((channel ?? ctx.channel) as CategoryChannel)?.children?.cache.size)
     },
 })
+
 ```
     
 </details>

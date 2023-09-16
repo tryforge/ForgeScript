@@ -35,21 +35,20 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: EmojiProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ prop, sep ]) {
-        return Return.success(
-            EmojiProperties[prop](ctx.states?.emoji?.new, sep)
-        )
+    execute(ctx, [prop, sep]) {
+        return Return.success(EmojiProperties[prop](ctx.states?.emoji?.new, sep))
     },
 })
+
 ```
     
 </details>

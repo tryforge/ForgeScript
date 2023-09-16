@@ -31,15 +31,14 @@ export default new NativeFunction({
             description: "The invite code",
             rest: false,
             required: true,
-            type: ArgType.Invite
-        }
+            type: ArgType.Invite,
+        },
     ],
-    async execute(ctx, [ invite ]) {
-        return Return.success(
-            !!(await invite.delete().catch(noop))
-        )
-    }
+    async execute(ctx, [invite]) {
+        return Return.success(!!(await invite.delete().catch(noop)))
+    },
 })
+
 ```
     
 </details>

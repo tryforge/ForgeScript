@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The valid string to convert to ms",
             rest: false,
             type: structures_1.ArgType.Time,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
     execute(ctx, [ms]) {

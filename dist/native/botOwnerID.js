@@ -14,6 +14,6 @@ exports.default = new structures_1.NativeFunction({
         if (!ctx.client.application.owner)
             await ctx.client.application.fetch().catch(noop_1.default);
         return structures_1.Return.success(ctx.client.application.owner?.id);
-    }
+    },
 });
 //# sourceMappingURL=botOwnerID.js.map

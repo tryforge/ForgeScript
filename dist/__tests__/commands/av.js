@@ -44,6 +44,6 @@ exports.default = {
         $addButton[$authorID_av1_$get[user];Global;Primary;;true]
         $addButton[$authorID_av2_$get[user];Servidor;Primary;;false]
     ]
-    `
+    `,
 };
 //# sourceMappingURL=av.js.map

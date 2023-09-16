@@ -13,19 +13,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The index of the channel",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "return channel",
             description: "Whether to return current channel if not found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     execute(ctx, [i, rt]) {
-        const id = this.hasFields ?
-            ctx.message?.mentions.channels.at(i)?.id :
-            ctx.message?.mentions.channels.map(x => x.id).join(", ");
+        const id = this.hasFields
+            ? ctx.message?.mentions.channels.at(i)?.id
+            : ctx.message?.mentions.channels.map((x) => x.id).join(", ");
         return structures_1.Return.success(id ?? (rt ? ctx.channel?.id : undefined));
     },
 });

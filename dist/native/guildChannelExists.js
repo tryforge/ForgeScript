@@ -13,19 +13,18 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to check for the guild channel",
             type: structures_1.ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "channel ID",
             description: "The role to guild channel",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) &&
-            guild.channels.cache.has(id));
+        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && guild.channels.cache.has(id));
     },
 });
 //# sourceMappingURL=guildChannelExists.js.map

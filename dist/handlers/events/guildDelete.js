@@ -7,9 +7,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "guildDelete",
     version: "1.0.1",
     description: "This event is fired when a guild is deleted",
-    intents: [
-        "Guilds"
-    ],
+    intents: ["Guilds"],
     listener: async function (g) {
         if (this.options.useInviteSystem)
             InviteSystem_1.InviteSystem.uncache(g);
@@ -22,13 +20,13 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     guild: {
                         new: g,
-                        old: g
-                    }
+                        old: g,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
-    }
+    },
 });
 //# sourceMappingURL=guildDelete.js.map

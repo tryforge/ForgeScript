@@ -31,21 +31,22 @@ export default new NativeFunction({
             description: "The number to separate",
             rest: false,
             type: ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use",
             type: ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     brackets: true,
-    execute(ctx, [ n, sep ]) {
+    execute(ctx, [n, sep]) {
         const t = n.toLocaleString()
         return Return.success(sep ? t.replaceAll(NoNumberRegex, sep) : t)
     },
 })
+
 ```
     
 </details>

@@ -15,13 +15,13 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             enum: discord_js_1.ChannelType,
-            type: structures_1.ArgType.Enum
-        }
+            type: structures_1.ArgType.Enum,
+        },
     ],
     execute(ctx, [categories]) {
-        return structures_1.Return.success((this.hasFields ?
-            ctx.client.channels.cache.filter(x => categories.includes(x.type)) :
-            ctx.client.channels.cache).size);
+        return structures_1.Return.success((this.hasFields
+            ? ctx.client.channels.cache.filter((x) => categories.includes(x.type))
+            : ctx.client.channels.cache).size);
     },
 });
 //# sourceMappingURL=channelCount.js.map

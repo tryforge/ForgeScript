@@ -34,14 +34,14 @@ export default new NativeFunction({
             description: "The custom id for this component",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "label",
             description: "The button label",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "style",
@@ -49,38 +49,37 @@ export default new NativeFunction({
             enum: ButtonStyle,
             type: ArgType.Enum,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "emoji",
             rest: false,
             type: ArgType.String,
-            description: "The emoji for this button"
+            description: "The emoji for this button",
         },
         {
             name: "disabled",
             rest: false,
             type: ArgType.Boolean,
-            description: "Whether to disable the button"
-        }
+            description: "Whether to disable the button",
+        },
     ],
-    execute(ctx, [ id, label, style, emoji, disabled ]) {
+    execute(ctx, [id, label, style, emoji, disabled]) {
         const btn = new ButtonBuilder()
             .setDisabled(disabled ?? false)
             .setStyle(style)
             .setLabel(label)
 
-        if (style === ButtonStyle.Link) 
-            btn.setURL(id)
-        else 
-            btn.setCustomId(id)
-        
+        if (style === ButtonStyle.Link) btn.setURL(id)
+        else btn.setCustomId(id)
+
         if (emoji) btn.setEmoji(emoji)
 
         ctx.container.components.at(-1)?.addComponents(btn)
         return Return.success()
     },
 })
+
 ```
     
 </details>

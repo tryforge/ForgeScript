@@ -15,17 +15,15 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     role: {
                         old: m,
-                        new: m
-                    }
+                        new: m,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
     description: "This event is fired when a role is created",
-    intents: [
-        "Guilds"
-    ]
+    intents: ["Guilds"],
 });
 //# sourceMappingURL=roleCreate.js.map

@@ -14,7 +14,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull the role from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "role ID",
@@ -22,15 +22,15 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Role,
             description: "The role to edit position for",
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "position",
             description: "The new position for the role",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [, role, pos]) {
         return structures_1.Return.success(!!(await role.setPosition(pos).catch(lodash_1.noop)));

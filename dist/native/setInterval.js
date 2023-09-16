@@ -13,14 +13,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The code to execute",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "time",
             description: "How long to wait for before running this code",
             rest: false,
-            type: structures_1.ArgType.Time
-        }
+            type: structures_1.ArgType.Time,
+        },
     ],
     async execute(ctx) {
         const [code, rawTime] = this.data.fields;

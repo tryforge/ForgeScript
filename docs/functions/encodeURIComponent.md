@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The text to encode",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ text ]) {
+    execute(ctx, [text]) {
         return Return.success(encodeURIComponent(text))
     },
 })
+
 ```
     
 </details>

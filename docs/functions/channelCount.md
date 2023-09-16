@@ -35,19 +35,19 @@ export default new NativeFunction({
             rest: true,
             required: true,
             enum: ChannelType,
-            type: ArgType.Enum
-        }
+            type: ArgType.Enum,
+        },
     ],
-    execute(ctx, [ categories ]) {
+    execute(ctx, [categories]) {
         return Return.success(
-            (
-                this.hasFields ?
-                    ctx.client.channels.cache.filter(x => categories.includes(x.type)) :
-                    ctx.client.channels.cache
+            (this.hasFields
+                ? ctx.client.channels.cache.filter((x) => categories.includes(x.type))
+                : ctx.client.channels.cache
             ).size
         )
     },
 })
+
 ```
     
 </details>

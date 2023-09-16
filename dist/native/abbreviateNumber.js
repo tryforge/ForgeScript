@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 const Formatter = Intl.NumberFormat("en-US", {
     notation: "compact",
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
 });
 exports.default = new structures_1.NativeFunction({
     name: "$abbreviateNumber",
@@ -16,8 +16,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The number to abbreviate",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [n]) {

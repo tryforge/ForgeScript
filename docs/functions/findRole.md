@@ -31,18 +31,18 @@ export default new NativeFunction({
             description: "The guild to find the role on",
             type: ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or role name to find",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, q ]) {
+    execute(ctx, [guild, q]) {
         const id = q.replace(RoleMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {
@@ -52,13 +52,10 @@ export default new NativeFunction({
 
         q = q.toLowerCase()
 
-        return Return.success(
-            guild.roles.cache.find(
-                x => x.id === id || x.name.toLowerCase() === q
-            )?.id
-        )
+        return Return.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id)
     },
 })
+
 ```
     
 </details>

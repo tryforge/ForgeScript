@@ -16,16 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     message: {
                         old: old,
-                        new: newer
-                    }
+                        new: newer,
+                    },
                 },
                 data: command.compiled.code,
-                args: newer.content?.split(/ +/)
+                args: newer.content?.split(/ +/),
             });
         }
     },
-    intents: [
-        "GuildMessages"
-    ]
+    intents: ["GuildMessages"],
 });
 //# sourceMappingURL=messageUpdate.js.map

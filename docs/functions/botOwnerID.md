@@ -23,11 +23,10 @@ export default new NativeFunction({
     async execute(ctx) {
         if (!ctx.client.application.owner) await ctx.client.application.fetch().catch(noop)
 
-        return Return.success(
-            ctx.client.application.owner?.id
-        )
-    }
+        return Return.success(ctx.client.application.owner?.id)
+    },
 })
+
 ```
     
 </details>

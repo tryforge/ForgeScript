@@ -21,8 +21,9 @@ export default new NativeFunction({
     unwrap: false,
     execute() {
         return Return.stop()
-    }
+    },
 })
+
 ```
     
 </details>

@@ -13,12 +13,11 @@ exports.default = new structures_1.NativeFunction({
             description: "The emoji to check",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) &&
-            ctx.client.emojis.cache.has(id));
+        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && ctx.client.emojis.cache.has(id));
     },
 });
 //# sourceMappingURL=emojiExists.js.map

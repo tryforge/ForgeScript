@@ -15,8 +15,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Channel,
             required: true,
-            check: (i) => i.type === discord_js_1.ChannelType.GuildCategory
-        }
+            check: (i) => i.type === discord_js_1.ChannelType.GuildCategory,
+        },
     ],
     execute(ctx, [channel]) {
         return structures_1.Return.success((channel ?? ctx.channel)?.children?.cache.size);

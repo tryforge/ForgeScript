@@ -12,14 +12,16 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             description: "The event types to filter by",
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [categories]) {
-        return structures_1.Return.success(this.hasFields ?
-            ctx.client.commands["commands"].filter((x, key) => categories.includes(key)).reduce((x, y) => x + y.length, 0) :
-            ctx.client.commands["commands"].reduce((x, y) => x + y.length, 0));
+        return structures_1.Return.success(this.hasFields
+            ? ctx.client.commands["commands"]
+                .filter((x, key) => categories.includes(key))
+                .reduce((x, y) => x + y.length, 0)
+            : ctx.client.commands["commands"].reduce((x, y) => x + y.length, 0));
     },
 });
 //# sourceMappingURL=commandCount.js.map

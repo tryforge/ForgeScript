@@ -37,21 +37,21 @@ export default new NativeFunction({
             description: "The custom id for this field",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The field name",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "type",
             description: "Paragraph or short",
             rest: false,
             type: ArgType.Enum,
-            enum: TextInputStyle
+            enum: TextInputStyle,
         },
         {
             name: "required",
@@ -63,28 +63,28 @@ export default new NativeFunction({
             name: "placeholder",
             description: "The placeholder to use for the field",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "default value",
             description: "The default value for the field",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "minimum length",
             description: "The minimum length needed",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "maximum length",
             description: "The max length needed",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    execute(ctx, [ id, label, type, required, placeholder, value, min, max ]) {
+    execute(ctx, [id, label, type, required, placeholder, value, min, max]) {
         const field = new TextInputBuilder()
             .setCustomId(id)
             .setLabel(label)
@@ -95,15 +95,13 @@ export default new NativeFunction({
         if (value) field.setValue(value)
         if (min) field.setMinLength(min)
         if (max) field.setMaxLength(max)
-        
-        ctx.container.modal?.addComponents(
-            new ActionRowBuilder<TextInputBuilder>()
-                .addComponents(field)
-        )
+
+        ctx.container.modal?.addComponents(new ActionRowBuilder<TextInputBuilder>().addComponents(field))
 
         return Return.success()
     },
 })
+
 ```
     
 </details>

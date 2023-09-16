@@ -19,15 +19,15 @@ var UserProperty;
     UserProperty["dmChannelID"] = "dmChannelID";
 })(UserProperty || (exports.UserProperty = UserProperty = {}));
 exports.UserProperties = (0, defineProperties_1.default)({
-    id: i => i?.id,
-    avatar: i => i?.displayAvatarURL(),
+    id: (i) => i?.id,
+    avatar: (i) => i?.displayAvatarURL(),
     badges: (i, sep) => i?.flags?.toArray().join(sep || ", "),
-    displayName: i => i?.displayName,
-    globalName: i => i?.globalName,
-    username: i => i?.username,
-    banner: i => i?.bannerURL(),
-    accentColor: i => i?.hexAccentColor,
-    timestamp: i => i?.createdTimestamp,
-    dmChannelID: i => i?.dmChannel?.id
+    displayName: (i) => i?.displayName,
+    globalName: (i) => i?.globalName,
+    username: (i) => i?.username,
+    banner: (i) => i?.bannerURL(),
+    accentColor: (i) => i?.hexAccentColor,
+    timestamp: (i) => i?.createdTimestamp,
+    dmChannelID: (i) => i?.dmChannel?.id,
 });
 //# sourceMappingURL=user.js.map

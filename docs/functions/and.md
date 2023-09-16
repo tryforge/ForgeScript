@@ -30,20 +30,21 @@ export default new NativeFunction({
             required: true,
             type: ArgType.String,
             condition: true,
-            description: "The conditions that must match"
-        }
+            description: "The conditions that must match",
+        },
     ],
     async execute(ctx) {
-        for (let i = 0, len = this.data.fields!.length;i < len;i++) {
+        for (let i = 0, len = this.data.fields!.length; i < len; i++) {
             const field = this.data.fields![i] as IExtendedCompiledFunctionConditionField
             const resolved = await this["resolveCondition"](ctx, field)
             if (!this["isValidReturnType"](resolved)) return resolved
-            else if (!resolved.value) return Return.success(false) 
+            else if (!resolved.value) return Return.success(false)
         }
 
         return Return.success(true)
     },
 })
+
 ```
     
 </details>

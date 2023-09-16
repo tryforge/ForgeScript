@@ -19,16 +19,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     member: {
                         old: m,
-                        new: m
-                    }
+                        new: m,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildMembers"
-    ]
+    intents: ["GuildMembers"],
 });
 //# sourceMappingURL=guildMemberRemove.js.map

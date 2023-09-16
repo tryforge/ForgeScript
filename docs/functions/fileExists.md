@@ -30,13 +30,14 @@ export default new NativeFunction({
             description: "The path to file or directory",
             required: true,
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ path ]) {
+    execute(ctx, [path]) {
         return Return.success(existsSync(path))
     },
 })
+
 ```
     
 </details>

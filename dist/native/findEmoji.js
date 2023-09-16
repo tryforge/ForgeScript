@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id, mention or emoji name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
     execute(ctx, [q]) {
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(e.id);
         }
         const name = parsed?.name.toLowerCase();
-        return structures_1.Return.success(ctx.client.emojis.cache.find(x => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
+        return structures_1.Return.success(ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findEmoji.js.map

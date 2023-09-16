@@ -17,8 +17,8 @@ exports.default = new structures_1.NativeFunction({
             description: "User to get the dm channel",
             rest: false,
             required: true,
-            type: structures_1.ArgType.User
-        }
+            type: structures_1.ArgType.User,
+        },
     ],
     async execute(ctx, [user]) {
         user ??= ctx.user;

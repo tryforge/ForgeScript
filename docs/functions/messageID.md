@@ -23,6 +23,7 @@ export default new NativeFunction({
         return Return.success(ctx.message?.id)
     },
 })
+
 ```
     
 </details>

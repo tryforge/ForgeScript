@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id to get its cooldown",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [id]) {
         return structures_1.Return.success(ctx.client.cooldowns.getTimeLeft(id));

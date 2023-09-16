@@ -18,8 +18,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             name: "end index",
             description: "The end index",
             rest: false,
-            type: NativeFunction_1.ArgType.Number
-        }
+            type: NativeFunction_1.ArgType.Number,
+        },
     ],
     brackets: false,
     unwrap: true,

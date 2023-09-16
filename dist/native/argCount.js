@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "Text to count arguments",
             required: true,
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [text]) {
         if (this.hasFields)

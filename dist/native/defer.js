@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx) {
         if (ctx.interaction && ctx.interaction.isRepliable()) {
             await ctx.interaction.deferReply({
-                ephemeral: ctx.container.ephemeral
+                ephemeral: ctx.container.ephemeral,
             });
         }
         return structures_1.Return.success();

@@ -19,15 +19,15 @@ var RoleProperty;
     RoleProperty["members"] = "members";
 })(RoleProperty || (exports.RoleProperty = RoleProperty = {}));
 exports.RoleProperties = (0, defineProperties_1.default)({
-    timestamp: i => i?.createdTimestamp,
-    id: i => i?.id,
-    color: i => i?.hexColor,
-    hoisted: i => i?.hoist,
-    members: (i, sep) => i?.members.map(x => x.id).join(sep || ", "),
-    mentionable: i => i?.mentionable,
-    position: i => i?.position,
-    rawPosition: i => i?.rawPosition,
+    timestamp: (i) => i?.createdTimestamp,
+    id: (i) => i?.id,
+    color: (i) => i?.hexColor,
+    hoisted: (i) => i?.hoist,
+    members: (i, sep) => i?.members.map((x) => x.id).join(sep || ", "),
+    mentionable: (i) => i?.mentionable,
+    position: (i) => i?.position,
+    rawPosition: (i) => i?.rawPosition,
     permissions: (i, sep) => i?.permissions.toArray().join(sep || ", "),
-    tags: (i, sep) => Object.keys(i?.tags ?? {}).join(sep || ", ")
+    tags: (i, sep) => Object.keys(i?.tags ?? {}).join(sep || ", "),
 });
 //# sourceMappingURL=role.js.map

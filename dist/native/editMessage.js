@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Channel,
             rest: false,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -21,18 +21,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content for the message",
             type: structures_1.ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     brackets: true,
     async execute(ctx, [channel, opt, content]) {
-        ctx.container.content = content ?? undefined;
+        ctx.container.content = content || undefined;
         ctx.container.edit = true;
         const msg = await ctx.container.send(opt);
         return structures_1.Return.success(!!msg);

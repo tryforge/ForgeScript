@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The guild to delete stickers from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "stickers",
@@ -40,12 +40,12 @@ export default new NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: ArgType.GuildSticker
-        }
+            type: ArgType.GuildSticker,
+        },
     ],
-    async execute(ctx, [ guild, stickers ]) {
+    async execute(ctx, [guild, stickers]) {
         let count = 0
-        for (let i = 0, len = stickers.length;i < len;i++) {
+        for (let i = 0, len = stickers.length; i < len; i++) {
             const sticker = stickers[i]
             const success = await sticker.delete().catch(noop)
             if (success) count++
@@ -54,6 +54,7 @@ export default new NativeFunction({
         return Return.success(count)
     },
 })
+
 ```
     
 </details>

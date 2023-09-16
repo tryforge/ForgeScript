@@ -18,28 +18,30 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Channel,
             rest: false,
             required: true,
-            check: (i) => "createWebhook" in i
+            check: (i) => "createWebhook" in i,
         },
         {
             name: "name",
             description: "The webhook name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "url",
             description: "The avatar url",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [channel, name, url]) {
         const ch = channel;
-        const web = await ch.createWebhook({
+        const web = await ch
+            .createWebhook({
             name: name,
-            avatar: url || undefined
-        }).catch(noop_1.default);
+            avatar: url || undefined,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(web ? web.id : undefined);
     },
 });

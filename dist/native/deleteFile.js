@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [path]) {
         // eslint-disable-next-line no-undef

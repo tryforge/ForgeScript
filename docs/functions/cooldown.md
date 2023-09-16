@@ -34,20 +34,20 @@ export default new NativeFunction({
             rest: false,
             description: "The id to assign the cooldown to, can be anything",
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "duration",
             description: "The duration of the cooldown",
             rest: false,
             type: ArgType.Time,
-            required: true
+            required: true,
         },
         {
             name: "code",
             description: "The code to execute if the cooldown is active",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
     ],
     examples: [
@@ -58,15 +58,11 @@ Hello!
         `$c[This is a user based cooldown]
 $cooldown[$commandName_$authorID;1h;You're on cooldown.]
 Hello!
-`
+`,
     ],
     experimental: true,
     async execute(ctx) {
-        const [
-            id,
-            duration,
-            code 
-        ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [id, duration, code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const dur = await this["resolveUnhandledArg"](ctx, 0)
         if (!this["isValidReturnType"](dur)) return dur
@@ -75,7 +71,7 @@ Hello!
         if (!this["isValidReturnType"](idV)) return idV
 
         const cooldown = ctx.client.cooldowns.getTimeLeft(idV.value as string)
-        
+
         if (cooldown !== 0) {
             const content = await this["resolveCode"](ctx, code)
             if (!this["isValidReturnType"](content)) return content
@@ -89,6 +85,7 @@ Hello!
         return Return.success()
     },
 })
+
 ```
     
 </details>

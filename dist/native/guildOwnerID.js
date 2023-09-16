@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to retrieve the owner from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
-        }
+            type: structures_1.ArgType.Guild,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild]) {

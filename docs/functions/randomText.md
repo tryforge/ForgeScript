@@ -29,14 +29,15 @@ export default new NativeFunction({
             description: "The texts to use",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ texts ]) {
+    execute(ctx, [texts]) {
         const rnd = texts[Math.floor(Math.random() * texts.length)]
         return Return.success(rnd)
     },
 })
+
 ```
     
 </details>

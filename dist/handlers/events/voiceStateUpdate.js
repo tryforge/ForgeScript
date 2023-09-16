@@ -16,16 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     voiceState: {
                         old,
-                        new: newer
-                    }
+                        new: newer,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildVoiceStates"
-    ]
+    intents: ["GuildVoiceStates"],
 });
 //# sourceMappingURL=voiceStateUpdate.js.map

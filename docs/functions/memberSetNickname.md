@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -40,21 +40,20 @@ export default new NativeFunction({
             rest: false,
             required: true,
             pointer: 0,
-            type: ArgType.Member
+            type: ArgType.Member,
         },
         {
             name: "nickname",
             description: "The new nickname, leave empty to reset",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ , m, nick ]) {
-        return Return.success(
-            !!(await m.setNickname(nick).catch(noop || null))
-        )
+    async execute(ctx, [, m, nick]) {
+        return Return.success(!!(await m.setNickname(nick).catch(noop || null)))
     },
 })
+
 ```
     
 </details>

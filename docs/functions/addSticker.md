@@ -34,46 +34,49 @@ export default new NativeFunction({
             description: "The guild to add the sticker to",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "url",
             description: "The url or file path for this sticker",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "name",
             description: "The sticker name",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "tags",
             description: "The tags to use for this sticker",
             type: ArgType.String,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "description",
             description: "The description for the sticker",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
     ],
-    async execute(ctx, [ guild, url, name, tags, desc ]) {
-        const created = await guild.stickers.create({
-            file: url,
-            name,
-            tags,
-            description: desc || null
-        }).catch(noop)
+    async execute(ctx, [guild, url, name, tags, desc]) {
+        const created = await guild.stickers
+            .create({
+                file: url,
+                name,
+                tags,
+                description: desc || null,
+            })
+            .catch(noop)
         return Return.success(!!created)
     },
 })
+
 ```
     
 </details>

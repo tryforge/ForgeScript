@@ -26,9 +26,9 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 command,
                 client: this,
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
-    }
+    },
 });
 //# sourceMappingURL=interactionCreate.js.map

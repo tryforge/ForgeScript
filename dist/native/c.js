@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             description: "The comments",
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx) {

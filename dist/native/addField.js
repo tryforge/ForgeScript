@@ -12,34 +12,34 @@ exports.default = new structures_1.NativeFunction({
             description: "The name for the field",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "value",
             description: "The value for the field",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "inline",
             description: "Whether this field will be inline",
             type: structures_1.ArgType.Boolean,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [name, value, inline, index]) {
-        ctx.container.embed((index ?? 0)).addFields({
+        ctx.container.embed(index ?? 0).addFields({
             name,
             value,
-            inline: inline ?? false
+            inline: inline ?? false,
         });
         return structures_1.Return.success();
     },

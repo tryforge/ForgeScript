@@ -33,7 +33,7 @@ export default new NativeFunction({
             description: "The presence status",
             type: ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "type",
@@ -41,44 +41,45 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: ActivityType,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The status name",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "state",
             description: "The status state",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "url",
             description: "The url to use for the stream",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ status, type, name, state, url ]) {
+    execute(ctx, [status, type, name, state, url]) {
         ctx.client.user.setPresence({
             activities: [
                 {
                     name,
                     state: state || undefined,
                     type,
-                    url: url || undefined
-                }
+                    url: url || undefined,
+                },
             ],
-            status: status as PresenceStatusData 
+            status: status as PresenceStatusData,
         })
         return Return.success()
     },
 })
+
 ```
     
 </details>

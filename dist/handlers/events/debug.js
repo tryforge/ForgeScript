@@ -15,10 +15,10 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                     command,
                     data: command.compiled.code,
                     obj: null,
-                    extras: debug
+                    extras: debug,
                 });
             }
         }
-    }
+    },
 });
 //# sourceMappingURL=debug.js.map

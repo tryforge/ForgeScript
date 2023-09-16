@@ -12,12 +12,12 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to turn uppercase",
             type: structures_1.ArgType.String,
             rest: true,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     execute(ctx, [values]) {
         return structures_1.Return.success(values.join(";").toUpperCase());
-    }
+    },
 });
 //# sourceMappingURL=toUpperCase.js.map

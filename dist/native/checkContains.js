@@ -12,19 +12,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The text to check on",
             required: true,
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "matches",
             description: "The list of strings to try match",
             rest: true,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     execute(ctx, [text, matches]) {
-        return structures_1.Return.success(matches.some(x => text.includes(x)));
+        return structures_1.Return.success(matches.some((x) => text.includes(x)));
     },
 });
 //# sourceMappingURL=checkContains.js.map

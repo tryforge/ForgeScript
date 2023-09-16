@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to delete stickers from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "stickers",
@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.GuildSticker
-        }
+            type: structures_1.ArgType.GuildSticker,
+        },
     ],
     async execute(ctx, [guild, stickers]) {
         let count = 0;

@@ -9,7 +9,7 @@ class FileReader {
     static Syntax = {
         Open: "[",
         Close: "]",
-        Escape: "\\"
+        Escape: "\\",
     };
     index = 0;
     constructor(code, req) {

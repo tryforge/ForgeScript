@@ -30,7 +30,7 @@ export default new NativeFunction({
         }
 
         ctx.container.fetchReply = returnMessageID ?? false
-        ctx.container.content = content ?? undefined
+        ctx.container.content = content || undefined
         const reply = await ctx.container.send<Message<true>>(ctx.obj)
 
         return Return.success(returnMessageID ? reply?.id : undefined)

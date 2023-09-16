@@ -15,17 +15,17 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Channel,
             required: true,
-            check: (i) => i.type === discord_js_1.ChannelType.GuildCategory
+            check: (i) => i.type === discord_js_1.ChannelType.GuildCategory,
         },
         {
             name: "separator",
             description: "The separator to use for every channel",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [channel, sep]) {
-        return structures_1.Return.success((channel ?? ctx.channel)?.children?.cache.map(x => x.id).join(sep || ", "));
+        return structures_1.Return.success((channel ?? ctx.channel)?.children?.cache.map((x) => x.id).join(sep || ", "));
     },
 });
 //# sourceMappingURL=channelChildrenIDs.js.map

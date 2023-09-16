@@ -23,7 +23,7 @@ end index | Number | The end index | No | No
 import { ArgType, NativeFunction } from "../structures"
 import { Return } from "../structures/Return"
 
-const NoMentionRegex = /<(@|#)(&|!)?(\d{16,23})>/g
+const NoMentionRegex = /<(@(&|!)?|#)(\d{16,23})>/g
 
 export default new NativeFunction({
     name: "$noMentionMessage",
@@ -41,20 +41,21 @@ export default new NativeFunction({
             name: "end index",
             description: "The end index",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: false,
     unwrap: true,
-    execute(ctx, [ index, end ]) {
+    execute(ctx, [index, end]) {
         const msg = ctx.args.join(" ").replace(NoMentionRegex, "").trim().split(/ +/)
 
         if (this.hasFields) {
-            return Return.success(end ? msg.slice(index, end) : msg[index ])
+            return Return.success(end ? msg.slice(index, end) : msg[index])
         }
         return Return.success(msg.join(" "))
     },
 })
+
 ```
     
 </details>

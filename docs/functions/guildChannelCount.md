@@ -43,20 +43,18 @@ export default new NativeFunction({
             rest: true,
             required: true,
             enum: ChannelType,
-            type: ArgType.Enum
-        }
+            type: ArgType.Enum,
+        },
     ],
-    execute(ctx, [ guild, categories ]) {
+    execute(ctx, [guild, categories]) {
         guild ??= ctx.guild!
         return Return.success(
-            (
-                this.hasFields ?
-                    guild.channels.cache.filter(x => categories.includes(x.type)) :
-                    guild.channels.cache
-            ).size
+            (this.hasFields ? guild.channels.cache.filter((x) => categories.includes(x.type)) : guild.channels.cache)
+                .size
         )
     },
 })
+
 ```
     
 </details>

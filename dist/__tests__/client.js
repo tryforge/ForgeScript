@@ -13,7 +13,7 @@ const client = new ForgeClient_1.ForgeClient({
         "DirectMessages",
         "GuildInvites",
         "GuildModeration",
-        "GuildMessageReactions"
+        "GuildMessageReactions",
     ],
     events: [
         "guildAuditLogEntryCreate",
@@ -21,24 +21,20 @@ const client = new ForgeClient_1.ForgeClient({
         "messageCreate",
         "messageReactionAdd",
         "guildMemberAdd",
-        "interactionCreate"
+        "interactionCreate",
     ],
     useInviteSystem: true,
-    prefixes: [
-        "!"
-    ],
+    prefixes: ["!"],
     restrictions: {
-        userIDs: [
-            "1096285761365610576"
-        ]
+        userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: []
+    extensions: [],
 });
 console.log("Started");
 client.commands.add({
     type: discord_js_1.Events.MessageReactionAdd,
-    code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]"
+    code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
 });
 client.commands.add({
     type: discord_js_1.Events.GuildAuditLogEntryCreate,
@@ -51,34 +47,34 @@ client.commands.add({
         Changes: $auditLog[changes]
         Extras: $auditLog[extra]
     ]
-    `
+    `,
 });
 client.commands.add({
     type: discord_js_1.Events.GuildMemberAdd,
-    code: "$sendMessage[1146874219515346984;<@$authorID> has joined using invite code $inviterCode by <@$inviterID>]"
+    code: "$sendMessage[1146874219515346984;<@$authorID> has joined using invite code $inviterCode by <@$inviterID>]",
 });
 client.commands.add({
     type: discord_js_1.Events.ClientReady,
     code: `$log[Ready on client $username[$botID]]
-    $setStatus[online;Custom;hi bro;hi bro]`
+    $setStatus[online;Custom;hi bro;hi bro]`,
 });
 client.commands.add({
     name: "eval",
     aliases: ["ev"],
     type: "messageCreate",
-    code: "$eval[$message;true]"
+    code: "$eval[$message;true]",
 });
 client.commands.add({
     name: "djs",
     type: "messageCreate",
-    code: "$djsEval[$message]"
+    code: "$djsEval[$message]",
 });
 client.commands.add({
     type: "interactionCreate",
     code: `$onlyIf[$isAutocomplete]
     $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
     $addChoice[tmr;land]
-    `
+    `,
 });
 client.commands.load("dist/__tests__/commands");
 client.applicationCommands.load("dist/__tests__/app");

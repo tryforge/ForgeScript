@@ -16,17 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     audit: {
                         new: g,
-                        old: g
-                    }
+                        old: g,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "Guilds",
-        "GuildModeration"
-    ]
+    intents: ["Guilds", "GuildModeration"],
 });
 //# sourceMappingURL=guildAuditLogEntryCreate.js.map

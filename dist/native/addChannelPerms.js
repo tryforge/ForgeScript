@@ -15,14 +15,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased() && "permissionOverwrites" in i
+            check: (i) => i.isTextBased() && "permissionOverwrites" in i,
         },
         {
             name: "id",
             description: "The role or member id to add these perms to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "perms",
@@ -30,13 +30,13 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             type: structures_1.ArgType.String,
             required: true,
-            enum: discord_js_1.PermissionFlagsBits
-        }
+            enum: discord_js_1.PermissionFlagsBits,
+        },
     ],
     async execute(ctx, [ch, id, perms]) {
         const channel = ch;
         const obj = {};
-        perms.forEach(x => obj[x] = true);
+        perms.forEach((x) => (obj[x] = true));
         return structures_1.Return.success(!!(await channel.permissionOverwrites.create(id, obj)));
     },
 });

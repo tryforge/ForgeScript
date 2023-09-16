@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The ms to convert to date",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "type",
@@ -31,27 +31,27 @@ exports.default = new structures_1.NativeFunction({
             enum: DateType,
             rest: false,
             required: true,
-            type: structures_1.ArgType.Enum
-        }
+            type: structures_1.ArgType.Enum,
+        },
     ],
     unwrap: true,
     execute(ctx, [ms, type]) {
         const date = new Date(ms);
-        return structures_1.Return.success(type === DateType.Date ?
-            date.toDateString() :
-            type === DateType.ISO ?
-                date.toISOString() :
-                type === DateType.Locale ?
-                    date.toLocaleString() :
-                    type === DateType.LocaleDate ?
-                        date.toLocaleDateString() :
-                        type === DateType.LocaleTime ?
-                            date.toLocaleTimeString() :
-                            type === DateType.Time ?
-                                date.toTimeString() :
-                                type === DateType.UTC ?
-                                    date.toUTCString() :
-                                    null);
+        return structures_1.Return.success(type === DateType.Date
+            ? date.toDateString()
+            : type === DateType.ISO
+                ? date.toISOString()
+                : type === DateType.Locale
+                    ? date.toLocaleString()
+                    : type === DateType.LocaleDate
+                        ? date.toLocaleDateString()
+                        : type === DateType.LocaleTime
+                            ? date.toLocaleTimeString()
+                            : type === DateType.Time
+                                ? date.toTimeString()
+                                : type === DateType.UTC
+                                    ? date.toUTCString()
+                                    : null);
     },
 });
 //# sourceMappingURL=parseDate.js.map

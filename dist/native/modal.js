@@ -14,21 +14,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The custom id for this modal",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "title",
             description: "The title for the modal",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [id, title]) {
-        ctx.container.modal = new discord_js_1.ModalBuilder()
-            .setCustomId(id)
-            .setTitle(title);
+        ctx.container.modal = new discord_js_1.ModalBuilder().setCustomId(id).setTitle(title);
         return structures_1.Return.success();
-    }
+    },
 });
 //# sourceMappingURL=modal.js.map

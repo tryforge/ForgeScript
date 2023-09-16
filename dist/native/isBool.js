@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "Value to check if its valid bool",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [v]) {
         return structures_1.Return.success(v === "true" || v === "false");

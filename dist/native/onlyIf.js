@@ -14,14 +14,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The condition to use",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "code",
             description: "The code to execute if error",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx) {
         const [condition, code] = this.data.fields;

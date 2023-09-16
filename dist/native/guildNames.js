@@ -12,12 +12,12 @@ exports.default = new structures_1.NativeFunction({
             description: "The separator to use for each guild",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [sep]) {
-        return structures_1.Return.success(ctx.client.guilds.cache.map(x => x.name).join(sep || ", "));
+        return structures_1.Return.success(ctx.client.guilds.cache.map((x) => x.name).join(sep || ", "));
     },
 });
 //# sourceMappingURL=guildNames.js.map

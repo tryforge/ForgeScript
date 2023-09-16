@@ -19,22 +19,22 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             rest: false,
             type: structures_1.ArgType.Channel,
-            check: (x) => "messages" in x
+            check: (x) => "messages" in x,
         },
         {
             name: "user ID",
             description: "The user to delete their messages",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User
+            type: structures_1.ArgType.User,
         },
         {
             name: "amount",
             description: "The amount of messages to delete",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [channel, user, amount]) {
         let count = 0;
@@ -42,7 +42,9 @@ exports.default = new structures_1.NativeFunction({
             const messages = await channel.messages.fetch({ limit: 100 }).catch(noop_1.default);
             if (!messages)
                 break;
-            const col = await channel.bulkDelete(messages.filter(x => x.author.id === user.id), true).catch(noop_1.default);
+            const col = await channel
+                .bulkDelete(messages.filter((x) => x.author.id === user.id), true)
+                .catch(noop_1.default);
             if (!col)
                 break;
             count += col.size;

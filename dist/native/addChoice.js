@@ -13,20 +13,20 @@ exports.default = new structures_1.NativeFunction({
             description: "The name for this choice",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "choice value",
             description: "The value for this choice",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [name, value]) {
         ctx.container.choices.push({
             name,
-            value
+            value,
         });
         return structures_1.Return.success();
     },

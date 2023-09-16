@@ -14,7 +14,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
-        }
+        },
     ],
     execute(ctx, [guild]) {
         guild ??= ctx.guild;

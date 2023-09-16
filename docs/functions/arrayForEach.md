@@ -33,27 +33,27 @@ export default new NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "variable",
             description: "The variable to load the element value to",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "code",
             description: "The code to execute for every element",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const [ nameField, varField, code ] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [nameField, varField, code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const name = await this["resolveCode"](ctx, nameField)
         if (!this["isValidReturnType"](name)) return name
@@ -61,15 +61,15 @@ export default new NativeFunction({
         const variable = await this["resolveCode"](ctx, varField)
         if (!this["isValidReturnType"](variable)) return variable
 
-        const arr = ctx.getEnvironmentKey([ name.value as string ])
+        const arr = ctx.getEnvironmentKey([name.value as string])
         const varName = variable.value as string
 
         if (Array.isArray(arr)) {
-            for (let i = 0, len = arr.length;i < len;i++) {
+            for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i]
                 ctx.setEnvironmentKey(varName, el)
-                const rt = await this["resolveCode"](ctx, code) as Return
-                
+                const rt = (await this["resolveCode"](ctx, code)) as Return
+
                 if (!this["isValidReturnType"](rt)) return rt
             }
         }
@@ -77,6 +77,7 @@ export default new NativeFunction({
         return Return.success()
     },
 })
+
 ```
     
 </details>

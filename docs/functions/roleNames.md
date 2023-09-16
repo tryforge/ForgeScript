@@ -34,23 +34,27 @@ export default new NativeFunction({
             description: "The guild to return the roles of",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for each role",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, sep ]) {
+    execute(ctx, [guild, sep]) {
         return Return.success(
-            (guild ?? ctx.guild)?.roles.cache.filter(x => x.guild.id !== x.id).map(x => x.name).join(sep || ", ")
+            (guild ?? ctx.guild)?.roles.cache
+                .filter((x) => x.guild.id !== x.id)
+                .map((x) => x.name)
+                .join(sep || ", ")
         )
     },
 })
+
 ```
     
 </details>

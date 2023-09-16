@@ -13,15 +13,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable the array is held on",
             type: structures_1.ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "index",
             type: structures_1.ArgType.Number,
             description: "The index to get the element of",
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [variable, index]) {
         const arr = ctx.getEnvironmentKey([variable]);

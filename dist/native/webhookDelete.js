@@ -17,8 +17,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The webhook id",
             rest: false,
             type: structures_1.ArgType.Webhook,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [web]) {
         await web.delete().catch(noop_1.default);

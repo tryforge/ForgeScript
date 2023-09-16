@@ -23,6 +23,7 @@ export default new NativeFunction({
         return Return.success(Boolean(ctx.interaction?.isModalSubmit()))
     },
 })
+
 ```
     
 </details>

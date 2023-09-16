@@ -28,12 +28,12 @@ export default new NativeFunction({
             description: "The variable the array is held on",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name]) {
+        const arr = ctx.getEnvironmentKey([name])
         if (Array.isArray(arr)) {
             arr.length = 0
         }
@@ -41,6 +41,7 @@ export default new NativeFunction({
         return Return.success()
     },
 })
+
 ```
     
 </details>

@@ -11,7 +11,7 @@ class BaseCommand {
         this.unloadable = unloadable;
         this.compiled = {
             name: Compiler_1.Compiler.compile(data.name),
-            code: Compiler_1.Compiler.compile(data.code)
+            code: Compiler_1.Compiler.compile(data.code),
         };
     }
     get name() {

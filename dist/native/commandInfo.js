@@ -15,31 +15,31 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Enum,
             enum: discord_js_1.Events,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The command name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "property",
             description: "The property to retrieve",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "separator",
             description: "Separator to use in case of array",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [type, name, prop, sep]) {
-        const cmd = ctx.client.commands.get(type, x => x.name === name)[0];
+        const cmd = ctx.client.commands.get(type, (x) => x.name === name)[0];
         const val = cmd.data?.[prop];
         return structures_1.Return.success(Array.isArray(val) ? val.join(sep || ", ") : val);
     },

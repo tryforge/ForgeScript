@@ -32,7 +32,7 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Channel,
             rest: false,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -40,23 +40,24 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content for the message",
             type: ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ channel, opt, content ]) {
-        ctx.container.content = content ?? undefined
+    async execute(ctx, [channel, opt, content]) {
+        ctx.container.content = content || undefined
         ctx.container.edit = true
         const msg = await ctx.container.send<Message<true>>(opt)
         return Return.success(!!msg)
     },
 })
+
 ```
     
 </details>

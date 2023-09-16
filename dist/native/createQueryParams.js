@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The param name followed by the value, (param1;value1)",
             rest: true,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [params]) {
         const obj = {};

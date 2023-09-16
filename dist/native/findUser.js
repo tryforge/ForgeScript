@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The id, mention or channel user to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "return author",
             description: "Returns the current author id if none found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
     async execute(ctx, [q, rt]) {
@@ -36,7 +36,8 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(u.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(ctx.client.users.cache.find(x => x.id === id || x.username.toLowerCase() === q)?.id ?? (rt ? ctx.user?.id : undefined));
+        return structures_1.Return.success(ctx.client.users.cache.find((x) => x.id === id || x.username.toLowerCase() === q)?.id ??
+            (rt ? ctx.user?.id : undefined));
     },
 });
 //# sourceMappingURL=findUser.js.map

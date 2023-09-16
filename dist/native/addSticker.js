@@ -17,43 +17,45 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to add the sticker to",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "url",
             description: "The url or file path for this sticker",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "name",
             description: "The sticker name",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "tags",
             description: "The tags to use for this sticker",
             type: structures_1.ArgType.String,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "description",
             description: "The description for the sticker",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
     ],
     async execute(ctx, [guild, url, name, tags, desc]) {
-        const created = await guild.stickers.create({
+        const created = await guild.stickers
+            .create({
             file: url,
             name,
             tags,
-            description: desc || null
-        }).catch(noop_1.default);
+            description: desc || null,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(!!created);
     },
 });

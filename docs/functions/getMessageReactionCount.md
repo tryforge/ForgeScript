@@ -33,7 +33,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: TextBasedChannel) => i.isTextBased()
+            check: (i: TextBasedChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -41,7 +41,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Message,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "emoji",
@@ -49,15 +49,14 @@ export default new NativeFunction({
             required: true,
             pointer: 1,
             rest: false,
-            type: ArgType.Reaction
-        }
+            type: ArgType.Reaction,
+        },
     ],
-    execute(ctx, [ channel, message, reaction ]) {
-        return Return.success(
-            reaction.count
-        )
+    execute(ctx, [channel, message, reaction]) {
+        return Return.success(reaction.count)
     },
 })
+
 ```
     
 </details>

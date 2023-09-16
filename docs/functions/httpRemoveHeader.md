@@ -29,18 +29,19 @@ export default new NativeFunction({
             description: "The header name",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name ]) {
+    execute(ctx, [name]) {
         if (ctx.http.headers) {
             delete ctx.http.headers[name]
         }
-        
+
         return Return.success()
     },
 })
+
 ```
     
 </details>

@@ -20,16 +20,16 @@ var EmojiProperty;
     EmojiProperty["format"] = "format";
 })(EmojiProperty || (exports.EmojiProperty = EmojiProperty = {}));
 exports.EmojiProperties = (0, defineProperties_1.default)({
-    guildID: i => i?.guild.id,
-    id: i => i?.id,
-    identifier: i => i?.identifier,
-    name: i => i?.name,
-    managed: i => i?.managed,
-    animated: i => i?.animated,
-    url: i => i?.url,
-    format: i => i?.toString(),
-    requiresColons: i => i?.requiresColons,
-    timestamp: i => i?.createdTimestamp,
-    roles: (i, sep) => i?.roles.cache.map(x => x.id).join(sep || ", ")
+    guildID: (i) => i?.guild.id,
+    id: (i) => i?.id,
+    identifier: (i) => i?.identifier,
+    name: (i) => i?.name,
+    managed: (i) => i?.managed,
+    animated: (i) => i?.animated,
+    url: (i) => i?.url,
+    format: (i) => i?.toString(),
+    requiresColons: (i) => i?.requiresColons,
+    timestamp: (i) => i?.createdTimestamp,
+    roles: (i, sep) => i?.roles.cache.map((x) => x.id).join(sep || ", "),
 });
 //# sourceMappingURL=emoji.js.map

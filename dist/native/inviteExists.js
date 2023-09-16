@@ -17,8 +17,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The invite to check",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [id]) {
         return structures_1.Return.success(!!(await ctx.client.fetchInvite(id).catch(noop_1.default)));

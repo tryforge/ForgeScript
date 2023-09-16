@@ -20,9 +20,12 @@ export default new NativeFunction({
     description: "Returns the current command name",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.runtime.command?.name ?? (ctx.obj && "commandName" in ctx.obj ? ctx.obj.commandName : undefined))
-    }
+        return Return.success(
+            ctx.runtime.command?.name ?? (ctx.obj && "commandName" in ctx.obj ? ctx.obj.commandName : undefined)
+        )
+    },
 })
+
 ```
     
 </details>

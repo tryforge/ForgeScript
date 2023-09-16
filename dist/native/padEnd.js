@@ -13,20 +13,20 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to pad at the end",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "max length",
             description: "The max length of the string",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "filler",
             description: "The filler to use to pad",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
     ],
     execute(ctx, [str, max, filler]) {

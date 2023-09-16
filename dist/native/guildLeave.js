@@ -16,8 +16,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to leave",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
-        }
+            type: structures_1.ArgType.Guild,
+        },
     ],
     unwrap: true,
     async execute(ctx, [g]) {

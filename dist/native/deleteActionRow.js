@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The row index to delete",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     unwrap: true,
     execute(ctx, [index]) {

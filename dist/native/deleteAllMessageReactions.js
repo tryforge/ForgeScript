@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -26,8 +26,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Message,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [channel, message]) {
         return structures_1.Return.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop_1.default)));

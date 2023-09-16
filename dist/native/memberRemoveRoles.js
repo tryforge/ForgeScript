@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -25,15 +25,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to remove roles from",
             rest: false,
             type: structures_1.ArgType.Member,
-            required: true
+            required: true,
         },
         {
             name: "roles",
             description: "The roles to remove",
             rest: true,
             type: structures_1.ArgType.Role,
-            pointer: 0
-        }
+            pointer: 0,
+        },
     ],
     async execute(ctx, [guild, member, roles]) {
         member ??= ctx.member;

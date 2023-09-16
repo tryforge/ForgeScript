@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to retrieve the accent color",
             rest: false,
             required: true,
-            type: structures_1.ArgType.User
-        }
+            type: structures_1.ArgType.User,
+        },
     ],
     unwrap: true,
     execute(ctx, [user]) {

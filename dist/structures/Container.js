@@ -41,7 +41,8 @@ class Container {
                     res = obj.showModal(this.modal);
                 }
                 else {
-                    res = obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply")](options);
+                    res =
+                        obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply")](options);
                 }
             }
             else {
@@ -58,20 +59,20 @@ class Container {
             res = Promise.resolve(null);
         }
         this.reset();
-        return await res.catch(noop_1.default);
+        return (await res.catch(noop_1.default));
     }
     isValidMessage(options) {
-        return !!options.content?.trim() ||
+        return (!!options.content?.trim() ||
             !!options.embeds?.length ||
             !!options.stickers?.length ||
             !!options.files?.length ||
             !!options.components?.length ||
             !!options.attachments?.length ||
             !!this.modal ||
-            !!this.choices.length;
+            !!this.choices.length);
     }
     embed(index) {
-        return this.embeds[index] ??= new discord_js_1.EmbedBuilder();
+        return (this.embeds[index] ??= new discord_js_1.EmbedBuilder());
     }
     reset() {
         delete this.channel;
@@ -89,19 +90,23 @@ class Container {
         this.files.length = 0;
     }
     getOptions(content) {
-        return (content ? {
-            content
-        } : {
-            reply: this.reference ? {
-                messageReference: this.reference,
-                failIfNotExists: false
-            } : undefined,
-            files: this.files,
-            ephemeral: this.ephemeral,
-            content: this.content || null,
-            components: this.components,
-            embeds: this.embeds,
-        });
+        return (content
+            ? {
+                content,
+            }
+            : {
+                reply: this.reference
+                    ? {
+                        messageReference: this.reference,
+                        failIfNotExists: false,
+                    }
+                    : undefined,
+                files: this.files,
+                ephemeral: this.ephemeral,
+                content: this.content || null,
+                components: this.components,
+                embeds: this.embeds,
+            });
     }
 }
 exports.Container = Container;

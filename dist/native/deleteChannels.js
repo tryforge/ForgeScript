@@ -18,8 +18,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => "delete" in i
-        }
+            check: (i) => "delete" in i,
+        },
     ],
     async execute(ctx, [channels]) {
         let count = 0;

@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The base text",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "match",
@@ -40,41 +40,42 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.String,
-            pointer: 2
+            pointer: 2,
         },
         {
             name: "flags",
             description: "The flags to use for the regex",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "new value",
             description: "The text to replace matches with",
             type: ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "amount",
             description: "How many times to perform this replacement",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ text, raw, flags, replacement, amount ]) {
-        amount ??= -1 
+    execute(ctx, [text, raw, flags, replacement, amount]) {
+        amount ??= -1
         const regex = new RegExp(raw, flags)
 
         if (amount === -1) {
             return Return.success(text.replace(regex, replacement))
         }
         let i = 0
-        return Return.success(text.replace(regex, m => ++i <= amount! ? replacement : m))
-    }
+        return Return.success(text.replace(regex, (m) => (++i <= amount! ? replacement : m)))
+    },
 })
+
 ```
     
 </details>

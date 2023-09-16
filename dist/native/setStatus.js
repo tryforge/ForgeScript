@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The presence status",
             type: structures_1.ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "type",
@@ -21,27 +21,27 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: discord_js_1.ActivityType,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The status name",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "state",
             description: "The status state",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "url",
             description: "The url to use for the stream",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [status, type, name, state, url]) {
@@ -51,10 +51,10 @@ exports.default = new structures_1.NativeFunction({
                     name,
                     state: state || undefined,
                     type,
-                    url: url || undefined
-                }
+                    url: url || undefined,
+                },
             ],
-            status: status
+            status: status,
         });
         return structures_1.Return.success();
     },

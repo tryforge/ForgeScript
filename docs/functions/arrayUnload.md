@@ -27,16 +27,17 @@ export default new NativeFunction({
             description: "The variable name to unload this array from",
             required: true,
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
     brackets: true,
-    execute(ctx, [ name ]) {
+    execute(ctx, [name]) {
         ctx.deleteEnvironmentKey(name)
         return Return.success()
     },
 })
+
 ```
     
 </details>

@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
@@ -21,8 +21,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [guild, member]) {
         member ??= ctx.member;

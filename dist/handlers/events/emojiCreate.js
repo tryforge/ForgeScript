@@ -15,16 +15,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     emoji: {
-                        new: g
-                    }
+                        new: g,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildEmojisAndStickers"
-    ]
+    intents: ["GuildEmojisAndStickers"],
 });
 //# sourceMappingURL=emojiCreate.js.map

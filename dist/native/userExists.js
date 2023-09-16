@@ -17,12 +17,11 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to check",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) &&
-            !!(await ctx.client.users.fetch(id).catch(noop_1.default)));
+        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=userExists.js.map

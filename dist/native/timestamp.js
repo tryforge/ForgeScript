@@ -11,14 +11,14 @@ exports.default = new structures_1.NativeFunction({
             name: "ms",
             description: "The timestamp time to add",
             type: structures_1.ArgType.Number,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: false,
     execute(ctx, [timestamp, index]) {
@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
             ctx.container.embed(0).setTimestamp();
             return structures_1.Return.success();
         }
-        ctx.container.embed((index ?? 0)).setTimestamp(timestamp ?? Date.now());
+        ctx.container.embed(index ?? 0).setTimestamp(timestamp ?? Date.now());
         return structures_1.Return.success();
     },
 });

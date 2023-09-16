@@ -13,11 +13,11 @@ exports.default = new structures_1.NativeFunction({
             description: "The separator for each guild",
             type: structures_1.ArgType.String,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     execute(ctx, [sep]) {
-        return structures_1.Return.success(ctx.client.guilds.cache.map(x => x.id).join(sep || ", "));
+        return structures_1.Return.success(ctx.client.guilds.cache.map((x) => x.id).join(sep || ", "));
     },
 });
 //# sourceMappingURL=guildIDs.js.map

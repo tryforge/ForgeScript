@@ -16,14 +16,14 @@ exports.default = new NativeFunction_1.NativeFunction({
             type: NativeFunction_1.ArgType.String,
             rest: false,
             required: true,
-            description: "The code to eval"
+            description: "The code to eval",
         },
         {
             name: "send",
             type: NativeFunction_1.ArgType.Boolean,
             rest: false,
-            description: "Whether to send as new message"
-        }
+            description: "Whether to send as new message",
+        },
     ],
     async execute(ctx, [code, send]) {
         send ??= true;
@@ -31,7 +31,7 @@ exports.default = new NativeFunction_1.NativeFunction({
             const result = await Interpreter_1.Interpreter.run({
                 ...ctx.runtime,
                 data: Compiler_1.Compiler.compile(code),
-                doNotSend: !send
+                doNotSend: !send,
             });
             return result === null ? Return_1.Return.stop() : Return_1.Return.success(send ? undefined : result);
         }
@@ -39,6 +39,6 @@ exports.default = new NativeFunction_1.NativeFunction({
             console.error(error);
             return Return_1.Return.error(error);
         }
-    }
+    },
 });
 //# sourceMappingURL=eval.js.map

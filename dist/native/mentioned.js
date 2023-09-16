@@ -13,19 +13,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The index of the user",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "return author",
             description: "Return author ID if not found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     execute(ctx, [i, rt]) {
-        const id = this.hasFields ?
-            ctx.message?.mentions.users.at(i)?.id :
-            ctx.message?.mentions.users.map(x => x.id).join(", ");
+        const id = this.hasFields
+            ? ctx.message?.mentions.users.at(i)?.id
+            : ctx.message?.mentions.users.map((x) => x.id).join(", ");
         return structures_1.Return.success(id ?? (rt ? ctx.user?.id : undefined));
     },
 });

@@ -30,7 +30,7 @@ export default new NativeFunction({
             if (ch) return Return.success(ch.id)
         }
 
-        const rtId = rt ? ctx.channel?.id ?? undefined : undefined
+        const rtId = rt ? ctx.channel?.id || undefined : undefined
 
         q = q.toLowerCase()
 

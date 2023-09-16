@@ -31,7 +31,7 @@ export default new NativeFunction({
             description: "The minimum possible number",
             rest: false,
             required: true,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "max",
@@ -43,14 +43,15 @@ export default new NativeFunction({
             name: "decimals",
             description: "Whether to use decimals",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ min, max, decimals ]) {
+    execute(ctx, [min, max, decimals]) {
         const rnd = max ? Math.random() * (max - min) + min : Math.random() * min
         return Return.success(!decimals ? Math.floor(rnd) : rnd)
     },
 })
+
 ```
     
 </details>

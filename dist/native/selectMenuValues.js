@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The index of the value",
             type: structures_1.ArgType.Number,
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
     execute(ctx, [index]) {
@@ -25,6 +25,6 @@ exports.default = new structures_1.NativeFunction({
         else {
             return structures_1.Return.success(ctx.interaction.values.join(", "));
         }
-    }
+    },
 });
 //# sourceMappingURL=selectMenuValues.js.map

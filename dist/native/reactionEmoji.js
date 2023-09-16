@@ -8,6 +8,6 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx) {
         return structures_1.Return.success(ctx.reaction?.emoji.toString());
-    }
+    },
 });
 //# sourceMappingURL=reactionEmoji.js.map

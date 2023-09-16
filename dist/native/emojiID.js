@@ -12,12 +12,12 @@ exports.default = new structures_1.NativeFunction({
             description: "The emoji name to return its id",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [emoji]) {
         if (this.hasFields)
-            return structures_1.Return.success(ctx.client.emojis.cache.find(x => x.name === emoji)?.id);
+            return structures_1.Return.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id);
         return structures_1.Return.success(ctx.emoji?.name);
     },
 });

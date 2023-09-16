@@ -13,24 +13,24 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Channel,
             rest: false,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "content",
             description: "The content for the message",
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "return message ID",
             description: "Whether to return the message id of the newly sent message",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     brackets: true,
     async execute(ctx, [channel, content, returnMessageID]) {
-        ctx.container.content = content ?? undefined;
+        ctx.container.content = content || undefined;
         const msg = await ctx.container.send(channel);
         return structures_1.Return.success(returnMessageID ? msg?.id : undefined);
     },

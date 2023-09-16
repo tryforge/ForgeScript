@@ -8,6 +8,6 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute() {
         return structures_1.Return.stop();
-    }
+    },
 });
 //# sourceMappingURL=stop.js.map

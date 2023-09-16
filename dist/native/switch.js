@@ -17,15 +17,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The value to match with",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "cases",
             rest: false,
             description: "The cases to use ($case), use $case[default;...] to add a default case",
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     async execute(ctx) {
@@ -33,8 +33,8 @@ exports.default = new structures_1.NativeFunction({
         if (!this["isValidReturnType"](match))
             return match;
         const value = match.value;
-        const switchCases = this.data.fields[1].functions.filter(x => x.data.name === case_1.default.name);
-        const index = switchCases.findIndex(x => x.data.fields[0].value === "default");
+        const switchCases = this.data.fields[1].functions.filter((x) => x.data.name === case_1.default.name);
+        const index = switchCases.findIndex((x) => x.data.fields[0].value === "default");
         const defaultCase = index === -1 ? null : switchCases.splice(index, 1)[0];
         for (let i = 0, len = switchCases.length; i < len; i++) {
             const cas = switchCases[i];

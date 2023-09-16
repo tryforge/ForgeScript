@@ -12,40 +12,41 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "variable",
             description: "The variable to load the element value to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "other variable",
             description: "The other variable to load the second element to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "code",
             description: "The code to execute for every element, must return a number",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "default value",
             description: "The default value, defaults to 0",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, otherVarField, code, defaultValue] = this.data.fields;
+        const [nameField, varField, otherVarField, code, defaultValue] = this.data
+            .fields;
         const name = await this["resolveCode"](ctx, nameField);
         if (!this["isValidReturnType"](name))
             return name;
@@ -66,7 +67,7 @@ exports.default = new structures_1.NativeFunction({
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
                 ctx.setEnvironmentKey(otherVarName, el);
-                const rt = await this["resolveCode"](ctx, code);
+                const rt = (await this["resolveCode"](ctx, code));
                 if (rt.return) {
                     ctx.setEnvironmentKey(varName, rt.value);
                 }

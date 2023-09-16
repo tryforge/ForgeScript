@@ -25,29 +25,27 @@ export default new NativeFunction({
     description: "Returns whether an member id exists",
     unwrap: true,
     brackets: true,
-    args: [ 
+    args: [
         {
             name: "guild ID",
             description: "The guild to check for the member",
             type: ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "member ID",
             description: "The member to check for",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, id ]) {
-        return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            !!(await guild.members.fetch(id).catch(noop))
-        )
+    async execute(ctx, [guild, id]) {
+        return Return.success(CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop)))
     },
 })
+
 ```
     
 </details>

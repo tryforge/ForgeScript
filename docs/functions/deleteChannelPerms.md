@@ -33,14 +33,14 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased() && "permissionOverwrites" in i
+            check: (i: BaseChannel) => i.isTextBased() && "permissionOverwrites" in i,
         },
         {
             name: "id",
             description: "The role or member id to clear these perms for",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "perms",
@@ -48,21 +48,20 @@ export default new NativeFunction({
             rest: true,
             type: ArgType.String,
             required: true,
-            enum: PermissionFlagsBits
-        }
+            enum: PermissionFlagsBits,
+        },
     ],
-    async execute(ctx, [ ch, id, perms ]) {
+    async execute(ctx, [ch, id, perms]) {
         const channel = ch as TextChannel
-        
+
         const obj: Partial<Record<PermissionsString, null>> = {}
 
-        perms.forEach(x => obj[x as PermissionsString] = null)
+        perms.forEach((x) => (obj[x as PermissionsString] = null))
 
-        return Return.success(
-            !!(await channel.permissionOverwrites.create(id, obj))
-        )
+        return Return.success(!!(await channel.permissionOverwrites.create(id, obj)))
     },
 })
+
 ```
     
 </details>

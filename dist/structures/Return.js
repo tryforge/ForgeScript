@@ -37,9 +37,7 @@ class Return {
         return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
     }
     static successFormatted(value) {
-        return this.success(typeof value !== "string" ?
-            (0, util_1.inspect)(value, { depth: Infinity }) :
-            value);
+        return this.success(typeof value !== "string" ? (0, util_1.inspect)(value, { depth: Infinity }) : value);
     }
     static success(value = null) {
         return new this(ReturnType.Success, value);

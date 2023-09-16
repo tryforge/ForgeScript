@@ -34,22 +34,21 @@ export default new NativeFunction({
             description: "The guild to retrieve the data",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "separator",
             description: "The separator to use",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, sep ]) {
-        return Return.success(
-            (guild ?? ctx.guild)?.features.join(sep || ", ")
-        )
+    execute(ctx, [guild, sep]) {
+        return Return.success((guild ?? ctx.guild)?.features.join(sep || ", "))
     },
 })
+
 ```
     
 </details>

@@ -14,21 +14,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "text",
             description: "The text to append",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "encoding",
             description: "The encoding to use for text",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [path, data, encoding]) {
         // eslint-disable-next-line no-undef

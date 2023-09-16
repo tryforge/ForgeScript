@@ -14,20 +14,20 @@ exports.default = new structures_1.NativeFunction({
             description: "The webhook url",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "content",
             description: "The content for the message",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "return message ID",
             description: "Return the message id of the sent message",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     async execute(ctx, [url, content, returnMessageID]) {
         const web = new discord_js_1.WebhookClient({ url });

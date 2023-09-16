@@ -32,7 +32,7 @@ export default new NativeFunction({
             description: "The guild to delete emotes from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "emojis",
@@ -40,12 +40,12 @@ export default new NativeFunction({
             rest: true,
             pointer: 0,
             required: true,
-            type: ArgType.GuildEmoji
-        }
+            type: ArgType.GuildEmoji,
+        },
     ],
-    async execute(ctx, [ guild, emotes ]) {
+    async execute(ctx, [guild, emotes]) {
         let count = 0
-        for (let i = 0, len = emotes.length;i < len;i++) {
+        for (let i = 0, len = emotes.length; i < len; i++) {
             const emote = emotes[i]
             const success = await emote.delete().catch(noop)
             if (success) count++
@@ -54,6 +54,7 @@ export default new NativeFunction({
         return Return.success(count)
     },
 })
+
 ```
     
 </details>

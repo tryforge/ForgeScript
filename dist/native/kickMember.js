@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to kick a member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
@@ -21,17 +21,17 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The reason to kick for",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, member, reason]) {
-        return structures_1.Return.success(await member.kick(reason || undefined).catch(() => false) !== false);
+        return structures_1.Return.success((await member.kick(reason || undefined).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=kickMember.js.map
