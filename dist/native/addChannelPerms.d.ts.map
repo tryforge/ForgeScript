@@ -1,1 +1,1 @@
-{"version":3,"file":"addChannelPerms.d.ts","sourceRoot":"","sources":["../../src/native/addChannelPerms.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAuD,MAAM,YAAY,CAAA;AAC7F,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAA;;;;;;;eAexC,WAAW;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAblC,wBAwCE"}
+{"version":3,"file":"addChannelPerms.d.ts","sourceRoot":"","sources":["../../src/native/addChannelPerms.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAA;;;;;;;;;;;;;;;;;;;;;;AAE/D,wBAwCE"}
