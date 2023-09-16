@@ -59,7 +59,7 @@ exports.default = new structures_1.NativeFunction({
         if (!btn)
             return structures_1.Return.success(false);
         btn.setCustomId(id)
-            .setDisabled(disabled ?? false)
+            .setDisabled(disabled || false)
             .setStyle(style)
             .setLabel(label);
         if (style === discord_js_1.ButtonStyle.Link)

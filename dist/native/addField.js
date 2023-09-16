@@ -39,7 +39,7 @@ exports.default = new structures_1.NativeFunction({
         ctx.container.embed(index ?? 0).addFields({
             name,
             value,
-            inline: inline ?? false,
+            inline: inline || false,
         });
         return structures_1.Return.success();
     },

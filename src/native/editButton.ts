@@ -63,7 +63,7 @@ export default new NativeFunction({
         if (!btn) return Return.success(false)
 
         btn.setCustomId(id)
-            .setDisabled(disabled ?? false)
+            .setDisabled(disabled || false)
             .setStyle(style)
             .setLabel(label)
 

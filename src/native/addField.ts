@@ -39,7 +39,7 @@ export default new NativeFunction({
         ctx.container.embed(index ?? 0).addFields({
             name,
             value,
-            inline: inline ?? false,
+            inline: inline || false,
         })
 
         return Return.success()

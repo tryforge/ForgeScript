@@ -45,7 +45,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [id, label, style, emoji, disabled]) {
         const btn = new ButtonBuilder()
-            .setDisabled(disabled ?? false)
+            .setDisabled(disabled || false)
             .setStyle(style)
             .setLabel(label)
 
