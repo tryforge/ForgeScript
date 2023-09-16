@@ -12,24 +12,24 @@ exports.default = new structures_1.NativeFunction({
             description: "Adds a title to the embed",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "hyperlink",
             description: "The hyperlink url",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [title, hyperlink, index]) {
-        const embed = ctx.container.embed((index ?? 0)).setTitle(title);
+        const embed = ctx.container.embed(index ?? 0).setTitle(title);
         if (hyperlink)
             embed.setURL(hyperlink);
         return structures_1.Return.success();

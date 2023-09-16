@@ -19,15 +19,15 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             rest: false,
             type: structures_1.ArgType.Channel,
-            check: (x) => "messages" in x
+            check: (x) => "messages" in x,
         },
         {
             name: "amount",
             description: "The amount of messages to delete",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [channel, amount]) {
         let count = 0;

@@ -30,15 +30,14 @@ export default new NativeFunction({
             description: "The invite to check",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ id ]) {
-        return Return.success(
-            !!(await ctx.client.fetchInvite(id).catch(noop))    
-        )
+    async execute(ctx, [id]) {
+        return Return.success(!!(await ctx.client.fetchInvite(id).catch(noop)))
     },
 })
+
 ```
     
 </details>

@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The number to use",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ n ]) {
+    execute(ctx, [n]) {
         return Return.success(Math.round(n))
     },
 })
+
 ```
     
 </details>

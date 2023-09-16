@@ -39,94 +39,82 @@ class Context {
     get member() {
         if (!this.obj)
             return null;
-        return this.#member ??=
-            this.obj instanceof discord_js_1.GuildMember ?
-                this.obj :
-                "member" in this.obj && this.obj.member instanceof discord_js_1.GuildMember ?
-                    this.obj.member :
-                    null;
+        return (this.#member ??=
+            this.obj instanceof discord_js_1.GuildMember
+                ? this.obj
+                : "member" in this.obj && this.obj.member instanceof discord_js_1.GuildMember
+                    ? this.obj.member
+                    : null);
     }
     get emoji() {
         if (!this.obj)
             return null;
-        return this.#emoji ??=
-            this.obj instanceof discord_js_1.GuildEmoji ?
-                this.obj :
-                null;
+        return (this.#emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
     }
     get role() {
         if (!this.obj)
             return null;
-        return this.#role ??=
-            this.obj instanceof discord_js_1.Role ?
-                this.obj :
-                null;
+        return (this.#role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
     }
     get reaction() {
         if (!this.obj)
             return null;
-        return this.#reaction ??=
-            this.obj instanceof discord_js_1.MessageReaction ?
-                this.obj :
-                null;
+        return (this.#reaction ??= this.obj instanceof discord_js_1.MessageReaction ? this.obj : null);
     }
     get message() {
         if (!this.obj)
             return null;
-        return this.#message ??=
-            "message" in this.obj && this.obj.message ?
-                this.obj.message :
-                this.obj instanceof discord_js_1.Message ?
-                    this.obj :
-                    null;
+        return (this.#message ??=
+            "message" in this.obj && this.obj.message
+                ? this.obj.message
+                : this.obj instanceof discord_js_1.Message
+                    ? this.obj
+                    : null);
     }
     get interaction() {
         if (!this.obj)
             return null;
-        return this.#interaction ??=
-            this.obj instanceof discord_js_1.BaseInteraction ?
-                this.obj :
-                null;
+        return (this.#interaction ??= this.obj instanceof discord_js_1.BaseInteraction ? this.obj : null);
     }
     get user() {
         if (!this.obj)
             return null;
-        return this.#user ??=
-            "user" in this.obj ?
-                this.obj.user :
-                "author" in this.obj ?
-                    this.obj.author :
-                    this.obj instanceof discord_js_1.User ?
-                        this.obj :
-                        "member" in this.obj ?
-                            this.obj.member?.user ?? null :
-                            null;
+        return (this.#user ??=
+            "user" in this.obj
+                ? this.obj.user
+                : "author" in this.obj
+                    ? this.obj.author
+                    : this.obj instanceof discord_js_1.User
+                        ? this.obj
+                        : "member" in this.obj
+                            ? this.obj.member?.user ?? null
+                            : null);
     }
     get guild() {
         if (!this.obj)
             return null;
-        return this.#guild ??=
-            "guild" in this.obj ?
-                this.obj.guild :
-                this.obj instanceof discord_js_1.Guild ?
-                    this.obj :
-                    "message" in this.obj ?
-                        this.obj.message.guild :
-                        null;
+        return (this.#guild ??=
+            "guild" in this.obj
+                ? this.obj.guild
+                : this.obj instanceof discord_js_1.Guild
+                    ? this.obj
+                    : "message" in this.obj
+                        ? this.obj.message.guild
+                        : null);
     }
     get channel() {
         if (!this.obj)
             return null;
-        return this.#channel ??=
-            "channel" in this.obj ?
-                this.obj.channel?.partial ?
-                    null :
-                    this.obj.channel :
-                this.obj instanceof discord_js_1.BaseChannel ?
-                    this.obj :
-                    "message" in this.obj ?
-                        this.obj.message.channel :
-                        null;
+        return (this.#channel ??=
+            "channel" in this.obj
+                ? this.obj.channel?.partial
+                    ? null
+                    : this.obj.channel
+                : this.obj instanceof discord_js_1.BaseChannel
+                    ? this.obj
+                    : "message" in this.obj
+                        ? this.obj.message.channel
+                        : null);
     }
     async handle(fn, cb) {
         const unwrap = await fn["resolveArgs"](this);
@@ -156,7 +144,7 @@ class Context {
         this.http = {};
     }
     setEnvironmentKey(name, value) {
-        return this.#environment[name] = value;
+        return (this.#environment[name] = value);
     }
     deleteEnvironmentKey(name) {
         return delete this.#environment[name];
@@ -178,7 +166,7 @@ class Context {
         return delete this.#keywords[name];
     }
     setKeyword(name, value) {
-        return this.#keywords[name] = value;
+        return (this.#keywords[name] = value);
     }
     hasKeyword(name) {
         return name in this.#keywords;

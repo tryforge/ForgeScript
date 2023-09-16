@@ -10,11 +10,7 @@ const ForgeError_1 = require("./ForgeError");
 const managers_1 = require("../managers");
 class InviteSystem {
     static Invites = new discord_js_1.Collection();
-    static RequiredIntents = [
-        "Guilds",
-        "GuildInvites",
-        "GuildMembers"
-    ];
+    static RequiredIntents = ["Guilds", "GuildInvites", "GuildMembers"];
     static RequiredEvents = [
         "inviteCreate",
         "inviteDelete",
@@ -22,7 +18,7 @@ class InviteSystem {
         "guildMemberUpdate",
         "guildMemberRemove",
         "guildCreate",
-        "guildDelete"
+        "guildDelete",
     ];
     /**
      * Guild => invited user => invited by
@@ -59,7 +55,7 @@ class InviteSystem {
             arr.push({
                 uses: invite.uses,
                 code: invite.code,
-                userId: invite.inviterId
+                userId: invite.inviterId,
             });
         }
         this.Invites.set(guild.id, arr);
@@ -70,7 +66,7 @@ class InviteSystem {
             invites.push({
                 code: invite.code,
                 userId: invite.inviterId,
-                uses: 0
+                uses: 0,
             });
             return;
         }
@@ -81,7 +77,7 @@ class InviteSystem {
         const invites = this.Invites.get(invite.guild?.id);
         if (!invites)
             return;
-        const index = invites.findIndex(x => x.code === invite.code);
+        const index = invites.findIndex((x) => x.code === invite.code);
         if (index !== -1)
             invites.splice(index, 1);
     }
@@ -114,7 +110,7 @@ class InviteSystem {
             const invitedUsers = this.Inviters.ensure(guild.id, () => new discord_js_1.Collection());
             invitedUsers.set(member.id, {
                 code: used.code,
-                inviterId: used.userId
+                inviterId: used.userId,
             });
         }
         else

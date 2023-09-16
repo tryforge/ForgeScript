@@ -14,27 +14,27 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to add this emote to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "name",
             description: "The name for the emoji",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "url",
             description: "The emoji icon to use",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "return emoji ID",
             description: "Whether to return the emoji id",
             rest: false,
-            type: structures_1.ArgType.Boolean
+            type: structures_1.ArgType.Boolean,
         },
         {
             name: "roles",
@@ -42,15 +42,17 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             type: structures_1.ArgType.Role,
-            pointer: 0
-        }
+            pointer: 0,
+        },
     ],
     async execute(ctx, [guild, name, icon, returnEmojiID, roles]) {
-        const em = await guild.emojis.create({
+        const em = await guild.emojis
+            .create({
             attachment: icon,
             name,
-            roles: roles || undefined
-        }).catch(lodash_1.noop);
+            roles: roles || undefined,
+        })
+            .catch(lodash_1.noop);
         return structures_1.Return.success(returnEmojiID && em ? em.id : undefined);
     },
 });

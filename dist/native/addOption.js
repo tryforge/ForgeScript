@@ -14,21 +14,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The option name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "description",
             description: "The description for this option",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The value to use for this option",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "emoji",
@@ -40,8 +40,8 @@ exports.default = new structures_1.NativeFunction({
             name: "default",
             description: "Whether to set this option as default",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     execute(ctx, [name, desc, value, emoji, def]) {
         const comp = ctx.container.components.at(-1)?.components[0];
@@ -50,9 +50,11 @@ exports.default = new structures_1.NativeFunction({
             description: desc,
             value,
             default: def ?? false,
-            emoji: emoji ? (0, discord_js_1.parseEmoji)(emoji) ?? {
-                name: emoji
-            } : undefined
+            emoji: emoji
+                ? (0, discord_js_1.parseEmoji)(emoji) ?? {
+                    name: emoji,
+                }
+                : undefined,
         };
         if (!!comp && "addOptions" in comp) {
             comp.addOptions(data);

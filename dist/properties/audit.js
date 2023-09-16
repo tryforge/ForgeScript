@@ -20,15 +20,15 @@ var AuditProperty;
     AuditProperty["extra"] = "extra";
 })(AuditProperty || (exports.AuditProperty = AuditProperty = {}));
 exports.AuditProperties = (0, defineProperties_1.default)({
-    id: i => i?.id,
-    executorID: i => i?.executorId,
-    targetID: i => i?.targetId,
-    extra: i => i ? typeof i === "string" ? i : JSON.stringify(i.extra) : undefined,
-    changes: i => i ? JSON.stringify(i.changes) : undefined,
-    reason: i => i?.reason,
-    timestamp: i => i?.createdTimestamp,
-    action: i => discord_js_1.AuditLogEvent[i?.action],
-    actionType: i => i?.actionType,
-    targetType: i => i?.targetType,
+    id: (i) => i?.id,
+    executorID: (i) => i?.executorId,
+    targetID: (i) => i?.targetId,
+    extra: (i) => (i ? (typeof i === "string" ? i : JSON.stringify(i.extra)) : undefined),
+    changes: (i) => (i ? JSON.stringify(i.changes) : undefined),
+    reason: (i) => i?.reason,
+    timestamp: (i) => i?.createdTimestamp,
+    action: (i) => discord_js_1.AuditLogEvent[i?.action],
+    actionType: (i) => i?.actionType,
+    targetType: (i) => i?.targetType,
 });
 //# sourceMappingURL=audit.js.map

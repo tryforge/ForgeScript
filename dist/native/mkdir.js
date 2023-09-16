@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The path for the dir",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [path]) {
         return structures_1.Return.success(void (0, fs_1.mkdirSync)(path));

@@ -19,6 +19,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             }
         }
     },
-    description: "This event is fired when a shard starts reconnecting"
+    description: "This event is fired when a shard starts reconnecting",
 });
 //# sourceMappingURL=shardReconnecting.js.map

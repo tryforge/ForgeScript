@@ -19,6 +19,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 });
             }
         }
-    }
+    },
 });
 //# sourceMappingURL=shardResume.js.map

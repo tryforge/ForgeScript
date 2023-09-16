@@ -11,8 +11,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable name to unload this array from",
             required: true,
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     brackets: true,

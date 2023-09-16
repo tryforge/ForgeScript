@@ -33,17 +33,16 @@ export default new NativeFunction({
             description: "The guild to leave",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
     unwrap: true,
-    async execute(ctx, [ g ]) {
+    async execute(ctx, [g]) {
         g ??= ctx.guild!
-        return Return.success(
-            !!(await g?.leave().catch(noop))
-        )
+        return Return.success(!!(await g?.leave().catch(noop)))
     },
 })
+
 ```
     
 </details>

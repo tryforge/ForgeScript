@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to return its creation date",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User
-        }
+            type: structures_1.ArgType.User,
+        },
     ],
     brackets: false,
     async execute(ctx, [user]) {

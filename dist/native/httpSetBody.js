@@ -12,8 +12,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "the JSON body",
             rest: false,
             required: true,
-            type: NativeFunction_1.ArgType.Json
-        }
+            type: NativeFunction_1.ArgType.Json,
+        },
     ],
     unwrap: true,
     brackets: true,

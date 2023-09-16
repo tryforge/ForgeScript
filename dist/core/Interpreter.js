@@ -11,9 +11,9 @@ class Interpreter {
             const { guildIDs, userIDs } = runtime.client.options.restrictions;
             const guildID = ctx.guild?.id;
             const authorID = ctx.user?.id;
-            if (userIDs?.length && (authorID && !userIDs.includes(authorID)))
+            if (userIDs?.length && authorID && !userIDs.includes(authorID))
                 return null;
-            else if (guildIDs?.length && (guildID && !guildIDs.includes(guildID)))
+            else if (guildIDs?.length && guildID && !guildIDs.includes(guildID))
                 return null;
         }
         const args = new Array(runtime.data.functions.length);

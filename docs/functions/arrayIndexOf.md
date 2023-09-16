@@ -29,22 +29,23 @@ export default new NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "value",
             description: "The exact value to get its index",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    execute(ctx, [ name, value ]) {
-        const arr = ctx.getEnvironmentKey([ name ])
+    execute(ctx, [name, value]) {
+        const arr = ctx.getEnvironmentKey([name])
         return Return.success(Array.isArray(arr) ? arr.indexOf(value) : -1)
     },
 })
+
 ```
     
 </details>

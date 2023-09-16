@@ -14,8 +14,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "Code to execute",
             required: true,
             type: NativeFunction_1.ArgType.String,
-            rest: true
-        }
+            rest: true,
+        },
     ],
     brackets: true,
     execute: async function (ctx) {
@@ -25,6 +25,6 @@ exports.default = new NativeFunction_1.NativeFunction({
         else if (rt.success)
             return Return_1.Return.success();
         return rt;
-    }
+    },
 });
 //# sourceMappingURL=function.js.map

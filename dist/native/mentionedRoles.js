@@ -13,13 +13,13 @@ exports.default = new structures_1.NativeFunction({
             description: "The index of the role",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [i]) {
-        return structures_1.Return.success(this.hasFields ?
-            ctx.message?.mentions.roles.at(i)?.id :
-            ctx.message?.mentions.roles.map(x => x.id).join(", "));
+        return structures_1.Return.success(this.hasFields
+            ? ctx.message?.mentions.roles.at(i)?.id
+            : ctx.message?.mentions.roles.map((x) => x.id).join(", "));
     },
 });
 //# sourceMappingURL=mentionedRoles.js.map

@@ -33,13 +33,14 @@ export default new NativeFunction({
             description: "The separator for each guild",
             type: ArgType.String,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
-    execute(ctx, [ sep ]) {
-        return Return.success(ctx.client.guilds.cache.map(x => x.id).join(sep || ", "))
+    execute(ctx, [sep]) {
+        return Return.success(ctx.client.guilds.cache.map((x) => x.id).join(sep || ", "))
     },
 })
+
 ```
     
 </details>

@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
@@ -25,14 +25,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Member,
-            pointer: 0
+            pointer: 0,
         },
         {
             name: "ms",
             description: "The ms to timeout for",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [guild, member, ms]) {
         const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(noop_1.default);

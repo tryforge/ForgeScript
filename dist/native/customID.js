@@ -9,6 +9,6 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute: async function (ctx) {
         return Return_1.Return.success(ctx.interaction && "customId" in ctx.interaction ? ctx.interaction.customId : undefined);
-    }
+    },
 });
 //# sourceMappingURL=customID.js.map

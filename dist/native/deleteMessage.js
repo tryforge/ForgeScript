@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             check: (i) => i.isTextBased(),
-            type: structures_1.ArgType.Channel
+            type: structures_1.ArgType.Channel,
         },
         {
             name: "messages",
@@ -26,8 +26,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.Message
-        }
+            type: structures_1.ArgType.Message,
+        },
     ],
     async execute(ctx, [channel, messages]) {
         if (!messages.length)
@@ -37,7 +37,10 @@ exports.default = new structures_1.NativeFunction({
             // @ts-ignore
             !!(await messages[0].delete().catch(noop_1.default)) + false);
         }
-        const col = await channel.bulkDelete(messages, true).then(x => x.size).catch(noop_1.default) ?? 0;
+        const col = (await channel
+            .bulkDelete(messages, true)
+            .then((x) => x.size)
+            .catch(noop_1.default)) ?? 0;
         return structures_1.Return.success(col);
     },
 });

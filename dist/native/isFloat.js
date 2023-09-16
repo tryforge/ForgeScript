@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The number to check",
             required: true,
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [n]) {

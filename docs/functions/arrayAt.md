@@ -30,21 +30,22 @@ export default new NativeFunction({
             description: "The variable the array is held on",
             type: ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "index",
             type: ArgType.Number,
             description: "The index to get the element of",
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ variable, index ]) {
-        const arr = ctx.getEnvironmentKey([ variable ])
+    execute(ctx, [variable, index]) {
+        const arr = ctx.getEnvironmentKey([variable])
         return Return.successJSON(Array.isArray(arr) ? arr.at(index) : undefined)
     },
 })
+
 ```
     
 </details>

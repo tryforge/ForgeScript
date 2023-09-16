@@ -13,29 +13,29 @@ exports.default = new structures_1.NativeFunction({
             description: "The number to validate",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "min",
             description: "The min value",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "max",
             description: "The max value",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     execute(ctx, [n, min, max]) {
-        return structures_1.Return.success(min !== null && max !== null ?
-            n >= min && n <= max :
-            min !== null ?
-                n >= min :
-                max !== null ?
-                    n <= max :
-                    true);
+        return structures_1.Return.success(min !== null && max !== null
+            ? n >= min && n <= max
+            : min !== null
+                ? n >= min
+                : max !== null
+                    ? n <= max
+                    : true);
     },
 });
 //# sourceMappingURL=inRange.js.map

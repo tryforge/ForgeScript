@@ -13,15 +13,15 @@ exports.default = new structures_1.NativeFunction({
             description: "Left hand value",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "right hand",
             description: "Right hand value",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [lhs, rhs]) {
         return structures_1.Return.success(lhs || rhs);

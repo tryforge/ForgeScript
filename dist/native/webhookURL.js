@@ -17,8 +17,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The webhook id",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [id]) {
         const web = await ctx.client.fetchWebhook(id).catch(noop_1.default);

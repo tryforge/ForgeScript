@@ -9,18 +9,19 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     listener: async function (message) {
         if (message.author.bot)
             return;
-        const prefix = this.options.prefixes.find(x => message.content.startsWith(x));
-        const args = message.content.slice(prefix?.length ?? 0).trim().split(/ +/g);
+        const prefix = this.options.prefixes.find((x) => message.content.startsWith(x));
+        const args = message.content
+            .slice(prefix?.length ?? 0)
+            .trim()
+            .split(/ +/g);
         const name = prefix ? args.shift()?.toLowerCase() : args[0];
-        const commands = this.commands.get("messageCreate")
-            .filter(
+        const commands = this.commands.get("messageCreate").filter(
         // Allow always execute commands
-        cmd => !cmd.name || ((
-        // Check if it matches the command name or one of aliases
-        cmd.name === name ||
-            !!cmd.data.aliases?.includes(name)) && (
-        // If unprefixed there can be no prefix
-        cmd.data.unprefixed ? true : !!prefix)));
+        (cmd) => !cmd.name ||
+            ( // Check if it matches the command name or one of aliases
+            (cmd.name === name || !!cmd.data.aliases?.includes(name)) &&
+                // If unprefixed there can be no prefix
+                (cmd.data.unprefixed ? true : !!prefix)));
         for (const command of commands) {
             Interpreter_1.Interpreter.run({
                 obj: message,
@@ -28,17 +29,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     message: {
-                        new: message
-                    }
+                        new: message,
+                    },
                 },
                 data: command.compiled.code,
-                args
+                args,
             });
         }
     },
-    intents: [
-        "GuildMessages",
-        "DirectMessages"
-    ]
+    intents: ["GuildMessages", "DirectMessages"],
 });
 //# sourceMappingURL=messageCreate.js.map

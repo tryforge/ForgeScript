@@ -22,7 +22,7 @@ export default new NativeFunction({
             return Return.success()
         }
 
-        ctx.container.content = content ?? undefined
+        ctx.container.content = content || undefined
         ctx.container.update = true
 
         await ctx.container.send<Message<true>>(ctx.obj)

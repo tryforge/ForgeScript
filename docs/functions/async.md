@@ -32,8 +32,8 @@ export default new NativeFunction({
             description: "The code to execute",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     experimental: true,
     execute(ctx) {
@@ -41,6 +41,7 @@ export default new NativeFunction({
         return Return.success()
     },
 })
+
 ```
     
 </details>

@@ -18,44 +18,44 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to add the role to",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The role name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "color",
             description: "The role color",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "icon",
             description: "The role icon",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "hoisted",
             description: "Whether the role is hoisted",
             type: structures_1.ArgType.Boolean,
-            rest: false
+            rest: false,
         },
         {
             name: "mentionable",
             description: "Whether the role is mentionable",
             type: structures_1.ArgType.Boolean,
-            rest: false
+            rest: false,
         },
         {
             name: "position",
             description: "The position for this role",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "perms",
@@ -63,19 +63,21 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             enum: discord_js_1.PermissionFlagsBits,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, name, color, icon, hoist, mentionable, pos, perms]) {
-        const created = await guild.roles.create({
+        const created = await guild.roles
+            .create({
             color: color || undefined,
             icon: icon || undefined,
             hoist: hoist || false,
             mentionable: mentionable || false,
             name,
             permissions: perms || [],
-            position: pos || undefined
-        }).catch(noop_1.default);
+            position: pos || undefined,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(created ? created.id : undefined);
     },
 });

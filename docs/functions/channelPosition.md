@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The id of the channel to get its position",
             rest: false,
             type: ArgType.Channel,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ ch ]) {
+    execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success(
-            chan && "position" in chan ? chan.position : undefined
-        )
+        return Return.success(chan && "position" in chan ? chan.position : undefined)
     },
 })
+
 ```
     
 </details>

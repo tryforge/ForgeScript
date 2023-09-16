@@ -8,7 +8,10 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     version: "1.0.1",
     description: "This event is fired when a member is updated in a guild",
     listener: async function (old, newer) {
-        if (this.options.useInviteSystem && newer.id === this.user.id && !old.permissions.has("ManageGuild") && newer.permissions.has("ManageGuild")) {
+        if (this.options.useInviteSystem &&
+            newer.id === this.user.id &&
+            !old.permissions.has("ManageGuild") &&
+            newer.permissions.has("ManageGuild")) {
             // We gained invite perms
             await InviteSystem_1.InviteSystem.cache(newer.guild);
         }
@@ -20,17 +23,15 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     member: {
                         old: old,
-                        new: newer
-                    }
+                        new: newer,
+                    },
                 },
                 client: this,
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildMembers"
-    ]
+    intents: ["GuildMembers"],
 });
 //# sourceMappingURL=guildMemberUpdate.js.map

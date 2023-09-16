@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The code to execute",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     experimental: true,
     execute(ctx) {

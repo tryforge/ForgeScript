@@ -23,7 +23,8 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$kickMember",
     version: "1.0.0",
-    description: "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed",
+    description:
+        "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
     args: [
@@ -32,7 +33,7 @@ export default new NativeFunction({
             description: "The guild to kick a member from",
             rest: false,
             required: true,
-            type: ArgType.Guild
+            type: ArgType.Guild,
         },
         {
             name: "user ID",
@@ -40,21 +41,20 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The reason to kick for",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ guild, member, reason ]) {
-        return Return.success(
-            await member.kick(reason || undefined).catch(() => false) !== false 
-        )
+    async execute(ctx, [guild, member, reason]) {
+        return Return.success((await member.kick(reason || undefined).catch(() => false)) !== false)
     },
 })
+
 ```
     
 </details>

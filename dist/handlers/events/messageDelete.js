@@ -16,17 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     message: {
                         old: m,
-                        new: m
-                    }
+                        new: m,
+                    },
                 },
                 data: command.compiled.code,
-                args: m.content?.split(/ +/)
+                args: m.content?.split(/ +/),
             });
         }
     },
-    intents: [
-        "GuildMessages",
-        "DirectMessages"
-    ]
+    intents: ["GuildMessages", "DirectMessages"],
 });
 //# sourceMappingURL=messageDelete.js.map

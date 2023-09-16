@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The codes to get its char codes",
             type: structures_1.ArgType.Number,
             rest: true,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [codes]) {
         return structures_1.Return.success(String.fromCharCode(...codes));

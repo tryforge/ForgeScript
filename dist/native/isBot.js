@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to check whether its a bot",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User
-        }
+            type: structures_1.ArgType.User,
+        },
     ],
     brackets: false,
     execute(ctx, [user]) {

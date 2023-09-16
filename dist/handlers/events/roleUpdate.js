@@ -16,16 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     role: {
                         old,
-                        new: newer
-                    }
+                        new: newer,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "Guilds"
-    ]
+    intents: ["Guilds"],
 });
 //# sourceMappingURL=roleUpdate.js.map

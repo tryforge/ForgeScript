@@ -12,13 +12,13 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to retrieve bot count from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
-        }
+            type: structures_1.ArgType.Guild,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        return structures_1.Return.success(guild?.members.cache.filter(x => x.user.bot).size);
-    }
+        return structures_1.Return.success(guild?.members.cache.filter((x) => x.user.bot).size);
+    },
 });
 //# sourceMappingURL=guildBotCount.js.map

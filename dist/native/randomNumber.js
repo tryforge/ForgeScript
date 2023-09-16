@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The minimum possible number",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "max",
@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             name: "decimals",
             description: "Whether to use decimals",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     execute(ctx, [min, max, decimals]) {
         const rnd = max ? Math.random() * (max - min) + min : Math.random() * min;

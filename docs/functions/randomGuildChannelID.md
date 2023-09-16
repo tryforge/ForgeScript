@@ -33,17 +33,16 @@ export default new NativeFunction({
             description: "The guild to get channel from",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
-    execute(ctx, [ g ]) {
+    execute(ctx, [g]) {
         g ??= ctx.guild!
 
-        return Return.success(
-            g?.channels.cache.randomKey()
-        )
+        return Return.success(g?.channels.cache.randomKey())
     },
 })
+
 ```
     
 </details>

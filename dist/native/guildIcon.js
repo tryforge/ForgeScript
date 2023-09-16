@@ -12,26 +12,26 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to retrieve the guild icon",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, size, ext]) {
         return structures_1.Return.success((guild ?? ctx.guild)?.iconURL({
             extension: ext || undefined,
-            size: size || 2048
+            size: size || 2048,
         }));
     },
 });

@@ -33,22 +33,22 @@ export default new NativeFunction({
             type: ArgType.String,
             rest: false,
             required: true,
-            description: "The code to eval"
+            description: "The code to eval",
         },
         {
             name: "send",
             type: ArgType.Boolean,
             rest: false,
-            description: "Whether to send as new message"
-        }
+            description: "Whether to send as new message",
+        },
     ],
-    async execute(ctx, [ code, send ]) {
+    async execute(ctx, [code, send]) {
         send ??= true
         try {
             const result = await Interpreter.run({
                 ...ctx.runtime,
                 data: Compiler.compile(code),
-                doNotSend: !send
+                doNotSend: !send,
             })
 
             return result === null ? Return.stop() : Return.success(send ? undefined : result)
@@ -56,8 +56,9 @@ export default new NativeFunction({
             console.error(error)
             return Return.error(error as Error)
         }
-    }
+    },
 })
+
 ```
     
 </details>

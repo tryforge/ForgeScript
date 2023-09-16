@@ -14,37 +14,35 @@ exports.default = new structures_1.NativeFunction({
             description: "The custom id to use for this menu",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "placeholder",
             description: "The placeholder to use for the menu",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "disabled",
             description: "Whether to keep this menu disabled",
             type: structures_1.ArgType.Boolean,
-            rest: false
+            rest: false,
         },
         {
             name: "min values",
             description: "The min values to choose for the menu",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "max values",
             description: "The max values to choose for the menu",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
     ],
     execute(ctx, [id, placeholder, disabled, min, max]) {
-        const menu = new discord_js_1.StringSelectMenuBuilder()
-            .setCustomId(id)
-            .setDisabled(disabled ?? false);
+        const menu = new discord_js_1.StringSelectMenuBuilder().setCustomId(id).setDisabled(disabled ?? false);
         if (placeholder)
             menu.setPlaceholder(placeholder);
         if (min !== null)
@@ -53,6 +51,6 @@ exports.default = new structures_1.NativeFunction({
             menu.setMaxValues(max);
         ctx.container.components.at(-1)?.addComponents(menu);
         return structures_1.Return.success();
-    }
+    },
 });
 //# sourceMappingURL=addStringSelectMenu.js.map

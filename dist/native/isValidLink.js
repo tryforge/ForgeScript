@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The link to check",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     description: "Checks whether a link is valid",
     execute(ctx, [link]) {

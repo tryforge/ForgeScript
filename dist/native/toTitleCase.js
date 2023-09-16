@@ -17,11 +17,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to turn title case",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [m]) {
-        return structures_1.Return.success(m.split(/ +/).map(x => lodash_1.default.capitalize(x)).join(" "));
+        return structures_1.Return.success(m
+            .split(/ +/)
+            .map((x) => lodash_1.default.capitalize(x))
+            .join(" "));
     },
 });
 //# sourceMappingURL=toTitleCase.js.map

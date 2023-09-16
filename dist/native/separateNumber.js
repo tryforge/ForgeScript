@@ -13,14 +13,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The number to separate",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use",
             type: structures_1.ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     brackets: true,
     execute(ctx, [n, sep]) {

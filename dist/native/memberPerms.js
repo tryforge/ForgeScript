@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild id to return the member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "separator",
@@ -29,10 +29,10 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
             required: false,
             rest: false,
-        }
+        },
     ],
     execute(ctx, [guild, member, sep]) {
         return structures_1.Return.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "));
-    }
+    },
 });
 //# sourceMappingURL=memberPerms.js.map

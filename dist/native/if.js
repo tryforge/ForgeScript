@@ -12,21 +12,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The condition to check against",
             rest: false,
             type: structures_1.ArgType.String,
-            condition: true
+            condition: true,
         },
         {
             name: "if true",
             description: "The code to run if true",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "if false",
             description: "The code to run if false",
             type: structures_1.ArgType.String,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     brackets: true,
     async execute(ctx) {

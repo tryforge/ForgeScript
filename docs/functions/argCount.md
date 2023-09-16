@@ -33,14 +33,15 @@ export default new NativeFunction({
             description: "Text to count arguments",
             required: true,
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ text ]) {
+    execute(ctx, [text]) {
         if (this.hasFields) return Return.success(text.trim().split(/ +/).length)
         return Return.success(ctx.args.length)
     },
 })
+
 ```
     
 </details>

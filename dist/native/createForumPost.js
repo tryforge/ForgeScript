@@ -18,38 +18,40 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Channel,
             check: (i) => i.type === discord_js_1.ChannelType.GuildForum,
-            description: "The channel to create a post on"
+            description: "The channel to create a post on",
         },
         {
             name: "title",
             description: "The post title",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "description",
             description: "The post description",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "tags",
             description: "The tags for the post",
             rest: true,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx, [channel, title, desc, tags]) {
         const forum = channel;
         ctx.container.content = desc || undefined;
-        const t = await forum.threads.create({
+        const t = await forum.threads
+            .create({
             appliedTags: tags,
             name: title,
-            message: ctx.container.getOptions()
-        }).catch(noop_1.default);
+            message: ctx.container.getOptions(),
+        })
+            .catch(noop_1.default);
         ctx.container.reset();
         return structures_1.Return.success(t ? t.id : undefined);
     },

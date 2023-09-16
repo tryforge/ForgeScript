@@ -28,8 +28,8 @@ export default new NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, args) {
@@ -37,6 +37,7 @@ export default new NativeFunction({
         return Return.success(Array.isArray(arr) ? arr.length : 0)
     },
 })
+
 ```
     
 </details>

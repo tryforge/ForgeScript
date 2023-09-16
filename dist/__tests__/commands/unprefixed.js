@@ -4,6 +4,6 @@ exports.default = {
     name: "test",
     type: "messageCreate",
     code: "I worked. Imagine.",
-    unprefixed: true
+    unprefixed: true,
 };
 //# sourceMappingURL=unprefixed.js.map

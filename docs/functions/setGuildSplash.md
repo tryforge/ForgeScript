@@ -29,22 +29,21 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Guild,
             required: true,
-            description: "The guild to set splash on"
+            description: "The guild to set splash on",
         },
         {
             name: "url",
             description: "The new splash",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ guild, icon ]) {
-        return Return.success(
-            await guild.setSplash(icon || null).catch(() => false) !== false
-        ) 
+    async execute(ctx, [guild, icon]) {
+        return Return.success((await guild.setSplash(icon || null).catch(() => false)) !== false)
     },
 })
+
 ```
     
 </details>

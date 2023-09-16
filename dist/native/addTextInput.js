@@ -14,21 +14,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The custom id for this field",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The field name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "type",
             description: "Paragraph or short",
             rest: false,
             type: structures_1.ArgType.Enum,
-            enum: discord_js_1.TextInputStyle
+            enum: discord_js_1.TextInputStyle,
         },
         {
             name: "required",
@@ -40,26 +40,26 @@ exports.default = new structures_1.NativeFunction({
             name: "placeholder",
             description: "The placeholder to use for the field",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "default value",
             description: "The default value for the field",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "minimum length",
             description: "The minimum length needed",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "maximum length",
             description: "The max length needed",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     execute(ctx, [id, label, type, required, placeholder, value, min, max]) {
         const field = new discord_js_1.TextInputBuilder()
@@ -75,8 +75,7 @@ exports.default = new structures_1.NativeFunction({
             field.setMinLength(min);
         if (max)
             field.setMaxLength(max);
-        ctx.container.modal?.addComponents(new discord_js_1.ActionRowBuilder()
-            .addComponents(field));
+        ctx.container.modal?.addComponents(new discord_js_1.ActionRowBuilder().addComponents(field));
         return structures_1.Return.success();
     },
 });

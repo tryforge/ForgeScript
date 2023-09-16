@@ -33,7 +33,7 @@ class Compiler {
         Close: "]",
         Escape: "\\",
         Exclamation: "!",
-        Separator: ";"
+        Separator: ";",
     };
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
@@ -45,9 +45,9 @@ class Compiler {
     constructor(code) {
         this.code = code;
         if (code) {
-            this.matches = Array.from(code.matchAll(Compiler.Regex)).map(x => ({
+            this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index,
-                ...Compiler.Functions.get(x[0])
+                ...Compiler.Functions.get(x[0]),
             }));
         }
         else
@@ -58,7 +58,7 @@ class Compiler {
             return {
                 code: this.code ?? "",
                 resolve: this.wrap(this.code ?? ""),
-                functions: []
+                functions: [],
             };
         let out = "";
         const functions = new Array();
@@ -86,7 +86,7 @@ class Compiler {
         return {
             code: out,
             functions,
-            resolve: this.wrap(out)
+            resolve: this.wrap(out),
         };
     }
     parseFunction(match) {
@@ -102,7 +102,7 @@ class Compiler {
             return {
                 id,
                 name,
-                fields: null
+                fields: null,
             };
         }
         if (match.args.required && !usesFields) {
@@ -145,7 +145,7 @@ class Compiler {
         return {
             id,
             name,
-            fields
+            fields,
         };
     }
     parseField(match, arg, requireEndBrace = false) {
@@ -162,7 +162,7 @@ class Compiler {
             const isEscape = char === Compiler.Syntax.Escape;
             const isClosure = char === Compiler.Syntax.Close;
             const isSeparator = char === Compiler.Syntax.Separator;
-            // Mark as escaped 
+            // Mark as escaped
             if (!escaped && isEscape)
                 escaped = true;
             if (!escaped) {
@@ -172,15 +172,14 @@ class Compiler {
                     break;
                 }
                 else if (arg.condition === true && condition.op === undefined) {
-                    const possibleOp = [char + this.peek(), char]
-                        .find(x => exports.Operators.has(x));
+                    const possibleOp = [char + this.peek(), char].find((x) => exports.Operators.has(x));
                     if (possibleOp !== undefined) {
                         this.index += possibleOp.length;
                         condition.op = possibleOp;
                         condition.lhs = {
                             functions: Array.from(functions),
                             value,
-                            resolve: this.wrap(value)
+                            resolve: this.wrap(value),
                         };
                         functions.length = 0;
                         value = "";
@@ -210,7 +209,7 @@ class Compiler {
         const data = {
             functions,
             value,
-            resolve: this.wrap(value)
+            resolve: this.wrap(value),
         };
         if (arg.condition === true) {
             condition.op ??= OperatorType.None;
@@ -234,9 +233,7 @@ class Compiler {
     }
     wrap(code) {
         let i = 0;
-        const gencode = code
-            .replace(Compiler.InvalidCharRegex, "\\$1")
-            .replace(Compiler.SystemRegex, () => {
+        const gencode = code.replace(Compiler.InvalidCharRegex, "\\$1").replace(Compiler.SystemRegex, () => {
             return "${args[" + i++ + "] ?? ''}";
         });
         return new Function("args", "return `" + gencode + "`");
@@ -262,14 +259,17 @@ class Compiler {
         return this.code[this.index++];
     }
     static setFunctions(fns) {
-        fns.map(x => this.Functions.set(x.name, x));
-        this.Regex = new RegExp(`(${Array.from(this.Functions.values()).sort((x, y) => y.name.length - x.name.length).map(x => `\\${x.name}`).join("|")})`, "gm");
+        fns.map((x) => this.Functions.set(x.name, x));
+        this.Regex = new RegExp(`(${Array.from(this.Functions.values())
+            .sort((x, y) => y.name.length - x.name.length)
+            .map((x) => `\\${x.name}`)
+            .join("|")})`, "gm");
     }
     static compile(code) {
         const result = new this(code).compile();
         return {
             ...result,
-            functions: result.functions.map(x => new CompiledFunction_1.CompiledFunction(x))
+            functions: result.functions.map((x) => new CompiledFunction_1.CompiledFunction(x)),
         };
     }
 }

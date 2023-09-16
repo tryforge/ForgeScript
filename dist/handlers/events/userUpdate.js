@@ -15,17 +15,15 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     user: {
                         new: newer,
-                        old: old
-                    }
+                        old: old,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
     description: "This event is fired when an user updates their profile",
-    intents: [
-        "GuildMembers"
-    ]
+    intents: ["GuildMembers"],
 });
 //# sourceMappingURL=userUpdate.js.map

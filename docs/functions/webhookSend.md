@@ -33,31 +33,30 @@ export default new NativeFunction({
             description: "The webhook url",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "content",
             description: "The content for the message",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "return message ID",
             description: "Return the message id of the sent message",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    async execute(ctx, [ url, content, returnMessageID ]) {
+    async execute(ctx, [url, content, returnMessageID]) {
         const web = new WebhookClient({ url })
-        
+
         ctx.container.content = content || undefined
         const m = await ctx.container.send<Message>(web)
-        return Return.success(
-            returnMessageID && m ? m.id : undefined
-        )
+        return Return.success(returnMessageID && m ? m.id : undefined)
     },
 })
+
 ```
     
 </details>

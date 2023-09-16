@@ -30,27 +30,28 @@ export default new NativeFunction({
             description: "The text to crop",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "start index",
             description: "The start index to start cropping",
             rest: false,
             required: true,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "end index",
             description: "The end index to finish cropping",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ text, start, end ]) {
+    execute(ctx, [text, start, end]) {
         return Return.success(text.slice(start, end || undefined))
     },
 })
+
 ```
     
 </details>

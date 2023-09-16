@@ -36,8 +36,8 @@ export default new NativeFunction({
     execute(ctx, [name, icon, hyperlink, index]) {
         ctx.container.embed(index ?? 0).setAuthor({
             name,
-            iconURL: icon ?? undefined,
-            url: hyperlink ?? undefined,
+            iconURL: icon || undefined,
+            url: hyperlink || undefined,
         })
 
         return Return.success()

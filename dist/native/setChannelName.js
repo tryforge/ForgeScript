@@ -18,15 +18,15 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             check: (i) => "setName" in i,
             type: structures_1.ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The name to set",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [channel, name]) {
         return structures_1.Return.success(!!(await channel.setName(name).catch(noop_1.default)));

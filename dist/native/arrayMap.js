@@ -13,28 +13,28 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "variable",
             description: "The variable to load the element value to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "code",
             description: "The code to execute for every element",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "other variable",
             description: "The other variable to load the result to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
     ],
     brackets: true,
@@ -57,7 +57,7 @@ exports.default = new structures_1.NativeFunction({
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
                 ctx.setEnvironmentKey(varName, el);
-                const rt = await this["resolveCode"](ctx, code);
+                const rt = (await this["resolveCode"](ctx, code));
                 if (rt.return) {
                     newArr.push(rt.value);
                 }

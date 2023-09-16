@@ -24,6 +24,7 @@ export default new NativeFunction({
         return Return.success(MessageType[ctx.message?.type!])
     },
 })
+
 ```
     
 </details>

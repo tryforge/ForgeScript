@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to get member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
-        }
+            type: structures_1.ArgType.Guild,
+        },
     ],
     execute(ctx, [g]) {
         g ??= ctx.guild;

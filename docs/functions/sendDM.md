@@ -33,27 +33,28 @@ export default new NativeFunction({
             description: "The user to dm",
             rest: false,
             type: ArgType.User,
-            required: true
+            required: true,
         },
         {
             name: "content",
             description: "The content to send",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "return message ID",
             description: "Returns the message id of the newly created message",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    async execute(ctx, [ user, content, returnMessageID ]) {
-        ctx.container.content = content ?? undefined
+    async execute(ctx, [user, content, returnMessageID]) {
+        ctx.container.content = content || undefined
         const msg = await ctx.container.send<Message<true>>(user)
         return Return.success(returnMessageID ? msg?.id : undefined)
     },
 })
+
 ```
     
 </details>

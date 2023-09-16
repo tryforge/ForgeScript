@@ -12,33 +12,33 @@ exports.default = new structures_1.NativeFunction({
             description: "Adds a name to the embed author",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "icon",
             description: "The icon url",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "hyperlink",
             description: "The hyperlink url",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [name, icon, hyperlink, index]) {
-        ctx.container.embed((index ?? 0)).setAuthor({
+        ctx.container.embed(index ?? 0).setAuthor({
             name,
-            iconURL: icon ?? undefined,
-            url: hyperlink ?? undefined
+            iconURL: icon || undefined,
+            url: hyperlink || undefined,
         });
         return structures_1.Return.success();
     },

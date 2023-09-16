@@ -33,22 +33,21 @@ export default new NativeFunction({
             rest: false,
             check: (i: BaseChannel) => "setName" in i,
             type: ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "name",
             description: "The name to set",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, name ]) {
-        return Return.success(
-            !!(await (channel as TextChannel).setName(name).catch(noop))
-        )
+    async execute(ctx, [channel, name]) {
+        return Return.success(!!(await (channel as TextChannel).setName(name).catch(noop)))
     },
 })
+
 ```
     
 </details>

@@ -30,20 +30,21 @@ export default new NativeFunction({
             description: "The string to get char code of",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "index",
             description: "The index to get its char code",
             type: ArgType.Number,
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ m, index ]) {
+    execute(ctx, [m, index]) {
         return Return.success(m.charCodeAt(index))
     },
 })
+
 ```
     
 </details>

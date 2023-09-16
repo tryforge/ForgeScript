@@ -21,17 +21,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     invite: {
                         old: inv,
-                        new: inv
-                    }
+                        new: inv,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "Guilds",
-        "GuildInvites"
-    ]
+    intents: ["Guilds", "GuildInvites"],
 });
 //# sourceMappingURL=inviteCreate.js.map

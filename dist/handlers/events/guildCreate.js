@@ -18,16 +18,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     guild: {
-                        new: g
-                    }
+                        new: g,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "Guilds"
-    ]
+    intents: ["Guilds"],
 });
 //# sourceMappingURL=guildCreate.js.map

@@ -16,14 +16,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to return its badges",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User
+            type: structures_1.ArgType.User,
         },
         {
             name: "separator",
             description: "The separator to use for every badge",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: false,
     async execute(ctx, [user, sep]) {

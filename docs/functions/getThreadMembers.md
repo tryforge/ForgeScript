@@ -33,25 +33,24 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isThread()
+            check: (i: BaseChannel) => i.isThread(),
         },
         {
             name: "separator",
             description: "The separator for every id",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ channel, sep ]) {
+    async execute(ctx, [channel, sep]) {
         const thread = channel as ThreadChannel
 
         const success = await thread.members.fetch().catch(noop)
 
-        return Return.success(
-            success && success.size ? success.map(x => x.id).join(sep || ", ") : undefined
-        )
+        return Return.success(success && success.size ? success.map((x) => x.id).join(sep || ", ") : undefined)
     },
 })
+
 ```
     
 </details>

@@ -19,22 +19,24 @@ class CompiledFunction {
         this.fn = FunctionManager_1.FunctionManager.get(raw.name);
         this.data = {
             ...raw,
-            fields: raw.fields?.map(x => (!("op" in x) ?
-                {
+            fields: raw.fields?.map((x) => !("op" in x)
+                ? {
                     ...x,
-                    functions: x.functions.map(x => new CompiledFunction(x))
-                } :
-                {
+                    functions: x.functions.map((x) => new CompiledFunction(x)),
+                }
+                : {
                     ...x,
                     lhs: {
                         ...x.lhs,
-                        functions: x.lhs.functions.map(x => new CompiledFunction(x))
+                        functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
                     },
-                    rhs: x.rhs ? {
-                        ...x.rhs,
-                        functions: x.rhs.functions.map(x => new CompiledFunction(x))
-                    } : undefined
-                })) ?? null
+                    rhs: x.rhs
+                        ? {
+                            ...x.rhs,
+                            functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
+                        }
+                        : undefined,
+                }) ?? null,
         };
     }
     get display() {
@@ -46,13 +48,13 @@ class CompiledFunction {
                 const field = this.data.fields[i];
                 if ("op" in field) {
                     if (field.rhs) {
-                        args.push(`${field.lhs.resolve(field.lhs.functions.map(x => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map(x => x.display))}`);
+                        args.push(`${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map((x) => x.display))}`);
                     }
                     else
-                        args.push(field.lhs.resolve(field.lhs.functions.map(x => x.display)));
+                        args.push(field.lhs.resolve(field.lhs.functions.map((x) => x.display)));
                     continue;
                 }
-                args.push(field.resolve(field.functions.map(x => x.display)));
+                args.push(field.resolve(field.functions.map((x) => x.display)));
             }
             return `${this.data.name}[${args.join(";")}]`;
         }
@@ -82,13 +84,13 @@ class CompiledFunction {
             if (!this.isValidReturnType(arg))
                 return {
                     args,
-                    return: arg
+                    return: arg,
                 };
             args[i] = arg.value;
         }
         return {
             args,
-            return: Return_1.Return.success()
+            return: Return_1.Return.success(),
         };
     }
     /**
@@ -190,11 +192,7 @@ class CompiledFunction {
         return arg.enum[str];
     }
     resolveBoolean(ctx, arg, str, ref) {
-        return str === "true" ?
-            true :
-            str === "false" ?
-                false :
-                undefined;
+        return str === "true" ? true : str === "false" ? false : undefined;
     }
     resolveMessage(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
@@ -227,7 +225,7 @@ class CompiledFunction {
         return ctx.client.emojis.cache.get(id);
     }
     resolveForumTag(ctx, arg, str, ref) {
-        return ref[arg.pointer].availableTags.find(x => x.id === str || x.name === str);
+        return ref[arg.pointer].availableTags.find((x) => x.id === str || x.name === str);
     }
     resolveGuildSticker(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))

@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id to delete its cooldown",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [id]) {
         ctx.client.cooldowns.delete(id);

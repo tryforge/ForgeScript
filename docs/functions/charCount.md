@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The text to get its length",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ str ]) {
+    execute(ctx, [str]) {
         return Return.success(str.length)
     },
 })
+
 ```
     
 </details>

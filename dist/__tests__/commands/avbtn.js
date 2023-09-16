@@ -39,6 +39,6 @@ exports.default = {
             ]
         ]
     ]
-    `
+    `,
 };
 //# sourceMappingURL=avbtn.js.map

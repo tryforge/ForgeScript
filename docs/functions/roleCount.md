@@ -24,6 +24,7 @@ export default new NativeFunction({
         return Return.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0))
     },
 })
+
 ```
     
 </details>

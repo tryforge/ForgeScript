@@ -12,14 +12,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The channeol to get tags of",
             rest: false,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isThread()
+            check: (i) => i.isThread(),
         },
         {
             name: "separator",
             description: "The separator to use for every tag",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: false,
     execute(ctx, [ch, sep]) {

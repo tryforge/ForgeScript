@@ -30,24 +30,25 @@ export default new NativeFunction({
             description: "The header name",
             rest: false,
             type: ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The header value",
             rest: true,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
-    execute(ctx, [name, values ]) {
+    execute(ctx, [name, values]) {
         const value = values.join(";")
         if (!ctx.http.headers) ctx.http.headers = {}
         ctx.http.headers[name] = value
         return Return.success()
     },
 })
+
 ```
     
 </details>

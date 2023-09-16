@@ -19,15 +19,15 @@ var VoiceStateProperty;
     VoiceStateProperty["timestamp"] = "timestamp";
 })(VoiceStateProperty || (exports.VoiceStateProperty = VoiceStateProperty = {}));
 exports.VoiceStateProperties = (0, defineProperties_1.default)({
-    timestamp: i => i?.channel?.createdTimestamp,
-    authorID: i => i?.member?.id,
-    channelID: i => i?.channelId,
-    guildID: i => i?.guild.id,
-    deaf: i => i?.deaf ?? false,
-    guildDeaf: i => i?.serverDeaf ?? false,
-    guildMuted: i => i?.serverMute ?? false,
-    muted: i => i?.mute ?? false,
-    selfDeaf: i => i?.selfDeaf ?? false,
-    selfMuted: i => i?.selfMute ?? false
+    timestamp: (i) => i?.channel?.createdTimestamp,
+    authorID: (i) => i?.member?.id,
+    channelID: (i) => i?.channelId,
+    guildID: (i) => i?.guild.id,
+    deaf: (i) => i?.deaf ?? false,
+    guildDeaf: (i) => i?.serverDeaf ?? false,
+    guildMuted: (i) => i?.serverMute ?? false,
+    muted: (i) => i?.mute ?? false,
+    selfDeaf: (i) => i?.selfDeaf ?? false,
+    selfMuted: (i) => i?.selfMute ?? false,
 });
 //# sourceMappingURL=voiceState.js.map

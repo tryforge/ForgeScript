@@ -16,8 +16,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to return its vanity code",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: false,
     async execute(ctx, [guild]) {

@@ -30,17 +30,18 @@ export default new NativeFunction({
             description: "The param name followed by the value, (param1;value1)",
             rest: true,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ params ]) {
+    execute(ctx, [params]) {
         const obj: Record<string, string> = {}
-        for (let i = 0, len = params.length;i < len;i += 2) {
+        for (let i = 0, len = params.length; i < len; i += 2) {
             obj[params[i]] = params[i + 1]
         }
         return Return.success(stringify(obj))
     },
 })
+
 ```
     
 </details>

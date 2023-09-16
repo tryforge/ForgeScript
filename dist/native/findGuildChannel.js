@@ -14,21 +14,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to find the channel on",
             type: structures_1.ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or channel name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "return channel",
             description: "Returns the current channel id if none found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, q, rt]) {
@@ -39,7 +39,8 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(ch.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(guild.channels.cache.find(x => x.id === id || x.name.toLowerCase() === q)?.id ?? (rt ? ctx.channel?.id : undefined));
+        return structures_1.Return.success(guild.channels.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id ??
+            (rt ? ctx.channel?.id : undefined));
     },
 });
 //# sourceMappingURL=findGuildChannel.js.map

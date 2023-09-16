@@ -23,6 +23,7 @@ export default new NativeFunction({
         return Return.success(Date.now())
     },
 })
+
 ```
     
 </details>

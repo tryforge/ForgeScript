@@ -18,21 +18,23 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => !i.isDMBased()
+            check: (i) => !i.isDMBased(),
         },
         {
             name: "max uses",
             description: "The max amount of uses for this invite",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     async execute(ctx, [ch, maxUses]) {
         const channel = (ch ?? ctx.channel);
-        const invite = await channel.createInvite({
-            maxUses: maxUses || undefined
-        }).catch(noop_1.default);
+        const invite = await channel
+            .createInvite({
+            maxUses: maxUses || undefined,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(invite ? invite.code : undefined);
-    }
+    },
 });
 //# sourceMappingURL=createInvite.js.map

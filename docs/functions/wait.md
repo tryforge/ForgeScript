@@ -30,14 +30,15 @@ export default new NativeFunction({
             description: "The ms to wait for",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ ms ]) {
+    async execute(ctx, [ms]) {
         await setTimeout(ms)
         return Return.success()
     },
 })
+
 ```
     
 </details>

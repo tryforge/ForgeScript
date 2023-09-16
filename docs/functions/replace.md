@@ -31,39 +31,40 @@ export default new NativeFunction({
             description: "The base text",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "match",
             description: "Text to match in base",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "new value",
             description: "The text to replace matches with",
             type: ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "amount",
             description: "How many times to perform this replacement",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ text, match, replacement, amount ]) {
+    execute(ctx, [text, match, replacement, amount]) {
         amount ??= -1
         if (amount === -1) {
             return Return.success(text.replaceAll(match, replacement))
         }
         let i = 0
-        return Return.success(text.replaceAll(match, m => ++i <= amount! ? replacement : m))
-    }
+        return Return.success(text.replaceAll(match, (m) => (++i <= amount! ? replacement : m)))
+    },
 })
+
 ```
     
 </details>

@@ -12,15 +12,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable to load the result to",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "variables",
             description: "The variable names to concat",
             rest: true,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     execute(ctx, [name, variables]) {

@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to delete emotes from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "emojis",
@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             pointer: 0,
             required: true,
-            type: structures_1.ArgType.GuildEmoji
-        }
+            type: structures_1.ArgType.GuildEmoji,
+        },
     ],
     async execute(ctx, [guild, emotes]) {
         let count = 0;

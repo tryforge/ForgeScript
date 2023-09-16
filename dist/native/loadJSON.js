@@ -12,15 +12,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable to load it to",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "json",
             description: "The json data",
             type: structures_1.ArgType.Json,
             required: true,
-            rest: false
-        }
+            rest: false,
+        },
     ],
     unwrap: true,
     execute(ctx, [name, json]) {

@@ -12,18 +12,18 @@ exports.default = new structures_1.NativeFunction({
             description: "The description for the embed",
             required: true,
             type: structures_1.ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: structures_1.ArgType.Number
-        }
+            type: structures_1.ArgType.Number,
+        },
     ],
     brackets: true,
     execute(ctx, [description, index]) {
-        ctx.container.embed((index ?? 0)).setDescription(description);
+        ctx.container.embed(index ?? 0).setDescription(description);
         return structures_1.Return.success();
     },
 });

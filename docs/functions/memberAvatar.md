@@ -36,7 +36,7 @@ export default new NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -44,31 +44,32 @@ export default new NativeFunction({
             rest: false,
             required: true,
             pointer: 0,
-            type: ArgType.Member
+            type: ArgType.Member,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ , member, size, ext ]) {
+    execute(ctx, [, member, size, ext]) {
         return Return.success(
             (member ?? ctx.member)?.displayAvatarURL({
-                extension: ext as ImageExtension || undefined,
-                size: size as ImageSize || 2048
+                extension: (ext as ImageExtension) || undefined,
+                size: (size as ImageSize) || 2048,
             })
         )
     },
 })
+
 ```
     
 </details>

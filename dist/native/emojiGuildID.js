@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The emoji id to return its guild id",
             rest: false,
             type: structures_1.ArgType.GuildEmoji,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji;

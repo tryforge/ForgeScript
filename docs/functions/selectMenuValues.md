@@ -32,20 +32,21 @@ export default new NativeFunction({
             description: "The index of the value",
             type: ArgType.Number,
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ index ]) {
+    execute(ctx, [index]) {
         if (!ctx.isSelectMenu()) return Return.success()
-        
+
         if (this.hasFields) {
             return Return.success(ctx.interaction.values[index])
         } else {
             return Return.success(ctx.interaction.values.join(", "))
         }
-    }
+    },
 })
+
 ```
     
 </details>

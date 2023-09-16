@@ -5,9 +5,7 @@ const DiscordEventHandler_1 = require("../../structures/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "emojiUpdate",
     version: "1.0.1",
-    intents: [
-        "GuildEmojisAndStickers"
-    ],
+    intents: ["GuildEmojisAndStickers"],
     description: "This event is fired when an emoji is updated",
     listener: async function (old, newer) {
         const commands = this.commands.get("emojiUpdate");
@@ -19,13 +17,13 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     emoji: {
                         new: newer,
-                        old
-                    }
+                        old,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
-    }
+    },
 });
 //# sourceMappingURL=emojiUpdate.js.map

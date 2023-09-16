@@ -16,16 +16,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     channel: {
                         new: ch,
-                        old: ch
-                    }
+                        old: ch,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "Guilds"
-    ]
+    intents: ["Guilds"],
 });
 //# sourceMappingURL=channelDelete.js.map

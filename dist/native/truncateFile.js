@@ -14,15 +14,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The path to the file",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "length",
             description: "The new length for the file",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [path, data]) {
         // eslint-disable-next-line no-undef

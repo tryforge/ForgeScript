@@ -78,10 +78,7 @@ export type MarkRest<T, B extends boolean> = B extends true ? T[] : T;
 export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.Guild ? Guild : T extends ArgType.Role ? Role : T extends ArgType.Boolean ? boolean : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null;
 export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never;
-export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [
-    UnwrapArg<L>,
-    ...UnwrapArgs<R>
-] : [];
+export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];
 export declare class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     readonly data: INativeFunction<T, Unwrap>;
     constructor(data: INativeFunction<T, Unwrap>);

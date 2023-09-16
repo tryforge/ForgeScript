@@ -34,25 +34,24 @@ export default new NativeFunction({
             description: "The index of the channel",
             rest: false,
             type: ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "return channel",
             description: "Whether to return current channel if not found",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ i, rt ]) {
-        const id: string | undefined = this.hasFields ?
-            ctx.message?.mentions.channels.at(i)?.id :
-            ctx.message?.mentions.channels.map(x => x.id).join(", ")
+    execute(ctx, [i, rt]) {
+        const id: string | undefined = this.hasFields
+            ? ctx.message?.mentions.channels.at(i)?.id
+            : ctx.message?.mentions.channels.map((x) => x.id).join(", ")
 
-        return Return.success(
-            id ?? (rt ? ctx.channel?.id : undefined)
-        )
+        return Return.success(id ?? (rt ? ctx.channel?.id : undefined))
     },
 })
+
 ```
     
 </details>

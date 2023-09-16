@@ -33,7 +33,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             check: (i: BaseChannel) => i.isTextBased(),
-            type: ArgType.Channel
+            type: ArgType.Channel,
         },
         {
             name: "messages",
@@ -41,10 +41,10 @@ export default new NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: ArgType.Message
-        }
+            type: ArgType.Message,
+        },
     ],
-    async execute(ctx, [ channel, messages ]) {
+    async execute(ctx, [channel, messages]) {
         if (!messages.length) return Return.success(0)
 
         if (messages.length === 1) {
@@ -54,10 +54,15 @@ export default new NativeFunction({
             )
         }
 
-        const col = await (channel as TextChannel).bulkDelete(messages, true).then(x => x.size).catch(noop) ?? 0
+        const col =
+            (await (channel as TextChannel)
+                .bulkDelete(messages, true)
+                .then((x) => x.size)
+                .catch(noop)) ?? 0
         return Return.success(col)
     },
 })
+
 ```
     
 </details>

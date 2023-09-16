@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild id to return the member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "guild ID",
@@ -21,17 +21,17 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator for each platform",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [guild, member, sep]) {
         return structures_1.Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "));
-    }
+    },
 });
 //# sourceMappingURL=platform.js.map

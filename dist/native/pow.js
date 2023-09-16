@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "Numbers to power by",
             rest: true,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [numbers]) {
         return structures_1.Return.success(numbers.reduce((x, y) => x ** y));

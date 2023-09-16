@@ -12,15 +12,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable that holds the array",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "values",
             description: "The values to append at the start of the array",
             rest: true,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [name, values]) {

@@ -15,7 +15,7 @@ class ApplicationCommandManager {
         this.client = client;
     }
     load(path) {
-        for (const file of (0, recursiveReaddirSync_1.default)(path).filter(x => x.endsWith(".js"))) {
+        for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line no-undef
             const req = this.loadOne(`${process.cwd()}/${file}`);
             if (!req)
@@ -49,7 +49,7 @@ class ApplicationCommandManager {
     register() {
         if (this.commands.size)
             this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
-        return this.client.application.commands.set(this.commands.map(x => x.options.data));
+        return this.client.application.commands.set(this.commands.map((x) => x.options.data));
     }
 }
 exports.ApplicationCommandManager = ApplicationCommandManager;

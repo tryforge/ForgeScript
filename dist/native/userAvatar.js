@@ -12,26 +12,26 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to retrieve the avatar",
             rest: false,
             required: true,
-            type: structures_1.ArgType.User
+            type: structures_1.ArgType.User,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [user, size, ext]) {
         return structures_1.Return.success((user ?? ctx.user)?.displayAvatarURL({
             extension: ext || undefined,
-            size: size || 2048
+            size: size || 2048,
         }));
     },
 });

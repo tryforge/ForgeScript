@@ -25,6 +25,7 @@ export default new NativeFunction({
         return Return.success(loadavg()[0] * 100)
     },
 })
+
 ```
     
 </details>

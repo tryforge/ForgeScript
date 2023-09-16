@@ -13,15 +13,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to find the emoji on",
             type: structures_1.ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or emoji name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, q]) {
@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(e.id);
         }
         const name = parsed?.name.toLowerCase();
-        return structures_1.Return.success(guild.channels.cache.find(x => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
+        return structures_1.Return.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findGuildEmoji.js.map

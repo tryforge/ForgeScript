@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The option name to retrieve its value",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [name]) {
         return structures_1.Return.success(ctx.isCommand() ? ctx.interaction.options.get(name)?.value : null);

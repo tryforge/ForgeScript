@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "Value to check if its valid bool",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ v ]) {
+    execute(ctx, [v]) {
         return Return.success(v === "true" || v === "false")
     },
 })
+
 ```
     
 </details>

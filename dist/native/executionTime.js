@@ -8,6 +8,6 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         return structures_1.Return.success(Date.now() - ctx.executionTimestamp);
-    }
+    },
 });
 //# sourceMappingURL=executionTime.js.map

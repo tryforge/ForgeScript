@@ -17,21 +17,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to unban a user from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
             description: "The user to unban",
             rest: false,
             type: structures_1.ArgType.User,
-            required: true
+            required: true,
         },
         {
             name: "reason",
             description: "The unban reason",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop_1.default);

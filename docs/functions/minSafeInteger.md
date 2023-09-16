@@ -23,6 +23,7 @@ export default new NativeFunction({
         return Return.success(Number.MIN_SAFE_INTEGER)
     },
 })
+
 ```
     
 </details>

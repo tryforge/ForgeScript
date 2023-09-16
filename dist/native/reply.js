@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The channel the message is at",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Channel
+            type: structures_1.ArgType.Channel,
         },
         {
             name: "message ID",
@@ -21,8 +21,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Message,
-            pointer: 0
-        }
+            pointer: 0,
+        },
     ],
     execute(ctx, [channel, message]) {
         ctx.container.reference = (message ?? ctx.message)?.id;

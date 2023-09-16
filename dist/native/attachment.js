@@ -14,19 +14,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The attachment url or path to file",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "name",
             description: "the name for this attachment, with the extension",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [url, name]) {
         const attachment = new discord_js_1.AttachmentBuilder(url, {
-            name
+            name,
         });
         ctx.container.files.push(attachment);
         return structures_1.Return.success();

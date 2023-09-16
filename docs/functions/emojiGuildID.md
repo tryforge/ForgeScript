@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The emoji id to return its guild id",
             rest: false,
             type: ArgType.GuildEmoji,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ emoji ]) {
+    execute(ctx, [emoji]) {
         emoji ?? ctx.emoji
-        return Return.success(
-            emoji?.guild.id
-        )
+        return Return.success(emoji?.guild.id)
     },
 })
+
 ```
     
 </details>

@@ -12,19 +12,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to return the emotes of",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for each emoji",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return structures_1.Return.success((guild ?? ctx.guild)?.emojis.cache.map(x => x.toString()).join(sep || ", "));
+        return structures_1.Return.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "));
     },
 });
 //# sourceMappingURL=emojiNames.js.map

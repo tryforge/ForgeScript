@@ -13,14 +13,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The channel name to get it's id",
             required: true,
             rest: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [args]) {
         if (!this.hasFields)
             return structures_1.Return.success(ctx.channel?.id);
         const name = args.join(";");
-        return structures_1.Return.success(ctx.client.channels.cache.find(x => "name" in x && x.name === name)?.id);
+        return structures_1.Return.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id);
     },
 });
 //# sourceMappingURL=channelID.js.map

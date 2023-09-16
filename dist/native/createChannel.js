@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to create this channel on",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "channel name",
             description: "The name for the channel",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "channel type",
@@ -33,28 +33,30 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: discord_js_1.ChannelType,
-            required: true
+            required: true,
         },
         {
             name: "topic",
             description: "The topic for the channel",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "parent ID",
             description: "The parent id for the channel",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, name, type, topic, parentId]) {
-        const ch = await guild.channels.create({
+        const ch = await guild.channels
+            .create({
             type: type,
             name,
             topic: topic || undefined,
-            parent: parentId
-        }).catch(noop_1.default);
+            parent: parentId,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(ch ? ch.id : undefined);
     },
 });

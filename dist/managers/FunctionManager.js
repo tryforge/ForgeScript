@@ -10,7 +10,7 @@ const v8_1 = require("v8");
 class FunctionManager {
     static Functions = new Map();
     static async load(path) {
-        for (const file of (0, recursiveReaddirSync_1.default)(path).filter(x => x.endsWith(".js"))) {
+        for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
             this.Functions.set(req.name, req);
@@ -20,31 +20,33 @@ class FunctionManager {
         return this.Functions.get(name);
     }
     static toJSON() {
-        return Array.from(this.Functions.values()).map(x => {
+        return Array.from(this.Functions.values()).map((x) => {
             const d = { ...x.data };
-            d.args?.forEach(x => Reflect.deleteProperty(x, "check"));
+            d.args?.forEach((x) => Reflect.deleteProperty(x, "check"));
             Reflect.deleteProperty(d, "execute");
             const data = (0, v8_1.deserialize)((0, v8_1.serialize)(d));
-            data.args?.map(x => {
+            data.args?.map((x) => {
                 x.type = NativeFunction_1.ArgType[x.type];
                 if (x.enum)
-                    x.enum = Object.keys(x.enum).filter(x => isNaN(Number(x)));
+                    x.enum = Object.keys(x.enum).filter((x) => isNaN(Number(x)));
             });
             return data;
         });
     }
     static get raw() {
-        return Array.from(this.Functions).map(x => {
+        return Array.from(this.Functions).map((x) => {
             const [name, { data }] = x;
             return {
                 name,
-                args: data.brackets === undefined ? null : {
-                    required: data.brackets,
-                    fields: data.args.map(x => ({
-                        condition: x.condition,
-                        rest: x.rest
-                    }))
-                }
+                args: data.brackets === undefined
+                    ? null
+                    : {
+                        required: data.brackets,
+                        fields: data.args.map((x) => ({
+                            condition: x.condition,
+                            rest: x.rest,
+                        })),
+                    },
             };
         });
     }

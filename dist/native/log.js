@@ -13,8 +13,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The message to log to console",
             rest: true,
             type: NativeFunction_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: true,
     execute(ctx, [args]) {

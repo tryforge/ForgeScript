@@ -18,19 +18,18 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             description: "The channel to get the message from",
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
             description: "The message to check for",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [ch, id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) &&
-            !!(await ch.messages.fetch(id).catch(noop_1.default)));
+        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await ch.messages.fetch(id).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=messageExists.js.map

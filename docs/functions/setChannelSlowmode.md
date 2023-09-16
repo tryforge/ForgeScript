@@ -33,21 +33,20 @@ export default new NativeFunction({
             rest: false,
             check: (i: BaseChannel) => "setRateLimitPerUser" in i,
             type: ArgType.Channel,
-            required: true
+            required: true,
         },
         {
             name: "seconds",
             description: "The number of seconds per message",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
-    async execute(ctx, [ channel, seconds ]) {
-        return Return.success(
-            !!(await (channel as TextChannel).setRateLimitPerUser(seconds || 0).catch(noop))
-        )
+    async execute(ctx, [channel, seconds]) {
+        return Return.success(!!(await (channel as TextChannel).setRateLimitPerUser(seconds || 0).catch(noop)))
     },
 })
+
 ```
     
 </details>

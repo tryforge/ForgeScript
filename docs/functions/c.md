@@ -28,14 +28,15 @@ export default new NativeFunction({
             rest: true,
             required: true,
             description: "The comments",
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx) {
         return Return.success()
     },
 })
+
 ```
     
 </details>

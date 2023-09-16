@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The name of the keyword",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [name]) {
         return structures_1.Return.success(ctx.hasKeyword(name));

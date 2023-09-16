@@ -18,21 +18,21 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to find the member on",
             type: structures_1.ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "return author",
             description: "Returns the current author id if none found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
     async execute(ctx, [guild, q, rt]) {
@@ -43,9 +43,11 @@ exports.default = new structures_1.NativeFunction({
                 structures_1.Return.success(m.id);
         }
         q = q.toLowerCase();
-        const query = await guild.members.search({
-            query: q
-        }).catch(noop_1.default);
+        const query = await guild.members
+            .search({
+            query: q,
+        })
+            .catch(noop_1.default);
         return structures_1.Return.success(query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined);
     },
 });

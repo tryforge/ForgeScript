@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -20,26 +20,26 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.Member
+            type: structures_1.ArgType.Member,
         },
         {
             name: "size",
             description: "The size to use for the image",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "extension",
             description: "The extension to use for the image",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     execute(ctx, [, member, size, ext]) {
         return structures_1.Return.success((member ?? ctx.member)?.displayAvatarURL({
             extension: ext || undefined,
-            size: size || 2048
+            size: size || 2048,
         }));
     },
 });

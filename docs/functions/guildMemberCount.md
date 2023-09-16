@@ -32,17 +32,16 @@ export default new NativeFunction({
             description: "The guild to retrieve member count from",
             rest: false,
             required: true,
-            type: ArgType.Guild
-        }
+            type: ArgType.Guild,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild ]) {
+    execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(
-            guild?.memberCount
-        )
-    }
+        return Return.success(guild?.memberCount)
+    },
 })
+
 ```
     
 </details>

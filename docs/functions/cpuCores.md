@@ -24,6 +24,7 @@ export default new NativeFunction({
         return Return.success(os.cpus().length)
     },
 })
+
 ```
     
 </details>

@@ -30,28 +30,29 @@ export default new NativeFunction({
             description: "Adds a title to the embed",
             required: true,
             type: ArgType.String,
-            rest: false
+            rest: false,
         },
         {
             name: "hyperlink",
             description: "The hyperlink url",
             rest: false,
-            type: ArgType.String
+            type: ArgType.String,
         },
         {
             name: "index",
             description: "The index to add this data to",
             rest: false,
-            type: ArgType.Number
-        }
+            type: ArgType.Number,
+        },
     ],
     brackets: true,
-    execute(ctx, [ title, hyperlink, index ]) {
-        const embed = ctx.container.embed((index ?? 0)).setTitle(title)
+    execute(ctx, [title, hyperlink, index]) {
+        const embed = ctx.container.embed(index ?? 0).setTitle(title)
         if (hyperlink) embed.setURL(hyperlink)
         return Return.success()
     },
 })
+
 ```
     
 </details>

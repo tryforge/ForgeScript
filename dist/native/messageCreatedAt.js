@@ -15,7 +15,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             description: "The channel to get the message from",
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -23,8 +23,8 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Message,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [, message]) {
         return structures_1.Return.success(discord_js_1.MessageType[(message ?? ctx.message)?.createdTimestamp]);

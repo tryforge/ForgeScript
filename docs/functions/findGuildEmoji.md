@@ -30,18 +30,18 @@ export default new NativeFunction({
             description: "The guild to find the emoji on",
             type: ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or emoji name to find",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ guild, q ]) {
+    execute(ctx, [guild, q]) {
         const parsed = parseEmoji(q)
 
         if (CompiledFunction.IdRegex.test(q)) {
@@ -53,11 +53,12 @@ export default new NativeFunction({
 
         return Return.success(
             guild.channels.cache.find(
-                x => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q
+                (x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q
             )?.id
         )
     },
 })
+
 ```
     
 </details>

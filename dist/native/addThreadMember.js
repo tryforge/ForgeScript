@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "channel ID",
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isThread()
+            check: (i) => i.isThread(),
         },
         {
             name: "user ID",
@@ -33,14 +33,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The member to add",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Member
+            type: structures_1.ArgType.Member,
         },
         {
             name: "reason",
             description: "The reason to add this member to thread",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [guild, channel, member, reason]) {
         const thread = channel;

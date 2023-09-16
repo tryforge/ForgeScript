@@ -13,15 +13,15 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The key name",
             rest: false,
             type: NativeFunction_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "value",
             description: "The key value",
             rest: true,
             required: true,
-            type: NativeFunction_1.ArgType.String
-        }
+            type: NativeFunction_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [name, args]) {

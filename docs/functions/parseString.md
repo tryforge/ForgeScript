@@ -29,14 +29,15 @@ export default new NativeFunction({
             description: "The valid string to convert to ms",
             rest: false,
             type: ArgType.Time,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
-    execute(ctx, [ ms ]) {
+    execute(ctx, [ms]) {
         return Return.success(ms)
     },
 })
+
 ```
     
 </details>

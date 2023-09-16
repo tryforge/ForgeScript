@@ -32,13 +32,13 @@ class EventManager {
     }
     static load(name, path) {
         this.Loaded[name] = {};
-        for (const file of (0, recursiveReaddirSync_1.default)(path).filter(x => x.endsWith(".js"))) {
+        for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             const req = require(file).default;
             this.Loaded[name][req.name] = req;
         }
     }
     static toJSON(name) {
-        return Object.values(this.Loaded[name]).map(x => ({ ...x.data }));
+        return Object.values(this.Loaded[name]).map((x) => ({ ...x.data }));
     }
 }
 exports.EventManager = EventManager;

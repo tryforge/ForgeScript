@@ -12,19 +12,19 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
-            description: "The guild to set name"
+            description: "The guild to set name",
         },
         {
             name: "name",
             description: "The new name",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx, [guild, name]) {
-        return structures_1.Return.success(await guild.setName(name).catch(() => false) !== false);
+        return structures_1.Return.success((await guild.setName(name).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildName.js.map

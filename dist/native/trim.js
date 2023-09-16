@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to trim",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [m]) {
         return structures_1.Return.success(m.trim());

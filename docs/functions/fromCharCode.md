@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The codes to get its char codes",
             type: ArgType.Number,
             rest: true,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ codes ]) {
+    execute(ctx, [codes]) {
         return Return.success(String.fromCharCode(...codes))
     },
 })
+
 ```
     
 </details>

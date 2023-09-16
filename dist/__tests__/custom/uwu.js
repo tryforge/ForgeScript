@@ -8,6 +8,6 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute(ctx) {
         return Return_1.Return.success("uwu!");
-    }
+    },
 });
 //# sourceMappingURL=uwu.js.map

@@ -12,18 +12,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
-            description: "The guild to set icon on"
+            description: "The guild to set icon on",
         },
         {
             name: "url",
             description: "The new icon",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     async execute(ctx, [guild, icon]) {
-        return structures_1.Return.success(await guild.setIcon(icon || null).catch(() => false) !== false);
+        return structures_1.Return.success((await guild.setIcon(icon || null).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildIcon.js.map

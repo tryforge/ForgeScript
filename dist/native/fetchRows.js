@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The channel id to get the message from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Channel
+            type: structures_1.ArgType.Channel,
         },
         {
             name: "message ID",
@@ -21,12 +21,12 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
             rest: false,
             type: structures_1.ArgType.Message,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: false,
     execute(ctx, [, msg]) {
-        ctx.container.components = (msg ?? ctx.message)?.components.map(x => discord_js_1.ActionRowBuilder.from(x)) ?? [];
+        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => discord_js_1.ActionRowBuilder.from(x)) ?? [];
         return structures_1.Return.success();
     },
 });

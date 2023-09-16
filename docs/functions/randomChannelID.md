@@ -20,11 +20,10 @@ export default new NativeFunction({
     description: "Returns a random channel ID",
     unwrap: false,
     execute(ctx) {
-        return Return.success(
-            ctx.client.channels.cache.randomKey()
-        )
+        return Return.success(ctx.client.channels.cache.randomKey())
     },
 })
+
 ```
     
 </details>

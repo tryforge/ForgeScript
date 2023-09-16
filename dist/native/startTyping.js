@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             rest: false,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
-        }
+            check: (i) => i.isTextBased(),
+        },
     ],
     async execute(ctx, [ch]) {
         const channel = ch ?? ctx.channel;

@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -21,8 +21,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to get its highest role id",
             rest: false,
             type: structures_1.ArgType.Member,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [guild, member]) {
         member ??= ctx.member;

@@ -34,24 +34,23 @@ export default new NativeFunction({
             description: "The index of the user",
             rest: false,
             type: ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "return author",
             description: "Return author ID if not found",
             rest: false,
-            type: ArgType.Boolean
-        }
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ i, rt ]) {
-        const id: string | undefined = this.hasFields ?
-            ctx.message?.mentions.users.at(i)?.id :
-            ctx.message?.mentions.users.map(x => x.id).join(", ")
-        return Return.success(
-            id ?? (rt ? ctx.user?.id : undefined)
-        )
+    execute(ctx, [i, rt]) {
+        const id: string | undefined = this.hasFields
+            ? ctx.message?.mentions.users.at(i)?.id
+            : ctx.message?.mentions.users.map((x) => x.id).join(", ")
+        return Return.success(id ?? (rt ? ctx.user?.id : undefined))
     },
 })
+
 ```
     
 </details>

@@ -13,29 +13,29 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The url to perform this request to",
             type: NativeFunction_1.ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "method",
             description: "The method to use",
             rest: false,
             required: true,
-            type: NativeFunction_1.ArgType.String
+            type: NativeFunction_1.ArgType.String,
         },
         {
             name: "variable",
             description: "Environment variable name to load the response to",
             rest: false,
             required: true,
-            type: NativeFunction_1.ArgType.String
-        }
+            type: NativeFunction_1.ArgType.String,
+        },
     ],
     brackets: true,
     unwrap: true,
     async execute(ctx, [url, method, name]) {
         const req = await (0, undici_1.fetch)(url, {
             method,
-            ...ctx.http
+            ...ctx.http,
         });
         ctx.clearHttpOptions();
         const contentType = req.headers.get("content-type")?.split(";")[0];

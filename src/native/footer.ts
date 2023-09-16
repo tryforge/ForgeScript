@@ -31,7 +31,7 @@ export default new NativeFunction({
     execute(ctx, [text, iconURL, index]) {
         ctx.container.embed(index ?? 0).setFooter({
             text,
-            iconURL: iconURL ?? undefined,
+            iconURL: iconURL || undefined,
         })
         return Return.success()
     },

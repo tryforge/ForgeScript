@@ -15,17 +15,15 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 states: {
                     role: {
                         old,
-                        new: old
-                    }
+                        new: old,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
     description: "This event is fired when a role is deleted",
-    intents: [
-        "Guilds"
-    ]
+    intents: ["Guilds"],
 });
 //# sourceMappingURL=roleDelete.js.map

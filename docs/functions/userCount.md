@@ -20,11 +20,10 @@ export default new NativeFunction({
     description: "Returns the user count of the bot",
     unwrap: true,
     execute(ctx) {
-        return Return.success(
-            ctx.client.guilds.cache.reduce((x, y) => x + (y.memberCount || 0), 0)
-        )
-    }
+        return Return.success(ctx.client.guilds.cache.reduce((x, y) => x + (y.memberCount || 0), 0))
+    },
 })
+
 ```
     
 </details>

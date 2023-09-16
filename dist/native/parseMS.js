@@ -13,33 +13,33 @@ exports.default = new structures_1.NativeFunction({
             description: "The ms to convert to string",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
+            required: true,
         },
         {
             name: "limit",
             description: "Limit of units to use",
             rest: false,
-            type: structures_1.ArgType.Number
+            type: structures_1.ArgType.Number,
         },
         {
             name: "separator",
             description: "The separator to use for every unit",
             rest: false,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "and",
             rest: false,
             description: "Whether to use and word for last unit",
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
     execute(ctx, [ms, limit, sep, and]) {
         return structures_1.Return.success(constants_1.TimeParser.parseToString(ms, {
             and: and || false,
             limit: limit || undefined,
-            separator: sep || " "
+            separator: sep || " ",
         }));
     },
 });

@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The ms to wait for",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [ms]) {
         await (0, promises_1.setTimeout)(ms);

@@ -30,12 +30,11 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            
             name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "role ID",
@@ -43,15 +42,14 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Role,
             pointer: 0,
-            required: true
+            required: true,
         },
     ],
-    execute(ctx, [ guild, role ]) {
-        return Return.success(
-            (role ?? ctx.role)?.hoist
-        )
-    }
+    execute(ctx, [guild, role]) {
+        return Return.success((role ?? ctx.role)?.hoist)
+    },
 })
+
 ```
     
 </details>

@@ -33,23 +33,23 @@ export default new NativeFunction({
             required: true,
             description: "The channel to get the message from",
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
             description: "The message to check for",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    async execute(ctx, [ ch, id ]) {
+    async execute(ctx, [ch, id]) {
         return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            !!(await (ch as TextChannel).messages.fetch(id).catch(noop))
+            CompiledFunction.IdRegex.test(id) && !!(await (ch as TextChannel).messages.fetch(id).catch(noop))
         )
     },
 })
+
 ```
     
 </details>

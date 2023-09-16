@@ -14,13 +14,13 @@ exports.default = new structures_1.NativeFunction({
             description: "The perms for the invite link",
             rest: true,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [perms]) {
         return structures_1.Return.success(ctx.client.generateInvite({
             scopes: [discord_js_1.OAuth2Scopes.Bot],
-            permissions: perms || ["Administrator"]
+            permissions: perms || ["Administrator"],
         }));
     },
 });

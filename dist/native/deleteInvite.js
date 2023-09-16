@@ -17,11 +17,11 @@ exports.default = new structures_1.NativeFunction({
             description: "The invite code",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Invite
-        }
+            type: structures_1.ArgType.Invite,
+        },
     ],
     async execute(ctx, [invite]) {
         return structures_1.Return.success(!!(await invite.delete().catch(noop_1.default)));
-    }
+    },
 });
 //# sourceMappingURL=deleteInvite.js.map

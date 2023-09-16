@@ -14,15 +14,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to find the role on",
             type: structures_1.ArgType.Guild,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "query",
             description: "The id, mention or role name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     unwrap: true,
     execute(ctx, [guild, q]) {
@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(r.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(guild.roles.cache.find(x => x.id === id || x.name.toLowerCase() === q)?.id);
+        return structures_1.Return.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id);
     },
 });
 //# sourceMappingURL=findRole.js.map

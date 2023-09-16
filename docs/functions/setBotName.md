@@ -30,15 +30,14 @@ export default new NativeFunction({
             description: "The new name",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ name ]) {
-        return Return.success(
-            !!(await ctx.client.user.setUsername(name).catch(noop))
-        )
+    async execute(ctx, [name]) {
+        return Return.success(!!(await ctx.client.user.setUsername(name).catch(noop)))
     },
 })
+
 ```
     
 </details>

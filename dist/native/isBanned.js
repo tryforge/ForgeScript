@@ -17,15 +17,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to check bans on",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "user ID",
             description: "The user to check ban",
             rest: false,
             type: structures_1.ArgType.User,
-            required: true
-        }
+            required: true,
+        },
     ],
     async execute(ctx, [guild, user]) {
         const isBanned = await guild.bans.fetch(user).catch(noop_1.default);

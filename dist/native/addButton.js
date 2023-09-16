@@ -14,14 +14,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The custom id for this component",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "label",
             description: "The button label",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "style",
@@ -29,20 +29,20 @@ exports.default = new structures_1.NativeFunction({
             enum: discord_js_1.ButtonStyle,
             type: structures_1.ArgType.Enum,
             required: true,
-            rest: false
+            rest: false,
         },
         {
             name: "emoji",
             rest: false,
             type: structures_1.ArgType.String,
-            description: "The emoji for this button"
+            description: "The emoji for this button",
         },
         {
             name: "disabled",
             rest: false,
             type: structures_1.ArgType.Boolean,
-            description: "Whether to disable the button"
-        }
+            description: "Whether to disable the button",
+        },
     ],
     execute(ctx, [id, label, style, emoji, disabled]) {
         const btn = new discord_js_1.ButtonBuilder()

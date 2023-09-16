@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The number to use",
             rest: false,
             type: structures_1.ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [n]) {
         return structures_1.Return.success(Math.abs(n));

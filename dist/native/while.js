@@ -15,15 +15,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The condition to validate",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "code",
             rest: false,
             required: true,
             type: structures_1.ArgType.String,
-            description: "The code to execute"
-        }
+            description: "The code to execute",
+        },
     ],
     async execute(ctx) {
         const condition = this.data.fields[0];

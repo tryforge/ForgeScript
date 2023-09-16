@@ -33,16 +33,17 @@ export default new NativeFunction({
             description: "The guild to return its vanity uses",
             rest: false,
             type: ArgType.Guild,
-            required: true
-        }
+            required: true,
+        },
     ],
     brackets: false,
-    async execute(ctx, [ guild ]) {
+    async execute(ctx, [guild]) {
         guild ??= ctx.guild!
         const vanity = await guild?.fetchVanityData().catch(noop)
         return Return.success(vanity ? vanity.uses : undefined)
     },
 })
+
 ```
     
 </details>

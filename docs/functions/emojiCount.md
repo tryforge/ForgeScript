@@ -24,6 +24,7 @@ export default new NativeFunction({
         return Return.success(ctx.client.emojis.cache.size)
     },
 })
+
 ```
     
 </details>

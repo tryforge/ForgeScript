@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The expression",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [expr]) {
         try {

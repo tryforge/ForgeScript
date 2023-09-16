@@ -13,15 +13,15 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to get char code of",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
         {
             name: "index",
             description: "The index to get its char code",
             type: structures_1.ArgType.Number,
             rest: false,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [m, index]) {
         return structures_1.Return.success(m.charCodeAt(index));

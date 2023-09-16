@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The user to return its global name",
             required: true,
             rest: false,
-            type: ArgType.User
-        }
+            type: ArgType.User,
+        },
     ],
     brackets: false,
-    async execute(ctx, [ user ]) {
-        return Return.success(
-            (user ?? ctx.user)?.globalName
-        )
+    async execute(ctx, [user]) {
+        return Return.success((user ?? ctx.user)?.globalName)
     },
 })
+
 ```
     
 </details>

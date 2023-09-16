@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild id to return the role from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "name",
@@ -21,15 +21,15 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             type: structures_1.ArgType.String,
             pointer: 0,
-            required: true
-        }
+            required: true,
+        },
     ],
     execute(ctx, [guild, args]) {
         if (this.hasFields) {
             const name = args.join(";");
-            return structures_1.Return.success(guild.roles.cache.find(x => x.name === name)?.id);
+            return structures_1.Return.success(guild.roles.cache.find((x) => x.name === name)?.id);
         }
         return structures_1.Return.success(ctx.role?.id);
-    }
+    },
 });
 //# sourceMappingURL=roleID.js.map

@@ -19,15 +19,15 @@ var InviteProperty;
     InviteProperty["expiresTimestamp"] = "expiresTimestamp";
 })(InviteProperty || (exports.InviteProperty = InviteProperty = {}));
 exports.InviteProperties = (0, defineProperties_1.default)({
-    authorID: i => i?.inviterId,
-    channelID: i => i?.channelId,
-    guildID: i => i?.guild?.id,
-    maxUses: i => i?.maxUses,
-    uses: i => i?.uses,
-    maxAge: i => i?.maxAge,
-    timestamp: i => i?.createdTimestamp,
-    code: i => i?.code,
-    url: i => i?.url,
-    expiresTimestamp: i => i?.expiresTimestamp
+    authorID: (i) => i?.inviterId,
+    channelID: (i) => i?.channelId,
+    guildID: (i) => i?.guild?.id,
+    maxUses: (i) => i?.maxUses,
+    uses: (i) => i?.uses,
+    maxAge: (i) => i?.maxAge,
+    timestamp: (i) => i?.createdTimestamp,
+    code: (i) => i?.code,
+    url: (i) => i?.url,
+    expiresTimestamp: (i) => i?.expiresTimestamp,
 });
 //# sourceMappingURL=invite.js.map

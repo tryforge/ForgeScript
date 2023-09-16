@@ -29,13 +29,14 @@ export default new NativeFunction({
             description: "The id to get its cooldown",
             rest: false,
             type: ArgType.String,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ id ]) {
+    execute(ctx, [id]) {
         return Return.success(ctx.client.cooldowns.getTimeLeft(id))
     },
 })
+
 ```
     
 </details>

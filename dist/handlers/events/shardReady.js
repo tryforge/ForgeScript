@@ -19,6 +19,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 });
             }
         }
-    }
+    },
 });
 //# sourceMappingURL=shardReady.js.map

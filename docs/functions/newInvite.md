@@ -33,21 +33,20 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: InviteProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [ prop, sep ]) {
-        return Return.success(
-            InviteProperties[prop](ctx.states?.invite?.new, sep)
-        )
+    execute(ctx, [prop, sep]) {
+        return Return.success(InviteProperties[prop](ctx.states?.invite?.new, sep))
     },
 })
+
 ```
     
 </details>

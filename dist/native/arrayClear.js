@@ -12,8 +12,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The variable the array is held on",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [name]) {

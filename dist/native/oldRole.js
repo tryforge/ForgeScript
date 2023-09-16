@@ -15,14 +15,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: role_1.RoleProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use in case of array",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [prop, sep]) {
         return structures_1.Return.success(role_1.RoleProperties[prop](ctx.states?.role?.old, sep));

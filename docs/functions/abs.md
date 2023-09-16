@@ -20,7 +20,8 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$abs",
     version: "1.0.1",
-    description: "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",
+    description:
+        "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",
     brackets: true,
     unwrap: true,
     args: [
@@ -29,13 +30,14 @@ export default new NativeFunction({
             description: "The number to use",
             rest: false,
             type: ArgType.Number,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ n ]) {
+    execute(ctx, [n]) {
         return Return.success(Math.abs(n))
     },
 })
+
 ```
     
 </details>

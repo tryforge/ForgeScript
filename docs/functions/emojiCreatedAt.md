@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The emoji id to return its creation timestamp",
             rest: false,
             type: ArgType.GuildEmoji,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ emoji ]) {
+    execute(ctx, [emoji]) {
         emoji ?? ctx.emoji
-        return Return.success(
-            emoji?.createdTimestamp
-        )
+        return Return.success(emoji?.createdTimestamp)
     },
 })
+
 ```
     
 </details>

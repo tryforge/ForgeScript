@@ -15,17 +15,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     user: {
-                        new: user
-                    }
+                        new: user,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildMessageReactions",
-        "DirectMessageReactions"
-    ]
+    intents: ["GuildMessageReactions", "DirectMessageReactions"],
 });
 //# sourceMappingURL=messageReactionAdd.js.map

@@ -25,9 +25,9 @@ class ForgeClient extends discord_js_1.Client {
                 discord_js_1.Partials.Message,
                 discord_js_1.Partials.Reaction,
                 discord_js_1.Partials.ThreadMember,
-                discord_js_1.Partials.User
+                discord_js_1.Partials.User,
             ],
-            ...options
+            ...options,
         });
         this.#init();
     }

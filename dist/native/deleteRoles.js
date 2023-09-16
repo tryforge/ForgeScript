@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to delete roles from",
             rest: false,
             required: true,
-            type: structures_1.ArgType.Guild
+            type: structures_1.ArgType.Guild,
         },
         {
             name: "roles",
@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.Role
-        }
+            type: structures_1.ArgType.Role,
+        },
     ],
     async execute(ctx, [guild, roles]) {
         let count = 0;

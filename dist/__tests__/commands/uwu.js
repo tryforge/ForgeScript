@@ -3,6 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     name: "uwu",
     code: "bro.",
-    type: "messageCreate"
+    type: "messageCreate",
 };
 //# sourceMappingURL=uwu.js.map

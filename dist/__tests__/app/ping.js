@@ -13,10 +13,10 @@ exports.default = new ApplicationCommand_1.ApplicationCommand({
                 autocomplete: true,
                 type: discord_js_1.ApplicationCommandOptionType.String,
                 required: true,
-                description: "The uwu"
-            }
-        ]
+                description: "The uwu",
+            },
+        ],
     },
-    code: "uwu rawr $option[uwu]"
+    code: "uwu rawr $option[uwu]",
 });
 //# sourceMappingURL=ping.js.map

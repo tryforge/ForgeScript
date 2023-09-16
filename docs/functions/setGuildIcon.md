@@ -29,22 +29,21 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Guild,
             required: true,
-            description: "The guild to set icon on"
+            description: "The guild to set icon on",
         },
         {
             name: "url",
             description: "The new icon",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [ guild, icon ]) {
-        return Return.success(
-            await guild.setIcon(icon || null).catch(() => false) !== false
-        ) 
+    async execute(ctx, [guild, icon]) {
+        return Return.success((await guild.setIcon(icon || null).catch(() => false)) !== false)
     },
 })
+
 ```
     
 </details>

@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The user to return its creation date",
             required: true,
             rest: false,
-            type: ArgType.User
-        }
+            type: ArgType.User,
+        },
     ],
     brackets: false,
-    async execute(ctx, [ user ]) {
-        return Return.success(
-            (user ?? ctx.user)?.createdTimestamp
-        )
+    async execute(ctx, [user]) {
+        return Return.success((user ?? ctx.user)?.createdTimestamp)
     },
 })
+
 ```
     
 </details>

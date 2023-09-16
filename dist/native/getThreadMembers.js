@@ -18,19 +18,19 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isThread()
+            check: (i) => i.isThread(),
         },
         {
             name: "separator",
             description: "The separator for every id",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     async execute(ctx, [channel, sep]) {
         const thread = channel;
         const success = await thread.members.fetch().catch(noop_1.default);
-        return structures_1.Return.success(success && success.size ? success.map(x => x.id).join(sep || ", ") : undefined);
+        return structures_1.Return.success(success && success.size ? success.map((x) => x.id).join(sep || ", ") : undefined);
     },
 });
 //# sourceMappingURL=getThreadMembers.js.map

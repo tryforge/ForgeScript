@@ -33,16 +33,15 @@ export default new NativeFunction({
             description: "The id of the channel",
             rest: false,
             type: ArgType.Channel,
-            required: true
-        }
+            required: true,
+        },
     ],
-    execute(ctx, [ ch ]) {
+    execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success(
-            "guildId" in chan ? chan.guildId : undefined
-        )
+        return Return.success("guildId" in chan ? chan.guildId : undefined)
     },
 })
+
 ```
     
 </details>

@@ -14,14 +14,14 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased() && "permissionOverwrites" in i
+            check: (i) => i.isTextBased() && "permissionOverwrites" in i,
         },
         {
             name: "id",
             description: "The role or member id to delete all perms for",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.String,
         },
     ],
     async execute(ctx, [ch, id]) {

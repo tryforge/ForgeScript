@@ -30,16 +30,14 @@ export default new NativeFunction({
             description: "The user to check",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [ id ]) {
-        return Return.success(
-            CompiledFunction.IdRegex.test(id) &&
-            !!(await ctx.client.users.fetch(id).catch(noop))    
-        )
+    async execute(ctx, [id]) {
+        return Return.success(CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(noop)))
     },
 })
+
 ```
     
 </details>

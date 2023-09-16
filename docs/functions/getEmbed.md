@@ -37,7 +37,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => i.isTextBased(),
         },
         {
             name: "message ID",
@@ -45,14 +45,14 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Message,
-            pointer: 0
+            pointer: 0,
         },
         {
             name: "embed index",
             description: "The embed index to get data from",
             rest: false,
             required: true,
-            type: ArgType.Number
+            type: ArgType.Number,
         },
         {
             name: "property",
@@ -60,22 +60,21 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: EmbedProperty,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "Separator to use in case of array",
             rest: false,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
-    execute(ctx, [, m, index, prop, sep ]) {
+    execute(ctx, [, m, index, prop, sep]) {
         const embed = m.embeds[index] as Embed | undefined
-        return Return.success(
-            EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", ")
-        )
+        return Return.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", "))
     },
 })
+
 ```
     
 </details>

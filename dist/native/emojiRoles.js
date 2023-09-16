@@ -13,18 +13,18 @@ exports.default = new structures_1.NativeFunction({
             description: "The emoji id to return its roles",
             rest: false,
             type: structures_1.ArgType.GuildEmoji,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for every role",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [emoji, sep]) {
         emoji ?? ctx.emoji;
-        return structures_1.Return.success(emoji?.roles.cache.map(x => x.id).join(sep || ", "));
+        return structures_1.Return.success(emoji?.roles.cache.map((x) => x.id).join(sep || ", "));
     },
 });
 //# sourceMappingURL=emojiRoles.js.map

@@ -18,16 +18,14 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                 client: this,
                 states: {
                     member: {
-                        new: m
-                    }
+                        new: m,
+                    },
                 },
                 data: command.compiled.code,
-                args: []
+                args: [],
             });
         }
     },
-    intents: [
-        "GuildMembers"
-    ]
+    intents: ["GuildMembers"],
 });
 //# sourceMappingURL=guildMemberAdd.js.map

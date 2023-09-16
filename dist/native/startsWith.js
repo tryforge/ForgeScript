@@ -12,19 +12,19 @@ exports.default = new structures_1.NativeFunction({
             description: "The string to check against",
             type: structures_1.ArgType.String,
             rest: false,
-            required: true
+            required: true,
         },
         {
             name: "value",
             required: true,
             description: "The value to match at the start",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [str, match]) {
         return structures_1.Return.success(str.startsWith(match));
-    }
+    },
 });
 //# sourceMappingURL=startsWith.js.map

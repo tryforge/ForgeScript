@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The guild to pull member from",
             rest: false,
             type: structures_1.ArgType.Guild,
-            required: true
+            required: true,
         },
         {
             name: "user ID",
@@ -21,18 +21,21 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             pointer: 0,
             type: structures_1.ArgType.Member,
-            required: true
+            required: true,
         },
         {
             name: "separator",
             description: "The separator to use for each role",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     execute(ctx, [guild, member, sep]) {
         member ??= ctx.member;
-        return structures_1.Return.success(member?.roles.cache.filter(x => x.id !== x.guild.id).map(x => x.id).join(sep || ", "));
+        return structures_1.Return.success(member?.roles.cache
+            .filter((x) => x.id !== x.guild.id)
+            .map((x) => x.id)
+            .join(sep || ", "));
     },
 });
 //# sourceMappingURL=memberRoles.js.map

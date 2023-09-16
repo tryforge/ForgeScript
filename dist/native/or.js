@@ -14,8 +14,8 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.String,
             condition: true,
-            description: "The conditions that must match one"
-        }
+            description: "The conditions that must match one",
+        },
     ],
     async execute(ctx) {
         for (let i = 0, len = this.data.fields.length; i < len; i++) {

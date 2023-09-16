@@ -13,14 +13,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The id, mention or channel name to find",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true
+            required: true,
         },
         {
             name: "return channel",
             description: "Returns the current channel id if none found",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
     execute(ctx, [q, rt]) {
@@ -30,9 +30,9 @@ exports.default = new structures_1.NativeFunction({
             if (ch)
                 return structures_1.Return.success(ch.id);
         }
-        const rtId = rt ? ctx.channel?.id ?? undefined : undefined;
+        const rtId = rt ? ctx.channel?.id || undefined : undefined;
         q = q.toLowerCase();
-        return structures_1.Return.success(ctx.client.channels.cache.find(x => x.id === id || ("name" in x && x.name.toLowerCase() === q))?.id ?? rtId);
+        return structures_1.Return.success(ctx.client.channels.cache.find((x) => x.id === id || ("name" in x && x.name.toLowerCase() === q))?.id ?? rtId);
     },
 });
 //# sourceMappingURL=findChannel.js.map

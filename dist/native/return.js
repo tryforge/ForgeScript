@@ -13,8 +13,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The value to return",
             rest: true,
             required: true,
-            type: NativeFunction_1.ArgType.String
-        }
+            type: NativeFunction_1.ArgType.String,
+        },
     ],
     brackets: true,
     execute(ctx, [args]) {
