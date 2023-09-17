@@ -4,6 +4,6 @@ export declare class ApplicationCommand {
     readonly options: IApplicationCommandData;
     compiled: IExtendedCompilationResult;
     constructor(options: IApplicationCommandData);
-    get name(): string;
+    get name(): any;
 }
 //# sourceMappingURL=ApplicationCommand.d.ts.map

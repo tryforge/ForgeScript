@@ -39,7 +39,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [channel, user, amount]) {
         let count = 0;
         for (const n of (0, splitNumber_1.default)(amount, 100)) {
-            const messages = await channel.messages.fetch({ limit: 100 }).catch(noop_1.default);
+            const messages = await channel.messages.fetch({ limit: n }).catch(noop_1.default);
             if (!messages)
                 break;
             const col = await channel

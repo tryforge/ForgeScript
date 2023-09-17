@@ -1,4 +1,4 @@
-import { ClientEvents, Collection, Guild, GuildMember, Invite, PartialGuildMember } from "discord.js";
+import { Guild, GuildMember, Invite, PartialGuildMember } from "discord.js";
 import { ForgeClient } from "../core";
 export interface IGuildInviter {
     inviterId: string;
@@ -10,15 +10,15 @@ export interface IGuildInvite {
     code: string;
 }
 export declare class InviteSystem {
-    static readonly Invites: Collection<string, IGuildInvite[]>;
-    static readonly RequiredIntents: ("Guilds" | "GuildMembers" | "GuildModeration" | "GuildBans" | "GuildEmojisAndStickers" | "GuildIntegrations" | "GuildWebhooks" | "GuildInvites" | "GuildVoiceStates" | "GuildPresences" | "GuildMessages" | "GuildMessageReactions" | "GuildMessageTyping" | "DirectMessages" | "DirectMessageReactions" | "DirectMessageTyping" | "MessageContent" | "GuildScheduledEvents" | "AutoModerationConfiguration" | "AutoModerationExecution")[];
-    static readonly RequiredEvents: (keyof ClientEvents)[];
+    static readonly Invites: any;
+    static readonly RequiredIntents: GatewayIntentsString[];
+    static readonly RequiredEvents: (string | number | symbol)[];
     /**
      * Guild => invited user => invited by
      */
-    static readonly Inviters: Collection<string, Collection<string, IGuildInviter>>;
+    static readonly Inviters: any;
     private static init;
-    static hasPermissions(guild: Guild): boolean;
+    static hasPermissions(guild: Guild): any;
     static uncache(guild: Guild): void;
     static cacheAll(client: ForgeClient): Promise<void>;
     static cache(guild: Guild): Promise<void>;
