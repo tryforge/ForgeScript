@@ -6,12 +6,12 @@ $status
 ```
 ---
 ```
-$status[guildID;role ID]
+$status[guild ID;user ID]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guildID | Guild | The guild id to return the member from | Yes | No
-role ID | Member | The member id return its status | Yes | No
+guild ID | Guild | The guild to return the member from | Yes | No
+user ID | Member | The member to return its status | Yes | No
 <details>
 <summary>
     
@@ -30,15 +30,15 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
-            description: "The guild id to return the member from",
+            name: "guild ID",
+            description: "The guild to return the member from",
             rest: false,
             type: ArgType.Guild,
             required: true,
         },
         {
-            name: "role ID",
-            description: "The member id return its status",
+            name: "user ID",
+            description: "The member to return its status",
             rest: false,
             type: ArgType.Member,
             pointer: 0,

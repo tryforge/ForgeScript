@@ -6,11 +6,11 @@ $roleMembers
 ```
 ---
 ```
-$roleMembers[guildID;role ID;separator]
+$roleMembers[guild ID;role ID;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guildID | Guild | The guild id to return the role from | Yes | No
+guild ID | Guild | The guild id to return the role from | Yes | No
 role ID | Role | The role id return its members | Yes | No
 separator | String | The separator to use for each member | No | No
 <details>
@@ -31,7 +31,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
+            name: "guild ID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,

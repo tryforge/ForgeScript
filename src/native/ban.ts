@@ -20,8 +20,7 @@ export default new NativeFunction({
             name: "user ID",
             description: "The member to ban",
             rest: false,
-            type: ArgType.Member,
-            pointer: 0,
+            type: ArgType.User,
             required: true,
         },
         {
@@ -37,10 +36,10 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    async execute(ctx, [guild, member, reason, seconds]) {
+    async execute(ctx, [guild, user, reason, seconds]) {
         return Return.success(
-            (await member
-                .ban({
+            (await guild.members
+                .ban(user, {
                     reason: reason || undefined,
                     deleteMessageSeconds: seconds || undefined,
                 })
