@@ -68,7 +68,7 @@ class ApplicationCommandManager {
         const commandName = input.commandName;
         if (!input.isChatInputCommand())
             return this.commands.get(commandName);
-        const subcommandName = input.options.getSubcommand();
+        const subcommandName = input.options.getSubcommand(false);
         const subcommandGroupName = input.options.getSubcommandGroup();
         const cmd = this.commands.get(commandName) ?? null;
         if (cmd instanceof discord_js_1.Collection) {
