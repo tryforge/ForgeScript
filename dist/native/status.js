@@ -9,15 +9,15 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
-            description: "The guild id to return the member from",
+            name: "guild ID",
+            description: "The guild to return the member from",
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
         },
         {
-            name: "role ID",
-            description: "The member id return its status",
+            name: "user ID",
+            description: "The member to return its status",
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,

@@ -19,8 +19,7 @@ exports.default = new structures_1.NativeFunction({
             name: "user ID",
             description: "The member to ban",
             rest: false,
-            type: structures_1.ArgType.Member,
-            pointer: 0,
+            type: structures_1.ArgType.User,
             required: true,
         },
         {
@@ -36,9 +35,9 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number,
         },
     ],
-    async execute(ctx, [guild, member, reason, seconds]) {
-        return structures_1.Return.success((await member
-            .ban({
+    async execute(ctx, [guild, user, reason, seconds]) {
+        return structures_1.Return.success((await guild.members
+            .ban(user, {
             reason: reason || undefined,
             deleteMessageSeconds: seconds || undefined,
         })

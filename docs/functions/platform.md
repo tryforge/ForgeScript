@@ -6,12 +6,12 @@ $platform
 ```
 ---
 ```
-$platform[guildID;guild ID;separator]
+$platform[guild ID;user ID;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guildID | Guild | The guild id to return the member from | Yes | No
-guild ID | Member | The member id return its platform | Yes | No
+guild ID | Guild | The guild to return the member from | Yes | No
+user ID | Member | The member to return its platform | Yes | No
 separator | String | The separator for each platform | No | No
 <details>
 <summary>
@@ -31,15 +31,15 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
-            description: "The guild id to return the member from",
+            name: "guild ID",
+            description: "The guild to return the member from",
             rest: false,
             type: ArgType.Guild,
             required: true,
         },
         {
-            name: "guild ID",
-            description: "The member id return its platform",
+            name: "user ID",
+            description: "The member to return its platform",
             rest: false,
             type: ArgType.Member,
             pointer: 0,
@@ -52,7 +52,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         return Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "))
     },
 })

@@ -6,11 +6,11 @@ $nickname
 ```
 ---
 ```
-$nickname[guildID;role ID]
+$nickname[guild ID;role ID]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guildID | Guild | The guild id to return the member from | Yes | No
+guild ID | Guild | The guild id to return the member from | Yes | No
 role ID | Member | The member id return its nick | Yes | No
 <details>
 <summary>
@@ -30,7 +30,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
+            name: "guild ID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,

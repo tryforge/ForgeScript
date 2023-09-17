@@ -8,15 +8,15 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
-            description: "The guild id to return the member from",
+            name: "guild ID",
+            description: "The guild to return the member from",
             rest: false,
             type: ArgType.Guild,
             required: true,
         },
         {
-            name: "role ID",
-            description: "The member id return its status",
+            name: "user ID",
+            description: "The member to return its status",
             rest: false,
             type: ArgType.Member,
             pointer: 0,

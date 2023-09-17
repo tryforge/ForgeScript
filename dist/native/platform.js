@@ -9,15 +9,15 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
-            description: "The guild id to return the member from",
+            name: "guild ID",
+            description: "The guild to return the member from",
             rest: false,
             type: structures_1.ArgType.Guild,
             required: true,
         },
         {
-            name: "guild ID",
-            description: "The member id return its platform",
+            name: "user ID",
+            description: "The member to return its platform",
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,
@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         return structures_1.Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "));
     },
 });

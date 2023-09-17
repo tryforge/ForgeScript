@@ -9,8 +9,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.Member;
-    pointer: number;
+    type: ArgType.User;
     required: true;
 }, {
     name: string;
