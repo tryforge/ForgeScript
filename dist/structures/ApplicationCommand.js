@@ -12,6 +12,9 @@ class ApplicationCommand {
     get name() {
         return this.options.data.name;
     }
+    toJSON() {
+        return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data;
+    }
 }
 exports.ApplicationCommand = ApplicationCommand;
 //# sourceMappingURL=ApplicationCommand.js.map
