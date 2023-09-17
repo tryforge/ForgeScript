@@ -12,7 +12,7 @@ var OperatorType;
     OperatorType["Gt"] = ">";
     OperatorType["Lt"] = "<";
     OperatorType["None"] = "unknown";
-})(OperatorType || (exports.OperatorType = OperatorType = {}));
+})(OperatorType = exports.OperatorType || (exports.OperatorType = {}));
 exports.Operators = new Set(Object.values(OperatorType));
 exports.Conditions = {
     unknown: (lhs, rhs) => lhs === "true",
