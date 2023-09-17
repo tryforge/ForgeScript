@@ -42,7 +42,7 @@ export default new NativeFunction({
             type: ArgType.Boolean,
         },
     ],
-    async execute(ctx, [channel, state]) {
+    async execute(_, [channel, state]) {
         return Return.success(!!(await (channel as TextChannel).setNSFW(state || false).catch(noop)))
     },
 })

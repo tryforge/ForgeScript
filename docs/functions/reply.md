@@ -45,7 +45,7 @@ export default new NativeFunction({
             pointer: 0,
         },
     ],
-    execute(ctx, [channel, message]) {
+    execute(ctx, [, message]) {
         ctx.container.reference = (message ?? ctx.message)?.id
         return Return.success()
     },

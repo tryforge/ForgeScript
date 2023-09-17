@@ -12,8 +12,7 @@ $emojiCount
 </summary>
     
 ```ts
-import { ChannelType } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../structures"
+import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$emojiCount",

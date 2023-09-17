@@ -44,7 +44,7 @@ export default new NativeFunction({
             type: ArgType.Message,
         },
     ],
-    async execute(ctx, [channel, messages]) {
+    async execute(_, [channel, messages]) {
         if (!messages.length) return Return.success(0)
 
         if (messages.length === 1) {

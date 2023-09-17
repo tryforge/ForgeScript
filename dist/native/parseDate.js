@@ -11,7 +11,7 @@ var DateType;
     DateType[DateType["ISO"] = 4] = "ISO";
     DateType[DateType["UTC"] = 5] = "UTC";
     DateType[DateType["Time"] = 6] = "Time";
-})(DateType || (exports.DateType = DateType = {}));
+})(DateType = exports.DateType || (exports.DateType = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$parseDate",
     version: "1.0.2",
@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms, type]) {
+    execute(_, [ms, type]) {
         const date = new Date(ms);
         return structures_1.Return.success(type === DateType.Date
             ? date.toDateString()

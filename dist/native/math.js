@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [expr]) {
+    execute(_, [expr]) {
         try {
             if (MathRegex.test(expr))
                 return structures_1.Return.success();

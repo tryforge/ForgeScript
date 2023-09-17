@@ -17,9 +17,6 @@ separator | String | The separator to use in case of array | No | No
     
 ```ts
 import { ChannelProperties, ChannelProperty } from "../properties/channel"
-import { EmojiProperties, EmojiProperty } from "../properties/emoji"
-import { GuildProperties, GuildProperty } from "../properties/guild"
-import { MemberProperties, MemberProperty } from "../properties/member"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

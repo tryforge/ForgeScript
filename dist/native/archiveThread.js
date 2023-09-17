@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [channel, reason]) {
+    async execute(_, [channel, reason]) {
         const thread = channel;
         const success = await thread.setArchived(true, reason || undefined).catch(noop_1.default);
         return structures_1.Return.success(!!success);

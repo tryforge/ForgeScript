@@ -1,4 +1,3 @@
-import { BaseChannel, TextChannel, WebhookClient } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -29,7 +28,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [web, name, avatar]) {
+    async execute(_, [web, name, avatar]) {
         const edit = await web
             .edit({
                 avatar: avatar || undefined,

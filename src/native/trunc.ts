@@ -4,7 +4,7 @@ export default new NativeFunction({
     name: "$trunc",
     version: "1.0.0",
     description:
-        "Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
+        "Returns the integer part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
     brackets: true,
     unwrap: true,
     args: [
@@ -16,7 +16,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [n]) {
+    execute(_, [n]) {
         return Return.success(Math.trunc(n))
     },
 })

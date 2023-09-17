@@ -1,4 +1,3 @@
-import { parseEmoji } from "discord.js"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -23,15 +22,11 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, q]) {
-        const parsed = parseEmoji(q)
-
+    execute(_, [guild, q]) {
         if (CompiledFunction.IdRegex.test(q)) {
             const e = guild.emojis.cache.get(q)
             if (e) return Return.success(e.id)
         }
-
-        const name = parsed?.name.toLowerCase()
 
         return Return.success(
             guild.channels.cache.find(

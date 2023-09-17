@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [ms]) {
+    async execute(_, [ms]) {
         await (0, promises_1.setTimeout)(ms);
         return structures_1.Return.success();
     },

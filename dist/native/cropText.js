@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [text, start, end]) {
+    execute(_, [text, start, end]) {
         return structures_1.Return.success(text.slice(start, end || undefined));
     },
 });

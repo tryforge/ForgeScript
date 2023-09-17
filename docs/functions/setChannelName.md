@@ -43,7 +43,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, name]) {
+    async execute(_, [channel, name]) {
         return Return.success(!!(await (channel as TextChannel).setName(name).catch(noop)))
     },
 })

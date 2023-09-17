@@ -17,7 +17,7 @@ var UserProperty;
     UserProperty["banner"] = "banner";
     UserProperty["timestamp"] = "timestamp";
     UserProperty["dmChannelID"] = "dmChannelID";
-})(UserProperty || (exports.UserProperty = UserProperty = {}));
+})(UserProperty = exports.UserProperty || (exports.UserProperty = {}));
 exports.UserProperties = (0, defineProperties_1.default)({
     id: (i) => i?.id,
     avatar: (i) => i?.displayAvatarURL(),

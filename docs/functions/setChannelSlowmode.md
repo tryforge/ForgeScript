@@ -42,7 +42,7 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    async execute(ctx, [channel, seconds]) {
+    async execute(_, [channel, seconds]) {
         return Return.success(!!(await (channel as TextChannel).setRateLimitPerUser(seconds || 0).catch(noop)))
     },
 })

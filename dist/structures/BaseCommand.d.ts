@@ -1,6 +1,6 @@
 import { ClientEvents } from "discord.js";
 import { IExtendedCompilationResult } from "../core/Compiler";
-export type CommandType = keyof ClientEvents;
+export declare type CommandType = keyof ClientEvents;
 export interface IBaseCommand<T> {
     name?: string;
     type: T;

@@ -13,8 +13,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id of the command to pull its description",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     async execute(ctx, [id]) {

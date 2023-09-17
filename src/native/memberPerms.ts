@@ -30,7 +30,7 @@ export default new NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         return Return.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "))
     },
 })

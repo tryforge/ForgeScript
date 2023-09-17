@@ -1,7 +1,3 @@
-import { ChannelProperties, ChannelProperty } from "../properties/channel"
-import { EmojiProperties, EmojiProperty } from "../properties/emoji"
-import { GuildProperties, GuildProperty } from "../properties/guild"
-import { MemberProperties, MemberProperty } from "../properties/member"
 import { UserProperties, UserProperty } from "../properties/user"
 import { ArgType, NativeFunction, Return } from "../structures"
 

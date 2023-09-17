@@ -1,4 +1,3 @@
-import { ChannelType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -20,7 +19,7 @@ export default new NativeFunction({
         return Return.success(
             this.hasFields
                 ? ctx.client.commands["commands"]
-                      .filter((x, key) => categories.includes(key))
+                      .filter((_, key) => categories.includes(key))
                       .reduce((x, y) => x + y.length, 0)
                 : ctx.client.commands["commands"].reduce((x, y) => x + y.length, 0)
         )

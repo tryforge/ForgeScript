@@ -21,7 +21,6 @@ separator | String | Separator to use in case of array | No | No
 ```ts
 import { BaseChannel, Embed, EmbedBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
-import { MessageProperties, MessageProperty } from "../properties/message"
 import { EmbedProperties, EmbedProperty } from "../properties/embed"
 
 export default new NativeFunction({
@@ -69,7 +68,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [, m, index, prop, sep]) {
+    execute(_, [, m, index, prop, sep]) {
         const embed = m.embeds[index] as Embed | undefined
         return Return.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", "))
     },

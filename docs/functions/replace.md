@@ -55,7 +55,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [text, match, replacement, amount]) {
+    execute(_, [text, match, replacement, amount]) {
         amount ??= -1
         if (amount === -1) {
             return Return.success(text.replaceAll(match, replacement))

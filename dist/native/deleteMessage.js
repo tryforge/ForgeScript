@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Message,
         },
     ],
-    async execute(ctx, [channel, messages]) {
+    async execute(_, [channel, messages]) {
         if (!messages.length)
             return structures_1.Return.success(0);
         if (messages.length === 1) {

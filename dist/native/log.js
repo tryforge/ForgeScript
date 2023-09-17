@@ -17,7 +17,7 @@ exports.default = new NativeFunction_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [args]) {
+    execute(_, [args]) {
         console.log(...args);
         return Return_1.Return.success();
     },

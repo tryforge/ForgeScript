@@ -32,7 +32,7 @@ export default new NativeFunction({
             enum: PermissionFlagsBits,
         },
     ],
-    async execute(ctx, [ch, id, perms]) {
+    async execute(_, [ch, id, perms]) {
         const channel = ch as TextChannel
 
         const obj: Partial<Record<PermissionsString, boolean>> = {}

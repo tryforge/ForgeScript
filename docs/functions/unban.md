@@ -48,7 +48,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, user, reason]) {
+    async execute(_, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop)
         return Return.success(!!unbanned)
     },

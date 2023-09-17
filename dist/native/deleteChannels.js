@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
             check: (i) => "delete" in i,
         },
     ],
-    async execute(ctx, [channels]) {
+    async execute(_, [channels]) {
         let count = 0;
         for (let i = 0, len = channels.length; i < len; i++) {
             const ch = channels[i];

@@ -49,7 +49,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [, m, nick]) {
+    async execute(_, [, m, nick]) {
         return Return.success(!!(await m.setNickname(nick).catch(noop || null)))
     },
 })

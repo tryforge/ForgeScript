@@ -52,7 +52,7 @@ export default new NativeFunction({
             type: ArgType.Reaction,
         },
     ],
-    execute(ctx, [channel, message, reaction]) {
+    execute(_, [, , reaction]) {
         return Return.success(reaction.count)
     },
 })

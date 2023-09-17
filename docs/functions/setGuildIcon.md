@@ -39,7 +39,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [guild, icon]) {
+    async execute(_, [guild, icon]) {
         return Return.success((await guild.setIcon(icon || null).catch(() => false)) !== false)
     },
 })

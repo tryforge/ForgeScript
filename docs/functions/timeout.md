@@ -49,7 +49,7 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    async execute(ctx, [guild, member, ms]) {
+    async execute(_, [, member, ms]) {
         const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(noop)
         return Return.success(!!timeout)
     },

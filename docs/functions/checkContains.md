@@ -40,7 +40,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [text, matches]) {
+    execute(_, [text, matches]) {
         return Return.success(matches.some((x) => text.includes(x)))
     },
 })

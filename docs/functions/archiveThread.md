@@ -42,7 +42,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, reason]) {
+    async execute(_, [channel, reason]) {
         const thread = channel as ThreadChannel
 
         const success = await thread.setArchived(true, reason || undefined).catch(noop)

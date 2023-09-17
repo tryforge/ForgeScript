@@ -1,4 +1,4 @@
-import { BaseChannel, PermissionFlagsBits, PermissionsString, TextChannel } from "discord.js"
+import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -24,7 +24,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [ch, id]) {
+    async execute(_, [ch, id]) {
         const channel = ch as TextChannel
         return Return.success(!!(await channel.permissionOverwrites.delete(id)))
     },

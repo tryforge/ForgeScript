@@ -1,4 +1,4 @@
-import { BaseChannel, MessageType, TextChannel } from "discord.js"
+import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -25,7 +25,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [ch, id]) {
+    async execute(_, [ch, id]) {
         return Return.success(
             CompiledFunction.IdRegex.test(id) && !!(await (ch as TextChannel).messages.fetch(id).catch(noop))
         )

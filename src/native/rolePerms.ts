@@ -8,7 +8,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,
@@ -30,7 +30,7 @@ export default new NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [guild, role, sep]) {
+    execute(ctx, [, role, sep]) {
         return Return.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "))
     },
 })

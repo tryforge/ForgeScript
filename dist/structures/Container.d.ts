@@ -1,5 +1,5 @@
 import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageReaction, MessageReplyOptions, ModalBuilder, Role, User, VoiceState, WebhookClient } from "discord.js";
-export type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite;
+export declare type Sendable = null | Role | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite;
 export declare class Container {
     content?: string;
     embeds: EmbedBuilder[];

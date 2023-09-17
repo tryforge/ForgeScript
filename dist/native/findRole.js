@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, q]) {
+    execute(_, [guild, q]) {
         const id = q.replace(exports.RoleMentionCharRegex, "");
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const r = guild.roles.cache.get(id);

@@ -34,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [channel, name, url]) {
+    async execute(_, [channel, name, url]) {
         const ch = channel;
         const web = await ch
             .createWebhook({

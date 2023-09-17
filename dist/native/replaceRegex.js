@@ -44,7 +44,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [text, raw, flags, replacement, amount]) {
+    execute(_, [text, raw, flags, replacement, amount]) {
         amount ??= -1;
         const regex = new RegExp(raw, flags);
         if (amount === -1) {

@@ -19,7 +19,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets the current timestamp",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return Return.success(Date.now())
     },
 })

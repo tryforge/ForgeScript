@@ -1,4 +1,3 @@
-import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -25,7 +24,7 @@ export default new NativeFunction({
             type: ArgType.Role,
         },
     ],
-    async execute(ctx, [guild, roles]) {
+    async execute(_, [, roles]) {
         let count = 0
         for (let i = 0, len = roles.length; i < len; i++) {
             const role = roles[i]

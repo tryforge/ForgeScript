@@ -41,7 +41,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [guild, user]) {
+    async execute(_, [guild, user]) {
         const isBanned = await guild.bans.fetch(user).catch(noop)
         return Return.success(!!isBanned)
     },

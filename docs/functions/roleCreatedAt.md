@@ -6,11 +6,11 @@ $roleCreatedAt
 ```
 ---
 ```
-$roleCreatedAt[guild ID;role ID]
+$roleCreatedAt[guildID;role ID]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guild ID | Guild | The guild id to return the role from | Yes | No
+guildID | Guild | The guild id to return the role from | Yes | No
 role ID | Role | The role id return its creation date | Yes | No
 <details>
 <summary>
@@ -30,7 +30,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,
@@ -45,7 +45,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, role]) {
+    execute(ctx, [, role]) {
         return Return.success((role ?? ctx.role)?.createdTimestamp)
     },
 })

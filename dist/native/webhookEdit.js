@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [web, name, avatar]) {
+    async execute(_, [web, name, avatar]) {
         const edit = await web
             .edit({
             avatar: avatar || undefined,

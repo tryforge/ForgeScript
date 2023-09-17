@@ -6,7 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Gets the current timestamp",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success(Date.now());
     },
 });

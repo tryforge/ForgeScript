@@ -18,7 +18,6 @@ filler | String | The filler to use to pad | No | No
     
 ```ts
 import { ArgType, NativeFunction, Return } from "../structures"
-import { camelCase, fill, kebabCase, snakeCase } from "lodash"
 
 export default new NativeFunction({
     name: "$padStart",
@@ -48,7 +47,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [str, max, filler]) {
+    execute(_, [str, max, filler]) {
         return Return.success(str.padStart(max, filler || undefined))
     },
 })

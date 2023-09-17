@@ -19,7 +19,6 @@ user ID | User | The user to return its creation date | Yes | No
 </summary>
     
 ```ts
-import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

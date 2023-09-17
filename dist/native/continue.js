@@ -6,7 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Skips executing bottom code of the loop",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.continue();
     },
 });

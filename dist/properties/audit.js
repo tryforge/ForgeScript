@@ -18,7 +18,7 @@ var AuditProperty;
     AuditProperty["action"] = "action";
     AuditProperty["changes"] = "changes";
     AuditProperty["extra"] = "extra";
-})(AuditProperty || (exports.AuditProperty = AuditProperty = {}));
+})(AuditProperty = exports.AuditProperty || (exports.AuditProperty = {}));
 exports.AuditProperties = (0, defineProperties_1.default)({
     id: (i) => i?.id,
     executorID: (i) => i?.executorId,

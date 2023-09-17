@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the cpu usage of the host (not accurate)",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success((0, os_1.loadavg)()[0] * 100);
     },
 });

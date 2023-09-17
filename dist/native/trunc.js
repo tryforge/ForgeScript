@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$trunc",
     version: "1.0.0",
-    description: "Returns the integral part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
+    description: "Returns the integer part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
     brackets: true,
     unwrap: true,
     args: [
@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [n]) {
+    execute(_, [n]) {
         return structures_1.Return.success(Math.trunc(n));
     },
 });

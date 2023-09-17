@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [n]) {
+    execute(_, [n]) {
         return Return.success(Math.floor(n))
     },
 })

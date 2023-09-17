@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [channel, message, emojis]) {
+    async execute(_, [, message, emojis]) {
         let count = 0;
         for (const emoji of emojis) {
             const success = await message.react(emoji).catch(noop_1.default);

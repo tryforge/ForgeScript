@@ -32,7 +32,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx) {
+    execute() {
         return Return.success()
     },
 })

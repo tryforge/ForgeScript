@@ -16,7 +16,6 @@ type | Enum (`LocaleDate`, `LocaleTime`, `Locale`, `Date`, `ISO`, `UTC`, `Time`)
 </summary>
     
 ```ts
-import { TimeParser } from "../constants"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export enum DateType {
@@ -52,7 +51,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms, type]) {
+    execute(_, [ms, type]) {
         const date = new Date(ms)
 
         return Return.success(

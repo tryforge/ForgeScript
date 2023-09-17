@@ -23,7 +23,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [, code]) {
+    execute(_, [, code]) {
         return Return.success(code)
     },
 })

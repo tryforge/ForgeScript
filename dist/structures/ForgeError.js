@@ -9,7 +9,7 @@ var ErrorType;
     ErrorType["UnknownXName"] = "Unknown $1 with name $2";
     ErrorType["Custom"] = "$1";
     ErrorType["CompilerError"] = "$1";
-})(ErrorType || (exports.ErrorType = ErrorType = {}));
+})(ErrorType = exports.ErrorType || (exports.ErrorType = {}));
 class ForgeError extends Error {
     static Regex = /\$(\d+)/g;
     constructor(fn, type, ...args) {

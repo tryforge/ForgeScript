@@ -86,7 +86,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, name, color, icon, hoist, mentionable, pos, perms]) {
+    async execute(_, [guild, name, color, icon, hoist, mentionable, pos, perms]) {
         const created = await guild.roles
             .create({
                 color: (color as ColorResolvable) || undefined,

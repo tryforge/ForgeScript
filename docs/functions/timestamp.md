@@ -20,7 +20,6 @@ index | Number | The index to add this data to | No | No
 </summary>
     
 ```ts
-import { ColorResolvable } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

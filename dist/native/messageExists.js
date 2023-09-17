@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [ch, id]) {
+    async execute(_, [ch, id]) {
         return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await ch.messages.fetch(id).catch(noop_1.default)));
     },
 });

@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [channel, topic]) {
+    async execute(_, [channel, topic]) {
         return structures_1.Return.success(!!(await channel.setTopic(topic || null).catch(noop_1.default)));
     },
 });

@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [str, max, filler]) {
+    execute(_, [str, max, filler]) {
         return structures_1.Return.success(str.padEnd(max, filler || undefined));
     },
 });

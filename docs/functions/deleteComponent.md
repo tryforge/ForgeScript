@@ -15,7 +15,6 @@ custom ID | String | The component's custom id to delete | Yes | No
 </summary>
     
 ```ts
-import { ActionRowBuilder, AnyComponentBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

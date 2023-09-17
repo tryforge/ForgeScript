@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [args]) {
+    execute(_, [args]) {
         return Return.return(args.join(";"))
     },
 })

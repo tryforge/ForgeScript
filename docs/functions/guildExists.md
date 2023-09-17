@@ -15,7 +15,6 @@ guild ID | String | The guild to check | Yes | No
 </summary>
     
 ```ts
-import noop from "../functions/noop"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

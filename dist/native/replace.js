@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [text, match, replacement, amount]) {
+    execute(_, [text, match, replacement, amount]) {
         amount ??= -1;
         if (amount === -1) {
             return structures_1.Return.success(text.replaceAll(match, replacement));

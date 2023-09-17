@@ -50,7 +50,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, member, perms]) {
+    execute(_, [, member, perms]) {
         return Return.success(member.permissions.has(perms as PermissionsString[]))
     },
 })

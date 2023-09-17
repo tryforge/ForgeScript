@@ -68,15 +68,12 @@ export default new NativeFunction({
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const {
-            args,
-            return: rt
-        } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
         if (!this["isValidReturnType"](rt)) return rt
 
         const code = this.data.fields![3] as IExtendedCompiledFunctionField
 
-        const [ name, variable, otherVariable, defaultValue ] = args
+        const [name, variable, otherVariable, defaultValue] = args
 
         const arr = ctx.getEnvironmentKey(name)
 

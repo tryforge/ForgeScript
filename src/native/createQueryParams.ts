@@ -16,7 +16,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [params]) {
+    execute(_, [params]) {
         const obj: Record<string, string> = {}
         for (let i = 0, len = params.length; i < len; i += 2) {
             obj[params[i]] = params[i + 1]

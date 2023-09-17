@@ -6,11 +6,11 @@ $roleID
 ```
 ---
 ```
-$roleID[guild ID;...name]
+$roleID[guildID;...name]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-guild ID | Guild | The guild id to return the role from | Yes | No
+guildID | Guild | The guild id to return the role from | Yes | No
 name | String | The role name to return its id | Yes | Yes
 <details>
 <summary>
@@ -30,7 +30,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,

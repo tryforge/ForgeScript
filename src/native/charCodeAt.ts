@@ -22,7 +22,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [m, index]) {
+    execute(_, [m, index]) {
         return Return.success(m.charCodeAt(index))
     },
 })

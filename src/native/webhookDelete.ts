@@ -1,4 +1,3 @@
-import { BaseChannel, TextChannel, WebhookClient } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -17,7 +16,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [web]) {
+    async execute(_, [web]) {
         await web.delete().catch(noop)
         return Return.success()
     },

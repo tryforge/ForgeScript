@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../structures"
-import { camelCase, kebabCase, snakeCase } from "lodash"
+import { kebabCase } from "lodash"
 
 export default new NativeFunction({
     name: "$toKebabCase",
@@ -16,7 +16,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [m]) {
+    execute(_, [m]) {
         return Return.success(kebabCase(m))
     },
 })

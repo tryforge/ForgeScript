@@ -5,7 +5,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Breaks the loop",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return Return.break()
     },
 })

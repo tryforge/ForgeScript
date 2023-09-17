@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [guild, user, reason]) {
+    async execute(_, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop_1.default);
         return structures_1.Return.success(!!unbanned);
     },

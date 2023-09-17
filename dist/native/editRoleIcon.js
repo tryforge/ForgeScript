@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [, role, url]) {
+    async execute(_, [, role, url]) {
         return structures_1.Return.success(!!(await role.setIcon(url).catch(lodash_1.noop)));
     },
 });

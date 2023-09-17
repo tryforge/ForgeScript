@@ -44,7 +44,7 @@ export default new NativeFunction({
             pointer: 0,
         },
     ],
-    async execute(ctx, [guild, name, icon, returnEmojiID, roles]) {
+    async execute(_, [guild, name, icon, returnEmojiID, roles]) {
         const em = await guild.emojis
             .create({
                 attachment: icon,

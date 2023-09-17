@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [g, m]) {
+    execute(ctx, [, m]) {
         m ??= ctx.member;
         return structures_1.Return.success(m?.voice.channelId);
     },

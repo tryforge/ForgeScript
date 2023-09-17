@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [guild, banner]) {
+    async execute(_, [guild, banner]) {
         return structures_1.Return.success((await guild.setBanner(banner || null).catch(() => false)) !== false);
     },
 });

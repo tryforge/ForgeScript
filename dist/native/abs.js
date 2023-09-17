@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [n]) {
+    execute(_, [n]) {
         return structures_1.Return.success(Math.abs(n));
     },
 });

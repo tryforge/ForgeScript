@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [, m, nick]) {
+    async execute(_, [, m, nick]) {
         return structures_1.Return.success(!!(await m.setNickname(nick).catch(lodash_1.noop || null)));
     },
 });

@@ -19,8 +19,8 @@ name | String | The name of the command to pull its id | Yes | No
 </summary>
     
 ```ts
-import { noop } from "lodash";
-import { ArgType, NativeFunction, Return } from "../structures";
+import { noop } from "lodash"
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$applicationCommandID",
@@ -33,19 +33,20 @@ export default new NativeFunction({
             description: "The name of the command to pull its id",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    async execute(ctx, [ name ]) {
+    async execute(ctx, [name]) {
         if (this.hasFields) {
             const commands = await ctx.client.application.commands.fetch().catch(noop)
-            return Return.success(commands?.find(x => x.name === name)?.id)
+            return Return.success(commands?.find((x) => x.name === name)?.id)
         }
 
         return Return.success(ctx.interaction?.isCommand() ? ctx.interaction.commandName : undefined)
     },
 })
+
 ```
     
 </details>

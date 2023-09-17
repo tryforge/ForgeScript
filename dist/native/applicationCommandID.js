@@ -13,14 +13,14 @@ exports.default = new structures_1.NativeFunction({
             description: "The name of the command to pull its id",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.String,
+        },
     ],
     unwrap: true,
     async execute(ctx, [name]) {
         if (this.hasFields) {
             const commands = await ctx.client.application.commands.fetch().catch(lodash_1.noop);
-            return structures_1.Return.success(commands?.find(x => x.name === name)?.id);
+            return structures_1.Return.success(commands?.find((x) => x.name === name)?.id);
         }
         return structures_1.Return.success(ctx.interaction?.isCommand() ? ctx.interaction.commandName : undefined);
     },

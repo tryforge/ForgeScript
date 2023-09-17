@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [guild, user]) {
+    async execute(_, [guild, user]) {
         const isBanned = await guild.bans.fetch(user).catch(noop_1.default);
         return structures_1.Return.success(!!isBanned);
     },

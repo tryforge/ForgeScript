@@ -19,7 +19,6 @@ guild ID | Guild | The guild to get roles from | Yes | No
 </summary>
     
 ```ts
-import { ChannelType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

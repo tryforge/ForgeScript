@@ -15,7 +15,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [values]) {
+    execute(_, [values]) {
         return Return.success(values.join(";").toLowerCase())
     },
 })

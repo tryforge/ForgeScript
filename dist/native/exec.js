@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [command]) {
+    async execute(_, [command]) {
         try {
             const exec = await (0, child_process_1.execSync)(command, { encoding: "utf-8" });
             return structures_1.Return.success(exec);

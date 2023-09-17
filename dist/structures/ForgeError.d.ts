@@ -1,5 +1,5 @@
 import { CompiledFunction } from "./CompiledFunction";
-export type GetErrorArgs<T extends string> = T extends `${infer L}$${infer R}` ? [unknown, ...GetErrorArgs<R>] : [];
+export declare type GetErrorArgs<T extends string> = T extends `${infer L}$${infer R}` ? [unknown, ...GetErrorArgs<R>] : [];
 export declare enum ErrorType {
     InvalidArgType = "Given value $1 for argument $2 is not of type $3",
     MissingArg = "Function $1 is missing argument $2",

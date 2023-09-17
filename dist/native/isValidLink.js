@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     description: "Checks whether a link is valid",
-    execute(ctx, [link]) {
+    execute(_, [link]) {
         return structures_1.Return.success(exports.LinkRegex.test(link));
     },
 });

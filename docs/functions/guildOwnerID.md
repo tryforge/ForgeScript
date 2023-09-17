@@ -19,7 +19,6 @@ guild ID | Guild | The guild to retrieve the owner from | Yes | No
 </summary>
     
 ```ts
-import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

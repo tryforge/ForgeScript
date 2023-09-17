@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [m, index]) {
+    execute(_, [m, index]) {
         return structures_1.Return.success(m.charCodeAt(index));
     },
 });

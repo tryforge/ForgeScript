@@ -1,4 +1,3 @@
-import { ActionRowBuilder, AnyComponentBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

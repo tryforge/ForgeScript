@@ -20,7 +20,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the current ram usage in MB",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return Return.success(process.memoryUsage().heapUsed / 1024 ** 2)
     },
 })

@@ -16,7 +16,7 @@ message | String | The string to turn snake case | Yes | No
     
 ```ts
 import { ArgType, NativeFunction, Return } from "../structures"
-import { camelCase, snakeCase } from "lodash"
+import { snakeCase } from "lodash"
 
 export default new NativeFunction({
     name: "$toSnakeCase",
@@ -33,7 +33,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [m]) {
+    execute(_, [m]) {
         return Return.success(snakeCase(m))
     },
 })

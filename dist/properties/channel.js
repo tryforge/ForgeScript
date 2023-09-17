@@ -15,7 +15,7 @@ var ChannelProperty;
     ChannelProperty["members"] = "members";
     ChannelProperty["name"] = "name";
     ChannelProperty["timestamp"] = "timestamp";
-})(ChannelProperty || (exports.ChannelProperty = ChannelProperty = {}));
+})(ChannelProperty = exports.ChannelProperty || (exports.ChannelProperty = {}));
 exports.ChannelProperties = (0, defineProperties_1.default)({
     bitrate: (i) => (i?.isVoiceBased() ? i.bitrate : undefined),
     id: (i) => i?.id,

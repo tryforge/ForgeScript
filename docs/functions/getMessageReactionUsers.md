@@ -59,7 +59,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, message, reaction, sep]) {
+    async execute(_, [, , reaction, sep]) {
         const users = new Array<string>()
 
         let afterID: undefined | string = undefined

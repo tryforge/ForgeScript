@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.GuildEmoji,
         },
     ],
-    async execute(ctx, [guild, emotes]) {
+    async execute(_, [, emotes]) {
         let count = 0;
         for (let i = 0, len = emotes.length; i < len; i++) {
             const emote = emotes[i];

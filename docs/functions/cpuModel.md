@@ -20,7 +20,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Returns the cpu model",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return Return.success(os.cpus()[0]?.model)
     },
 })

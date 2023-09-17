@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Reaction,
         },
     ],
-    execute(ctx, [channel, message, reaction]) {
+    execute(_, [, , reaction]) {
         return structures_1.Return.success(reaction.count);
     },
 });

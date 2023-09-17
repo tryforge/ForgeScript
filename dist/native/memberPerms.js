@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         return structures_1.Return.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "));
     },
 });

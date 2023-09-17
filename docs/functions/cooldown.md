@@ -62,7 +62,7 @@ Hello!
     ],
     experimental: true,
     async execute(ctx) {
-        const [id, duration, code] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [, , code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const dur = await this["resolveUnhandledArg"](ctx, 0)
         if (!this["isValidReturnType"](dur)) return dur

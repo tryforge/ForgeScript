@@ -27,15 +27,7 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    execute(ctx, [n, min, max]) {
-        return Return.success(
-            min !== null && max !== null
-                ? n >= min && n <= max
-                : min !== null
-                ? n >= min
-                : max !== null
-                ? n <= max
-                : true
-        )
+    execute(_, [n, min, max]) {
+        return Return.success(min === null || max === null ? false : Math.max(min, n) === Math.min(max, n))
     },
 })

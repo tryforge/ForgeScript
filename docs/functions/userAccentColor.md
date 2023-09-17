@@ -19,7 +19,6 @@ user ID | User | The user to retrieve the accent color | Yes | No
 </summary>
     
 ```ts
-import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

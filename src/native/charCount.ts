@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [str]) {
+    execute(_, [str]) {
         return Return.success(str.length)
     },
 })

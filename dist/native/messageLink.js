@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [channel, message]) {
+    execute(ctx, [, message]) {
         const msg = message ?? ctx.message;
         return structures_1.Return.success(msg?.url);
     },

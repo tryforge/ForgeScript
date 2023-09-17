@@ -23,7 +23,7 @@ end index | Number | The end index | No | No
 import { ArgType, NativeFunction } from "../structures"
 import { Return } from "../structures/Return"
 
-const NoMentionRegex = /<(@(&|!)?|#)(\d{16,23})>/g
+const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g
 
 export default new NativeFunction({
     name: "$noMentionMessage",

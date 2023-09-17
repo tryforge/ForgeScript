@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [, role, perms]) {
+    async execute(_, [, role, perms]) {
         return structures_1.Return.success(!!(await role.setPermissions(perms).catch(lodash_1.noop)));
     },
 });

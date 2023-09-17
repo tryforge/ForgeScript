@@ -1,4 +1,3 @@
-import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -25,7 +24,7 @@ export default new NativeFunction({
             type: ArgType.GuildEmoji,
         },
     ],
-    async execute(ctx, [guild, emotes]) {
+    async execute(_, [, emotes]) {
         let count = 0
         for (let i = 0, len = emotes.length; i < len; i++) {
             const emote = emotes[i]

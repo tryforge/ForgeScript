@@ -17,7 +17,7 @@ var VoiceStateProperty;
     VoiceStateProperty["selfMuted"] = "selfMuted";
     VoiceStateProperty["guildMuted"] = "guildMuted";
     VoiceStateProperty["timestamp"] = "timestamp";
-})(VoiceStateProperty || (exports.VoiceStateProperty = VoiceStateProperty = {}));
+})(VoiceStateProperty = exports.VoiceStateProperty || (exports.VoiceStateProperty = {}));
 exports.VoiceStateProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.channel?.createdTimestamp,
     authorID: (i) => i?.member?.id,

@@ -31,7 +31,7 @@ export default new NativeFunction({
             pointer: 0,
         },
     ],
-    async execute(ctx, [guild, member, roles]) {
+    async execute(ctx, [, member, roles]) {
         member ??= ctx.member!
         const d = await member.roles.add(roles).catch(noop)
 

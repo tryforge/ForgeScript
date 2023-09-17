@@ -15,7 +15,7 @@ path | String | The path to the file | Yes | No
 </summary>
     
 ```ts
-import { rmSync, writeFileSync } from "fs"
+import { rmSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -33,7 +33,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [path]) {
+    execute(_, [path]) {
         // eslint-disable-next-line no-undef
         rmSync(path, { recursive: true })
 

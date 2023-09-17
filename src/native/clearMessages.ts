@@ -26,7 +26,7 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    async execute(ctx, [channel, amount]) {
+    async execute(_, [channel, amount]) {
         let count = 0
 
         for (const n of splitNumber(amount, 100)) {

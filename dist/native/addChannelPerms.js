@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
             enum: discord_js_1.PermissionFlagsBits,
         },
     ],
-    async execute(ctx, [ch, id, perms]) {
+    async execute(_, [ch, id, perms]) {
         const channel = ch;
         const obj = {};
         perms.forEach((x) => (obj[x] = true));
