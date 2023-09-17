@@ -11,4 +11,8 @@ export class ApplicationCommand {
     public get name() {
         return this.options.data.name
     }
+
+    public toJSON() {
+        return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data
+    }
 }
