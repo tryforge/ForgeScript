@@ -85,7 +85,7 @@ export class ApplicationCommandManager {
         if (!input.isChatInputCommand())
             return this.commands.get(commandName) as ApplicationCommand
         const subcommandName = input.options.getSubcommand(false)
-        const subcommandGroupName = input.options.getSubcommandGroup()
+        const subcommandGroupName = input.options.getSubcommandGroup(false)
 
         const cmd = this.commands.get(commandName) ?? null
         if (cmd instanceof Collection) {
