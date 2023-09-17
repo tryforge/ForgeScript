@@ -10,6 +10,8 @@ export interface IHttpOptions {
     headers: Record<string, string>;
     method: string;
 }
+export type ClassType = new (...args: any[]) => any;
+export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
 export declare class Context {
     #private;
     readonly runtime: IRunnable;
@@ -36,7 +38,7 @@ export declare class Context {
     clearHttpOptions(): void;
     setEnvironmentKey(name: string, value: unknown): unknown;
     deleteEnvironmentKey(name: string): boolean;
-    getEnvironmentKey(args: string[]): any;
+    getEnvironmentKey(...args: string[]): any;
     getKeyword(name: string): string;
     deleteKeyword(name: string): boolean;
     setKeyword(name: string, value: string): string;
@@ -52,5 +54,6 @@ export declare class Context {
     isCommand(): this is this & {
         get interaction(): ChatInputCommandInteraction;
     };
+    getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null;
 }
 //# sourceMappingURL=Context.d.ts.map

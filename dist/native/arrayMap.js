@@ -49,7 +49,7 @@ exports.default = new structures_1.NativeFunction({
         const otherVariable = await this["resolveCode"](ctx, otherVarField);
         if (!this["isValidReturnType"](otherVariable))
             return variable;
-        const arr = ctx.getEnvironmentKey([name.value]);
+        const arr = ctx.getEnvironmentKey(name.value);
         const varName = variable.value;
         const otherVarName = otherVariable.value;
         const newArr = new Array();

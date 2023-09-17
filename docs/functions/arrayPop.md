@@ -33,7 +33,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        const arr = ctx.getEnvironmentKey([name])
+        const arr = ctx.getEnvironmentKey(name)
         if (Array.isArray(arr)) return Return.success(arr.pop())
         return Return.success()
     },

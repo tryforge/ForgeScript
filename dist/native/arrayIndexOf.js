@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name, value]) {
-        const arr = ctx.getEnvironmentKey([name]);
+        const arr = ctx.getEnvironmentKey(name);
         return structures_1.Return.success(Array.isArray(arr) ? arr.indexOf(value) : -1);
     },
 });

@@ -68,42 +68,35 @@ export default new NativeFunction({
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, otherVarField, code, defaultValue] = this.data
-            .fields! as IExtendedCompiledFunctionField[]
+        const {
+            args,
+            return: rt
+        } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
+        if (!this["isValidReturnType"](rt)) return rt
 
-        const name = await this["resolveCode"](ctx, nameField)
-        if (!this["isValidReturnType"](name)) return name
+        const code = this.data.fields![3] as IExtendedCompiledFunctionField
 
-        const variable = await this["resolveCode"](ctx, varField)
-        if (!this["isValidReturnType"](variable)) return variable
+        const [ name, variable, otherVariable, defaultValue ] = args
 
-        const otherVariable = await this["resolveCode"](ctx, otherVarField)
-        if (!this["isValidReturnType"](otherVariable)) return variable
+        const arr = ctx.getEnvironmentKey(name)
 
-        const defValue = await this["resolveCode"](ctx, defaultValue)
-        if (!this["isValidReturnType"](defValue)) return variable
-
-        const arr = ctx.getEnvironmentKey([name.value as string])
-        const varName = variable.value as string
-        const otherVarName = otherVariable.value as string
-
-        ctx.setEnvironmentKey(varName, defValue.value)
+        ctx.setEnvironmentKey(variable, defaultValue)
 
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i]
 
-                ctx.setEnvironmentKey(otherVarName, el)
+                ctx.setEnvironmentKey(otherVariable, el)
 
                 const rt = (await this["resolveCode"](ctx, code)) as Return
 
                 if (rt.return) {
-                    ctx.setEnvironmentKey(varName, rt.value)
+                    ctx.setEnvironmentKey(variable, rt.value)
                 } else if (!this["isValidReturnType"](rt)) return rt
             }
         }
 
-        return Return.success(ctx.getEnvironmentKey([varName]))
+        return Return.success(ctx.getEnvironmentKey(variable))
     },
 })
 

@@ -31,6 +31,9 @@ export interface IHttpOptions {
     method: string
 }
 
+export type ClassType = new (...args: any[]) => any
+export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never
+
 export class Context {
     #member?: GuildMember | null
     #user?: User | null
@@ -195,7 +198,7 @@ export class Context {
         return delete this.#environment[name]
     }
 
-    public getEnvironmentKey(args: string[]) {
+    public getEnvironmentKey(...args: string[]) {
         let previous = this.#environment as any
         for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i]
@@ -239,5 +242,10 @@ export class Context {
 
     public isCommand(): this is this & { get interaction(): ChatInputCommandInteraction } {
         return !!this.interaction && this.interaction.isChatInputCommand()
+    }
+
+    public getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null {
+        const got = this.getEnvironmentKey(...keys)
+        return got && got instanceof type ? got : null
     }
 }

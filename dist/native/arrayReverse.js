@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [var1, var2]) {
-        const arr = ctx.getEnvironmentKey([var1]);
+        const arr = ctx.getEnvironmentKey(var1);
         if (Array.isArray(arr)) {
             ctx.setEnvironmentKey(var2, arr.reverse());
         }

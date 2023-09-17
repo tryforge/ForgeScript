@@ -38,7 +38,7 @@ export default new NativeFunction({
         } = await this["resolveMultipleArgs"](ctx, 0, 1)
         if (!this["isValidReturnType"](rt)) return rt
 
-        const arr = ctx.getEnvironmentKey([name as string])
+        const arr = ctx.getEnvironmentKey(name)
 
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {

@@ -45,37 +45,26 @@ exports.default = new structures_1.NativeFunction({
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, otherVarField, code, defaultValue] = this.data
-            .fields;
-        const name = await this["resolveCode"](ctx, nameField);
-        if (!this["isValidReturnType"](name))
-            return name;
-        const variable = await this["resolveCode"](ctx, varField);
-        if (!this["isValidReturnType"](variable))
-            return variable;
-        const otherVariable = await this["resolveCode"](ctx, otherVarField);
-        if (!this["isValidReturnType"](otherVariable))
-            return variable;
-        const defValue = await this["resolveCode"](ctx, defaultValue);
-        if (!this["isValidReturnType"](defValue))
-            return variable;
-        const arr = ctx.getEnvironmentKey([name.value]);
-        const varName = variable.value;
-        const otherVarName = otherVariable.value;
-        ctx.setEnvironmentKey(varName, defValue.value);
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const code = this.data.fields[3];
+        const [name, variable, otherVariable, defaultValue] = args;
+        const arr = ctx.getEnvironmentKey(name);
+        ctx.setEnvironmentKey(variable, defaultValue);
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
-                ctx.setEnvironmentKey(otherVarName, el);
+                ctx.setEnvironmentKey(otherVariable, el);
                 const rt = (await this["resolveCode"](ctx, code));
                 if (rt.return) {
-                    ctx.setEnvironmentKey(varName, rt.value);
+                    ctx.setEnvironmentKey(variable, rt.value);
                 }
                 else if (!this["isValidReturnType"](rt))
                     return rt;
             }
         }
-        return structures_1.Return.success(ctx.getEnvironmentKey([varName]));
+        return structures_1.Return.success(ctx.getEnvironmentKey(variable));
     },
 });
 //# sourceMappingURL=arrayReduce.js.map

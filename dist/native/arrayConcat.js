@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = new Array();
         for (let i = 0, len = variables.length; i < len; i++) {
             const v = variables[i];
-            const load = ctx.getEnvironmentKey([v]);
+            const load = ctx.getEnvironmentKey(v);
             if (Array.isArray(load))
                 arr.push(...load);
         }

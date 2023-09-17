@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name, sep]) {
-        const arr = ctx.getEnvironmentKey([name]);
+        const arr = ctx.getEnvironmentKey(name);
         return structures_1.Return.success(Array.isArray(arr) ? arr.join(sep || ", ") : undefined);
     },
 });
