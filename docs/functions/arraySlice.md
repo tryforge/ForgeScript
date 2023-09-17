@@ -56,7 +56,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [var1, var2, start, end]) {
-        const arr = ctx.getEnvironmentKey([var1])
+        const arr = ctx.getEnvironmentKey(var1)
 
         if (Array.isArray(arr)) {
             ctx.setEnvironmentKey(var2, arr.slice(start, end || undefined))

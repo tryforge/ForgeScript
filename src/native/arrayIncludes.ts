@@ -23,7 +23,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name, value]) {
-        const arr = ctx.getEnvironmentKey([name])
+        const arr = ctx.getEnvironmentKey(name)
         return Return.success(Array.isArray(arr) ? arr.includes(value) : false)
     },
 })

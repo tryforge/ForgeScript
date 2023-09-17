@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        const arr = ctx.getEnvironmentKey([name]);
+        const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr)) {
             arr.length = 0;
         }

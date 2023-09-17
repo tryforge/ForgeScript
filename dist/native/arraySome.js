@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
         const { args: { "0": name, "1": variable }, return: rt, } = await this["resolveMultipleArgs"](ctx, 0, 1);
         if (!this["isValidReturnType"](rt))
             return rt;
-        const arr = ctx.getEnvironmentKey([name]);
+        const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];

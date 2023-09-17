@@ -149,7 +149,7 @@ class Context {
     deleteEnvironmentKey(name) {
         return delete this.#environment[name];
     }
-    getEnvironmentKey(args) {
+    getEnvironmentKey(...args) {
         let previous = this.#environment;
         for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i];
@@ -185,6 +185,10 @@ class Context {
     }
     isCommand() {
         return !!this.interaction && this.interaction.isChatInputCommand();
+    }
+    getEnvironmentInstance(type, ...keys) {
+        const got = this.getEnvironmentKey(...keys);
+        return got && got instanceof type ? got : null;
     }
 }
 exports.Context = Context;

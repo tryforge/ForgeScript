@@ -27,7 +27,7 @@ export default new NativeFunction({
 
         for (let i = 0, len = variables.length; i < len; i++) {
             const v = variables[i]
-            const load = ctx.getEnvironmentKey([v])
+            const load = ctx.getEnvironmentKey(v)
             if (Array.isArray(load)) arr.push(...load)
         }
 

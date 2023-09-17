@@ -38,7 +38,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name, index, count, elements]) {
-        const arr = ctx.getEnvironmentKey([name]);
+        const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr)) {
             arr.splice(index, count, ...elements);
         }

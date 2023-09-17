@@ -49,7 +49,7 @@ export default new NativeFunction({
         const otherVariable = await this["resolveCode"](ctx, otherVarField)
         if (!this["isValidReturnType"](otherVariable)) return variable
 
-        const arr = ctx.getEnvironmentKey([name.value as string])
+        const arr = ctx.getEnvironmentKey(name.value as string)
         const varName = variable.value as string
         const otherVarName = otherVariable.value as string
 
