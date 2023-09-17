@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [path, data, encoding]) {
+    execute(_, [path, data, encoding]) {
         // eslint-disable-next-line no-undef
         (0, fs_1.appendFileSync)(path, data, { encoding: encoding || "utf-8" });
         return structures_1.Return.success();

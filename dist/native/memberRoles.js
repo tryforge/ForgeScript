@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         member ??= ctx.member;
         return structures_1.Return.success(member?.roles.cache
             .filter((x) => x.id !== x.guild.id)

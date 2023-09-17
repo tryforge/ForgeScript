@@ -37,7 +37,7 @@ export default new NativeFunction({
             type: ArgType.Message,
         },
     ],
-    async execute(ctx, [channel, name, content, msg]) {
+    async execute(ctx, [channel, name, content]) {
         const ch = channel as TextChannel
 
         ctx.container.content = content || undefined

@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [str, match]) {
+    execute(_, [str, match]) {
         return structures_1.Return.success(str.endsWith(match));
     },
 });

@@ -29,7 +29,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [path, data, encoding]) {
+    execute(_, [path, data, encoding]) {
         // eslint-disable-next-line no-undef
         writeFileSync(path, data, { encoding: (encoding as BufferEncoding) || "utf-8" })
 

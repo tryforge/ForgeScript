@@ -6,7 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.6",
     description: "Returns the lowest safe integer",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success(Number.MIN_SAFE_INTEGER);
     },
 });

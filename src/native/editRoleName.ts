@@ -31,7 +31,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [, role, name]) {
+    async execute(_, [, role, name]) {
         return Return.success(!!(await role.setName(name).catch(noop)))
     },
 })

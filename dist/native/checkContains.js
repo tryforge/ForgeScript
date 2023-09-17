@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [text, matches]) {
+    execute(_, [text, matches]) {
         return structures_1.Return.success(matches.some((x) => text.includes(x)));
     },
 });

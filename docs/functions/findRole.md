@@ -42,7 +42,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, q]) {
+    execute(_, [guild, q]) {
         const id = q.replace(RoleMentionCharRegex, "")
 
         if (CompiledFunction.IdRegex.test(id)) {

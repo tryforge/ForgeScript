@@ -7,7 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the cpu usage of the host (not accurate)",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return Return.success(loadavg()[0] * 100)
     },
 })

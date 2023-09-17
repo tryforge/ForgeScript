@@ -20,7 +20,7 @@ id | User | The user id to get the username of | No | No
     
 ```ts
 import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return, ReturnType } from "../structures/Return"
+import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$username",

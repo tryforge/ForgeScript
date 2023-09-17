@@ -12,8 +12,8 @@ $customID
 </summary>
     
 ```ts
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return, ReturnType } from "../structures/Return"
+import { NativeFunction } from "../structures/NativeFunction"
+import { Return } from "../structures/Return"
 
 export default new NativeFunction({
     name: "$customID",

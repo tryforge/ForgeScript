@@ -1,5 +1,3 @@
-import { GuildProperties, GuildProperty } from "../properties/guild"
-import { RoleProperties, RoleProperty } from "../properties/role"
 import { UserProperties, UserProperty } from "../properties/user"
 import { ArgType, NativeFunction, Return } from "../structures"
 

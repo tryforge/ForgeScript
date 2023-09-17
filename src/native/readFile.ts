@@ -22,7 +22,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [path, encoding]) {
+    execute(_, [path, encoding]) {
         // eslint-disable-next-line no-undef
         const txt = readFileSync(path, { encoding: (encoding as BufferEncoding) || "utf-8" })
 

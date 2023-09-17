@@ -23,7 +23,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, member]) {
+    execute(ctx, [, member]) {
         return Return.success((member ?? ctx.member)?.presence?.status)
     },
 })

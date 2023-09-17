@@ -1,5 +1,5 @@
-import { noop } from "lodash";
-import { ArgType, NativeFunction, Return } from "../structures";
+import { noop } from "lodash"
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$applicationCommandDescription",
@@ -12,11 +12,11 @@ export default new NativeFunction({
             description: "The id of the command to pull its description",
             rest: false,
             required: true,
-            type: ArgType.String
-        }
+            type: ArgType.String,
+        },
     ],
     unwrap: true,
-    async execute(ctx, [ id ]) {
+    async execute(ctx, [id]) {
         if (this.hasFields) {
             const command = await ctx.client.application.commands.fetch(id).catch(noop)
             return Return.success(command ? command.description : undefined)

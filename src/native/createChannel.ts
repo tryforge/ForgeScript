@@ -44,7 +44,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, name, type, topic, parentId]) {
+    async execute(_, [guild, name, type, topic, parentId]) {
         const ch = await guild.channels
             .create({
                 type: type as GuildChannelCreateOptions["type"],

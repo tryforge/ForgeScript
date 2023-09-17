@@ -34,7 +34,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [expr]) {
+    execute(_, [expr]) {
         try {
             if (MathRegex.test(expr)) return Return.success()
             return Return.success(eval(expr))

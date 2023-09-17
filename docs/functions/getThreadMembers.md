@@ -42,7 +42,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, sep]) {
+    async execute(_, [channel, sep]) {
         const thread = channel as ThreadChannel
 
         const success = await thread.members.fetch().catch(noop)

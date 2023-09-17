@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [numbers]) {
+    execute(_, [numbers]) {
         return Return.success(numbers.reduce((x, y) => x % y))
     },
 })

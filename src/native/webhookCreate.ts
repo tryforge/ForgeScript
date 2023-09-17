@@ -31,7 +31,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, name, url]) {
+    async execute(_, [channel, name, url]) {
         const ch = channel as TextChannel
         const web = await ch
             .createWebhook({

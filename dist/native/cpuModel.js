@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Returns the cpu model",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success(node_os_1.default.cpus()[0]?.model);
     },
 });

@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [numbers]) {
+    execute(_, [numbers]) {
         return structures_1.Return.success(numbers.reduce((x, y) => x / y));
     },
 });

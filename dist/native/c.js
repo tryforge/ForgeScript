@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success();
     },
 });

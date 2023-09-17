@@ -15,7 +15,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [m]) {
+    execute(_, [m]) {
         return Return.success(m.trimStart())
     },
 })

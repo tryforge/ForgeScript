@@ -22,12 +22,12 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx) {
-        const [code, rawTime] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const time: Return = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](time)) return time
 
-        const timeout = setTimeout(async () => {
+        setTimeout(async () => {
             await this["resolveCode"](ctx, code)
         }, time.value as number)
 

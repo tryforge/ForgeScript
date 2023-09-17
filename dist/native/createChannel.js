@@ -48,7 +48,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [guild, name, type, topic, parentId]) {
+    async execute(_, [guild, name, type, topic, parentId]) {
         const ch = await guild.channels
             .create({
             type: type,

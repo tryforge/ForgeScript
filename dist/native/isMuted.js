@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, member]) {
+    execute(ctx, [, member]) {
         member ??= ctx.member;
         return structures_1.Return.success(member?.voice.mute ?? false);
     },

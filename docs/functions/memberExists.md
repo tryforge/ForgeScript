@@ -41,7 +41,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, id]) {
+    async execute(_, [guild, id]) {
         return Return.success(CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop)))
     },
 })

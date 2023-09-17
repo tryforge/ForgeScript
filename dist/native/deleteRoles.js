@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Role,
         },
     ],
-    async execute(ctx, [guild, roles]) {
+    async execute(_, [, roles]) {
         let count = 0;
         for (let i = 0, len = roles.length; i < len; i++) {
             const role = roles[i];

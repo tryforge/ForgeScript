@@ -23,11 +23,11 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx) {
-        const [code, rawTime] = this.data.fields;
+        const [code] = this.data.fields;
         const time = await this["resolveUnhandledArg"](ctx, 1);
         if (!this["isValidReturnType"](time))
             return time;
-        const timeout = setTimeout(async () => {
+        setTimeout(async () => {
             await this["resolveCode"](ctx, code);
         }, time.value);
         return structures_1.Return.success();

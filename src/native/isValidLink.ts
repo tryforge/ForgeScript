@@ -18,7 +18,7 @@ export default new NativeFunction({
         },
     ],
     description: "Checks whether a link is valid",
-    execute(ctx, [link]) {
+    execute(_, [link]) {
         return Return.success(LinkRegex.test(link))
     },
 })

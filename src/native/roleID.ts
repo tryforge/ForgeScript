@@ -8,7 +8,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: ArgType.Guild,

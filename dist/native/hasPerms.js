@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, member, perms]) {
+    execute(_, [, member, perms]) {
         return structures_1.Return.success(member.permissions.has(perms));
     },
 });

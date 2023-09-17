@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [channel, opt, content]) {
+    async execute(ctx, [, opt, content]) {
         ctx.container.content = content || undefined;
         ctx.container.edit = true;
         const msg = await ctx.container.send(opt);

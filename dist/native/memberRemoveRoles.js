@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
         },
     ],
-    async execute(ctx, [guild, member, roles]) {
+    async execute(ctx, [, member, roles]) {
         member ??= ctx.member;
         const d = await member.roles.remove(roles).catch(noop_1.default);
         return structures_1.Return.success(!!d);

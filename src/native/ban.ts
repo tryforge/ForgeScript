@@ -1,4 +1,3 @@
-import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -36,7 +35,7 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
-    async execute(ctx, [guild, user, reason, seconds]) {
+    async execute(_, [guild, user, reason, seconds]) {
         return Return.success(
             (await guild.members
                 .ban(user, {

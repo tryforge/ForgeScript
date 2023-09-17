@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the role from",
             rest: false,
             type: structures_1.ArgType.Guild,
@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [guild, role, sep]) {
+    execute(ctx, [, role, sep]) {
         return structures_1.Return.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "));
     },
 });

@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [guild, id]) {
+    async execute(_, [guild, id]) {
         return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && guild.channels.cache.has(id));
     },
 });

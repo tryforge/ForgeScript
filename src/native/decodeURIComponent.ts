@@ -15,7 +15,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [text]) {
+    execute(_, [text]) {
         return Return.success(decodeURIComponent(text))
     },
 })

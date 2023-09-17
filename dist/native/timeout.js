@@ -34,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number,
         },
     ],
-    async execute(ctx, [guild, member, ms]) {
+    async execute(_, [, member, ms]) {
         const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(noop_1.default);
         return structures_1.Return.success(!!timeout);
     },

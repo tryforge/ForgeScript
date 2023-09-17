@@ -24,7 +24,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [channel, topic]) {
+    async execute(_, [channel, topic]) {
         return Return.success(!!(await (channel as TextChannel).setTopic(topic || null).catch(noop)))
     },
 })

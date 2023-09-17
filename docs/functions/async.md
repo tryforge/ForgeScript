@@ -18,7 +18,7 @@ code | String | The code to execute | Yes | No
 </summary>
     
 ```ts
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$async",

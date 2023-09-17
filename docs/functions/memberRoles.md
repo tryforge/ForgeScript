@@ -52,7 +52,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [guild, member, sep]) {
+    execute(ctx, [, member, sep]) {
         member ??= ctx.member!
         return Return.success(
             member?.roles.cache

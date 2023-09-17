@@ -26,7 +26,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [channel, message]) {
+    async execute(ctx, [, message]) {
         return Return.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop)))
     },
 })

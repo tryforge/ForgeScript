@@ -39,7 +39,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [channel, message, reaction, sep]) {
+    async execute(_, [, , reaction, sep]) {
         const users = new Array();
         let afterID = undefined;
         if (reaction.users.cache.size <= reaction.count) {

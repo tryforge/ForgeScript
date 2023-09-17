@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Returns the amount of cpu cores",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success(node_os_1.default.cpus().length);
     },
 });

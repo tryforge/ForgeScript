@@ -33,7 +33,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [ms]) {
+    async execute(_, [ms]) {
         await setTimeout(ms)
         return Return.success()
     },

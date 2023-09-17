@@ -15,7 +15,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [codes]) {
+    execute(_, [codes]) {
         return Return.success(String.fromCharCode(...codes))
     },
 })

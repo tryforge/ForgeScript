@@ -40,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Message,
         },
     ],
-    async execute(ctx, [channel, name, content, msg]) {
+    async execute(ctx, [channel, name, content]) {
         const ch = channel;
         ctx.container.content = content || undefined;
         const success = await ch.threads

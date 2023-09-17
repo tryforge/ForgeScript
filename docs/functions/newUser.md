@@ -16,8 +16,6 @@ separator | String | The separator to use in case of array | No | No
 </summary>
     
 ```ts
-import { GuildProperties, GuildProperty } from "../properties/guild"
-import { RoleProperties, RoleProperty } from "../properties/role"
 import { UserProperties, UserProperty } from "../properties/user"
 import { ArgType, NativeFunction, Return } from "../structures"
 

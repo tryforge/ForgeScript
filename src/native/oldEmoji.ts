@@ -1,6 +1,4 @@
 import { EmojiProperties, EmojiProperty } from "../properties/emoji"
-import { GuildProperties, GuildProperty } from "../properties/guild"
-import { MemberProperties, MemberProperty } from "../properties/member"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

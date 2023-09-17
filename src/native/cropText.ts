@@ -28,7 +28,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [text, start, end]) {
+    execute(_, [text, start, end]) {
         return Return.success(text.slice(start, end || undefined))
     },
 })

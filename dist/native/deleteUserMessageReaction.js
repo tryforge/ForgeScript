@@ -44,7 +44,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.User,
         },
     ],
-    async execute(ctx, [, , emoji, user]) {
+    async execute(_, [, , emoji, user]) {
         return structures_1.Return.success(!!(await emoji.users.remove(user).catch(noop_1.default)));
     },
 });

@@ -20,7 +20,6 @@ separator | String | The separator to use for each emoji | Yes | No
 </summary>
     
 ```ts
-import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number,
         },
     ],
-    async execute(ctx, [channel, seconds]) {
+    async execute(_, [channel, seconds]) {
         return structures_1.Return.success(!!(await channel.setRateLimitPerUser(seconds || 0).catch(noop_1.default)));
     },
 });

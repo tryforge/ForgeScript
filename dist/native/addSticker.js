@@ -47,7 +47,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [guild, url, name, tags, desc]) {
+    async execute(_, [guild, url, name, tags, desc]) {
         const created = await guild.stickers
             .create({
             file: url,

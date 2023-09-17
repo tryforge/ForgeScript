@@ -1,4 +1,3 @@
-import noop from "../functions/noop"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -23,7 +22,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, id]) {
+    async execute(_, [guild, id]) {
         return Return.success(CompiledFunction.IdRegex.test(id) && guild.channels.cache.has(id))
     },
 })

@@ -18,7 +18,6 @@ return message ID | Boolean | Returns the message id of the newly created messag
     
 ```ts
 import { Message } from "discord.js"
-import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

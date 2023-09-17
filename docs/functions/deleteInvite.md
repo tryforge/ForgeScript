@@ -15,7 +15,6 @@ code | Invite | The invite code | Yes | No
 </summary>
     
 ```ts
-import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -34,7 +33,7 @@ export default new NativeFunction({
             type: ArgType.Invite,
         },
     ],
-    async execute(ctx, [invite]) {
+    async execute(_, [invite]) {
         return Return.success(!!(await invite.delete().catch(noop)))
     },
 })

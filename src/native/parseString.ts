@@ -1,4 +1,3 @@
-import { TimeParser } from "../constants"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -16,7 +15,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms]) {
+    execute(_, [ms]) {
         return Return.success(ms)
     },
 })

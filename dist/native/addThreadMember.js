@@ -42,7 +42,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [guild, channel, member, reason]) {
+    async execute(_, [, channel, member, reason]) {
         const thread = channel;
         const success = await thread.members.add(member, reason || undefined).catch(noop_1.default);
         return structures_1.Return.success(!!success);

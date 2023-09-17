@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Reaction,
         },
     ],
-    async execute(ctx, [channel, message, emojis]) {
+    async execute(_, [, , emojis]) {
         let count = 0;
         for (const emoji of emojis) {
             const success = await emoji.remove().catch(noop_1.default);

@@ -61,7 +61,7 @@ export default new NativeFunction({
             type: ArgType.User,
         },
     ],
-    async execute(ctx, [, , emoji, user]) {
+    async execute(_, [, , emoji, user]) {
         return Return.success(!!(await emoji.users.remove(user).catch(noop)))
     },
 })

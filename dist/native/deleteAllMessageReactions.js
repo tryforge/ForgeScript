@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [channel, message]) {
+    async execute(ctx, [, message]) {
         return structures_1.Return.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop_1.default)));
     },
 });

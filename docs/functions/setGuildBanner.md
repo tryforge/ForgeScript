@@ -39,7 +39,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [guild, banner]) {
+    async execute(_, [guild, banner]) {
         return Return.success((await guild.setBanner(banner || null).catch(() => false)) !== false)
     },
 })

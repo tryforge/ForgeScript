@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [params]) {
+    execute(_, [params]) {
         const obj = {};
         for (let i = 0, len = params.length; i < len; i += 2) {
             obj[params[i]] = params[i + 1];

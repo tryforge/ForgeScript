@@ -54,7 +54,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms, limit, sep, and]) {
+    execute(_, [ms, limit, sep, and]) {
         return Return.success(
             TimeParser.parseToString(ms, {
                 and: and || false,

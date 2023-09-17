@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [web]) {
+    async execute(_, [web]) {
         await web.delete().catch(noop_1.default);
         return structures_1.Return.success();
     },

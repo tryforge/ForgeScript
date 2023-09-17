@@ -20,7 +20,7 @@ separator | String | The separator to use for every tag | No | No
 </summary>
     
 ```ts
-import { BaseChannel, ChannelType, ThreadChannel } from "discord.js"
+import { BaseChannel, ThreadChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

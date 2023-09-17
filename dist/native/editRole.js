@@ -62,7 +62,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [, role, name, color, icon, hoist, mentionable, perms]) {
+    async execute(_, [, role, name, color, icon, hoist, mentionable, perms]) {
         return structures_1.Return.success(!!(await role
             .edit({
             color: color || undefined,

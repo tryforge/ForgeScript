@@ -15,7 +15,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [v]) {
+    execute(_, [v]) {
         return Return.success(v === "true" || v === "false")
     },
 })

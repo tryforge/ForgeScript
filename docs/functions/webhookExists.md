@@ -15,7 +15,6 @@ id | String | The webhook id | Yes | No
 </summary>
     
 ```ts
-import { BaseChannel, TextChannel, WebhookClient } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 

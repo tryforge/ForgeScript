@@ -60,7 +60,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [, m, prop, sep]) {
+    execute(_, [, m, prop, sep]) {
         return Return.success(MessageProperties[prop](m, sep || ", "))
     },
 })

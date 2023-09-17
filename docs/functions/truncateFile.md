@@ -16,7 +16,7 @@ length | Number | The new length for the file | Yes | No
 </summary>
     
 ```ts
-import { appendFileSync, truncateSync, writeFileSync } from "fs"
+import { truncateSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -41,7 +41,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [path, data]) {
+    execute(_, [path, data]) {
         // eslint-disable-next-line no-undef
         truncateSync(path, data)
 

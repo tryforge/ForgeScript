@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [ch, id]) {
+    async execute(_, [ch, id]) {
         const channel = ch;
         return structures_1.Return.success(!!(await channel.permissionOverwrites.delete(id)));
     },

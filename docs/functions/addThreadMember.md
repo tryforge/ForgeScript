@@ -59,7 +59,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [guild, channel, member, reason]) {
+    async execute(_, [, channel, member, reason]) {
         const thread = channel as ThreadChannel
         const success = await thread.members.add(member, reason || undefined).catch(noop)
 

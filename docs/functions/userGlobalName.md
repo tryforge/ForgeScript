@@ -19,7 +19,6 @@ user ID | User | The user to return its global name | Yes | No
 </summary>
     
 ```ts
-import noop from "../functions/noop"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

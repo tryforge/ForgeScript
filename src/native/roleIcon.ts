@@ -36,7 +36,7 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, role, size, ext]) {
+    execute(ctx, [, role, size, ext]) {
         return Return.success(
             (role ?? ctx.role)?.iconURL({
                 extension: (ext as ImageExtension) || undefined,

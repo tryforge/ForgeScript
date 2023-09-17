@@ -40,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [, m, prop, sep]) {
+    execute(_, [, m, prop, sep]) {
         return structures_1.Return.success(message_1.MessageProperties[prop](m, sep || ", "));
     },
 });

@@ -31,7 +31,7 @@ export default new NativeFunction({
     async execute(ctx) {
         const [condition, code] = this.data.fields! as [
             IExtendedCompiledFunctionConditionField,
-            IExtendedCompiledFunctionField
+            IExtendedCompiledFunctionField,
         ]
         const res = await this["resolveCondition"](ctx, condition)
         if (!this["isValidReturnType"](res) || res.value) return res.success ? Return.success() : res

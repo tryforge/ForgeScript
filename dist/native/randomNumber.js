@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Boolean,
         },
     ],
-    execute(ctx, [min, max, decimals]) {
+    execute(_, [min, max, decimals]) {
         const rnd = max ? Math.random() * (max - min) + min : Math.random() * min;
         return structures_1.Return.success(!decimals ? Math.floor(rnd) : rnd);
     },

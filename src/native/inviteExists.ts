@@ -1,5 +1,5 @@
 import noop from "../functions/noop"
-import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$inviteExists",

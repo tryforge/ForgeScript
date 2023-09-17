@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.GuildSticker,
         },
     ],
-    async execute(ctx, [guild, stickers]) {
+    async execute(_, [, stickers]) {
         let count = 0;
         for (let i = 0, len = stickers.length; i < len; i++) {
             const sticker = stickers[i];

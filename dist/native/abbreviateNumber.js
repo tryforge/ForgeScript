@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [n]) {
+    execute(_, [n]) {
         return structures_1.Return.success(Formatter.format(n));
     },
 });

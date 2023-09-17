@@ -1,5 +1,4 @@
 import { InviteProperties, InviteProperty } from "../properties/invite"
-import { RoleProperties, RoleProperty } from "../properties/role"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({

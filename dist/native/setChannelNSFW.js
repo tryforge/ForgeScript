@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Boolean,
         },
     ],
-    async execute(ctx, [channel, state]) {
+    async execute(_, [channel, state]) {
         return structures_1.Return.success(!!(await channel.setNSFW(state || false).catch(noop_1.default)));
     },
 });

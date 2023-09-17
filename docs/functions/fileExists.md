@@ -33,7 +33,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [path]) {
+    execute(_, [path]) {
         return Return.success(existsSync(path))
     },
 })

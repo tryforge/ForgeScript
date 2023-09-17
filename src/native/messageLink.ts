@@ -1,4 +1,4 @@
-import { BaseChannel, Message } from "discord.js"
+import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -25,7 +25,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [channel, message]) {
+    execute(ctx, [, message]) {
         const msg = message ?? ctx.message
         return Return.success(msg?.url)
     },

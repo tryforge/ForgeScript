@@ -26,7 +26,7 @@ export default new NativeFunction({
     async execute(ctx, [content, returnMessageID]) {
         ctx.container.fetchReply = returnMessageID ?? false
         ctx.container.content = content || undefined
-        
+
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj)
             return Return.success()

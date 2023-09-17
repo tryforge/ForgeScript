@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
-const NoNumberRegex = /[^0-9]/g;
+const NoNumberRegex = /[^0-9.]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$separateNumber",
     version: "1.0.0",
@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [n, sep]) {
+    execute(_, [n, sep]) {
         const t = n.toLocaleString();
         return structures_1.Return.success(sep ? t.replaceAll(NoNumberRegex, sep) : t);
     },

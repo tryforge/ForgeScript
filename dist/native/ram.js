@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the current ram usage in MB",
     unwrap: false,
-    execute(ctx) {
+    execute() {
         return structures_1.Return.success(process.memoryUsage().heapUsed / 1024 ** 2);
     },
 });

@@ -31,7 +31,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [, role, perms]) {
+    async execute(_, [, role, perms]) {
         return Return.success(!!(await role.setPermissions(perms).catch(noop)))
     },
 })

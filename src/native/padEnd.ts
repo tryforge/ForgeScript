@@ -1,5 +1,4 @@
 import { ArgType, NativeFunction, Return } from "../structures"
-import { camelCase, fill, kebabCase, snakeCase } from "lodash"
 
 export default new NativeFunction({
     name: "$padEnd",
@@ -29,7 +28,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [str, max, filler]) {
+    execute(_, [str, max, filler]) {
         return Return.success(str.padEnd(max, filler || undefined))
     },
 })

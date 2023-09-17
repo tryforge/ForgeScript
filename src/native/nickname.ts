@@ -8,7 +8,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
+            name: "guildID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,
@@ -23,7 +23,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [guild, member]) {
+    execute(ctx, [, member]) {
         return Return.success((member ?? ctx.member)?.displayName)
     },
 })

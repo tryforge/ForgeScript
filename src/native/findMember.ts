@@ -1,7 +1,7 @@
 import noop from "../functions/noop"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures"
 
-export const MemberMentionCharRegex = /[<>@]/g
+export const MemberMentionCharRegex = /[<>@!]/g
 
 export default new NativeFunction({
     name: "$findMember",

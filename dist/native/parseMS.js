@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms, limit, sep, and]) {
+    execute(_, [ms, limit, sep, and]) {
         return structures_1.Return.success(constants_1.TimeParser.parseToString(ms, {
             and: and || false,
             limit: limit || undefined,

@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [ms, type]) {
+    execute(_, [ms, type]) {
         const date = new Date(ms);
         return structures_1.Return.success(type === DateType.Date
             ? date.toDateString()

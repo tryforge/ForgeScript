@@ -16,7 +16,6 @@ stickers | GuildSticker | The stickers to delete | Yes | Yes
 </summary>
     
 ```ts
-import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 import noop from "../functions/noop"
 
@@ -43,7 +42,7 @@ export default new NativeFunction({
             type: ArgType.GuildSticker,
         },
     ],
-    async execute(ctx, [guild, stickers]) {
+    async execute(_, [, stickers]) {
         let count = 0
         for (let i = 0, len = stickers.length; i < len; i++) {
             const sticker = stickers[i]

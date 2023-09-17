@@ -16,7 +16,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    async execute(ctx, [command]) {
+    async execute(_, [command]) {
         try {
             const exec = await execSync(command, { encoding: "utf-8" })
             return Return.success(exec)

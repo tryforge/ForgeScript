@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    async execute(ctx, [guild, name]) {
+    async execute(_, [guild, name]) {
         return structures_1.Return.success((await guild.setName(name).catch(() => false)) !== false);
     },
 });

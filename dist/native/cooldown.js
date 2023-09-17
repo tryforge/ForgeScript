@@ -41,7 +41,7 @@ Hello!
     ],
     experimental: true,
     async execute(ctx) {
-        const [id, duration, code] = this.data.fields;
+        const [, , code] = this.data.fields;
         const dur = await this["resolveUnhandledArg"](ctx, 0);
         if (!this["isValidReturnType"](dur))
             return dur;

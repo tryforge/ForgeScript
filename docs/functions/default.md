@@ -40,7 +40,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [lhs, rhs]) {
+    execute(_, [lhs, rhs]) {
         return Return.success(lhs || rhs)
     },
 })

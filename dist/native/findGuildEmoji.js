@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$findGuildEmoji",
@@ -24,14 +23,12 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, q]) {
-        const parsed = (0, discord_js_1.parseEmoji)(q);
+    execute(_, [guild, q]) {
         if (structures_1.CompiledFunction.IdRegex.test(q)) {
             const e = guild.emojis.cache.get(q);
             if (e)
                 return structures_1.Return.success(e.id);
         }
-        const name = parsed?.name.toLowerCase();
         return structures_1.Return.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
     },
 });

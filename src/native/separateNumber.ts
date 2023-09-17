@@ -1,6 +1,6 @@
 import { ArgType, NativeFunction, Return } from "../structures"
 
-const NoNumberRegex = /[^0-9]/g
+const NoNumberRegex = /[^0-9.]/g
 
 export default new NativeFunction({
     name: "$separateNumber",
@@ -23,7 +23,7 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [n, sep]) {
+    execute(_, [n, sep]) {
         const t = n.toLocaleString()
         return Return.success(sep ? t.replaceAll(NoNumberRegex, sep) : t)
     },

@@ -17,7 +17,7 @@ encoding | String | The encoding to use for text | No | No
 </summary>
     
 ```ts
-import { appendFileSync, writeFileSync } from "fs"
+import { appendFileSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -48,7 +48,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [path, data, encoding]) {
+    execute(_, [path, data, encoding]) {
         // eslint-disable-next-line no-undef
         appendFileSync(path, data, { encoding: (encoding as BufferEncoding) || "utf-8" })
 
