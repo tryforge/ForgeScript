@@ -1,3 +1,4 @@
+import isTrue from "../functions/isTrue"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -48,8 +49,8 @@ export default new NativeFunction({
                 ctx.setEnvironmentKey(varName, el)
                 const rt = (await this["resolveCode"](ctx, code)) as Return
 
-                if (rt.return) {
-                    if (!rt.value) continue
+                if (rt.return || rt.success) {
+                    if (!isTrue(rt)) continue
                     return Return.success(false)
                 } else if (!this["isValidReturnType"](rt)) return rt
             }

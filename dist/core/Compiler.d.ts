@@ -16,8 +16,8 @@ export interface IRawFunction {
      */
     args: IRawFunctionFieldDefinition | null;
 }
-export declare type WrappedCode = (args: unknown[]) => string;
-export declare type WrappedConditionCode = (lhs: unknown, rhs: unknown) => boolean;
+export type WrappedCode = (args: unknown[]) => string;
+export type WrappedConditionCode = (lhs: unknown, rhs: unknown) => boolean;
 export interface ICompiledFunctionField {
     value: string;
     functions: ICompiledFunction[];

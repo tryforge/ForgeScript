@@ -4,14 +4,14 @@ import { Container } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
 import { Return } from "./Return";
 import { IRunnable } from "../core/Interpreter";
-export declare type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return;
+export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return;
 export interface IHttpOptions {
     body: string;
     headers: Record<string, string>;
     method: string;
 }
-export declare type ClassType = new (...args: any[]) => any;
-export declare type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
+export type ClassType = new (...args: any[]) => any;
+export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
 export declare class Context {
     #private;
     readonly runtime: IRunnable;
@@ -28,7 +28,7 @@ export declare class Context {
     get role(): Role | null;
     get reaction(): MessageReaction | null;
     get message(): Message<boolean> | null;
-    get interaction(): Interaction<import("discord.js").CacheType> | null;
+    get interaction(): Interaction | null;
     get user(): User | null;
     get guild(): Guild | null;
     get channel(): BaseChannel | import("discord.js").CategoryChannel | import("discord.js").NewsChannel | import("discord.js").StageChannel | import("discord.js").TextChannel | import("discord.js").PrivateThreadChannel | import("discord.js").PublicThreadChannel<boolean> | import("discord.js").VoiceChannel | import("discord.js").ForumChannel | null;

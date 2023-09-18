@@ -22,7 +22,7 @@ var ArgType;
     ArgType[ArgType["GuildSticker"] = 16] = "GuildSticker";
     ArgType[ArgType["Time"] = 17] = "Time";
     ArgType[ArgType["Member"] = 18] = "Member";
-})(ArgType = exports.ArgType || (exports.ArgType = {}));
+})(ArgType || (exports.ArgType = ArgType = {}));
 class NativeFunction {
     data;
     constructor(data) {
