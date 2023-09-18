@@ -190,6 +190,9 @@ class Context {
         const got = this.getEnvironmentKey(...keys);
         return got && got instanceof type ? got : null;
     }
+    get(key) {
+        return this[key];
+    }
 }
 exports.Context = Context;
 //# sourceMappingURL=Context.js.map
