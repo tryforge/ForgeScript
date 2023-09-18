@@ -45,6 +45,7 @@ export class Context {
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
 
+    // eslint-disable-next-line no-undef
     [props: PropertyKey]: unknown
 
     executionTimestamp!: number
