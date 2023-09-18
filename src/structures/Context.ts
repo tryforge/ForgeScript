@@ -45,6 +45,8 @@ export class Context {
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
 
+    [props: PropertyKey]: unknown
+
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
 
@@ -247,5 +249,9 @@ export class Context {
     public getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null {
         const got = this.getEnvironmentKey(...keys)
         return got && got instanceof type ? got : null
+    }
+
+    public get<T>(key: PropertyKey) {
+        return this[key] as T
     }
 }

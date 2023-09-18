@@ -15,6 +15,7 @@ export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : n
 export declare class Context {
     #private;
     readonly runtime: IRunnable;
+    [props: PropertyKey]: unknown;
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
     readonly container: Container;
@@ -55,5 +56,6 @@ export declare class Context {
         get interaction(): ChatInputCommandInteraction;
     };
     getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null;
+    get<T>(key: PropertyKey): T;
 }
 //# sourceMappingURL=Context.d.ts.map
