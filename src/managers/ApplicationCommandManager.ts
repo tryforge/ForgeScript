@@ -10,6 +10,7 @@ import {
     ContextMenuCommandBuilder,
     Events,
     RESTPostAPIChatInputApplicationCommandsJSONBody,
+    RESTPostAPIContextMenuApplicationCommandsJSONBody,
     SlashCommandBuilder,
 } from "discord.js"
 import { ApplicationCommand } from "../structures/ApplicationCommand"
@@ -21,7 +22,7 @@ import { join } from "path"
 import { cwd } from "process"
 
 export interface IApplicationCommandData {
-    data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody
+    data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody
     code: string
 }
 
