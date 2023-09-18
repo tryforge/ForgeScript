@@ -24,5 +24,5 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const process_1 = require("process");
-Promise.resolve().then(() => __importStar(require(`./${process_1.argv.slice(2).join(" ")}`)));
+Promise.resolve(`${`./${process_1.argv.slice(2).join(" ")}`}`).then(s => __importStar(require(s)));
 //# sourceMappingURL=runner.js.map

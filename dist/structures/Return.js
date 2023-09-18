@@ -10,7 +10,7 @@ var ReturnType;
     ReturnType[ReturnType["Return"] = 3] = "Return";
     ReturnType[ReturnType["Break"] = 4] = "Break";
     ReturnType[ReturnType["Continue"] = 5] = "Continue";
-})(ReturnType = exports.ReturnType || (exports.ReturnType = {}));
+})(ReturnType || (exports.ReturnType = ReturnType = {}));
 class Return {
     type;
     value;

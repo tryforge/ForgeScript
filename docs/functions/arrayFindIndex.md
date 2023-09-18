@@ -20,7 +20,8 @@ code | String | The code to execute for every element | Yes | No
 </summary>
     
 ```ts
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
+import isTrue from "../functions/isTrue"
+import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayFindIndex",
@@ -46,6 +47,7 @@ export default new NativeFunction({
             name: "code",
             description: "The code to execute for every element",
             rest: false,
+            condition: true,
             required: true,
             type: ArgType.String,
         },
@@ -69,10 +71,10 @@ export default new NativeFunction({
         for (let i = 0, len = arr.length; i < len; i++) {
             const el = arr[i]
             ctx.setEnvironmentKey(varName, el)
-            const rt = (await this["resolveCode"](ctx, code)) as Return
+            const rt = (await this["resolveCondition"](ctx, code as unknown as IExtendedCompiledFunctionConditionField)) as Return
 
-            if (rt.return) {
-                if (!rt.value) continue
+            if (rt.return || rt.success) {
+                if (!isTrue(rt)) continue
                 return Return.success(i)
             } else if (!this["isValidReturnType"](rt)) return rt
         }

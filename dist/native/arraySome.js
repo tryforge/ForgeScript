@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const isTrue_1 = __importDefault(require("../functions/isTrue"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arraySome",
@@ -25,6 +29,7 @@ exports.default = new structures_1.NativeFunction({
             name: "code",
             description: "The code to execute for every element",
             rest: false,
+            condition: true,
             required: true,
             type: structures_1.ArgType.String,
         },
@@ -40,9 +45,9 @@ exports.default = new structures_1.NativeFunction({
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
                 ctx.setEnvironmentKey(variable, el);
-                const rt = (await this["resolveCode"](ctx, code));
-                if (rt.return) {
-                    if (!rt.value)
+                const rt = (await this["resolveCondition"](ctx, code));
+                if (rt.return || rt.success) {
+                    if (!(0, isTrue_1.default)(rt))
                         continue;
                     return structures_1.Return.success(true);
                 }

@@ -28,7 +28,7 @@ var GuildProperty;
     GuildProperty["boostLevel"] = "boostLevel";
     GuildProperty["approximateMemberCount"] = "approximateMemberCount";
     GuildProperty["approximatePresenceCount"] = "approximatePresenceCount";
-})(GuildProperty = exports.GuildProperty || (exports.GuildProperty = {}));
+})(GuildProperty || (exports.GuildProperty = GuildProperty = {}));
 exports.GuildProperties = (0, defineProperties_1.default)({
     description: (i) => i?.description,
     features: (i, sep) => i?.features.join(sep || ", "),
