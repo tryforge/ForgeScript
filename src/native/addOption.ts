@@ -20,7 +20,7 @@ export default new NativeFunction({
             description: "The description for this option",
             rest: false,
             type: ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "value",
@@ -47,7 +47,7 @@ export default new NativeFunction({
 
         const data: APISelectMenuOption = {
             label: name,
-            description: desc,
+            description: desc || undefined,
             value,
             default: def || false,
             emoji: emoji

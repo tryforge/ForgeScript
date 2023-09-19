@@ -226,12 +226,12 @@ class CompiledFunction {
     resolveGuildSticker(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        return ref[arg.pointer].stickers.fetch(str).catch(noop_1.default);
+        return (ref[arg.pointer] ?? ctx.guild).stickers.fetch(str).catch(noop_1.default);
     }
     resolveMember(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        return ref[arg.pointer].members.fetch(str).catch(noop_1.default);
+        return (ref[arg.pointer] ?? ctx.guild).members.fetch(str).catch(noop_1.default);
     }
     resolveReaction(ctx, arg, str, ref) {
         const reactions = ref[arg.pointer].reactions;
@@ -252,7 +252,7 @@ class CompiledFunction {
         return ctx.client.fetchWebhook(str).catch(noop_1.default);
     }
     resolveRole(ctx, arg, str, ref) {
-        return ref[arg.pointer].roles.cache.get(str);
+        return (ref[arg.pointer] ?? ctx.guild).roles.cache.get(str);
     }
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
@@ -294,6 +294,16 @@ class CompiledFunction {
     }
     isValidReturnType(rt) {
         return rt.success;
+    }
+    async fail(ctx, code) {
+        if (code) {
+            const resolved = await this.resolveCode(ctx, code);
+            if (!this["isValidReturnType"](resolved))
+                return resolved;
+            ctx.container.content = resolved.value;
+            await ctx.container.send(ctx.obj);
+        }
+        return Return_1.Return.stop();
     }
     static toResolveArgString(type) {
         return `resolve${NativeFunction_1.ArgType[type]}`;

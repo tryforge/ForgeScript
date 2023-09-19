@@ -67,6 +67,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): ForgeError<T>;
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
+    private fail;
     static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveString" | "resolveNumber" | "resolvePermission" | "resolveJson" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map
