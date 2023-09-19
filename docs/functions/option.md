@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        return Return.success(ctx.isCommand() ? ctx.interaction.options.get(name)?.value : null)
+        return Return.success(ctx.interaction?.isCommand() ? ctx.interaction.options.get(name)?.value : null)
     },
 })
 
