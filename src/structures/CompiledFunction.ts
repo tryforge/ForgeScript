@@ -294,12 +294,12 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveGuildSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
-        return (ref[arg.pointer!] as Guild).stickers.fetch(str).catch(noop)
+        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).stickers.fetch(str).catch(noop)
     }
 
     private resolveMember(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
-        return (ref[arg.pointer!] as Guild).members.fetch(str).catch(noop)
+        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).members.fetch(str).catch(noop)
     }
 
     private resolveReaction(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -323,7 +323,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveRole(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return (ref[arg.pointer!] as Guild).roles.cache.get(str)
+        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).roles.cache.get(str)
     }
 
     private async resolveArg(
@@ -380,6 +380,17 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private isValidReturnType(rt: Return) {
         return rt.success
+    }
+
+    private async fail(ctx: Context, code?: IExtendedCompiledFunctionField) {
+        if (code) {
+            const resolved = await this.resolveCode(ctx, code)
+            if (!this["isValidReturnType"](resolved)) return resolved
+            ctx.container.content = resolved.value as string
+            await ctx.container.send(ctx.obj)
+        }
+
+        return Return.stop()
     }
 
     public static toResolveArgString(type: ArgType) {

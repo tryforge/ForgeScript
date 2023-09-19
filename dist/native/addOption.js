@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The description for this option",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "value",
@@ -47,7 +47,7 @@ exports.default = new structures_1.NativeFunction({
         const comp = ctx.container.components.at(-1)?.components[0];
         const data = {
             label: name,
-            description: desc,
+            description: desc || undefined,
             value,
             default: def || false,
             emoji: emoji

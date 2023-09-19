@@ -7,7 +7,7 @@ $addOption[name;description;value;emoji;default]
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 name | String | The option name | Yes | No
-description | String | The description for this option | Yes | No
+description | String | The description for this option | No | No
 value | String | The value to use for this option | Yes | No
 emoji | String | The emoji to use for this option | No | No
 default | Boolean | Whether to set this option as default | No | No
@@ -41,7 +41,7 @@ export default new NativeFunction({
             description: "The description for this option",
             rest: false,
             type: ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "value",
@@ -68,7 +68,7 @@ export default new NativeFunction({
 
         const data: APISelectMenuOption = {
             label: name,
-            description: desc,
+            description: desc || undefined,
             value,
             default: def || false,
             emoji: emoji
