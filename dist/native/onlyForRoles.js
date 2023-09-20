@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$onlyForRoles",
+    version: "1.1.0",
     description: "Only executes code if user has given roles",
     brackets: true,
     unwrap: false,
@@ -30,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 1);
             if (!this["isValidReturnType"](rt))
                 return rt;
-            ok = ctx.member?.roles.cache.hasAll(...args[0].map(x => x.id)) ?? false;
+            ok = ctx.member?.roles.cache.hasAny(...args[0].map(x => x.id)) ?? false;
         }
         if (!ok)
             return this["fail"](ctx, code);

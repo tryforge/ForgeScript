@@ -30,7 +30,7 @@ export default new NativeFunction({
         if (ctx.guild) {
             const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 1)
             if (!this["isValidReturnType"](rt)) return rt
-            ok = ctx.member?.roles.cache.hasAll(...args[0].map(x => x.id)) ?? false
+            ok = ctx.member?.roles.cache.hasAny(...args[0].map(x => x.id)) ?? false
         }
 
         if (!ok)
