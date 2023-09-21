@@ -10,10 +10,10 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "ms",
-            description: "The ms to wait for",
+            name: "duration",
+            description: "The duration to wait for",
             rest: false,
-            type: structures_1.ArgType.Number,
+            type: structures_1.ArgType.Time,
             required: true,
         },
     ],

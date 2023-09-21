@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferAlloc",
+    version: "1.1.0",
     description: "Allocates given number of bytes in a buffer",
     unwrap: true,
     brackets: true,

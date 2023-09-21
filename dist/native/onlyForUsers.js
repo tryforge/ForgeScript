@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$onlyForUsers",
+    version: "1.1.0",
     description: "Only executes code if given ids match the author",
     brackets: true,
     unwrap: false,

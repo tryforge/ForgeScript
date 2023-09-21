@@ -2,11 +2,11 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delays the code below for x milliseconds
 ## Usage
 ```
-$wait[ms]
+$wait[duration]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-ms | Number | The ms to wait for | Yes | No
+duration | Time | The duration to wait for | Yes | No
 <details>
 <summary>
     
@@ -26,10 +26,10 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "ms",
-            description: "The ms to wait for",
+            name: "duration",
+            description: "The duration to wait for",
             rest: false,
-            type: ArgType.Number,
+            type: ArgType.Time,
             required: true,
         },
     ],

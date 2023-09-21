@@ -3,7 +3,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.Number;
+    type: ArgType.Time;
     required: true;
 }], true>;
 export default _default;

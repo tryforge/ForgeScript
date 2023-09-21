@@ -28,10 +28,10 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
         },
         {
-            name: "ms",
-            description: "The ms to timeout for",
+            name: "duration",
+            description: "The duration to timeout for",
             rest: false,
-            type: structures_1.ArgType.Number,
+            type: structures_1.ArgType.Time,
         },
     ],
     async execute(_, [, member, ms]) {
