@@ -9,10 +9,10 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "ms",
-            description: "The ms to wait for",
+            name: "duration",
+            description: "The duration to wait for",
             rest: false,
-            type: ArgType.Number,
+            type: ArgType.Time,
             required: true,
         },
     ],

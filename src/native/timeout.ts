@@ -24,10 +24,10 @@ export default new NativeFunction({
             pointer: 0,
         },
         {
-            name: "ms",
-            description: "The ms to timeout for",
+            name: "duration",
+            description: "The duration to timeout for",
             rest: false,
-            type: ArgType.Number,
+            type: ArgType.Time,
         },
     ],
     async execute(_, [, member, ms]) {

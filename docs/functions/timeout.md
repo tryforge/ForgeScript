@@ -2,13 +2,13 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Times a member out for X milliseconds
 ## Usage
 ```
-$timeout[guild ID;user ID;ms]
+$timeout[guild ID;user ID;duration]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to pull member from | Yes | No
 user ID | Member | The member to timeout | Yes | No
-ms | Number | The ms to timeout for | No | No
+duration | Time | The duration to timeout for | No | No
 <details>
 <summary>
     
@@ -43,10 +43,10 @@ export default new NativeFunction({
             pointer: 0,
         },
         {
-            name: "ms",
-            description: "The ms to timeout for",
+            name: "duration",
+            description: "The duration to timeout for",
             rest: false,
-            type: ArgType.Number,
+            type: ArgType.Time,
         },
     ],
     async execute(_, [, member, ms]) {
