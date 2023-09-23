@@ -5,7 +5,7 @@ const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$authorID",
     version: "1.0.0",
-    description: "Retrieves an user's id",
+    description: "Retrieves a user's id",
     unwrap: true,
     execute: async function (ctx) {
         return Return_1.Return.success(ctx.user?.id);
