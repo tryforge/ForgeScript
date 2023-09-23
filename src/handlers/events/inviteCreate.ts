@@ -5,7 +5,7 @@ import { InviteSystem } from "../../structures/InviteSystem"
 export default new DiscordEventHandler({
     name: "inviteCreate",
     version: "1.0.3",
-    description: "This event is fired when a invite is created",
+    description: "This event is fired when an invite is created",
     listener: async function (inv) {
         if (this.options.useInviteSystem) await InviteSystem.inviteCreateHandler(inv)
 
