@@ -8,7 +8,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$dmChannelID",
     version: "1.0.0",
-    description: "Returns the dm channel id of an user",
+    description: "Returns the dm channel id of a user",
     brackets: false,
     unwrap: true,
     args: [
