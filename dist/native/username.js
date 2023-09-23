@@ -5,7 +5,7 @@ const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$username",
     version: "1.0.0",
-    description: "Retrieves an user's username",
+    description: "Retrieves a user's username",
     brackets: false,
     args: [
         {
