@@ -1,5 +1,5 @@
 # $userBadges
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the public badges of an user
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the public badges of a user
 ## Usage
 ```
 $userBadges
@@ -26,7 +26,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$userBadges",
     version: "1.0.0",
-    description: "Returns the public badges of an user",
+    description: "Returns the public badges of a user",
     unwrap: true,
     args: [
         {
