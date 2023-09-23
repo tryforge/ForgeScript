@@ -5,7 +5,7 @@ import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 export default new DiscordEventHandler({
     name: "messageReactionRemove",
     version: "1.0.1",
-    description: "This event is fired when an user stops reacting",
+    description: "This event is fired when a user stops reacting",
     intents: ["GuildMessageReactions", "DirectMessageReactions"],
     listener: async function (m, user) {
         const commands = this.commands.get("messageReactionRemove")
