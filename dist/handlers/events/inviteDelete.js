@@ -6,7 +6,7 @@ const InviteSystem_1 = require("../../structures/InviteSystem");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "inviteDelete",
     version: "1.0.3",
-    description: "This event is fired when a invite is deleted",
+    description: "This event is fired when an invite is deleted",
     listener: async function (inv) {
         if (this.options.useInviteSystem)
             await InviteSystem_1.InviteSystem.inviteDeleteHandler(inv);

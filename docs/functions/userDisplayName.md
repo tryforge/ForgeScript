@@ -1,5 +1,5 @@
 # $userDisplayName
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the display name of an user
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the display name of a user
 ## Usage
 ```
 $userDisplayName
@@ -24,7 +24,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$userDisplayName",
     version: "1.0.0",
-    description: "Returns the display name of an user",
+    description: "Returns the display name of a user",
     unwrap: true,
     args: [
         {

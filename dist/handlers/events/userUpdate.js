@@ -23,7 +23,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    description: "This event is fired when an user updates their profile",
+    description: "This event is fired when a user updates their profile",
     intents: ["GuildMembers"],
 });
 //# sourceMappingURL=userUpdate.js.map

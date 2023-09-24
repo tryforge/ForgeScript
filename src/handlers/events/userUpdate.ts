@@ -24,6 +24,6 @@ export default new DiscordEventHandler({
             })
         }
     },
-    description: "This event is fired when an user updates their profile",
+    description: "This event is fired when a user updates their profile",
     intents: ["GuildMembers"],
 })

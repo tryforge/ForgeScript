@@ -5,7 +5,7 @@ const DiscordEventHandler_1 = require("../../structures/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "voiceStateUpdate",
     version: "1.0.1",
-    description: "This event is fired when an user joins/leaves a voice channel",
+    description: "This event is fired when a user joins/leaves a voice channel",
     listener: async function (old, newer) {
         const commands = this.commands.get("voiceStateUpdate");
         for (const command of commands) {

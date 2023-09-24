@@ -8,7 +8,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$userBadges",
     version: "1.0.0",
-    description: "Returns the public badges of an user",
+    description: "Returns the public badges of a user",
     unwrap: true,
     args: [
         {

@@ -4,7 +4,7 @@ import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 export default new DiscordEventHandler({
     name: "emojiCreate",
     version: "1.0.1",
-    description: "This event is fired when a emoji is created",
+    description: "This event is fired when an emoji is created",
     listener: async function (g) {
         const commands = this.commands.get("emojiCreate")
 

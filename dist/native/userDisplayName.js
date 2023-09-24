@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$userDisplayName",
     version: "1.0.0",
-    description: "Returns the display name of an user",
+    description: "Returns the display name of a user",
     unwrap: true,
     args: [
         {

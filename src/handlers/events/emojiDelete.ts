@@ -4,7 +4,7 @@ import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
 export default new DiscordEventHandler({
     name: "emojiDelete",
     version: "1.0.1",
-    description: "This event is fired when a emoji is deleted",
+    description: "This event is fired when an emoji is deleted",
     listener: async function (g) {
         const commands = this.commands.get("emojiDelete")
 
