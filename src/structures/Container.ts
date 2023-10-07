@@ -93,8 +93,9 @@ export class Container {
             res = Promise.resolve(null)
         }
 
+        const result = await res.catch(noop) as T 
         this.reset()
-        return (await res.catch(noop)) as T
+        return result
     }
 
     public isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions) {
