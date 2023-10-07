@@ -58,8 +58,9 @@ class Container {
         else {
             res = Promise.resolve(null);
         }
+        const result = await res.catch(noop_1.default);
         this.reset();
-        return (await res.catch(noop_1.default));
+        return result;
     }
     isValidMessage(options) {
         return (!!options.content?.trim() ||
