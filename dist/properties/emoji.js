@@ -18,7 +18,7 @@ var EmojiProperty;
     EmojiProperty["animated"] = "animated";
     EmojiProperty["url"] = "url";
     EmojiProperty["format"] = "format";
-})(EmojiProperty || (exports.EmojiProperty = EmojiProperty = {}));
+})(EmojiProperty = exports.EmojiProperty || (exports.EmojiProperty = {}));
 exports.EmojiProperties = (0, defineProperties_1.default)({
     guildID: (i) => i?.guild.id,
     id: (i) => i?.id,

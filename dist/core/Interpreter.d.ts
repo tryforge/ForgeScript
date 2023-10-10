@@ -15,7 +15,7 @@ export interface IStates {
     guild: Guild;
     invite: Invite;
 }
-export type States = {
+export declare type States = {
     [K in keyof IStates]?: {
         old?: IStates[K] | null;
         new?: IStates[K] | null;

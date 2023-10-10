@@ -17,7 +17,7 @@ var RoleProperty;
     RoleProperty["permissions"] = "permissions";
     RoleProperty["tags"] = "tags";
     RoleProperty["members"] = "members";
-})(RoleProperty || (exports.RoleProperty = RoleProperty = {}));
+})(RoleProperty = exports.RoleProperty || (exports.RoleProperty = {}));
 exports.RoleProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.createdTimestamp,
     id: (i) => i?.id,

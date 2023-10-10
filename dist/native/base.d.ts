@@ -2,15 +2,20 @@ import { ArgType, NativeFunction } from "../structures";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
-    required: true;
-    enum: any;
     type: ArgType.String;
     rest: false;
+    required: true;
 }, {
     name: string;
     description: string;
-    rest: false;
     type: ArgType.Number;
+    rest: false;
+    required: true;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.Number;
+    rest: false;
 }], true>;
 export default _default;
-//# sourceMappingURL=color.d.ts.map
+//# sourceMappingURL=base.d.ts.map

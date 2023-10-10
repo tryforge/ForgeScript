@@ -1,6 +1,6 @@
 import { GatewayIntentsString } from "discord.js";
 import { ForgeClient } from "../core/ForgeClient";
-export type AssertArgs<T> = T extends unknown[] ? T : never;
+export declare type AssertArgs<T> = T extends unknown[] ? T : never;
 export interface IEvent<Events, T extends keyof Events> {
     name: T;
     description: string;
