@@ -11,10 +11,10 @@ export class CooldownManager {
 
     public constructor(private readonly client: ForgeClient) {}
 
-    public add(id: string, dur: number) {
+    public add(id: string, duration: number) {
         this.cooldowns.set(id, {
             startedAt: Date.now(),
-            duration: Date.now(),
+            duration,
         })
     }
 
