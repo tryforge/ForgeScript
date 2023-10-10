@@ -64,10 +64,10 @@ Hello!
     async execute(ctx) {
         const [, , code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
-        const dur = await this["resolveUnhandledArg"](ctx, 0)
+        const dur = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](dur)) return dur
 
-        const idV = await this["resolveUnhandledArg"](ctx, 1)
+        const idV = await this["resolveUnhandledArg"](ctx, 0)
         if (!this["isValidReturnType"](idV)) return idV
 
         const cooldown = ctx.client.cooldowns.getTimeLeft(idV.value as string)

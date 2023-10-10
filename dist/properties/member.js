@@ -24,7 +24,7 @@ var MemberProperty;
     MemberProperty["timestamp"] = "timestamp";
     MemberProperty["boosting"] = "boosting";
     MemberProperty["boostingSince"] = "boostingSince";
-})(MemberProperty = exports.MemberProperty || (exports.MemberProperty = {}));
+})(MemberProperty || (exports.MemberProperty = MemberProperty = {}));
 exports.MemberProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.joinedTimestamp,
     displayColor: (i) => i?.displayHexColor,

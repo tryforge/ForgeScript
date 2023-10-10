@@ -1,1 +1,1 @@
-{"version":3,"file":"messageLink.d.ts","sourceRoot":"","sources":["../../src/native/messageLink.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAA;;;;;;;;;;;;;;;;AAE/D,wBA4BE"}
+{"version":3,"file":"messageLink.d.ts","sourceRoot":"","sources":["../../src/native/messageLink.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,YAAY,CAAA;AACxC,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAA;;;;;;;eAexC,WAAW;;;;;;;;;AAblC,wBA4BE"}

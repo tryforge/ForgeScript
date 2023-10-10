@@ -1,4 +1,4 @@
-import { ApplicationCommandDataResolvable, CommandInteraction, ContextMenuCommandBuilder, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
+import { ApplicationCommandDataResolvable, Collection, CommandInteraction, ContextMenuCommandBuilder, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
 import { ApplicationCommand } from "../structures/ApplicationCommand";
 import { ForgeClient } from "../core";
 export interface IApplicationCommandData {
@@ -32,6 +32,8 @@ export declare class ApplicationCommandManager {
     private validate;
     resolve(value: ApplicationCommand | IApplicationCommandData): ApplicationCommand;
     toJSON(): ApplicationCommandDataResolvable[];
-    register(): any;
+    register(): Promise<Collection<string, import("discord.js").ApplicationCommand<{
+        guild: import("discord.js").GuildResolvable;
+    }>>>;
 }
 //# sourceMappingURL=ApplicationCommandManager.d.ts.map

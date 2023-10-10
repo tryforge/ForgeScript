@@ -17,7 +17,7 @@ var InviteProperty;
     InviteProperty["code"] = "code";
     InviteProperty["url"] = "url";
     InviteProperty["expiresTimestamp"] = "expiresTimestamp";
-})(InviteProperty = exports.InviteProperty || (exports.InviteProperty = {}));
+})(InviteProperty || (exports.InviteProperty = InviteProperty = {}));
 exports.InviteProperties = (0, defineProperties_1.default)({
     authorID: (i) => i?.inviterId,
     channelID: (i) => i?.channelId,

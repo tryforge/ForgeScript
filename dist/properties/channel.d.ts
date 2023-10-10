@@ -1,3 +1,4 @@
+import { Channel } from "discord.js";
 export declare enum ChannelProperty {
     id = "id",
     type = "type",

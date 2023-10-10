@@ -16,7 +16,7 @@ var EmbedProperty;
     EmbedProperty["footerIcon"] = "footerIcon";
     EmbedProperty["description"] = "description";
     EmbedProperty["timestamp"] = "timestamp";
-})(EmbedProperty = exports.EmbedProperty || (exports.EmbedProperty = {}));
+})(EmbedProperty || (exports.EmbedProperty = EmbedProperty = {}));
 exports.EmbedProperties = (0, defineProperties_1.default)({
     authorIcon: (i) => i?.data.author?.icon_url,
     authorName: (i) => i?.data.author?.name,

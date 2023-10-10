@@ -17,7 +17,7 @@ var MessageProperty;
     MessageProperty["guildID"] = "guildID";
     MessageProperty["authorID"] = "authorID";
     MessageProperty["timestamp"] = "timestamp";
-})(MessageProperty = exports.MessageProperty || (exports.MessageProperty = {}));
+})(MessageProperty || (exports.MessageProperty = MessageProperty = {}));
 exports.MessageProperties = (0, defineProperties_1.default)({
     content: (m) => m?.content,
     id: (m) => m?.id,

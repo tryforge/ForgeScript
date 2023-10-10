@@ -7,7 +7,7 @@ export declare enum ReturnType {
     Break = 4,
     Continue = 5
 }
-export declare type ReturnValue<T extends ReturnType> = T extends ReturnType.Error ? ForgeError : T extends ReturnType.Return ? string : T extends ReturnType.Success ? unknown : T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue ? null : never;
+export type ReturnValue<T extends ReturnType> = T extends ReturnType.Error ? ForgeError : T extends ReturnType.Return ? string : T extends ReturnType.Success ? unknown : T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue ? null : never;
 export declare class Return<T extends ReturnType = ReturnType> {
     readonly type: T;
     readonly value: ReturnValue<T>;
