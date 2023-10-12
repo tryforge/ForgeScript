@@ -36,5 +36,9 @@
             "error",
             "never"
         ]
+    },
+    "globals": {
+        "Buffer": "readonly",
+        "BufferEncoding": "readonly"
     }
 }

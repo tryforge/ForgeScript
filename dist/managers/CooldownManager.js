@@ -8,10 +8,10 @@ class CooldownManager {
     constructor(client) {
         this.client = client;
     }
-    add(id, dur) {
+    add(id, duration) {
         this.cooldowns.set(id, {
             startedAt: Date.now(),
-            duration: Date.now(),
+            duration,
         });
     }
     delete(id) {
