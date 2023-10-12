@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const constants_1 = require("../constants");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$parseString",
@@ -11,13 +12,18 @@ exports.default = new structures_1.NativeFunction({
             name: "duration",
             description: "The valid string to convert to ms",
             rest: false,
-            type: structures_1.ArgType.Time,
+            type: structures_1.ArgType.String,
             required: true,
         },
     ],
     unwrap: true,
-    execute(_, [ms]) {
-        return structures_1.Return.success(ms);
+    execute(_, [str]) {
+        try {
+            return structures_1.Return.success(constants_1.TimeParser.parseToMS(str));
+        }
+        catch (error) {
+            return structures_1.Return.success(0);
+        }
     },
 });
 //# sourceMappingURL=parseString.js.map

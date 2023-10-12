@@ -1,3 +1,4 @@
+import { TimeParser } from "../constants"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -10,12 +11,16 @@ export default new NativeFunction({
             name: "duration",
             description: "The valid string to convert to ms",
             rest: false,
-            type: ArgType.Time,
+            type: ArgType.String,
             required: true,
         },
     ],
     unwrap: true,
-    execute(_, [ms]) {
-        return Return.success(ms)
+    execute(_, [ str ]) {
+        try {
+            return Return.success(TimeParser.parseToMS(str))
+        } catch (error) {
+            return Return.success(0)
+        }
     },
 })
