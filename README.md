@@ -113,5 +113,5 @@ The previous way to register commands can fill our index file with a lot of junk
 </summary>
 
 There's currently no known limitation.
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png" alt="image" width="25" height="auto"> Note this library reads codes from **TOP** to **BOTTOM**, and never the opposite.
+> <img align="top" src="https://raw.githubusercontent.com/tryforge/ForgeScript/main/warningsign.svg" alt="Warning sign by Mozilla" width="25" height="auto"> Note this library reads codes from **TOP** to **BOTTOM**, and never the opposite.
 </details>
