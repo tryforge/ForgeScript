@@ -49,7 +49,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public readonly data: IExtendedCompiledFunction
     public readonly fn: NativeFunction<T, Unwrap>
 
-    public constructor(raw: ICompiledFunction) {
+    public constructor(private readonly raw: ICompiledFunction) {
         this.fn = FunctionManager.get(raw.name) as NativeFunction<T, Unwrap>
         this.data = {
             ...raw,

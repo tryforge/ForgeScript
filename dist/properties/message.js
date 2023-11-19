@@ -25,8 +25,8 @@ exports.MessageProperties = (0, defineProperties_1.default)({
     channelID: (m) => m?.channelId,
     guildID: (m) => m?.guildId,
     type: (m) => (m ? discord_js_1.MessageType[m.type] : undefined),
-    username: (m) => m?.author.username,
-    authorID: (m) => m?.author.id,
+    username: (m) => m?.author?.username,
+    authorID: (m) => m?.author?.id,
     timestamp: (m) => m?.createdTimestamp,
 });
 //# sourceMappingURL=message.js.map

@@ -12,10 +12,12 @@ const NativeFunction_1 = require("./NativeFunction");
 const Return_1 = require("./Return");
 const constants_1 = require("../constants");
 class CompiledFunction {
+    raw;
     static IdRegex = /^(\d{16,23})$/;
     data;
     fn;
     constructor(raw) {
+        this.raw = raw;
         this.fn = FunctionManager_1.FunctionManager.get(raw.name);
         this.data = {
             ...raw,

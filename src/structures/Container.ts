@@ -18,6 +18,7 @@ import {
     MessageReaction,
     MessageReplyOptions,
     ModalBuilder,
+    Presence,
     Role,
     TextInputBuilder,
     User,
@@ -31,6 +32,7 @@ import { RawMessageData } from "discord.js/typings/rawDataTypes"
 export type Sendable =
     | null
     | Role
+    | Presence
     | Message
     | User
     | GuildMember

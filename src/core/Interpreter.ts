@@ -12,6 +12,7 @@ import {
     GuildMember,
     Invite,
     Message,
+    Presence,
     Role,
     User,
     VoiceState,
@@ -21,6 +22,7 @@ import { BaseCommand } from "../structures"
 export interface IStates {
     message: Message
     voiceState: VoiceState
+    presence: Presence  
     role: Role
     member: GuildMember
     emoji: GuildEmoji

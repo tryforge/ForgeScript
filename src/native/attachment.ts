@@ -22,9 +22,15 @@ export default new NativeFunction({
             type: ArgType.String,
             required: true,
         },
+        {
+            name: "as text",
+            description: "Whether to use url param as text",
+            rest: false,
+            type: ArgType.Boolean
+        }
     ],
-    execute(ctx, [url, name]) {
-        const attachment = new AttachmentBuilder(url, {
+    execute(ctx, [url, name, asText]) {
+        const attachment = new AttachmentBuilder(asText ? Buffer.from(url, "utf-8") : url, {
             name,
         })
 

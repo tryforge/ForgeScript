@@ -2,12 +2,13 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Adds an attachment to the response
 ## Usage
 ```
-$attachment[path;name]
+$attachment[path;name;as text]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 path | String | The attachment url or path to file | Yes | No
 name | String | the name for this attachment, with the extension | Yes | No
+as text | Boolean | Whether to use url param as text | No | No
 <details>
 <summary>
     
@@ -40,9 +41,15 @@ export default new NativeFunction({
             type: ArgType.String,
             required: true,
         },
+        {
+            name: "as text",
+            description: "Whether to use url param as text",
+            rest: false,
+            type: ArgType.Boolean
+        }
     ],
-    execute(ctx, [url, name]) {
-        const attachment = new AttachmentBuilder(url, {
+    execute(ctx, [url, name, asText]) {
+        const attachment = new AttachmentBuilder(asText ? Buffer.from(url, "utf-8") : url, {
             name,
         })
 
