@@ -1,5 +1,5 @@
-import { Client, ClientOptions, IntentsBitField, Partials } from "discord.js"
-import { CommandType } from "../structures/BaseCommand"
+import { Client, ClientOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
+import { BaseCommand, CommandType } from "../structures/BaseCommand"
 import { EventManager, NativeEventName } from "../managers/EventManager"
 import { Compiler } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
@@ -9,6 +9,8 @@ import { InviteSystem } from "../structures/InviteSystem"
 import { CooldownManager } from "../managers/CooldownManager"
 import { NativeCommandManager } from "../managers/NativeCommandManager"
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
+
+disableValidators()
 
 export interface IRestriction {
     guildIDs?: string[]
@@ -20,6 +22,7 @@ export interface IForgeClientOptions extends ClientOptions {
     events?: CommandType[]
     prefixes: string[]
     functions?: string
+    allowBots?: boolean
     token?: string
     useInviteSystem?: boolean
     optionalGuildID?: boolean
@@ -83,6 +86,10 @@ export class ForgeClient extends Client<true> {
 
     get<T>(key: string) {
         return this[key] as T
+    }
+
+    public canRespondToBots(cmd: BaseCommand<any>): boolean {
+        return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined)
     }
 
     override login(token?: string | undefined): Promise<string> {

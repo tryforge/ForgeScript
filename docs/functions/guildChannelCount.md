@@ -11,7 +11,7 @@ $guildChannelCount[guild ID;...categories]
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to get channels from | Yes | No
-categories | Enum (`GuildText`, `DM`, `GuildVoice`, `GroupDM`, `GuildCategory`, `GuildNews`, `GuildNewsThread`, `GuildPublicThread`, `GuildPrivateThread`, `GuildStageVoice`, `GuildDirectory`, `GuildForum`) | The categories to filter by | Yes | Yes
+categories | Enum (`GuildText`, `DM`, `GuildVoice`, `GroupDM`, `GuildCategory`, `GuildNews`, `GuildNewsThread`, `GuildPublicThread`, `GuildPrivateThread`, `GuildStageVoice`, `GuildDirectory`, `GuildForum`, `GuildMedia`) | The categories to filter by | Yes | Yes
 <details>
 <summary>
     

@@ -58,7 +58,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [type, name, prop, sep]) {
-        const cmd = ctx.client.commands.get(type as keyof ClientEvents, (x) => x.name === name)[0]
+        const cmd = ctx.client.commands.get(type as keyof ClientEvents, (x) => x.name === name || !!x.data.aliases?.includes(name))[0]
         const val = cmd.data?.[prop]
         return Return.success(Array.isArray(val) ? val.join(sep || ", ") : val)
     },
