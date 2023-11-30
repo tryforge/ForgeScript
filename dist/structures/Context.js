@@ -156,6 +156,8 @@ class Context {
             if (!(key in previous))
                 return;
             previous = previous[key];
+            if (typeof previous !== "object" || previous === null)
+                break;
         }
         return previous;
     }

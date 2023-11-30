@@ -1,6 +1,6 @@
 {
   "name": "forgescript",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -40,7 +40,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "discord.js": "^14.13.0",
+    "discord.js": "^14.14.1",
     "lodash": "^4.17.21",
     "ms-utility": "^3.3.0",
     "undici": "^5.23.0"

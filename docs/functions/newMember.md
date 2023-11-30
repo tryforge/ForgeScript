@@ -6,7 +6,7 @@ $newMember[property;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-property | Enum (`nickname`, `displayName`, `displayColor`, `roles`, `avatar`, `bannable`, `kickable`, `guildID`, `id`, `manageable`, `timeout`, `timedOutUntil`, `status`, `platform`, `timestamp`, `boosting`, `boostingSince`) | The property to pull | Yes | No
+property | Enum (`nickname`, `displayName`, `displayColor`, `roles`, `avatar`, `bannable`, `kickable`, `guildID`, `id`, `manageable`, `timeout`, `timedOutUntil`, `status`, `addedRoles`, `removedRoles`, `platform`, `timestamp`, `boosting`, `boostingSince`) | The property to pull | Yes | No
 separator | String | The separator to use in case of array | No | No
 <details>
 <summary>

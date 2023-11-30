@@ -1,5 +1,5 @@
 import { Client, ClientOptions, IntentsBitField } from "discord.js";
-import { CommandType } from "../structures/BaseCommand";
+import { BaseCommand, CommandType } from "../structures/BaseCommand";
 import { EventManager } from "../managers/EventManager";
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager";
 import { ForgeExtension } from "../structures/ForgeExtension";
@@ -15,6 +15,7 @@ export interface IForgeClientOptions extends ClientOptions {
     events?: CommandType[];
     prefixes: string[];
     functions?: string;
+    allowBots?: boolean;
     token?: string;
     useInviteSystem?: boolean;
     optionalGuildID?: boolean;
@@ -34,6 +35,7 @@ export declare class ForgeClient extends Client<true> {
     [x: PropertyKey]: unknown;
     constructor(options: IForgeClientOptions);
     get<T>(key: string): T;
+    canRespondToBots(cmd: BaseCommand<any>): boolean;
     login(token?: string | undefined): Promise<string>;
 }
 //# sourceMappingURL=ForgeClient.d.ts.map

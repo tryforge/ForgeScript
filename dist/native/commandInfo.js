@@ -39,7 +39,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [type, name, prop, sep]) {
-        const cmd = ctx.client.commands.get(type, (x) => x.name === name)[0];
+        const cmd = ctx.client.commands.get(type, (x) => x.name === name || !!x.data.aliases?.includes(name))[0];
         const val = cmd.data?.[prop];
         return structures_1.Return.success(Array.isArray(val) ? val.join(sep || ", ") : val);
     },

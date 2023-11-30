@@ -20,7 +20,7 @@ export const MessageProperties = defineProperties<typeof MessageProperty, Messag
     channelID: (m) => m?.channelId,
     guildID: (m) => m?.guildId,
     type: (m) => (m ? MessageType[m.type] : undefined),
-    username: (m) => m?.author.username,
-    authorID: (m) => m?.author.id,
+    username: (m) => m?.author?.username,
+    authorID: (m) => m?.author?.id,
     timestamp: (m) => m?.createdTimestamp,
 })

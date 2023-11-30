@@ -23,9 +23,15 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
             required: true,
         },
+        {
+            name: "as text",
+            description: "Whether to use url param as text",
+            rest: false,
+            type: structures_1.ArgType.Boolean
+        }
     ],
-    execute(ctx, [url, name]) {
-        const attachment = new discord_js_1.AttachmentBuilder(url, {
+    execute(ctx, [url, name, asText]) {
+        const attachment = new discord_js_1.AttachmentBuilder(asText ? Buffer.from(url, "utf-8") : url, {
             name,
         });
         ctx.container.files.push(attachment);

@@ -12,6 +12,7 @@ import {
     GuildMember,
     Invite,
     Message,
+    Presence,
     Role,
     User,
     VoiceState,
@@ -21,6 +22,7 @@ import { BaseCommand } from "../structures"
 export interface IStates {
     message: Message
     voiceState: VoiceState
+    presence: Presence  
     role: Role
     member: GuildMember
     emoji: GuildEmoji
@@ -52,6 +54,8 @@ export interface IRunnable {
 export class Interpreter {
     public static async run(runtime: IRunnable): Promise<string | null> {
         const ctx = new Context(runtime)
+
+        if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot) return null;
 
         if (runtime.command?.data.guildOnly && !ctx.guild) return null
         else if (runtime.client.options.restrictions !== undefined) {

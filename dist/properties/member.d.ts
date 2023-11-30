@@ -13,6 +13,8 @@ export declare enum MemberProperty {
     timeout = "timeout",
     timedOutUntil = "timedOutUntil",
     status = "status",
+    addedRoles = "addedRoles",
+    removedRoles = "removedRoles",
     platform = "platform",
     timestamp = "timestamp",
     boosting = "boosting",

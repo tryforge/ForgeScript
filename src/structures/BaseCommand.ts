@@ -10,6 +10,7 @@ export interface IBaseCommand<T> {
     guildOnly?: boolean
     unprefixed?: boolean
     aliases?: string[]
+    allowBots?: boolean
     [x: PropertyKey]: unknown
 }
 

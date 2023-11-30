@@ -5,6 +5,8 @@ const Context_1 = require("../structures/Context");
 class Interpreter {
     static async run(runtime) {
         const ctx = new Context_1.Context(runtime);
+        if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot)
+            return null;
         if (runtime.command?.data.guildOnly && !ctx.guild)
             return null;
         else if (runtime.client.options.restrictions !== undefined) {

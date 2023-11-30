@@ -6,8 +6,6 @@ export default new DiscordEventHandler({
     version: "1.0.1",
     description: "This event is fired when someone sends a message",
     listener: async function (message) {
-        if (message.author.bot) return
-
         const prefix = this.options.prefixes.find((x) => message.content.startsWith(x))
 
         const args = message.content

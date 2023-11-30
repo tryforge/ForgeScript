@@ -10,6 +10,7 @@ const InviteSystem_1 = require("../structures/InviteSystem");
 const CooldownManager_1 = require("../managers/CooldownManager");
 const NativeCommandManager_1 = require("../managers/NativeCommandManager");
 const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
+(0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
     applicationCommands = new ApplicationCommandManager_1.ApplicationCommandManager(this);
@@ -54,6 +55,9 @@ class ForgeClient extends discord_js_1.Client {
     }
     get(key) {
         return this[key];
+    }
+    canRespondToBots(cmd) {
+        return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined);
     }
     login(token) {
         return super.login(token ?? this.options.token).then(async (str) => {
