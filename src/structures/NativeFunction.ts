@@ -29,6 +29,7 @@ export enum ArgType {
     String,
     Number,
     User,
+    Date,
     Guild,
     Invite,
     Permission,
@@ -125,6 +126,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? Role
     : T extends ArgType.Boolean
     ? boolean
+    : T extends ArgType.Date
+    ? Date 
     : T extends ArgType.Enum
     ? GetEnum<Enum>
     : T extends ArgType.Channel

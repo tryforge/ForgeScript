@@ -139,21 +139,21 @@ export class Container {
         return (
             content
                 ? {
-                      content,
-                  }
+                    content,
+                }
                 : {
-                      reply: this.reference
-                          ? {
-                                messageReference: this.reference,
-                                failIfNotExists: false,
-                            }
-                          : undefined,
-                      files: this.files,
-                      ephemeral: this.ephemeral,
-                      content: this.content || null,
-                      components: this.components,
-                      embeds: this.embeds,
-                  }
+                    reply: this.reference
+                        ? {
+                            messageReference: this.reference,
+                            failIfNotExists: false,
+                        }
+                        : undefined,
+                    files: this.files,
+                    ephemeral: this.ephemeral,
+                    content: this.content || null,
+                    components: this.components,
+                    embeds: this.embeds,
+                }
         ) as T
     }
 }
