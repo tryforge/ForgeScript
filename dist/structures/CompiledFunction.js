@@ -256,6 +256,9 @@ class CompiledFunction {
     resolveRole(ctx, arg, str, ref) {
         return (ref[arg.pointer] ?? ctx.guild).roles.cache.get(str);
     }
+    resolveDate(ctx, arg, str, ref) {
+        return new Date(str);
+    }
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
         if (!arg.required && !value) {

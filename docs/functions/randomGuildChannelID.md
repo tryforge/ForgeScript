@@ -6,11 +6,12 @@ $randomGuildChannelID
 ```
 ---
 ```
-$randomGuildChannelID[guild ID]
+$randomGuildChannelID[guild ID;...type]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild to get channel from | Yes | No
+type | Enum (`GuildText`, `DM`, `GuildVoice`, `GroupDM`, `GuildCategory`, `GuildNews`, `GuildNewsThread`, `GuildPublicThread`, `GuildPrivateThread`, `GuildStageVoice`, `GuildDirectory`, `GuildForum`, `GuildMedia`) | The channel types to get an id from | No | Yes
 <details>
 <summary>
     
@@ -19,6 +20,7 @@ guild ID | Guild | The guild to get channel from | Yes | No
 </summary>
     
 ```ts
+import { ChannelType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
@@ -35,11 +37,21 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Guild,
         },
+        {
+            name: "type",
+            description: "The channel types to get an id from",
+            type: ArgType.Enum,
+            rest: true,
+            required: false,
+            enum: ChannelType
+        }
     ],
-    execute(ctx, [g]) {
+    execute(ctx, [g, types]) {
         g ??= ctx.guild!
-
-        return Return.success(g?.channels.cache.randomKey())
+        return Return.success(
+            types.length === 0 ? g?.channels.cache.randomKey() :
+                g?.channels.cache.filter(x => types.includes(x.type)).randomKey()
+        )
     },
 })
 

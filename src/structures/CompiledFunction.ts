@@ -57,22 +57,22 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 raw.fields?.map((x) =>
                     !("op" in x)
                         ? {
-                              ...x,
-                              functions: x.functions.map((x) => new CompiledFunction(x)),
-                          }
+                            ...x,
+                            functions: x.functions.map((x) => new CompiledFunction(x)),
+                        }
                         : {
-                              ...x,
-                              lhs: {
-                                  ...x.lhs,
-                                  functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
-                              },
-                              rhs: x.rhs
-                                  ? {
-                                        ...x.rhs,
-                                        functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
-                                    }
-                                  : undefined,
-                          }
+                            ...x,
+                            lhs: {
+                                ...x.lhs,
+                                functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
+                            },
+                            rhs: x.rhs
+                                ? {
+                                    ...x.rhs,
+                                    functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
+                                }
+                                : undefined,
+                        }
                 ) ?? null,
         }
     }
@@ -324,6 +324,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveRole(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return ((ref[arg.pointer!] ?? ctx.guild) as Guild).roles.cache.get(str)
+    }
+
+    private resolveDate(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        return new Date(str)
     }
 
     private async resolveArg(
