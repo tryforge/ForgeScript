@@ -7,11 +7,23 @@ const path = "./changelog";
 if (!(0, fs_1.existsSync)(path))
     (0, fs_1.mkdirSync)(path);
 const version = require("../package.json").version;
-const msg = process_1.argv.slice(2).join(" ");
-const fileName = `${path}/${version}.txt`;
-const logs = (0, fs_1.existsSync)(fileName) ? (0, fs_1.readFileSync)(fileName, "utf-8").split("\n") : new Array();
-logs.unshift(msg);
-(0, fs_1.writeFileSync)(fileName, logs.join("\n"), "utf-8");
+let skip = false;
+const msg = process_1.argv.slice(2).join(" ").replace(/(--?(\w+))/gim, (match) => {
+    const name = /(\w+)/.exec(match)[1].toLowerCase();
+    switch (name) {
+        case "hide": {
+            skip = true;
+            break;
+        }
+    }
+    return "";
+}).trim();
+const fileName = `${path}/${version}.json`;
+if (!skip) {
+    const logs = (0, fs_1.existsSync)(fileName) ? JSON.parse((0, fs_1.readFileSync)(fileName, "utf-8")) : new Array();
+    logs.unshift(msg);
+    (0, fs_1.writeFileSync)(fileName, JSON.stringify(logs), "utf-8");
+}
 (0, child_process_1.execSync)("git add . && git commit -m \" " + msg + "\" && git push -u origin dev", {
     stdio: "inherit"
 });

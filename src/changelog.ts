@@ -6,12 +6,36 @@ const path = "./changelog"
 if (!existsSync(path)) mkdirSync(path)
 
 const version = require("../package.json").version
-const msg = argv.slice(2).join(" ")
 
-const fileName = `${path}/${version}.txt`
-const logs = existsSync(fileName) ? readFileSync(fileName, "utf-8").split("\n") : new Array<string>()
-logs.unshift(msg)
-writeFileSync(fileName, logs.join("\n"), "utf-8")
+let skip = false
+
+const msg = argv.slice(2).join(" ").replace(
+    /(--?(\w+))/gim, (match) => {
+        const name = /(\w+)/.exec(match)![1].toLowerCase()
+        
+        switch (name) {
+            case "hide": {
+                skip = true
+                break
+            }
+
+            default: {
+                throw new Error(`--${name} is not a valid flag.`)
+            }
+        }
+
+        return ""
+    } 
+).trim()
+
+const fileName = `${path}/${version}.json`
+
+if (!skip) {
+    const logs = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : new Array<string>()
+    logs.unshift(msg)
+    writeFileSync(fileName, JSON.stringify(logs), "utf-8")
+}
+
 execSync("git add . && git commit -m \" " + msg + "\" && git push -u origin dev", {
     stdio: "inherit"
 })

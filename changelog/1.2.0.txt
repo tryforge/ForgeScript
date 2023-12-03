@@ -1,2 +1,0 @@
-Attempt to fix changelog text corruption
-Fixed changelog path
