@@ -15,6 +15,9 @@ const msg = process_1.argv.slice(2).join(" ").replace(/(--?(\w+))/gim, (match) =
             skip = true;
             break;
         }
+        default: {
+            throw new Error(`--${name} is not a valid flag.`);
+        }
     }
     return "";
 }).trim();
