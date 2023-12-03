@@ -9,8 +9,10 @@ if (!(0, fs_1.existsSync)(path))
 const version = require("../package.json").version;
 const msg = process_1.argv.slice(2).join(" ");
 const fileName = `${path}/${version}.txt`;
-const logs = (0, fs_1.existsSync)(fileName) ? (0, fs_1.readFileSync)(path, "utf-8").split("\n") : new Array();
+const logs = (0, fs_1.existsSync)(fileName) ? (0, fs_1.readFileSync)(fileName, "utf-8").split("\n") : new Array();
 logs.unshift(msg);
-(0, fs_1.writeFileSync)(fileName, logs.join("\n"));
-(0, child_process_1.execSync)("git add . && git commit -m \" " + msg + "\" && git push -u origin dev");
+(0, fs_1.writeFileSync)(fileName, logs.join("\n"), "utf-8");
+(0, child_process_1.execSync)("git add . && git commit -m \" " + msg + "\" && git push -u origin dev", {
+    stdio: "inherit"
+});
 //# sourceMappingURL=changelog.js.map

@@ -9,7 +9,9 @@ const version = require("../package.json").version
 const msg = argv.slice(2).join(" ")
 
 const fileName = `${path}/${version}.txt`
-const logs = existsSync(fileName) ? readFileSync(path, "utf-8").split("\n") : new Array<string>()
+const logs = existsSync(fileName) ? readFileSync(fileName, "utf-8").split("\n") : new Array<string>()
 logs.unshift(msg)
-writeFileSync(fileName, logs.join("\n"))
-execSync("git add . && git commit -m \" " + msg + "\" && git push -u origin dev")
+writeFileSync(fileName, logs.join("\n"), "utf-8")
+execSync("git add . && git commit -m \" " + msg + "\" && git push -u origin dev", {
+    stdio: "inherit"
+})

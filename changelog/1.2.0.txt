@@ -1,1 +1,2 @@
-^Fixed^ changelog^ path^
+Attempt to fix changelog text corruption
+Fixed changelog path
