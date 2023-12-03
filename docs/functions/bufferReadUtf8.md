@@ -17,7 +17,7 @@ end index | Number | The index to end reading at | No | No
 </summary>
     
 ```ts
-import { ArgType, NativeFunction, Return } from "../structures";
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$bufferReadUtf8",

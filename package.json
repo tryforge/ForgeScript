@@ -8,6 +8,7 @@
     "prepublishOnly": "tsc",
     "docgen": "tsc && typedoc ./src --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix",
+    "commit": "npm run docgen && node dist/changelog",
     "test": "tsc && node dist/__tests__/runner"
   },
   "keywords": [
