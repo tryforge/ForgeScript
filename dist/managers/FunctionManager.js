@@ -17,8 +17,10 @@ class FunctionManager {
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
-            if (this.Functions.has(req.name))
+            if (this.Functions.has(req.name)) {
+                console.log(`Attempted to override alreaxy existing function ${req.name}`);
                 continue;
+            }
             this.Functions.set(req.name, req);
         }
     }

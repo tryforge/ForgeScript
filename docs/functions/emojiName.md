@@ -1,16 +1,16 @@
 # $emojiName
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the emoji id
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the emoji name
 ## Usage
 ```
 $emojiName
 ```
 ---
 ```
-$emojiName[emoji name]
+$emojiName[emoji ID]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-emoji name | String | The emoji name to return its id | Yes | No
+emoji ID | GuildEmoji | The emoji id to return its name | Yes | No
 <details>
 <summary>
     
@@ -24,7 +24,6 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$emojiName",
     version: "1.2.0",
-    version: "1.0.0",
     description: "Returns the emoji name",
     brackets: false,
     unwrap: true,
