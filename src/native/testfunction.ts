@@ -4,9 +4,9 @@ export default new NativeFunction({
     name: "$testFunction",
     version: "1.3.0",
     description: "test function",
-    brackets: true,
+    brackets: false,
     unwrap: true,
-    execute(_, [str]) {
+    execute: function() {
         return Return.success("hi")
-    },
+    }
 })
