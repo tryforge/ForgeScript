@@ -4,8 +4,9 @@ import generateFunctionDoc from "./functions/generateFunctionDoc"
 import { execSync } from "child_process"
 import { argv } from "process"
 
-const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
+FunctionManager.loadNative()
 
+const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const path = "./docs/functions"
 
 if (!existsSync(path)) mkdirSync(path)
