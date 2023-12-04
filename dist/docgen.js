@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const managers_1 = require("./managers");
 const generateFunctionDoc_1 = __importDefault(require("./functions/generateFunctionDoc"));
+managers_1.FunctionManager.loadNative();
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
 const path = "./docs/functions";
 if (!(0, fs_1.existsSync)(path))

@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$interactionFollowUp",
+    version: "1.2.0",
     description: "Forces an interaction follow up",
     unwrap: true,
     brackets: false,
