@@ -6,6 +6,7 @@ import { ForgeExtension } from "../structures/ForgeExtension";
 import { CooldownManager } from "../managers/CooldownManager";
 import { NativeCommandManager } from "../managers/NativeCommandManager";
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
+import { ThreadManager } from "../managers/ThreadManager";
 export interface IRestriction {
     guildIDs?: string[];
     userIDs?: string[];
@@ -27,11 +28,12 @@ export declare class ForgeClient extends Client<true> {
     options: (Omit<ClientOptions, "intents"> & {
         intents: IntentsBitField;
     }) & IForgeClientOptions;
-    commands: NativeCommandManager;
-    applicationCommands: ApplicationCommandManager;
-    events: EventManager;
-    cooldowns: CooldownManager;
-    functions: ForgeFunctionManager;
+    readonly commands: NativeCommandManager;
+    readonly applicationCommands: ApplicationCommandManager;
+    readonly events: EventManager;
+    readonly cooldowns: CooldownManager;
+    readonly functions: ForgeFunctionManager;
+    readonly threading: ThreadManager;
     [x: PropertyKey]: unknown;
     constructor(options: IForgeClientOptions);
     get<T>(key: string): T;

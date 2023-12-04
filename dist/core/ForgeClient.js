@@ -10,6 +10,7 @@ const InviteSystem_1 = require("../structures/InviteSystem");
 const CooldownManager_1 = require("../managers/CooldownManager");
 const NativeCommandManager_1 = require("../managers/NativeCommandManager");
 const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
+const ThreadManager_1 = require("../managers/ThreadManager");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -17,6 +18,7 @@ class ForgeClient extends discord_js_1.Client {
     events = new EventManager_1.EventManager(this);
     cooldowns = new CooldownManager_1.CooldownManager(this);
     functions = new ForgeFunctionManager_1.ForgeFunctionManager(this);
+    threading = new ThreadManager_1.ThreadManager(this);
     constructor(options) {
         super({
             partials: [
@@ -42,6 +44,7 @@ class ForgeClient extends discord_js_1.Client {
                 console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`);
             }
         }
+        FunctionManager_1.FunctionManager.loadNative();
         Compiler_1.Compiler.setFunctions(FunctionManager_1.FunctionManager.raw);
         if (this.options.commands) {
             this.commands.load(this.options.commands);

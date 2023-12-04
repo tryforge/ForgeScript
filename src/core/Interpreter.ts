@@ -48,6 +48,8 @@ export interface IRunnable {
     doNotSend?: boolean
     extras?: unknown
     states?: States
+    keywords?: Record<string, string>
+    environment?: Record<string, unknown>
     args?: string[]
 }
 
@@ -55,16 +57,18 @@ export class Interpreter {
     public static async run(runtime: IRunnable): Promise<string | null> {
         const ctx = new Context(runtime)
 
-        if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot) return null;
+        if (runtime.client !== null) {
+            if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot) return null
 
-        if (runtime.command?.data.guildOnly && !ctx.guild) return null
-        else if (runtime.client.options.restrictions !== undefined) {
-            const { guildIDs, userIDs } = runtime.client.options.restrictions
-            const guildID = ctx.guild?.id
-            const authorID = ctx.user?.id
-
-            if (userIDs?.length && authorID && !userIDs.includes(authorID)) return null
-            else if (guildIDs?.length && guildID && !guildIDs.includes(guildID)) return null
+            if (runtime.command?.data.guildOnly && !ctx.guild) return null
+            else if (runtime.client.options.restrictions !== undefined) {
+                const { guildIDs, userIDs } = runtime.client.options.restrictions
+                const guildID = ctx.guild?.id
+                const authorID = ctx.user?.id
+    
+                if (userIDs?.length && authorID && !userIDs.includes(authorID)) return null
+                else if (guildIDs?.length && guildID && !guildIDs.includes(guildID)) return null
+            }
         }
 
         const args = new Array<unknown>(runtime.data.functions.length)

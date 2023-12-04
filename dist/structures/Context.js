@@ -23,6 +23,10 @@ class Context {
     // eslint-disable-next-line no-unused-vars
     constructor(runtime) {
         this.runtime = runtime;
+        if (runtime.environment)
+            this.#environment = runtime.environment;
+        if (runtime.keywords)
+            this.#keywords = runtime.keywords;
     }
     get client() {
         return this.runtime.client;

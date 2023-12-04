@@ -20,6 +20,7 @@ export declare class BaseCommand<T> {
     unloadable: boolean;
     readonly compiled: ICompiledCommand;
     constructor(data: IBaseCommand<T>, unloadable?: boolean);
+    static from(code: string): BaseCommand<null>;
     get name(): string | undefined;
     get type(): T;
 }

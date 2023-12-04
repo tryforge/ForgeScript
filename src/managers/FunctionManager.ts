@@ -7,10 +7,16 @@ import { deserialize, serialize } from "v8"
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
 
+    public static loadNative() {    
+        // eslint-disable-next-line no-undef
+        FunctionManager.load(`${__dirname}/../native`)
+    }
+
     public static async load(path: string) {
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default as NativeFunction
+            if (this.Functions.has(req.name)) continue
             this.Functions.set(req.name, req)
         }
     }
@@ -44,16 +50,13 @@ export class FunctionManager {
                     data.brackets === undefined
                         ? null
                         : {
-                              required: data.brackets,
-                              fields: data.args!.map((x) => ({
-                                  condition: x.condition,
-                                  rest: x.rest,
-                              })),
-                          },
+                            required: data.brackets,
+                            fields: data.args!.map((x) => ({
+                                condition: x.condition,
+                                rest: x.rest,
+                            })),
+                        },
             }
         })
     }
 }
-
-// eslint-disable-next-line no-undef
-FunctionManager.load(`${__dirname}/../native`)

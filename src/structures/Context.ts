@@ -57,7 +57,10 @@ export class Context {
     public readonly container = new Container()
 
     // eslint-disable-next-line no-unused-vars
-    public constructor(public readonly runtime: IRunnable) {}
+    public constructor(public readonly runtime: IRunnable) {
+        if (runtime.environment) this.#environment = runtime.environment
+        if (runtime.keywords) this.#keywords = runtime.keywords
+    }
 
     public get client() {
         return this.runtime.client
@@ -81,8 +84,8 @@ export class Context {
             this.obj instanceof GuildMember
                 ? this.obj
                 : "member" in this.obj && this.obj.member instanceof GuildMember
-                ? this.obj.member
-                : null)
+                    ? this.obj.member
+                    : null)
     }
 
     public get emoji() {
@@ -108,8 +111,8 @@ export class Context {
             "message" in this.obj && this.obj.message
                 ? (this.obj.message as Message)
                 : this.obj instanceof Message
-                ? this.obj
-                : null)
+                    ? this.obj
+                    : null)
     }
 
     public get interaction() {
@@ -123,12 +126,12 @@ export class Context {
             "user" in this.obj
                 ? this.obj.user
                 : "author" in this.obj
-                ? this.obj.author
-                : this.obj instanceof User
-                ? this.obj
-                : "member" in this.obj
-                ? this.obj.member?.user ?? null
-                : null)
+                    ? this.obj.author
+                    : this.obj instanceof User
+                        ? this.obj
+                        : "member" in this.obj
+                            ? this.obj.member?.user ?? null
+                            : null)
     }
 
     public get guild() {
@@ -137,10 +140,10 @@ export class Context {
             "guild" in this.obj
                 ? (this.obj.guild as Guild)
                 : this.obj instanceof Guild
-                ? this.obj
-                : "message" in this.obj
-                ? this.obj.message.guild
-                : null)
+                    ? this.obj
+                    : "message" in this.obj
+                        ? this.obj.message.guild
+                        : null)
     }
 
     public get channel() {
@@ -151,10 +154,10 @@ export class Context {
                     ? null
                     : this.obj.channel
                 : this.obj instanceof BaseChannel
-                ? this.obj
-                : "message" in this.obj
-                ? (this.obj.message.channel as BaseChannel)
-                : null)
+                    ? this.obj
+                    : "message" in this.obj
+                        ? (this.obj.message.channel as BaseChannel)
+                        : null)
     }
 
     public async handle<Args extends [...IArg[]], Unwrap extends boolean>(
