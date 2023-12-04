@@ -51,6 +51,7 @@ export class Container {
     public components = new Array<ActionRowBuilder<AnyComponentBuilder>>()
     public reference?: string
     public reply = false
+    public followUp = false
     public edit = false
     public ephemeral = false
     public update = false
@@ -80,7 +81,7 @@ export class Container {
                     res = obj.showModal(this.modal)
                 } else {
                     res =
-                        obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](
+                        obj[(this.followUp ? "followUp" : obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](
                             options
                         )
                 }
@@ -123,6 +124,7 @@ export class Container {
         delete this.modal
         delete this.reference
 
+        this.followUp = false
         this.reply = false
         this.update = false
         this.ephemeral = false

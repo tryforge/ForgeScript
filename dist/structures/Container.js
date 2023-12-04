@@ -12,6 +12,7 @@ class Container {
     components = new Array();
     reference;
     reply = false;
+    followUp = false;
     edit = false;
     ephemeral = false;
     update = false;
@@ -42,7 +43,7 @@ class Container {
                 }
                 else {
                     res =
-                        obj[(obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply")](options);
+                        obj[(this.followUp ? "followUp" : obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply")](options);
                 }
             }
             else {
@@ -80,6 +81,7 @@ class Container {
         delete this.content;
         delete this.modal;
         delete this.reference;
+        this.followUp = false;
         this.reply = false;
         this.update = false;
         this.ephemeral = false;

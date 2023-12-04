@@ -30,6 +30,8 @@ export interface IRunnable {
     doNotSend?: boolean;
     extras?: unknown;
     states?: States;
+    keywords?: Record<string, string>;
+    environment?: Record<string, unknown>;
     args?: string[];
 }
 export declare class Interpreter {

@@ -29,6 +29,13 @@ export class BaseCommand<T> {
         }
     }
 
+    public static from(code: string) {
+        return new this({
+            code,
+            type: null
+        })
+    }
+
     public get name() {
         return this.data.name
     }

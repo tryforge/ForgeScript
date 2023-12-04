@@ -14,6 +14,12 @@ class BaseCommand {
             code: Compiler_1.Compiler.compile(data.code),
         };
     }
+    static from(code) {
+        return new this({
+            code,
+            type: null
+        });
+    }
     get name() {
         return this.data.name;
     }

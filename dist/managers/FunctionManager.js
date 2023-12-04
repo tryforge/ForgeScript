@@ -9,10 +9,16 @@ const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveRe
 const v8_1 = require("v8");
 class FunctionManager {
     static Functions = new Map();
+    static loadNative() {
+        // eslint-disable-next-line no-undef
+        FunctionManager.load(`${__dirname}/../native`);
+    }
     static async load(path) {
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
+            if (this.Functions.has(req.name))
+                continue;
             this.Functions.set(req.name, req);
         }
     }
@@ -52,6 +58,4 @@ class FunctionManager {
     }
 }
 exports.FunctionManager = FunctionManager;
-// eslint-disable-next-line no-undef
-FunctionManager.load(`${__dirname}/../native`);
 //# sourceMappingURL=FunctionManager.js.map

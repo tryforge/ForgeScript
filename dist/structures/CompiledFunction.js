@@ -41,22 +41,24 @@ class CompiledFunction {
                 }) ?? null,
         };
     }
+    displayField(i) {
+        const field = this.data.fields[i];
+        if ("op" in field) {
+            if (field.rhs) {
+                return `${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map((x) => x.display))}`;
+            }
+            else
+                return field.lhs.resolve(field.lhs.functions.map((x) => x.display));
+        }
+        return field.resolve(field.functions.map((x) => x.display));
+    }
     get display() {
         if (this.data.fields === null)
             return this.data.name;
         else {
             const args = new Array();
             for (let i = 0, len = this.data.fields.length; i < len; i++) {
-                const field = this.data.fields[i];
-                if ("op" in field) {
-                    if (field.rhs) {
-                        args.push(`${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map((x) => x.display))}`);
-                    }
-                    else
-                        args.push(field.lhs.resolve(field.lhs.functions.map((x) => x.display)));
-                    continue;
-                }
-                args.push(field.resolve(field.functions.map((x) => x.display)));
+                args.push(this.displayField(i));
             }
             return `${this.data.name}[${args.join(";")}]`;
         }
