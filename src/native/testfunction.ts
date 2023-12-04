@@ -6,7 +6,6 @@ export default new NativeFunction({
     description: "test function",
     brackets: true,
     unwrap: true,
-    ],
     execute(_, [str]) {
         return Return.success("hi")
     },
