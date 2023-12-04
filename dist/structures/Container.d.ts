@@ -6,6 +6,7 @@ export declare class Container {
     components: ActionRowBuilder<AnyComponentBuilder>[];
     reference?: string;
     reply: boolean;
+    followUp: boolean;
     edit: boolean;
     ephemeral: boolean;
     update: boolean;
