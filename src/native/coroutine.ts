@@ -4,7 +4,7 @@ import { ArgType, ErrorType, NativeFunction, Return } from "../structures"
 import { once } from "events"
 
 export default new NativeFunction({
-    name: "$runInThread",
+    name: "$coroutine",
     version: "1.2.0",
     description: "Runs given code in a separate thread",
     experimental: true,
