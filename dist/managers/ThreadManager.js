@@ -31,7 +31,6 @@ class ThreadManager {
         for (const [, task] of this.queue) {
             const worker = await this.getAvailableWorker();
             if (worker === null) {
-                console.log(`Workers are busy to process task ${task.id}, waiting for one to be free.`);
                 return;
             }
             this.setBusyWorker(worker);
@@ -83,7 +82,6 @@ class ThreadManager {
         await this.execute();
     }
     async onWorkerMessage(worker, msg) {
-        console.log(`Received response from worker ${worker.threadId} for task ${msg.taskId}`);
         this.setAvailableWorker(worker);
         const task = this.executing.get(msg.taskId);
         this.executing.delete(msg.taskId);
