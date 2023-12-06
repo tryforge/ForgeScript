@@ -9,7 +9,7 @@ $getEmbed[channel ID;message ID;embed index;property;separator]
 channel ID | Channel | The channel to pull message from | Yes | No
 message ID | Message | The message to retrieve data from | Yes | No
 embed index | Number | The embed index to get data from | Yes | No
-property | Enum (`title`, `authorName`, `authorIcon`, `footerText`, `image`, `thumbnail`, `footerIcon`, `description`, `timestamp`) | The property to pull | Yes | No
+property | Enum (`title`, `titleURL`, `authorName`, `authorIcon`, `footerText`, `image`, `thumbnail`, `footerIcon`, `description`, `timestamp`, `authorURL`, `color`) | The property to pull | Yes | No
 separator | String | Separator to use in case of array | No | No
 <details>
 <summary>

@@ -9,25 +9,26 @@ export type EnumLike<T = any> = {
 export type GetEnum<T> = T extends EnumLike<infer P> ? P : never;
 export declare enum ArgType {
     String = 0,
-    Number = 1,
-    User = 2,
-    Date = 3,
-    Guild = 4,
-    Invite = 5,
-    Permission = 6,
-    Json = 7,
-    Enum = 8,
-    ForumTag = 9,
-    GuildEmoji = 10,
-    Boolean = 11,
-    Reaction = 12,
-    Message = 13,
-    Channel = 14,
-    Role = 15,
-    Webhook = 16,
-    GuildSticker = 17,
-    Time = 18,
-    Member = 19
+    BigInt = 1,
+    Number = 2,
+    User = 3,
+    Date = 4,
+    Guild = 5,
+    Invite = 6,
+    Permission = 7,
+    Json = 8,
+    Enum = 9,
+    ForumTag = 10,
+    GuildEmoji = 11,
+    Boolean = 12,
+    Reaction = 13,
+    Message = 14,
+    Channel = 15,
+    Role = 16,
+    Webhook = 17,
+    GuildSticker = 18,
+    Time = 19,
+    Member = 20
 }
 export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean, Enum extends EnumLike = EnumLike> {
     name: string;
@@ -76,7 +77,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     execute: NativeFunctionExecutor<T, Unwrap>;
 }
 export type MarkRest<T, B extends boolean> = B extends true ? T[] : T;
-export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.Guild ? Guild : T extends ArgType.Role ? Role : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
+export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.Guild ? Guild : T extends ArgType.Role ? Role : T extends ArgType.BigInt ? bigint : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null;
 export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never;
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];
