@@ -4,6 +4,7 @@ const zlib_1 = require("zlib");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$inflate",
+    version: "1.2.0",
     description: "Decompresses given input",
     unwrap: true,
     brackets: true,

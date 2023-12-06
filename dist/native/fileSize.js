@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fileSize",
+    version: "1.2.0",
     description: "Gets size of a file or directory in bytes",
     brackets: true,
     unwrap: true,

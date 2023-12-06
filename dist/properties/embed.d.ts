@@ -8,7 +8,9 @@ export declare enum EmbedProperty {
     thumbnail = "thumbnail",
     footerIcon = "footerIcon",
     description = "description",
-    timestamp = "timestamp"
+    timestamp = "timestamp",
+    authorURL = "authorURL",
+    color = "color"
 }
 export declare const EmbedProperties: import("../functions/defineProperties").Properties<typeof EmbedProperty, EmbedBuilder>;
 //# sourceMappingURL=embed.d.ts.map
