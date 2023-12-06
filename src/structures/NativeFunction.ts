@@ -27,6 +27,7 @@ export type GetEnum<T> = T extends EnumLike<infer P> ? P : never
 
 export enum ArgType {
     String,
+    BigInt,
     Number,
     User,
     Date,
@@ -124,6 +125,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? Guild
     : T extends ArgType.Role
     ? Role
+    : T extends ArgType.BigInt
+    ? bigint
     : T extends ArgType.Boolean
     ? boolean
     : T extends ArgType.Date

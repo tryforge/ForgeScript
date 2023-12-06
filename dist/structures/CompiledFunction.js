@@ -172,6 +172,9 @@ class CompiledFunction {
             return;
         return value;
     }
+    resolveBigInt(ctx, arg, str, ref) {
+        return BigInt(str);
+    }
     resolvePermission(ctx, arg, str, ref) {
         if (!(str in discord_js_1.PermissionFlagsBits))
             return;

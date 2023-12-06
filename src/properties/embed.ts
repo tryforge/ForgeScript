@@ -3,6 +3,7 @@ import defineProperties from "../functions/defineProperties"
 
 export enum EmbedProperty {
     title = "title",
+    titleURL = "titleURL",
     authorName = "authorName",
     authorIcon = "authorIcon",
     footerText = "footerText",
@@ -18,6 +19,7 @@ export enum EmbedProperty {
 export const EmbedProperties = defineProperties<typeof EmbedProperty, EmbedBuilder>({
     authorIcon: (i) => i?.data.author?.icon_url,
     authorURL: i => i?.data.author?.url,
+    titleURL: i => i?.data.url,
     color: i => i?.data.color,
     authorName: (i) => i?.data.author?.name,
     description: (i) => i?.data.description,

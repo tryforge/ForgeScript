@@ -231,6 +231,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return value
     }
 
+    private resolveBigInt(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        return BigInt(str)
+    }
+
     private resolvePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!(str in PermissionFlagsBits)) return
         return str
