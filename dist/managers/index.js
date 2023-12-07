@@ -21,4 +21,5 @@ __exportStar(require("./BaseCommandManager"), exports);
 __exportStar(require("./CooldownManager"), exports);
 __exportStar(require("./NativeCommandManager"), exports);
 __exportStar(require("./ApplicationCommandManager"), exports);
+__exportStar(require("./ThreadManager"), exports);
 //# sourceMappingURL=index.js.map

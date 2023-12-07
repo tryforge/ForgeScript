@@ -2,6 +2,7 @@ import { ForgeClient } from "../core/ForgeClient"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeExtension } from "../structures/ForgeExtension"
 
+// Just a ext test
 export class MyExtension extends ForgeExtension {
     public description: string = "Some description"
     public name: string = "My extension"

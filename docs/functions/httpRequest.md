@@ -8,7 +8,7 @@ $httpRequest[url;method;variable]
 | :---: | :---: | :---: | :---: | :---: |
 url | String | The url to perform this request to | Yes | No
 method | String | The method to use | Yes | No
-variable | String | Environment variable name to load the response to | Yes | No
+variable | String | Environment variable name to load the response to | No | No
 <details>
 <summary>
     
@@ -44,13 +44,15 @@ export default new NativeFunction({
             name: "variable",
             description: "Environment variable name to load the response to",
             rest: false,
-            required: true,
+            required: false,
             type: ArgType.String,
         },
     ],
     brackets: true,
     unwrap: true,
     async execute(ctx, [url, method, name]) {
+        name ??= "result"
+        
         const req = await fetch(url, {
             method,
             ...ctx.http,
