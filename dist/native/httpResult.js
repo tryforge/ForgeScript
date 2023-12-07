@@ -4,6 +4,7 @@ const NativeFunction_1 = require("../structures/NativeFunction");
 const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpResult",
+    version: "1.2.0",
     description: "Retrieve an http result value",
     args: [
         {
