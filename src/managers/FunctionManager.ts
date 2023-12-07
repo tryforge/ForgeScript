@@ -18,7 +18,7 @@ export class FunctionManager {
             const req = require(file).default as NativeFunction
             
             if (this.Functions.has(req.name)) {
-                console.log(`Attempted to override alreaxy existing function ${req.name}`)
+                console.log(`Attempted to override already existing function ${req.name}`)
                 continue
             }
 
