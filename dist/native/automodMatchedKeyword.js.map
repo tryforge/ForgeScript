@@ -1,0 +1,1 @@
+{"version":3,"file":"automodMatchedKeyword.js","sourceRoot":"","sources":["../../src/native/automodMatchedKeyword.ts"],"names":[],"mappings":";;AAAA,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,wBAAwB;IAC9B,WAAW,EAAE,wCAAwC;IACrD,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,mBAAM,CAAC,OAAO,CAAC,GAAG,CAAC,OAAO,EAAE,cAAc,CAAC,CAAA;IACtD,CAAC;CACJ,CAAC,CAAA"}

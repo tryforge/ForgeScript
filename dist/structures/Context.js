@@ -15,6 +15,7 @@ class Context {
     #role;
     #reaction;
     #emoji;
+    #automod;
     executionTimestamp;
     http = {};
     #keywords = {};
@@ -39,6 +40,9 @@ class Context {
     }
     get states() {
         return this.runtime.states;
+    }
+    get automod() {
+        return this.#automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
     }
     get member() {
         if (!this.obj)
