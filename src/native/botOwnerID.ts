@@ -9,17 +9,23 @@ export default new NativeFunction({
     brackets: false,
     args: [
         {
+            name: "return members",
+            description: "Whether to return all members",
+            rest: false,
+            required: false,
+            type: ArgType.Boolean
+        },
+        {
             name: "separator",
             description: "The separator to use for every id",
             rest: false,
-            required: true,
             type: ArgType.String
         }
     ],
     unwrap: true,
-    async execute(ctx, [ sep ]) {
+    async execute(ctx, [ returnAll, sep ]) {
         if (!ctx.client.application.owner) await ctx.client.application.fetch().catch(noop)
         const owner = ctx.client.application.owner
-        return Return.success(owner ? owner instanceof User ? owner.id : owner.members.map(x => x.id).join(sep ?? ", ") : null)
+        return Return.success(owner ? owner instanceof User ? owner.id : returnAll ? owner.members.map(x => x.id).join(sep ?? ", ") : owner.ownerId : null)
     },
 })
