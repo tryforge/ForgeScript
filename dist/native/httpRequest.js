@@ -26,13 +26,14 @@ exports.default = new NativeFunction_1.NativeFunction({
             name: "variable",
             description: "Environment variable name to load the response to",
             rest: false,
-            required: true,
+            required: false,
             type: NativeFunction_1.ArgType.String,
         },
     ],
     brackets: true,
     unwrap: true,
     async execute(ctx, [url, method, name]) {
+        name ??= "result";
         const req = await (0, undici_1.fetch)(url, {
             method,
             ...ctx.http,
