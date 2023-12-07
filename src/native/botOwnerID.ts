@@ -1,14 +1,25 @@
+import { User } from "discord.js"
 import noop from "../functions/noop"
-import { NativeFunction, Return } from "../structures"
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$botOwnerID",
     version: "1.0.0",
     description: "Returns the bot owner id",
+    brackets: false,
+    args: [
+        {
+            name: "separator",
+            description: "The separator to use for every id",
+            rest: false,
+            required: true,
+            type: ArgType.String
+        }
+    ],
     unwrap: true,
-    async execute(ctx) {
+    async execute(ctx, [ sep ]) {
         if (!ctx.client.application.owner) await ctx.client.application.fetch().catch(noop)
-
-        return Return.success(ctx.client.application.owner?.id)
+        const owner = ctx.client.application.owner
+        return Return.success(owner ? owner instanceof User ? owner.id : owner.members.map(x => x.id).join(sep ?? ", ") : null)
     },
 })
