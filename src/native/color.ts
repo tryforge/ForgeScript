@@ -12,7 +12,7 @@ export default new NativeFunction({
             description: "The color for the embed",
             required: true,
             enum: Colors,
-            type: ArgType.String,
+            type: ArgType.Color,
             rest: false,
         },
         {
@@ -24,10 +24,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [color, index]) {
-        const col = (
-            !isNaN(Number(color)) ? Number(color) : color.startsWith("#") ? color.slice(1) : color
-        ) as ColorResolvable
-        ctx.container.embed(index ?? 0).setColor(col)
+        ctx.container.embed(index ?? 0).setColor(color)
         return Return.success()
     },
 })

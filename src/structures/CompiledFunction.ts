@@ -21,6 +21,7 @@ import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
 import { TimeParser } from "../constants"
+import { any2int } from "../functions/hex"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -233,6 +234,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveBigInt(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return BigInt(str)
+    }
+
+    private resolveColor(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        return any2int(str)
     }
 
     private resolvePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

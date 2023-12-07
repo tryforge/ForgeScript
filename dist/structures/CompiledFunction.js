@@ -11,6 +11,7 @@ const ForgeError_1 = require("./ForgeError");
 const NativeFunction_1 = require("./NativeFunction");
 const Return_1 = require("./Return");
 const constants_1 = require("../constants");
+const hex_1 = require("../functions/hex");
 class CompiledFunction {
     raw;
     static IdRegex = /^(\d{16,23})$/;
@@ -174,6 +175,9 @@ class CompiledFunction {
     }
     resolveBigInt(ctx, arg, str, ref) {
         return BigInt(str);
+    }
+    resolveColor(ctx, arg, str, ref) {
+        return (0, hex_1.any2int)(str);
     }
     resolvePermission(ctx, arg, str, ref) {
         if (!(str in discord_js_1.PermissionFlagsBits))

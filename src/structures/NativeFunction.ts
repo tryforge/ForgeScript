@@ -35,6 +35,7 @@ export enum ArgType {
     Invite,
     Permission,
     Json,
+    Color,
     Enum,
     ForumTag,
     GuildEmoji,
@@ -123,6 +124,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? Record<string, unknown>
     : T extends ArgType.Guild
     ? Guild
+    : T extends ArgType.Color 
+    ? number 
     : T extends ArgType.Role
     ? Role
     : T extends ArgType.BigInt
