@@ -21,4 +21,4 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
         }
     },
 });
-//# sourceMappingURL=debug.js.map
+//# sourceMappingURL=debug.js.map 
