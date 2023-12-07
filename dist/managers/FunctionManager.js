@@ -18,7 +18,7 @@ class FunctionManager {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
             if (this.Functions.has(req.name)) {
-                console.log(`Attempted to override alreaxy existing function ${req.name}`);
+                console.log(`Attempted to override already existing function ${req.name}`);
                 continue;
             }
             this.Functions.set(req.name, req);

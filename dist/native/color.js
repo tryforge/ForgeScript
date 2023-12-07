@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The color for the embed",
             required: true,
             enum: discord_js_1.Colors,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Color,
             rest: false,
         },
         {
@@ -25,8 +25,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [color, index]) {
-        const col = (!isNaN(Number(color)) ? Number(color) : color.startsWith("#") ? color.slice(1) : color);
-        ctx.container.embed(index ?? 0).setColor(col);
+        ctx.container.embed(index ?? 0).setColor(color);
         return structures_1.Return.success();
     },
 });
