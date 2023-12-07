@@ -26,11 +26,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Number,
         },
+        {
+            name: "reason",
+            description: "The reason for creating this invite",
+            rest: false,
+            type: structures_1.ArgType.String
+        }
     ],
-    async execute(ctx, [ch, maxUses]) {
+    async execute(ctx, [ch, maxUses, reason]) {
         const channel = (ch ?? ctx.channel);
         const invite = await channel
             .createInvite({
+            reason: reason || undefined,
             maxUses: maxUses || undefined,
         })
             .catch(noop_1.default);

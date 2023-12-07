@@ -23,11 +23,18 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Number,
         },
+        {
+            name: "reason",
+            description: "The reason for creating this invite",
+            rest: false,
+            type: ArgType.String
+        }
     ],
-    async execute(ctx, [ch, maxUses]) {
+    async execute(ctx, [ch, maxUses, reason]) {
         const channel = (ch ?? ctx.channel) as TextChannel
         const invite = await channel
             .createInvite({
+                reason: reason || undefined,
                 maxUses: maxUses || undefined,
             })
             .catch(noop)
