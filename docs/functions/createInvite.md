@@ -2,12 +2,13 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates an invite, returns the code
 ## Usage
 ```
-$createInvite[channel ID;max uses]
+$createInvite[channel ID;max uses;reason]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 channel ID | Channel | The channel to make the invite for | Yes | No
 max uses | Number | The max amount of uses for this invite | No | No
+reason | String | The reason for creating this invite | No | No
 <details>
 <summary>
     
@@ -41,11 +42,18 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Number,
         },
+        {
+            name: "reason",
+            description: "The reason for creating this invite",
+            rest: false,
+            type: ArgType.String
+        }
     ],
-    async execute(ctx, [ch, maxUses]) {
+    async execute(ctx, [ch, maxUses, reason]) {
         const channel = (ch ?? ctx.channel) as TextChannel
         const invite = await channel
             .createInvite({
+                reason: reason || undefined,
                 maxUses: maxUses || undefined,
             })
             .catch(noop)
