@@ -16,8 +16,10 @@ const client = new ForgeClient({
         "GuildInvites",
         "GuildModeration",
         "GuildMessageReactions",
+        "AutoModerationExecution"
     ],
     events: [
+        "autoModerationActionExecution",
         "guildAuditLogEntryCreate",
         "ready",
         "messageCreate",
@@ -84,6 +86,11 @@ client.commands.add({
     name: "djs",
     type: "messageCreate",
     code: "$djsEval[$message]",
+})
+
+client.commands.add({
+    type: "autoModerationActionExecution",
+    code: "$log[Blocked]"
 })
 
 client.commands.add({

@@ -19,6 +19,9 @@ export interface IForgeClientOptions extends ClientOptions {
     allowBots?: boolean;
     token?: string;
     useInviteSystem?: boolean;
+    /**
+     * @deprecated Does not work
+     */
     optionalGuildID?: boolean;
     extensions?: ForgeExtension[];
     restrictions?: IRestriction;
