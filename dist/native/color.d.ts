@@ -35,7 +35,7 @@ declare const _default: NativeFunction<[{
         DarkButNotBlack: 2895667;
         NotQuiteBlack: 2303786;
     };
-    type: ArgType.String;
+    type: ArgType.Color;
     rest: false;
 }, {
     name: string;
