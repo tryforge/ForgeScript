@@ -1,0 +1,1 @@
+{"version":3,"file":"automodChannelID.js","sourceRoot":"","sources":["../../src/native/automodChannelID.ts"],"names":[],"mappings":";;AACA,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,mBAAmB;IACzB,WAAW,EAAE,4BAA4B;IACzC,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,mBAAM,CAAC,OAAO,CAAC,GAAG,CAAC,OAAO,EAAE,MAAM,CAAC,QAAQ,CAAC,SAAS,CAAC,CAAA;IACjE,CAAC;CACJ,CAAC,CAAA"}

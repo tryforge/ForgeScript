@@ -1,5 +1,6 @@
 import {
     AnySelectMenuInteraction,
+    AutoModerationActionExecution,
     BaseChannel,
     BaseInteraction,
     ChatInputCommandInteraction,
@@ -44,6 +45,7 @@ export class Context {
     #role?: Role | null
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
+    #automod?: AutoModerationActionExecution | null
 
     // eslint-disable-next-line no-undef
     [props: PropertyKey]: unknown
@@ -76,6 +78,10 @@ export class Context {
 
     public get states() {
         return this.runtime.states
+    }
+
+    public get automod() {
+        return this.#automod ??= this.obj instanceof AutoModerationActionExecution ? this.obj : null
     }
 
     public get member() {

@@ -1,0 +1,13 @@
+import { AutoModerationActionType } from "discord.js"
+import { NativeFunction, Return } from "../structures"
+
+export default new NativeFunction({
+    name: "$automodActionType",
+    version: "1.2.0",
+    description: "The action type automod used",
+    unwrap: false,
+    execute(ctx) {
+        const type = ctx.automod?.action.type
+        return Return.success(type ? AutoModerationActionType[type] : null)
+    },
+})

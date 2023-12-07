@@ -3,6 +3,7 @@ import {
     AnyComponentBuilder,
     ApplicationCommandOptionChoiceData,
     AttachmentBuilder,
+    AutoModerationActionExecution,
     BaseChannel,
     BaseInteraction,
     Channel,
@@ -44,6 +45,7 @@ export type Sendable =
     | Guild
     | MessageReaction
     | Invite
+    | AutoModerationActionExecution
 
 export class Container {
     public content?: string
@@ -71,6 +73,8 @@ export class Container {
 
         if (this.channel && this.channel.isTextBased()) {
             res = this.channel.send(options)
+        } else if (obj instanceof AutoModerationActionExecution && obj.channel && "send" in obj.channel) {
+            res = obj.channel.send(options)
         } else if (obj instanceof WebhookClient) {
             res = obj.send(options)
         } else if (obj instanceof Message) {

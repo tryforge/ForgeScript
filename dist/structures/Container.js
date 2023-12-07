@@ -30,6 +30,9 @@ class Container {
         if (this.channel && this.channel.isTextBased()) {
             res = this.channel.send(options);
         }
+        else if (obj instanceof discord_js_1.AutoModerationActionExecution && obj.channel && "send" in obj.channel) {
+            res = obj.channel.send(options);
+        }
         else if (obj instanceof discord_js_1.WebhookClient) {
             res = obj.send(options);
         }
