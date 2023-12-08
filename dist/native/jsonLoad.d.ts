@@ -13,4 +13,4 @@ declare const _default: NativeFunction<[{
     rest: false;
 }], true>;
 export default _default;
-//# sourceMappingURL=loadJSON.d.ts.map
+//# sourceMappingURL=jsonLoad.d.ts.map
