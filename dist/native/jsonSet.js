@@ -2,30 +2,30 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$loadJSON",
-    version: "1.0.0",
-    description: "Loads JSON to an env variable",
+    name: "$jsonSet",
+    version: "1.2.0",
+    description: "Adds a json key with a value",
+    unwrap: true,
     brackets: true,
     args: [
         {
             name: "variable",
-            description: "The variable to load it to",
+            description: "The $env variable to set this value on",
             rest: false,
-            type: structures_1.ArgType.String,
             required: true,
+            type: structures_1.ArgType.String
         },
         {
-            name: "json",
-            description: "The json data",
+            name: "value",
+            description: "The value to assign",
             type: structures_1.ArgType.Json,
-            required: true,
             rest: false,
-        },
+            required: true
+        }
     ],
-    unwrap: true,
-    execute(ctx, [name, json]) {
-        ctx.setEnvironmentKey(name, json);
+    execute(ctx, [key, value]) {
+        ctx.setEnvironmentKey(key, value);
         return structures_1.Return.success();
     },
 });
-//# sourceMappingURL=loadJSON.js.map
+//# sourceMappingURL=jsonSet.js.map

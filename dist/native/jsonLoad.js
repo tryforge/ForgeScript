@@ -1,7 +1,8 @@
-import { ArgType, NativeFunction, Return } from "../structures"
-
-export default new NativeFunction({
-    name: "$loadJSON",
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const structures_1 = require("../structures");
+exports.default = new structures_1.NativeFunction({
+    name: "$jsonLoad",
     version: "1.0.0",
     description: "Loads JSON to an env variable",
     brackets: true,
@@ -10,20 +11,21 @@ export default new NativeFunction({
             name: "variable",
             description: "The variable to load it to",
             rest: false,
-            type: ArgType.String,
+            type: structures_1.ArgType.String,
             required: true,
         },
         {
             name: "json",
             description: "The json data",
-            type: ArgType.Json,
+            type: structures_1.ArgType.Json,
             required: true,
             rest: false,
         },
     ],
     unwrap: true,
     execute(ctx, [name, json]) {
-        ctx.setEnvironmentKey(name, json)
-        return Return.success()
+        ctx.setEnvironmentKey(name, json);
+        return structures_1.Return.success();
     },
-})
+});
+//# sourceMappingURL=jsonLoad.js.map
