@@ -17,8 +17,8 @@ export declare class Return<T extends ReturnType = ReturnType> {
     static stop(): Return<ReturnType.Stop>;
     static break(): Return<ReturnType.Break>;
     static continue(): Return<ReturnType.Continue>;
-    static successJSON(value: Return<ReturnType.Success>): Return<ReturnType.Success>;
-    static successFormatted(value: Return<ReturnType.Success>): Return<ReturnType.Success>;
+    static successJSON(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    static successFormatted(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     static success(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     get error(): boolean;
     get stop(): boolean;
