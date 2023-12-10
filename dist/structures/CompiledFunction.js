@@ -325,6 +325,16 @@ class CompiledFunction {
     static toResolveArgString(type) {
         return `resolve${NativeFunction_1.ArgType[type]}`;
     }
+    toExecutableCode(index) {
+        return `
+        fn = runtime.data.functions[${index}]
+        rt = await fn.execute(ctx)
+
+        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+
+        args[${index}] = fn.data.negated ? null : rt.value
+        `;
+    }
 }
 exports.CompiledFunction = CompiledFunction;
 //# sourceMappingURL=CompiledFunction.js.map

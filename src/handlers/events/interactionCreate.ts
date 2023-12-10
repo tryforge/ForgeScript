@@ -20,7 +20,10 @@ export default new DiscordEventHandler({
             return
         }
 
-        const commands = this.commands.get("interactionCreate")
+        const commands = this.commands.get(
+            "interactionCreate",
+            cmd => cmd.matchesInteractionType(i)
+        )
 
         for (const command of commands) {
             Interpreter.run({
