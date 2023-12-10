@@ -1,11 +1,9 @@
-import { Events } from "discord.js";
 import { ArgType, NativeFunction } from "../structures";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
-    type: ArgType.Enum;
-    enum: typeof Events;
     rest: false;
+    type: ArgType.String;
     required: true;
 }, {
     name: string;

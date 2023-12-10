@@ -6,7 +6,7 @@ $commandInfo[type;name;property;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-type | Enum (`applicationCommandPermissionsUpdate`, `autoModerationActionExecution`, `autoModerationRuleCreate`, `autoModerationRuleDelete`, `autoModerationRuleUpdate`, `cacheSweep`, `channelCreate`, `channelDelete`, `channelPinsUpdate`, `channelUpdate`, `ready`, `debug`, `error`, `guildAuditLogEntryCreate`, `guildAvailable`, `guildBanAdd`, `guildBanRemove`, `guildCreate`, `guildDelete`, `emojiCreate`, `emojiDelete`, `emojiUpdate`, `guildIntegrationsUpdate`, `guildMemberAdd`, `guildMemberAvailable`, `guildMemberRemove`, `guildMembersChunk`, `guildMemberUpdate`, `roleCreate`, `roleDelete`, `roleUpdate`, `guildScheduledEventCreate`, `guildScheduledEventDelete`, `guildScheduledEventUpdate`, `guildScheduledEventUserAdd`, `guildScheduledEventUserRemove`, `stickerCreate`, `stickerDelete`, `stickerUpdate`, `guildUnavailable`, `guildUpdate`, `interactionCreate`, `invalidated`, `inviteCreate`, `inviteDelete`, `messageDeleteBulk`, `messageCreate`, `messageDelete`, `messageReactionAdd`, `messageReactionRemove`, `messageReactionRemoveAll`, `messageReactionRemoveEmoji`, `messageUpdate`, `presenceUpdate`, `raw`, `shardDisconnect`, `shardError`, `shardReady`, `shardReconnecting`, `shardResume`, `stageInstanceCreate`, `stageInstanceDelete`, `stageInstanceUpdate`, `threadCreate`, `threadDelete`, `threadListSync`, `threadMembersUpdate`, `threadMemberUpdate`, `threadUpdate`, `typingStart`, `userUpdate`, `voiceServerUpdate`, `voiceStateUpdate`, `warn`, `webhookUpdate`) | The command type | Yes | No
+type | String | The command type | Yes | No
 name | String | The command name | Yes | No
 property | String | The property to retrieve | Yes | No
 separator | String | Separator to use in case of array | No | No
@@ -31,9 +31,8 @@ export default new NativeFunction({
         {
             name: "type",
             description: "The command type",
-            type: ArgType.Enum,
-            enum: Events,
             rest: false,
+            type: ArgType.String,
             required: true,
         },
         {

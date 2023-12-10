@@ -11,9 +11,8 @@ export default new NativeFunction({
         {
             name: "type",
             description: "The command type",
-            type: ArgType.Enum,
-            enum: Events,
             rest: false,
+            type: ArgType.String,
             required: true,
         },
         {

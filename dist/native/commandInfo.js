@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$commandInfo",
@@ -12,9 +11,8 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "type",
             description: "The command type",
-            type: structures_1.ArgType.Enum,
-            enum: discord_js_1.Events,
             rest: false,
+            type: structures_1.ArgType.String,
             required: true,
         },
         {
