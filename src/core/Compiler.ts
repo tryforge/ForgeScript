@@ -60,6 +60,11 @@ export interface ICompiledFunctionConditionField {
     resolve: WrappedConditionCode
 }
 
+export interface ILocation {
+    line: number
+    column: number
+}
+
 export interface ICompiledFunction {
     id: string
     name: string
@@ -314,7 +319,25 @@ export class Compiler {
     }
 
     private error(str: string) {
-        throw new ForgeError(null, ErrorType.CompilerError, str)
+        const { line, column } = this.locate(this.index)
+        throw new ForgeError(null, ErrorType.CompilerError, str, line, column)
+    }
+
+    private locate(index: number): ILocation {
+        const data: ILocation = {
+            column: 0,
+            line: 1
+        }
+
+        for (let i = 0;i < index;i++) {
+            const char = this.code![i]
+            if (char === "\n")
+                data.line++, data.column = 0
+            else
+                data.column++
+        }
+
+        return data
     }
 
     private back() {

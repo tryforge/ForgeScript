@@ -40,6 +40,10 @@ export interface ICompiledFunctionConditionField {
     rhs?: ICompiledFunctionField;
     resolve: WrappedConditionCode;
 }
+export interface ILocation {
+    line: number;
+    column: number;
+}
 export interface ICompiledFunction {
     id: string;
     name: string;
@@ -80,6 +84,7 @@ export declare class Compiler {
     private parseFunction;
     private parseField;
     private error;
+    private locate;
     private back;
     private wrapCondition;
     private wrap;

@@ -223,7 +223,22 @@ class Compiler {
         return data;
     }
     error(str) {
-        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str);
+        const { line, column } = this.locate(this.index);
+        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column);
+    }
+    locate(index) {
+        const data = {
+            column: 0,
+            line: 1
+        };
+        for (let i = 0; i < index; i++) {
+            const char = this.code[i];
+            if (char === "\n")
+                data.line++, data.column = 0;
+            else
+                data.column++;
+        }
+        return data;
     }
     back() {
         return this.code[this.index - 1];
