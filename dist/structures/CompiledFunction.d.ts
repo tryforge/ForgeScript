@@ -75,5 +75,6 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private isValidReturnType;
     private fail;
     static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
+    private toExecutableCode;
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map

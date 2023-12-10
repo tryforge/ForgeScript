@@ -50,6 +50,7 @@ client.commands.add({
     $interactionUpdate
     `
 })
+
 client.commands.add({
     type: Events.GuildAuditLogEntryCreate,
     code: `
@@ -94,8 +95,11 @@ client.commands.add({
 })
 
 client.commands.add({
+    allowedInteractionTypes: [
+        "autocomplete"
+    ],
     type: "interactionCreate",
-    code: `$onlyIf[$isAutocomplete]
+    code: `
     $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
     $addChoice[tmr;land]
     `,

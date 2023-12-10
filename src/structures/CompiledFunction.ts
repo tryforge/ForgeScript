@@ -415,4 +415,15 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public static toResolveArgString(type: ArgType) {
         return `resolve${ArgType[type] as keyof typeof ArgType}` as const
     }
+
+    private toExecutableCode(index: number) {
+        return `
+        fn = runtime.data.functions[${index}]
+        rt = await fn.execute(ctx)
+
+        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+
+        args[${index}] = fn.data.negated ? null : rt.value
+        `
+    }
 }

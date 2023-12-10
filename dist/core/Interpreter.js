@@ -21,7 +21,7 @@ class Interpreter {
             }
         }
         const args = new Array(runtime.data.functions.length);
-        ctx.executionTimestamp = Date.now();
+        ctx.executionTimestamp = performance.now();
         for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
             const fn = runtime.data.functions[i];
             const rt = await fn.execute(ctx);

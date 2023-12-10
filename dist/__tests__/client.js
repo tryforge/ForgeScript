@@ -83,8 +83,11 @@ client.commands.add({
     code: "$log[Blocked]"
 });
 client.commands.add({
+    allowedInteractionTypes: [
+        "autocomplete"
+    ],
     type: "interactionCreate",
-    code: `$onlyIf[$isAutocomplete]
+    code: `
     $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
     $addChoice[tmr;land]
     `,

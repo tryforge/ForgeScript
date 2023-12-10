@@ -19,7 +19,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             }
             return;
         }
-        const commands = this.commands.get("interactionCreate");
+        const commands = this.commands.get("interactionCreate", cmd => cmd.matchesInteractionType(i));
         for (const command of commands) {
             core_1.Interpreter.run({
                 obj: i,

@@ -1,6 +1,7 @@
-import { ClientEvents } from "discord.js";
+import { ClientEvents, Interaction } from "discord.js";
 import { IExtendedCompilationResult } from "../core/Compiler";
 export type CommandType = keyof ClientEvents;
+export type CommandInteractionTypes = "button" | "modal" | "autocomplete" | "contextMenu" | "selectMenu";
 export interface IBaseCommand<T> {
     name?: string;
     type: T;
@@ -8,6 +9,7 @@ export interface IBaseCommand<T> {
     guildOnly?: boolean;
     unprefixed?: boolean;
     aliases?: string[];
+    allowedInteractionTypes?: CommandInteractionTypes[];
     allowBots?: boolean;
     [x: PropertyKey]: unknown;
 }
@@ -23,5 +25,7 @@ export declare class BaseCommand<T> {
     static from(code: string): BaseCommand<null>;
     get name(): string | undefined;
     get type(): T;
+    matchesInteractionType(i: Interaction): boolean;
+    private createExecutableCode;
 }
 //# sourceMappingURL=BaseCommand.d.ts.map
