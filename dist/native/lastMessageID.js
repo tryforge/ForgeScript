@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
         ch ??= ctx.channel;
         if (user) {
             const messages = await ch.messages.fetch({ limit: 100 }).catch(lodash_1.noop);
-            return structures_1.Return.success(messages ? messages.find(x => x.author.id === user.id) : undefined);
+            return structures_1.Return.success(messages ? messages.find(x => x.author.id === user.id)?.id : undefined);
         }
         return structures_1.Return.success(ch.lastMessageId);
     },
