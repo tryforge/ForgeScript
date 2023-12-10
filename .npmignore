@@ -1,6 +1,7 @@
 */__tests__/
 \.env
 docs
+meta
 act.exe
 \.github
 PUBLISHING.md

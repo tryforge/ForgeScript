@@ -177,7 +177,7 @@ class CompiledFunction {
         return BigInt(str);
     }
     resolveColor(ctx, arg, str, ref) {
-        return (0, hex_1.any2int)(str);
+        return (0, hex_1.resolveColor)(str);
     }
     resolvePermission(ctx, arg, str, ref) {
         if (!(str in discord_js_1.PermissionFlagsBits))
