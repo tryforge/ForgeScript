@@ -11,14 +11,14 @@ exports.default = new NativeFunction_1.NativeFunction({
         {
             name: "value",
             description: "The value to return",
-            rest: true,
+            rest: false,
             required: true,
             type: NativeFunction_1.ArgType.String,
         },
     ],
-    brackets: true,
-    execute(_, [args]) {
-        return Return_1.Return.return(args.join(";"));
+    brackets: false,
+    execute(_, [val]) {
+        return Return_1.Return.return(val ?? "");
     },
 });
 //# sourceMappingURL=return.js.map

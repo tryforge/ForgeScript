@@ -10,13 +10,13 @@ export default new NativeFunction({
         {
             name: "value",
             description: "The value to return",
-            rest: true,
+            rest: false,
             required: true,
             type: ArgType.String,
         },
     ],
-    brackets: true,
-    execute(_, [args]) {
-        return Return.return(args.join(";"))
+    brackets: false,
+    execute(_, [ val ]) {
+        return Return.return(val ?? "")
     },
 })
