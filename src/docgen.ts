@@ -28,7 +28,7 @@ for (const [, fn] of FunctionManager["Functions"]) {
     console.log(`Generated docs for ${fn.name}!`)
 }
 
-writeFileSync(`${path}.json`, JSON.stringify(FunctionManager.toJSON()))
+writeFileSync(`${metaOutPath}/functions.json`, JSON.stringify(FunctionManager.toJSON()))
 
 for (const event of Object.values(EventManager["Loaded"]![NativeEventName]!)) {
     const nativePath = `./src/handlers/events/${event!.name}.ts`
@@ -40,4 +40,4 @@ for (const event of Object.values(EventManager["Loaded"]![NativeEventName]!)) {
     }
 }
 
-writeFileSync("./docs/events.json", JSON.stringify(EventManager.toJSON(NativeEventName)))
+writeFileSync(`${metaOutPath}/events.json`, JSON.stringify(EventManager.toJSON(NativeEventName)))
