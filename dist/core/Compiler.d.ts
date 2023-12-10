@@ -40,9 +40,17 @@ export interface ICompiledFunctionConditionField {
     rhs?: ICompiledFunctionField;
     resolve: WrappedConditionCode;
 }
+export interface ILocation {
+    line: number;
+    column: number;
+}
 export interface ICompiledFunction {
     id: string;
     name: string;
+    /**
+     * Whether output is not desirable
+     */
+    negated: boolean;
     fields: null | (ICompiledFunctionField | ICompiledFunctionConditionField)[];
 }
 export interface ICompilationResult {
@@ -65,7 +73,7 @@ export declare class Compiler {
         Open: string;
         Close: string;
         Escape: string;
-        Exclamation: string;
+        Negation: string;
         Separator: string;
     };
     private static SystemRegex;
@@ -77,9 +85,11 @@ export declare class Compiler {
     private index;
     constructor(code?: string | undefined);
     private compile;
+    private tryNegate;
     private parseFunction;
     private parseField;
     private error;
+    private locate;
     private back;
     private wrapCondition;
     private wrap;

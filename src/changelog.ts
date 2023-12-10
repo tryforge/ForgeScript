@@ -2,7 +2,7 @@ import { execSync } from "child_process"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { argv } from "process"
 
-const path = "./changelog"
+const path = "./metadata"
 if (!existsSync(path)) mkdirSync(path)
 
 const version = require("../package.json").version
@@ -28,12 +28,13 @@ const msg = argv.slice(2).join(" ").replace(
     } 
 ).trim()
 
-const fileName = `${path}/${version}.json`
+const fileName = `${path}/changelogs.json`
+const json: Record<string, string[]> = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : {}
+json[version] ??= []
 
 if (!skip) {
-    const logs = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : new Array<string>()
-    logs.unshift(msg)
-    writeFileSync(fileName, JSON.stringify(logs), "utf-8")
+    json[version].unshift(msg)
+    writeFileSync(fileName, JSON.stringify(json), "utf-8")
 }
 
 execSync("git add . && git commit -m \" " + msg + "\" && git push -u origin dev", {

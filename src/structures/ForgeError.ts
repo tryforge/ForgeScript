@@ -8,7 +8,7 @@ export enum ErrorType {
     MissingFields = "Function $1 requires brackets",
     UnknownXName = "Unknown $1 with name $2",
     Custom = "$1",
-    CompilerError = "$1",
+    CompilerError = "$1 at $2:$3",
 }
 
 export class ForgeError<T extends ErrorType = ErrorType> extends Error {

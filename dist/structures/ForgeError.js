@@ -8,7 +8,7 @@ var ErrorType;
     ErrorType["MissingFields"] = "Function $1 requires brackets";
     ErrorType["UnknownXName"] = "Unknown $1 with name $2";
     ErrorType["Custom"] = "$1";
-    ErrorType["CompilerError"] = "$1";
+    ErrorType["CompilerError"] = "$1 at $2:$3";
 })(ErrorType || (exports.ErrorType = ErrorType = {}));
 class ForgeError extends Error {
     static Regex = /\$(\d+)/g;

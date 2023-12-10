@@ -60,9 +60,20 @@ export interface ICompiledFunctionConditionField {
     resolve: WrappedConditionCode
 }
 
+export interface ILocation {
+    line: number
+    column: number
+}
+
 export interface ICompiledFunction {
     id: string
     name: string
+
+    /**
+     * Whether output is not desirable
+     */
+    negated: boolean
+
     fields: null | (ICompiledFunctionField | ICompiledFunctionConditionField)[]
 }
 
@@ -88,8 +99,8 @@ export class Compiler {
         Open: "[",
         Close: "]",
         Escape: "\\",
-        Exclamation: "!",
-        Separator: ";",
+        Negation: "!",
+        Separator: ";"
     }
 
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
@@ -156,9 +167,18 @@ export class Compiler {
         }
     }
 
+    private tryNegate() {
+        const negated = this.char() === Compiler.Syntax.Negation
+        return negated ? (
+            this.index++,
+            negated
+        ) : negated
+    }
+
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
         this.moveTo(match.index + match.name.length)
 
+        const negated = this.tryNegate()
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open
 
@@ -172,6 +192,7 @@ export class Compiler {
             return {
                 id,
                 name,
+                negated,
                 fields: null,
             }
         }
@@ -217,6 +238,7 @@ export class Compiler {
         return {
             id,
             name,
+            negated,
             fields,
         }
     }
@@ -314,7 +336,25 @@ export class Compiler {
     }
 
     private error(str: string) {
-        throw new ForgeError(null, ErrorType.CompilerError, str)
+        const { line, column } = this.locate(this.index)
+        throw new ForgeError(null, ErrorType.CompilerError, str, line, column)
+    }
+
+    private locate(index: number): ILocation {
+        const data: ILocation = {
+            column: 0,
+            line: 1
+        }
+
+        for (let i = 0;i < index;i++) {
+            const char = this.code![i]
+            if (char === "\n")
+                data.line++, data.column = 0
+            else
+                data.column++
+        }
+
+        return data
     }
 
     private back() {

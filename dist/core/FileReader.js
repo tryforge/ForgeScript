@@ -91,7 +91,7 @@ class FileReader {
             this.index++;
         }
         if (!closed)
-            throw new structures_1.ForgeError(null, structures_1.ErrorType.CompilerError, "Property is missing closure brace");
+            throw new structures_1.ForgeError(null, structures_1.ErrorType.CompilerError, "Property is missing closure brace", 0, 0);
         this.index++;
         return result;
     }

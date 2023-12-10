@@ -1,9 +1,8 @@
 */__tests__/
 \.env
 docs
-meta
+./metadata
 act.exe
 \.github
 PUBLISHING.md
-changelogs
 # src

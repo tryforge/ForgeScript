@@ -43,11 +43,11 @@ export class Return<T extends ReturnType = ReturnType> {
         return new this(ReturnType.Continue, null)
     }
 
-    public static successJSON(value: Return<ReturnType.Success>) {
+    public static successJSON(value: ReturnValue<ReturnType.Success>) {
         return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
     }
 
-    public static successFormatted(value: Return<ReturnType.Success>) {
+    public static successFormatted(value: ReturnValue<ReturnType.Success>) {
         return this.success(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
     }
 

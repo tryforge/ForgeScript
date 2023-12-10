@@ -81,7 +81,7 @@ export class Interpreter {
 
             if (!rt.success && !ctx.handleNotSuccess(rt)) return null
 
-            args[i] = rt.value
+            args[i] = fn.data.negated ? null : rt.value
         }
 
         const content = runtime.data.resolve(args)

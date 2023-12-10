@@ -95,7 +95,7 @@ export class FileReader {
             this.index++
         }
 
-        if (!closed) throw new ForgeError(null, ErrorType.CompilerError, "Property is missing closure brace")
+        if (!closed) throw new ForgeError(null, ErrorType.CompilerError, "Property is missing closure brace", 0, 0)
 
         this.index++
 
