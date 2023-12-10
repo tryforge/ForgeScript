@@ -426,4 +426,12 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         args[${index}] = fn.data.negated ? null : rt.value
         `
     }
+
+    public getFunction(fieldIndex: number, ref: NativeFunction) {
+        return this.getFunctions(fieldIndex, ref)?.[0] as CompiledFunction | undefined
+    }
+
+    public getFunctions(fieldIndex: number, ref: NativeFunction) {
+        return this.hasFields ? (this.data.fields![fieldIndex] as IExtendedCompiledFunctionField).functions.filter(x => x.data.name === ref.name) : new Array<CompiledFunction>()
+    }
 }

@@ -335,6 +335,12 @@ class CompiledFunction {
         args[${index}] = fn.data.negated ? null : rt.value
         `;
     }
+    getFunction(fieldIndex, ref) {
+        return this.getFunctions(fieldIndex, ref)?.[0];
+    }
+    getFunctions(fieldIndex, ref) {
+        return this.hasFields ? this.data.fields[fieldIndex].functions.filter(x => x.data.name === ref.name) : new Array();
+    }
 }
 exports.CompiledFunction = CompiledFunction;
 //# sourceMappingURL=CompiledFunction.js.map
