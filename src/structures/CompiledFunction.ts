@@ -21,7 +21,7 @@ import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
 import { TimeParser } from "../constants"
-import { any2int } from "../functions/hex"
+import { resolveColor as any2int } from "../functions/hex"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField

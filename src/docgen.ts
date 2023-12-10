@@ -8,7 +8,9 @@ FunctionManager.loadNative()
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const path = "./docs/functions"
+const metaOutPath = "./metadata"
 
+if (!existsSync(metaOutPath)) mkdirSync(metaOutPath)
 if (!existsSync(path)) mkdirSync(path)
 
 const v = require("../package.json").version
