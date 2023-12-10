@@ -1,5 +1,5 @@
 # $if
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates a if statement
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates an if statement
 ## Usage
 ```
 $if[condition;if true;if false]
@@ -28,7 +28,7 @@ import {
 export default new NativeFunction({
     name: "$if",
     version: "1.0.0",
-    description: "Creates a if statement",
+    description: "Creates an if statement",
     unwrap: false,
     args: [
         {

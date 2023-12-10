@@ -5,7 +5,7 @@ const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$env",
     version: "1.0.0",
-    description: "Retrieve an environment value",
+    description: "Retrieves an environment value",
     args: [
         {
             name: "key",

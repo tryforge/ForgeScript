@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildChannelExists",
     version: "1.0.0",
-    description: "Returns whether an guild channel id exists",
+    description: "Returns whether a guild channel id exists",
     unwrap: true,
     brackets: true,
     args: [

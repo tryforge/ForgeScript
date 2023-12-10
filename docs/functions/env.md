@@ -1,5 +1,5 @@
 # $env
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieve an environment value
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves an environment value
 ## Usage
 ```
 $env[...key]
@@ -21,7 +21,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$env",
     version: "1.0.0",
-    description: "Retrieve an environment value",
+    description: "Retrieves an environment value",
     args: [
         {
             name: "key",

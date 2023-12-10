@@ -1,5 +1,5 @@
 # $guildChannelExists
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether an guild channel id exists
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether a guild channel id exists
 ## Usage
 ```
 $guildChannelExists[guild ID;channel ID]
@@ -21,7 +21,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 export default new NativeFunction({
     name: "$guildChannelExists",
     version: "1.0.0",
-    description: "Returns whether an guild channel id exists",
+    description: "Returns whether a guild channel id exists",
     unwrap: true,
     brackets: true,
     args: [

@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$editButton",
     version: "1.0.7",
-    description: "Edit a button component",
+    description: "Edits a button component",
     unwrap: true,
     brackets: true,
     args: [
