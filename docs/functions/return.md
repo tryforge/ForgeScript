@@ -2,11 +2,15 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns a value
 ## Usage
 ```
-$return[...value]
+$return
+```
+---
+```
+$return[value]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-value | String | The value to return | Yes | Yes
+value | String | The value to return | Yes | No
 <details>
 <summary>
     
@@ -27,14 +31,14 @@ export default new NativeFunction({
         {
             name: "value",
             description: "The value to return",
-            rest: true,
+            rest: false,
             required: true,
             type: ArgType.String,
         },
     ],
-    brackets: true,
-    execute(_, [args]) {
-        return Return.return(args.join(";"))
+    brackets: false,
+    execute(_, [ val ]) {
+        return Return.return(val ?? "")
     },
 })
 
