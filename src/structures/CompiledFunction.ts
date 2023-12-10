@@ -78,6 +78,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
     }
 
+    public get negated() {
+        return this.data.negated
+    }
+    
     public displayField(i: number) {
         const field = this.data.fields![i]
         if ("op" in field) {

@@ -32,8 +32,8 @@ class Compiler {
         Open: "[",
         Close: "]",
         Escape: "\\",
-        Exclamation: "!",
-        Separator: ";",
+        Negation: "!",
+        Separator: ";"
     };
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
@@ -89,8 +89,14 @@ class Compiler {
             resolve: this.wrap(out),
         };
     }
+    tryNegate() {
+        const negated = this.char() === Compiler.Syntax.Negation;
+        return negated ? (this.index++,
+            negated) : negated;
+    }
     parseFunction(match) {
         this.moveTo(match.index + match.name.length);
+        const negated = this.tryNegate();
         const char = this.char();
         const usesFields = char === Compiler.Syntax.Open;
         const name = match.name;
@@ -102,6 +108,7 @@ class Compiler {
             return {
                 id,
                 name,
+                negated,
                 fields: null,
             };
         }
@@ -145,6 +152,7 @@ class Compiler {
         return {
             id,
             name,
+            negated,
             fields,
         };
     }

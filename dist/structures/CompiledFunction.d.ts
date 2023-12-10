@@ -26,6 +26,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     readonly data: IExtendedCompiledFunction;
     readonly fn: NativeFunction<T, Unwrap>;
     constructor(raw: ICompiledFunction);
+    get negated(): boolean;
     displayField(i: number): string;
     get display(): string;
     /**

@@ -68,6 +68,12 @@ export interface ILocation {
 export interface ICompiledFunction {
     id: string
     name: string
+
+    /**
+     * Whether output is not desirable
+     */
+    negated: boolean
+
     fields: null | (ICompiledFunctionField | ICompiledFunctionConditionField)[]
 }
 
@@ -93,8 +99,8 @@ export class Compiler {
         Open: "[",
         Close: "]",
         Escape: "\\",
-        Exclamation: "!",
-        Separator: ";",
+        Negation: "!",
+        Separator: ";"
     }
 
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
@@ -161,9 +167,18 @@ export class Compiler {
         }
     }
 
+    private tryNegate() {
+        const negated = this.char() === Compiler.Syntax.Negation
+        return negated ? (
+            this.index++,
+            negated
+        ) : negated
+    }
+
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
         this.moveTo(match.index + match.name.length)
 
+        const negated = this.tryNegate()
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open
 
@@ -177,6 +192,7 @@ export class Compiler {
             return {
                 id,
                 name,
+                negated,
                 fields: null,
             }
         }
@@ -222,6 +238,7 @@ export class Compiler {
         return {
             id,
             name,
+            negated,
             fields,
         }
     }

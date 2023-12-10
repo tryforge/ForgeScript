@@ -42,6 +42,9 @@ class CompiledFunction {
                 }) ?? null,
         };
     }
+    get negated() {
+        return this.data.negated;
+    }
     displayField(i) {
         const field = this.data.fields[i];
         if ("op" in field) {
