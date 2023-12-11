@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns current execution time",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Date.now() - ctx.executionTimestamp)
+        return Return.success(performance.now() - ctx.executionTimestamp)
     },
 })
