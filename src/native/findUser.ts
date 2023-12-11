@@ -11,7 +11,7 @@ export default new NativeFunction({
     args: [
         {
             name: "query",
-            description: "The id, mention or channel user to find",
+            description: "The id, mention or user name to find",
             rest: false,
             type: ArgType.String,
             required: true,

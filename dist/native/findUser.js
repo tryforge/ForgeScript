@@ -15,7 +15,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "query",
-            description: "The id, mention or channel user to find",
+            description: "The id, mention or user name to find",
             rest: false,
             type: structures_1.ArgType.String,
             required: true,

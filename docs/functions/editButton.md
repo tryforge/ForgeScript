@@ -1,5 +1,5 @@
 # $editButton
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Edit a button component
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Edits a button component
 ## Usage
 ```
 $editButton[custom ID;new custom ID;label;style;emoji;disabled]
@@ -26,7 +26,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$editButton",
     version: "1.0.7",
-    description: "Edit a button component",
+    description: "Edits a button component",
     unwrap: true,
     brackets: true,
     args: [

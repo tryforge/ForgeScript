@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Unbans an user",
+    description: "Unbans a user",
     args: [
         {
             name: "guild ID",

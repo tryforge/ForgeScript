@@ -1,5 +1,5 @@
 # $unban
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Unbans an user
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Unbans a user
 ## Usage
 ```
 $unban[guild ID;user ID;reason]
@@ -25,7 +25,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Unbans an user",
+    description: "Unbans a user",
     args: [
         {
             name: "guild ID",

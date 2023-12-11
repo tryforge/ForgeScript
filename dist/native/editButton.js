@@ -5,7 +5,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editButton",
     version: "1.0.7",
-    description: "Edit a button component",
+    description: "Edits a button component",
     unwrap: true,
     brackets: true,
     args: [

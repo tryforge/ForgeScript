@@ -6,7 +6,7 @@ $findUser[query;return author]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-query | String | The id, mention or channel user to find | Yes | No
+query | String | The id, mention or user name to find | Yes | No
 return author | Boolean | Returns the current author id if none found | No | No
 <details>
 <summary>
@@ -29,7 +29,7 @@ export default new NativeFunction({
     args: [
         {
             name: "query",
-            description: "The id, mention or channel user to find",
+            description: "The id, mention or user name to find",
             rest: false,
             type: ArgType.String,
             required: true,

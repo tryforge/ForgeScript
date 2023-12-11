@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$if",
     version: "1.0.0",
-    description: "Creates a if statement",
+    description: "Creates an if statement",
     unwrap: false,
     args: [
         {
