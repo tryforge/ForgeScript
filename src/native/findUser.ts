@@ -35,7 +35,7 @@ export default new NativeFunction({
         q = q.toLowerCase()
 
         return Return.success(
-            ctx.client.users.cache.find((x) => x.id === id || x.username.toLowerCase() === q)?.id ??
+            ctx.client.users.cache.find((x) => x.id === id || x.username?.toLowerCase() === q)?.id ??
                 (rt ? ctx.user?.id : undefined)
         )
     },

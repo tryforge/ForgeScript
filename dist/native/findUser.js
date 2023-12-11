@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
                 return structures_1.Return.success(u.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(ctx.client.users.cache.find((x) => x.id === id || x.username.toLowerCase() === q)?.id ??
+        return structures_1.Return.success(ctx.client.users.cache.find((x) => x.id === id || x.username?.toLowerCase() === q)?.id ??
             (rt ? ctx.user?.id : undefined));
     },
 });
