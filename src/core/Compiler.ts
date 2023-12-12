@@ -89,6 +89,7 @@ export interface IExtendedCompilationResult extends Omit<ICompilationResult, "fu
 
 export interface IRawFunctionMatch extends IRawFunction {
     index: number
+    negated: boolean
 }
 
 /**
@@ -117,7 +118,8 @@ export class Compiler {
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
-                ...Compiler.Functions.get(x[0])!,
+                negated: !!x[1],
+                ...Compiler.Functions.get(`$${x[2]}`)!,
             }))
         } else this.matches = []
     }
@@ -167,18 +169,9 @@ export class Compiler {
         }
     }
 
-    private tryNegate() {
-        const negated = this.char() === Compiler.Syntax.Negation
-        return negated ? (
-            this.index++,
-            negated
-        ) : negated
-    }
-
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
-        this.moveTo(match.index + match.name.length)
+        this.moveTo(match.index + match.name.length + (match.negated as unknown as number))
 
-        const negated = this.tryNegate()
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open
 
@@ -192,7 +185,7 @@ export class Compiler {
             return {
                 id,
                 name,
-                negated,
+                negated: match.negated,
                 fields: null,
             }
         }
@@ -238,7 +231,7 @@ export class Compiler {
         return {
             id,
             name,
-            negated,
+            negated: match.negated,
             fields,
         }
     }
@@ -401,9 +394,9 @@ export class Compiler {
     public static setFunctions(fns: IRawFunction[]) {
         fns.map((x) => this.Functions.set(x.name, x))
         this.Regex = new RegExp(
-            `(${Array.from(this.Functions.values())
+            `\\$(\\!)?(${Array.from(this.Functions.values())
                 .sort((x, y) => y.name.length - x.name.length)
-                .map((x) => `\\${x.name}`)
+                .map((x) => x.name.slice(1))
                 .join("|")})`,
             "gm"
         )

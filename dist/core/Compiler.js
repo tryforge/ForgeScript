@@ -47,7 +47,8 @@ class Compiler {
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index,
-                ...Compiler.Functions.get(x[0]),
+                negated: !!x[1],
+                ...Compiler.Functions.get(`$${x[2]}`),
             }));
         }
         else
@@ -89,14 +90,8 @@ class Compiler {
             resolve: this.wrap(out),
         };
     }
-    tryNegate() {
-        const negated = this.char() === Compiler.Syntax.Negation;
-        return negated ? (this.index++,
-            negated) : negated;
-    }
     parseFunction(match) {
-        this.moveTo(match.index + match.name.length);
-        const negated = this.tryNegate();
+        this.moveTo(match.index + match.name.length + match.negated);
         const char = this.char();
         const usesFields = char === Compiler.Syntax.Open;
         const name = match.name;
@@ -108,7 +103,7 @@ class Compiler {
             return {
                 id,
                 name,
-                negated,
+                negated: match.negated,
                 fields: null,
             };
         }
@@ -152,7 +147,7 @@ class Compiler {
         return {
             id,
             name,
-            negated,
+            negated: match.negated,
             fields,
         };
     }
@@ -283,9 +278,9 @@ class Compiler {
     }
     static setFunctions(fns) {
         fns.map((x) => this.Functions.set(x.name, x));
-        this.Regex = new RegExp(`(${Array.from(this.Functions.values())
+        this.Regex = new RegExp(`\\$(\\!)?(${Array.from(this.Functions.values())
             .sort((x, y) => y.name.length - x.name.length)
-            .map((x) => `\\${x.name}`)
+            .map((x) => x.name.slice(1))
             .join("|")})`, "gm");
     }
     static compile(code) {

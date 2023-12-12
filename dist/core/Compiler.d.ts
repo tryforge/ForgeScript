@@ -63,6 +63,7 @@ export interface IExtendedCompilationResult extends Omit<ICompilationResult, "fu
 }
 export interface IRawFunctionMatch extends IRawFunction {
     index: number;
+    negated: boolean;
 }
 /**
  * REWRITE NEEDED
@@ -85,7 +86,6 @@ export declare class Compiler {
     private index;
     constructor(code?: string | undefined);
     private compile;
-    private tryNegate;
     private parseFunction;
     private parseField;
     private error;
