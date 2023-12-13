@@ -50,7 +50,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [, member, reason]) {
-        return Return.success((await member.kick(reason || undefined).catch(() => false)) !== false)
+        return this.success((await member.kick(reason || undefined).catch(() => false)) !== false)
     },
 })
 

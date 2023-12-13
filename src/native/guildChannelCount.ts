@@ -26,7 +26,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [guild, categories]) {
         guild ??= ctx.guild!
-        return Return.success(
+        return this.success(
             (this.hasFields ? guild.channels.cache.filter((x) => categories.includes(x.type)) : guild.channels.cache)
                 .size
         )

@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [text, matches]) {
-        return structures_1.Return.success(matches.some((x) => text.includes(x)));
+        return this.success(matches.some((x) => text.includes(x)));
     },
 });
 //# sourceMappingURL=checkContains.js.map

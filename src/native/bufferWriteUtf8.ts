@@ -30,6 +30,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ name, index, str ]) {
-        return Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.write(str, index))
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.write(str, index))
     },
 })

@@ -27,9 +27,9 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(q)) {
             const e = guild.emojis.cache.get(q);
             if (e)
-                return structures_1.Return.success(e.id);
+                return this.success(e.id);
         }
-        return structures_1.Return.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
+        return this.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findGuildEmoji.js.map

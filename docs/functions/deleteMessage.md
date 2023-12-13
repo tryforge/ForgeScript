@@ -45,10 +45,10 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [channel, messages]) {
-        if (!messages.length) return Return.success(0)
+        if (!messages.length) return this.success(0)
 
         if (messages.length === 1) {
-            return Return.success(
+            return this.success(
                 // @ts-ignore
                 !!(await messages[0].delete().catch(noop)) + false
             )
@@ -59,7 +59,7 @@ export default new NativeFunction({
                 .bulkDelete(messages, true)
                 .then((x) => x.size)
                 .catch(noop)) ?? 0
-        return Return.success(col)
+        return this.success(col)
     },
 })
 

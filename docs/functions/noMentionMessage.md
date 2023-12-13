@@ -50,9 +50,9 @@ export default new NativeFunction({
         const msg = ctx.args.join(" ").replace(NoMentionRegex, "").trim().split(/ +/)
 
         if (this.hasFields) {
-            return Return.success(end ? msg.slice(index, end) : msg[index])
+            return this.success(end ? msg.slice(index, end) : msg[index])
         }
-        return Return.success(msg.join(" "))
+        return this.success(msg.join(" "))
     },
 })
 

@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [guild, id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop_1.default)));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=memberExists.js.map

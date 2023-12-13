@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return Return.success(camelCase(m))
+        return this.success(camelCase(m))
     },
 })

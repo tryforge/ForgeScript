@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        return structures_1.Return.success(guild?.members.cache.filter((x) => x.user.bot).size);
+        return this.success(guild?.members.cache.filter((x) => x.user.bot).size);
     },
 });
 //# sourceMappingURL=guildBotCount.js.map

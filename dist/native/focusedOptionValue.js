@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the focused option value of the command",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).value : undefined);
+        return this.success(ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).value : undefined);
     },
 });
 //# sourceMappingURL=focusedOptionValue.js.map

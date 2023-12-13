@@ -18,7 +18,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [categories]) {
-        return Return.success(
+        return this.success(
             (this.hasFields
                 ? ctx.client.channels.cache.filter((x) => categories.includes(x.type))
                 : ctx.client.channels.cache

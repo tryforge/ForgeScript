@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [channel, name]) {
-        return structures_1.Return.success(!!(await channel.setName(name).catch(noop_1.default)));
+        return this.success(!!(await channel.setName(name).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=setChannelName.js.map

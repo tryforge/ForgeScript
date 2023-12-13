@@ -26,7 +26,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [, msg]) {
-        return Return.success(
+        return this.success(
             !!(msg ?? ctx.message)?.embeds.length
         )
     },

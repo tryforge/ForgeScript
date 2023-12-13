@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
                 break;
             }
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=deleteComponent.js.map

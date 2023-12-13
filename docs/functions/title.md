@@ -49,7 +49,7 @@ export default new NativeFunction({
     execute(ctx, [title, hyperlink, index]) {
         const embed = ctx.container.embed(index ?? 0).setTitle(title)
         if (hyperlink) embed.setURL(hyperlink)
-        return Return.success()
+        return this.success()
     },
 })
 

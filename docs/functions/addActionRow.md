@@ -22,7 +22,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx) {
         ctx.container.components.push(new ActionRowBuilder())
-        return Return.success()
+        return this.success()
     },
 })
 

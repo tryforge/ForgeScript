@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
                 arr.push(...load);
         }
         ctx.setEnvironmentKey(name, arr);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayConcat.js.map

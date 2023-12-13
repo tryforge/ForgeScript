@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return structures_1.Return.success((0, lodash_1.snakeCase)(m));
+        return this.success((0, lodash_1.snakeCase)(m));
     },
 });
 //# sourceMappingURL=toSnakeCase.js.map

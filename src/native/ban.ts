@@ -36,7 +36,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [guild, user, reason, seconds]) {
-        return Return.success(
+        return this.success(
             (await guild.members
                 .ban(user, {
                     reason: reason || undefined,

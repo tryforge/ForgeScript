@@ -39,7 +39,7 @@ export default new NativeFunction({
     unwrap: true,
     async execute(ctx, [g]) {
         g ??= ctx.guild!
-        return Return.success(!!(await g?.leave().catch(noop)))
+        return this.success(!!(await g?.leave().catch(noop)))
     },
 })
 

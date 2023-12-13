@@ -47,12 +47,12 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(id)) {
             const u = await ctx.client.users.fetch(id).catch(noop)
-            if (u) return Return.success(u.id)
+            if (u) return this.success(u.id)
         }
 
         q = q.toLowerCase()
 
-        return Return.success(
+        return this.success(
             ctx.client.users.cache.find((x) => x.id === id || x.username?.toLowerCase() === q)?.id ??
                 (rt ? ctx.user?.id : undefined)
         )

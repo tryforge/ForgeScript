@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random guild ID",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.guilds.cache.randomKey());
+        return this.success(ctx.client.guilds.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomGuildID.js.map

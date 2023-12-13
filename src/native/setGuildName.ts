@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(_, [guild, name]) {
-        return Return.success((await guild.setName(name).catch(() => false)) !== false)
+        return this.success((await guild.setName(name).catch(() => false)) !== false)
     },
 })

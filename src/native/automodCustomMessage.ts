@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "The custom message used by automod on this detection",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.action.metadata.customMessage)
+        return this.success(ctx.automod?.action.metadata.customMessage)
     },
 })

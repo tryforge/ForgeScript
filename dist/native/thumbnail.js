@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [thumbnail, index]) {
         ctx.container.embed(index ?? 0).setThumbnail(thumbnail);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=thumbnail.js.map

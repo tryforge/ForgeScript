@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [id, title]) {
         ctx.container.modal = new discord_js_1.ModalBuilder().setCustomId(id).setTitle(title);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=modal.js.map

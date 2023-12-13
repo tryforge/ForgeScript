@@ -35,7 +35,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [json]) {
         ctx.http.body = JSON.stringify(json)
-        return Return.success()
+        return this.success()
     },
 })
 

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The message id of the reacted message",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.reaction?.message.id);
+        return this.success(ctx.reaction?.message.id);
     },
 });
 //# sourceMappingURL=reactionMessageID.js.map

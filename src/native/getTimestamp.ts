@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Gets the current timestamp",
     unwrap: false,
     execute() {
-        return Return.success(Date.now())
+        return this.success(Date.now())
     },
 })

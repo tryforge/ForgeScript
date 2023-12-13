@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return Return.success((guild ?? ctx.guild)?.premiumTier)
+        return this.success((guild ?? ctx.guild)?.premiumTier)
     },
 })
 

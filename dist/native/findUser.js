@@ -33,10 +33,10 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const u = await ctx.client.users.fetch(id).catch(noop_1.default);
             if (u)
-                return structures_1.Return.success(u.id);
+                return this.success(u.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(ctx.client.users.cache.find((x) => x.id === id || x.username?.toLowerCase() === q)?.id ??
+        return this.success(ctx.client.users.cache.find((x) => x.id === id || x.username?.toLowerCase() === q)?.id ??
             (rt ? ctx.user?.id : undefined));
     },
 });

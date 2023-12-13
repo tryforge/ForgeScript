@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ input, enc ]) {
         const sha512 = createHash("sha512").update(input).digest().toString((enc || "hex") as BufferEncoding)
-        return Return.success(sha512)
+        return this.success(sha512)
     }
 })

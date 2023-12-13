@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         const dur = ctx.automod?.action.metadata.durationSeconds;
-        return structures_1.Return.success(dur ? dur * 1000 : null);
+        return this.success(dur ? dur * 1000 : null);
     },
 });
 //# sourceMappingURL=automodDuration.js.map

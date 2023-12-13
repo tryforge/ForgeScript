@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, role, sep]) {
-        return structures_1.Return.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "));
+        return this.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "));
     },
 });
 //# sourceMappingURL=rolePerms.js.map

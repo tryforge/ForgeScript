@@ -28,11 +28,11 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const ch = ctx.client.channels.cache.get(id);
             if (ch)
-                return structures_1.Return.success(ch.id);
+                return this.success(ch.id);
         }
         const rtId = rt ? ctx.channel?.id || undefined : undefined;
         q = q.toLowerCase();
-        return structures_1.Return.success(ctx.client.channels.cache.find((x) => x.id === id || ("name" in x && x.name.toLowerCase() === q))?.id ?? rtId);
+        return this.success(ctx.client.channels.cache.find((x) => x.id === id || ("name" in x && x.name.toLowerCase() === q))?.id ?? rtId);
     },
 });
 //# sourceMappingURL=findChannel.js.map

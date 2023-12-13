@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         user ??= ctx.user;
         if (!user?.banner)
             await user.fetch();
-        return structures_1.Return.success(user?.bannerURL({
+        return this.success(user?.bannerURL({
             extension: ext || undefined,
             size: size || 2048,
         }));

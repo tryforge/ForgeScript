@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     brackets: false,
     execute(_, [ val ]) {
-        return Return.return(val ?? "")
+        return this.return(val ?? "")
     },
 })

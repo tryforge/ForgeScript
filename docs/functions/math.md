@@ -36,10 +36,10 @@ export default new NativeFunction({
     ],
     execute(_, [expr]) {
         try {
-            if (MathRegex.test(expr)) return Return.success()
-            return Return.success(eval(expr))
+            if (MathRegex.test(expr)) return this.success()
+            return this.success(eval(expr))
         } catch (error: any) {
-            return Return.success()
+            return this.success()
         }
     },
 })

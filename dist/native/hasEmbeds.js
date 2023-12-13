@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [, msg]) {
-        return structures_1.Return.success(!!(msg ?? ctx.message)?.embeds.length);
+        return this.success(!!(msg ?? ctx.message)?.embeds.length);
     },
 });
 //# sourceMappingURL=hasEmbeds.js.map

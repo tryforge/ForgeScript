@@ -35,7 +35,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(_, [ms, limit, sep, and]) {
-        return Return.success(
+        return this.success(
             TimeParser.parseToString(ms, {
                 and: and || false,
                 limit: limit || undefined,

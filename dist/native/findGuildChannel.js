@@ -36,10 +36,10 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const ch = guild.channels.cache.get(id);
             if (ch)
-                return structures_1.Return.success(ch.id);
+                return this.success(ch.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(guild.channels.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id ??
+        return this.success(guild.channels.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id ??
             (rt ? ctx.channel?.id : undefined));
     },
 });

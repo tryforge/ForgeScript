@@ -21,10 +21,10 @@ exports.default = new structures_1.NativeFunction({
         ctx.container.update = true;
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj);
-            return structures_1.Return.success();
+            return this.success();
         }
         await ctx.container.send(ctx.obj);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=interactionUpdate.js.map

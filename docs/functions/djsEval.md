@@ -40,9 +40,9 @@ export default new NativeFunction({
         try {
             let evaled = await eval(code)
             if (typeof evaled !== "string") evaled = inspect(evaled, { depth: 1 })
-            return Return.success(evaled)
+            return this.success(evaled)
         } catch (error: unknown) {
-            return Return.error(this.error(ErrorType.Custom, (error as Error).message))
+            return this.err(this.error(ErrorType.Custom, (error as Error).message))
         }
     },
 })

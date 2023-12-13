@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [channel]) {
-        return structures_1.Return.success((channel ?? ctx.channel)?.children?.cache.size);
+        return this.success((channel ?? ctx.channel)?.children?.cache.size);
     },
 });
 //# sourceMappingURL=channelChildrenCount.js.map

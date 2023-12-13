@@ -33,7 +33,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ ext ]) {
-        return Return.success(!!ctx.client.options.extensions?.some(x => x.name === ext))
+        return this.success(!!ctx.client.options.extensions?.some(x => x.name === ext))
     },
 })
 ```

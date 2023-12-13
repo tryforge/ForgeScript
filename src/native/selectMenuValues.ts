@@ -16,12 +16,12 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [index]) {
-        if (!ctx.isSelectMenu()) return Return.success()
+        if (!ctx.isSelectMenu()) return this.success()
 
         if (this.hasFields) {
-            return Return.success(ctx.interaction.values[index])
+            return this.success(ctx.interaction.values[index])
         } else {
-            return Return.success(ctx.interaction.values.join(", "))
+            return this.success(ctx.interaction.values.join(", "))
         }
     },
 })

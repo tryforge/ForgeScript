@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [user, content, returnMessageID]) {
         ctx.container.content = content || undefined;
         const msg = await ctx.container.send(user);
-        return structures_1.Return.success(returnMessageID ? msg?.id : undefined);
+        return this.success(returnMessageID ? msg?.id : undefined);
     },
 });
 //# sourceMappingURL=sendDM.js.map

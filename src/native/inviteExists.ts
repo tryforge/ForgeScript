@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return Return.success(!!(await ctx.client.fetchInvite(id).catch(noop)))
+        return this.success(!!(await ctx.client.fetchInvite(id).catch(noop)))
     },
 })

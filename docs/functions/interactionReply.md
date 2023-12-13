@@ -51,12 +51,12 @@ export default new NativeFunction({
 
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj)
-            return Return.success()
+            return this.success()
         }
 
         const reply = await ctx.container.send<Message<true>>(ctx.obj)
 
-        return Return.success(returnMessageID ? reply?.id : undefined)
+        return this.success(returnMessageID ? reply?.id : undefined)
     },
 })
 

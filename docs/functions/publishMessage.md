@@ -20,9 +20,9 @@ message ID | Message | The message to announce | Yes | No
 </summary>
     
 ```ts
-import { BaseChannel } from "discord.js";
-import { ArgType, NativeFunction, Return } from "../structures";
-import { noop } from "lodash";
+import { BaseChannel } from "discord.js"
+import { ArgType, NativeFunction, Return } from "../structures"
+import { noop } from "lodash"
 
 export default new NativeFunction({
     name: "$publishMessage",
@@ -50,7 +50,7 @@ export default new NativeFunction({
     ],
     async execute(ctx, [, m ]) {
         const msg = m ?? ctx.message
-        return Return.success(
+        return this.success(
             !!(await msg.crosspost().catch(noop))
         )
     },

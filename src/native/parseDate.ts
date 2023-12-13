@@ -36,22 +36,22 @@ export default new NativeFunction({
     execute(_, [ms, type]) {
         const date = new Date(ms)
 
-        return Return.success(
+        return this.success(
             type === DateType.Date
                 ? date.toDateString()
                 : type === DateType.ISO
-                ? date.toISOString()
-                : type === DateType.Locale
-                ? date.toLocaleString()
-                : type === DateType.LocaleDate
-                ? date.toLocaleDateString()
-                : type === DateType.LocaleTime
-                ? date.toLocaleTimeString()
-                : type === DateType.Time
-                ? date.toTimeString()
-                : type === DateType.UTC
-                ? date.toUTCString()
-                : (null as never)
+                    ? date.toISOString()
+                    : type === DateType.Locale
+                        ? date.toLocaleString()
+                        : type === DateType.LocaleDate
+                            ? date.toLocaleDateString()
+                            : type === DateType.LocaleTime
+                                ? date.toLocaleTimeString()
+                                : type === DateType.Time
+                                    ? date.toTimeString()
+                                    : type === DateType.UTC
+                                        ? date.toUTCString()
+                                        : (null as never)
         )
     },
 })

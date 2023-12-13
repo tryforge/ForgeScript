@@ -56,7 +56,7 @@ exports.default = new structures_1.NativeFunction({
             description: desc || null,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(!!created);
+        return this.success(!!created);
     },
 });
 //# sourceMappingURL=addSticker.js.map

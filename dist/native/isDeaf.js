@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member;
-        return structures_1.Return.success(member?.voice.deaf ?? false);
+        return this.success(member?.voice.deaf ?? false);
     },
 });
 //# sourceMappingURL=isDeaf.js.map

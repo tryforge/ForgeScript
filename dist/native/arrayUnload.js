@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [name]) {
         ctx.deleteEnvironmentKey(name);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayUnload.js.map

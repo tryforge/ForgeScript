@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The message sent by automod",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.alertSystemMessageId);
+        return this.success(ctx.automod?.alertSystemMessageId);
     },
 });
 //# sourceMappingURL=automodAlertSystemMessageID.js.map

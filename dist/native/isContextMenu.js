@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether the interaction is a context menu",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.isContextCommand()));
+        return this.success(Boolean(ctx.isContextCommand()));
     },
 });
 //# sourceMappingURL=isContextMenu.js.map

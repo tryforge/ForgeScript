@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the cpu architecture",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(node_os_1.default.arch());
+        return this.success(node_os_1.default.arch());
     },
 });
 //# sourceMappingURL=cpuArch.js.map

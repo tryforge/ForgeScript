@@ -26,7 +26,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, args]) {
         const fn = ctx.client.functions.get(name)
-        if (!fn) return Return.error(this.error(ErrorType.UnknownXName, "function", name))
+        if (!fn) return this.err(this.error(ErrorType.UnknownXName, "function", name))
 
         return fn.call(ctx, args)
     },

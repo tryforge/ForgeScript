@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns the operating system name",
     unwrap: false,
     execute() {
-        return Return.success(os.platform())
+        return this.success(os.platform())
     },
 })

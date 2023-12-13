@@ -21,6 +21,6 @@ export default new NativeFunction({
             delete ctx.http.headers[name]
         }
 
-        return Return.success()
+        return this.success()
     },
 })

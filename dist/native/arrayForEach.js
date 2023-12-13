@@ -50,7 +50,7 @@ exports.default = new structures_1.NativeFunction({
                     return rt;
             }
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayForEach.js.map

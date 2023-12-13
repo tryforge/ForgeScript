@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Gets the current timestamp",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(Date.now());
+        return this.success(Date.now());
     },
 });
 //# sourceMappingURL=getTimestamp.js.map

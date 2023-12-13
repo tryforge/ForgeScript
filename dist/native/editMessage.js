@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
         ctx.container.content = content || undefined;
         ctx.container.edit = true;
         const msg = await ctx.container.send(opt);
-        return structures_1.Return.success(!!msg);
+        return this.success(!!msg);
     },
 });
 //# sourceMappingURL=editMessage.js.map

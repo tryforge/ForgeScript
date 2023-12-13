@@ -27,6 +27,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [, message]) {
         const msg = message ?? ctx.message
-        return Return.success(msg?.url)
+        return this.success(msg?.url)
     },
 })

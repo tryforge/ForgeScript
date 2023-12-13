@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(_, [n, dp]) {
         dp = dp === null ? 1 : Math.pow(10, dp);
-        return structures_1.Return.success(Math.round(n * dp) / dp);
+        return this.success(Math.round(n * dp) / dp);
     },
 });
 //# sourceMappingURL=round.js.map

@@ -58,7 +58,7 @@ export default new NativeFunction({
             })
             .catch(noop)
 
-        return Return.success(invite ? invite.code : undefined)
+        return this.success(invite ? invite.code : undefined)
     },
 })
 

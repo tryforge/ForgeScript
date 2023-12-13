@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [val, radix]) {
-        return structures_1.Return.success(parseInt(val, radix ?? undefined));
+        return this.success(parseInt(val, radix ?? undefined));
     },
 });
 //# sourceMappingURL=parseInt.js.map

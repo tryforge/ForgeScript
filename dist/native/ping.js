@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The current bot ping",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.ws.ping);
+        return this.success(ctx.client.ws.ping);
     },
 });
 //# sourceMappingURL=ping.js.map

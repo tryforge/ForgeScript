@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     description: "Checks whether a link is valid",
     execute(_, [link]) {
-        return structures_1.Return.success(exports.LinkRegex.test(link));
+        return this.success(exports.LinkRegex.test(link));
     },
 });
 //# sourceMappingURL=isValidLink.js.map

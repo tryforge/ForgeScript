@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Breaks the loop",
     unwrap: false,
     execute() {
-        return Return.break()
+        return this.break()
     },
 })
 

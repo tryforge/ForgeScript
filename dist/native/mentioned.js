@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         const id = this.hasFields
             ? ctx.message?.mentions.users.at(i)?.id
             : ctx.message?.mentions.users.map((x) => x.id).join(", ");
-        return structures_1.Return.success(id ?? (rt ? ctx.user?.id : undefined));
+        return this.success(id ?? (rt ? ctx.user?.id : undefined));
     },
 });
 //# sourceMappingURL=mentioned.js.map

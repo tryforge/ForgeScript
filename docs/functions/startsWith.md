@@ -41,7 +41,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [str, match]) {
-        return Return.success(str.startsWith(match))
+        return this.success(str.startsWith(match))
     },
 })
 

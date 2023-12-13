@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         const trigger = ctx.automod?.ruleTriggerType;
-        return structures_1.Return.success(trigger ? discord_js_1.AutoModerationRuleTriggerType[trigger] : null);
+        return this.success(trigger ? discord_js_1.AutoModerationRuleTriggerType[trigger] : null);
     },
 });
 //# sourceMappingURL=automodRuleTriggerType.js.map

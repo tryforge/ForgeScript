@@ -23,6 +23,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [lhs, rhs]) {
-        return Return.success(lhs || rhs)
+        return this.success(lhs || rhs)
     },
 })

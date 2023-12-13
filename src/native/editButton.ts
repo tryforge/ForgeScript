@@ -54,13 +54,13 @@ export default new NativeFunction({
         const rowIndex = ctx.container.components.findIndex((x) =>
             x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId)
         )
-        if (rowIndex === -1) return Return.success()
+        if (rowIndex === -1) return this.success()
 
         const btn = ctx.container.components[rowIndex].components.find(
             (x) => "custom_id" in x.data && x.data.custom_id === oldId
         ) as ButtonBuilder
 
-        if (!btn) return Return.success()
+        if (!btn) return this.success()
 
         btn.setCustomId(id)
             .setDisabled(disabled || false)
@@ -72,6 +72,6 @@ export default new NativeFunction({
 
         if (emoji) btn.setEmoji(emoji)
 
-        return Return.success()
+        return this.success()
     },
 })

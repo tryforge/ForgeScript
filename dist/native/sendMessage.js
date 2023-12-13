@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [channel, content, returnMessageID]) {
         ctx.container.content = content || undefined;
         const msg = await ctx.container.send(channel);
-        return structures_1.Return.success(returnMessageID ? msg?.id : undefined);
+        return this.success(returnMessageID ? msg?.id : undefined);
     },
 });
 //# sourceMappingURL=sendMessage.js.map

@@ -31,6 +31,6 @@ export default new NativeFunction({
             await this["resolveCode"](ctx, code)
         }, time.value as number)
 
-        return Return.success()
+        return this.success()
     },
 })

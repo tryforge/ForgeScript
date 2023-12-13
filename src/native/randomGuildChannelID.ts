@@ -26,7 +26,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [g, types]) {
         g ??= ctx.guild!
-        return Return.success(
+        return this.success(
             types.length === 0 ? g?.channels.cache.randomKey() :
                 g?.channels.cache.filter(x => types.includes(x.type)).randomKey()
         )

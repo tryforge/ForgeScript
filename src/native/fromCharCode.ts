@@ -16,6 +16,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [codes]) {
-        return Return.success(String.fromCharCode(...codes))
+        return this.success(String.fromCharCode(...codes))
     },
 })

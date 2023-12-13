@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [input, out]) {
-        return structures_1.Return.success((0, zlib_1.deflateSync)(input).toString((out ?? "hex")));
+        return this.success((0, zlib_1.deflateSync)(input).toString((out ?? "hex")));
     },
 });
 //# sourceMappingURL=deflate.js.map

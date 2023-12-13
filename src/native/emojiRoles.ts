@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [emoji, sep]) {
         emoji ?? ctx.emoji
-        return Return.success(emoji?.roles.cache.map((x) => x.id).join(sep || ", "))
+        return this.success(emoji?.roles.cache.map((x) => x.id).join(sep || ", "))
     },
 })

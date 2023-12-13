@@ -17,6 +17,6 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name]) {
         ctx.deleteEnvironmentKey(name)
-        return Return.success()
+        return this.success()
     },
 })

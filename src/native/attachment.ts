@@ -35,6 +35,6 @@ export default new NativeFunction({
         })
 
         ctx.container.files.push(attachment)
-        return Return.success()
+        return this.success()
     },
 })

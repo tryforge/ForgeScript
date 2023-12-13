@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        return structures_1.Return.success(ctx.interaction?.isCommand() ? ctx.interaction.options.get(name)?.value : null);
+        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.options.get(name)?.value : null);
     },
 });
 //# sourceMappingURL=option.js.map

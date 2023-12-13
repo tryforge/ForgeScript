@@ -22,7 +22,7 @@ export default new NativeFunction({
     unwrap: false,
     async execute(ctx) {
         await ctx.message?.delete().catch(noop)
-        return Return.success()
+        return this.success()
     },
 })
 ```

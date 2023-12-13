@@ -93,7 +93,7 @@ export default new NativeFunction({
             }
         }
 
-        return Return.success(ctx.getEnvironmentKey(variable))
+        return this.success(ctx.getEnvironmentKey(variable))
     },
 })
 

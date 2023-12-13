@@ -26,6 +26,6 @@ export default new NativeFunction({
     brackets: false,
     execute(ctx, [, msg]) {
         ctx.container.components = (msg ?? ctx.message)?.components.map((x) => ActionRowBuilder.from(x)) ?? []
-        return Return.success()
+        return this.success()
     },
 })

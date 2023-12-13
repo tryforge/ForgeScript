@@ -43,7 +43,7 @@ exports.default = new structures_1.NativeFunction({
             if (success)
                 count++;
         }
-        return structures_1.Return.success(count);
+        return this.success(count);
     },
 });
 //# sourceMappingURL=addMessageReactions.js.map

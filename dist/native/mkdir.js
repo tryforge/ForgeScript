@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return structures_1.Return.success(void (0, fs_1.mkdirSync)(path));
+        return this.success(void (0, fs_1.mkdirSync)(path));
     },
 });
 //# sourceMappingURL=mkdir.js.map

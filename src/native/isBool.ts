@@ -16,6 +16,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [v]) {
-        return Return.success(v === "true" || v === "false")
+        return this.success(v === "true" || v === "false")
     },
 })

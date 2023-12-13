@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [id]) {
-        return structures_1.Return.success(ctx.client.cooldowns.getTimeLeft(id));
+        return this.success(ctx.client.cooldowns.getTimeLeft(id));
     },
 });
 //# sourceMappingURL=getCooldownTime.js.map

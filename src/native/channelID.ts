@@ -16,8 +16,8 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [args]) {
-        if (!this.hasFields) return Return.success(ctx.channel?.id)
+        if (!this.hasFields) return this.success(ctx.channel?.id)
         const name = args.join(";")
-        return Return.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id)
+        return this.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id)
     },
 })

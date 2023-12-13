@@ -12,6 +12,7 @@ const NativeFunction_1 = require("./NativeFunction");
 const Return_1 = require("./Return");
 const constants_1 = require("../constants");
 const hex_1 = require("../functions/hex");
+const node_util_1 = require("node:util");
 class CompiledFunction {
     raw;
     static IdRegex = /^(\d{16,23})$/;
@@ -41,9 +42,6 @@ class CompiledFunction {
                         : undefined,
                 }) ?? null,
         };
-    }
-    get negated() {
-        return this.data.negated;
     }
     displayField(i) {
         const field = this.data.fields[i];
@@ -75,14 +73,14 @@ class CompiledFunction {
     async resolveArgs(ctx) {
         const args = new Array(this.fn.data.args?.length ?? 0);
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields))
-            return Return_1.Return.success(args);
+            return this.success(args);
         for (let i = 0, len = this.fn.data.args.length; i < len; i++) {
             const rt = await this.resolveUnhandledArg(ctx, i, args);
             if (!this.isValidReturnType(rt))
                 return rt;
             args[i] = rt.value;
         }
-        return Return_1.Return.success(args);
+        return this.success(args);
     }
     async resolveMultipleArgs(ctx, ...indexes) {
         const args = new Array(indexes.length);
@@ -98,7 +96,7 @@ class CompiledFunction {
         }
         return {
             args,
-            return: Return_1.Return.success(),
+            return: this.success(),
         };
     }
     /**
@@ -118,13 +116,13 @@ class CompiledFunction {
             const val = await this.resolveArg(ctx, arg, field, resolved.value, ref);
             if (!this.isValidReturnType(val))
                 return val;
-            return Return_1.Return.success(val.value);
+            return this.success(val.value);
         }
         else {
             const fields = this.data.fields?.slice(i);
             const values = new Array();
             if (!fields?.length) {
-                return Return_1.Return.success(values);
+                return this.success(values);
             }
             for (let x = 0, len = fields.length; x < len; x++) {
                 // Assertion because condition fields should never be executed with unwraps.
@@ -137,7 +135,7 @@ class CompiledFunction {
                     return val;
                 values[x] = val.value;
             }
-            return Return_1.Return.success(values);
+            return this.success(values);
         }
     }
     async resolveCondition(ctx, field) {
@@ -145,19 +143,19 @@ class CompiledFunction {
         if (!this.isValidReturnType(lhs))
             return lhs;
         if (field.rhs === undefined) {
-            return Return_1.Return.success(field.resolve(lhs.value, null));
+            return this.success(field.resolve(lhs.value, null));
         }
         const rhs = await this.resolveCode(ctx, field.rhs);
         if (!this.isValidReturnType(rhs))
             return rhs;
-        return Return_1.Return.success(field.resolve(lhs.value, rhs.value));
+        return this.success(field.resolve(lhs.value, rhs.value));
     }
     async resolveCode(ctx, { resolve: resolver, functions } = {}) {
         if (!resolver || !functions)
-            return Return_1.Return.success(null);
+            return this.success(null);
         const args = new Array(functions.length);
         if (functions.length === 0)
-            return Return_1.Return.success(resolver(args));
+            return this.success(resolver(args));
         for (let i = 0, len = functions.length; i < len; i++) {
             const fn = functions[i];
             const rt = await fn.execute(ctx);
@@ -165,10 +163,10 @@ class CompiledFunction {
                 return rt;
             args[i] = rt.value;
         }
-        return Return_1.Return.success(resolver(args));
+        return this.success(resolver(args));
     }
     argTypeRejection(arg, value) {
-        return Return_1.Return.error(this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]));
+        return this.err(this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]));
     }
     resolveNumber(ctx, arg, str, ref) {
         const value = Number(str);
@@ -274,7 +272,7 @@ class CompiledFunction {
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
         if (!arg.required && !value) {
-            return Return_1.Return.success(value ?? null);
+            return this.success(value ?? null);
         }
         if (field !== undefined) {
             field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)];
@@ -285,11 +283,11 @@ class CompiledFunction {
         if (value === undefined)
             return this.argTypeRejection(arg, strValue);
         if (value === null && arg.required) {
-            return Return_1.Return.error(this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name));
+            return this.err(this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name));
         }
         if (arg.check !== undefined && !arg.check(value))
             return this.argTypeRejection(arg, strValue);
-        return Return_1.Return.success(value ?? null);
+        return this.success(value ?? null);
     }
     get hasFields() {
         return this.data.fields !== null;
@@ -307,7 +305,7 @@ class CompiledFunction {
             return args;
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        return this.fn.data.execute.call(this, ctx, args.value);
+        return this.fn.data.execute.call(this, ctx, args.value ?? []);
     }
     isValidReturnType(rt) {
         return rt.success;
@@ -320,7 +318,7 @@ class CompiledFunction {
             ctx.container.content = resolved.value;
             await ctx.container.send(ctx.obj);
         }
-        return Return_1.Return.stop();
+        return this.stop();
     }
     static toResolveArgString(type) {
         return `resolve${NativeFunction_1.ArgType[type]}`;
@@ -340,6 +338,30 @@ class CompiledFunction {
     }
     getFunctions(fieldIndex, ref) {
         return this.hasFields ? this.data.fields[fieldIndex].functions.filter(x => x.data.name === ref.name) : new Array();
+    }
+    return(value) {
+        return new Return_1.Return(Return_1.ReturnType.Return, value);
+    }
+    err(value) {
+        return new Return_1.Return(Return_1.ReturnType.Error, value);
+    }
+    stop() {
+        return new Return_1.Return(Return_1.ReturnType.Stop, null);
+    }
+    break() {
+        return new Return_1.Return(Return_1.ReturnType.Break, null);
+    }
+    continue() {
+        return new Return_1.Return(Return_1.ReturnType.Continue, null);
+    }
+    successJSON(value) {
+        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
+    }
+    successFormatted(value) {
+        return this.success(typeof value !== "string" ? (0, node_util_1.inspect)(value, { depth: Infinity }) : value);
+    }
+    success(value = null) {
+        return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : value);
     }
 }
 exports.CompiledFunction = CompiledFunction;

@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [name, bytes]) {
-        return structures_1.Return.success(void ctx.setEnvironmentKey(name, Buffer.alloc(bytes)));
+        return this.success(void ctx.setEnvironmentKey(name, Buffer.alloc(bytes)));
     },
 });
 //# sourceMappingURL=bufferAlloc.js.map

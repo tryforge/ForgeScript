@@ -25,6 +25,6 @@ export default new NativeFunction({
     brackets: true,
     execute(_, [n, sep]) {
         const t = n.toLocaleString()
-        return Return.success(sep ? t.replaceAll(NoNumberRegex, sep) : t)
+        return this.success(sep ? t.replaceAll(NoNumberRegex, sep) : t)
     },
 })

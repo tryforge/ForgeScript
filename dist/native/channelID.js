@@ -18,9 +18,9 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [args]) {
         if (!this.hasFields)
-            return structures_1.Return.success(ctx.channel?.id);
+            return this.success(ctx.channel?.id);
         const name = args.join(";");
-        return structures_1.Return.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id);
+        return this.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id);
     },
 });
 //# sourceMappingURL=channelID.js.map

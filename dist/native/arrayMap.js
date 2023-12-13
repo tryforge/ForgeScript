@@ -66,7 +66,7 @@ exports.default = new structures_1.NativeFunction({
             }
         }
         ctx.setEnvironmentKey(otherVarName, newArr);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayMap.js.map

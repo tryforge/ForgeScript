@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [text]) {
-        return structures_1.Return.success(encodeURIComponent(text));
+        return this.success(encodeURIComponent(text));
     },
 });
 //# sourceMappingURL=encodeURIComponent.js.map

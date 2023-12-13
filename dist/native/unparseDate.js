@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [date]) {
-        return structures_1.Return.success(date.getTime());
+        return this.success(date.getTime());
     },
 });
 //# sourceMappingURL=unparseDate.js.map

@@ -16,6 +16,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return Return.success(Math.log(n))
+        return this.success(Math.log(n))
     },
 })

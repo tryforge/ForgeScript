@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The reaction author id that reacted",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.states?.user?.new?.id);
+        return this.success(ctx.states?.user?.new?.id);
     },
 });
 //# sourceMappingURL=reactionAuthorID.js.map

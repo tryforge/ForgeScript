@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the client's id",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.client.user.id)
+        return this.success(ctx.client.user.id)
     },
 })

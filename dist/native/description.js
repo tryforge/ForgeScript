@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [description, index]) {
         ctx.container.embed(index ?? 0).setDescription(description);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=description.js.map

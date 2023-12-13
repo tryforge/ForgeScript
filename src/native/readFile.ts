@@ -26,6 +26,6 @@ export default new NativeFunction({
         // eslint-disable-next-line no-undef
         const txt = readFileSync(path, { encoding: (encoding as BufferEncoding) || "utf-8" })
 
-        return Return.success(txt)
+        return this.success(txt)
     },
 })

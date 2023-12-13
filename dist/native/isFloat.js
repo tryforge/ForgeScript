@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return structures_1.Return.success(n % 1 !== 0);
+        return this.success(n % 1 !== 0);
     },
 });
 //# sourceMappingURL=isFloat.js.map

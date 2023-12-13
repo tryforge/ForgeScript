@@ -66,7 +66,7 @@ export default new NativeFunction({
         const arr = ctx.getEnvironmentKey(name.value as string)
         const varName = variable.value as string
 
-        if (!Array.isArray(arr)) return Return.success(-1)
+        if (!Array.isArray(arr)) return this.success(-1)
 
         for (let i = 0, len = arr.length; i < len; i++) {
             const el = arr[i]
@@ -75,11 +75,11 @@ export default new NativeFunction({
 
             if (rt.return || rt.success) {
                 if (!isTrue(rt)) continue
-                return Return.success(i)
+                return this.success(i)
             } else if (!this["isValidReturnType"](rt)) return rt
         }
 
-        return Return.success(-1)
+        return this.success(-1)
     },
 })
 

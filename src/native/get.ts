@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        return Return.success(ctx.getKeyword(name))
+        return this.success(ctx.getKeyword(name))
     },
 })

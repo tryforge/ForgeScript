@@ -17,6 +17,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ sep ]) {
-        return Return.success(Object.keys(networkInterfaces()).join(sep ?? ", "))
+        return this.success(Object.keys(networkInterfaces()).join(sep ?? ", "))
     }
 })

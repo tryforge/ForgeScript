@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji;
-        return structures_1.Return.success(emoji?.requiresColons);
+        return this.success(emoji?.requiresColons);
     },
 });
 //# sourceMappingURL=emojiRequiresColons.js.map

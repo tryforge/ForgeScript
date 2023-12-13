@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [str, match]) {
-        return Return.success(str.endsWith(match))
+        return this.success(str.endsWith(match))
     },
 })

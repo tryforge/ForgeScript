@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx, [id]) {
         const web = await ctx.client.fetchWebhook(id).catch(noop_1.default);
-        return structures_1.Return.success(!!web);
+        return this.success(!!web);
     },
 });
 //# sourceMappingURL=webhookExists.js.map

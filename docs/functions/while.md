@@ -66,7 +66,7 @@ export default new NativeFunction({
             else return exec
         }
 
-        return Return.success()
+        return this.success()
     },
 })
 

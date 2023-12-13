@@ -22,10 +22,10 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(q)) {
             const e = ctx.client.emojis.cache.get(q);
             if (e)
-                return structures_1.Return.success(e.id);
+                return this.success(e.id);
         }
         const name = parsed?.name.toLowerCase();
-        return structures_1.Return.success(ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
+        return this.success(ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findEmoji.js.map

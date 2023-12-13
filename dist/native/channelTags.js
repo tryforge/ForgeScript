@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     execute(ctx, [ch, sep]) {
         const channel = (ch ?? ctx.channel);
-        return structures_1.Return.success(channel?.appliedTags.join(sep || ", "));
+        return this.success(channel?.appliedTags.join(sep || ", "));
     },
 });
 //# sourceMappingURL=channelTags.js.map

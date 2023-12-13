@@ -33,7 +33,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ date ]) {
-        return Return.success(date.getTime())
+        return this.success(date.getTime())
     },
 })
 ```

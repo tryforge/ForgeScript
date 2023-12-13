@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member!
-        return Return.success(member?.voice.selfMute ?? false)
+        return this.success(member?.voice.selfMute ?? false)
     },
 })

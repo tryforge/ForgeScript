@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [ch, id]) {
         const channel = ch;
-        return structures_1.Return.success(!!(await channel.permissionOverwrites.delete(id)));
+        return this.success(!!(await channel.permissionOverwrites.delete(id)));
     },
 });
 //# sourceMappingURL=clearChannelPerms.js.map

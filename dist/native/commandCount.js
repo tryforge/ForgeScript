@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [categories]) {
-        return structures_1.Return.success(this.hasFields
+        return this.success(this.hasFields
             ? ctx.client.commands["commands"]
                 .filter((_, key) => categories.includes(key))
                 .reduce((x, y) => x + y.length, 0)

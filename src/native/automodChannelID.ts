@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "The channel id for automod",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.action.metadata.channelId)
+        return this.success(ctx.automod?.action.metadata.channelId)
     },
 })

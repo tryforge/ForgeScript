@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the operating system name",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(node_os_1.default.platform());
+        return this.success(node_os_1.default.platform());
     },
 });
 //# sourceMappingURL=os.js.map

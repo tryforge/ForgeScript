@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, message]) {
-        return structures_1.Return.success(discord_js_1.MessageType[(message ?? ctx.message)?.createdTimestamp]);
+        return this.success(discord_js_1.MessageType[(message ?? ctx.message)?.createdTimestamp]);
     },
 });
 //# sourceMappingURL=messageCreatedAt.js.map

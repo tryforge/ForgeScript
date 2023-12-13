@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns current UTC second",
     unwrap: true,
     execute: function () {
-        return structures_1.Return.success(new Date().getSeconds());
+        return this.success(new Date().getSeconds());
     }
 });
 //# sourceMappingURL=second.js.map

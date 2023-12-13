@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [text]) {
-        return structures_1.Return.success(decodeURI(text));
+        return this.success(decodeURI(text));
     },
 });
 //# sourceMappingURL=decodeURI.js.map

@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     execute(_, [path, data]) {
         // eslint-disable-next-line no-undef
         (0, fs_1.truncateSync)(path, data);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=truncateFile.js.map

@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the message id",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.message?.id)
+        return this.success(ctx.message?.id)
     },
 })
 

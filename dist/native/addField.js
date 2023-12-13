@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
             value,
             inline: inline || false,
         });
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addField.js.map

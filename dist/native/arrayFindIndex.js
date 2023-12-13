@@ -47,7 +47,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = ctx.getEnvironmentKey(name.value);
         const varName = variable.value;
         if (!Array.isArray(arr))
-            return structures_1.Return.success(-1);
+            return this.success(-1);
         for (let i = 0, len = arr.length; i < len; i++) {
             const el = arr[i];
             ctx.setEnvironmentKey(varName, el);
@@ -55,12 +55,12 @@ exports.default = new structures_1.NativeFunction({
             if (rt.return || rt.success) {
                 if (!(0, isTrue_1.default)(rt))
                     continue;
-                return structures_1.Return.success(i);
+                return this.success(i);
             }
             else if (!this["isValidReturnType"](rt))
                 return rt;
         }
-        return structures_1.Return.success(-1);
+        return this.success(-1);
     },
 });
 //# sourceMappingURL=arrayFindIndex.js.map

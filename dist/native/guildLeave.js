@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     async execute(ctx, [g]) {
         g ??= ctx.guild;
-        return structures_1.Return.success(!!(await g?.leave().catch(noop_1.default)));
+        return this.success(!!(await g?.leave().catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=guildLeave.js.map

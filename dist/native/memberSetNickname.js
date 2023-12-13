@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [, m, nick]) {
-        return structures_1.Return.success(!!(await m.setNickname(nick).catch(lodash_1.noop || null)));
+        return this.success(!!(await m.setNickname(nick).catch(lodash_1.noop || null)));
     },
 });
 //# sourceMappingURL=memberSetNickname.js.map

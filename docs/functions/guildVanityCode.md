@@ -40,7 +40,7 @@ export default new NativeFunction({
     async execute(ctx, [guild]) {
         guild ??= ctx.guild!
         const vanity = await guild?.fetchVanityData().catch(noop)
-        return Return.success(vanity ? vanity.code : undefined)
+        return this.success(vanity ? vanity.code : undefined)
     },
 })
 

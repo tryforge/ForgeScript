@@ -22,7 +22,7 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         const type = ctx.automod?.action.type
-        return Return.success(type ? AutoModerationActionType[type] : null)
+        return this.success(type ? AutoModerationActionType[type] : null)
     },
 })
 ```

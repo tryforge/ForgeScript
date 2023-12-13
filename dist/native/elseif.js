@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
         if (!this["isValidReturnType"](condition))
             return condition;
         if (!condition.value)
-            return structures_1.Return.success();
+            return this.success();
         return this["resolveCode"](ctx, this.data.fields[1]);
     },
 });

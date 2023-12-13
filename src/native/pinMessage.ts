@@ -1,6 +1,6 @@
-import { BaseChannel } from "discord.js";
-import { ArgType, NativeFunction, Return } from "../structures";
-import { noop } from "lodash";
+import { BaseChannel } from "discord.js"
+import { ArgType, NativeFunction, Return } from "../structures"
+import { noop } from "lodash"
 
 export default new NativeFunction({
     name: "$pinMessage",
@@ -28,7 +28,7 @@ export default new NativeFunction({
     ],
     async execute(ctx, [, m ]) {
         const msg = m ?? ctx.message
-        return Return.success(
+        return this.success(
             !!(await msg.pin().catch(noop))
         )
     },

@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return structures_1.Return.success((guild ?? ctx.guild)?.features.join(sep || ", "));
+        return this.success((guild ?? ctx.guild)?.features.join(sep || ", "));
     },
 });
 //# sourceMappingURL=guildFeatures.js.map

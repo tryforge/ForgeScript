@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns the operating system uptime (seconds)",
     unwrap: false,
     execute() {
-        return Return.success(os.uptime())
+        return this.success(os.uptime())
     },
 })

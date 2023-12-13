@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [ms]) {
         await (0, promises_1.setTimeout)(ms);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=wait.js.map

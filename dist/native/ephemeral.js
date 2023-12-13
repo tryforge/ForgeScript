@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         ctx.container.ephemeral = true;
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=ephemeral.js.map

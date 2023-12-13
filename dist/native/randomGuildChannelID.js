@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [g, types]) {
         g ??= ctx.guild;
-        return structures_1.Return.success(types.length === 0 ? g?.channels.cache.randomKey() :
+        return this.success(types.length === 0 ? g?.channels.cache.randomKey() :
             g?.channels.cache.filter(x => types.includes(x.type)).randomKey());
     },
 });

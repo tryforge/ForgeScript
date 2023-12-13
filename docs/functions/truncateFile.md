@@ -45,7 +45,7 @@ export default new NativeFunction({
         // eslint-disable-next-line no-undef
         truncateSync(path, data)
 
-        return Return.success()
+        return this.success()
     },
 })
 

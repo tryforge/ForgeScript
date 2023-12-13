@@ -36,7 +36,7 @@ export default new NativeFunction({
 
         if (!this["isValidReturnType"](condition)) return condition
 
-        if (!condition.value) return Return.success()
+        if (!condition.value) return this.success()
 
         return this["resolveCode"](ctx, this.data.fields![1] as IExtendedCompiledFunctionField)
     },

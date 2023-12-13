@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user]) {
-        return structures_1.Return.success((user ?? ctx.user)?.hexAccentColor);
+        return this.success((user ?? ctx.user)?.hexAccentColor);
     },
 });
 //# sourceMappingURL=userAccentColor.js.map

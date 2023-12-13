@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Whether the interaction is a command",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Boolean(ctx.isCommand()))
+        return this.success(Boolean(ctx.isCommand()))
     },
 })
 

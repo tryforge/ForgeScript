@@ -50,6 +50,6 @@ export default new NativeFunction({
 
         ctx.container.reset()
 
-        return Return.success(success ? success.id : undefined)
+        return this.success(success ? success.id : undefined)
     },
 })

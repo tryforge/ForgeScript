@@ -17,6 +17,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ hex ]) {
-        return Return.success(hex2int(hex))
+        return this.success(hex2int(hex))
     },
 })

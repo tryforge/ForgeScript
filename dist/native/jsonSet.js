@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [key, value]) {
         ctx.setEnvironmentKey(key, value);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=jsonSet.js.map

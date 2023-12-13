@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member;
-        return structures_1.Return.success(member?.isCommunicationDisabled() ?? false);
+        return this.success(member?.isCommunicationDisabled() ?? false);
     },
 });
 //# sourceMappingURL=isTimedOut.js.map

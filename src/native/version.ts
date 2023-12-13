@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the package version you're using",
     unwrap: false,
     execute() {
-        return Return.success(require("../../package.json").version)
+        return this.success(require("../../package.json").version)
     },
 })

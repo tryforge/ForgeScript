@@ -27,7 +27,7 @@ class Interpreter {
             const rt = await fn.execute(ctx);
             if (!rt.success && !ctx.handleNotSuccess(rt))
                 return null;
-            args[i] = fn.data.negated ? null : rt.value;
+            args[i] = rt.value;
         }
         const content = runtime.data.resolve(args);
         if (!runtime.doNotSend) {

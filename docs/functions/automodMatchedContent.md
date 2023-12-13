@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "The matched content automod acted upon",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.matchedContent)
+        return this.success(ctx.automod?.matchedContent)
     },
 })
 ```

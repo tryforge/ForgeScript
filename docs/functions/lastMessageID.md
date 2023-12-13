@@ -51,9 +51,9 @@ export default new NativeFunction({
         ch ??= ctx.channel!
         if (user) {
             const messages = await (ch as TextBasedChannel).messages.fetch({ limit: 100 }).catch(noop)
-            return Return.success(messages ? messages.find(x => x.author.id === user.id)?.id : undefined)
+            return this.success(messages ? messages.find(x => x.author.id === user.id)?.id : undefined)
         }
-        return Return.success((ch as TextBasedChannel).lastMessageId)
+        return this.success((ch as TextBasedChannel).lastMessageId)
     },
 })
 ```

@@ -38,7 +38,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji
-        return Return.success(emoji?.createdTimestamp)
+        return this.success(emoji?.createdTimestamp)
     },
 })
 

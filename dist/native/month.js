@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns current month",
     unwrap: true,
     execute: function () {
-        return structures_1.Return.success(new Date().getMonth());
+        return this.success(new Date().getMonth());
     }
 });
 //# sourceMappingURL=month.js.map

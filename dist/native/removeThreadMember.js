@@ -45,7 +45,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(_, [, channel, member, reason]) {
         const thread = channel;
         const success = await thread.members.remove(member.id, reason || undefined).catch(noop_1.default);
-        return structures_1.Return.success(!!success);
+        return this.success(!!success);
     },
 });
 //# sourceMappingURL=removeThreadMember.js.map

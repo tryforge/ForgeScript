@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     async execute(_, [web]) {
         await web.delete().catch(noop)
-        return Return.success()
+        return this.success()
     },
 })

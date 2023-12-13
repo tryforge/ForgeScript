@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Breaks the loop",
     unwrap: false,
     execute() {
-        return structures_1.Return.break();
+        return this.break();
     },
 });
 //# sourceMappingURL=break.js.map

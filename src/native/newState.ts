@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(VoiceStateProperties[prop](ctx.states?.voiceState?.new, sep))
+        return this.success(VoiceStateProperties[prop](ctx.states?.voiceState?.new, sep))
     },
 })

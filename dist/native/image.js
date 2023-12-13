@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [image, index]) {
         if (image)
             ctx.container.embed(index ?? 0).setImage(image);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=image.js.map

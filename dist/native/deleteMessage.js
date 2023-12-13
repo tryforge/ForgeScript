@@ -31,9 +31,9 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [channel, messages]) {
         if (!messages.length)
-            return structures_1.Return.success(0);
+            return this.success(0);
         if (messages.length === 1) {
-            return structures_1.Return.success(
+            return this.success(
             // @ts-ignore
             !!(await messages[0].delete().catch(noop_1.default)) + false);
         }
@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
             .bulkDelete(messages, true)
             .then((x) => x.size)
             .catch(noop_1.default)) ?? 0;
-        return structures_1.Return.success(col);
+        return this.success(col);
     },
 });
 //# sourceMappingURL=deleteMessage.js.map

@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the message type",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(discord_js_1.MessageType[ctx.message?.type]);
+        return this.success(discord_js_1.MessageType[ctx.message?.type]);
     },
 });
 //# sourceMappingURL=messageType.js.map

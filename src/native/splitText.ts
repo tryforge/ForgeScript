@@ -17,7 +17,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ index ]) {
-        return Return.success(
+        return this.success(
             ctx.getEnvironmentInstance(Array, SplitTextName)?.[index]
         )
     },

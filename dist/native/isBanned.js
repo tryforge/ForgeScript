@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [guild, user]) {
         const isBanned = await guild.bans.fetch(user).catch(noop_1.default);
-        return structures_1.Return.success(!!isBanned);
+        return this.success(!!isBanned);
     },
 });
 //# sourceMappingURL=isBanned.js.map

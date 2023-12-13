@@ -53,7 +53,7 @@ export default new NativeFunction({
             count += col.size
         }
 
-        return Return.success(count)
+        return this.success(count)
     },
 })
 

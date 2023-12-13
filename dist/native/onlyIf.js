@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         const [condition, code] = this.data.fields;
         const res = await this["resolveCondition"](ctx, condition);
         if (!this["isValidReturnType"](res) || res.value)
-            return res.success ? structures_1.Return.success() : res;
+            return res.success ? this.success() : res;
         if (code) {
             const resolved = await this["resolveCode"](ctx, code);
             if (!this["isValidReturnType"](resolved))
@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
             ctx.container.content = resolved.value;
             await ctx.container.send(ctx.obj);
         }
-        return structures_1.Return.stop();
+        return this.stop();
     },
 });
 //# sourceMappingURL=onlyIf.js.map

@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [input, enc]) {
-        return structures_1.Return.success((0, zlib_1.inflateSync)(Buffer.from(input, (enc ?? "hex"))).toString("utf-8"));
+        return this.success((0, zlib_1.inflateSync)(Buffer.from(input, (enc ?? "hex"))).toString("utf-8"));
     },
 });
 //# sourceMappingURL=inflate.js.map

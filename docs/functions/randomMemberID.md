@@ -39,7 +39,7 @@ export default new NativeFunction({
     execute(ctx, [g]) {
         g ??= ctx.guild!
 
-        return Return.success(g?.members.cache.randomKey())
+        return this.success(g?.members.cache.randomKey())
     },
 })
 

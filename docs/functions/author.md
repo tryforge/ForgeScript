@@ -60,7 +60,7 @@ export default new NativeFunction({
             url: hyperlink || undefined,
         })
 
-        return Return.success()
+        return this.success()
     },
 })
 

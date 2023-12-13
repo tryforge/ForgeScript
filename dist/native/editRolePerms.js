@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(_, [, role, perms]) {
-        return structures_1.Return.success(!!(await role.setPermissions(perms).catch(lodash_1.noop)));
+        return this.success(!!(await role.setPermissions(perms).catch(lodash_1.noop)));
     },
 });
 //# sourceMappingURL=editRolePerms.js.map

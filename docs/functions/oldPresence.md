@@ -43,7 +43,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(PresenceProperties[prop](ctx.states?.presence?.old, sep))
+        return this.success(PresenceProperties[prop](ctx.states?.presence?.old, sep))
     },
 })
 

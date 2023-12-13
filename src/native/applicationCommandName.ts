@@ -19,9 +19,9 @@ export default new NativeFunction({
     async execute(ctx, [id]) {
         if (this.hasFields) {
             const command = await ctx.client.application.commands.fetch(id).catch(noop)
-            return Return.success(command ? command.name : undefined)
+            return this.success(command ? command.name : undefined)
         }
 
-        return Return.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.name : undefined)
+        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.name : undefined)
     },
 })

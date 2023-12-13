@@ -41,7 +41,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [type, sep]) {
-        return Return.success(
+        return this.success(
             ctx.client.commands
                 .get(type as keyof ClientEvents)
                 .map((x) => x.name)

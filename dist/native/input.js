@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [id]) {
-        return structures_1.Return.success(ctx.interaction?.isModalSubmit() ? ctx.interaction.fields.getTextInputValue(id) : undefined);
+        return this.success(ctx.interaction?.isModalSubmit() ? ctx.interaction.fields.getTextInputValue(id) : undefined);
     },
 });
 //# sourceMappingURL=input.js.map

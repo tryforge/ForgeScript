@@ -40,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const m = await guild.members.fetch(id).catch(noop_1.default);
             if (m)
-                structures_1.Return.success(m.id);
+                this.success(m.id);
         }
         q = q.toLowerCase();
         const query = await guild.members
@@ -48,7 +48,7 @@ exports.default = new structures_1.NativeFunction({
             query: q,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined);
+        return this.success(query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined);
     },
 });
 //# sourceMappingURL=findMember.js.map

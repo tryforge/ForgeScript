@@ -42,7 +42,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(ChannelProperties[prop](ctx.states?.channel?.new, sep))
+        return this.success(ChannelProperties[prop](ctx.states?.channel?.new, sep))
     },
 })
 

@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, message]) {
         const msg = message ?? ctx.message;
-        return structures_1.Return.success(msg?.reference?.messageId);
+        return this.success(msg?.reference?.messageId);
     },
 });
 //# sourceMappingURL=messageReferenceID.js.map

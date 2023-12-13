@@ -33,7 +33,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [values]) {
-        return Return.success(values.join(";").toLowerCase())
+        return this.success(values.join(";").toLowerCase())
     },
 })
 

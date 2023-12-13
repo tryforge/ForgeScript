@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [guild, id]) {
-        return structures_1.Return.success(structures_1.CompiledFunction.IdRegex.test(id) && guild.roles.cache.has(id));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && guild.roles.cache.has(id));
     },
 });
 //# sourceMappingURL=roleExists.js.map

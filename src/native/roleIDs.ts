@@ -23,7 +23,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return Return.success(
+        return this.success(
             (guild ?? ctx.guild)?.roles.cache
                 .filter((x) => x.guild.id !== x.id)
                 .map((x) => x.id)

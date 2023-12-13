@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user, size, ext]) {
-        return structures_1.Return.success((user ?? ctx.user)?.displayAvatarURL({
+        return this.success((user ?? ctx.user)?.displayAvatarURL({
             extension: ext || undefined,
             size: size || 2048,
         }));

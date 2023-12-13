@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        return structures_1.Return.success(ctx.hasKeyword(name));
+        return this.success(ctx.hasKeyword(name));
     },
 });
 //# sourceMappingURL=has.js.map

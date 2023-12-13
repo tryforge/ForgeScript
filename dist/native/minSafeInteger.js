@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the lowest safe integer",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(Number.MIN_SAFE_INTEGER);
+        return this.success(Number.MIN_SAFE_INTEGER);
     },
 });
 //# sourceMappingURL=minSafeInteger.js.map

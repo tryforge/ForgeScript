@@ -59,7 +59,7 @@ exports.default = new structures_1.NativeFunction({
         if (!!comp && "addOptions" in comp) {
             comp.addOptions(data);
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addOption.js.map

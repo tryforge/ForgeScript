@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether the context is a mentionable select menu",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.interaction?.isMentionableSelectMenu()));
+        return this.success(Boolean(ctx.interaction?.isMentionableSelectMenu()));
     },
 });
 //# sourceMappingURL=isMentionableSelectMenu.js.map

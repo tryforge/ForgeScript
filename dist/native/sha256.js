@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [input, enc]) {
         const sha256 = (0, crypto_1.createHash)("sha256").update(input).digest().toString((enc || "hex"));
-        return structures_1.Return.success(sha256);
+        return this.success(sha256);
     }
 });
 //# sourceMappingURL=sha256.js.map

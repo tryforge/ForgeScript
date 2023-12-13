@@ -18,6 +18,6 @@ export default new NativeFunction({
     brackets: true,
     execute(_, [args]) {
         console.log(...args)
-        return Return.success()
+        return this.success()
     },
 })

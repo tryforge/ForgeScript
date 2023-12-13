@@ -48,9 +48,9 @@ export default new NativeFunction({
         const regex = new RegExp(raw, flags)
 
         if (amount === -1) {
-            return Return.success(text.replace(regex, replacement))
+            return this.success(text.replace(regex, replacement))
         }
         let i = 0
-        return Return.success(text.replace(regex, (m) => (++i <= amount! ? replacement : m)))
+        return this.success(text.replace(regex, (m) => (++i <= amount! ? replacement : m)))
     },
 })

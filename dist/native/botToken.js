@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the client token",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.token);
+        return this.success(ctx.client.token);
     },
 });
 //# sourceMappingURL=botToken.js.map

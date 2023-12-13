@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     execute(ctx, [, msg]) {
         ctx.container.components = (msg ?? ctx.message)?.components.map((x) => discord_js_1.ActionRowBuilder.from(x)) ?? [];
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=fetchRows.js.map

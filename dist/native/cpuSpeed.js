@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the cpu speed in MHz",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(node_os_1.default.cpus()[0]?.speed);
+        return this.success(node_os_1.default.cpus()[0]?.speed);
     },
 });
 //# sourceMappingURL=cpuSpeed.js.map

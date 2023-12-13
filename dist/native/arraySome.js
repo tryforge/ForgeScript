@@ -49,13 +49,13 @@ exports.default = new structures_1.NativeFunction({
                 if (rt.return || rt.success) {
                     if (!(0, isTrue_1.default)(rt))
                         continue;
-                    return structures_1.Return.success(true);
+                    return this.success(true);
                 }
                 else if (!this["isValidReturnType"](rt))
                     return rt;
             }
         }
-        return structures_1.Return.success(false);
+        return this.success(false);
     },
 });
 //# sourceMappingURL=arraySome.js.map

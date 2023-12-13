@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The matched keyword the automod caught",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.matchedKeyword);
+        return this.success(ctx.automod?.matchedKeyword);
     },
 });
 //# sourceMappingURL=automodMatchedKeyword.js.map

@@ -7,6 +7,6 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         ctx.client.commands.refresh()
-        return Return.success()
+        return this.success()
     },
 })

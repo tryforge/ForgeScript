@@ -37,9 +37,9 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [args]) {
-        if (!this.hasFields) return Return.success(ctx.guild?.id)
+        if (!this.hasFields) return this.success(ctx.guild?.id)
         const name = args.join(";")
-        return Return.success(ctx.client.guilds.cache.find((x) => x.name === name)?.id)
+        return this.success(ctx.client.guilds.cache.find((x) => x.name === name)?.id)
     },
 })
 

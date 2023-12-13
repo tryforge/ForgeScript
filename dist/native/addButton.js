@@ -56,7 +56,7 @@ exports.default = new structures_1.NativeFunction({
         if (emoji)
             btn.setEmoji(emoji);
         ctx.container.components.at(-1)?.addComponents(btn);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addButton.js.map

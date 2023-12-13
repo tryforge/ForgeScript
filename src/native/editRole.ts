@@ -63,7 +63,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(_, [, role, name, color, icon, hoist, mentionable, perms]) {
-        return Return.success(
+        return this.success(
             !!(await role
                 .edit({
                     color: (color as ColorResolvable) || undefined,

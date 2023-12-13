@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return structures_1.Return.success((guild ?? ctx.guild)?.roles.cache
+        return this.success((guild ?? ctx.guild)?.roles.cache
             .filter((x) => x.guild.id !== x.id)
             .map((x) => x.id)
             .join(sep || ", "));

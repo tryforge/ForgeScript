@@ -54,7 +54,7 @@ export default new NativeFunction({
         ctx.container.content = content || undefined
         ctx.container.edit = true
         const msg = await ctx.container.send<Message<true>>(opt)
-        return Return.success(!!msg)
+        return this.success(!!msg)
     },
 })
 

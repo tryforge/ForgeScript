@@ -7,6 +7,6 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         ctx.container.ephemeral = true
-        return Return.success()
+        return this.success()
     },
 })

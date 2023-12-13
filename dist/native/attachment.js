@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
             name,
         });
         ctx.container.files.push(attachment);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=attachment.js.map

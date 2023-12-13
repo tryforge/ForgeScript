@@ -33,7 +33,7 @@ export default new NativeFunction({
 
         if (!user?.banner) await user.fetch()
 
-        return Return.success(
+        return this.success(
             user?.bannerURL({
                 extension: (ext as ImageExtension) || undefined,
                 size: (size as ImageSize) || 2048,

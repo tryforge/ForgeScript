@@ -37,7 +37,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [i]) {
-        return Return.success(
+        return this.success(
             this.hasFields
                 ? ctx.message?.mentions.roles.at(i)?.id
                 : ctx.message?.mentions.roles.map((x) => x.id).join(", ")

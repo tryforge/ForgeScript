@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "The current bot ping",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.client.ws.ping)
+        return this.success(ctx.client.ws.ping)
     },
 })
 

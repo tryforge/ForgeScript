@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random emoji ID",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.emojis.cache.randomKey());
+        return this.success(ctx.client.emojis.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomEmojiID.js.map

@@ -16,6 +16,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [numbers]) {
-        return Return.success(Math.max(...numbers))
+        return this.success(Math.max(...numbers))
     },
 })

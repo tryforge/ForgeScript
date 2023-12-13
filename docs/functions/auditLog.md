@@ -43,7 +43,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(AuditProperties[prop](ctx.states?.audit?.new, sep))
+        return this.success(AuditProperties[prop](ctx.states?.audit?.new, sep))
     },
 })
 

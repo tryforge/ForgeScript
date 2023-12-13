@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the focused option of the command",
     unwrap: false,
     execute(ctx) {
-        return Return.success(
+        return this.success(
             ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).name : undefined
         )
     },

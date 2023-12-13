@@ -41,7 +41,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ val, radix ]) {
-        return Return.success(parseInt(val, radix ?? undefined))
+        return this.success(parseInt(val, radix ?? undefined))
     },
 })
 ```

@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [web]) {
         await web.delete().catch(noop_1.default);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=webhookDelete.js.map

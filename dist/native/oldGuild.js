@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(guild_1.GuildProperties[prop](ctx.states?.guild?.old, sep));
+        return this.success(guild_1.GuildProperties[prop](ctx.states?.guild?.old, sep));
     },
 });
 //# sourceMappingURL=oldGuild.js.map

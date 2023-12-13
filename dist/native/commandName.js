@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the current command name",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.runtime.command?.name ?? (ctx.obj && "commandName" in ctx.obj ? ctx.obj.commandName : undefined));
+        return this.success(ctx.runtime.command?.name ?? (ctx.obj && "commandName" in ctx.obj ? ctx.obj.commandName : undefined));
     },
 });
 //# sourceMappingURL=commandName.js.map

@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        return structures_1.Return.success(guild.emojis.cache.size);
+        return this.success(guild.emojis.cache.size);
     },
 });
 //# sourceMappingURL=guildEmojiCount.js.map

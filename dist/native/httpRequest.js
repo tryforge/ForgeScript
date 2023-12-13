@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
 const undici_1 = require("undici");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRequest",
     version: "1.0.0",
@@ -45,7 +44,7 @@ exports.default = new NativeFunction_1.NativeFunction({
         }
         else
             ctx.setEnvironmentKey(name, await req.text());
-        return Return_1.Return.success(req.status);
+        return this.success(req.status);
     },
 });
 //# sourceMappingURL=httpRequest.js.map

@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [id]) {
-        return Return.success(
+        return this.success(
             ctx.interaction?.isModalSubmit() ? ctx.interaction.fields.getTextInputValue(id) : undefined
         )
     },

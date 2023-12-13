@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "The reaction id that was used",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.reaction?.emoji.id)
+        return this.success(ctx.reaction?.emoji.id)
     },
 })
 

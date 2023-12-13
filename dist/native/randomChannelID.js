@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random channel ID",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.channels.cache.randomKey());
+        return this.success(ctx.client.channels.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomChannelID.js.map

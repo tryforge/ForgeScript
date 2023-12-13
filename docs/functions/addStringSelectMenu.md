@@ -70,7 +70,7 @@ export default new NativeFunction({
 
         ctx.container.components.at(-1)?.addComponents(menu)
 
-        return Return.success()
+        return this.success()
     },
 })
 

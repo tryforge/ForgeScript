@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx) {
         ctx.client.destroy();
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=botDestroy.js.map

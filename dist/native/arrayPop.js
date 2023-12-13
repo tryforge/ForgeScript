@@ -19,8 +19,8 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr))
-            return structures_1.Return.success(arr.pop());
-        return structures_1.Return.success();
+            return this.success(arr.pop());
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayPop.js.map

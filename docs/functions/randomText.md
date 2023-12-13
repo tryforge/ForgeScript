@@ -34,7 +34,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [texts]) {
         const rnd = texts[Math.floor(Math.random() * texts.length)]
-        return Return.success(rnd)
+        return this.success(rnd)
     },
 })
 

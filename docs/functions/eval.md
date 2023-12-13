@@ -51,10 +51,10 @@ export default new NativeFunction({
                 doNotSend: !send,
             })
 
-            return result === null ? Return.stop() : Return.success(send ? undefined : result)
+            return result === null ? this.stop() : this.success(send ? undefined : result)
         } catch (error: unknown) {
             console.error(error)
-            return Return.error(error as Error)
+            return this.err(error as Error)
         }
     },
 })

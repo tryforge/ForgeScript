@@ -53,7 +53,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, role, sep]) {
-        return Return.success((role ?? ctx.role)?.members.map((x) => x.id).join(sep || ", "))
+        return this.success((role ?? ctx.role)?.members.map((x) => x.id).join(sep || ", "))
     },
 })
 

@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [, role, pos]) {
-        return structures_1.Return.success(!!(await role.setPosition(pos).catch(lodash_1.noop)));
+        return this.success(!!(await role.setPosition(pos).catch(lodash_1.noop)));
     },
 });
 //# sourceMappingURL=editRolePosition.js.map

@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Compiler_1 = require("../core/Compiler");
 const Interpreter_1 = require("../core/Interpreter");
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$eval",
     version: "1.0.0",
@@ -33,11 +32,11 @@ exports.default = new NativeFunction_1.NativeFunction({
                 data: Compiler_1.Compiler.compile(code),
                 doNotSend: !send,
             });
-            return result === null ? Return_1.Return.stop() : Return_1.Return.success(send ? undefined : result);
+            return result === null ? this.stop() : this.success(send ? undefined : result);
         }
         catch (error) {
             console.error(error);
-            return Return_1.Return.error(error);
+            return this.err(error);
         }
     },
 });

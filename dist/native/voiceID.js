@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, m]) {
         m ??= ctx.member;
-        return structures_1.Return.success(m?.voice.channelId);
+        return this.success(m?.voice.channelId);
     },
 });
 //# sourceMappingURL=voiceID.js.map

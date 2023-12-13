@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [i]) {
-        return structures_1.Return.success(this.hasFields
+        return this.success(this.hasFields
             ? ctx.message?.mentions.roles.at(i)?.id
             : ctx.message?.mentions.roles.map((x) => x.id).join(", "));
     },

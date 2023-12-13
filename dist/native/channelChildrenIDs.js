@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [channel, sep]) {
-        return structures_1.Return.success((channel ?? ctx.channel)?.children?.cache.map((x) => x.id).join(sep || ", "));
+        return this.success((channel ?? ctx.channel)?.children?.cache.map((x) => x.id).join(sep || ", "));
     },
 });
 //# sourceMappingURL=channelChildrenIDs.js.map

@@ -41,6 +41,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [, m, prop, sep]) {
-        return Return.success(MessageProperties[prop](m, sep || ", "))
+        return this.success(MessageProperties[prop](m, sep || ", "))
     },
 })

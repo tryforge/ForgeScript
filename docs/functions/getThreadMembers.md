@@ -47,7 +47,7 @@ export default new NativeFunction({
 
         const success = await thread.members.fetch().catch(noop)
 
-        return Return.success(success && success.size ? success.map((x) => x.id).join(sep || ", ") : undefined)
+        return this.success(success && success.size ? success.map((x) => x.id).join(sep || ", ") : undefined)
     },
 })
 

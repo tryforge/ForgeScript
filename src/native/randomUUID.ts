@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns a random uuid",
     unwrap: false,
     execute() {
-        return Return.success(randomUUID())
+        return this.success(randomUUID())
     }
 })

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$message",
     version: "1.0.0",
@@ -25,9 +24,9 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute(ctx, [index, end]) {
         if (this.hasFields) {
-            return Return_1.Return.success(end ? ctx.args.slice(index, end).join(" ") : ctx.args[index]);
+            return this.success(end ? ctx.args.slice(index, end).join(" ") : ctx.args[index]);
         }
-        return Return_1.Return.success(ctx.args.join(" "));
+        return this.success(ctx.args.join(" "));
     },
 });
 //# sourceMappingURL=message.js.map

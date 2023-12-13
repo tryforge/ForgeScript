@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the error message",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.runtime.extras)
+        return this.success(ctx.runtime.extras)
     },
 })

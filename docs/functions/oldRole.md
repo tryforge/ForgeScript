@@ -42,7 +42,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(RoleProperties[prop](ctx.states?.role?.old, sep))
+        return this.success(RoleProperties[prop](ctx.states?.role?.old, sep))
     },
 })
 

@@ -39,7 +39,7 @@ exports.default = new structures_1.NativeFunction({
             name: name || undefined,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(!!edit);
+        return this.success(!!edit);
     },
 });
 //# sourceMappingURL=webhookEdit.js.map

@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the message's webhook id",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.message?.webhookId)
+        return this.success(ctx.message?.webhookId)
     },
 })
 

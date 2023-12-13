@@ -53,7 +53,7 @@ exports.default = new structures_1.NativeFunction({
             roles: roles || undefined,
         })
             .catch(lodash_1.noop);
-        return structures_1.Return.success(returnEmojiID && em ? em.id : undefined);
+        return this.success(returnEmojiID && em ? em.id : undefined);
     },
 });
 //# sourceMappingURL=addEmoji.js.map

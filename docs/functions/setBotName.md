@@ -34,7 +34,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [name]) {
-        return Return.success(!!(await ctx.client.user.setUsername(name).catch(noop)))
+        return this.success(!!(await ctx.client.user.setUsername(name).catch(noop)))
     },
 })
 

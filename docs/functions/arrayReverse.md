@@ -47,7 +47,7 @@ export default new NativeFunction({
             ctx.setEnvironmentKey(var2, arr.reverse())
         }
 
-        return Return.success()
+        return this.success()
     },
 })
 

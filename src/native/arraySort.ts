@@ -18,6 +18,6 @@ export default new NativeFunction({
     execute(ctx, [variable]) {
         const arr = ctx.getEnvironmentInstance(Array, variable)
         if (arr !== null) ctx.setEnvironmentKey(variable, arr.sort())
-        return Return.success()
+        return this.success()
     },
 })

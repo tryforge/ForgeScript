@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         const cond = await this["resolveCondition"](ctx, this.data.fields[0]);
         if (!this["isValidReturnType"](cond))
             return cond;
-        return structures_1.Return.success(cond.value);
+        return this.success(cond.value);
     },
 });
 //# sourceMappingURL=checkCondition.js.map

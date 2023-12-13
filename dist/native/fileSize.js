@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return structures_1.Return.success((0, fs_1.statSync)(path).size);
+        return this.success((0, fs_1.statSync)(path).size);
     },
 });
 //# sourceMappingURL=fileSize.js.map

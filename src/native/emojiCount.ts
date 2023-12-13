@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the emoji count of all servers",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.client.emojis.cache.size)
+        return this.success(ctx.client.emojis.cache.size)
     },
 })

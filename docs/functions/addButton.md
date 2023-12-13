@@ -76,7 +76,7 @@ export default new NativeFunction({
         if (emoji) btn.setEmoji(emoji)
 
         ctx.container.components.at(-1)?.addComponents(btn)
-        return Return.success()
+        return this.success()
     },
 })
 

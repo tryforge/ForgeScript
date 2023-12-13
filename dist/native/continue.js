@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Skips executing bottom code of the loop",
     unwrap: false,
     execute() {
-        return structures_1.Return.continue();
+        return this.continue();
     },
 });
 //# sourceMappingURL=continue.js.map

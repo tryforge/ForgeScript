@@ -34,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
         }
         if (!ok)
             return this["fail"](ctx, code);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=onlyForUsers.js.map

@@ -42,6 +42,6 @@ export default new NativeFunction({
             inline: inline || false,
         })
 
-        return Return.success()
+        return this.success()
     },
 })

@@ -22,7 +22,7 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         const dur = ctx.automod?.action.metadata.durationSeconds
-        return Return.success(dur ? dur * 1000 : null)
+        return this.success(dur ? dur * 1000 : null)
     },
 })
 ```

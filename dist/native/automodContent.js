@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The content automod acted upon",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.content);
+        return this.success(ctx.automod?.content);
     },
 });
 //# sourceMappingURL=automodContent.js.map

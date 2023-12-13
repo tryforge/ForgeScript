@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [name, index, str]) {
-        return structures_1.Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.write(str, index));
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.write(str, index));
     },
 });
 //# sourceMappingURL=bufferWriteUtf8.js.map

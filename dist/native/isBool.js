@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [v]) {
-        return structures_1.Return.success(v === "true" || v === "false");
+        return this.success(v === "true" || v === "false");
     },
 });
 //# sourceMappingURL=isBool.js.map

@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "The message id of the reacted message",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.reaction?.message.id)
+        return this.success(ctx.reaction?.message.id)
     },
 })

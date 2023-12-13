@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, role]) {
-        return Return.success((role ?? ctx.role)?.hoist)
+        return this.success((role ?? ctx.role)?.hoist)
     },
 })

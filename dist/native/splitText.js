@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [index]) {
-        return structures_1.Return.success(ctx.getEnvironmentInstance(Array, textSplit_1.SplitTextName)?.[index]);
+        return this.success(ctx.getEnvironmentInstance(Array, textSplit_1.SplitTextName)?.[index]);
     },
 });
 //# sourceMappingURL=splitText.js.map

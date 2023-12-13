@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [, code]) {
-        return structures_1.Return.success(code);
+        return this.success(code);
     },
 });
 //# sourceMappingURL=case.js.map

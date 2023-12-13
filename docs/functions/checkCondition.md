@@ -39,7 +39,7 @@ export default new NativeFunction({
             this.data.fields![0] as IExtendedCompiledFunctionConditionField
         )
         if (!this["isValidReturnType"](cond)) return cond
-        return Return.success(cond.value)
+        return this.success(cond.value)
     },
 })
 

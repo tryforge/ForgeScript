@@ -61,7 +61,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [, member, size, ext]) {
-        return Return.success(
+        return this.success(
             (member ?? ctx.member)?.displayAvatarURL({
                 extension: (ext as ImageExtension) || undefined,
                 size: (size as ImageSize) || 2048,

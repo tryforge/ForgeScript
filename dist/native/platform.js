@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, member, sep]) {
-        return structures_1.Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "));
+        return this.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "));
     },
 });
 //# sourceMappingURL=platform.js.map

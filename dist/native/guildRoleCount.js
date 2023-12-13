@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        return structures_1.Return.success(guild.roles.cache.size);
+        return this.success(guild.roles.cache.size);
     },
 });
 //# sourceMappingURL=guildRoleCount.js.map

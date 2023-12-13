@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
             if (!this["isValidReturnType"](statementRun) || statementRun.value !== null)
                 return statementRun;
         }
-        return elseStatement?.execute(ctx) ?? structures_1.Return.success();
+        return elseStatement?.execute(ctx) ?? this.success();
     },
 });
 //# sourceMappingURL=ifx.js.map

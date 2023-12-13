@@ -55,7 +55,7 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(id)) {
             const m = await guild.members.fetch(id).catch(noop)
-            if (m) Return.success(m.id)
+            if (m) this.success(m.id)
         }
 
         q = q.toLowerCase()
@@ -66,7 +66,7 @@ export default new NativeFunction({
             })
             .catch(noop)
 
-        return Return.success(query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined)
+        return this.success(query && query.size ? query.at(0)?.id : rt ? ctx.user?.id : undefined)
     },
 })
 

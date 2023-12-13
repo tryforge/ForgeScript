@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return structures_1.Return.success(Math.sqrt(n));
+        return this.success(Math.sqrt(n));
     },
 });
 //# sourceMappingURL=sqrt.js.map

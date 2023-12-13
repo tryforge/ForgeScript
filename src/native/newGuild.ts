@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(GuildProperties[prop](ctx.states?.guild?.new, sep))
+        return this.success(GuildProperties[prop](ctx.states?.guild?.new, sep))
     },
 })

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The channel id for automod",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.action.metadata.channelId);
+        return this.success(ctx.automod?.action.metadata.channelId);
     },
 });
 //# sourceMappingURL=automodChannelID.js.map

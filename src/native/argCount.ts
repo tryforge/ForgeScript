@@ -16,7 +16,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [text]) {
-        if (this.hasFields) return Return.success(text.trim().split(/ +/).length)
-        return Return.success(ctx.args.length)
+        if (this.hasFields) return this.success(text.trim().split(/ +/).length)
+        return this.success(ctx.args.length)
     },
 })

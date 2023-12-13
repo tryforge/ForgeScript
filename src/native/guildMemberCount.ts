@@ -17,6 +17,6 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(guild?.memberCount)
+        return this.success(guild?.memberCount)
     },
 })

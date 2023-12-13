@@ -32,6 +32,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [, member, perms]) {
-        return Return.success(member.permissions.has(perms as PermissionsString[]))
+        return this.success(member.permissions.has(perms as PermissionsString[]))
     },
 })

@@ -37,9 +37,9 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [emoji]) {
-        if (this.hasFields) return Return.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id)
+        if (this.hasFields) return this.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id)
 
-        return Return.success(ctx.emoji?.name)
+        return this.success(ctx.emoji?.name)
     },
 })
 

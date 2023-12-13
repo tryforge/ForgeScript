@@ -38,7 +38,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(guild?.members.cache.filter((x) => x.user.bot).size)
+        return this.success(guild?.members.cache.filter((x) => x.user.bot).size)
     },
 })
 

@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         if (Array.isArray(arr)) {
             arr.length = 0;
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayClear.js.map

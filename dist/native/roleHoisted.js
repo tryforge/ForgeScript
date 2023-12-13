@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, role]) {
-        return structures_1.Return.success((role ?? ctx.role)?.hoist);
+        return this.success((role ?? ctx.role)?.hoist);
     },
 });
 //# sourceMappingURL=roleHoisted.js.map

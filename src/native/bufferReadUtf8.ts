@@ -30,6 +30,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [ name, begin, end ]) {
-        return Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString("utf-8", begin, end || undefined))
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString("utf-8", begin, end || undefined))
     },
 })

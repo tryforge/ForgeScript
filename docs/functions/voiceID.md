@@ -47,7 +47,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [, m]) {
         m ??= ctx.member!
-        return Return.success(m?.voice.channelId)
+        return this.success(m?.voice.channelId)
     },
 })
 

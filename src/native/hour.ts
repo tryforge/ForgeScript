@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns current UTC hour",
     unwrap: true,
     execute: function() {
-        return Return.success(new Date().getHours())
+        return this.success(new Date().getHours())
     }
 })

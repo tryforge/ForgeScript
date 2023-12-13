@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Stops code execution",
     unwrap: false,
     execute() {
-        return Return.stop()
+        return this.stop()
     },
 })

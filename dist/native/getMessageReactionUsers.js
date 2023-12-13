@@ -54,7 +54,7 @@ exports.default = new structures_1.NativeFunction({
                 users.push(...bulk.map((x) => x.id));
             }
         }
-        return structures_1.Return.success(users.join(sep || ", "));
+        return this.success(users.join(sep || ", "));
     },
 });
 //# sourceMappingURL=getMessageReactionUsers.js.map

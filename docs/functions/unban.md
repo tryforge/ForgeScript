@@ -50,7 +50,7 @@ export default new NativeFunction({
     ],
     async execute(_, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop)
-        return Return.success(!!unbanned)
+        return this.success(!!unbanned)
     },
 })
 

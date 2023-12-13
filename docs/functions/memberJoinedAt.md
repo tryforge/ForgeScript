@@ -47,7 +47,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member!
-        return Return.success(member?.joinedTimestamp)
+        return this.success(member?.joinedTimestamp)
     },
 })
 

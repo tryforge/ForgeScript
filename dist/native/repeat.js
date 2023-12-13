@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [txt, times]) {
-        return structures_1.Return.success(txt.repeat(times));
+        return this.success(txt.repeat(times));
     },
 });
 //# sourceMappingURL=repeat.js.map

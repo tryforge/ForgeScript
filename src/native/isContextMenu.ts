@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Whether the interaction is a context menu",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Boolean(ctx.isContextCommand()))
+        return this.success(Boolean(ctx.isContextCommand()))
     },
 })

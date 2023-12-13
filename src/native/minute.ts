@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns current UTC minute",
     unwrap: true,
     execute: function() {
-        return Return.success(new Date().getMinutes())
+        return this.success(new Date().getMinutes())
     }
 })

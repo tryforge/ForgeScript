@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: false,
     async execute(ctx, [user]) {
-        return structures_1.Return.success((user ?? ctx.user)?.globalName);
+        return this.success((user ?? ctx.user)?.globalName);
     },
 });
 //# sourceMappingURL=userGlobalName.js.map

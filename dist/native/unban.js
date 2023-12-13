@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [guild, user, reason]) {
         const unbanned = await guild.bans.remove(user, reason || undefined).catch(noop_1.default);
-        return structures_1.Return.success(!!unbanned);
+        return this.success(!!unbanned);
     },
 });
 //# sourceMappingURL=unban.js.map

@@ -43,7 +43,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [channel, topic]) {
-        return Return.success(!!(await (channel as TextChannel).setTopic(topic || null).catch(noop)))
+        return this.success(!!(await (channel as TextChannel).setTopic(topic || null).catch(noop)))
     },
 })
 

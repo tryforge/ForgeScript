@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(_, [min, max, decimals]) {
         const rnd = max ? Math.random() * (max - min) + min : Math.random() * min;
-        return structures_1.Return.success(!decimals ? Math.floor(rnd) : rnd);
+        return this.success(!decimals ? Math.floor(rnd) : rnd);
     },
 });
 //# sourceMappingURL=randomNumber.js.map

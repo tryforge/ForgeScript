@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return structures_1.Return.success((0, fs_1.existsSync)(path));
+        return this.success((0, fs_1.existsSync)(path));
     },
 });
 //# sourceMappingURL=fileExists.js.map

@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [, role, url]) {
-        return structures_1.Return.success(!!(await role.setIcon(url).catch(lodash_1.noop)));
+        return this.success(!!(await role.setIcon(url).catch(lodash_1.noop)));
     },
 });
 //# sourceMappingURL=editRoleIcon.js.map

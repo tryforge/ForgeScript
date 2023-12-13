@@ -24,6 +24,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ input, out ]) {
-        return Return.success(deflateSync(input).toString((out ?? "hex") as BufferEncoding))
+        return this.success(deflateSync(input).toString((out ?? "hex") as BufferEncoding))
     },
 })

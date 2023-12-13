@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [sep]) {
-        return structures_1.Return.success(Object.keys((0, os_1.networkInterfaces)()).join(sep ?? ", "));
+        return this.success(Object.keys((0, os_1.networkInterfaces)()).join(sep ?? ", "));
     }
 });
 //# sourceMappingURL=networkCardNames.js.map

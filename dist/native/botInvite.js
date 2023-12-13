@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [perms]) {
-        return structures_1.Return.success(ctx.client.generateInvite({
+        return this.success(ctx.client.generateInvite({
             scopes: [discord_js_1.OAuth2Scopes.Bot],
             permissions: perms || ["Administrator"],
         }));

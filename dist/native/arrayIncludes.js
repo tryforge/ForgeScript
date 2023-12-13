@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name);
-        return structures_1.Return.success(Array.isArray(arr) ? arr.includes(value) : false);
+        return this.success(Array.isArray(arr) ? arr.includes(value) : false);
     },
 });
 //# sourceMappingURL=arrayIncludes.js.map

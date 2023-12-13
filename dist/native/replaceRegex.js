@@ -48,10 +48,10 @@ exports.default = new structures_1.NativeFunction({
         amount ??= -1;
         const regex = new RegExp(raw, flags);
         if (amount === -1) {
-            return structures_1.Return.success(text.replace(regex, replacement));
+            return this.success(text.replace(regex, replacement));
         }
         let i = 0;
-        return structures_1.Return.success(text.replace(regex, (m) => (++i <= amount ? replacement : m)));
+        return this.success(text.replace(regex, (m) => (++i <= amount ? replacement : m)));
     },
 });
 //# sourceMappingURL=replaceRegex.js.map

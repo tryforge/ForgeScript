@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [type, sep]) {
-        return structures_1.Return.success(ctx.client.commands
+        return this.success(ctx.client.commands
             .get(type)
             .map((x) => x.name)
             .filter(Boolean)

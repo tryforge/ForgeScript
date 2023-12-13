@@ -52,6 +52,6 @@ export default new NativeFunction({
                 description: desc || null,
             })
             .catch(noop)
-        return Return.success(!!created)
+        return this.success(!!created)
     },
 })

@@ -34,7 +34,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return Return.success(CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(noop)))
+        return this.success(CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(noop)))
     },
 })
 

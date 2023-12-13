@@ -33,6 +33,6 @@ export default new NativeFunction({
         // eslint-disable-next-line no-undef
         appendFileSync(path, data, { encoding: (encoding as BufferEncoding) || "utf-8" })
 
-        return Return.success()
+        return this.success()
     },
 })

@@ -98,7 +98,7 @@ export default new NativeFunction({
                 position: pos || undefined,
             })
             .catch(noop)
-        return Return.success(created ? created.id : undefined)
+        return this.success(created ? created.id : undefined)
     },
 })
 

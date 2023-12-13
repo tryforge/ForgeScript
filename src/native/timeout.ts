@@ -32,6 +32,6 @@ export default new NativeFunction({
     ],
     async execute(_, [, member, ms]) {
         const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(noop)
-        return Return.success(!!timeout)
+        return this.success(!!timeout)
     },
 })

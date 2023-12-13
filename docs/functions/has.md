@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        return Return.success(ctx.hasKeyword(name))
+        return this.success(ctx.hasKeyword(name))
     },
 })
 

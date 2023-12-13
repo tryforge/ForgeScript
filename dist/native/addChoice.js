@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
             name,
             value,
         });
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addChoice.js.map

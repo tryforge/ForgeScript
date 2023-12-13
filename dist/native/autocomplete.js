@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     async execute(ctx) {
         await ctx.container.send(ctx.obj);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=autocomplete.js.map

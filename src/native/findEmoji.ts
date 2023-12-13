@@ -21,12 +21,12 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(q)) {
             const e = ctx.client.emojis.cache.get(q)
-            if (e) return Return.success(e.id)
+            if (e) return this.success(e.id)
         }
 
         const name = parsed?.name.toLowerCase()
 
-        return Return.success(
+        return this.success(
             ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id
         )
     },

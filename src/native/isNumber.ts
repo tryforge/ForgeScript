@@ -16,6 +16,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return Return.success(!!n && !isNaN(Number(n)))
+        return this.success(!!n && !isNaN(Number(n)))
     },
 })

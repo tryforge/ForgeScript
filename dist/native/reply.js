@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, message]) {
         ctx.container.reference = (message ?? ctx.message)?.id;
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=reply.js.map

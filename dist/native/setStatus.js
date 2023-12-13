@@ -56,7 +56,7 @@ exports.default = new structures_1.NativeFunction({
             ],
             status: status,
         });
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=setStatus.js.map

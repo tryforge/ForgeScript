@@ -50,7 +50,7 @@ exports.default = new structures_1.NativeFunction({
         if (max !== null)
             menu.setMaxValues(max);
         ctx.container.components.at(-1)?.addComponents(menu);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addStringSelectMenu.js.map

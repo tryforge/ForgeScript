@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the invite code that was used by this person",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(InviteSystem_1.InviteSystem.Inviters.get(ctx.guild?.id)?.get(ctx.user?.id)?.code);
+        return this.success(InviteSystem_1.InviteSystem.Inviters.get(ctx.guild?.id)?.get(ctx.user?.id)?.code);
     },
 });
 //# sourceMappingURL=inviterCode.js.map

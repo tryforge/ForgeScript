@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [invite]) {
-        return structures_1.Return.success(!!(await invite.delete().catch(noop_1.default)));
+        return this.success(!!(await invite.delete().catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=deleteInvite.js.map

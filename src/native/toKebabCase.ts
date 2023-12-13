@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return Return.success(kebabCase(m))
+        return this.success(kebabCase(m))
     },
 })

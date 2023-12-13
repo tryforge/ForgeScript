@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return Return.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "))
+        return this.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "))
     },
 })

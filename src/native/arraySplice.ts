@@ -42,6 +42,6 @@ export default new NativeFunction({
             arr.splice(index, count, ...elements)
         }
 
-        return Return.success()
+        return this.success()
     },
 })

@@ -77,7 +77,7 @@ export default new NativeFunction({
             }
         }
 
-        return Return.success(users.join(sep || ", "))
+        return this.success(users.join(sep || ", "))
     },
 })
 

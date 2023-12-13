@@ -70,7 +70,7 @@ export default new NativeFunction({
     ],
     execute(_, [, m, index, prop, sep]) {
         const embed = m.embeds[index] as Embed | undefined
-        return Return.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", "))
+        return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", "))
     },
 })
 

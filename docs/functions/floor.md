@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return Return.success(Math.floor(n))
+        return this.success(Math.floor(n))
     },
 })
 

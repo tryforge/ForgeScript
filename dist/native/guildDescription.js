@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return structures_1.Return.success((guild ?? ctx.guild)?.description);
+        return this.success((guild ?? ctx.guild)?.description);
     },
 });
 //# sourceMappingURL=guildDescription.js.map

@@ -28,10 +28,10 @@ exports.default = new structures_1.NativeFunction({
         ctx.container.content = content || undefined;
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj);
-            return structures_1.Return.success();
+            return this.success();
         }
         const reply = await ctx.container.send(ctx.obj);
-        return structures_1.Return.success(returnMessageID ? reply?.id : undefined);
+        return this.success(returnMessageID ? reply?.id : undefined);
     },
 });
 //# sourceMappingURL=interactionReply.js.map

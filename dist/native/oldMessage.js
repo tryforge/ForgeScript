@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(message_1.MessageProperties[prop](ctx.states?.message?.old, sep));
+        return this.success(message_1.MessageProperties[prop](ctx.states?.message?.old, sep));
     },
 });
 //# sourceMappingURL=oldMessage.js.map

@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return structures_1.Return.success(m
+        return this.success(m
             .split(/ +/)
             .map((x) => lodash_1.default.capitalize(x))
             .join(" "));

@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: false,
     async execute(ctx, [user]) {
-        return structures_1.Return.success((user ?? ctx.user)?.createdTimestamp);
+        return this.success((user ?? ctx.user)?.createdTimestamp);
     },
 });
 //# sourceMappingURL=userCreatedAt.js.map

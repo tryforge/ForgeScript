@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [guild, user, reason, seconds]) {
-        return structures_1.Return.success((await guild.members
+        return this.success((await guild.members
             .ban(user, {
             reason: reason || undefined,
             deleteMessageSeconds: seconds || undefined,

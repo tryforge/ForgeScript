@@ -52,7 +52,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [g, size, ext]) {
-        return Return.success(
+        return this.success(
             (g ?? ctx.guild)?.bannerURL({
                 extension: (ext as ImageExtension) || undefined,
                 size: (size as ImageSize) || 2048,

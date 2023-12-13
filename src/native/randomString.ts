@@ -34,6 +34,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ len, chars ]) {
         const arr = chars ? [...chars] : CharArray
-        return Return.success(Array.from({ length: len }, () => arr[Math.floor(Math.random() * arr.length)]).join(""))
+        return this.success(Array.from({ length: len }, () => arr[Math.floor(Math.random() * arr.length)]).join(""))
     }
 })

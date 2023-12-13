@@ -21,7 +21,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx) {
         ctx.client.destroy()
-        return Return.success()
+        return this.success()
     },
 })
 

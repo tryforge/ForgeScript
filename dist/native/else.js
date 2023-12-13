@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx, [arg]) {
-        return structures_1.Return.success(arg);
+        return this.success(arg);
     },
 });
 //# sourceMappingURL=else.js.map

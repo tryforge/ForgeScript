@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "A uwu function",
     unwrap: true,
     execute(ctx) {
-        return Return.success("uwu!")
+        return this.success("uwu!")
     },
 })

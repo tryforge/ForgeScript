@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         const embed = ctx.container.embed(index ?? 0).setTitle(title);
         if (hyperlink)
             embed.setURL(hyperlink);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=title.js.map

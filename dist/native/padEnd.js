@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [str, max, filler]) {
-        return structures_1.Return.success(str.padEnd(max, filler || undefined));
+        return this.success(str.padEnd(max, filler || undefined));
     },
 });
 //# sourceMappingURL=padEnd.js.map

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$delete",
     version: "1.0.0",
@@ -18,7 +17,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        return Return_1.Return.success(ctx.deleteKeyword(name));
+        return this.success(ctx.deleteKeyword(name));
     },
 });
 //# sourceMappingURL=delete.js.map

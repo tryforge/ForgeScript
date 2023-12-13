@@ -44,6 +44,6 @@ export default new NativeFunction({
 
         const success = await thread.members.remove(member.id, reason || undefined).catch(noop)
 
-        return Return.success(!!success)
+        return this.success(!!success)
     },
 })

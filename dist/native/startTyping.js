@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         const channel = ch ?? ctx.channel;
         if (channel.isTextBased())
             await channel.sendTyping().catch(() => null);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=startTyping.js.map

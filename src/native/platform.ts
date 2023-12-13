@@ -30,6 +30,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, member, sep]) {
-        return Return.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "))
+        return this.success(Object.keys((member ?? ctx.member)?.presence?.clientStatus ?? {}).join(sep || ", "))
     },
 })

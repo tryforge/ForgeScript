@@ -24,6 +24,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ input, enc ]) {
-        return Return.success(inflateSync(Buffer.from(input, (enc ?? "hex") as BufferEncoding)).toString("utf-8"))
+        return this.success(inflateSync(Buffer.from(input, (enc ?? "hex") as BufferEncoding)).toString("utf-8"))
     },
 })

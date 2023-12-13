@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Skips executing bottom code of the loop",
     unwrap: false,
     execute() {
-        return Return.continue()
+        return this.continue()
     },
 })
 
