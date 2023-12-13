@@ -38,7 +38,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(guild.roles.cache.size)
+        return this.success(guild.roles.cache.size)
     },
 })
 

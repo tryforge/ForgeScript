@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [lhs, rhs]) {
-        return structures_1.Return.success(lhs || rhs);
+        return this.success(lhs || rhs);
     },
 });
 //# sourceMappingURL=default.js.map

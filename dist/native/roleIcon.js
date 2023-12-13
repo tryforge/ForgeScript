@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [, role, size, ext]) {
-        return structures_1.Return.success((role ?? ctx.role)?.iconURL({
+        return this.success((role ?? ctx.role)?.iconURL({
             extension: ext || undefined,
             size: size || 2048,
         }));

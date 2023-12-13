@@ -38,7 +38,7 @@ export default new NativeFunction({
         for (let i = 0, len = params.length; i < len; i += 2) {
             obj[params[i]] = params[i + 1]
         }
-        return Return.success(stringify(obj))
+        return this.success(stringify(obj))
     },
 })
 

@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return structures_1.Return.success(Math.abs(n));
+        return this.success(Math.abs(n));
     },
 });
 //# sourceMappingURL=abs.js.map

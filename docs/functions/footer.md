@@ -51,7 +51,7 @@ export default new NativeFunction({
             text,
             iconURL: iconURL || undefined,
         })
-        return Return.success()
+        return this.success()
     },
 })
 

@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx) {
         ctx.container.components.push(new discord_js_1.ActionRowBuilder());
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addActionRow.js.map

@@ -57,7 +57,7 @@ exports.default = new structures_1.NativeFunction({
             parent: parentId,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(ch ? ch.id : undefined);
+        return this.success(ch ? ch.id : undefined);
     },
 });
 //# sourceMappingURL=createChannel.js.map

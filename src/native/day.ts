@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns current day",
     unwrap: true,
     execute: function() {
-        return Return.success(new Date().getDay())
+        return this.success(new Date().getDay())
     }
 })

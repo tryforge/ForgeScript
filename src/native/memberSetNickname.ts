@@ -31,6 +31,6 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [, m, nick]) {
-        return Return.success(!!(await m.setNickname(nick).catch(noop || null)))
+        return this.success(!!(await m.setNickname(nick).catch(noop || null)))
     },
 })

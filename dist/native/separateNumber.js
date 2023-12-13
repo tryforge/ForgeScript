@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(_, [n, sep]) {
         const t = n.toLocaleString();
-        return structures_1.Return.success(sep ? t.replaceAll(NoNumberRegex, sep) : t);
+        return this.success(sep ? t.replaceAll(NoNumberRegex, sep) : t);
     },
 });
 //# sourceMappingURL=separateNumber.js.map

@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return Return.success(existsSync(path))
+        return this.success(existsSync(path))
     },
 })

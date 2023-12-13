@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [m, index]) {
-        return structures_1.Return.success(m.charCodeAt(index));
+        return this.success(m.charCodeAt(index));
     },
 });
 //# sourceMappingURL=charCodeAt.js.map

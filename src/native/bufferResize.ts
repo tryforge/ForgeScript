@@ -29,6 +29,6 @@ export default new NativeFunction({
             buffer.copy(ref, 0, 0, ref.length)
             ctx.setEnvironmentKey(name, ref)
         }
-        return Return.success()
+        return this.success()
     },
 })

@@ -29,6 +29,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(_, [text, start, end]) {
-        return Return.success(text.slice(start, end || undefined))
+        return this.success(text.slice(start, end || undefined))
     },
 })

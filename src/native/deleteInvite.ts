@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [invite]) {
-        return Return.success(!!(await invite.delete().catch(noop)))
+        return this.success(!!(await invite.delete().catch(noop)))
     },
 })

@@ -20,11 +20,11 @@ exports.default = new structures_1.NativeFunction({
     execute(_, [expr]) {
         try {
             if (MathRegex.test(expr))
-                return structures_1.Return.success();
-            return structures_1.Return.success(eval(expr));
+                return this.success();
+            return this.success(eval(expr));
         }
         catch (error) {
-            return structures_1.Return.success();
+            return this.success();
         }
     },
 });

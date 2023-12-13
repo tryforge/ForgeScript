@@ -43,7 +43,7 @@ exports.default = new structures_1.NativeFunction({
             }
             return this["resolveCode"](ctx, catchCode);
         }
-        return structures_1.Return.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined);
+        return this.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined);
     },
 });
 //# sourceMappingURL=try.js.map

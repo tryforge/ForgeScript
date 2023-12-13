@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the message id",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.message?.id);
+        return this.success(ctx.message?.id);
     },
 });
 //# sourceMappingURL=messageID.js.map

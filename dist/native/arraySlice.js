@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
         if (Array.isArray(arr)) {
             ctx.setEnvironmentKey(var2, arr.slice(start, end || undefined));
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arraySlice.js.map

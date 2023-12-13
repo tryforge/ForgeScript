@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return Return.success(Math.trunc(n))
+        return this.success(Math.trunc(n))
     },
 })

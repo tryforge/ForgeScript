@@ -64,7 +64,7 @@ exports.default = new structures_1.NativeFunction({
                     return false;
             }
         }).catch(lodash_1.noop);
-        return structures_1.Return.success(msg?.first()?.id);
+        return this.success(msg?.first()?.id);
     },
 });
 //# sourceMappingURL=awaitMessage.js.map

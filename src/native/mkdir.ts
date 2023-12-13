@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return Return.success(void mkdirSync(path))
+        return this.success(void mkdirSync(path))
     },
 })

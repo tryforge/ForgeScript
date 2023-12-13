@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(_, [guild, name]) {
-        return structures_1.Return.success((await guild.setName(name).catch(() => false)) !== false);
+        return this.success((await guild.setName(name).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildName.js.map

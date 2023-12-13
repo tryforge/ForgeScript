@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(_, [text, start, end]) {
-        return structures_1.Return.success(text.slice(start, end || undefined));
+        return this.success(text.slice(start, end || undefined));
     },
 });
 //# sourceMappingURL=cropText.js.map

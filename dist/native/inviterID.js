@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the user who invited this person",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(InviteSystem_1.InviteSystem.Inviters.get(ctx.guild?.id)?.get(ctx.user?.id)?.inviterId);
+        return this.success(InviteSystem_1.InviteSystem.Inviters.get(ctx.guild?.id)?.get(ctx.user?.id)?.inviterId);
     },
 });
 //# sourceMappingURL=inviterID.js.map

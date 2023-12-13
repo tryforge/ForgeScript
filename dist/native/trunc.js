@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return structures_1.Return.success(Math.trunc(n));
+        return this.success(Math.trunc(n));
     },
 });
 //# sourceMappingURL=trunc.js.map

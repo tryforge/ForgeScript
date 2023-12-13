@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the bots uptime",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.uptime);
+        return this.success(ctx.client.uptime);
     },
 });
 //# sourceMappingURL=uptime.js.map

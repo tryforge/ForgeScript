@@ -46,7 +46,7 @@ export default new NativeFunction({
     brackets: false,
     execute(ctx, [ch, sep]) {
         const channel = (ch ?? ctx.channel) as ThreadChannel | undefined
-        return Return.success(channel?.appliedTags.join(sep || ", "))
+        return this.success(channel?.appliedTags.join(sep || ", "))
     },
 })
 

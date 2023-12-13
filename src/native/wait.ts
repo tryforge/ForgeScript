@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     async execute(_, [ms]) {
         await setTimeout(ms)
-        return Return.success()
+        return this.success()
     },
 })

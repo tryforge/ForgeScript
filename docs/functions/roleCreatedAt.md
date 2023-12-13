@@ -46,7 +46,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, role]) {
-        return Return.success((role ?? ctx.role)?.createdTimestamp)
+        return this.success((role ?? ctx.role)?.createdTimestamp)
     },
 })
 

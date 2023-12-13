@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [str, match]) {
-        return structures_1.Return.success(str.startsWith(match));
+        return this.success(str.startsWith(match));
     },
 });
 //# sourceMappingURL=startsWith.js.map

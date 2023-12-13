@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns current month",
     unwrap: true,
     execute: function() {
-        return Return.success(new Date().getMonth())
+        return this.success(new Date().getMonth())
     }
 })

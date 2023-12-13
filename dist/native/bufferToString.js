@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [name, encoding]) {
-        return structures_1.Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding || "utf-8"));
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding || "utf-8"));
     },
 });
 //# sourceMappingURL=bufferToString.js.map

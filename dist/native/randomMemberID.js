@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [g]) {
         g ??= ctx.guild;
-        return structures_1.Return.success(g?.members.cache.randomKey());
+        return this.success(g?.members.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomMemberID.js.map

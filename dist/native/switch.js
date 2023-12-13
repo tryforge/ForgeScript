@@ -47,7 +47,7 @@ exports.default = new structures_1.NativeFunction({
         }
         if (defaultCase)
             return defaultCase.execute(ctx);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=switch.js.map

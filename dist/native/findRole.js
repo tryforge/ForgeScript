@@ -30,10 +30,10 @@ exports.default = new structures_1.NativeFunction({
         if (structures_1.CompiledFunction.IdRegex.test(id)) {
             const r = guild.roles.cache.get(id);
             if (r)
-                return structures_1.Return.success(r.id);
+                return this.success(r.id);
         }
         q = q.toLowerCase();
-        return structures_1.Return.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id);
+        return this.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id);
     },
 });
 //# sourceMappingURL=findRole.js.map

@@ -20,9 +20,9 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [id]) {
         if (this.hasFields) {
             const command = await ctx.client.application.commands.fetch(id).catch(lodash_1.noop);
-            return structures_1.Return.success(command ? command.description : undefined);
+            return this.success(command ? command.description : undefined);
         }
-        return structures_1.Return.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.description : undefined);
+        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.description : undefined);
     },
 });
 //# sourceMappingURL=applicationCommandDescription.js.map

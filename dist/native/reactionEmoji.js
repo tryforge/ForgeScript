@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The emoji that was used",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.reaction?.emoji.toString());
+        return this.success(ctx.reaction?.emoji.toString());
     },
 });
 //# sourceMappingURL=reactionEmoji.js.map

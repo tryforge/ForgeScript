@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the highest safe integer",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(Number.MAX_SAFE_INTEGER);
+        return this.success(Number.MAX_SAFE_INTEGER);
     },
 });
 //# sourceMappingURL=maxSafeInteger.js.map

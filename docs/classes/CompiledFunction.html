@@ -27,7 +27,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">CompiledFunction</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L47">src/structures/CompiledFunction.ts:47</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L48">src/structures/CompiledFunction.ts:48</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -48,12 +48,14 @@
 <h3 class="tsd-index-heading">Accessors</h3>
 <div class="tsd-index-list"><a href="CompiledFunction.html#display" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>display</span></a>
 <a href="CompiledFunction.html#hasFields" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>has<wbr/>Fields</span></a>
-<a href="CompiledFunction.html#negated" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>negated</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
 <div class="tsd-index-list"><a href="CompiledFunction.html#argTypeRejection" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>arg<wbr/>Type<wbr/>Rejection</span></a>
+<a href="CompiledFunction.html#break" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>break</span></a>
+<a href="CompiledFunction.html#continue" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>continue</span></a>
 <a href="CompiledFunction.html#displayField" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>display<wbr/>Field</span></a>
+<a href="CompiledFunction.html#err" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>err</span></a>
 <a href="CompiledFunction.html#error" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>error</span></a>
 <a href="CompiledFunction.html#execute" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>execute</span></a>
 <a href="CompiledFunction.html#fail" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>fail</span></a>
@@ -88,6 +90,11 @@
 <a href="CompiledFunction.html#resolveUnhandledArg" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>Unhandled<wbr/>Arg</span></a>
 <a href="CompiledFunction.html#resolveUser" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>User</span></a>
 <a href="CompiledFunction.html#resolveWebhook" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>Webhook</span></a>
+<a href="CompiledFunction.html#return" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>return</span></a>
+<a href="CompiledFunction.html#stop" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>stop</span></a>
+<a href="CompiledFunction.html#success" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>success</span></a>
+<a href="CompiledFunction.html#successFormatted" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>success<wbr/>Formatted</span></a>
+<a href="CompiledFunction.html#successJSON" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>successJSON</span></a>
 <a href="CompiledFunction.html#toExecutableCode" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Executable<wbr/>Code</span></a>
 <a href="CompiledFunction.html#toResolveArgString" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Resolve<wbr/>Arg<wbr/>String</span></a>
 </div></section></div></details></section></section>
@@ -112,29 +119,29 @@
 <h5><span class="tsd-kind-parameter">raw</span>: <a href="../interfaces/ICompiledFunction.html" class="tsd-signature-type tsd-kind-interface">ICompiledFunction</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="CompiledFunction.html" class="tsd-signature-type tsd-kind-class">CompiledFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type tsd-kind-type-parameter">Unwrap</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L53">src/structures/CompiledFunction.ts:53</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L54">src/structures/CompiledFunction.ts:54</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="data" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>data</span><a href="#data" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">data</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/IExtendedCompiledFunction.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompiledFunction</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L50">src/structures/CompiledFunction.ts:50</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L51">src/structures/CompiledFunction.ts:51</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="fn" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>fn</span><a href="#fn" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">fn</span><span class="tsd-signature-symbol">:</span> <a href="NativeFunction.html" class="tsd-signature-type tsd-kind-class">NativeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type tsd-kind-type-parameter">Unwrap</span><span class="tsd-signature-symbol">&gt;</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L51">src/structures/CompiledFunction.ts:51</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L52">src/structures/CompiledFunction.ts:52</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="raw" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <code class="tsd-tag ts-flagReadonly">Readonly</code> <span>raw</span><a href="#raw" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">raw</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/ICompiledFunction.html" class="tsd-signature-type tsd-kind-interface">ICompiledFunction</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L53">src/structures/CompiledFunction.ts:53</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L54">src/structures/CompiledFunction.ts:54</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="IdRegex" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <code class="tsd-tag ts-flagReadonly">Readonly</code> <span>Id<wbr/>Regex</span><a href="#IdRegex" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">Id<wbr/>Regex</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">RegExp</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L48">src/structures/CompiledFunction.ts:48</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L49">src/structures/CompiledFunction.ts:49</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Accessors</h2>
 <section class="tsd-panel tsd-member"><a id="display" class="tsd-anchor"></a>
@@ -144,7 +151,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L98">src/structures/CompiledFunction.ts:98</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L95">src/structures/CompiledFunction.ts:95</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="hasFields" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>has<wbr/>Fields</span><a href="#hasFields" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -152,15 +159,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L379">src/structures/CompiledFunction.ts:379</a></li></ul></aside></li></ul></section>
-<section class="tsd-panel tsd-member"><a id="negated" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>negated</span><a href="#negated" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
-<li class="tsd-signature" id="negated.negated-1"><span class="tsd-signature-symbol">get</span> negated<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-<li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L81">src/structures/CompiledFunction.ts:81</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L376">src/structures/CompiledFunction.ts:376</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="argTypeRejection" class="tsd-anchor"></a>
@@ -177,7 +176,23 @@
 <h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">unknown</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Error" class="tsd-signature-type tsd-kind-enum-member">Error</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L229">src/structures/CompiledFunction.ts:229</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L226">src/structures/CompiledFunction.ts:226</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="break" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>break</span><a href="#break" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="break.break-1"><span class="tsd-kind-call-signature">break</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Break" class="tsd-signature-type tsd-kind-enum-member">Break</a><span class="tsd-signature-symbol">&gt;</span><a href="#break.break-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Break" class="tsd-signature-type tsd-kind-enum-member">Break</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L447">src/structures/CompiledFunction.ts:447</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="continue" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>continue</span><a href="#continue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="continue.continue-1"><span class="tsd-kind-call-signature">continue</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Continue" class="tsd-signature-type tsd-kind-enum-member">Continue</a><span class="tsd-signature-symbol">&gt;</span><a href="#continue.continue-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Continue" class="tsd-signature-type tsd-kind-enum-member">Continue</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L451">src/structures/CompiledFunction.ts:451</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="displayField" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>display<wbr/>Field</span><a href="#displayField" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -190,7 +205,20 @@
 <h5><span class="tsd-kind-parameter">i</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L85">src/structures/CompiledFunction.ts:85</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L82">src/structures/CompiledFunction.ts:82</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="err" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>err</span><a href="#err" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="err.err-1"><span class="tsd-kind-call-signature">err</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Error" class="tsd-signature-type tsd-kind-enum-member">Error</a><span class="tsd-signature-symbol">&gt;</span><a href="#err.err-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <a href="ForgeError.html" class="tsd-signature-type tsd-kind-class">ForgeError</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ErrorType.html" class="tsd-signature-type tsd-kind-enum">ErrorType</a><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Error" class="tsd-signature-type tsd-kind-enum-member">Error</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L439">src/structures/CompiledFunction.ts:439</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="error" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>error</span><a href="#error" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -210,7 +238,7 @@
 <h5><code class="tsd-tag ts-flagRest">Rest</code> <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span>: <a href="../types/GetErrorArgs.html" class="tsd-signature-type tsd-kind-type-alias">GetErrorArgs</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="ForgeError.html" class="tsd-signature-type tsd-kind-class">ForgeError</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L383">src/structures/CompiledFunction.ts:383</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L380">src/structures/CompiledFunction.ts:380</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="execute" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>execute</span><a href="#execute" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -223,7 +251,7 @@
 <h5><span class="tsd-kind-parameter">ctx</span>: <a href="Context.html" class="tsd-signature-type tsd-kind-class">Context</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L387">src/structures/CompiledFunction.ts:387</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L384">src/structures/CompiledFunction.ts:384</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="fail" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>fail</span><a href="#fail" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -238,7 +266,7 @@
 <h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">code</span>: <a href="../interfaces/IExtendedCompiledFunctionField.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompiledFunctionField</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L404">src/structures/CompiledFunction.ts:404</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L401">src/structures/CompiledFunction.ts:401</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="getFunction" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get<wbr/>Function</span><a href="#getFunction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -253,7 +281,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <a href="NativeFunction.html" class="tsd-signature-type tsd-kind-class">NativeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IArg.html" class="tsd-signature-type tsd-kind-interface">IArg</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ArgType.html" class="tsd-signature-type tsd-kind-enum">ArgType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="CompiledFunction.html" class="tsd-signature-type tsd-kind-class">CompiledFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IArg.html" class="tsd-signature-type tsd-kind-interface">IArg</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ArgType.html" class="tsd-signature-type tsd-kind-enum">ArgType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L430">src/structures/CompiledFunction.ts:430</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L427">src/structures/CompiledFunction.ts:427</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="getFunctions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get<wbr/>Functions</span><a href="#getFunctions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -268,7 +296,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <a href="NativeFunction.html" class="tsd-signature-type tsd-kind-class">NativeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IArg.html" class="tsd-signature-type tsd-kind-interface">IArg</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ArgType.html" class="tsd-signature-type tsd-kind-enum">ArgType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="CompiledFunction.html" class="tsd-signature-type tsd-kind-class">CompiledFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IArg.html" class="tsd-signature-type tsd-kind-interface">IArg</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ArgType.html" class="tsd-signature-type tsd-kind-enum">ArgType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">, </span><a href="../types/EnumLike.html" class="tsd-signature-type tsd-kind-type-alias">EnumLike</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L434">src/structures/CompiledFunction.ts:434</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L431">src/structures/CompiledFunction.ts:431</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="isValidReturnType" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>is<wbr/>Valid<wbr/>Return<wbr/>Type</span><a href="#isValidReturnType" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -281,7 +309,7 @@
 <h5><span class="tsd-kind-parameter">rt</span>: <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L400">src/structures/CompiledFunction.ts:400</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L397">src/structures/CompiledFunction.ts:397</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveArg" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Arg</span><a href="#resolveArg" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -302,7 +330,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <a href="../types/UnwrapArgs.html" class="tsd-signature-type tsd-kind-type-alias">UnwrapArgs</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L348">src/structures/CompiledFunction.ts:348</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L345">src/structures/CompiledFunction.ts:345</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveArgs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Args</span><a href="#resolveArgs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -319,7 +347,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L116">src/structures/CompiledFunction.ts:116</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L113">src/structures/CompiledFunction.ts:113</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveBigInt" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Big<wbr/>Int</span><a href="#resolveBigInt" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -338,7 +366,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">bigint</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L239">src/structures/CompiledFunction.ts:239</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L236">src/structures/CompiledFunction.ts:236</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveBoolean" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Boolean</span><a href="#resolveBoolean" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -357,7 +385,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L268">src/structures/CompiledFunction.ts:268</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L265">src/structures/CompiledFunction.ts:265</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveChannel" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Channel</span><a href="#resolveChannel" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -376,7 +404,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Channel</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L279">src/structures/CompiledFunction.ts:279</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L276">src/structures/CompiledFunction.ts:276</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveCode" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Code</span><a href="#resolveCode" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -391,7 +419,7 @@
 <h5><span class="tsd-kind-parameter">__namedParameters</span>: <span class="tsd-signature-type ">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IExtendedCompiledFunctionField.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompiledFunctionField</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;value&quot;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L210">src/structures/CompiledFunction.ts:210</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L207">src/structures/CompiledFunction.ts:207</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveColor" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Color</span><a href="#resolveColor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -410,7 +438,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L243">src/structures/CompiledFunction.ts:243</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L240">src/structures/CompiledFunction.ts:240</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveCondition" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Condition</span><a href="#resolveCondition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -425,7 +453,7 @@
 <h5><span class="tsd-kind-parameter">field</span>: <a href="../interfaces/IExtendedCompiledFunctionConditionField.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompiledFunctionConditionField</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L196">src/structures/CompiledFunction.ts:196</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L193">src/structures/CompiledFunction.ts:193</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveDate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Date</span><a href="#resolveDate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -444,7 +472,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Date</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L344">src/structures/CompiledFunction.ts:344</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L341">src/structures/CompiledFunction.ts:341</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveEnum" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Enum</span><a href="#resolveEnum" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -463,7 +491,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L264">src/structures/CompiledFunction.ts:264</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L261">src/structures/CompiledFunction.ts:261</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveForumTag" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Forum<wbr/>Tag</span><a href="#resolveForumTag" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -482,7 +510,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">GuildForumTag</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L306">src/structures/CompiledFunction.ts:306</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L303">src/structures/CompiledFunction.ts:303</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveGuild" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Guild</span><a href="#resolveGuild" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -501,7 +529,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Guild</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L283">src/structures/CompiledFunction.ts:283</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L280">src/structures/CompiledFunction.ts:280</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveGuildEmoji" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Guild<wbr/>Emoji</span><a href="#resolveGuildEmoji" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -520,7 +548,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">GuildEmoji</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L300">src/structures/CompiledFunction.ts:300</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L297">src/structures/CompiledFunction.ts:297</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveGuildSticker" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Guild<wbr/>Sticker</span><a href="#resolveGuildSticker" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -539,7 +567,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Sticker</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L310">src/structures/CompiledFunction.ts:310</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L307">src/structures/CompiledFunction.ts:307</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveInvite" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Invite</span><a href="#resolveInvite" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -558,7 +586,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Invite</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L330">src/structures/CompiledFunction.ts:330</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L327">src/structures/CompiledFunction.ts:327</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveJson" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Json</span><a href="#resolveJson" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -577,7 +605,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L287">src/structures/CompiledFunction.ts:287</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L284">src/structures/CompiledFunction.ts:284</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveMember" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Member</span><a href="#resolveMember" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -596,7 +624,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">GuildMember</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L315">src/structures/CompiledFunction.ts:315</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L312">src/structures/CompiledFunction.ts:312</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveMessage" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Message</span><a href="#resolveMessage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -615,7 +643,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Message</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L272">src/structures/CompiledFunction.ts:272</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L269">src/structures/CompiledFunction.ts:269</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveMultipleArgs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Multiple<wbr/>Args</span><a href="#resolveMultipleArgs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -635,7 +663,7 @@
 <h5><code class="tsd-tag ts-flagRest">Rest</code> <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">indexes</span>: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">...</span><span class="tsd-signature-type tsd-kind-type-parameter">X</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/IMultipleArgResolve.html" class="tsd-signature-type tsd-kind-interface">IMultipleArgResolve</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type tsd-kind-type-parameter">X</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L131">src/structures/CompiledFunction.ts:131</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L128">src/structures/CompiledFunction.ts:128</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveNumber" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Number</span><a href="#resolveNumber" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -654,7 +682,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L233">src/structures/CompiledFunction.ts:233</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L230">src/structures/CompiledFunction.ts:230</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolvePermission" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Permission</span><a href="#resolvePermission" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -673,7 +701,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L247">src/structures/CompiledFunction.ts:247</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L244">src/structures/CompiledFunction.ts:244</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveReaction" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Reaction</span><a href="#resolveReaction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -692,7 +720,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">MessageReaction</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L320">src/structures/CompiledFunction.ts:320</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L317">src/structures/CompiledFunction.ts:317</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveRole" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Role</span><a href="#resolveRole" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -711,7 +739,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Role</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L340">src/structures/CompiledFunction.ts:340</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L337">src/structures/CompiledFunction.ts:337</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>String</span><a href="#resolveString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -730,7 +758,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L252">src/structures/CompiledFunction.ts:252</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L249">src/structures/CompiledFunction.ts:249</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveTime" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Time</span><a href="#resolveTime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -749,7 +777,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L256">src/structures/CompiledFunction.ts:256</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L253">src/structures/CompiledFunction.ts:253</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveUnhandledArg" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Unhandled<wbr/>Arg</span><a href="#resolveUnhandledArg" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -770,7 +798,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html" class="tsd-signature-type tsd-kind-enum">ReturnType</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L160">src/structures/CompiledFunction.ts:160</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L157">src/structures/CompiledFunction.ts:157</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveUser" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>User</span><a href="#resolveUser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -789,7 +817,7 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">User</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L295">src/structures/CompiledFunction.ts:295</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L292">src/structures/CompiledFunction.ts:292</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="resolveWebhook" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>resolve<wbr/>Webhook</span><a href="#resolveWebhook" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -808,7 +836,67 @@
 <h5><span class="tsd-kind-parameter">ref</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type ">Webhook</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L335">src/structures/CompiledFunction.ts:335</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L332">src/structures/CompiledFunction.ts:332</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="return" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>return</span><a href="#return" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="return.return-1"><span class="tsd-kind-call-signature">return</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Return" class="tsd-signature-type tsd-kind-enum-member">Return</a><span class="tsd-signature-symbol">&gt;</span><a href="#return.return-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Return" class="tsd-signature-type tsd-kind-enum-member">Return</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L435">src/structures/CompiledFunction.ts:435</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="stop" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>stop</span><a href="#stop" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="stop.stop-1"><span class="tsd-kind-call-signature">stop</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Stop" class="tsd-signature-type tsd-kind-enum-member">Stop</a><span class="tsd-signature-symbol">&gt;</span><a href="#stop.stop-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Stop" class="tsd-signature-type tsd-kind-enum-member">Stop</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L443">src/structures/CompiledFunction.ts:443</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="success" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>success</span><a href="#success" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="success.success-1"><span class="tsd-kind-call-signature">success</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span><a href="#success.success-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol"> = null</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L463">src/structures/CompiledFunction.ts:463</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="successFormatted" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>success<wbr/>Formatted</span><a href="#successFormatted" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="successFormatted.successFormatted-1"><span class="tsd-kind-call-signature">success<wbr/>Formatted</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span><a href="#successFormatted.successFormatted-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">unknown</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L459">src/structures/CompiledFunction.ts:459</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="successJSON" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>successJSON</span><a href="#successJSON" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="successJSON.successJSON-1"><span class="tsd-kind-call-signature">successJSON</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span><a href="#successJSON.successJSON-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">unknown</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Return.html" class="tsd-signature-type tsd-kind-class">Return</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/ReturnType.html#Success" class="tsd-signature-type tsd-kind-enum-member">Success</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L455">src/structures/CompiledFunction.ts:455</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="toExecutableCode" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>to<wbr/>Executable<wbr/>Code</span><a href="#toExecutableCode" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -821,7 +909,7 @@
 <h5><span class="tsd-kind-parameter">index</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L419">src/structures/CompiledFunction.ts:419</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L416">src/structures/CompiledFunction.ts:416</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="toResolveArgString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>to<wbr/>Resolve<wbr/>Arg<wbr/>String</span><a href="#toResolveArgString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -834,7 +922,7 @@
 <h5><span class="tsd-kind-parameter">type</span>: <a href="../enums/ArgType.html" class="tsd-signature-type tsd-kind-enum">ArgType</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">&quot;resolveGuild&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveChannel&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveUser&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveRole&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveInvite&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveWebhook&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveMessage&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveString&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveBigInt&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveNumber&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveDate&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolvePermission&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveJson&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveColor&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveEnum&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveForumTag&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveGuildEmoji&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveBoolean&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveReaction&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveGuildSticker&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveTime&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;resolveMember&quot;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/c1bb5a33/src/structures/CompiledFunction.ts#L415">src/structures/CompiledFunction.ts:415</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript-V2/blob/71a59dc9/src/structures/CompiledFunction.ts#L412">src/structures/CompiledFunction.ts:412</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -861,9 +949,11 @@
 <li><a href="#IdRegex" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>Id<wbr/>Regex</span></a></li>
 <li><a href="#display" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>display</span></a></li>
 <li><a href="#hasFields" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>has<wbr/>Fields</span></a></li>
-<li><a href="#negated" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-262144"></use></svg><span>negated</span></a></li>
 <li><a href="#argTypeRejection" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>arg<wbr/>Type<wbr/>Rejection</span></a></li>
+<li><a href="#break" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>break</span></a></li>
+<li><a href="#continue" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>continue</span></a></li>
 <li><a href="#displayField" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>display<wbr/>Field</span></a></li>
+<li><a href="#err" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>err</span></a></li>
 <li><a href="#error" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>error</span></a></li>
 <li><a href="#execute" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>execute</span></a></li>
 <li><a href="#fail" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>fail</span></a></li>
@@ -898,6 +988,11 @@
 <li><a href="#resolveUnhandledArg" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>Unhandled<wbr/>Arg</span></a></li>
 <li><a href="#resolveUser" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>User</span></a></li>
 <li><a href="#resolveWebhook" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>resolve<wbr/>Webhook</span></a></li>
+<li><a href="#return" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>return</span></a></li>
+<li><a href="#stop" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>stop</span></a></li>
+<li><a href="#success" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>success</span></a></li>
+<li><a href="#successFormatted" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>success<wbr/>Formatted</span></a></li>
+<li><a href="#successJSON" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>successJSON</span></a></li>
 <li><a href="#toExecutableCode" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Executable<wbr/>Code</span></a></li>
 <li><a href="#toResolveArgString" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Resolve<wbr/>Arg<wbr/>String</span></a></li></ul></div></details></div>
 <div class="site-menu">

@@ -38,7 +38,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ sep ]) {
-        return Return.success(Object.values(networkInterfaces()).map(x => x?.map(x => x.address).filter(Boolean).join(sep ?? ", ")).join(sep ?? ", "))
+        return this.success(Object.values(networkInterfaces()).map(x => x?.map(x => x.address).filter(Boolean).join(sep ?? ", ")).join(sep ?? ", "))
     }
 })
 ```

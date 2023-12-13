@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(MemberProperties[prop](ctx.states?.member?.old, sep))
+        return this.success(MemberProperties[prop](ctx.states?.member?.old, sep))
     },
 })

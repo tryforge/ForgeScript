@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the current ram usage in MB",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(process.memoryUsage().heapUsed / 1024 ** 2);
+        return this.success(process.memoryUsage().heapUsed / 1024 ** 2);
     },
 });
 //# sourceMappingURL=ram.js.map

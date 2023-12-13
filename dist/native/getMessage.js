@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [, m, prop, sep]) {
-        return structures_1.Return.success(message_1.MessageProperties[prop](m, sep || ", "));
+        return this.success(message_1.MessageProperties[prop](m, sep || ", "));
     },
 });
 //# sourceMappingURL=getMessage.js.map

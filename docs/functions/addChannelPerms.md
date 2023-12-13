@@ -58,7 +58,7 @@ export default new NativeFunction({
 
         perms.forEach((x) => (obj[x as PermissionsString] = true))
 
-        return Return.success(!!(await channel.permissionOverwrites.create(id, obj)))
+        return this.success(!!(await channel.permissionOverwrites.create(id, obj)))
     },
 })
 

@@ -54,10 +54,10 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [oldId, id, label, style, emoji, disabled]) {
         const rowIndex = ctx.container.components.findIndex((x) => x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId));
         if (rowIndex === -1)
-            return structures_1.Return.success();
+            return this.success();
         const btn = ctx.container.components[rowIndex].components.find((x) => "custom_id" in x.data && x.data.custom_id === oldId);
         if (!btn)
-            return structures_1.Return.success();
+            return this.success();
         btn.setCustomId(id)
             .setDisabled(disabled || false)
             .setStyle(style)
@@ -68,7 +68,7 @@ exports.default = new structures_1.NativeFunction({
             btn.setCustomId(id);
         if (emoji)
             btn.setEmoji(emoji);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=editButton.js.map

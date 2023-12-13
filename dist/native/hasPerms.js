@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [, member, perms]) {
-        return structures_1.Return.success(member.permissions.has(perms));
+        return this.success(member.permissions.has(perms));
     },
 });
 //# sourceMappingURL=hasPerms.js.map

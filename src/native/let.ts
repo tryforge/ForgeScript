@@ -25,6 +25,6 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, args]) {
         ctx.setKeyword(name, args.join(";"))
-        return Return.success()
+        return this.success()
     },
 })

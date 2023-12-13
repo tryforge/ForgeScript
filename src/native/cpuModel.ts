@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns the cpu model",
     unwrap: false,
     execute() {
-        return Return.success(os.cpus()[0]?.model)
+        return this.success(os.cpus()[0]?.model)
     },
 })

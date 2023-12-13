@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = ctx.getEnvironmentInstance(Array, variable);
         if (arr !== null)
             ctx.setEnvironmentKey(variable, arr.sort());
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arraySort.js.map

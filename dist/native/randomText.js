@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [texts]) {
         const rnd = texts[Math.floor(Math.random() * texts.length)];
-        return structures_1.Return.success(rnd);
+        return this.success(rnd);
     },
 });
 //# sourceMappingURL=randomText.js.map

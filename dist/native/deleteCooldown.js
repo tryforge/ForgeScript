@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [id]) {
         ctx.client.cooldowns.delete(id);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=deleteCooldown.js.map

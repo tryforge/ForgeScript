@@ -24,7 +24,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [channel, sep]) {
-        return Return.success(
+        return this.success(
             ((channel ?? ctx.channel) as CategoryChannel)?.children?.cache.map((x) => x.id).join(sep || ", ")
         )
     },

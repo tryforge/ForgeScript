@@ -26,6 +26,6 @@ export default new NativeFunction({
     ],
     async execute(_, [ch, id]) {
         const channel = ch as TextChannel
-        return Return.success(!!(await channel.permissionOverwrites.delete(id)))
+        return this.success(!!(await channel.permissionOverwrites.delete(id)))
     },
 })

@@ -45,14 +45,14 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(id)) {
             const ch = ctx.client.channels.cache.get(id)
-            if (ch) return Return.success(ch.id)
+            if (ch) return this.success(ch.id)
         }
 
         const rtId = rt ? ctx.channel?.id || undefined : undefined
 
         q = q.toLowerCase()
 
-        return Return.success(
+        return this.success(
             ctx.client.channels.cache.find(
                 (x) => x.id === id || ("name" in x && (x.name as string).toLowerCase() === q)
             )?.id ?? rtId

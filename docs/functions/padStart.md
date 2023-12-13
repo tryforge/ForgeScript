@@ -48,7 +48,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [str, max, filler]) {
-        return Return.success(str.padStart(max, filler || undefined))
+        return this.success(str.padStart(max, filler || undefined))
     },
 })
 

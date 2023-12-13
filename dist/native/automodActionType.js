@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         const type = ctx.automod?.action.type;
-        return structures_1.Return.success(type ? discord_js_1.AutoModerationActionType[type] : null);
+        return this.success(type ? discord_js_1.AutoModerationActionType[type] : null);
     },
 });
 //# sourceMappingURL=automodActionType.js.map

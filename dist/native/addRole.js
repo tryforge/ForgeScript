@@ -78,7 +78,7 @@ exports.default = new structures_1.NativeFunction({
             position: pos || undefined,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(created ? created.id : undefined);
+        return this.success(created ? created.id : undefined);
     },
 });
 //# sourceMappingURL=addRole.js.map

@@ -1,7 +1,7 @@
 import { Compiler, IExtendedCompilationResult } from "../core/Compiler"
 import { Context } from "./Context"
 import { ErrorType, ForgeError } from "./ForgeError"
-import { Return } from "./Return"
+import { Return, ReturnType } from "./Return"
 
 export interface IForgeFunction {
     name: string
@@ -19,7 +19,8 @@ export class ForgeFunction {
 
     async call(ctx: Context, args: string[]) {
         if (this.data.params!.length !== args.length)
-            return Return.error(
+            return new Return(
+                ReturnType.Error,
                 new ForgeError(
                     null,
                     ErrorType.Custom,
@@ -37,10 +38,10 @@ export class ForgeFunction {
             const fn = this.compiled.functions[i]
             const res = await fn.execute(ctx)
 
-            if (res.return) return Return.success(res.value)
+            if (res.return) return fn.success(res.value)
             else if (!fn["isValidReturnType"](res)) return res
         }
 
-        return Return.success()
+        return new Return(ReturnType.Success, null)
     }
 }

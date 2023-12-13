@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the client's id",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.user.id);
+        return this.success(ctx.client.user.id);
     },
 });
 //# sourceMappingURL=botID.js.map

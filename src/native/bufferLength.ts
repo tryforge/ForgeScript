@@ -16,6 +16,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ name ]) {
-        return Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.length)
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.length)
     },
 })

@@ -41,7 +41,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [guild, id]) {
-        return Return.success(CompiledFunction.IdRegex.test(id) && guild.roles.cache.has(id))
+        return this.success(CompiledFunction.IdRegex.test(id) && guild.roles.cache.has(id))
     },
 })
 

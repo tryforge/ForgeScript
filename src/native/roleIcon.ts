@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [, role, size, ext]) {
-        return Return.success(
+        return this.success(
             (role ?? ctx.role)?.iconURL({
                 extension: (ext as ImageExtension) || undefined,
                 size: (size as ImageSize) || 2048,

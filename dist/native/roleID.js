@@ -27,9 +27,9 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [guild, args]) {
         if (this.hasFields) {
             const name = args.join(";");
-            return structures_1.Return.success(guild.roles.cache.find((x) => x.name === name)?.id);
+            return this.success(guild.roles.cache.find((x) => x.name === name)?.id);
         }
-        return structures_1.Return.success(ctx.role?.id);
+        return this.success(ctx.role?.id);
     },
 });
 //# sourceMappingURL=roleID.js.map

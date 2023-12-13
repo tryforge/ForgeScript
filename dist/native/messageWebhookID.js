@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the message's webhook id",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.message?.webhookId);
+        return this.success(ctx.message?.webhookId);
     },
 });
 //# sourceMappingURL=messageWebhookID.js.map

@@ -44,7 +44,7 @@ export default new NativeFunction({
         const fieldToRun = (condition.value ? this.data.fields![1] : this.data.fields![2]) as
             | IExtendedCompiledFunctionField
             | undefined
-        if (!fieldToRun) return Return.success()
+        if (!fieldToRun) return this.success()
 
         return this["resolveCode"](ctx, fieldToRun)
     },

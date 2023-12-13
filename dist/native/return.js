@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$return",
     version: "1.0.0",
@@ -18,7 +17,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     ],
     brackets: false,
     execute(_, [val]) {
-        return Return_1.Return.return(val ?? "");
+        return this.return(val ?? "");
     },
 });
 //# sourceMappingURL=return.js.map

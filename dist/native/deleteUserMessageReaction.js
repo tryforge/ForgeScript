@@ -45,7 +45,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [, , emoji, user]) {
-        return structures_1.Return.success(!!(await emoji.users.remove(user).catch(noop_1.default)));
+        return this.success(!!(await emoji.users.remove(user).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=deleteUserMessageReaction.js.map

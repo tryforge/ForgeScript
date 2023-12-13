@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
         setInterval(async () => {
             await this["resolveCode"](ctx, code);
         }, time.value);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=setInterval.js.map

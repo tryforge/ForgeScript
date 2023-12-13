@@ -49,7 +49,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ name, index, n ]) {
-        return Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.writeInt32LE(n, index))
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.writeInt32LE(n, index))
     },
 })
 ```

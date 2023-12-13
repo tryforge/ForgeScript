@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, message, index]) {
         index ??= 1;
-        return structures_1.Return.success((message ?? ctx.message)?.stickers.at(index)?.url);
+        return this.success((message ?? ctx.message)?.stickers.at(index)?.url);
     },
 });
 //# sourceMappingURL=stickers.js.map

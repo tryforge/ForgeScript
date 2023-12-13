@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji
-        return Return.success(emoji?.name)
+        return this.success(emoji?.name)
     },
 })

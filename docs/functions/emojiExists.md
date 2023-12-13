@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return Return.success(CompiledFunction.IdRegex.test(id) && ctx.client.emojis.cache.has(id))
+        return this.success(CompiledFunction.IdRegex.test(id) && ctx.client.emojis.cache.has(id))
     },
 })
 

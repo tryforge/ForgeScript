@@ -34,7 +34,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [index]) {
         ctx.container.components.splice(index, 1)
-        return Return.success()
+        return this.success()
     },
 })
 

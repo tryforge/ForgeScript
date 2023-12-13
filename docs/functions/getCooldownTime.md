@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [id]) {
-        return Return.success(ctx.client.cooldowns.getTimeLeft(id))
+        return this.success(ctx.client.cooldowns.getTimeLeft(id))
     },
 })
 

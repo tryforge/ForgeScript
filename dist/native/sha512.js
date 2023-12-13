@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [input, enc]) {
         const sha512 = (0, crypto_1.createHash)("sha512").update(input).digest().toString((enc || "hex"));
-        return structures_1.Return.success(sha512);
+        return this.success(sha512);
     }
 });
 //# sourceMappingURL=sha512.js.map

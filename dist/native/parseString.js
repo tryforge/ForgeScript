@@ -19,10 +19,10 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(_, [str]) {
         try {
-            return structures_1.Return.success(constants_1.TimeParser.parseToMS(str));
+            return this.success(constants_1.TimeParser.parseToMS(str));
         }
         catch (error) {
-            return structures_1.Return.success(0);
+            return this.success(0);
         }
     },
 });

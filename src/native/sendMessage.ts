@@ -32,6 +32,6 @@ export default new NativeFunction({
     async execute(ctx, [channel, content, returnMessageID]) {
         ctx.container.content = content || undefined
         const msg = await ctx.container.send<Message<true>>(channel)
-        return Return.success(returnMessageID ? msg?.id : undefined)
+        return this.success(returnMessageID ? msg?.id : undefined)
     },
 })

@@ -39,7 +39,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success(ChannelType[chan?.type])
+        return this.success(ChannelType[chan?.type])
     },
 })
 

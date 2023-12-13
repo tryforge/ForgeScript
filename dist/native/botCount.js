@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the bot count of the bot",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.users.cache.filter((x) => x.bot).size);
+        return this.success(ctx.client.users.cache.filter((x) => x.bot).size);
     },
 });
 //# sourceMappingURL=botCount.js.map

@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        return Return.success(ctx.deleteKeyword(name))
+        return this.success(ctx.deleteKeyword(name))
     },
 })

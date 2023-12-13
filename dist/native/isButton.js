@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether the interaction is a button",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.interaction?.isButton()));
+        return this.success(Boolean(ctx.interaction?.isButton()));
     },
 });
 //# sourceMappingURL=isButton.js.map

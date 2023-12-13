@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
-const Return_1 = require("../structures/Return");
 const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g;
 exports.default = new structures_1.NativeFunction({
     name: "$noMentionMessage",
@@ -27,9 +26,9 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [index, end]) {
         const msg = ctx.args.join(" ").replace(NoMentionRegex, "").trim().split(/ +/);
         if (this.hasFields) {
-            return Return_1.Return.success(end ? msg.slice(index, end) : msg[index]);
+            return this.success(end ? msg.slice(index, end) : msg[index]);
         }
-        return Return_1.Return.success(msg.join(" "));
+        return this.success(msg.join(" "));
     },
 });
 //# sourceMappingURL=noMentionMessage.js.map

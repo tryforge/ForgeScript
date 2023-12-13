@@ -41,7 +41,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m, index]) {
-        return Return.success(m.charCodeAt(index))
+        return this.success(m.charCodeAt(index))
     },
 })
 

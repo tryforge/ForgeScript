@@ -16,6 +16,6 @@ export default new NativeFunction({
     ],
     brackets: false,
     async execute(ctx, [user]) {
-        return Return.success((user ?? ctx.user)?.displayName)
+        return this.success((user ?? ctx.user)?.displayName)
     },
 })

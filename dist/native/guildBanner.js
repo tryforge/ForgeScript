@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [g, size, ext]) {
-        return structures_1.Return.success((g ?? ctx.guild)?.bannerURL({
+        return this.success((g ?? ctx.guild)?.bannerURL({
             extension: ext || undefined,
             size: size || 2048,
         }));

@@ -22,11 +22,11 @@ export default new NativeFunction({
 
         if (!this.hasFields) {
             await ctx.container.send(ctx.obj)
-            return Return.success()
+            return this.success()
         }
 
         await ctx.container.send<Message<true>>(ctx.obj)
 
-        return Return.success()
+        return this.success()
     },
 })

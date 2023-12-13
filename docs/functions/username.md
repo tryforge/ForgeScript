@@ -38,7 +38,7 @@ export default new NativeFunction({
     unwrap: true,
     execute: async function (ctx, [user]) {
         user ??= ctx.user // < No bracket support
-        return Return.success(user?.username)
+        return this.success(user?.username)
     },
 })
 

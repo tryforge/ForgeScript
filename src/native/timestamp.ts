@@ -23,10 +23,10 @@ export default new NativeFunction({
     execute(ctx, [timestamp, index]) {
         if (!this.hasFields) {
             ctx.container.embed(0).setTimestamp()
-            return Return.success()
+            return this.success()
         }
 
         ctx.container.embed(index ?? 0).setTimestamp(timestamp ?? Date.now())
-        return Return.success()
+        return this.success()
     },
 })

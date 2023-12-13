@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the bots uptime",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.client.uptime)
+        return this.success(ctx.client.uptime)
     },
 })
 

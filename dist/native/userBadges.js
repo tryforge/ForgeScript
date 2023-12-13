@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     async execute(ctx, [user, sep]) {
         const flags = await (user ?? ctx.user).fetchFlags().catch(noop_1.default);
-        return structures_1.Return.success(flags ? flags.toArray().join(sep || ", ") : undefined);
+        return this.success(flags ? flags.toArray().join(sep || ", ") : undefined);
     },
 });
 //# sourceMappingURL=userBadges.js.map

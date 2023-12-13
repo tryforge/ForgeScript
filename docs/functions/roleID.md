@@ -48,9 +48,9 @@ export default new NativeFunction({
     execute(ctx, [guild, args]) {
         if (this.hasFields) {
             const name = args.join(";")
-            return Return.success(guild.roles.cache.find((x) => x.name === name)?.id)
+            return this.success(guild.roles.cache.find((x) => x.name === name)?.id)
         }
-        return Return.success(ctx.role?.id)
+        return this.success(ctx.role?.id)
     },
 })
 

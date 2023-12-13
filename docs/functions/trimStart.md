@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return Return.success(m.trimStart())
+        return this.success(m.trimStart())
     },
 })
 

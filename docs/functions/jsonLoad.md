@@ -42,7 +42,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [name, json]) {
         ctx.setEnvironmentKey(name, json)
-        return Return.success()
+        return this.success()
     },
 })
 

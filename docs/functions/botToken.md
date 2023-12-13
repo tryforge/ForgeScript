@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the client token",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.client.token)
+        return this.success(ctx.client.token)
     },
 })
 

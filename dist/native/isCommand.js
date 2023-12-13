@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether the interaction is a command",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.isCommand()));
+        return this.success(Boolean(ctx.isCommand()));
     },
 });
 //# sourceMappingURL=isCommand.js.map

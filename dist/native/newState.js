@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(voiceState_1.VoiceStateProperties[prop](ctx.states?.voiceState?.new, sep));
+        return this.success(voiceState_1.VoiceStateProperties[prop](ctx.states?.voiceState?.new, sep));
     },
 });
 //# sourceMappingURL=newState.js.map

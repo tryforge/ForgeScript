@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [values]) {
-        return structures_1.Return.success(values.join(";").toUpperCase());
+        return this.success(values.join(";").toUpperCase());
     },
 });
 //# sourceMappingURL=toUpperCase.js.map

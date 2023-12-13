@@ -41,7 +41,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ name, bytes ]) {
-        return Return.success(void ctx.setEnvironmentKey(name, Buffer.alloc(bytes)))
+        return this.success(void ctx.setEnvironmentKey(name, Buffer.alloc(bytes)))
     },
 })
 ```

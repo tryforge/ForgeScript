@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     experimental: true,
     execute(ctx) {
         void this["resolveArgs"](ctx);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=async.js.map

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether the interaction is autocomplete",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.interaction?.isAutocomplete()));
+        return this.success(Boolean(ctx.interaction?.isAutocomplete()));
     },
 });
 //# sourceMappingURL=isAutocomplete.js.map

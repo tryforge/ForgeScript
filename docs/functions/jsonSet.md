@@ -42,7 +42,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ key, value ]) {
         ctx.setEnvironmentKey(key, value)
-        return Return.success()
+        return this.success()
     },
 })
 ```

@@ -34,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [len, chars]) {
         const arr = chars ? [...chars] : exports.CharArray;
-        return structures_1.Return.success(Array.from({ length: len }, () => arr[Math.floor(Math.random() * arr.length)]).join(""));
+        return this.success(Array.from({ length: len }, () => arr[Math.floor(Math.random() * arr.length)]).join(""));
     }
 });
 //# sourceMappingURL=randomString.js.map

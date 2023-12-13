@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
         const web = new discord_js_1.WebhookClient({ url });
         ctx.container.content = content || undefined;
         const m = await ctx.container.send(web);
-        return structures_1.Return.success(returnMessageID && m ? m.id : undefined);
+        return this.success(returnMessageID && m ? m.id : undefined);
     },
 });
 //# sourceMappingURL=webhookSend.js.map

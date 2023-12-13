@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success("nsfw" in chan ? chan.nsfw : false)
+        return this.success("nsfw" in chan ? chan.nsfw : false)
     },
 })

@@ -48,7 +48,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n, to, from]) {
-        return Return.success(parseInt(n, from ?? 10).toString(to))
+        return this.success(parseInt(n, from ?? 10).toString(to))
     },
 })
 

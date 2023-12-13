@@ -24,10 +24,10 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [timestamp, index]) {
         if (!this.hasFields) {
             ctx.container.embed(0).setTimestamp();
-            return structures_1.Return.success();
+            return this.success();
         }
         ctx.container.embed(index ?? 0).setTimestamp(timestamp ?? Date.now());
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=timestamp.js.map

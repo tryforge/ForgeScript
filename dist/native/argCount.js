@@ -18,8 +18,8 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [text]) {
         if (this.hasFields)
-            return structures_1.Return.success(text.trim().split(/ +/).length);
-        return structures_1.Return.success(ctx.args.length);
+            return this.success(text.trim().split(/ +/).length);
+        return this.success(ctx.args.length);
     },
 });
 //# sourceMappingURL=argCount.js.map

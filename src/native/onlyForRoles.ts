@@ -1,4 +1,4 @@
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures";
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$onlyForRoles",
@@ -36,6 +36,6 @@ export default new NativeFunction({
         if (!ok)
             return this["fail"](ctx, code)
 
-        return Return.success()
+        return this.success()
     },
 })

@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
         if (!ctx.client.application.owner)
             await ctx.client.application.fetch().catch(noop_1.default);
         const owner = ctx.client.application.owner;
-        return structures_1.Return.success(owner ? owner instanceof discord_js_1.User ? owner.id : returnAll ? owner.members.map(x => x.id).join(sep ?? ", ") : owner.ownerId : null);
+        return this.success(owner ? owner instanceof discord_js_1.User ? owner.id : returnAll ? owner.members.map(x => x.id).join(sep ?? ", ") : owner.ownerId : null);
     },
 });
 //# sourceMappingURL=botOwnerID.js.map

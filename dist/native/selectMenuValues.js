@@ -18,12 +18,12 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [index]) {
         if (!ctx.isSelectMenu())
-            return structures_1.Return.success();
+            return this.success();
         if (this.hasFields) {
-            return structures_1.Return.success(ctx.interaction.values[index]);
+            return this.success(ctx.interaction.values[index]);
         }
         else {
-            return structures_1.Return.success(ctx.interaction.values.join(", "));
+            return this.success(ctx.interaction.values.join(", "));
         }
     },
 });

@@ -24,6 +24,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [variable, index]) {
         const arr = ctx.getEnvironmentKey(variable)
-        return Return.successJSON(Array.isArray(arr) ? arr.at(index) : undefined)
+        return this.successJSON(Array.isArray(arr) ? arr.at(index) : undefined)
     },
 })

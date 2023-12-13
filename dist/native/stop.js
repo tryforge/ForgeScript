@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Stops code execution",
     unwrap: false,
     execute() {
-        return structures_1.Return.stop();
+        return this.stop();
     },
 });
 //# sourceMappingURL=stop.js.map

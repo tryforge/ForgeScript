@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        return Return.success(guild.emojis.cache.size)
+        return this.success(guild.emojis.cache.size)
     },
 })

@@ -16,6 +16,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return Return.success((guild ?? ctx.guild)?.createdTimestamp)
+        return this.success((guild ?? ctx.guild)?.createdTimestamp)
     },
 })

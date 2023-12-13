@@ -55,10 +55,10 @@ Hello!
                 return content;
             ctx.container.content = content.value;
             await ctx.container.send(ctx.obj);
-            return structures_1.Return.stop();
+            return this.stop();
         }
         ctx.client.cooldowns.add(idV.value, dur.value);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=cooldown.js.map

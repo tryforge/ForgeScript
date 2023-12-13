@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [channel, seconds]) {
-        return structures_1.Return.success(!!(await channel.setRateLimitPerUser(seconds || 0).catch(noop_1.default)));
+        return this.success(!!(await channel.setRateLimitPerUser(seconds || 0).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=setChannelSlowmode.js.map

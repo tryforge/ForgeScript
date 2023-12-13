@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success("topic" in chan ? chan.topic : undefined)
+        return this.success("topic" in chan ? chan.topic : undefined)
     },
 })

@@ -38,7 +38,7 @@ export default new NativeFunction({
     experimental: true,
     execute(ctx) {
         void this["resolveArgs"](ctx)
-        return Return.success()
+        return this.success()
     },
 })
 

@@ -48,7 +48,7 @@ export default new NativeFunction({
             ? ctx.message?.mentions.channels.at(i)?.id
             : ctx.message?.mentions.channels.map((x) => x.id).join(", ")
 
-        return Return.success(id ?? (rt ? ctx.channel?.id : undefined))
+        return this.success(id ?? (rt ? ctx.channel?.id : undefined))
     },
 })
 

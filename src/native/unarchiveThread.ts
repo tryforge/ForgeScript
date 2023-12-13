@@ -29,6 +29,6 @@ export default new NativeFunction({
 
         const success = await thread.setArchived(false, reason || undefined).catch(noop)
 
-        return Return.success(!!success)
+        return this.success(!!success)
     },
 })

@@ -54,7 +54,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [, member, sep]) {
         member ??= ctx.member!
-        return Return.success(
+        return this.success(
             member?.roles.cache
                 .filter((x) => x.id !== x.guild.id)
                 .map((x) => x.id)

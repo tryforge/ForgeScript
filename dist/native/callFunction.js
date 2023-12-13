@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ForgeError_1 = require("../structures/ForgeError");
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$callFunction",
     version: "1.0.0",
@@ -28,7 +27,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     execute(ctx, [name, args]) {
         const fn = ctx.client.functions.get(name);
         if (!fn)
-            return Return_1.Return.error(this.error(ForgeError_1.ErrorType.UnknownXName, "function", name));
+            return this.err(this.error(ForgeError_1.ErrorType.UnknownXName, "function", name));
         return fn.call(ctx, args);
     },
 });

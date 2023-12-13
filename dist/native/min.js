@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [numbers]) {
-        return structures_1.Return.success(Math.min(...numbers));
+        return this.success(Math.min(...numbers));
     },
 });
 //# sourceMappingURL=min.js.map

@@ -25,10 +25,10 @@ export default new NativeFunction({
     execute(_, [guild, q]) {
         if (CompiledFunction.IdRegex.test(q)) {
             const e = guild.emojis.cache.get(q)
-            if (e) return Return.success(e.id)
+            if (e) return this.success(e.id)
         }
 
-        return Return.success(
+        return this.success(
             guild.channels.cache.find(
                 (x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q
             )?.id

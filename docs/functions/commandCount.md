@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [categories]) {
-        return Return.success(
+        return this.success(
             this.hasFields
                 ? ctx.client.commands["commands"]
                     .filter((_, key) => categories.includes(key))

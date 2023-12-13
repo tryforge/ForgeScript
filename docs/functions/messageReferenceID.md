@@ -49,7 +49,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [, message]) {
         const msg = message ?? ctx.message
-        return Return.success(msg?.reference?.messageId)
+        return this.success(msg?.reference?.messageId)
     },
 })
 

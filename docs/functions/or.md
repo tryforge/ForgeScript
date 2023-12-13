@@ -38,10 +38,10 @@ export default new NativeFunction({
             const field = this.data.fields![i] as IExtendedCompiledFunctionConditionField
             const resolved = await this["resolveCondition"](ctx, field)
             if (!this["isValidReturnType"](resolved)) return resolved
-            else if (resolved.value) return Return.success(true)
+            else if (resolved.value) return this.success(true)
         }
 
-        return Return.success(false)
+        return this.success(false)
     },
 })
 

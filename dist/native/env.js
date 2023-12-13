@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$env",
     version: "1.0.0",
@@ -19,7 +18,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     unwrap: true,
     execute(ctx, [args]) {
         const env = ctx.getEnvironmentKey(...args);
-        return Return_1.Return.successJSON(env);
+        return this.successJSON(env);
     },
 });
 //# sourceMappingURL=env.js.map

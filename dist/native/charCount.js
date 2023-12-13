@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [str]) {
-        return structures_1.Return.success(str.length);
+        return this.success(str.length);
     },
 });
 //# sourceMappingURL=charCount.js.map

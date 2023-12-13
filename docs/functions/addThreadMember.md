@@ -63,7 +63,7 @@ export default new NativeFunction({
         const thread = channel as ThreadChannel
         const success = await thread.members.add(member, reason || undefined).catch(noop)
 
-        return Return.success(!!success)
+        return this.success(!!success)
     },
 })
 

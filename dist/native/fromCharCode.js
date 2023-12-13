@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [codes]) {
-        return structures_1.Return.success(String.fromCharCode(...codes));
+        return this.success(String.fromCharCode(...codes));
     },
 });
 //# sourceMappingURL=fromCharCode.js.map

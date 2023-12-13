@@ -39,7 +39,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx, [ arg ]) {
-        return Return.success(arg)
+        return this.success(arg)
     },
 })
 

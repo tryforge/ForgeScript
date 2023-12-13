@@ -41,7 +41,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [description, index]) {
         ctx.container.embed(index ?? 0).setDescription(description)
-        return Return.success()
+        return this.success()
     },
 })
 

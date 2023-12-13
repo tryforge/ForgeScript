@@ -21,7 +21,7 @@ export default new NativeFunction({
     unwrap: false,
     async execute(ctx) {
         await ctx.container.send(ctx.obj)
-        return Return.success()
+        return this.success()
     },
 })
 

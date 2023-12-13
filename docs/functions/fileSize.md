@@ -34,7 +34,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return Return.success(statSync(path).size)
+        return this.success(statSync(path).size)
     },
 })
 

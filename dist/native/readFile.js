@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     execute(_, [path, encoding]) {
         // eslint-disable-next-line no-undef
         const txt = (0, fs_1.readFileSync)(path, { encoding: encoding || "utf-8" });
-        return structures_1.Return.success(txt);
+        return this.success(txt);
     },
 });
 //# sourceMappingURL=readFile.js.map

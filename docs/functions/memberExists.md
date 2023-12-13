@@ -42,7 +42,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [guild, id]) {
-        return Return.success(CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop)))
+        return this.success(CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(noop)))
     },
 })
 

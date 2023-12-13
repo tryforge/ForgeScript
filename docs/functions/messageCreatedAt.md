@@ -48,7 +48,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, message]) {
-        return Return.success(MessageType[(message ?? ctx.message)?.createdTimestamp!])
+        return this.success(MessageType[(message ?? ctx.message)?.createdTimestamp!])
     },
 })
 

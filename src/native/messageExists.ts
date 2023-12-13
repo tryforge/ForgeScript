@@ -26,7 +26,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [ch, id]) {
-        return Return.success(
+        return this.success(
             CompiledFunction.IdRegex.test(id) && !!(await (ch as TextChannel).messages.fetch(id).catch(noop))
         )
     },

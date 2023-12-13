@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [numbers]) {
-        return structures_1.Return.success(Math.max(...numbers));
+        return this.success(Math.max(...numbers));
     },
 });
 //# sourceMappingURL=max.js.map

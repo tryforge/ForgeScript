@@ -25,6 +25,6 @@ export default new NativeFunction({
         const id: string | undefined = this.hasFields
             ? ctx.message?.mentions.users.at(i)?.id
             : ctx.message?.mentions.users.map((x) => x.id).join(", ")
-        return Return.success(id ?? (rt ? ctx.user?.id : undefined))
+        return this.success(id ?? (rt ? ctx.user?.id : undefined))
     },
 })

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/NativeFunction");
-const Return_1 = require("../structures/Return");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$let",
     version: "1.0.0",
@@ -26,7 +25,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     brackets: true,
     execute(ctx, [name, args]) {
         ctx.setKeyword(name, args.join(";"));
-        return Return_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=let.js.map

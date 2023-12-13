@@ -53,7 +53,7 @@ export default new NativeFunction({
             if (!this["isValidReturnType"](statementRun) || statementRun.value !== null) return statementRun
         }
 
-        return elseStatement?.execute(ctx) ?? Return.success()
+        return elseStatement?.execute(ctx) ?? this.success()
     },
 })
 ```

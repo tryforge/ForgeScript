@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the package version you're using",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(require("../../package.json").version);
+        return this.success(require("../../package.json").version);
     },
 });
 //# sourceMappingURL=version.js.map

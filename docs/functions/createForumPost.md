@@ -73,7 +73,7 @@ export default new NativeFunction({
 
         ctx.container.reset()
 
-        return Return.success(t ? t.id : undefined)
+        return this.success(t ? t.id : undefined)
     },
 })
 

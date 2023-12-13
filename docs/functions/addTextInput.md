@@ -98,7 +98,7 @@ export default new NativeFunction({
 
         ctx.container.modal?.addComponents(new ActionRowBuilder<TextInputBuilder>().addComponents(field))
 
-        return Return.success()
+        return this.success()
     },
 })
 

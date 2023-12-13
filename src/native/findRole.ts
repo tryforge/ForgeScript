@@ -29,11 +29,11 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(id)) {
             const r = guild.roles.cache.get(id)
-            if (r) return Return.success(r.id)
+            if (r) return this.success(r.id)
         }
 
         q = q.toLowerCase()
 
-        return Return.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id)
+        return this.success(guild.roles.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id)
     },
 })

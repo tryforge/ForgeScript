@@ -20,6 +20,6 @@ export default new NativeFunction({
     async execute(ctx, [ch]) {
         const channel = ch ?? ctx.channel
         if (channel.isTextBased()) await channel.sendTyping().catch(() => null)
-        return Return.success()
+        return this.success()
     },
 })

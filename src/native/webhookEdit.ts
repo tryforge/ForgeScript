@@ -36,6 +36,6 @@ export default new NativeFunction({
             })
             .catch(noop)
 
-        return Return.success(!!edit)
+        return this.success(!!edit)
     },
 })

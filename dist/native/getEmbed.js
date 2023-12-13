@@ -50,7 +50,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(_, [, m, index, prop, sep]) {
         const embed = m.embeds[index];
-        return structures_1.Return.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, sep || ", "));
+        return this.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, sep || ", "));
     },
 });
 //# sourceMappingURL=getEmbed.js.map

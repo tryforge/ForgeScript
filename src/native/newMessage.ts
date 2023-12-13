@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(MessageProperties[prop](ctx.states?.message?.new, sep))
+        return this.success(MessageProperties[prop](ctx.states?.message?.new, sep))
     },
 })

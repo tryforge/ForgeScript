@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return structures_1.Return.success(discord_js_1.ChannelType[chan?.type]);
+        return this.success(discord_js_1.ChannelType[chan?.type]);
     },
 });
 //# sourceMappingURL=channelType.js.map

@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: false,
     execute(ctx, [user]) {
-        return structures_1.Return.success(Boolean((user ?? ctx.user)?.bot));
+        return this.success(Boolean((user ?? ctx.user)?.bot));
     },
 });
 //# sourceMappingURL=isBot.js.map

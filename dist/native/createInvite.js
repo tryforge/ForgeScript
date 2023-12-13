@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
             maxUses: maxUses || undefined,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(invite ? invite.code : undefined);
+        return this.success(invite ? invite.code : undefined);
     },
 });
 //# sourceMappingURL=createInvite.js.map

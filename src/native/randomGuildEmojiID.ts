@@ -18,6 +18,6 @@ export default new NativeFunction({
     execute(ctx, [g]) {
         g ??= ctx.guild!
 
-        return Return.success(g?.emojis.cache.randomKey())
+        return this.success(g?.emojis.cache.randomKey())
     },
 })

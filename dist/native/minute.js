@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns current UTC minute",
     unwrap: true,
     execute: function () {
-        return structures_1.Return.success(new Date().getMinutes());
+        return this.success(new Date().getMinutes());
     }
 });
 //# sourceMappingURL=minute.js.map

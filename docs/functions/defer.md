@@ -25,7 +25,7 @@ export default new NativeFunction({
                 ephemeral: ctx.container.ephemeral,
             })
         }
-        return Return.success()
+        return this.success()
     },
 })
 

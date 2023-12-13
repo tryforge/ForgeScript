@@ -33,6 +33,6 @@ export default new NativeFunction({
 
         ctx.container.content = content || undefined
         const m = await ctx.container.send<Message>(web)
-        return Return.success(returnMessageID && m ? m.id : undefined)
+        return this.success(returnMessageID && m ? m.id : undefined)
     },
 })

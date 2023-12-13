@@ -76,7 +76,7 @@ export default new NativeFunction({
             ],
             status: status as PresenceStatusData,
         })
-        return Return.success()
+        return this.success()
     },
 })
 

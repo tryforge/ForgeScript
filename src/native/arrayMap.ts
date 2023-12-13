@@ -69,6 +69,6 @@ export default new NativeFunction({
 
         ctx.setEnvironmentKey(otherVarName, newArr)
 
-        return Return.success()
+        return this.success()
     },
 })

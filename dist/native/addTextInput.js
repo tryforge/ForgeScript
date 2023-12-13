@@ -76,7 +76,7 @@ exports.default = new structures_1.NativeFunction({
         if (max)
             field.setMaxLength(max);
         ctx.container.modal?.addComponents(new discord_js_1.ActionRowBuilder().addComponents(field));
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=addTextInput.js.map

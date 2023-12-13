@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr))
             arr.unshift(...values);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayUnshift.js.map

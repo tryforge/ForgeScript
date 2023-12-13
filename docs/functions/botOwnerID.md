@@ -48,7 +48,7 @@ export default new NativeFunction({
     async execute(ctx, [ returnAll, sep ]) {
         if (!ctx.client.application.owner) await ctx.client.application.fetch().catch(noop)
         const owner = ctx.client.application.owner
-        return Return.success(owner ? owner instanceof User ? owner.id : returnAll ? owner.members.map(x => x.id).join(sep ?? ", ") : owner.ownerId : null)
+        return this.success(owner ? owner instanceof User ? owner.id : returnAll ? owner.members.map(x => x.id).join(sep ?? ", ") : owner.ownerId : null)
     },
 })
 

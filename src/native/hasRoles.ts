@@ -33,6 +33,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [, member, roles]) {
-        return Return.success(member.roles.cache.hasAll(...roles.map(x => x.id)))
+        return this.success(member.roles.cache.hasAll(...roles.map(x => x.id)))
     },
 })

@@ -38,7 +38,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success(chan && "position" in chan ? chan.position : undefined)
+        return this.success(chan && "position" in chan ? chan.position : undefined)
     },
 })
 

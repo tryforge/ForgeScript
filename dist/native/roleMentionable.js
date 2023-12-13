@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, role]) {
-        return structures_1.Return.success((role ?? ctx.role)?.mentionable);
+        return this.success((role ?? ctx.role)?.mentionable);
     },
 });
 //# sourceMappingURL=roleMentionable.js.map

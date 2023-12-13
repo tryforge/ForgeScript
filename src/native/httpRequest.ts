@@ -47,6 +47,6 @@ export default new NativeFunction({
             ctx.setEnvironmentKey(name, await req.json())
         } else ctx.setEnvironmentKey(name, await req.text())
 
-        return Return.success(req.status)
+        return this.success(req.status)
     },
 })

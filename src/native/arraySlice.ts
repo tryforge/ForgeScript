@@ -42,6 +42,6 @@ export default new NativeFunction({
             ctx.setEnvironmentKey(var2, arr.slice(start, end || undefined))
         }
 
-        return Return.success()
+        return this.success()
     },
 })

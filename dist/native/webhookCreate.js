@@ -42,7 +42,7 @@ exports.default = new structures_1.NativeFunction({
             avatar: url || undefined,
         })
             .catch(noop_1.default);
-        return structures_1.Return.success(web ? web.id : undefined);
+        return this.success(web ? web.id : undefined);
     },
 });
 //# sourceMappingURL=webhookCreate.js.map

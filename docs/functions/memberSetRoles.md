@@ -54,7 +54,7 @@ export default new NativeFunction({
         member ??= ctx.member!
         const d = await member.roles.set(roles).catch(noop)
 
-        return Return.success(!!d)
+        return this.success(!!d)
     },
 })
 

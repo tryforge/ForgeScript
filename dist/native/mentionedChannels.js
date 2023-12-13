@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         const id = this.hasFields
             ? ctx.message?.mentions.channels.at(i)?.id
             : ctx.message?.mentions.channels.map((x) => x.id).join(", ");
-        return structures_1.Return.success(id ?? (rt ? ctx.channel?.id : undefined));
+        return this.success(id ?? (rt ? ctx.channel?.id : undefined));
     },
 });
 //# sourceMappingURL=mentionedChannels.js.map

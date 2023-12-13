@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(_, [channel, state]) {
-        return structures_1.Return.success(!!(await channel.setNSFW(state || false).catch(noop_1.default)));
+        return this.success(!!(await channel.setNSFW(state || false).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=setChannelNSFW.js.map

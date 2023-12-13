@@ -45,7 +45,7 @@ export default new NativeFunction({
         const value = values.join(";")
         if (!ctx.http.headers) ctx.http.headers = {}
         ctx.http.headers[name] = value
-        return Return.success()
+        return this.success()
     },
 })
 

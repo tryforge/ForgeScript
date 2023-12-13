@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(EmojiProperties[prop](ctx.states?.emoji?.old, sep))
+        return this.success(EmojiProperties[prop](ctx.states?.emoji?.old, sep))
     },
 })

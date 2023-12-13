@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the guild count",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.guilds.cache.size);
+        return this.success(ctx.client.guilds.cache.size);
     },
 });
 //# sourceMappingURL=guildCount.js.map

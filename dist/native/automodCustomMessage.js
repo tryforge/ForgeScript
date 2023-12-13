@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The custom message used by automod on this detection",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.action.metadata.customMessage);
+        return this.success(ctx.automod?.action.metadata.customMessage);
     },
 });
 //# sourceMappingURL=automodCustomMessage.js.map

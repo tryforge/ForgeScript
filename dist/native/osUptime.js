@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the operating system uptime (seconds)",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(node_os_1.default.uptime());
+        return this.success(node_os_1.default.uptime());
     },
 });
 //# sourceMappingURL=osUptime.js.map

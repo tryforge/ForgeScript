@@ -63,7 +63,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(_, [, role, name, color, icon, hoist, mentionable, perms]) {
-        return structures_1.Return.success(!!(await role
+        return this.success(!!(await role
             .edit({
             color: color || undefined,
             hoist: hoist || undefined,

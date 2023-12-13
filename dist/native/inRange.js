@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [n, min, max]) {
-        return structures_1.Return.success(min === null || max === null ? false : Math.max(min, n) === Math.min(max, n));
+        return this.success(min === null || max === null ? false : Math.max(min, n) === Math.min(max, n));
     },
 });
 //# sourceMappingURL=inRange.js.map

@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ input, enc ]) {
         const md5 = createHash("md5").update(input).digest().toString((enc || "hex") as BufferEncoding)
-        return Return.success(md5)
+        return this.success(md5)
     }
 })

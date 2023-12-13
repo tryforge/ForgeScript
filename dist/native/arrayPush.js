@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr))
             arr.push(...values);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayPush.js.map

@@ -21,7 +21,7 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         // eslint-disable-next-line no-undef
-        return Return.success(process.version)
+        return this.success(process.version)
     },
 })
 

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the role count of all servers",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0));
+        return this.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0));
     },
 });
 //# sourceMappingURL=roleCount.js.map

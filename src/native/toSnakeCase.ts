@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return Return.success(snakeCase(m))
+        return this.success(snakeCase(m))
     },
 })

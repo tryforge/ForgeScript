@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [input, enc]) {
         const md5 = (0, crypto_1.createHash)("md5").update(input).digest().toString((enc || "hex"));
-        return structures_1.Return.success(md5);
+        return this.success(md5);
     }
 });
 //# sourceMappingURL=md5.js.map

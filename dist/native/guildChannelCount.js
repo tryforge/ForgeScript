@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [guild, categories]) {
         guild ??= ctx.guild;
-        return structures_1.Return.success((this.hasFields ? guild.channels.cache.filter((x) => categories.includes(x.type)) : guild.channels.cache)
+        return this.success((this.hasFields ? guild.channels.cache.filter((x) => categories.includes(x.type)) : guild.channels.cache)
             .size);
     },
 });

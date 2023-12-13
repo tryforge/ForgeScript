@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user]) {
-        return Return.success((user ?? ctx.user)?.hexAccentColor)
+        return this.success((user ?? ctx.user)?.hexAccentColor)
     },
 })
 

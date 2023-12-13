@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(_, [channel, reason]) {
         const thread = channel;
         const success = await thread.setArchived(false, reason || undefined).catch(noop_1.default);
-        return structures_1.Return.success(!!success);
+        return this.success(!!success);
     },
 });
 //# sourceMappingURL=unarchiveThread.js.map

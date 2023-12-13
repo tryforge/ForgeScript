@@ -66,7 +66,7 @@ export default new NativeFunction({
             return this["resolveCode"](ctx, catchCode)
         }
 
-        return Return.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined)
+        return this.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined)
     },
 })
 

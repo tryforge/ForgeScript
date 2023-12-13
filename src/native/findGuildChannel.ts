@@ -35,11 +35,11 @@ export default new NativeFunction({
 
         if (CompiledFunction.IdRegex.test(id)) {
             const ch = guild.channels.cache.get(id)
-            if (ch) return Return.success(ch.id)
+            if (ch) return this.success(ch.id)
         }
 
         q = q.toLowerCase()
-        return Return.success(
+        return this.success(
             guild.channels.cache.find((x) => x.id === id || x.name.toLowerCase() === q)?.id ??
                 (rt ? ctx.channel?.id : undefined)
         )

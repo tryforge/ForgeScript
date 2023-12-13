@@ -38,7 +38,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji
-        return Return.success(emoji?.animated)
+        return this.success(emoji?.animated)
     },
 })
 

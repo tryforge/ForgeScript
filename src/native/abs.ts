@@ -17,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n]) {
-        return Return.success(Math.abs(n))
+        return this.success(Math.abs(n))
     },
 })

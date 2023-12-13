@@ -20,10 +20,10 @@ exports.default = new structures_1.NativeFunction({
     async execute(_, [command]) {
         try {
             const exec = await (0, child_process_1.execSync)(command, { encoding: "utf-8" });
-            return structures_1.Return.success(exec);
+            return this.success(exec);
         }
         catch (error) {
-            return structures_1.Return.error(this.error(structures_1.ErrorType.Custom, error.message));
+            return this.err(this.error(structures_1.ErrorType.Custom, error.message));
         }
     },
 });

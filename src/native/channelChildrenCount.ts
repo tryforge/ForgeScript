@@ -18,6 +18,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [channel]) {
-        return Return.success(((channel ?? ctx.channel) as CategoryChannel)?.children?.cache.size)
+        return this.success(((channel ?? ctx.channel) as CategoryChannel)?.children?.cache.size)
     },
 })

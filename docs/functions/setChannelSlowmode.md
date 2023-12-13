@@ -43,7 +43,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [channel, seconds]) {
-        return Return.success(!!(await (channel as TextChannel).setRateLimitPerUser(seconds || 0).catch(noop)))
+        return this.success(!!(await (channel as TextChannel).setRateLimitPerUser(seconds || 0).catch(noop)))
     },
 })
 

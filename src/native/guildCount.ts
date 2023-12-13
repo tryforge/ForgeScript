@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the guild count",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.client.guilds.cache.size)
+        return this.success(ctx.client.guilds.cache.size)
     },
 })

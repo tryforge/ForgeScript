@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return structures_1.Return.success(m.trimStart());
+        return this.success(m.trimStart());
     },
 });
 //# sourceMappingURL=trimStart.js.map

@@ -34,7 +34,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [id]) {
         ctx.client.cooldowns.delete(id)
-        return Return.success()
+        return this.success()
     },
 })
 

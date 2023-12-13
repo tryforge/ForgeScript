@@ -21,7 +21,7 @@ export default new NativeFunction({
     description: "Returns the cpu speed in MHz",
     unwrap: false,
     execute() {
-        return Return.success(os.cpus()[0]?.speed)
+        return this.success(os.cpus()[0]?.speed)
     },
 })
 

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns current execution time",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(performance.now() - ctx.executionTimestamp);
+        return this.success(performance.now() - ctx.executionTimestamp);
     },
 });
 //# sourceMappingURL=executionTime.js.map

@@ -16,6 +16,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [text]) {
-        return Return.success(decodeURIComponent(text))
+        return this.success(decodeURIComponent(text))
     },
 })

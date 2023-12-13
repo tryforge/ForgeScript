@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(channel_1.ChannelProperties[prop](ctx.states?.channel?.new, sep));
+        return this.success(channel_1.ChannelProperties[prop](ctx.states?.channel?.new, sep));
     },
 });
 //# sourceMappingURL=newChannel.js.map

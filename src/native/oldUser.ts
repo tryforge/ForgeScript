@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(UserProperties[prop](ctx.states?.user?.old, sep))
+        return this.success(UserProperties[prop](ctx.states?.user?.old, sep))
     },
 })

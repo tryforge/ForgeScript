@@ -19,6 +19,6 @@ export default new NativeFunction({
     async execute(ctx, [user]) {
         user ??= ctx.user!
         const dm = await user?.createDM().catch(noop)
-        return Return.success(dm ? dm.id : undefined)
+        return this.success(dm ? dm.id : undefined)
     },
 })

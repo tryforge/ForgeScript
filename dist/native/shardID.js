@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the shard id of the client",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.runtime.extras ?? ctx.client.shard?.ids.join(", "));
+        return this.success(ctx.runtime.extras ?? ctx.client.shard?.ids.join(", "));
     },
 });
 //# sourceMappingURL=shardID.js.map

@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(presence_1.PresenceProperties[prop](ctx.states?.presence?.new, sep));
+        return this.success(presence_1.PresenceProperties[prop](ctx.states?.presence?.new, sep));
     },
 });
 //# sourceMappingURL=newPresence.js.map

@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, member]) {
-        return Return.success((member ?? ctx.member)?.displayName)
+        return this.success((member ?? ctx.member)?.displayName)
     },
 })

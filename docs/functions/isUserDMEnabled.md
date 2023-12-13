@@ -43,7 +43,7 @@ export default new NativeFunction({
         // Only way to know is to send an empty message
         const dm = await user?.send("").catch(err => err)
         
-        return Return.success(
+        return this.success(
             // If any of these is not met, cant be dmed
             // 50007 = Cannot send message to this user
             !!dm && dm instanceof DiscordAPIError && dm.status !== 50007

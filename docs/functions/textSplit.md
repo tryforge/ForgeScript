@@ -43,7 +43,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ text, sep ]) {
         ctx.setEnvironmentKey(SplitTextName, text.split(sep))
-        return Return.success()
+        return this.success()
     },
 })
 ```

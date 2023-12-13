@@ -21,6 +21,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return Return.success(Formatter.format(n))
+        return this.success(Formatter.format(n))
     },
 })

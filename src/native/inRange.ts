@@ -28,6 +28,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [n, min, max]) {
-        return Return.success(min === null || max === null ? false : Math.max(min, n) === Math.min(max, n))
+        return this.success(min === null || max === null ? false : Math.max(min, n) === Math.min(max, n))
     },
 })

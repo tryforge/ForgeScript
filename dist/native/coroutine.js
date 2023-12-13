@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     async execute(ctx) {
         const code = this.displayField(0);
-        return structures_1.Return.success(await ctx.client.threading.run({
+        return this.success(await ctx.client.threading.run({
             code
         }));
     },

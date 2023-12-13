@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [guild]) {
         guild ??= ctx.guild;
         await guild?.members.fetch();
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=fetchMembers.js.map

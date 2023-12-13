@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
                 break;
             count += col.size;
         }
-        return structures_1.Return.success(count);
+        return this.success(count);
     },
 });
 //# sourceMappingURL=clearMessages.js.map

@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the amount of cpu cores",
     unwrap: false,
     execute() {
-        return structures_1.Return.success(node_os_1.default.cpus().length);
+        return this.success(node_os_1.default.cpus().length);
     },
 });
 //# sourceMappingURL=cpuCores.js.map

@@ -17,7 +17,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [m]) {
-        return Return.success(
+        return this.success(
             m
                 .split(/ +/)
                 .map((x) => lodash.capitalize(x))

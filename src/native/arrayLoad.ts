@@ -31,6 +31,6 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, sep, values]) {
         ctx.setEnvironmentKey(name, values.join(";").split(sep))
-        return Return.success()
+        return this.success()
     },
 })

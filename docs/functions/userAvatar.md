@@ -52,7 +52,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user, size, ext]) {
-        return Return.success(
+        return this.success(
             (user ?? ctx.user)?.displayAvatarURL({
                 extension: (ext as ImageExtension) || undefined,
                 size: (size as ImageSize) || 2048,

@@ -38,9 +38,9 @@ export default new NativeFunction({
     execute(_, [text, match, replacement, amount]) {
         amount ??= -1
         if (amount === -1) {
-            return Return.success(text.replaceAll(match, replacement))
+            return this.success(text.replaceAll(match, replacement))
         }
         let i = 0
-        return Return.success(text.replaceAll(match, (m) => (++i <= amount! ? replacement : m)))
+        return this.success(text.replaceAll(match, (m) => (++i <= amount! ? replacement : m)))
     },
 })

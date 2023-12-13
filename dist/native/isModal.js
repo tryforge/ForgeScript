@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether the context is a modal",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.interaction?.isModalSubmit()));
+        return this.success(Boolean(ctx.interaction?.isModalSubmit()));
     },
 });
 //# sourceMappingURL=isModal.js.map

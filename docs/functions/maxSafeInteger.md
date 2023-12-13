@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the highest safe integer",
     unwrap: false,
     execute() {
-        return Return.success(Number.MAX_SAFE_INTEGER)
+        return this.success(Number.MAX_SAFE_INTEGER)
     },
 })
 

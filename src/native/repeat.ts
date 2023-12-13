@@ -1,4 +1,4 @@
-import { ArgType, NativeFunction, Return } from "../structures";
+import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$repeat",
@@ -23,6 +23,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ txt, times ]) {
-        return Return.success(txt.repeat(times))
+        return this.success(txt.repeat(times))
     },
 })

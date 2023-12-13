@@ -16,7 +16,7 @@ users | User | The users to check for | Yes | Yes
 </summary>
     
 ```ts
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures";
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$onlyForUsers",
@@ -53,7 +53,7 @@ export default new NativeFunction({
         if (!ok)
             return this["fail"](ctx, code)
 
-        return Return.success()
+        return this.success()
     },
 })
 ```

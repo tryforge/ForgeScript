@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns current year",
     unwrap: true,
     execute: function() {
-        return Return.success(new Date().getFullYear())
+        return this.success(new Date().getFullYear())
     }
 })
 ```

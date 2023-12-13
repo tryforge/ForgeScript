@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return structures_1.Return.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "));
+        return this.success((guild ?? ctx.guild)?.emojis.cache.map((x) => x.toString()).join(sep || ", "));
     },
 });
 //# sourceMappingURL=emojiNames.js.map

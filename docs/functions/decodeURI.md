@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [text]) {
-        return Return.success(decodeURI(text))
+        return this.success(decodeURI(text))
     },
 })
 

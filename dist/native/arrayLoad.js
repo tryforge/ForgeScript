@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [name, sep, values]) {
         ctx.setEnvironmentKey(name, values.join(";").split(sep));
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=arrayLoad.js.map

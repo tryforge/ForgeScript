@@ -25,6 +25,6 @@ export default new NativeFunction({
             }
         }
 
-        return Return.success()
+        return this.success()
     },
 })

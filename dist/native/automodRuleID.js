@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "The rule id used by automod",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.automod?.ruleId);
+        return this.success(ctx.automod?.ruleId);
     },
 });
 //# sourceMappingURL=automodRuleID.js.map

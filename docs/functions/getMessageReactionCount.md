@@ -53,7 +53,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [, , reaction]) {
-        return Return.success(reaction.count)
+        return this.success(reaction.count)
     },
 })
 

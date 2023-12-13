@@ -74,7 +74,7 @@ export default new NativeFunction({
                 parent: parentId,
             })
             .catch(noop)
-        return Return.success(ch ? ch.id : undefined)
+        return this.success(ch ? ch.id : undefined)
     },
 })
 

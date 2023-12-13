@@ -44,7 +44,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [channel, name]) {
-        return Return.success(!!(await (channel as TextChannel).setName(name).catch(noop)))
+        return this.success(!!(await (channel as TextChannel).setName(name).catch(noop)))
     },
 })
 

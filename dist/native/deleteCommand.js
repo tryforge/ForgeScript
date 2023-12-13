@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     async execute(ctx) {
         await ctx.message?.delete().catch(lodash_1.noop);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=deleteCommand.js.map

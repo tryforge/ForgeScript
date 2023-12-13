@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [emoji]) {
         emoji ?? ctx.emoji;
-        return structures_1.Return.success(emoji?.createdTimestamp);
+        return this.success(emoji?.createdTimestamp);
     },
 });
 //# sourceMappingURL=emojiCreatedAt.js.map

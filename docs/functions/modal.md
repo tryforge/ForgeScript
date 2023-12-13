@@ -44,7 +44,7 @@ export default new NativeFunction({
     execute(ctx, [id, title]) {
         ctx.container.modal = new ModalBuilder().setCustomId(id).setTitle(title)
 
-        return Return.success()
+        return this.success()
     },
 })
 

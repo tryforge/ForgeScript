@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random uuid",
     unwrap: false,
     execute() {
-        return structures_1.Return.success((0, crypto_1.randomUUID)());
+        return this.success((0, crypto_1.randomUUID)());
     }
 });
 //# sourceMappingURL=randomUUID.js.map

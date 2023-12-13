@@ -21,7 +21,7 @@ export default new NativeFunction({
     description: "The message sent by automod",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.alertSystemMessageId)
+        return this.success(ctx.automod?.alertSystemMessageId)
     },
 })
 ```

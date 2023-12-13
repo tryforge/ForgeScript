@@ -35,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
             return condition;
         const fieldToRun = (condition.value ? this.data.fields[1] : this.data.fields[2]);
         if (!fieldToRun)
-            return structures_1.Return.success();
+            return this.success();
         return this["resolveCode"](ctx, fieldToRun);
     },
 });

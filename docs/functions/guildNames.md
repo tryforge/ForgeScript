@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [sep]) {
-        return Return.success(ctx.client.guilds.cache.map((x) => x.name).join(sep || ", "))
+        return this.success(ctx.client.guilds.cache.map((x) => x.name).join(sep || ", "))
     },
 })
 

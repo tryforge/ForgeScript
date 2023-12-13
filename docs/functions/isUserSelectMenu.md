@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns whether the context is a user select menu",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Boolean(ctx.interaction?.isUserSelectMenu()))
+        return this.success(Boolean(ctx.interaction?.isUserSelectMenu()))
     },
 })
 

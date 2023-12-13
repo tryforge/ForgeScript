@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Whether the interaction is autocomplete",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Boolean(ctx.interaction?.isAutocomplete()))
+        return this.success(Boolean(ctx.interaction?.isAutocomplete()))
     },
 })
 

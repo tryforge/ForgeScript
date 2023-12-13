@@ -52,7 +52,7 @@ export default new NativeFunction({
             IExtendedCompiledFunctionField,
         ]
         const res = await this["resolveCondition"](ctx, condition)
-        if (!this["isValidReturnType"](res) || res.value) return res.success ? Return.success() : res
+        if (!this["isValidReturnType"](res) || res.value) return res.success ? this.success() : res
 
         if (code) {
             const resolved = await this["resolveCode"](ctx, code)
@@ -61,7 +61,7 @@ export default new NativeFunction({
             await ctx.container.send(ctx.obj)
         }
 
-        return Return.stop()
+        return this.stop()
     },
 })
 

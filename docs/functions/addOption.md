@@ -82,7 +82,7 @@ export default new NativeFunction({
             comp.addOptions(data)
         }
 
-        return Return.success()
+        return this.success()
     },
 })
 

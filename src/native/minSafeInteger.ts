@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the lowest safe integer",
     unwrap: false,
     execute() {
-        return Return.success(Number.MIN_SAFE_INTEGER)
+        return this.success(Number.MIN_SAFE_INTEGER)
     },
 })

@@ -42,7 +42,7 @@ exports.default = new structures_1.NativeFunction({
             else
                 return exec;
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=while.js.map

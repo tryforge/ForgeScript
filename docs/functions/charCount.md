@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [str]) {
-        return Return.success(str.length)
+        return this.success(str.length)
     },
 })
 

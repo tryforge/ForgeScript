@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [user]) {
         user ??= ctx.user;
         const dm = await user?.createDM().catch(noop_1.default);
-        return structures_1.Return.success(dm ? dm.id : undefined);
+        return this.success(dm ? dm.id : undefined);
     },
 });
 //# sourceMappingURL=dmChannelID.js.map

@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member!
-        return Return.success(member?.displayHexColor)
+        return this.success(member?.displayHexColor)
     },
 })

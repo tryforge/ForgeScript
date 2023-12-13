@@ -33,7 +33,7 @@ export default new NativeFunction({
         },
     ],
     execute(_, [numbers]) {
-        return Return.success(Math.min(...numbers))
+        return this.success(Math.min(...numbers))
     },
 })
 

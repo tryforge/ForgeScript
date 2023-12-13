@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [, message]) {
-        return structures_1.Return.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop_1.default)));
+        return this.success(!!(await (message ?? ctx.message)?.reactions.removeAll().catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=deleteAllMessageReactions.js.map

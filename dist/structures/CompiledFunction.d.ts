@@ -2,7 +2,7 @@ import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionFi
 import { Context } from "./Context";
 import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError";
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction";
-import { Return } from "./Return";
+import { Return, ReturnType, ReturnValue } from "./Return";
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField;
     rhs?: IExtendedCompiledFunctionField;
@@ -26,7 +26,6 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     readonly data: IExtendedCompiledFunction;
     readonly fn: NativeFunction<T, Unwrap>;
     constructor(raw: ICompiledFunction);
-    get negated(): boolean;
     displayField(i: number): string;
     get display(): string;
     /**
@@ -78,5 +77,13 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private toExecutableCode;
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
+    return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;
+    err(value: ReturnValue<ReturnType.Error>): Return<ReturnType.Error>;
+    stop(): Return<ReturnType.Stop>;
+    break(): Return<ReturnType.Break>;
+    continue(): Return<ReturnType.Continue>;
+    successJSON(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    successFormatted(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    success(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map

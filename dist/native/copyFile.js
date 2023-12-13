@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
             (0, fs_1.cpSync)(old, now);
         else
             (0, fs_1.copyFileSync)(old, now);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=copyFile.js.map

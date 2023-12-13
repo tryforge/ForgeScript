@@ -37,7 +37,7 @@ export default new NativeFunction({
         // eslint-disable-next-line no-undef
         rmSync(path, { recursive: true })
 
-        return Return.success()
+        return this.success()
     },
 })
 

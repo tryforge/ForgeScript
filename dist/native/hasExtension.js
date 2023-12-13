@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [ext]) {
-        return structures_1.Return.success(!!ctx.client.options.extensions?.some(x => x.name === ext));
+        return this.success(!!ctx.client.options.extensions?.some(x => x.name === ext));
     },
 });
 //# sourceMappingURL=hasExtension.js.map

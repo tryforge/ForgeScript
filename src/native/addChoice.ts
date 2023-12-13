@@ -28,6 +28,6 @@ export default new NativeFunction({
             value,
         })
 
-        return Return.success()
+        return this.success()
     },
 })

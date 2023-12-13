@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns the bot count of the bot",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.client.users.cache.filter((x) => x.bot).size)
+        return this.success(ctx.client.users.cache.filter((x) => x.bot).size)
     },
 })

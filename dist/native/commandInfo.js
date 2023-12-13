@@ -39,9 +39,9 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [type, name, prop, sep]) {
         const cmd = ctx.client.commands.get(type, (x) => x.name === name || !!x.data.aliases?.includes(name))[0];
         if (!cmd)
-            return structures_1.Return.success();
+            return this.success();
         const val = cmd.data?.[prop];
-        return structures_1.Return.success(Array.isArray(val) ? val.join(sep || ", ") : val);
+        return this.success(Array.isArray(val) ? val.join(sep || ", ") : val);
     },
 });
 //# sourceMappingURL=commandInfo.js.map

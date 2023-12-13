@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(invite_1.InviteProperties[prop](ctx.states?.invite?.old, sep));
+        return this.success(invite_1.InviteProperties[prop](ctx.states?.invite?.old, sep));
     },
 });
 //# sourceMappingURL=oldInvite.js.map

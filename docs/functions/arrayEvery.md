@@ -73,12 +73,12 @@ export default new NativeFunction({
 
                 if (rt.return || rt.success) {
                     if (!isTrue(rt)) continue
-                    return Return.success(false)
+                    return this.success(false)
                 } else if (!this["isValidReturnType"](rt)) return rt
             }
         }
 
-        return Return.success(true)
+        return this.success(true)
     },
 })
 

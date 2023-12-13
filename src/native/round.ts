@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     execute(_, [n, dp]) {
         dp = dp === null ? 1 : Math.pow(10, dp)
-        return Return.success(Math.round(n * dp) / dp)
+        return this.success(Math.round(n * dp) / dp)
     },
 })

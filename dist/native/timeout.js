@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(_, [, member, ms]) {
         const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(noop_1.default);
-        return structures_1.Return.success(!!timeout);
+        return this.success(!!timeout);
     },
 });
 //# sourceMappingURL=timeout.js.map

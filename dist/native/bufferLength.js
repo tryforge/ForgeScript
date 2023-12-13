@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [name]) {
-        return structures_1.Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.length);
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.length);
     },
 });
 //# sourceMappingURL=bufferLength.js.map

@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             buffer.copy(ref, 0, 0, ref.length);
             ctx.setEnvironmentKey(name, ref);
         }
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=bufferResize.js.map

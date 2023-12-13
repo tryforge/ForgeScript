@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [hex]) {
-        return structures_1.Return.success((0, hex_1.int2hex)(hex));
+        return this.success((0, hex_1.int2hex)(hex));
     },
 });
 //# sourceMappingURL=intToHex.js.map

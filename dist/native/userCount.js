@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the user count of the bot",
     unwrap: true,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.guilds.cache.reduce((x, y) => x + (y.memberCount || 0), 0));
+        return this.success(ctx.client.guilds.cache.reduce((x, y) => x + (y.memberCount || 0), 0));
     },
 });
 //# sourceMappingURL=userCount.js.map

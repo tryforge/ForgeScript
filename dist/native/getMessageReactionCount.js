@@ -34,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [, , reaction]) {
-        return structures_1.Return.success(reaction.count);
+        return this.success(reaction.count);
     },
 });
 //# sourceMappingURL=getMessageReactionCount.js.map

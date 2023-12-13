@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [text, matches]) {
-        return Return.success(matches.some((x) => text.includes(x)))
+        return this.success(matches.some((x) => text.includes(x)))
     },
 })

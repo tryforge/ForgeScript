@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [, message]) {
         ctx.container.reference = (message ?? ctx.message)?.id
-        return Return.success()
+        return this.success()
     },
 })

@@ -46,7 +46,7 @@ export default new NativeFunction({
             cpSync(old, now)
         else
             copyFileSync(old, now)
-        return Return.success()
+        return this.success()
     },
 })
 ```

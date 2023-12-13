@@ -74,7 +74,7 @@ export default new NativeFunction({
             })
             .catch(noop)
 
-        return Return.success(returnEmojiID && em ? em.id : undefined)
+        return this.success(returnEmojiID && em ? em.id : undefined)
     },
 })
 

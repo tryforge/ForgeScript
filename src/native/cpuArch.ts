@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns the cpu architecture",
     unwrap: false,
     execute() {
-        return Return.success(os.arch())
+        return this.success(os.arch())
     },
 })

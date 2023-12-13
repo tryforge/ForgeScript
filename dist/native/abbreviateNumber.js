@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return structures_1.Return.success(Formatter.format(n));
+        return this.success(Formatter.format(n));
     },
 });
 //# sourceMappingURL=abbreviateNumber.js.map

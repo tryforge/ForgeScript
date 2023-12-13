@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(role_1.RoleProperties[prop](ctx.states?.role?.new, sep));
+        return this.success(role_1.RoleProperties[prop](ctx.states?.role?.new, sep));
     },
 });
 //# sourceMappingURL=newRole.js.map

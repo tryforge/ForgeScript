@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
         for (let i = 0, len = params.length; i < len; i += 2) {
             obj[params[i]] = params[i + 1];
         }
-        return structures_1.Return.success((0, node_querystring_1.stringify)(obj));
+        return this.success((0, node_querystring_1.stringify)(obj));
     },
 });
 //# sourceMappingURL=createQueryParams.js.map

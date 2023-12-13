@@ -35,9 +35,9 @@ export default new NativeFunction({
     unwrap: true,
     execute(_, [ str ]) {
         try {
-            return Return.success(TimeParser.parseToMS(str))
+            return this.success(TimeParser.parseToMS(str))
         } catch (error) {
-            return Return.success(0)
+            return this.success(0)
         }
     },
 })

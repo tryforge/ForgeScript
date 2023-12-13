@@ -79,7 +79,7 @@ export default new NativeFunction({
             }
         }).catch(noop)
 
-        return Return.success(msg?.first()?.id)
+        return this.success(msg?.first()?.id)
     },
 })
 ```

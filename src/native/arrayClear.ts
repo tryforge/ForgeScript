@@ -21,6 +21,6 @@ export default new NativeFunction({
             arr.length = 0
         }
 
-        return Return.success()
+        return this.success()
     },
 })

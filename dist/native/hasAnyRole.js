@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [, member, roles]) {
-        return structures_1.Return.success(member.roles.cache.hasAny(...roles.map(x => x.id)));
+        return this.success(member.roles.cache.hasAny(...roles.map(x => x.id)));
     },
 });
 //# sourceMappingURL=hasAnyRole.js.map

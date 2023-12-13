@@ -23,6 +23,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ name, begin ]) {
-        return Return.success(void ctx.getEnvironmentInstance(Buffer, name)?.readInt32LE(begin))
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.readInt32LE(begin))
     },
 })

@@ -40,6 +40,6 @@ export default new NativeFunction({
             })
             .catch(noop)
 
-        return Return.success(web ? web.id : undefined)
+        return this.success(web ? web.id : undefined)
     },
 })

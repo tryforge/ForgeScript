@@ -21,7 +21,7 @@ export default new NativeFunction({
     description: "Returns the message type",
     unwrap: false,
     execute(ctx) {
-        return Return.success(MessageType[ctx.message?.type!])
+        return this.success(MessageType[ctx.message?.type!])
     },
 })
 

@@ -22,6 +22,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(_, [guild, icon]) {
-        return Return.success((await guild.setSplash(icon || null).catch(() => false)) !== false)
+        return this.success((await guild.setSplash(icon || null).catch(() => false)) !== false)
     },
 })

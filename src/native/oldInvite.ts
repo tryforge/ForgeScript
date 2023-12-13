@@ -24,6 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return Return.success(InviteProperties[prop](ctx.states?.invite?.old, sep))
+        return this.success(InviteProperties[prop](ctx.states?.invite?.old, sep))
     },
 })

@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [text, sep]) {
         ctx.setEnvironmentKey(exports.SplitTextName, text.split(sep));
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=textSplit.js.map

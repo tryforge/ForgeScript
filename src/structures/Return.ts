@@ -23,38 +23,6 @@ export type ReturnValue<T extends ReturnType> = T extends ReturnType.Error
 export class Return<T extends ReturnType = ReturnType> {
     constructor(public readonly type: T, public readonly value: ReturnValue<T>) {}
 
-    public static return(value: ReturnValue<ReturnType.Return>) {
-        return new this(ReturnType.Return, value)
-    }
-
-    public static error(value: ReturnValue<ReturnType.Error>) {
-        return new this(ReturnType.Error, value)
-    }
-
-    public static stop() {
-        return new this(ReturnType.Stop, null)
-    }
-
-    public static break() {
-        return new this(ReturnType.Break, null)
-    }
-
-    public static continue() {
-        return new this(ReturnType.Continue, null)
-    }
-
-    public static successJSON(value: ReturnValue<ReturnType.Success>) {
-        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
-    }
-
-    public static successFormatted(value: ReturnValue<ReturnType.Success>) {
-        return this.success(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
-    }
-
-    public static success(value: ReturnValue<ReturnType.Success> = null) {
-        return new this(ReturnType.Success, value)
-    }
-
     public get error() {
         return this.type === ReturnType.Error
     }

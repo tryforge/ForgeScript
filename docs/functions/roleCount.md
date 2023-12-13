@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns the role count of all servers",
     unwrap: true,
     execute(ctx) {
-        return Return.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0))
+        return this.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0))
     },
 })
 

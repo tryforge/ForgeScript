@@ -31,6 +31,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, member, sep]) {
-        return Return.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "))
+        return this.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "))
     },
 })

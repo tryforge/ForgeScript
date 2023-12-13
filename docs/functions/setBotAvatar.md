@@ -34,7 +34,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [url]) {
-        return Return.success(!!(await ctx.client.user.setAvatar(url).catch(noop)))
+        return this.success(!!(await ctx.client.user.setAvatar(url).catch(noop)))
     },
 })
 

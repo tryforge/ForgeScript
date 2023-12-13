@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "The matched keyword the automod caught",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.matchedKeyword)
+        return this.success(ctx.automod?.matchedKeyword)
     },
 })

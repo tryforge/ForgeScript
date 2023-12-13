@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild, sep]) {
-        return Return.success((guild ?? ctx.guild)?.channels.cache.map((x) => x.name).join(sep || ", "))
+        return this.success((guild ?? ctx.guild)?.channels.cache.map((x) => x.name).join(sep || ", "))
     },
 })

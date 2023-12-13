@@ -43,7 +43,7 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [channel, state]) {
-        return Return.success(!!(await (channel as TextChannel).setNSFW(state || false).catch(noop)))
+        return this.success(!!(await (channel as TextChannel).setNSFW(state || false).catch(noop)))
     },
 })
 

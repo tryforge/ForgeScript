@@ -24,9 +24,9 @@ exports.default = new structures_1.NativeFunction({
             if (!this["isValidReturnType"](resolved))
                 return resolved;
             else if (!resolved.value)
-                return structures_1.Return.success(false);
+                return this.success(false);
         }
-        return structures_1.Return.success(true);
+        return this.success(true);
     },
 });
 //# sourceMappingURL=and.js.map

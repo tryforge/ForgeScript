@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether the context is a role select menu",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(Boolean(ctx.interaction?.isRoleSelectMenu()));
+        return this.success(Boolean(ctx.interaction?.isRoleSelectMenu()));
     },
 });
 //# sourceMappingURL=isRoleSelectMenu.js.map

@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(audit_1.AuditProperties[prop](ctx.states?.audit?.new, sep));
+        return this.success(audit_1.AuditProperties[prop](ctx.states?.audit?.new, sep));
     },
 });
 //# sourceMappingURL=auditLog.js.map

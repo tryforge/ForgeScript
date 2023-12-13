@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return structures_1.Return.success(user_1.UserProperties[prop](ctx.states?.user?.new, sep));
+        return this.success(user_1.UserProperties[prop](ctx.states?.user?.new, sep));
     },
 });
 //# sourceMappingURL=newUser.js.map

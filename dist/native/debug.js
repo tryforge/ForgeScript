@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the debug message",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.runtime.extras);
+        return this.success(ctx.runtime.extras);
     },
 });
 //# sourceMappingURL=debug.js.map

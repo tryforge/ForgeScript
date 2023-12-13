@@ -20,7 +20,7 @@ export default new NativeFunction({
     description: "Returns a random emoji ID",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.client.emojis.cache.randomKey())
+        return this.success(ctx.client.emojis.cache.randomKey())
     },
 })
 

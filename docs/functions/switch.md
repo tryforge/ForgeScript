@@ -73,7 +73,7 @@ export default new NativeFunction({
 
         if (defaultCase) return defaultCase.execute(ctx)
 
-        return Return.success()
+        return this.success()
     },
 })
 

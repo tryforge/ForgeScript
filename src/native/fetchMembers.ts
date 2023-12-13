@@ -18,6 +18,6 @@ export default new NativeFunction({
     async execute(ctx, [guild]) {
         guild ??= ctx.guild!
         await guild?.members.fetch()
-        return Return.success()
+        return this.success()
     },
 })

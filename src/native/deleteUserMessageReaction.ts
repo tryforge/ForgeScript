@@ -42,6 +42,6 @@ export default new NativeFunction({
         },
     ],
     async execute(_, [, , emoji, user]) {
-        return Return.success(!!(await emoji.users.remove(user).catch(noop)))
+        return this.success(!!(await emoji.users.remove(user).catch(noop)))
     },
 })

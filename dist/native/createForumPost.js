@@ -53,7 +53,7 @@ exports.default = new structures_1.NativeFunction({
         })
             .catch(noop_1.default);
         ctx.container.reset();
-        return structures_1.Return.success(t ? t.id : undefined);
+        return this.success(t ? t.id : undefined);
     },
 });
 //# sourceMappingURL=createForumPost.js.map

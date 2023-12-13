@@ -40,7 +40,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(_, [guild, banner]) {
-        return Return.success((await guild.setBanner(banner || null).catch(() => false)) !== false)
+        return this.success((await guild.setBanner(banner || null).catch(() => false)) !== false)
     },
 })
 

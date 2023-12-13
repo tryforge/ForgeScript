@@ -55,11 +55,11 @@ Hello!
             if (!this["isValidReturnType"](content)) return content
             ctx.container.content = content.value as string
             await ctx.container.send(ctx.obj)
-            return Return.stop()
+            return this.stop()
         }
 
         ctx.client.cooldowns.add(idV.value as string, dur.value as number)
 
-        return Return.success()
+        return this.success()
     },
 })

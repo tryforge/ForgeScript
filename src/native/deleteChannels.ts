@@ -26,6 +26,6 @@ export default new NativeFunction({
             if (success) count++
         }
 
-        return Return.success(count)
+        return this.success(count)
     },
 })

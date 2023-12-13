@@ -6,6 +6,6 @@ export default new NativeFunction({
     description: "Returns whether the context is a mentionable select menu",
     unwrap: false,
     execute(ctx) {
-        return Return.success(Boolean(ctx.interaction?.isMentionableSelectMenu()))
+        return this.success(Boolean(ctx.interaction?.isMentionableSelectMenu()))
     },
 })

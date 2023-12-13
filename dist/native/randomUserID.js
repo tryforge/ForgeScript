@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random user ID",
     unwrap: false,
     execute(ctx) {
-        return structures_1.Return.success(ctx.client.users.cache.randomKey());
+        return this.success(ctx.client.users.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomUserID.js.map

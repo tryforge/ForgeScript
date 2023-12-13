@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [index]) {
         ctx.container.components.splice(index, 1);
-        return structures_1.Return.success();
+        return this.success();
     },
 });
 //# sourceMappingURL=deleteActionRow.js.map

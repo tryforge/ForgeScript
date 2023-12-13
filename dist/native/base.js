@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [n, to, from]) {
-        return structures_1.Return.success(parseInt(n, from ?? 10).toString(to));
+        return this.success(parseInt(n, from ?? 10).toString(to));
     },
 });
 //# sourceMappingURL=base.js.map

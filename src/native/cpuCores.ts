@@ -7,6 +7,6 @@ export default new NativeFunction({
     description: "Returns the amount of cpu cores",
     unwrap: false,
     execute() {
-        return Return.success(os.cpus().length)
+        return this.success(os.cpus().length)
     },
 })

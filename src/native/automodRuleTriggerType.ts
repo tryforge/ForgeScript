@@ -8,6 +8,6 @@ export default new NativeFunction({
     unwrap: false,
     execute(ctx) {
         const trigger = ctx.automod?.ruleTriggerType
-        return Return.success(trigger ? AutoModerationRuleTriggerType[trigger] : null)
+        return this.success(trigger ? AutoModerationRuleTriggerType[trigger] : null)
     },
 })

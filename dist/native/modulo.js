@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(_, [numbers]) {
-        return structures_1.Return.success(numbers.reduce((x, y) => x % y));
+        return this.success(numbers.reduce((x, y) => x % y));
     },
 });
 //# sourceMappingURL=modulo.js.map

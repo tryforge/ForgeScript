@@ -16,6 +16,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return Return.success(n % 1 === 0)
+        return this.success(n % 1 === 0)
     },
 })

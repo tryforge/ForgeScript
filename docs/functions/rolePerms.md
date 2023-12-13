@@ -54,7 +54,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, role, sep]) {
-        return Return.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "))
+        return this.success((role ?? ctx.role)?.permissions.toArray().join(sep || ", "))
     },
 })
 

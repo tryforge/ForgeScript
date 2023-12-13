@@ -38,7 +38,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return Return.success("guildId" in chan ? chan.guildId : undefined)
+        return this.success("guildId" in chan ? chan.guildId : undefined)
     },
 })
 

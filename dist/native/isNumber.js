@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(_, [n]) {
-        return structures_1.Return.success(!!n && !isNaN(Number(n)));
+        return this.success(!!n && !isNaN(Number(n)));
     },
 });
 //# sourceMappingURL=isNumber.js.map

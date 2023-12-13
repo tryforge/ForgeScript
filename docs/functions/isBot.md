@@ -37,7 +37,7 @@ export default new NativeFunction({
     ],
     brackets: false,
     execute(ctx, [user]) {
-        return Return.success(Boolean((user ?? ctx.user)?.bot))
+        return this.success(Boolean((user ?? ctx.user)?.bot))
     },
 })
 

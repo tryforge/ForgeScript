@@ -17,7 +17,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [perms]) {
-        return Return.success(
+        return this.success(
             ctx.client.generateInvite({
                 scopes: [OAuth2Scopes.Bot],
                 permissions: (perms as PermissionsString[]) || ["Administrator"],

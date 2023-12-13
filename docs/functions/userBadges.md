@@ -46,7 +46,7 @@ export default new NativeFunction({
     brackets: false,
     async execute(ctx, [user, sep]) {
         const flags = await (user ?? ctx.user).fetchFlags().catch(noop)
-        return Return.success(flags ? flags.toArray().join(sep || ", ") : undefined)
+        return this.success(flags ? flags.toArray().join(sep || ", ") : undefined)
     },
 })
 

@@ -23,6 +23,6 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [image, index]) {
         if (image) ctx.container.embed(index ?? 0).setImage(image)
-        return Return.success()
+        return this.success()
     },
 })

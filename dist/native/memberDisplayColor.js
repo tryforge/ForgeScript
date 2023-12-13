@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, member]) {
         member ??= ctx.member;
-        return structures_1.Return.success(member?.displayHexColor);
+        return this.success(member?.displayHexColor);
     },
 });
 //# sourceMappingURL=memberDisplayColor.js.map

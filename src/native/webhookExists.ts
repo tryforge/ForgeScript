@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     async execute(ctx, [id]) {
         const web = await ctx.client.fetchWebhook(id).catch(noop)
-        return Return.success(!!web)
+        return this.success(!!web)
     },
 })

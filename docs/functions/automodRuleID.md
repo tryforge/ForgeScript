@@ -21,7 +21,7 @@ export default new NativeFunction({
     description: "The rule id used by automod",
     unwrap: false,
     execute(ctx) {
-        return Return.success(ctx.automod?.ruleId)
+        return this.success(ctx.automod?.ruleId)
     },
 })
 ```

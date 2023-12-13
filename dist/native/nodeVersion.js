@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     execute(ctx) {
         // eslint-disable-next-line no-undef
-        return structures_1.Return.success(process.version);
+        return this.success(process.version);
     },
 });
 //# sourceMappingURL=nodeVersion.js.map

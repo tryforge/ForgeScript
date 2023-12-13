@@ -41,7 +41,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [thumbnail, index]) {
         ctx.container.embed(index ?? 0).setThumbnail(thumbnail)
-        return Return.success()
+        return this.success()
     },
 })
 
