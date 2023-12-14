@@ -17,6 +17,7 @@ class ApplicationCommandManager {
      *  - value is collection = group with subcommands
      */
     commands = new discord_js_1.Collection();
+    path;
     constructor(client) {
         this.client = client;
     }
@@ -24,7 +25,11 @@ class ApplicationCommandManager {
      * PATH TREE MATTERS
      * @param path
      */
-    load(path) {
+    load(path = this.path) {
+        if (!path)
+            return;
+        this.path ??= path;
+        this.commands.clear();
         for (const mainPath of (0, fs_1.readdirSync)(path)) {
             const resolved = (0, path_1.join)(path, mainPath);
             const stats = (0, fs_1.statSync)(resolved);
@@ -96,6 +101,7 @@ class ApplicationCommandManager {
     loadOne(reqPath) {
         if (!reqPath.endsWith(".js"))
             return null;
+        delete require.cache[require.resolve(reqPath)];
         const req = require(reqPath);
         let value = req.default ?? req;
         if (!value || !Object.keys(value).length)
@@ -107,7 +113,7 @@ class ApplicationCommandManager {
     validate(app) {
         const json = app.toJSON();
         if (json.options?.some(x => x.type === discord_js_1.ApplicationCommandOptionType.Subcommand || x.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup)) {
-            throw new Error(`Attempt to define subcommand / subcommand group without using path tree definition.`);
+            throw new Error("Attempt to define subcommand / subcommand group without using path tree definition.");
         }
     }
     resolve(value) {

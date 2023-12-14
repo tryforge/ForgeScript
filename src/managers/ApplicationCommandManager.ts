@@ -35,6 +35,7 @@ export class ApplicationCommandManager {
      *  - value is collection = group with subcommands
      */
     private commands = new Collection<string, ApplicationCommand | Collection<string, ApplicationCommand | Collection<string, ApplicationCommand>>>()
+    private path!: string
 
     public constructor(public readonly client: ForgeClient) {}
 
@@ -42,7 +43,12 @@ export class ApplicationCommandManager {
      * PATH TREE MATTERS
      * @param path 
      */
-    public load(path: string) {
+    public load(path: string = this.path) {
+        if (!path) return
+        
+        this.path ??= path
+        this.commands.clear()
+
         for (const mainPath of readdirSync(path)) {
             const resolved = join(path, mainPath)
             const stats = statSync(resolved)
@@ -118,6 +124,7 @@ export class ApplicationCommandManager {
 
     private loadOne(reqPath: string) {
         if (!reqPath.endsWith(".js")) return null
+        delete require.cache[require.resolve(reqPath)]
         const req = require(reqPath)
         let value = req.default ?? req
         if (!value || !Object.keys(value).length) return null
@@ -128,7 +135,7 @@ export class ApplicationCommandManager {
     private validate(app: ApplicationCommand) {
         const json = app.toJSON()
         if (json.options?.some(x => x.type === ApplicationCommandOptionType.Subcommand || x.type === ApplicationCommandOptionType.SubcommandGroup)) {
-            throw new Error(`Attempt to define subcommand / subcommand group without using path tree definition.`)
+            throw new Error("Attempt to define subcommand / subcommand group without using path tree definition.")
         }
     }
 
