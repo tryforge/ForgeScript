@@ -15,12 +15,13 @@ export declare class ApplicationCommandManager {
      *  - value is collection = group with subcommands
      */
     private commands;
+    private path;
     constructor(client: ForgeClient);
     /**
      * PATH TREE MATTERS
      * @param path
      */
-    load(path: string): void;
+    load(path?: string): void;
     get(input: CommandInteraction): ApplicationCommand | null;
     /**
      * **WARNING** This function does not allow subcommand & subcommand group options. Consider using ApplicationCommandManager#load to load a tree from a folder.
