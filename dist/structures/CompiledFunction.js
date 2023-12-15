@@ -16,6 +16,7 @@ const node_util_1 = require("node:util");
 class CompiledFunction {
     raw;
     static IdRegex = /^(\d{16,23})$/;
+    static URLRegex = /^http?s:\/\//;
     data;
     fn;
     constructor(raw) {
@@ -252,6 +253,15 @@ class CompiledFunction {
             return;
         const identifier = parsed.id ?? parsed.name;
         return reactions.cache.get(identifier);
+    }
+    resolveURL(ctx, arg, str, ref) {
+        if (!CompiledFunction.URLRegex.test(str)) {
+            const em = (0, discord_js_1.parseEmoji)(str);
+            if (em !== null)
+                return `https://cdn.discordapp.com/emojis/${em.id}.${em.animated ? "gif" : "png"}?size=128&quality=lossless`;
+            return;
+        }
+        return str;
     }
     resolveInvite(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))

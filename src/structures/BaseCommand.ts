@@ -74,24 +74,4 @@ export class BaseCommand<T> {
             )
         )
     }
-
-    private createExecutableCode() {
-        const code = new Array<string>(this.compiled.code.functions.length)
-        
-        for (let i = 0, len = this.compiled.code.functions.length;i < len;i++) {
-            code[i] = this.compiled.code.functions[i]["toExecutableCode"](i)
-        }
-
-        return eval(`
-        function main() {
-            return async function(runtime, ctx) {
-                const args = new Array(runtime.data.functions.length)
-                let rt, fn;
-                ${code.join("\n")}
-                return args
-            }
-        };
-        main()
-        `)
-    }
 }

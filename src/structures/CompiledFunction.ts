@@ -47,6 +47,7 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     public static readonly IdRegex = /^(\d{16,23})$/
+    public static readonly URLRegex = /^http?s:\/\//
 
     public readonly data: IExtendedCompiledFunction
     public readonly fn: NativeFunction<T, Unwrap>
@@ -322,6 +323,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const identifier = parsed.id ?? parsed.name
 
         return reactions.cache.get(identifier)
+    }
+
+    private resolveURL(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.URLRegex.test(str)) {
+            const em = parseEmoji(str)
+            if (em !== null) return `https://cdn.discordapp.com/emojis/${em.id}.${em.animated ? "gif" : "png"}?size=128&quality=lossless`
+            return
+        }
+
+        return str
     }
 
     private resolveInvite(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

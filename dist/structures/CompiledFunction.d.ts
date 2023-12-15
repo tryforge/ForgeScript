@@ -23,6 +23,7 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     private readonly raw;
     static readonly IdRegex: RegExp;
+    static readonly URLRegex: RegExp;
     readonly data: IExtendedCompiledFunction;
     readonly fn: NativeFunction<T, Unwrap>;
     constructor(raw: ICompiledFunction);
@@ -63,6 +64,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveGuildSticker;
     private resolveMember;
     private resolveReaction;
+    private resolveURL;
     private resolveInvite;
     private resolveWebhook;
     private resolveRole;
@@ -73,7 +75,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
     private fail;
-    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
+    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveURL" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
     private toExecutableCode;
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];

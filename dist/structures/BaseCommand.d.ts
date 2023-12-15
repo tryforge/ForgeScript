@@ -26,6 +26,5 @@ export declare class BaseCommand<T> {
     get name(): string | undefined;
     get type(): T;
     matchesInteractionType(i: Interaction): boolean;
-    private createExecutableCode;
 }
 //# sourceMappingURL=BaseCommand.d.ts.map
