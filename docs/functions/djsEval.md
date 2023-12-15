@@ -1,5 +1,5 @@
 # $djsEval
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Eval js code
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Evals given js code
 ## Usage
 ```
 $djsEval[...code]
@@ -23,7 +23,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$djsEval",
     version: "1.0.0",
-    description: "Eval js code",
+    description: "Evals given js code",
     unwrap: true,
     args: [
         {

@@ -6,7 +6,7 @@ const NativeFunction_1 = require("../structures/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$djsEval",
     version: "1.0.0",
-    description: "Eval js code",
+    description: "Evals given js code",
     unwrap: true,
     args: [
         {

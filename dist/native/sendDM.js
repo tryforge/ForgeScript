@@ -4,13 +4,13 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$sendDM",
     version: "1.0.0",
-    description: "Sends a dm to the user",
+    description: "Sends a DM to a user",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "user ID",
-            description: "The user to dm",
+            description: "The user to DM",
             rest: false,
             type: structures_1.ArgType.User,
             required: true,

@@ -6,7 +6,7 @@ import { Return } from "../structures/Return"
 export default new NativeFunction({
     name: "$djsEval",
     version: "1.0.0",
-    description: "Eval js code",
+    description: "Evals given js code",
     unwrap: true,
     args: [
         {

@@ -1,5 +1,5 @@
 # $oldInvite
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves old data from an event whose context was a invite instance
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves old data from an event whose context was an invite instance
 ## Usage
 ```
 $oldInvite[property;separator]
@@ -22,7 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$oldInvite",
     version: "1.0.3",
-    description: "Retrieves old data from an event whose context was a invite instance",
+    description: "Retrieves old data from an event whose context was an invite instance",
     brackets: true,
     unwrap: true,
     args: [

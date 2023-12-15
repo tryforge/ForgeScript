@@ -1,5 +1,5 @@
 # $replace
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Replace text in a string
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Replaces text in a string
 ## Usage
 ```
 $replace[text;match;new value;amount]
@@ -23,7 +23,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$replace",
     version: "1.0.0",
-    description: "Replace text in a string",
+    description: "Replaces text in a string",
     unwrap: true,
     args: [
         {

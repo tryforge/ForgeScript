@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$base",
     version: "1.1.0",
-    description: "Convert number from one base to another",
+    description: "Converts number from one base to another",
     brackets: true,
     unwrap: true,
     args: [

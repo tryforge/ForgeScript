@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$onlyIf",
     version: "1.0.0",
-    description: "Stop execution if condition is not matched",
+    description: "Stops execution if the condition is not matched",
     unwrap: false,
     brackets: true,
     args: [

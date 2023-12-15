@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$base",
     version: "1.1.0",
-    description: "Convert number from one base to another",
+    description: "Converts number from one base to another",
     brackets: true,
     unwrap: true,
     args: [

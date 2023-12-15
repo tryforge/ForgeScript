@@ -1,5 +1,5 @@
 # $else
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates a else statement
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates an else statement
 ## Usage
 ```
 $else[else]
@@ -26,7 +26,7 @@ import {
 export default new NativeFunction({
     name: "$else",
     version: "1.2.0",
-    description: "Creates a else statement",
+    description: "Creates an else statement",
     unwrap: true,
     args: [
         {

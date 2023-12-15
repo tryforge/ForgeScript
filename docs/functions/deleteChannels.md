@@ -1,5 +1,5 @@
 # $deleteChannels
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given channel ids, returns the count of channels deleted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Deletes given channel ids, returns the count of channels deleted
 ## Usage
 ```
 $deleteChannels[...channels]
@@ -24,7 +24,7 @@ export default new NativeFunction({
     version: "1.0.5",
     brackets: true,
     unwrap: true,
-    description: "Delete given channel ids, returns the count of channels deleted",
+    description: "Deletes given channel ids, returns the count of channels deleted",
     args: [
         {
             name: "channels",

@@ -1,5 +1,5 @@
 # $checkContains
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Checks whether a string contains a set of other trings
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Checks whether a string contains a set of other strings
 ## Usage
 ```
 $checkContains[text;...matches]
@@ -21,7 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$checkContains",
     version: "1.0.0",
-    description: "Checks whether a string contains a set of other trings",
+    description: "Checks whether a string contains a set of other strings",
     unwrap: true,
     args: [
         {

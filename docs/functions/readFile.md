@@ -1,5 +1,5 @@
 # $readFile
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> reads text from a file
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Reads text from a file
 ## Usage
 ```
 $readFile[path;encoding]
@@ -22,7 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$readFile",
     version: "1.0.0",
-    description: "reads text from a file",
+    description: "Reads text from a file",
     unwrap: true,
     brackets: true,
     args: [

@@ -1,5 +1,5 @@
 # $isTimedOut
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Whether an member is timed out
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether a member is timed out
 ## Usage
 ```
 $isTimedOut
@@ -25,7 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$isTimedOut",
     version: "1.0.0",
-    description: "Whether an member is timed out",
+    description: "Returns whether a member is timed out",
     unwrap: true,
     brackets: false,
     args: [

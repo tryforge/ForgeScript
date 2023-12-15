@@ -1,5 +1,5 @@
 # $ping
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> The current bot ping
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the current bot ping
 ## Usage
 ```
 $ping
@@ -17,7 +17,7 @@ import { NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$ping",
     version: "1.0.0",
-    description: "The current bot ping",
+    description: "Returns the current bot ping",
     unwrap: false,
     execute(ctx) {
         return this.success(ctx.client.ws.ping)

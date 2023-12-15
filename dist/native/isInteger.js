@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isInteger",
     version: "1.0.0",
-    description: "Whether the number is an integer",
+    description: "Returns whether the number is an integer",
     unwrap: true,
     args: [
         {

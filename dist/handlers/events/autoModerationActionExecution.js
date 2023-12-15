@@ -17,7 +17,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    description: "This event is fired when a automod is fired under a message",
+    description: "This event is fired when an automod is fired under a message",
     intents: ["Guilds", "AutoModerationExecution"],
 });
 //# sourceMappingURL=autoModerationActionExecution.js.map

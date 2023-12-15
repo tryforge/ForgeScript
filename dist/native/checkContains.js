@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$checkContains",
     version: "1.0.0",
-    description: "Checks whether a string contains a set of other trings",
+    description: "Checks whether a string contains a set of other strings",
     unwrap: true,
     args: [
         {

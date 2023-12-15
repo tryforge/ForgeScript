@@ -1,5 +1,5 @@
 # $deleteRoles
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given role ids, returns the count of roles deleted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Deletes given role ids, returns the count of roles deleted
 ## Usage
 ```
 $deleteRoles[guild ID;...roles]
@@ -24,7 +24,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Delete given role ids, returns the count of roles deleted",
+    description: "Deletes given role ids, returns the count of roles deleted",
     args: [
         {
             name: "guild ID",

@@ -1,5 +1,5 @@
 # $reactionMessageID
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> The message id of the reacted message
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the message id of the reacted message
 ## Usage
 ```
 $reactionMessageID
@@ -17,7 +17,7 @@ import { NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$reactionMessageID",
     version: "1.0.0",
-    description: "The message id of the reacted message",
+    description: "Returns the message id of the reacted message",
     unwrap: true,
     execute(ctx) {
         return this.success(ctx.reaction?.message.id)

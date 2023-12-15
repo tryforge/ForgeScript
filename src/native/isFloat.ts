@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$isFloat",
     version: "1.0.0",
-    description: "Whether the number is a float",
+    description: "Returns whether the number is a float",
     unwrap: true,
     args: [
         {

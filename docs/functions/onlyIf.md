@@ -1,5 +1,5 @@
 # $onlyIf
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Stop execution if condition is not matched
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Stops execution if the condition is not matched
 ## Usage
 ```
 $onlyIf[condition;code]
@@ -27,7 +27,7 @@ import {
 export default new NativeFunction({
     name: "$onlyIf",
     version: "1.0.0",
-    description: "Stop execution if condition is not matched",
+    description: "Stops execution if the condition is not matched",
     unwrap: false,
     brackets: true,
     args: [

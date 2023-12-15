@@ -1,5 +1,5 @@
 # $math
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Run math expression, returns nothing if incorrect expression
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Runs math expression, returns nothing if incorrect expression
 ## Usage
 ```
 $math[expr]
@@ -22,7 +22,7 @@ const MathRegex = /[^0-9%\-+./*\t\n\s()<>]/
 export default new NativeFunction({
     name: "$math",
     version: "1.0.0",
-    description: "Run math expression, returns nothing if incorrect expression",
+    description: "Runs math expression, returns nothing if incorrect expression",
     brackets: true,
     unwrap: true,
     args: [

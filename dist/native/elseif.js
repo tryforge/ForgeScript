@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$elseIf",
     version: "1.2.0",
-    description: "Creates a else if statement",
+    description: "Creates an else if statement",
     unwrap: false,
     args: [
         {
