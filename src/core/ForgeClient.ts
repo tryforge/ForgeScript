@@ -10,6 +10,7 @@ import { CooldownManager } from "../managers/CooldownManager"
 import { NativeCommandManager } from "../managers/NativeCommandManager"
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
 import { ThreadManager } from "../managers/ThreadManager"
+import { LogPriority, Logger } from "../structures/Logger"
 
 disableValidators()
 
@@ -22,6 +23,7 @@ export interface IForgeClientOptions extends ClientOptions {
     commands?: string
     events?: CommandType[]
     prefixes: string[]
+    logLevel?: LogPriority
     functions?: string
     allowBots?: boolean
     token?: string
@@ -65,13 +67,15 @@ export class ForgeClient extends Client<true> {
     }
 
     #init() {
+        if (this.options.logLevel !== undefined) Logger.Priority = this.options.logLevel
+
         if (this.options.useInviteSystem) InviteSystem["init"](this)
 
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i]
                 ext.init(this)
-                console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`)
+                Logger.info(`Extension ${ext.name} has been loaded! Version ${ext.version}`)
             }
         }
 

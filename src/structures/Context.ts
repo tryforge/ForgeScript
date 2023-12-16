@@ -21,6 +21,7 @@ import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../core/Interpreter"
 import noop from "../functions/noop"
 import { ForgeError } from "./ForgeError"
+import { Logger } from "./Logger"
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
@@ -189,10 +190,10 @@ export class Context {
     public handleNotSuccess(rt: Return) {
         if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
-            this.alert(log).catch(console.error.bind(null, log))
+            this.alert(log).catch(Logger.error.bind(null, log))
         } else if (rt.error) {
             const err = rt.value as ForgeError
-            this.alert(err.message).catch(console.error.bind(null, err))
+            this.alert(err.message).catch(Logger.error.bind(null, err))
         }
 
         return false

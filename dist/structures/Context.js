@@ -4,6 +4,7 @@ exports.Context = void 0;
 const discord_js_1 = require("discord.js");
 const Container_1 = require("./Container");
 const Return_1 = require("./Return");
+const Logger_1 = require("./Logger");
 class Context {
     runtime;
     #member;
@@ -140,11 +141,11 @@ class Context {
     handleNotSuccess(rt) {
         if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
-            this.alert(log).catch(console.error.bind(null, log));
+            this.alert(log).catch(Logger_1.Logger.error.bind(null, log));
         }
         else if (rt.error) {
             const err = rt.value;
-            this.alert(err.message).catch(console.error.bind(null, err));
+            this.alert(err.message).catch(Logger_1.Logger.error.bind(null, err));
         }
         return false;
     }

@@ -1,6 +1,7 @@
 import { Worker } from "worker_threads"
 import { ForgeClient, IRunnable } from "../core"
 import { once } from "events"
+import { Logger } from "../structures/Logger"
 
 export interface IThreadContext {
     code: string
@@ -98,14 +99,14 @@ export class ThreadManager {
     }
 
     private async onWorkerExit(worker: Worker, code: number) {
-        console.log(`Worker exited with code ${code}`)
+        Logger.debug(`Worker exited with code ${code}`)
         this.busy.delete(worker)
         this.available.delete(worker)
         await this.execute()
     }
 
     private async onWorkerError(worker: Worker, err: Error) {
-        console.log("Thread closed with err:", err)
+        Logger.debug("Thread closed with err:", err)
         this.busy.delete(worker)
         await this.execute()
     }

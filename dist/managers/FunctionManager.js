@@ -7,6 +7,7 @@ exports.FunctionManager = void 0;
 const NativeFunction_1 = require("../structures/NativeFunction");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const v8_1 = require("v8");
+const Logger_1 = require("../structures/Logger");
 class FunctionManager {
     static Functions = new Map();
     static loadNative() {
@@ -18,7 +19,7 @@ class FunctionManager {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
             if (this.Functions.has(req.name)) {
-                console.log(`Attempted to override already existing function ${req.name}`);
+                Logger_1.Logger.warn(`Attempted to override already existing function ${req.name}`);
                 continue;
             }
             this.Functions.set(req.name, req);

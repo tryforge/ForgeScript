@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_util_1 = require("node:util");
+const Logger_1 = require("../structures/Logger");
 exports.default = (...args) => {
-    console.error(...args.map(x => typeof x === "string" ? x : (0, node_util_1.inspect)(x, { colors: true, depth: Infinity })));
+    Logger_1.Logger.error(...args);
 };
 //# sourceMappingURL=noop.js.map

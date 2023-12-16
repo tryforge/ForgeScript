@@ -7,6 +7,7 @@ import { CooldownManager } from "../managers/CooldownManager";
 import { NativeCommandManager } from "../managers/NativeCommandManager";
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
 import { ThreadManager } from "../managers/ThreadManager";
+import { LogPriority } from "../structures/Logger";
 export interface IRestriction {
     guildIDs?: string[];
     userIDs?: string[];
@@ -15,6 +16,7 @@ export interface IForgeClientOptions extends ClientOptions {
     commands?: string;
     events?: CommandType[];
     prefixes: string[];
+    logLevel?: LogPriority;
     functions?: string;
     allowBots?: boolean;
     token?: string;

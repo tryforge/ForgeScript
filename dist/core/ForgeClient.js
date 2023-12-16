@@ -11,6 +11,7 @@ const CooldownManager_1 = require("../managers/CooldownManager");
 const NativeCommandManager_1 = require("../managers/NativeCommandManager");
 const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
 const ThreadManager_1 = require("../managers/ThreadManager");
+const Logger_1 = require("../structures/Logger");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -35,13 +36,15 @@ class ForgeClient extends discord_js_1.Client {
         this.#init();
     }
     #init() {
+        if (this.options.logLevel !== undefined)
+            Logger_1.Logger.Priority = this.options.logLevel;
         if (this.options.useInviteSystem)
             InviteSystem_1.InviteSystem["init"](this);
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i];
                 ext.init(this);
-                console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`);
+                Logger_1.Logger.info(`Extension ${ext.name} has been loaded! Version ${ext.version}`);
             }
         }
         FunctionManager_1.FunctionManager.loadNative();

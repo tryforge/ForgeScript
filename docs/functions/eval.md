@@ -18,6 +18,7 @@ send | Boolean | Whether to send as new message | No | No
 ```ts
 import { Compiler } from "../core/Compiler"
 import { Interpreter } from "../core/Interpreter"
+import { Logger } from "../structures/Logger"
 import { ArgType, NativeFunction } from "../structures/NativeFunction"
 import { Return } from "../structures/Return"
 
@@ -53,7 +54,7 @@ export default new NativeFunction({
 
             return result === null ? this.stop() : this.success(send ? undefined : result)
         } catch (error: unknown) {
-            console.error(error)
+            Logger.error(error)
             return this.err(error as Error)
         }
     },

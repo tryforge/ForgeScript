@@ -4,9 +4,11 @@ import { MyExtension } from "./ext"
 import { ActivityType, Events } from "discord.js"
 import { FunctionManager } from "../managers"
 import { Compiler } from "../core"
+import { LogPriority } from "../structures/Logger"
 config()
 
 const client = new ForgeClient({
+    logLevel: LogPriority.High,
     intents: [
         "Guilds",
         "MessageContent",

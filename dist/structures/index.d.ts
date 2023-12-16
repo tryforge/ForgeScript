@@ -12,4 +12,5 @@ export * from "./BaseEventHandler";
 export * from "./DiscordEventHandler";
 export * from "./InviteSystem";
 export * from "./ApplicationCommand";
+export * from "./Logger";
 //# sourceMappingURL=index.d.ts.map
