@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compiler = exports.Conditions = exports.Operators = exports.OperatorType = void 0;
 const CompiledFunction_1 = require("../structures/CompiledFunction");
 const ForgeError_1 = require("../structures/ForgeError");
+const discord_js_1 = require("discord.js");
 var OperatorType;
 (function (OperatorType) {
     OperatorType["Eq"] = "==";
@@ -38,7 +39,7 @@ class Compiler {
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
     static InvalidCharRegex = /(\$\{|`)/g;
-    static Functions = new Map();
+    static Functions = new discord_js_1.Collection();
     id = 0;
     matches;
     index = 0;
@@ -48,7 +49,7 @@ class Compiler {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index,
                 negated: !!x[1],
-                ...Compiler.Functions.get(`$${x[2]}`),
+                ...(Compiler.Functions.get(`$${x[2]}`) ?? Compiler.Functions.find(fn => fn.name.toLowerCase() === `$${x[2].toLowerCase()}`)),
             }));
         }
         else
@@ -281,7 +282,7 @@ class Compiler {
         this.Regex = new RegExp(`\\$(\\!)?(${Array.from(this.Functions.values())
             .sort((x, y) => y.name.length - x.name.length)
             .map((x) => x.name.slice(1))
-            .join("|")})`, "gm");
+            .join("|")})`, "gim");
     }
     static compile(code) {
         const result = new this(code).compile();

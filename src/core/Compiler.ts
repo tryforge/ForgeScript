@@ -1,6 +1,7 @@
 import { inspect } from "util"
 import { CompiledFunction } from "../structures/CompiledFunction"
 import { ErrorType, ForgeError } from "../structures/ForgeError"
+import { Collection } from "discord.js"
 
 export interface IRawField {
     condition?: boolean
@@ -107,7 +108,7 @@ export class Compiler {
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
-    private static Functions = new Map<string, IRawFunction>()
+    private static Functions = new Collection<string, IRawFunction>()
 
     private id = 0
     private matches: Array<IRawFunctionMatch>
@@ -119,7 +120,7 @@ export class Compiler {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
                 negated: !!x[1],
-                ...Compiler.Functions.get(`$${x[2]}`)!,
+                ...(Compiler.Functions.get(`$${x[2]}`) ?? Compiler.Functions.find(fn => fn.name.toLowerCase() === `$${x[2].toLowerCase()}`))!,
             }))
         } else this.matches = []
     }
@@ -398,7 +399,7 @@ export class Compiler {
                 .sort((x, y) => y.name.length - x.name.length)
                 .map((x) => x.name.slice(1))
                 .join("|")})`,
-            "gm"
+            "gim"
         )
     }
 
