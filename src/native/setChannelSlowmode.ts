@@ -11,7 +11,7 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The channel id to set its nsfw state",
+            description: "The channel id to set its slowmode",
             rest: false,
             check: (i: BaseChannel) => "setRateLimitPerUser" in i,
             type: ArgType.Channel,
