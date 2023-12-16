@@ -54,7 +54,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
 
-    #keywords: Record<string, string> = {}
+    #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}
 
     public readonly container = new Container()
@@ -231,7 +231,7 @@ export class Context {
         return delete this.#keywords[name]
     }
 
-    public setKeyword(name: string, value: string) {
+    public setKeyword(name: string, value: unknown) {
         return (this.#keywords[name] = value)
     }
 

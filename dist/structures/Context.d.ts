@@ -41,9 +41,9 @@ export declare class Context {
     setEnvironmentKey(name: string, value: unknown): unknown;
     deleteEnvironmentKey(name: string): boolean;
     getEnvironmentKey(...args: string[]): any;
-    getKeyword(name: string): string;
+    getKeyword(name: string): unknown;
     deleteKeyword(name: string): boolean;
-    setKeyword(name: string, value: string): string;
+    setKeyword(name: string, value: unknown): unknown;
     hasKeyword(name: string): boolean;
     clearKeywords(): void;
     clearEnvironment(): void;
