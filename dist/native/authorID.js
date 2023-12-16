@@ -6,7 +6,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     version: "1.0.0",
     description: "Retrieves a user's id",
     unwrap: true,
-    execute: async function (ctx) {
+    execute(ctx) {
         return this.success(ctx.user?.id);
     },
 });

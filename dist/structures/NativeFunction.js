@@ -29,8 +29,11 @@ var ArgType;
 })(ArgType || (exports.ArgType = ArgType = {}));
 class NativeFunction {
     data;
+    async;
     constructor(data) {
         this.data = data;
+        // @ts-ignore
+        this.async = data.execute[Symbol.toStringTag] === "AsyncFunction";
     }
     get name() {
         return this.data.name;

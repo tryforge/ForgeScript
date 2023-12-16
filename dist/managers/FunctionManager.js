@@ -22,6 +22,8 @@ class FunctionManager {
                 Logger_1.Logger.warn(`Attempted to override already existing function ${req.name}`);
                 continue;
             }
+            if (!req.data.args?.length)
+                req.data.unwrap = false;
             this.Functions.set(req.name, req);
         }
     }

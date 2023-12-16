@@ -23,6 +23,9 @@ export class FunctionManager {
                 continue
             }
 
+            if (!req.data.args?.length)
+                req.data.unwrap = false
+            
             this.Functions.set(req.name, req)
         }
     }

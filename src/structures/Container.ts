@@ -16,6 +16,7 @@ import {
     InteractionReplyOptions,
     Invite,
     Message,
+    MessageMentionOptions,
     MessageReaction,
     MessageReplyOptions,
     ModalBuilder,
@@ -62,7 +63,8 @@ export class Container {
     public fetchReply = false
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
-
+    public allowedMentions: MessageMentionOptions = {}
+    
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
@@ -139,6 +141,8 @@ export class Container {
         this.components.length = 0
         this.embeds.length = 0
         this.files.length = 0
+        
+        this.allowedMentions = {}
     }
 
     public getOptions<T>(content?: string): T {
@@ -148,6 +152,7 @@ export class Container {
                     content,
                 }
                 : {
+                    allowedMentions: this.allowedMentions,
                     reply: this.reference
                         ? {
                             messageReference: this.reference,

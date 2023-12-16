@@ -176,7 +176,12 @@ export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : []
 
 export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    public constructor(public readonly data: INativeFunction<T, Unwrap>) {}
+    public readonly async: boolean
+
+    public constructor(public readonly data: INativeFunction<T, Unwrap>) {
+        // @ts-ignore
+        this.async = data.execute[Symbol.toStringTag] === "AsyncFunction"
+    }
 
     public get name() {
         return this.data.name

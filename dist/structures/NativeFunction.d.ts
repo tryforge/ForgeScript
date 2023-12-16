@@ -85,6 +85,7 @@ export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];
 export declare class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     readonly data: INativeFunction<T, Unwrap>;
+    readonly async: boolean;
     constructor(data: INativeFunction<T, Unwrap>);
     get name(): string;
 }

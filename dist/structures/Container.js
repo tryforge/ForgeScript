@@ -21,6 +21,7 @@ class Container {
     fetchReply = false;
     modal;
     choices = new Array();
+    allowedMentions = {};
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -94,6 +95,7 @@ class Container {
         this.components.length = 0;
         this.embeds.length = 0;
         this.files.length = 0;
+        this.allowedMentions = {};
     }
     getOptions(content) {
         return (content
@@ -101,6 +103,7 @@ class Container {
                 content,
             }
             : {
+                allowedMentions: this.allowedMentions,
                 reply: this.reference
                     ? {
                         messageReference: this.reference,

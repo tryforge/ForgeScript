@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageReaction, MessageReplyOptions, ModalBuilder, Presence, Role, User, VoiceState, WebhookClient } from "discord.js";
+import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, Presence, Role, User, VoiceState, WebhookClient } from "discord.js";
 export type Sendable = null | Role | Presence | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite | AutoModerationActionExecution;
 export declare class Container {
     content?: string;
@@ -15,6 +15,7 @@ export declare class Container {
     fetchReply: boolean;
     modal?: ModalBuilder;
     choices: ApplicationCommandOptionChoiceData<string | number>[];
+    allowedMentions: MessageMentionOptions;
     send<T = unknown>(obj: Sendable, content?: string): Promise<T | null>;
     isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions): boolean;
     embed(index: number): EmbedBuilder;
