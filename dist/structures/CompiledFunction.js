@@ -74,14 +74,14 @@ class CompiledFunction {
     async resolveArgs(ctx) {
         const args = new Array(this.fn.data.args?.length ?? 0);
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields))
-            return this.success(args);
+            return this.unsafeSuccess(args);
         for (let i = 0, len = this.fn.data.args.length; i < len; i++) {
             const rt = await this.resolveUnhandledArg(ctx, i, args);
             if (!this.isValidReturnType(rt))
                 return rt;
             args[i] = rt.value;
         }
-        return this.success(args);
+        return this.unsafeSuccess(args);
     }
     async resolveMultipleArgs(ctx, ...indexes) {
         const args = new Array(indexes.length);
@@ -97,7 +97,7 @@ class CompiledFunction {
         }
         return {
             args,
-            return: this.success(),
+            return: this.unsafeSuccess(),
         };
     }
     /**
@@ -117,13 +117,13 @@ class CompiledFunction {
             const val = await this.resolveArg(ctx, arg, field, resolved.value, ref);
             if (!this.isValidReturnType(val))
                 return val;
-            return this.success(val.value);
+            return this.unsafeSuccess(val.value);
         }
         else {
             const fields = this.data.fields?.slice(i);
             const values = new Array();
             if (!fields?.length) {
-                return this.success(values);
+                return this.unsafeSuccess(values);
             }
             for (let x = 0, len = fields.length; x < len; x++) {
                 // Assertion because condition fields should never be executed with unwraps.
@@ -136,7 +136,7 @@ class CompiledFunction {
                     return val;
                 values[x] = val.value;
             }
-            return this.success(values);
+            return this.unsafeSuccess(values);
         }
     }
     async resolveCondition(ctx, field) {
@@ -144,19 +144,19 @@ class CompiledFunction {
         if (!this.isValidReturnType(lhs))
             return lhs;
         if (field.rhs === undefined) {
-            return this.success(field.resolve(lhs.value, null));
+            return this.unsafeSuccess(field.resolve(lhs.value, null));
         }
         const rhs = await this.resolveCode(ctx, field.rhs);
         if (!this.isValidReturnType(rhs))
             return rhs;
-        return this.success(field.resolve(lhs.value, rhs.value));
+        return this.unsafeSuccess(field.resolve(lhs.value, rhs.value));
     }
     async resolveCode(ctx, { resolve: resolver, functions } = {}) {
         if (!resolver || !functions)
-            return this.success(null);
+            return this.unsafeSuccess(null);
         const args = new Array(functions.length);
         if (functions.length === 0)
-            return this.success(resolver(args));
+            return this.unsafeSuccess(resolver(args));
         for (let i = 0, len = functions.length; i < len; i++) {
             const fn = functions[i];
             const rt = await fn.execute(ctx);
@@ -164,7 +164,7 @@ class CompiledFunction {
                 return rt;
             args[i] = rt.value;
         }
-        return this.success(resolver(args));
+        return this.unsafeSuccess(resolver(args));
     }
     argTypeRejection(arg, value) {
         return this.err(this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]));
@@ -282,7 +282,7 @@ class CompiledFunction {
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
         if (!arg.required && !value) {
-            return this.success(value ?? null);
+            return this.unsafeSuccess(value ?? null);
         }
         if (field !== undefined) {
             field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)];
@@ -297,7 +297,7 @@ class CompiledFunction {
         }
         if (arg.check !== undefined && !arg.check(value))
             return this.argTypeRejection(arg, strValue);
-        return this.success(value ?? null);
+        return this.unsafeSuccess(value ?? null);
     }
     get hasFields() {
         return this.data.fields !== null;
@@ -333,16 +333,6 @@ class CompiledFunction {
     static toResolveArgString(type) {
         return `resolve${NativeFunction_1.ArgType[type]}`;
     }
-    toExecutableCode(index) {
-        return `
-        fn = runtime.data.functions[${index}]
-        rt = await fn.execute(ctx)
-
-        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-
-        args[${index}] = fn.data.negated ? null : rt.value
-        `;
-    }
     getFunction(fieldIndex, ref) {
         return this.getFunctions(fieldIndex, ref)?.[0];
     }
@@ -365,10 +355,13 @@ class CompiledFunction {
         return new Return_1.Return(Return_1.ReturnType.Continue, null);
     }
     successJSON(value) {
-        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
+        return this.unsafeSuccess(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
     }
     successFormatted(value) {
-        return this.success(typeof value !== "string" ? (0, node_util_1.inspect)(value, { depth: Infinity }) : value);
+        return this.unsafeSuccess(typeof value !== "string" ? (0, node_util_1.inspect)(value, { depth: Infinity }) : value);
+    }
+    unsafeSuccess(value = null) {
+        return new Return_1.Return(Return_1.ReturnType.Success, value);
     }
     success(value = null) {
         return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : value);

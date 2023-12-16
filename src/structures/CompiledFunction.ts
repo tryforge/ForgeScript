@@ -115,7 +115,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const args = new Array(this.fn.data.args?.length ?? 0) as UnwrapArgs<T>
 
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields))
-            return this.success(args)
+            return this.unsafeSuccess(args)
 
         for (let i = 0, len = this.fn.data.args.length; i < len; i++) {
             const rt = await this.resolveUnhandledArg(ctx, i, args)
@@ -123,7 +123,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             args[i] = rt.value as UnwrapArgs<T>[number]
         }
 
-        return this.success(args)
+        return this.unsafeSuccess(args)
     }
 
     private async resolveMultipleArgs<X extends [...number[]]>(
@@ -145,7 +145,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
         return {
             args,
-            return: this.success(),
+            return: this.unsafeSuccess(),
         }
     }
 
@@ -166,13 +166,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
             const val = await this.resolveArg(ctx, arg, field, resolved.value, ref as UnwrapArgs<T>)
             if (!this.isValidReturnType(val)) return val
-            return this.success(val.value)
+            return this.unsafeSuccess(val.value)
         } else {
             const fields = this.data.fields?.slice(i)
             const values = new Array()
 
             if (!fields?.length) {
-                return this.success(values)
+                return this.unsafeSuccess(values)
             }
 
             for (let x = 0, len = fields.length; x < len; x++) {
@@ -187,7 +187,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 values[x] = val.value as UnwrapArgs<T>[number]
             }
 
-            return this.success(values)
+            return this.unsafeSuccess(values)
         }
     }
 
@@ -196,23 +196,23 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!this.isValidReturnType(lhs)) return lhs
 
         if (field.rhs === undefined) {
-            return this.success(field.resolve(lhs.value, null))
+            return this.unsafeSuccess(field.resolve(lhs.value, null))
         }
 
         const rhs = await this.resolveCode(ctx, field.rhs)
         if (!this.isValidReturnType(rhs)) return rhs
 
-        return this.success(field.resolve(lhs.value, rhs.value))
+        return this.unsafeSuccess(field.resolve(lhs.value, rhs.value))
     }
 
     private async resolveCode(
         ctx: Context,
         { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}
     ): Promise<Return> {
-        if (!resolver || !functions) return this.success(null)
+        if (!resolver || !functions) return this.unsafeSuccess(null)
 
         const args = new Array(functions.length)
-        if (functions.length === 0) return this.success(resolver(args))
+        if (functions.length === 0) return this.unsafeSuccess(resolver(args))
 
         for (let i = 0, len = functions.length; i < len; i++) {
             const fn = functions[i]
@@ -221,7 +221,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             args[i] = rt.value
         }
 
-        return this.success(resolver(args))
+        return this.unsafeSuccess(resolver(args))
     }
 
     private argTypeRejection(arg: IArg, value: unknown) {
@@ -363,7 +363,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         const strValue = `${value}`
 
         if (!arg.required && !value) {
-            return this.success(value ?? null)
+            return this.unsafeSuccess(value ?? null)
         }
 
         if (field !== undefined) {
@@ -381,7 +381,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
         if (arg.check !== undefined && !arg.check(value)) return this.argTypeRejection(arg, strValue)
 
-        return this.success(value ?? null)
+        return this.unsafeSuccess(value ?? null)
     }
 
     public get hasFields() {
@@ -424,17 +424,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return `resolve${ArgType[type] as keyof typeof ArgType}` as const
     }
 
-    private toExecutableCode(index: number) {
-        return `
-        fn = runtime.data.functions[${index}]
-        rt = await fn.execute(ctx)
-
-        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-
-        args[${index}] = fn.data.negated ? null : rt.value
-        `
-    }
-
     public getFunction(fieldIndex: number, ref: NativeFunction) {
         return this.getFunctions(fieldIndex, ref)?.[0] as CompiledFunction | undefined
     }
@@ -464,11 +453,15 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public successJSON(value: ReturnValue<ReturnType.Success>) {
-        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
+        return this.unsafeSuccess(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
     }
 
     public successFormatted(value: ReturnValue<ReturnType.Success>) {
-        return this.success(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
+        return this.unsafeSuccess(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
+    }
+
+    public unsafeSuccess(value: ReturnValue<ReturnType.Success> = null) {
+        return new Return(ReturnType.Success, value)
     }
 
     public success(value: ReturnValue<ReturnType.Success> = null) {
