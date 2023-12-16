@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$enableUserMentions",
+    version: "1.3.0",
     description: "Only parses these users for mentions",
     unwrap: true,
     brackets: true,
