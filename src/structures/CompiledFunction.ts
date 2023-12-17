@@ -1,4 +1,5 @@
 import {
+    AttachmentBuilder,
     BaseChannel,
     ForumChannel,
     Guild,
@@ -23,6 +24,8 @@ import { Return, ReturnType, ReturnValue } from "./Return"
 import { TimeParser } from "../constants"
 import { resolveColor as any2int } from "../functions/hex"
 import { inspect } from "node:util"
+import { fetch } from "undici"
+import { existsSync } from "node:fs"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -48,6 +51,7 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     public static readonly IdRegex = /^(\d{16,23})$/
     public static readonly URLRegex = /^http?s:\/\//
+    public static readonly CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/
 
     public readonly data: IExtendedCompiledFunction
     public readonly fn: NativeFunction<T, Unwrap>
@@ -296,6 +300,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveGuildEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
+        if (fromUrl !== null) 
+            return ctx.client.emojis.cache.get(fromUrl[2])
+
         const parsed = parseEmoji(str)
         const id = parsed?.id ?? str
         return ctx.client.emojis.cache.get(id)
@@ -306,8 +314,31 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveGuildSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
+        if (fromUrl !== null)
+            return ((ref[arg.pointer!] ?? ctx.guild) as Guild).stickers.fetch(fromUrl[2])
+
         if (!CompiledFunction.IdRegex.test(str)) return
         return ((ref[arg.pointer!] ?? ctx.guild) as Guild).stickers.fetch(str).catch(noop)
+    }
+
+    private async resolveAttachment(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const splits = str.split(/(\\\\|\/)/)
+
+        if (CompiledFunction.URLRegex.test(str)) {
+            const name = splits[splits.length - 1] ?? splits[splits.length - 2]
+            const buffer = await fetch(str).then(x => x.arrayBuffer())
+            return new AttachmentBuilder(Buffer.from(buffer), {
+                name
+            })
+        }
+
+        const exists = existsSync(str)
+        const name = exists ? splits[splits.length - 1] ?? splits[splits.length - 2] : null
+        
+        return new AttachmentBuilder(exists ? str : Buffer.from(str, "utf-8"), {
+            name: name ?? undefined
+        })
     }
 
     private resolveMember(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

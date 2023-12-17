@@ -1,4 +1,5 @@
 import {
+    AttachmentBuilder,
     BaseChannel,
     Emoji,
     Guild,
@@ -41,6 +42,7 @@ export enum ArgType {
     ForumTag,
     GuildEmoji,
     Boolean,
+    Attachment,
     Reaction,
     Message,
     Channel,
@@ -131,6 +133,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? number 
     : T extends ArgType.Role
     ? Role
+    : T extends ArgType.Attachment
+    ? AttachmentBuilder
     : T extends ArgType.BigInt
     ? bigint
     : T extends ArgType.Boolean

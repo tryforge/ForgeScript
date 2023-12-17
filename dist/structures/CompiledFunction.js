@@ -13,10 +13,13 @@ const Return_1 = require("./Return");
 const constants_1 = require("../constants");
 const hex_1 = require("../functions/hex");
 const node_util_1 = require("node:util");
+const undici_1 = require("undici");
+const node_fs_1 = require("node:fs");
 class CompiledFunction {
     raw;
     static IdRegex = /^(\d{16,23})$/;
     static URLRegex = /^http?s:\/\//;
+    static CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/;
     data;
     fn;
     constructor(raw) {
@@ -229,6 +232,9 @@ class CompiledFunction {
         return ctx.client.users.fetch(str).catch(noop_1.default);
     }
     resolveGuildEmoji(ctx, arg, str, ref) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
+        if (fromUrl !== null)
+            return ctx.client.emojis.cache.get(fromUrl[2]);
         const parsed = (0, discord_js_1.parseEmoji)(str);
         const id = parsed?.id ?? str;
         return ctx.client.emojis.cache.get(id);
@@ -237,9 +243,27 @@ class CompiledFunction {
         return ref[arg.pointer].availableTags.find((x) => x.id === str || x.name === str);
     }
     resolveGuildSticker(ctx, arg, str, ref) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
+        if (fromUrl !== null)
+            return (ref[arg.pointer] ?? ctx.guild).stickers.fetch(fromUrl[2]);
         if (!CompiledFunction.IdRegex.test(str))
             return;
         return (ref[arg.pointer] ?? ctx.guild).stickers.fetch(str).catch(noop_1.default);
+    }
+    async resolveAttachment(ctx, arg, str, ref) {
+        const splits = str.split(/(\\\\|\/)/);
+        if (CompiledFunction.URLRegex.test(str)) {
+            const name = splits[splits.length - 1] ?? splits[splits.length - 2];
+            const buffer = await (0, undici_1.fetch)(str).then(x => x.arrayBuffer());
+            return new discord_js_1.AttachmentBuilder(Buffer.from(buffer), {
+                name
+            });
+        }
+        const exists = (0, node_fs_1.existsSync)(str);
+        const name = exists ? splits[splits.length - 1] ?? splits[splits.length - 2] : null;
+        return new discord_js_1.AttachmentBuilder(exists ? str : Buffer.from(str, "utf-8"), {
+            name: name ?? undefined
+        });
     }
     resolveMember(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
