@@ -18,6 +18,7 @@ class Container {
     update = false;
     files = new Array();
     channel;
+    stickers = new Array();
     fetchReply = false;
     modal;
     choices = new Array();
@@ -68,7 +69,8 @@ class Container {
         return result;
     }
     isValidMessage(options) {
-        return (!!options.content?.trim() ||
+        return (!!options.stickers?.length ||
+            !!options.content?.trim() ||
             !!options.embeds?.length ||
             !!options.stickers?.length ||
             !!options.files?.length ||
@@ -91,6 +93,7 @@ class Container {
         this.ephemeral = false;
         this.fetchReply = false;
         this.edit = false;
+        this.stickers.length = 0;
         this.choices.length = 0;
         this.components.length = 0;
         this.embeds.length = 0;
@@ -112,6 +115,7 @@ class Container {
                     : undefined,
                 files: this.files,
                 ephemeral: this.ephemeral,
+                stickers: this.stickers,
                 content: this.content || null,
                 components: this.components,
                 embeds: this.embeds,

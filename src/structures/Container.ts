@@ -22,6 +22,7 @@ import {
     ModalBuilder,
     Presence,
     Role,
+    StickerResolvable,
     TextInputBuilder,
     User,
     VoiceState,
@@ -60,6 +61,7 @@ export class Container {
     public update = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
+    public stickers = new Array<StickerResolvable>()
     public fetchReply = false
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
@@ -109,6 +111,7 @@ export class Container {
 
     public isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions) {
         return (
+            !!options.stickers?.length ||
             !!options.content?.trim() ||
             !!options.embeds?.length ||
             !!options.stickers?.length ||
@@ -137,6 +140,7 @@ export class Container {
         this.fetchReply = false
         this.edit = false
 
+        this.stickers.length = 0
         this.choices.length = 0
         this.components.length = 0
         this.embeds.length = 0
@@ -161,6 +165,7 @@ export class Container {
                         : undefined,
                     files: this.files,
                     ephemeral: this.ephemeral,
+                    stickers: this.stickers,
                     content: this.content || null,
                     components: this.components,
                     embeds: this.embeds,

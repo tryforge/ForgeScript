@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, Presence, Role, User, VoiceState, WebhookClient } from "discord.js";
+import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, Presence, Role, StickerResolvable, User, VoiceState, WebhookClient } from "discord.js";
 export type Sendable = null | Role | Presence | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite | AutoModerationActionExecution;
 export declare class Container {
     content?: string;
@@ -12,6 +12,7 @@ export declare class Container {
     update: boolean;
     files: AttachmentBuilder[];
     channel?: Channel;
+    stickers: StickerResolvable[];
     fetchReply: boolean;
     modal?: ModalBuilder;
     choices: ApplicationCommandOptionChoiceData<string | number>[];
