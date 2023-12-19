@@ -74,8 +74,7 @@ export class ForgeClient extends Client<true> {
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i]
-                ext.init(this)
-                Logger.info(`Extension ${ext.name} has been loaded! Version ${ext.version}`)
+                ext["validateAndInit"](this)
             }
         }
 
@@ -97,6 +96,10 @@ export class ForgeClient extends Client<true> {
 
     get<T>(key: string) {
         return this[key] as T
+    }
+
+    public get version() {
+        return require("../../package.json").version as string
     }
 
     public canRespondToBots(cmd: BaseCommand<any>): boolean {

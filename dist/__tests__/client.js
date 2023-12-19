@@ -33,7 +33,7 @@ const client = new ForgeClient_1.ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: [],
+    extensions: []
 });
 console.log("Started");
 client.commands.add({

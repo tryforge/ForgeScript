@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = exports.LogType = exports.LogPriority = void 0;
-const cli_color_1 = __importDefault(require("cli-color"));
+const chalk_1 = __importDefault(require("chalk"));
 const util_1 = require("util");
 var LogPriority;
 (function (LogPriority) {
@@ -39,12 +39,12 @@ var LogType;
 class Logger {
     static Priority = LogPriority.Medium;
     static Colors = {
-        [LogType.Debug]: cli_color_1.default.whiteBright.bold,
-        [LogType.Error]: cli_color_1.default.red.bold,
-        [LogType.Warn]: cli_color_1.default.yellow.bold,
-        [LogType.Info]: cli_color_1.default.cyan.bold
+        [LogType.Debug]: chalk_1.default.whiteBright.bold,
+        [LogType.Error]: chalk_1.default.red.bold,
+        [LogType.Warn]: chalk_1.default.yellow.bold,
+        [LogType.Info]: chalk_1.default.cyan.bold
     };
-    static DateColor = cli_color_1.default.green.bold;
+    static DateColor = chalk_1.default.green.bold;
     static log(priority, type, ...args) {
         if (this.Priority < priority)
             return;

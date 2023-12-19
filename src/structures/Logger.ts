@@ -1,4 +1,4 @@
-import clc from "cli-color"
+import clc, { Chalk } from "chalk"
 import { inspect } from "util"
 
 export enum LogPriority {
@@ -42,7 +42,7 @@ export class Logger {
         [LogType.Error]: clc.red.bold,
         [LogType.Warn]: clc.yellow.bold,
         [LogType.Info]: clc.cyan.bold
-    } satisfies Record<LogType, clc.Format>
+    } satisfies Record<LogType, Chalk>
     public static readonly DateColor = clc.green.bold
 
     private static log(priority: LogPriority, type: LogType, ...args: unknown[]) {

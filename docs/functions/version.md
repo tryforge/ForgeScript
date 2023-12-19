@@ -19,8 +19,8 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the package version you're using",
     unwrap: false,
-    execute() {
-        return this.success(require("../../package.json").version)
+    execute(ctx) {
+        return this.success(ctx.client.version)
     },
 })
 

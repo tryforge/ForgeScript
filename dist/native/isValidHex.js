@@ -6,6 +6,7 @@ exports.MaxHexIntValue = 0xffffff;
 exports.MinHexIntValue = 0;
 exports.default = new structures_1.NativeFunction({
     name: "$isValidHex",
+    version: "1.3.0",
     description: "The value to check for",
     unwrap: true,
     brackets: true,

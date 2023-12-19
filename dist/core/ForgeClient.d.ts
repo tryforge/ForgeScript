@@ -42,6 +42,7 @@ export declare class ForgeClient extends Client<true> {
     [x: PropertyKey]: unknown;
     constructor(options: IForgeClientOptions);
     get<T>(key: string): T;
+    get version(): string;
     canRespondToBots(cmd: BaseCommand<any>): boolean;
     login(token?: string | undefined): Promise<string>;
 }

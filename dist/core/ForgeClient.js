@@ -43,8 +43,7 @@ class ForgeClient extends discord_js_1.Client {
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i];
-                ext.init(this);
-                Logger_1.Logger.info(`Extension ${ext.name} has been loaded! Version ${ext.version}`);
+                ext["validateAndInit"](this);
             }
         }
         FunctionManager_1.FunctionManager.loadNative();
@@ -61,6 +60,9 @@ class ForgeClient extends discord_js_1.Client {
     }
     get(key) {
         return this[key];
+    }
+    get version() {
+        return require("../../package.json").version;
     }
     canRespondToBots(cmd) {
         return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined);
