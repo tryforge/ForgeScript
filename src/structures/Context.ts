@@ -86,7 +86,6 @@ export class Context {
     }
 
     public get member() {
-        if (!this.obj) return null
         return (this.#member ??=
             this.obj instanceof GuildMember
                 ? this.obj
@@ -96,24 +95,18 @@ export class Context {
     }
 
     public get emoji() {
-        if (!this.obj) return null
-
         return (this.#emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
     }
 
     public get role() {
-        if (!this.obj) return null
         return (this.#role ??= this.obj instanceof Role ? this.obj : null)
     }
 
     public get reaction() {
-        if (!this.obj) return null
-
         return (this.#reaction ??= this.obj instanceof MessageReaction ? this.obj : null)
     }
 
     public get message() {
-        if (!this.obj) return null
         return (this.#message ??=
             "message" in this.obj && this.obj.message
                 ? (this.obj.message as Message)
@@ -123,12 +116,10 @@ export class Context {
     }
 
     public get interaction() {
-        if (!this.obj) return null
-        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj : null)
+        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj as Interaction : null)
     }
 
     public get user() {
-        if (!this.obj) return null
         return (this.#user ??=
             "user" in this.obj
                 ? this.obj.user
@@ -142,7 +133,6 @@ export class Context {
     }
 
     public get guild() {
-        if (!this.obj) return null
         return (this.#guild ??=
             "guild" in this.obj
                 ? (this.obj.guild as Guild)
@@ -154,7 +144,6 @@ export class Context {
     }
 
     public get channel() {
-        if (!this.obj) return null
         return (this.#channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
@@ -266,5 +255,9 @@ export class Context {
 
     public get<T>(key: PropertyKey) {
         return this[key] as T
+    }
+
+    private error() {
+        throw null
     }
 }

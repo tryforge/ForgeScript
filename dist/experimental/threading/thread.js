@@ -15,7 +15,7 @@ worker_threads_1.parentPort?.on("message", async (ctx) => {
         keywords: ctx.keywords,
         environment: ctx.environment,
         data: cmd.compiled.code,
-        obj: null
+        obj: {}
     });
     worker_threads_1.parentPort?.postMessage({
         taskId: ctx.taskId,

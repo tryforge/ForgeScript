@@ -88,7 +88,10 @@ client.commands.add({
 client.commands.add({
     name: "djs",
     type: "messageCreate",
-    code: "$djsEval[$message]",
+    code: `
+    $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
+$if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\n\`\`\`json\n$get[text]\n\`\`\`]
+ `,
 })
 
 client.commands.add({

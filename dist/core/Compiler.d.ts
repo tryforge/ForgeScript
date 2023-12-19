@@ -100,5 +100,6 @@ export declare class Compiler {
     private next;
     static setFunctions(fns: IRawFunction[]): void;
     static compile(code?: string): IExtendedCompilationResult;
+    static setSyntax(syntax: typeof this.Syntax): void;
 }
 //# sourceMappingURL=Compiler.d.ts.map

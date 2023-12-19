@@ -4,6 +4,7 @@ import {
     ApplicationCommandOptionChoiceData,
     AttachmentBuilder,
     AutoModerationActionExecution,
+    AutocompleteInteraction,
     BaseChannel,
     BaseInteraction,
     Channel,
@@ -33,7 +34,7 @@ import { ForgeClient } from "../core"
 import { RawMessageData } from "discord.js/typings/rawDataTypes"
 
 export type Sendable =
-    | null
+    | {}
     | Role
     | Presence
     | Message
@@ -94,7 +95,7 @@ export class Container {
                         )
                 }
             } else {
-                res = obj.respond(this.choices)
+                res = (obj as AutocompleteInteraction).respond(this.choices)
             }
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
             res = obj.send(options)
@@ -165,7 +166,7 @@ export class Container {
                         : undefined,
                     files: this.files,
                     ephemeral: this.ephemeral,
-                    stickers: this.stickers,
+                    stickers: this.stickers.length === 0 ? undefined : this.stickers,
                     content: this.content || null,
                     components: this.components,
                     embeds: this.embeds,

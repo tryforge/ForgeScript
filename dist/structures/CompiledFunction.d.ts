@@ -89,5 +89,6 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     successFormatted(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     unsafeSuccess(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     success(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    private toExecutableCode;
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map

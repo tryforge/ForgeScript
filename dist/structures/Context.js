@@ -46,8 +46,6 @@ class Context {
         return this.#automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
     }
     get member() {
-        if (!this.obj)
-            return null;
         return (this.#member ??=
             this.obj instanceof discord_js_1.GuildMember
                 ? this.obj
@@ -56,23 +54,15 @@ class Context {
                     : null);
     }
     get emoji() {
-        if (!this.obj)
-            return null;
         return (this.#emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
     }
     get role() {
-        if (!this.obj)
-            return null;
         return (this.#role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
     }
     get reaction() {
-        if (!this.obj)
-            return null;
         return (this.#reaction ??= this.obj instanceof discord_js_1.MessageReaction ? this.obj : null);
     }
     get message() {
-        if (!this.obj)
-            return null;
         return (this.#message ??=
             "message" in this.obj && this.obj.message
                 ? this.obj.message
@@ -81,13 +71,9 @@ class Context {
                     : null);
     }
     get interaction() {
-        if (!this.obj)
-            return null;
         return (this.#interaction ??= this.obj instanceof discord_js_1.BaseInteraction ? this.obj : null);
     }
     get user() {
-        if (!this.obj)
-            return null;
         return (this.#user ??=
             "user" in this.obj
                 ? this.obj.user
@@ -100,8 +86,6 @@ class Context {
                             : null);
     }
     get guild() {
-        if (!this.obj)
-            return null;
         return (this.#guild ??=
             "guild" in this.obj
                 ? this.obj.guild
@@ -112,8 +96,6 @@ class Context {
                         : null);
     }
     get channel() {
-        if (!this.obj)
-            return null;
         return (this.#channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
@@ -203,6 +185,9 @@ class Context {
     }
     get(key) {
         return this[key];
+    }
+    error() {
+        throw null;
     }
 }
 exports.Context = Context;

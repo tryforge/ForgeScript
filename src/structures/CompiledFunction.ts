@@ -9,6 +9,7 @@ import {
     parseEmoji,
 } from "discord.js"
 import {
+    Compiler,
     ICompiledFunction,
     ICompiledFunctionConditionField,
     ICompiledFunctionField,
@@ -497,5 +498,47 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     public success(value: ReturnValue<ReturnType.Success> = null) {
         return new Return(ReturnType.Success, this.data.negated ? null : value)
+    }
+
+    private toExecutableCode(index: number, previousStore = "args", previousStoreFn = "ctx.runtime.data.functions"): string {
+        if (!this.fn.data.unwrap || !this.data.fields?.length) {
+            return `
+            rt = await ${previousStoreFn}[${index}].execute(ctx)
+            if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+            ${previousStore}[${index}] = rt.value
+            `
+        }
+
+        const store = `${previousStore}_${this.data.name}_${index}`
+        const storeFn = `${store}_fn`
+
+        return `
+        const ${storeFn} = ${previousStoreFn}[${index}]
+        const ${store} = new Array(${this.data.fields!.length})
+        ${
+            this.data.fields!.map((x, i) => {
+                const field = x as IExtendedCompiledFunctionField
+                const isRest = this.fn.data.args![i]?.rest !== false
+                const nextStore = `${store}_args`
+                const nextStoreFn = `${storeFn}.data.fields[${i}].functions` 
+
+                let matches = 0
+                return `
+                ${field.functions.length ? `const ${nextStore} = new Array(${field.functions.length})` : ""}
+                ${field.functions.map((x, i) => x.toExecutableCode(i, nextStore, nextStoreFn)).join("\n")}
+                ${
+    `${store}[${i}] = ${
+        isRest ? nextStore : `\`${field.value.replace(Compiler["SystemRegex"], (match) => {
+            return `\${${nextStore}[${matches++}] ?? ""}`
+        }).replaceAll("`", "\\`")}\``
+    }`
+}
+                `
+            }).join("\n")
+}
+        rt = await ${storeFn}.execute(ctx, ${store})
+        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+        ${previousStore}[${index}] = rt.value
+        `
     }
 }

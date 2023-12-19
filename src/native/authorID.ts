@@ -5,7 +5,7 @@ export default new NativeFunction({
     name: "$authorID",
     version: "1.0.0",
     description: "Retrieves a user's id",
-    unwrap: true,
+    unwrap: false,
     execute(ctx) {
         return this.success(ctx.user?.id)
     },

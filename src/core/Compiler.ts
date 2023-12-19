@@ -410,4 +410,8 @@ export class Compiler {
             functions: result.functions.map((x) => new CompiledFunction(x)),
         }
     }
+
+    public static setSyntax(syntax: typeof this.Syntax) {
+        Reflect.set(Compiler, "Syntax", syntax)
+    }
 }

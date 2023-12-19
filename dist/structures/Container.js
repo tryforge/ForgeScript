@@ -115,7 +115,7 @@ class Container {
                     : undefined,
                 files: this.files,
                 ephemeral: this.ephemeral,
-                stickers: this.stickers,
+                stickers: this.stickers.length === 0 ? undefined : this.stickers,
                 content: this.content || null,
                 components: this.components,
                 embeds: this.embeds,

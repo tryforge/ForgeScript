@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompiledFunction = void 0;
 const discord_js_1 = require("discord.js");
+const Compiler_1 = require("../core/Compiler");
 const noop_1 = __importDefault(require("../functions/noop"));
 const FunctionManager_1 = require("../managers/FunctionManager");
 const ForgeError_1 = require("./ForgeError");
@@ -389,6 +390,38 @@ class CompiledFunction {
     }
     success(value = null) {
         return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : value);
+    }
+    toExecutableCode(index, previousStore = "args", previousStoreFn = "ctx.runtime.data.functions") {
+        if (!this.fn.data.unwrap || !this.data.fields?.length) {
+            return `
+            rt = await ${previousStoreFn}[${index}].execute(ctx)
+            if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+            ${previousStore}[${index}] = rt.value
+            `;
+        }
+        const store = `${previousStore}_${this.data.name}_${index}`;
+        const storeFn = `${store}_fn`;
+        return `
+        const ${storeFn} = ${previousStoreFn}[${index}]
+        const ${store} = new Array(${this.data.fields.length})
+        ${this.data.fields.map((x, i) => {
+            const field = x;
+            const isRest = this.fn.data.args[i]?.rest !== false;
+            const nextStore = `${store}_args`;
+            const nextStoreFn = `${storeFn}.data.fields[${i}].functions`;
+            let matches = 0;
+            return `
+                ${field.functions.length ? `const ${nextStore} = new Array(${field.functions.length})` : ""}
+                ${field.functions.map((x, i) => x.toExecutableCode(i, nextStore, nextStoreFn)).join("\n")}
+                ${`${store}[${i}] = ${isRest ? nextStore : `\`${field.value.replace(Compiler_1.Compiler["SystemRegex"], (match) => {
+                return `\${${nextStore}[${matches++}] ?? ""}`;
+            }).replaceAll("`", "\\`")}\``}`}
+                `;
+        }).join("\n")}
+        rt = await ${storeFn}.execute(ctx, ${store})
+        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
+        ${previousStore}[${index}] = rt.value
+        `;
     }
 }
 exports.CompiledFunction = CompiledFunction;

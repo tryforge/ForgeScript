@@ -3,6 +3,7 @@ import { EventManager, FunctionManager, NativeEventName } from "./managers"
 import generateFunctionDoc from "./functions/generateFunctionDoc"
 import { execSync } from "child_process"
 import { argv } from "process"
+import { Logger } from "./structures"
 
 FunctionManager.loadNative()
 
@@ -17,15 +18,18 @@ const v = require("../package.json").version
 
 for (const [, fn] of FunctionManager["Functions"]) {
     const nativePath = `./src/native/${fn.name.slice(1)}.ts`
-    const txt = readFileSync(nativePath, "utf-8")
+    let txt = readFileSync(nativePath, "utf-8")
+    let modified = false
 
     if (!fn.data.version) {
         fn.data.version = v
-        writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`))
+        txt = txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`)
+        modified = true
     }
 
+    if (modified)
+        writeFileSync(nativePath, txt)
     writeFileSync(`${path}/${fn.name.slice(1)}.md`, generateFunctionDoc(fn))
-    console.log(`Generated docs for ${fn.name}!`)
 }
 
 writeFileSync(`${metaOutPath}/functions.json`, JSON.stringify(FunctionManager.toJSON()))

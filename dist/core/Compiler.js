@@ -291,6 +291,9 @@ class Compiler {
             functions: result.functions.map((x) => new CompiledFunction_1.CompiledFunction(x)),
         };
     }
+    static setSyntax(syntax) {
+        Reflect.set(Compiler, "Syntax", syntax);
+    }
 }
 exports.Compiler = Compiler;
 //# sourceMappingURL=Compiler.js.map

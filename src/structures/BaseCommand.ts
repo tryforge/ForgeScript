@@ -1,9 +1,10 @@
 import { ClientEvents, Interaction, InteractionType } from "discord.js"
 import { Compiler, IExtendedCompilationResult } from "../core/Compiler"
-import { Context } from "."
+import { Context, Logger } from "."
 import { IRunnable } from "../core"
 
 export type CommandType = keyof ClientEvents
+export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>
 
 export type CommandInteractionTypes = 
     "button" |

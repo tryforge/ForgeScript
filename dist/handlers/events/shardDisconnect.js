@@ -15,7 +15,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                     command,
                     extras: shardId,
                     data: command.compiled.code,
-                    obj: null,
+                    obj: {},
                 });
             }
         }

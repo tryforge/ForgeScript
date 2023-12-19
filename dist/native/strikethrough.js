@@ -6,6 +6,7 @@ const structures_1 = require("../structures");
 exports.StrikeThroughEscapeRegex = /(~)/gim;
 exports.default = new structures_1.NativeFunction({
     name: "$strikethrough",
+    version: "1.3.0",
     brackets: true,
     description: "Makes given text strikethrough",
     unwrap: true,

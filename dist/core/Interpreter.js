@@ -20,14 +20,18 @@ class Interpreter {
                     return null;
             }
         }
-        const args = new Array(runtime.data.functions.length);
+        let args;
+        args = new Array(runtime.data.functions.length);
         ctx.executionTimestamp = performance.now();
-        for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
-            const fn = runtime.data.functions[i];
-            const rt = await fn.execute(ctx);
-            if (!rt.success && !ctx.handleNotSuccess(rt))
-                return null;
-            args[i] = rt.value;
+        try {
+            for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
+                const fn = runtime.data.functions[i];
+                const rt = await fn.execute(ctx);
+                args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value;
+            }
+        }
+        catch {
+            return null;
         }
         const content = runtime.data.resolve(args);
         if (!runtime.doNotSend) {
