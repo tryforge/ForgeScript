@@ -1,5 +1,5 @@
 # $isValidHex
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> The value to check for
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.
 ## Usage
 ```
 $isValidHex[hex]
@@ -23,7 +23,7 @@ export const MinHexIntValue = 0 as const
 export default new NativeFunction({
     name: "$isValidHex",
     version: "1.3.0",
-    description: "The value to check for",
+    description: "Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.",
     unwrap: true,
     brackets: true,
     args: [

@@ -7,7 +7,7 @@ exports.MinHexIntValue = 0;
 exports.default = new structures_1.NativeFunction({
     name: "$isValidHex",
     version: "1.3.0",
-    description: "The value to check for",
+    description: "Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.",
     unwrap: true,
     brackets: true,
     args: [
