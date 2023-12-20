@@ -27,6 +27,10 @@ export interface IForgeClientOptions extends ClientOptions {
     optionalGuildID?: boolean;
     extensions?: ForgeExtension[];
     restrictions?: IRestriction;
+    /**
+     * Array of function names you want to disable.
+     */
+    disableFunctions?: string[];
 }
 export declare class ForgeClient extends Client<true> {
     #private;

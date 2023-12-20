@@ -4,6 +4,7 @@ export declare class FunctionManager {
     private static readonly Functions;
     static loadNative(): void;
     static load(path: string): Promise<void>;
+    static disable(fns: string[]): void;
     static get(name: string): NativeFunction<import("../structures/NativeFunction").IArg<ArgType, boolean, boolean, import("../structures/NativeFunction").EnumLike<any>>[], boolean>;
     static toJSON(): INativeFunction<any>[];
     static get raw(): IRawFunction[];

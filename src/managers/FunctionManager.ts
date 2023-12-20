@@ -30,6 +30,16 @@ export class FunctionManager {
         }
     }
 
+    public static disable(fns: string[]) {
+        for (let i = 0, len = fns.length;i < len;i++) {
+            const fn = fns[i]
+            if (!this.Functions.delete(fn))
+                Logger.warn(`Attempted to disable non existing function: ${fn}`)
+        }
+
+        Logger.info(`The following ${fns.length} functions were disabled: ${fns.join(", ")}`)
+    }
+
     public static get(name: string) {
         return this.Functions.get(name)!
     }

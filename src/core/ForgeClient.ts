@@ -35,6 +35,11 @@ export interface IForgeClientOptions extends ClientOptions {
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
     restrictions?: IRestriction
+
+    /**
+     * Array of function names you want to disable.
+     */
+    disableFunctions?: string[]
 }
 
 export class ForgeClient extends Client<true> {
@@ -79,6 +84,9 @@ export class ForgeClient extends Client<true> {
         }
 
         FunctionManager.loadNative()
+        if (this.options.disableFunctions?.length)
+            FunctionManager.disable(this.options.disableFunctions)
+
         Compiler.setFunctions(FunctionManager.raw)
 
         if (this.options.commands) {

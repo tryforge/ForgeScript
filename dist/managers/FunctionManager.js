@@ -27,6 +27,14 @@ class FunctionManager {
             this.Functions.set(req.name, req);
         }
     }
+    static disable(fns) {
+        for (let i = 0, len = fns.length; i < len; i++) {
+            const fn = fns[i];
+            if (!this.Functions.delete(fn))
+                Logger_1.Logger.warn(`Attempted to disable non existing function: ${fn}`);
+        }
+        Logger_1.Logger.info(`The following ${fns.length} functions were disabled: ${fns.join(", ")}`);
+    }
     static get(name) {
         return this.Functions.get(name);
     }

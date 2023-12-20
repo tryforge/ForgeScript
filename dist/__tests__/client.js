@@ -27,6 +27,10 @@ const client = new ForgeClient_1.ForgeClient({
         "guildMemberAdd",
         "interactionCreate",
     ],
+    disableFunctions: [
+        "$guildName",
+        "$cope"
+    ],
     useInviteSystem: true,
     prefixes: ["!"],
     restrictions: {
