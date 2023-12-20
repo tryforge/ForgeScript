@@ -10,7 +10,7 @@ var ErrorType;
     ErrorType["Custom"] = "$1";
     ErrorType["UnsupportedExtensionVersion"] = "Extension $1 does not work for your ForgeScript version: $2";
     ErrorType["RequiredExtension"] = "Extension $1 requires the next extension: $2 loaded to work";
-    ErrorType["CompilerError"] = "$1 at $2:$3";
+    ErrorType["CompilerError"] = "$1 at $2:$3 ($4)";
 })(ErrorType || (exports.ErrorType = ErrorType = {}));
 class ForgeError extends Error {
     static Regex = /\$(\d+)/g;

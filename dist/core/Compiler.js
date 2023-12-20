@@ -28,6 +28,7 @@ exports.Conditions = {
  * REWRITE NEEDED
  */
 class Compiler {
+    path;
     code;
     static Syntax = {
         Open: "[",
@@ -43,7 +44,8 @@ class Compiler {
     id = 0;
     matches;
     index = 0;
-    constructor(code) {
+    constructor(path, code) {
+        this.path = path;
         this.code = code;
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
@@ -228,7 +230,7 @@ class Compiler {
     }
     error(str) {
         const { line, column } = this.locate(this.index);
-        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column);
+        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column, this.path);
     }
     locate(index) {
         const data = {
@@ -284,8 +286,8 @@ class Compiler {
             .map((x) => x.name.slice(1))
             .join("|")})`, "gim");
     }
-    static compile(code) {
-        const result = new this(code).compile();
+    static compile(code, path) {
+        const result = new this(path, code).compile();
         return {
             ...result,
             functions: result.functions.map((x) => new CompiledFunction_1.CompiledFunction(x)),

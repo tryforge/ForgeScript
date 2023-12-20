@@ -7,7 +7,7 @@ class ApplicationCommand {
     compiled;
     constructor(options) {
         this.options = options;
-        this.compiled = core_1.Compiler.compile(options.code);
+        this.compiled = core_1.Compiler.compile(options.code, options.path);
     }
     get name() {
         return this.options.data.name;

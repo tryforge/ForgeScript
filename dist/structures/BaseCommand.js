@@ -4,14 +4,12 @@ exports.BaseCommand = void 0;
 const Compiler_1 = require("../core/Compiler");
 class BaseCommand {
     data;
-    unloadable;
     compiled;
-    constructor(data, unloadable = false) {
+    constructor(data) {
         this.data = data;
-        this.unloadable = unloadable;
         this.compiled = {
-            name: Compiler_1.Compiler.compile(data.name),
-            code: Compiler_1.Compiler.compile(data.code),
+            name: Compiler_1.Compiler.compile(data.name, this.data.path),
+            code: Compiler_1.Compiler.compile(data.code, this.data.path),
         };
     }
     static from(code) {

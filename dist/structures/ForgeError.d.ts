@@ -8,7 +8,7 @@ export declare enum ErrorType {
     Custom = "$1",
     UnsupportedExtensionVersion = "Extension $1 does not work for your ForgeScript version: $2",
     RequiredExtension = "Extension $1 requires the next extension: $2 loaded to work",
-    CompilerError = "$1 at $2:$3"
+    CompilerError = "$1 at $2:$3 ($4)"
 }
 export declare class ForgeError<T extends ErrorType = ErrorType> extends Error {
     static readonly Regex: RegExp;

@@ -115,7 +115,7 @@ export class Compiler {
 
     private index = 0
 
-    public constructor(private readonly code?: string) {
+    private constructor(private readonly path?: string, private readonly code?: string) {
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
@@ -331,7 +331,7 @@ export class Compiler {
 
     private error(str: string) {
         const { line, column } = this.locate(this.index)
-        throw new ForgeError(null, ErrorType.CompilerError, str, line, column)
+        throw new ForgeError(null, ErrorType.CompilerError, str, line, column, this.path)
     }
 
     private locate(index: number): ILocation {
@@ -403,8 +403,8 @@ export class Compiler {
         )
     }
 
-    public static compile(code?: string): IExtendedCompilationResult {
-        const result = new this(code).compile()
+    public static compile(code?: string, path?: string): IExtendedCompilationResult {
+        const result = new this(path, code).compile()
         return {
             ...result,
             functions: result.functions.map((x) => new CompiledFunction(x)),

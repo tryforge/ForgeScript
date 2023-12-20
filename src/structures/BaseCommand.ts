@@ -15,6 +15,7 @@ export type CommandInteractionTypes =
 
 export interface IBaseCommand<T> {
     name?: string
+    path?: string
     type: T
     code: string
     guildOnly?: boolean
@@ -22,6 +23,7 @@ export interface IBaseCommand<T> {
     aliases?: string[]
     allowedInteractionTypes?: CommandInteractionTypes[]
     allowBots?: boolean
+    unloadable?: boolean
     [x: PropertyKey]: unknown
 }
 
@@ -33,10 +35,10 @@ export interface ICompiledCommand {
 export class BaseCommand<T> {
     public readonly compiled: ICompiledCommand
 
-    public constructor(public readonly data: IBaseCommand<T>, public unloadable = false) {
+    public constructor(public readonly data: IBaseCommand<T>) {
         this.compiled = {
-            name: Compiler.compile(data.name),
-            code: Compiler.compile(data.code),
+            name: Compiler.compile(data.name, this.data.path),
+            code: Compiler.compile(data.code, this.data.path),
         }
     }
 

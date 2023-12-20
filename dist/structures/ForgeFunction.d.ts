@@ -5,6 +5,7 @@ export interface IForgeFunction {
     name: string;
     params?: string[];
     code: string;
+    path?: string;
 }
 export declare class ForgeFunction {
     readonly data: IForgeFunction;

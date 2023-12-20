@@ -6,6 +6,7 @@ export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>;
 export type CommandInteractionTypes = "button" | "modal" | "autocomplete" | "contextMenu" | "selectMenu";
 export interface IBaseCommand<T> {
     name?: string;
+    path?: string;
     type: T;
     code: string;
     guildOnly?: boolean;
@@ -13,6 +14,7 @@ export interface IBaseCommand<T> {
     aliases?: string[];
     allowedInteractionTypes?: CommandInteractionTypes[];
     allowBots?: boolean;
+    unloadable?: boolean;
     [x: PropertyKey]: unknown;
 }
 export interface ICompiledCommand {
@@ -21,9 +23,8 @@ export interface ICompiledCommand {
 }
 export declare class BaseCommand<T> {
     readonly data: IBaseCommand<T>;
-    unloadable: boolean;
     readonly compiled: ICompiledCommand;
-    constructor(data: IBaseCommand<T>, unloadable?: boolean);
+    constructor(data: IBaseCommand<T>);
     static from(code: string): BaseCommand<null>;
     get name(): string | undefined;
     get type(): T;
