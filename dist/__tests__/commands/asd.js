@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     type: "interactionCreate",
     code: `
-    $log << bad code
     $log[$customID]
     $if[$customID==addbot;
         $modal[botinteract;Agregar un Robot]
