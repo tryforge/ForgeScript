@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildApproximateMemberCount",
+    version: "1.3.0",
     description: "Returns the approximated member count",
     brackets: false,
     args: [
