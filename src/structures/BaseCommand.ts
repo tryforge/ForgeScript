@@ -1,9 +1,10 @@
 import { ClientEvents, Interaction, InteractionType } from "discord.js"
 import { Compiler, IExtendedCompilationResult } from "../core/Compiler"
-import { Context } from "."
+import { Context, Logger } from "."
 import { IRunnable } from "../core"
 
 export type CommandType = keyof ClientEvents
+export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>
 
 export type CommandInteractionTypes = 
     "button" |
@@ -14,6 +15,7 @@ export type CommandInteractionTypes =
 
 export interface IBaseCommand<T> {
     name?: string
+    path?: string
     type: T
     code: string
     guildOnly?: boolean
@@ -21,6 +23,7 @@ export interface IBaseCommand<T> {
     aliases?: string[]
     allowedInteractionTypes?: CommandInteractionTypes[]
     allowBots?: boolean
+    unloadable?: boolean
     [x: PropertyKey]: unknown
 }
 
@@ -32,10 +35,10 @@ export interface ICompiledCommand {
 export class BaseCommand<T> {
     public readonly compiled: ICompiledCommand
 
-    public constructor(public readonly data: IBaseCommand<T>, public unloadable = false) {
+    public constructor(public readonly data: IBaseCommand<T>) {
         this.compiled = {
-            name: Compiler.compile(data.name),
-            code: Compiler.compile(data.code),
+            name: Compiler.compile(data.name, this.data.path),
+            code: Compiler.compile(data.code, this.data.path),
         }
     }
 
@@ -73,25 +76,5 @@ export class BaseCommand<T> {
                 )
             )
         )
-    }
-
-    private createExecutableCode() {
-        const code = new Array<string>(this.compiled.code.functions.length)
-        
-        for (let i = 0, len = this.compiled.code.functions.length;i < len;i++) {
-            code[i] = this.compiled.code.functions[i]["toExecutableCode"](i)
-        }
-
-        return eval(`
-        function main() {
-            return async function(runtime, ctx) {
-                const args = new Array(runtime.data.functions.length)
-                let rt, fn;
-                ${code.join("\n")}
-                return args
-            }
-        };
-        main()
-        `)
     }
 }

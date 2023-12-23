@@ -8,6 +8,8 @@ const discord_js_1 = require("discord.js");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const FileReader_1 = require("../core/FileReader");
 const structures_1 = require("../structures");
+const process_1 = require("process");
+const path_1 = require("path");
 class BaseCommandManager {
     client;
     commands = new discord_js_1.Collection();
@@ -18,14 +20,14 @@ class BaseCommandManager {
     refresh() {
         for (const [key, commands] of this.commands) {
             // Unload the ones added thru folders
-            const unloadable = commands.filter((x) => !x.unloadable);
+            const unloadable = commands.filter((x) => !x.data.unloadable);
             // Keep unloadable
             this.commands.set(key, unloadable);
         }
         for (const p of this.paths) {
             for (const file of (0, recursiveReaddirSync_1.default)(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
-                const path = `${process.cwd()}/${file}`;
+                const path = (0, path_1.join)((0, process_1.cwd)(), file);
                 delete require.cache[require.resolve(path)];
             }
             // Reload these commands
@@ -37,14 +39,14 @@ class BaseCommandManager {
             this.paths.push(path);
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
             // eslint-disable-next-line no-undef
-            const path = `${process.cwd()}/${file}`;
+            const path = (0, path_1.join)((0, process_1.cwd)(), file);
             const req = FileReader_1.FileReader.read(file, path);
             if (!req)
                 continue;
             if (Array.isArray(req))
-                this.addPath(...req);
+                this.addPath(path, ...req);
             else
-                this.addPath(req);
+                this.addPath(path, req);
         }
     }
     get(type, fn) {
@@ -63,12 +65,12 @@ class BaseCommandManager {
             col.push(cmd);
         }
     }
-    addPath(...commands) {
+    addPath(path, ...commands) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i];
-            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand(req);
+            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand({ ...req, path });
             const col = this.commands.ensure(cmd.type, () => new Array());
-            cmd.unloadable = true;
+            cmd.data.unloadable = true;
             col.push(cmd);
         }
     }

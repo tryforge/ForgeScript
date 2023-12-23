@@ -3,6 +3,8 @@ import { ForgeClient } from "../core/ForgeClient"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { FileReader } from "../core/FileReader"
 import { BaseCommand, IBaseCommand } from "../structures"
+import { cwd } from "process"
+import { join } from "path"
 
 export class BaseCommandManager<T> {
     private readonly commands = new Collection<T, BaseCommand<T>[]>()
@@ -13,7 +15,7 @@ export class BaseCommandManager<T> {
     public refresh() {
         for (const [key, commands] of this.commands) {
             // Unload the ones added thru folders
-            const unloadable = commands.filter((x) => !x.unloadable)
+            const unloadable = commands.filter((x) => !x.data.unloadable)
 
             // Keep unloadable
             this.commands.set(key, unloadable)
@@ -22,7 +24,7 @@ export class BaseCommandManager<T> {
         for (const p of this.paths) {
             for (const file of recursiveReaddirSync(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
-                const path = `${process.cwd()}/${file}`
+                const path = join(cwd(), file)
                 delete require.cache[require.resolve(path)]
             }
 
@@ -36,13 +38,13 @@ export class BaseCommandManager<T> {
 
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
             // eslint-disable-next-line no-undef
-            const path = `${process.cwd()}/${file}`
+            const path = join(cwd(), file)
 
             const req = FileReader.read(file, path)
             if (!req) continue
 
-            if (Array.isArray(req)) this.addPath(...req)
-            else this.addPath(req)
+            if (Array.isArray(req)) this.addPath(path, ...req)
+            else this.addPath(path, req)
         }
     }
 
@@ -64,13 +66,14 @@ export class BaseCommandManager<T> {
         }
     }
 
-    private addPath(...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
+    private addPath(path: string, ...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i]
-            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
+            const cmd = req instanceof BaseCommand ? req : new BaseCommand({ ...req, path })
 
             const col = this.commands.ensure(cmd.type as T, () => new Array())
-            cmd.unloadable = true
+            cmd.data.unloadable = true
+
             col.push(cmd)
         }
     }

@@ -17,7 +17,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    description: "Checks whether a link is valid",
+    description: "Checks whether a link is valid, this will not make sure that a site actually exists or returns success HTTP responses.",
     execute(_, [link]) {
         return this.success(LinkRegex.test(link))
     },

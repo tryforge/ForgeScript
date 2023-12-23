@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
+            name: "guild ID",
             description: "The guild id to return the member from",
             rest: false,
             type: structures_1.ArgType.Guild,

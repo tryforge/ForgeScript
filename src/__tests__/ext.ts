@@ -8,6 +8,14 @@ export class MyExtension extends ForgeExtension {
     public name: string = "My extension"
     public version: string = "1.0.0"
 
+    public requireExtensions = [
+        "Tmr"
+    ] 
+
+    public targetVersions = [
+        "1.3.0"
+    ]
+
     public init(client: ForgeClient): void {
         // eslint-disable-next-line no-undef
         FunctionManager.load(`${__dirname}/custom`)

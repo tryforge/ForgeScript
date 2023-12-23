@@ -15,7 +15,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                     command,
                     extras: err.message,
                     data: command.compiled.code,
-                    obj: null,
+                    obj: {},
                 });
             }
         }

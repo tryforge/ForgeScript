@@ -10,7 +10,7 @@ class ForgeFunction {
     constructor(data) {
         this.data = data;
         data.params ??= [];
-        this.compiled = Compiler_1.Compiler.compile(data.code);
+        this.compiled = Compiler_1.Compiler.compile(data.code, this.data.path);
     }
     async call(ctx, args) {
         if (this.data.params.length !== args.length)

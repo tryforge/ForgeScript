@@ -4,6 +4,7 @@ exports.Context = void 0;
 const discord_js_1 = require("discord.js");
 const Container_1 = require("./Container");
 const Return_1 = require("./Return");
+const Logger_1 = require("./Logger");
 class Context {
     runtime;
     #member;
@@ -45,8 +46,6 @@ class Context {
         return this.#automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
     }
     get member() {
-        if (!this.obj)
-            return null;
         return (this.#member ??=
             this.obj instanceof discord_js_1.GuildMember
                 ? this.obj
@@ -55,23 +54,15 @@ class Context {
                     : null);
     }
     get emoji() {
-        if (!this.obj)
-            return null;
         return (this.#emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
     }
     get role() {
-        if (!this.obj)
-            return null;
         return (this.#role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
     }
     get reaction() {
-        if (!this.obj)
-            return null;
         return (this.#reaction ??= this.obj instanceof discord_js_1.MessageReaction ? this.obj : null);
     }
     get message() {
-        if (!this.obj)
-            return null;
         return (this.#message ??=
             "message" in this.obj && this.obj.message
                 ? this.obj.message
@@ -80,13 +71,9 @@ class Context {
                     : null);
     }
     get interaction() {
-        if (!this.obj)
-            return null;
         return (this.#interaction ??= this.obj instanceof discord_js_1.BaseInteraction ? this.obj : null);
     }
     get user() {
-        if (!this.obj)
-            return null;
         return (this.#user ??=
             "user" in this.obj
                 ? this.obj.user
@@ -99,8 +86,6 @@ class Context {
                             : null);
     }
     get guild() {
-        if (!this.obj)
-            return null;
         return (this.#guild ??=
             "guild" in this.obj
                 ? this.obj.guild
@@ -111,8 +96,6 @@ class Context {
                         : null);
     }
     get channel() {
-        if (!this.obj)
-            return null;
         return (this.#channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
@@ -140,11 +123,11 @@ class Context {
     handleNotSuccess(rt) {
         if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
-            this.alert(log).catch(console.error.bind(null, log));
+            this.alert(log).catch(Logger_1.Logger.error.bind(null, log));
         }
         else if (rt.error) {
             const err = rt.value;
-            this.alert(err.message).catch(console.error.bind(null, err));
+            this.alert(err.message).catch(Logger_1.Logger.error.bind(null, err));
         }
         return false;
     }
@@ -202,6 +185,9 @@ class Context {
     }
     get(key) {
         return this[key];
+    }
+    error() {
+        throw null;
     }
 }
 exports.Context = Context;

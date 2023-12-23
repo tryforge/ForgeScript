@@ -6,12 +6,13 @@ $reply
 ```
 ---
 ```
-$reply[channel ID;message ID]
+$reply[channel ID;message ID;disable ping]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 channel ID | Channel | The channel the message is at | Yes | No
 message ID | Message | The message to reply to | Yes | No
+disable ping | Boolean | Whether to disable ping of reply | No | No
 <details>
 <summary>
     
@@ -44,9 +45,17 @@ export default new NativeFunction({
             type: ArgType.Message,
             pointer: 0,
         },
+        {
+            name: "disable ping",
+            description: "Whether to disable ping of reply",
+            rest: false,
+            type: ArgType.Boolean
+        }
     ],
-    execute(ctx, [, message]) {
+    execute(ctx, [, message, disable]) {
         ctx.container.reference = (message ?? ctx.message)?.id
+        if (disable !== null)
+            ctx.container.allowedMentions.repliedUser = !disable
         return this.success()
     },
 })

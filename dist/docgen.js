@@ -17,13 +17,16 @@ if (!(0, fs_1.existsSync)(path))
 const v = require("../package.json").version;
 for (const [, fn] of managers_1.FunctionManager["Functions"]) {
     const nativePath = `./src/native/${fn.name.slice(1)}.ts`;
-    const txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
+    let txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
+    let modified = false;
     if (!fn.data.version) {
         fn.data.version = v;
-        (0, fs_1.writeFileSync)(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`));
+        txt = txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`);
+        modified = true;
     }
+    if (modified)
+        (0, fs_1.writeFileSync)(nativePath, txt);
     (0, fs_1.writeFileSync)(`${path}/${fn.name.slice(1)}.md`, (0, generateFunctionDoc_1.default)(fn));
-    console.log(`Generated docs for ${fn.name}!`);
 }
 (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
 for (const event of Object.values(managers_1.EventManager["Loaded"][managers_1.NativeEventName])) {

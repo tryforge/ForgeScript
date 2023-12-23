@@ -29,7 +29,7 @@ export declare class Context {
     get emoji(): GuildEmoji | null;
     get role(): Role | null;
     get reaction(): MessageReaction | null;
-    get message(): Message<boolean> | null;
+    get message(): Message<any> | null;
     get interaction(): Interaction | null;
     get user(): User | null;
     get guild(): Guild | null;
@@ -41,9 +41,9 @@ export declare class Context {
     setEnvironmentKey(name: string, value: unknown): unknown;
     deleteEnvironmentKey(name: string): boolean;
     getEnvironmentKey(...args: string[]): any;
-    getKeyword(name: string): string;
+    getKeyword(name: string): unknown;
     deleteKeyword(name: string): boolean;
-    setKeyword(name: string, value: string): string;
+    setKeyword(name: string, value: unknown): unknown;
     hasKeyword(name: string): boolean;
     clearKeywords(): void;
     clearEnvironment(): void;
@@ -58,5 +58,6 @@ export declare class Context {
     };
     getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null;
     get<T>(key: PropertyKey): T;
+    private error;
 }
 //# sourceMappingURL=Context.d.ts.map

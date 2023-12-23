@@ -69,6 +69,7 @@ export interface IRawFunctionMatch extends IRawFunction {
  * REWRITE NEEDED
  */
 export declare class Compiler {
+    private readonly path?;
     private readonly code?;
     static Syntax: {
         Open: string;
@@ -84,7 +85,7 @@ export declare class Compiler {
     private id;
     private matches;
     private index;
-    constructor(code?: string | undefined);
+    private constructor();
     private compile;
     private parseFunction;
     private parseField;
@@ -99,6 +100,7 @@ export declare class Compiler {
     private peek;
     private next;
     static setFunctions(fns: IRawFunction[]): void;
-    static compile(code?: string): IExtendedCompilationResult;
+    static compile(code?: string, path?: string): IExtendedCompilationResult;
+    static setSyntax(syntax: typeof this.Syntax): void;
 }
 //# sourceMappingURL=Compiler.d.ts.map

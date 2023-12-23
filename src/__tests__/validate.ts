@@ -1,5 +1,6 @@
 import { FunctionManager } from "../managers"
 import { ArgType } from "../structures"
+import { Logger } from "../structures/Logger"
 
 // eslint-disable-next-line no-undef
 FunctionManager.load(__dirname + "/../native")
@@ -13,7 +14,7 @@ for (const [, fn] of FunctionManager["Functions"]) {
                     arg.type
                 )
             ) {
-                console.error(`${arg.name} requires pointer for function ${fn.name}`)
+                Logger.error(`${arg.name} requires pointer for function ${fn.name}`)
             }
         }
     }

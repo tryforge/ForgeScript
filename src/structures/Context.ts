@@ -21,6 +21,7 @@ import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../core/Interpreter"
 import noop from "../functions/noop"
 import { ForgeError } from "./ForgeError"
+import { Logger } from "./Logger"
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
@@ -53,7 +54,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
 
-    #keywords: Record<string, string> = {}
+    #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}
 
     public readonly container = new Container()
@@ -85,7 +86,6 @@ export class Context {
     }
 
     public get member() {
-        if (!this.obj) return null
         return (this.#member ??=
             this.obj instanceof GuildMember
                 ? this.obj
@@ -95,24 +95,18 @@ export class Context {
     }
 
     public get emoji() {
-        if (!this.obj) return null
-
         return (this.#emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
     }
 
     public get role() {
-        if (!this.obj) return null
         return (this.#role ??= this.obj instanceof Role ? this.obj : null)
     }
 
     public get reaction() {
-        if (!this.obj) return null
-
         return (this.#reaction ??= this.obj instanceof MessageReaction ? this.obj : null)
     }
 
     public get message() {
-        if (!this.obj) return null
         return (this.#message ??=
             "message" in this.obj && this.obj.message
                 ? (this.obj.message as Message)
@@ -122,12 +116,10 @@ export class Context {
     }
 
     public get interaction() {
-        if (!this.obj) return null
-        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj : null)
+        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj as Interaction : null)
     }
 
     public get user() {
-        if (!this.obj) return null
         return (this.#user ??=
             "user" in this.obj
                 ? this.obj.user
@@ -141,7 +133,6 @@ export class Context {
     }
 
     public get guild() {
-        if (!this.obj) return null
         return (this.#guild ??=
             "guild" in this.obj
                 ? (this.obj.guild as Guild)
@@ -153,7 +144,6 @@ export class Context {
     }
 
     public get channel() {
-        if (!this.obj) return null
         return (this.#channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
@@ -189,10 +179,10 @@ export class Context {
     public handleNotSuccess(rt: Return) {
         if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
-            this.alert(log).catch(console.error.bind(null, log))
+            this.alert(log).catch(Logger.error.bind(null, log))
         } else if (rt.error) {
             const err = rt.value as ForgeError
-            this.alert(err.message).catch(console.error.bind(null, err))
+            this.alert(err.message).catch(Logger.error.bind(null, err))
         }
 
         return false
@@ -230,7 +220,7 @@ export class Context {
         return delete this.#keywords[name]
     }
 
-    public setKeyword(name: string, value: string) {
+    public setKeyword(name: string, value: unknown) {
         return (this.#keywords[name] = value)
     }
 
@@ -265,5 +255,9 @@ export class Context {
 
     public get<T>(key: PropertyKey) {
         return this[key] as T
+    }
+
+    private error() {
+        throw null
     }
 }

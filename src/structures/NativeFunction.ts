@@ -1,4 +1,5 @@
 import {
+    AttachmentBuilder,
     BaseChannel,
     Emoji,
     Guild,
@@ -26,6 +27,7 @@ export type EnumLike<T = any> = {
 export type GetEnum<T> = T extends EnumLike<infer P> ? P : never
 
 export enum ArgType {
+    URL,
     String,
     BigInt,
     Number,
@@ -40,6 +42,7 @@ export enum ArgType {
     ForumTag,
     GuildEmoji,
     Boolean,
+    Attachment,
     Reaction,
     Message,
     Channel,
@@ -120,6 +123,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? string
     : T extends ArgType.User
     ? User
+    : T extends ArgType.URL
+    ? string
     : T extends ArgType.Json
     ? Record<string, unknown>
     : T extends ArgType.Guild
@@ -128,6 +133,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? number 
     : T extends ArgType.Role
     ? Role
+    : T extends ArgType.Attachment
+    ? AttachmentBuilder
     : T extends ArgType.BigInt
     ? bigint
     : T extends ArgType.Boolean
@@ -173,7 +180,12 @@ export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : []
 
 export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    public constructor(public readonly data: INativeFunction<T, Unwrap>) {}
+    public readonly async: boolean
+
+    public constructor(public readonly data: INativeFunction<T, Unwrap>) {
+        // @ts-ignore
+        this.async = data.execute[Symbol.toStringTag] === "AsyncFunction"
+    }
 
     public get name() {
         return this.data.name

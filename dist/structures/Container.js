@@ -18,9 +18,11 @@ class Container {
     update = false;
     files = new Array();
     channel;
+    stickers = new Array();
     fetchReply = false;
     modal;
     choices = new Array();
+    allowedMentions = {};
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -67,7 +69,8 @@ class Container {
         return result;
     }
     isValidMessage(options) {
-        return (!!options.content?.trim() ||
+        return (!!options.stickers?.length ||
+            !!options.content?.trim() ||
             !!options.embeds?.length ||
             !!options.stickers?.length ||
             !!options.files?.length ||
@@ -90,10 +93,12 @@ class Container {
         this.ephemeral = false;
         this.fetchReply = false;
         this.edit = false;
+        this.stickers.length = 0;
         this.choices.length = 0;
         this.components.length = 0;
         this.embeds.length = 0;
         this.files.length = 0;
+        this.allowedMentions = {};
     }
     getOptions(content) {
         return (content
@@ -101,6 +106,7 @@ class Container {
                 content,
             }
             : {
+                allowedMentions: this.allowedMentions,
                 reply: this.reference
                     ? {
                         messageReference: this.reference,
@@ -109,6 +115,7 @@ class Container {
                     : undefined,
                 files: this.files,
                 ephemeral: this.ephemeral,
+                stickers: this.stickers.length === 0 ? undefined : this.stickers,
                 content: this.content || null,
                 components: this.components,
                 embeds: this.embeds,

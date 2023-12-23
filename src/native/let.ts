@@ -17,14 +17,14 @@ export default new NativeFunction({
         {
             name: "value",
             description: "The key value",
-            rest: true,
+            rest: false,
             required: true,
             type: ArgType.String,
         },
     ],
     brackets: true,
     execute(ctx, [name, args]) {
-        ctx.setKeyword(name, args.join(";"))
+        ctx.setKeyword(name, args)
         return this.success()
     },
 })

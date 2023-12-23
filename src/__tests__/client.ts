@@ -4,9 +4,11 @@ import { MyExtension } from "./ext"
 import { ActivityType, Events } from "discord.js"
 import { FunctionManager } from "../managers"
 import { Compiler } from "../core"
+import { LogPriority } from "../structures/Logger"
 config()
 
 const client = new ForgeClient({
+    logLevel: LogPriority.High,
     intents: [
         "Guilds",
         "MessageContent",
@@ -27,13 +29,18 @@ const client = new ForgeClient({
         "guildMemberAdd",
         "interactionCreate",
     ],
+    disableFunctions: [
+        "$guildName",
+        "$cope"
+    ],
+    mobile: true,
     useInviteSystem: true,
     prefixes: ["!"],
     restrictions: {
         userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: [],
+    extensions: []
 })
 
 console.log("Started")
@@ -86,7 +93,10 @@ client.commands.add({
 client.commands.add({
     name: "djs",
     type: "messageCreate",
-    code: "$djsEval[$message]",
+    code: `
+    $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
+$if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\n\`\`\`json\n$get[text]\n\`\`\`]
+ `,
 })
 
 client.commands.add({

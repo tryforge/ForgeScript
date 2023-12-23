@@ -23,6 +23,8 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     private readonly raw;
     static readonly IdRegex: RegExp;
+    static readonly URLRegex: RegExp;
+    static readonly CDNIdRegex: RegExp;
     readonly data: IExtendedCompiledFunction;
     readonly fn: NativeFunction<T, Unwrap>;
     constructor(raw: ICompiledFunction);
@@ -61,8 +63,10 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveGuildEmoji;
     private resolveForumTag;
     private resolveGuildSticker;
+    private resolveAttachment;
     private resolveMember;
     private resolveReaction;
+    private resolveURL;
     private resolveInvite;
     private resolveWebhook;
     private resolveRole;
@@ -73,8 +77,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
     private fail;
-    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
-    private toExecutableCode;
+    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveURL" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
     return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;
@@ -84,6 +87,8 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     continue(): Return<ReturnType.Continue>;
     successJSON(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     successFormatted(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    unsafeSuccess(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     success(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
+    private toExecutableCode;
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map

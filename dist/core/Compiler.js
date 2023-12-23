@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compiler = exports.Conditions = exports.Operators = exports.OperatorType = void 0;
 const CompiledFunction_1 = require("../structures/CompiledFunction");
 const ForgeError_1 = require("../structures/ForgeError");
+const discord_js_1 = require("discord.js");
 var OperatorType;
 (function (OperatorType) {
     OperatorType["Eq"] = "==";
@@ -27,6 +28,7 @@ exports.Conditions = {
  * REWRITE NEEDED
  */
 class Compiler {
+    path;
     code;
     static Syntax = {
         Open: "[",
@@ -38,17 +40,18 @@ class Compiler {
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
     static InvalidCharRegex = /(\$\{|`)/g;
-    static Functions = new Map();
+    static Functions = new discord_js_1.Collection();
     id = 0;
     matches;
     index = 0;
-    constructor(code) {
+    constructor(path, code) {
+        this.path = path;
         this.code = code;
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index,
                 negated: !!x[1],
-                ...Compiler.Functions.get(`$${x[2]}`),
+                ...(Compiler.Functions.get(`$${x[2]}`) ?? Compiler.Functions.find(fn => fn.name.toLowerCase() === `$${x[2].toLowerCase()}`)),
             }));
         }
         else
@@ -227,7 +230,7 @@ class Compiler {
     }
     error(str) {
         const { line, column } = this.locate(this.index);
-        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column);
+        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column, this.path);
     }
     locate(index) {
         const data = {
@@ -281,14 +284,17 @@ class Compiler {
         this.Regex = new RegExp(`\\$(\\!)?(${Array.from(this.Functions.values())
             .sort((x, y) => y.name.length - x.name.length)
             .map((x) => x.name.slice(1))
-            .join("|")})`, "gm");
+            .join("|")})`, "gim");
     }
-    static compile(code) {
-        const result = new this(code).compile();
+    static compile(code, path) {
+        const result = new this(path, code).compile();
         return {
             ...result,
             functions: result.functions.map((x) => new CompiledFunction_1.CompiledFunction(x)),
         };
+    }
+    static setSyntax(syntax) {
+        Reflect.set(Compiler, "Syntax", syntax);
     }
 }
 exports.Compiler = Compiler;

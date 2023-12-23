@@ -15,7 +15,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                     client: this,
                     command,
                     data: command.compiled.code,
-                    obj: null,
+                    obj: {},
                 });
             }
         }

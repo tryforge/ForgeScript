@@ -1,4 +1,4 @@
-import { Client, ClientOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
+import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
 import { BaseCommand, CommandType } from "../structures/BaseCommand"
 import { EventManager, NativeEventName } from "../managers/EventManager"
 import { Compiler } from "./Compiler"
@@ -10,6 +10,7 @@ import { CooldownManager } from "../managers/CooldownManager"
 import { NativeCommandManager } from "../managers/NativeCommandManager"
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
 import { ThreadManager } from "../managers/ThreadManager"
+import { LogPriority, Logger } from "../structures/Logger"
 
 disableValidators()
 
@@ -22,10 +23,12 @@ export interface IForgeClientOptions extends ClientOptions {
     commands?: string
     events?: CommandType[]
     prefixes: string[]
+    logLevel?: LogPriority
     functions?: string
     allowBots?: boolean
     token?: string
     useInviteSystem?: boolean
+    mobile?: boolean
     
     /**
      * @deprecated Does not work
@@ -33,6 +36,11 @@ export interface IForgeClientOptions extends ClientOptions {
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
     restrictions?: IRestriction
+
+    /**
+     * Array of function names you want to disable.
+     */
+    disableFunctions?: string[]
 }
 
 export class ForgeClient extends Client<true> {
@@ -65,17 +73,25 @@ export class ForgeClient extends Client<true> {
     }
 
     #init() {
+        if (this.options.logLevel !== undefined) Logger.Priority = this.options.logLevel
+
+        if (this.options.mobile) {
+            Reflect.set(DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS")
+        }
+        
         if (this.options.useInviteSystem) InviteSystem["init"](this)
 
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i]
-                ext.init(this)
-                console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`)
+                ext["validateAndInit"](this)
             }
         }
 
         FunctionManager.loadNative()
+        if (this.options.disableFunctions?.length)
+            FunctionManager.disable(this.options.disableFunctions)
+
         Compiler.setFunctions(FunctionManager.raw)
 
         if (this.options.commands) {
@@ -93,6 +109,10 @@ export class ForgeClient extends Client<true> {
 
     get<T>(key: string) {
         return this[key] as T
+    }
+
+    public get version() {
+        return require("../../package.json").version as string
     }
 
     public canRespondToBots(cmd: BaseCommand<any>): boolean {

@@ -13,7 +13,7 @@ export default new DiscordEventHandler({
                     client: this,
                     command,
                     data: command.compiled.code,
-                    obj: null,
+                    obj: {},
                     extras: err.message,
                 })
             }

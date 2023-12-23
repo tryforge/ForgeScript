@@ -1,6 +1,7 @@
 import { inspect } from "util"
 import { CompiledFunction } from "../structures/CompiledFunction"
 import { ErrorType, ForgeError } from "../structures/ForgeError"
+import { Collection } from "discord.js"
 
 export interface IRawField {
     condition?: boolean
@@ -107,19 +108,19 @@ export class Compiler {
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
-    private static Functions = new Map<string, IRawFunction>()
+    private static Functions = new Collection<string, IRawFunction>()
 
     private id = 0
     private matches: Array<IRawFunctionMatch>
 
     private index = 0
 
-    public constructor(private readonly code?: string) {
+    private constructor(private readonly path?: string, private readonly code?: string) {
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
                 negated: !!x[1],
-                ...Compiler.Functions.get(`$${x[2]}`)!,
+                ...(Compiler.Functions.get(`$${x[2]}`) ?? Compiler.Functions.find(fn => fn.name.toLowerCase() === `$${x[2].toLowerCase()}`))!,
             }))
         } else this.matches = []
     }
@@ -330,7 +331,7 @@ export class Compiler {
 
     private error(str: string) {
         const { line, column } = this.locate(this.index)
-        throw new ForgeError(null, ErrorType.CompilerError, str, line, column)
+        throw new ForgeError(null, ErrorType.CompilerError, str, line, column, this.path)
     }
 
     private locate(index: number): ILocation {
@@ -398,15 +399,19 @@ export class Compiler {
                 .sort((x, y) => y.name.length - x.name.length)
                 .map((x) => x.name.slice(1))
                 .join("|")})`,
-            "gm"
+            "gim"
         )
     }
 
-    public static compile(code?: string): IExtendedCompilationResult {
-        const result = new this(code).compile()
+    public static compile(code?: string, path?: string): IExtendedCompilationResult {
+        const result = new this(path, code).compile()
         return {
             ...result,
             functions: result.functions.map((x) => new CompiledFunction(x)),
         }
+    }
+
+    public static setSyntax(syntax: typeof this.Syntax) {
+        Reflect.set(Compiler, "Syntax", syntax)
     }
 }

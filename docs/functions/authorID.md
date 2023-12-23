@@ -19,8 +19,8 @@ export default new NativeFunction({
     name: "$authorID",
     version: "1.0.0",
     description: "Retrieves a user's id",
-    unwrap: true,
-    execute: async function (ctx) {
+    unwrap: false,
+    execute(ctx) {
         return this.success(ctx.user?.id)
     },
 })
