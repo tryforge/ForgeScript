@@ -3,6 +3,7 @@ import { ArgType, INativeFunction, NativeFunction } from "../structures/NativeFu
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { deserialize, serialize } from "v8"
+import { Logger } from "../structures/Logger"
 
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
@@ -18,12 +19,25 @@ export class FunctionManager {
             const req = require(file).default as NativeFunction
             
             if (this.Functions.has(req.name)) {
-                console.log(`Attempted to override already existing function ${req.name}`)
+                Logger.warn(`Attempted to override already existing function ${req.name}`)
                 continue
             }
 
+            if (!req.data.args?.length)
+                req.data.unwrap = false
+            
             this.Functions.set(req.name, req)
         }
+    }
+
+    public static disable(fns: string[]) {
+        for (let i = 0, len = fns.length;i < len;i++) {
+            const fn = fns[i]
+            if (!this.Functions.delete(fn))
+                Logger.warn(`Attempted to disable non existing function: ${fn}`)
+        }
+
+        Logger.info(`The following ${fns.length} functions were disabled: ${fns.join(", ")}`)
     }
 
     public static get(name: string) {

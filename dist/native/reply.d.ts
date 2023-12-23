@@ -12,6 +12,11 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Message;
     pointer: number;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.Boolean;
 }], true>;
 export default _default;
 //# sourceMappingURL=reply.d.ts.map

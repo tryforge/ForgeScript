@@ -11,6 +11,6 @@ $modal[botinteract;Agregar un Robot]
 $addTextInput[IDinput;ID del bot;Short;yes;ID de tu Robot;;0;20]
 $addTextInput[prefixbot;Prefix del bot;Short;yes;Prefix de tu Robot;;0;5]`
 
-const compiled = new Compiler(code)["compile"]()
+const compiled = Compiler["compile"](code)
 
 console.log(inspect(compiled, { depth: 10, colors: true }), compiled.resolve.toString())

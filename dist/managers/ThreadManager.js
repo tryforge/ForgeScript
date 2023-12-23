@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreadManager = void 0;
 const worker_threads_1 = require("worker_threads");
 const events_1 = require("events");
+const Logger_1 = require("../structures/Logger");
 class ThreadManager {
     client;
     available = new Set();
@@ -71,13 +72,13 @@ class ThreadManager {
         return worker;
     }
     async onWorkerExit(worker, code) {
-        console.log(`Worker exited with code ${code}`);
+        Logger_1.Logger.debug(`Worker exited with code ${code}`);
         this.busy.delete(worker);
         this.available.delete(worker);
         await this.execute();
     }
     async onWorkerError(worker, err) {
-        console.log("Thread closed with err:", err);
+        Logger_1.Logger.debug("Thread closed with err:", err);
         this.busy.delete(worker);
         await this.execute();
     }

@@ -2,12 +2,12 @@
 > <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Create a keyword
 ## Usage
 ```
-$let[key;...value]
+$let[key;value]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 key | String | The key name | Yes | No
-value | String | The key value | Yes | Yes
+value | String | The key value | Yes | No
 <details>
 <summary>
     
@@ -35,14 +35,14 @@ export default new NativeFunction({
         {
             name: "value",
             description: "The key value",
-            rest: true,
+            rest: false,
             required: true,
             type: ArgType.String,
         },
     ],
     brackets: true,
     execute(ctx, [name, args]) {
-        ctx.setKeyword(name, args.join(";"))
+        ctx.setKeyword(name, args)
         return this.success()
     },
 })

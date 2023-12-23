@@ -7,6 +7,7 @@ export interface IForgeFunction {
     name: string
     params?: string[]
     code: string
+    path?: string
 }
 
 export class ForgeFunction {
@@ -14,7 +15,7 @@ export class ForgeFunction {
 
     public constructor(public readonly data: IForgeFunction) {
         data.params ??= []
-        this.compiled = Compiler.compile(data.code)
+        this.compiled = Compiler.compile(data.code, this.data.path)
     }
 
     async call(ctx: Context, args: string[]) {

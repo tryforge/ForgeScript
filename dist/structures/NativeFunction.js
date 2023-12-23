@@ -3,33 +3,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NativeFunction = exports.ArgType = void 0;
 var ArgType;
 (function (ArgType) {
-    ArgType[ArgType["String"] = 0] = "String";
-    ArgType[ArgType["BigInt"] = 1] = "BigInt";
-    ArgType[ArgType["Number"] = 2] = "Number";
-    ArgType[ArgType["User"] = 3] = "User";
-    ArgType[ArgType["Date"] = 4] = "Date";
-    ArgType[ArgType["Guild"] = 5] = "Guild";
-    ArgType[ArgType["Invite"] = 6] = "Invite";
-    ArgType[ArgType["Permission"] = 7] = "Permission";
-    ArgType[ArgType["Json"] = 8] = "Json";
-    ArgType[ArgType["Color"] = 9] = "Color";
-    ArgType[ArgType["Enum"] = 10] = "Enum";
-    ArgType[ArgType["ForumTag"] = 11] = "ForumTag";
-    ArgType[ArgType["GuildEmoji"] = 12] = "GuildEmoji";
-    ArgType[ArgType["Boolean"] = 13] = "Boolean";
-    ArgType[ArgType["Reaction"] = 14] = "Reaction";
-    ArgType[ArgType["Message"] = 15] = "Message";
-    ArgType[ArgType["Channel"] = 16] = "Channel";
-    ArgType[ArgType["Role"] = 17] = "Role";
-    ArgType[ArgType["Webhook"] = 18] = "Webhook";
-    ArgType[ArgType["GuildSticker"] = 19] = "GuildSticker";
-    ArgType[ArgType["Time"] = 20] = "Time";
-    ArgType[ArgType["Member"] = 21] = "Member";
+    ArgType[ArgType["URL"] = 0] = "URL";
+    ArgType[ArgType["String"] = 1] = "String";
+    ArgType[ArgType["BigInt"] = 2] = "BigInt";
+    ArgType[ArgType["Number"] = 3] = "Number";
+    ArgType[ArgType["User"] = 4] = "User";
+    ArgType[ArgType["Date"] = 5] = "Date";
+    ArgType[ArgType["Guild"] = 6] = "Guild";
+    ArgType[ArgType["Invite"] = 7] = "Invite";
+    ArgType[ArgType["Permission"] = 8] = "Permission";
+    ArgType[ArgType["Json"] = 9] = "Json";
+    ArgType[ArgType["Color"] = 10] = "Color";
+    ArgType[ArgType["Enum"] = 11] = "Enum";
+    ArgType[ArgType["ForumTag"] = 12] = "ForumTag";
+    ArgType[ArgType["GuildEmoji"] = 13] = "GuildEmoji";
+    ArgType[ArgType["Boolean"] = 14] = "Boolean";
+    ArgType[ArgType["Attachment"] = 15] = "Attachment";
+    ArgType[ArgType["Reaction"] = 16] = "Reaction";
+    ArgType[ArgType["Message"] = 17] = "Message";
+    ArgType[ArgType["Channel"] = 18] = "Channel";
+    ArgType[ArgType["Role"] = 19] = "Role";
+    ArgType[ArgType["Webhook"] = 20] = "Webhook";
+    ArgType[ArgType["GuildSticker"] = 21] = "GuildSticker";
+    ArgType[ArgType["Time"] = 22] = "Time";
+    ArgType[ArgType["Member"] = 23] = "Member";
 })(ArgType || (exports.ArgType = ArgType = {}));
 class NativeFunction {
     data;
+    async;
     constructor(data) {
         this.data = data;
+        // @ts-ignore
+        this.async = data.execute[Symbol.toStringTag] === "AsyncFunction";
     }
     get name() {
         return this.data.name;

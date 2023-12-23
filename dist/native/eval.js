@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Compiler_1 = require("../core/Compiler");
 const Interpreter_1 = require("../core/Interpreter");
+const Logger_1 = require("../structures/Logger");
 const NativeFunction_1 = require("../structures/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$eval",
@@ -35,7 +36,7 @@ exports.default = new NativeFunction_1.NativeFunction({
             return result === null ? this.stop() : this.success(send ? undefined : result);
         }
         catch (error) {
-            console.error(error);
+            Logger_1.Logger.error(error);
             return this.err(error);
         }
     },

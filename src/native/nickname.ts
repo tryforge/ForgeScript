@@ -8,7 +8,7 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guildID",
+            name: "guild ID",
             description: "The guild id to return the member from",
             rest: false,
             type: ArgType.Guild,

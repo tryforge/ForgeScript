@@ -17,14 +17,14 @@ exports.default = new NativeFunction_1.NativeFunction({
         {
             name: "value",
             description: "The key value",
-            rest: true,
+            rest: false,
             required: true,
             type: NativeFunction_1.ArgType.String,
         },
     ],
     brackets: true,
     execute(ctx, [name, args]) {
-        ctx.setKeyword(name, args.join(";"));
+        ctx.setKeyword(name, args);
         return this.success();
     },
 });

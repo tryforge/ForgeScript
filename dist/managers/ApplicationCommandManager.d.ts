@@ -4,6 +4,7 @@ import { ForgeClient } from "../core";
 export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody;
     code: string;
+    path?: string;
 }
 export declare class ApplicationCommandManager {
     readonly client: ForgeClient;

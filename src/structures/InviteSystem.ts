@@ -14,6 +14,7 @@ import { ForgeClient } from "../core"
 import { ErrorType, ForgeError } from "./ForgeError"
 import { setTimeout } from "timers/promises"
 import { NativeEventName } from "../managers"
+import { Logger } from "./Logger"
 
 export interface IGuildInviter {
     inviterId: string
@@ -55,7 +56,7 @@ export class InviteSystem {
             )
 
         client.events.load(NativeEventName, this.RequiredEvents)
-        console.warn("The Invite System is still beta, correct functionality is not guaranteed")
+        Logger.warn("The Invite System is still beta, correct functionality is not guaranteed")
     }
 
     public static hasPermissions(guild: Guild) {
@@ -77,7 +78,7 @@ export class InviteSystem {
         const invites = this.hasPermissions(guild) ? await guild.invites.fetch().catch(noop) : undefined
 
         if (!invites) {
-            console.error(`Failed to cache invites for guild ${guild.name}.`)
+            Logger.warn(`Failed to cache invites for guild ${guild.name}.`)
             return
         }
 
@@ -130,7 +131,7 @@ export class InviteSystem {
         const oldInvites = this.Invites.get(guild.id)
 
         if (!newInvites || !oldInvites) {
-            console.error(`Failed to cache invites for guild ${guild.name}.`)
+            Logger.warn(`Failed to cache invites for guild ${guild.name}.`)
             return
         }
 
@@ -159,6 +160,6 @@ export class InviteSystem {
                 code: used.code,
                 inviterId: used.userId,
             })
-        } else console.error(`Could not resolve the invitation used by ${member.displayName} (${member.id}).`)
+        } else Logger.warn(`Could not resolve the invitation used by ${member.displayName} (${member.id}).`)
     }
 }

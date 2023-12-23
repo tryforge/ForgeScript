@@ -5,7 +5,7 @@ export class ApplicationCommand {
     compiled: IExtendedCompilationResult
 
     public constructor(public readonly options: IApplicationCommandData) {
-        this.compiled = Compiler.compile(options.code)
+        this.compiled = Compiler.compile(options.code, options.path)
     }
 
     public get name() {

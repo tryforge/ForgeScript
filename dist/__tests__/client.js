@@ -3,8 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ForgeClient_1 = require("../core/ForgeClient");
 const dotenv_1 = require("dotenv");
 const discord_js_1 = require("discord.js");
+const Logger_1 = require("../structures/Logger");
 (0, dotenv_1.config)();
 const client = new ForgeClient_1.ForgeClient({
+    logLevel: Logger_1.LogPriority.High,
     intents: [
         "Guilds",
         "MessageContent",
@@ -25,13 +27,18 @@ const client = new ForgeClient_1.ForgeClient({
         "guildMemberAdd",
         "interactionCreate",
     ],
+    disableFunctions: [
+        "$guildName",
+        "$cope"
+    ],
+    mobile: true,
     useInviteSystem: true,
     prefixes: ["!"],
     restrictions: {
         userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: [],
+    extensions: []
 });
 console.log("Started");
 client.commands.add({
@@ -76,7 +83,10 @@ client.commands.add({
 client.commands.add({
     name: "djs",
     type: "messageCreate",
-    code: "$djsEval[$message]",
+    code: `
+    $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
+$if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\n\`\`\`json\n$get[text]\n\`\`\`]
+ `,
 });
 client.commands.add({
     type: "autoModerationActionExecution",

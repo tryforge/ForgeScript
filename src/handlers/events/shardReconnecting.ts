@@ -13,7 +13,7 @@ export default new DiscordEventHandler({
                     command,
                     extras: shardId,
                     data: command.compiled.code,
-                    obj: null,
+                    obj: {},
                 })
             }
         }

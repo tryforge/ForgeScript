@@ -45,7 +45,7 @@ class ApplicationCommandManager {
                             const stats = (0, fs_1.statSync)(thirdResolved);
                             if (stats.isDirectory())
                                 throw new Error(`Disallowed folder found for slash command tree: ${thirdResolved}`);
-                            const loaded = this.loadOne(`${(0, process_1.cwd)()}/${thirdResolved}`);
+                            const loaded = this.loadOne((0, path_1.join)((0, process_1.cwd)(), thirdResolved));
                             if (!loaded)
                                 continue;
                             nextCol.set(loaded.name, loaded);
@@ -53,7 +53,7 @@ class ApplicationCommandManager {
                         col.set(secondPath, nextCol);
                     }
                     else {
-                        const loaded = this.loadOne(`${(0, process_1.cwd)()}/${secondResolved}`);
+                        const loaded = this.loadOne((0, path_1.join)((0, process_1.cwd)(), secondResolved));
                         if (!loaded)
                             continue;
                         col.set(loaded.name, loaded);
@@ -62,7 +62,7 @@ class ApplicationCommandManager {
                 this.commands.set(mainPath, col);
             }
             else {
-                const loaded = this.loadOne(`${(0, process_1.cwd)()}/${resolved}`);
+                const loaded = this.loadOne((0, path_1.join)((0, process_1.cwd)(), resolved));
                 if (!loaded)
                     continue;
                 this.commands.set(loaded.name, loaded);

@@ -1,4 +1,4 @@
-import { ArgType, NativeFunction, Return } from "../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$sum",

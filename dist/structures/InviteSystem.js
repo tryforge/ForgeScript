@@ -8,6 +8,7 @@ const discord_js_1 = require("discord.js");
 const noop_1 = __importDefault(require("../functions/noop"));
 const ForgeError_1 = require("./ForgeError");
 const managers_1 = require("../managers");
+const Logger_1 = require("./Logger");
 class InviteSystem {
     static Invites = new discord_js_1.Collection();
     static RequiredIntents = ["Guilds", "GuildInvites", "GuildMembers"];
@@ -28,7 +29,7 @@ class InviteSystem {
         if (!client.options.intents.has(InviteSystem.RequiredIntents))
             throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `The next intents must be enabled: ${this.RequiredIntents.join(", ")}`);
         client.events.load(managers_1.NativeEventName, this.RequiredEvents);
-        console.warn("The Invite System is still beta, correct functionality is not guaranteed");
+        Logger_1.Logger.warn("The Invite System is still beta, correct functionality is not guaranteed");
     }
     static hasPermissions(guild) {
         return guild.members.me.permissions.has("ManageGuild");
@@ -45,7 +46,7 @@ class InviteSystem {
     static async cache(guild) {
         const invites = this.hasPermissions(guild) ? await guild.invites.fetch().catch(noop_1.default) : undefined;
         if (!invites) {
-            console.error(`Failed to cache invites for guild ${guild.name}.`);
+            Logger_1.Logger.warn(`Failed to cache invites for guild ${guild.name}.`);
             return;
         }
         const arr = new Array();
@@ -89,7 +90,7 @@ class InviteSystem {
         const newInvites = await guild.invites.fetch().catch(noop_1.default);
         const oldInvites = this.Invites.get(guild.id);
         if (!newInvites || !oldInvites) {
-            console.error(`Failed to cache invites for guild ${guild.name}.`);
+            Logger_1.Logger.warn(`Failed to cache invites for guild ${guild.name}.`);
             return;
         }
         let used = null;
@@ -114,7 +115,7 @@ class InviteSystem {
             });
         }
         else
-            console.error(`Could not resolve the invitation used by ${member.displayName} (${member.id}).`);
+            Logger_1.Logger.warn(`Could not resolve the invitation used by ${member.displayName} (${member.id}).`);
     }
 }
 exports.InviteSystem = InviteSystem;

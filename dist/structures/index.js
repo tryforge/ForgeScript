@@ -28,4 +28,5 @@ __exportStar(require("./BaseEventHandler"), exports);
 __exportStar(require("./DiscordEventHandler"), exports);
 __exportStar(require("./InviteSystem"), exports);
 __exportStar(require("./ApplicationCommand"), exports);
+__exportStar(require("./Logger"), exports);
 //# sourceMappingURL=index.js.map

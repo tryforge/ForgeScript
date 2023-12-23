@@ -11,6 +11,7 @@ const CooldownManager_1 = require("../managers/CooldownManager");
 const NativeCommandManager_1 = require("../managers/NativeCommandManager");
 const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
 const ThreadManager_1 = require("../managers/ThreadManager");
+const Logger_1 = require("../structures/Logger");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -35,16 +36,22 @@ class ForgeClient extends discord_js_1.Client {
         this.#init();
     }
     #init() {
+        if (this.options.logLevel !== undefined)
+            Logger_1.Logger.Priority = this.options.logLevel;
+        if (this.options.mobile) {
+            Reflect.set(discord_js_1.DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS");
+        }
         if (this.options.useInviteSystem)
             InviteSystem_1.InviteSystem["init"](this);
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i];
-                ext.init(this);
-                console.log(`Extension ${ext.name} has been loaded! Version ${ext.version}`);
+                ext["validateAndInit"](this);
             }
         }
         FunctionManager_1.FunctionManager.loadNative();
+        if (this.options.disableFunctions?.length)
+            FunctionManager_1.FunctionManager.disable(this.options.disableFunctions);
         Compiler_1.Compiler.setFunctions(FunctionManager_1.FunctionManager.raw);
         if (this.options.commands) {
             this.commands.load(this.options.commands);
@@ -58,6 +65,9 @@ class ForgeClient extends discord_js_1.Client {
     }
     get(key) {
         return this[key];
+    }
+    get version() {
+        return require("../../package.json").version;
     }
     canRespondToBots(cmd) {
         return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined);

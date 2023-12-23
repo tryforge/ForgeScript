@@ -1,5 +1,5 @@
 # $isValidLink
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Checks whether a link is valid
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Checks whether a link is valid, this will not make sure that a site actually exists or returns success HTTP responses.
 ## Usage
 ```
 $isValidLink[link]
@@ -34,7 +34,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    description: "Checks whether a link is valid",
+    description: "Checks whether a link is valid, this will not make sure that a site actually exists or returns success HTTP responses.",
     execute(_, [link]) {
         return this.success(LinkRegex.test(link))
     },

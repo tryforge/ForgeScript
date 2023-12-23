@@ -4,6 +4,7 @@ import {
     ApplicationCommandOptionChoiceData,
     AttachmentBuilder,
     AutoModerationActionExecution,
+    AutocompleteInteraction,
     BaseChannel,
     BaseInteraction,
     Channel,
@@ -16,11 +17,13 @@ import {
     InteractionReplyOptions,
     Invite,
     Message,
+    MessageMentionOptions,
     MessageReaction,
     MessageReplyOptions,
     ModalBuilder,
     Presence,
     Role,
+    StickerResolvable,
     TextInputBuilder,
     User,
     VoiceState,
@@ -31,7 +34,7 @@ import { ForgeClient } from "../core"
 import { RawMessageData } from "discord.js/typings/rawDataTypes"
 
 export type Sendable =
-    | null
+    | {}
     | Role
     | Presence
     | Message
@@ -59,10 +62,12 @@ export class Container {
     public update = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
+    public stickers = new Array<StickerResolvable>()
     public fetchReply = false
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
-
+    public allowedMentions: MessageMentionOptions = {}
+    
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
@@ -90,7 +95,7 @@ export class Container {
                         )
                 }
             } else {
-                res = obj.respond(this.choices)
+                res = (obj as AutocompleteInteraction).respond(this.choices)
             }
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
             res = obj.send(options)
@@ -107,6 +112,7 @@ export class Container {
 
     public isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions) {
         return (
+            !!options.stickers?.length ||
             !!options.content?.trim() ||
             !!options.embeds?.length ||
             !!options.stickers?.length ||
@@ -135,10 +141,13 @@ export class Container {
         this.fetchReply = false
         this.edit = false
 
+        this.stickers.length = 0
         this.choices.length = 0
         this.components.length = 0
         this.embeds.length = 0
         this.files.length = 0
+        
+        this.allowedMentions = {}
     }
 
     public getOptions<T>(content?: string): T {
@@ -148,6 +157,7 @@ export class Container {
                     content,
                 }
                 : {
+                    allowedMentions: this.allowedMentions,
                     reply: this.reference
                         ? {
                             messageReference: this.reference,
@@ -156,6 +166,7 @@ export class Container {
                         : undefined,
                     files: this.files,
                     ephemeral: this.ephemeral,
+                    stickers: this.stickers.length === 0 ? undefined : this.stickers,
                     content: this.content || null,
                     components: this.components,
                     embeds: this.embeds,
