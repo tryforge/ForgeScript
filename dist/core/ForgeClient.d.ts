@@ -21,6 +21,7 @@ export interface IForgeClientOptions extends ClientOptions {
     allowBots?: boolean;
     token?: string;
     useInviteSystem?: boolean;
+    mobile?: boolean;
     /**
      * @deprecated Does not work
      */

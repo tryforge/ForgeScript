@@ -38,6 +38,9 @@ class ForgeClient extends discord_js_1.Client {
     #init() {
         if (this.options.logLevel !== undefined)
             Logger_1.Logger.Priority = this.options.logLevel;
+        if (this.options.mobile) {
+            Reflect.set(discord_js_1.DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS");
+        }
         if (this.options.useInviteSystem)
             InviteSystem_1.InviteSystem["init"](this);
         if (this.options.extensions?.length) {

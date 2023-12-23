@@ -1,4 +1,4 @@
-import { Client, ClientOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
+import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
 import { BaseCommand, CommandType } from "../structures/BaseCommand"
 import { EventManager, NativeEventName } from "../managers/EventManager"
 import { Compiler } from "./Compiler"
@@ -28,6 +28,7 @@ export interface IForgeClientOptions extends ClientOptions {
     allowBots?: boolean
     token?: string
     useInviteSystem?: boolean
+    mobile?: boolean
     
     /**
      * @deprecated Does not work
@@ -74,6 +75,10 @@ export class ForgeClient extends Client<true> {
     #init() {
         if (this.options.logLevel !== undefined) Logger.Priority = this.options.logLevel
 
+        if (this.options.mobile) {
+            Reflect.set(DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS")
+        }
+        
         if (this.options.useInviteSystem) InviteSystem["init"](this)
 
         if (this.options.extensions?.length) {

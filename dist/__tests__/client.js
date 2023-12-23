@@ -31,6 +31,7 @@ const client = new ForgeClient_1.ForgeClient({
         "$guildName",
         "$cope"
     ],
+    mobile: true,
     useInviteSystem: true,
     prefixes: ["!"],
     restrictions: {

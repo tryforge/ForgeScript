@@ -33,6 +33,7 @@ const client = new ForgeClient({
         "$guildName",
         "$cope"
     ],
+    mobile: true,
     useInviteSystem: true,
     prefixes: ["!"],
     restrictions: {
