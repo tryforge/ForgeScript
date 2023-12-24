@@ -1,6 +1,6 @@
-import { ErrorType } from "../structures/ForgeError"
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return } from "../structures/Return"
+import { ErrorType } from "../structures/@internal/ForgeError"
+import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$callFunction",

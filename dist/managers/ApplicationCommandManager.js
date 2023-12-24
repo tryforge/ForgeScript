@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApplicationCommandManager = void 0;
 const discord_js_1 = require("discord.js");
-const ApplicationCommand_1 = require("../structures/ApplicationCommand");
+const ApplicationCommand_1 = require("../structures/base/ApplicationCommand");
 const EventManager_1 = require("./EventManager");
 const fs_1 = require("fs");
 const path_1 = require("path");

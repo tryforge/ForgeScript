@@ -1,5 +1,5 @@
 import { Interpreter } from "../../core/Interpreter"
-import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
+import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 
 export default new DiscordEventHandler({
     name: "messageCreate",
@@ -19,7 +19,7 @@ export default new DiscordEventHandler({
             (cmd) =>
                 !cmd.name ||
                 (// Check if it matches the command name or one of aliases
-                (cmd.name === name || !!cmd.data.aliases?.includes(name!)) &&
+                    (cmd.name === name || !!cmd.data.aliases?.includes(name!)) &&
                     // If unprefixed there can be no prefix
                     (cmd.data.unprefixed ? true : !!prefix))
         )

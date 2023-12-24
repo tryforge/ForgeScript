@@ -1,7 +1,7 @@
 import { inspect } from "util"
-import { Sendable } from "../structures/Container"
-import { Context } from "../structures/Context"
-import { ReturnType } from "../structures/Return"
+import { Sendable } from "../structures/@internal/Container"
+import { Context } from "../structures/@internal/Context"
+import { ReturnType } from "../structures/@internal/Return"
 import { IExtendedCompilationResult } from "./Compiler"
 import { ForgeClient } from "./ForgeClient"
 import {

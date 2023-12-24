@@ -1,6 +1,6 @@
 import { Interpreter } from "../../core"
-import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
-import { InviteSystem } from "../../structures/InviteSystem"
+import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
+import { InviteSystem } from "../../structures/extras/InviteSystem"
 
 export default new DiscordEventHandler({
     name: "guildAuditLogEntryCreate",

@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction } from "../structures"
-import { LogType, Logger } from "../structures/Logger"
+import { LogType, Logger } from "../structures/@internal/Logger"
 
 export default new NativeFunction({
     name: "$logger",

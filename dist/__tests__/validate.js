@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const managers_1 = require("../managers");
 const structures_1 = require("../structures");
-const Logger_1 = require("../structures/Logger");
+const Logger_1 = require("../structures/@internal/Logger");
 // eslint-disable-next-line no-undef
 managers_1.FunctionManager.load(__dirname + "/../native");
 for (const [, fn] of managers_1.FunctionManager["Functions"]) {

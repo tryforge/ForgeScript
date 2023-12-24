@@ -1,6 +1,6 @@
 import { readdirSync } from "fs"
 import { ForgeClient } from "../core/ForgeClient"
-import { ForgeFunction, IForgeFunction } from "../structures/ForgeFunction"
+import { ForgeFunction, IForgeFunction } from "../structures/forge/ForgeFunction"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 
 export class ForgeFunctionManager {

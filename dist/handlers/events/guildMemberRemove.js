@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("../../core");
-const InviteSystem_1 = require("../../structures/InviteSystem");
-const DiscordEventHandler_1 = require("../../structures/DiscordEventHandler");
+const InviteSystem_1 = require("../../structures/extras/InviteSystem");
+const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "guildMemberRemove",
     version: "1.0.1",

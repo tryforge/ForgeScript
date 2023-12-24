@@ -1,5 +1,5 @@
 import { ForgeClient } from "../core/ForgeClient";
-import { ForgeFunction, IForgeFunction } from "../structures/ForgeFunction";
+import { ForgeFunction, IForgeFunction } from "../structures/forge/ForgeFunction";
 export declare class ForgeFunctionManager {
     private readonly client;
     private readonly functions;

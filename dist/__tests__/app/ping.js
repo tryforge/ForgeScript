@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const ApplicationCommand_1 = require("../../structures/ApplicationCommand");
+const ApplicationCommand_1 = require("../../structures/base/ApplicationCommand");
 exports.default = new ApplicationCommand_1.ApplicationCommand({
     data: {
         name: "ping",

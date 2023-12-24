@@ -1,16 +1,16 @@
 import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
-import { BaseCommand, CommandType } from "../structures/BaseCommand"
+import { BaseCommand, CommandType } from "../structures/base/BaseCommand"
 import { EventManager, NativeEventName } from "../managers/EventManager"
 import { Compiler } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
-import { ForgeExtension } from "../structures/ForgeExtension"
-import { InviteSystem } from "../structures/InviteSystem"
+import { ForgeExtension } from "../structures/forge/ForgeExtension"
+import { InviteSystem } from "../structures/extras/InviteSystem"
 import { CooldownManager } from "../managers/CooldownManager"
 import { NativeCommandManager } from "../managers/NativeCommandManager"
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
 import { ThreadManager } from "../managers/ThreadManager"
-import { LogPriority, Logger } from "../structures/Logger"
+import { LogPriority, Logger } from "../structures/@internal/Logger"
 
 disableValidators()
 

@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Compiler_1 = require("../core/Compiler");
 const Interpreter_1 = require("../core/Interpreter");
-const Logger_1 = require("../structures/Logger");
-const NativeFunction_1 = require("../structures/NativeFunction");
+const Logger_1 = require("../structures/@internal/Logger");
+const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$eval",
     version: "1.0.0",

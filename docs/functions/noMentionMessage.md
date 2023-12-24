@@ -21,7 +21,7 @@ end index | Number | The end index | No | No
     
 ```ts
 import { ArgType, NativeFunction } from "../structures"
-import { Return } from "../structures/Return"
+import { Return } from "../structures/@internal/Return"
 
 const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g
 

@@ -1,5 +1,5 @@
-import { NativeFunction } from "../structures/NativeFunction"
-import { Return } from "../structures/Return"
+import { NativeFunction } from "../structures/@internal/NativeFunction"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$authorID",

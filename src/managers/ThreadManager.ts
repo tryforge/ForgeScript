@@ -1,7 +1,7 @@
 import { Worker } from "worker_threads"
 import { ForgeClient, IRunnable } from "../core"
 import { once } from "events"
-import { Logger } from "../structures/Logger"
+import { Logger } from "../structures/@internal/Logger"
 
 export interface IThreadContext {
     code: string

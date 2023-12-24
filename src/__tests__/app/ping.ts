@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js"
-import { ApplicationCommand } from "../../structures/ApplicationCommand"
+import { ApplicationCommand } from "../../structures/base/ApplicationCommand"
 
 export default new ApplicationCommand({
     data: {

@@ -17,9 +17,9 @@ variable | String | Environment variable name to load the response to | No | No
 </summary>
     
 ```ts
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
+import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
 import { fetch } from "undici"
-import { Return } from "../structures/Return"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpRequest",

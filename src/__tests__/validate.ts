@@ -1,6 +1,6 @@
 import { FunctionManager } from "../managers"
 import { ArgType } from "../structures"
-import { Logger } from "../structures/Logger"
+import { Logger } from "../structures/@internal/Logger"
 
 // eslint-disable-next-line no-undef
 FunctionManager.load(__dirname + "/../native")

@@ -13,7 +13,7 @@ $inviterCode
     
 ```ts
 import { NativeFunction, Return } from "../structures"
-import { InviteSystem } from "../structures/InviteSystem"
+import { InviteSystem } from "../structures/extras/InviteSystem"
 
 export default new NativeFunction({
     name: "$inviterCode",

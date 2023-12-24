@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ForgeClient_1 = require("../core/ForgeClient");
 const dotenv_1 = require("dotenv");
 const discord_js_1 = require("discord.js");
-const Logger_1 = require("../structures/Logger");
+const Logger_1 = require("../structures/@internal/Logger");
 (0, dotenv_1.config)();
 const client = new ForgeClient_1.ForgeClient({
     logLevel: Logger_1.LogPriority.High,

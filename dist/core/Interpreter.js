@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Interpreter = void 0;
-const Context_1 = require("../structures/Context");
+const Context_1 = require("../structures/@internal/Context");
 class Interpreter {
     static async run(runtime) {
         const ctx = new Context_1.Context(runtime);

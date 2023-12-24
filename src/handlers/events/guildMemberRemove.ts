@@ -1,7 +1,7 @@
 import { GuildMember } from "discord.js"
 import { Interpreter } from "../../core"
-import { InviteSystem } from "../../structures/InviteSystem"
-import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
+import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 
 export default new DiscordEventHandler({
     name: "guildMemberRemove",

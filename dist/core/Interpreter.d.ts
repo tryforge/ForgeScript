@@ -1,4 +1,4 @@
-import { Sendable } from "../structures/Container";
+import { Sendable } from "../structures/@internal/Container";
 import { IExtendedCompilationResult } from "./Compiler";
 import { ForgeClient } from "./ForgeClient";
 import { Channel, Guild, GuildAuditLogsEntry, GuildEmoji, GuildMember, Invite, Message, Presence, Role, User, VoiceState } from "discord.js";

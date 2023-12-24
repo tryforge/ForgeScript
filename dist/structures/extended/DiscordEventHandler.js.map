@@ -1,0 +1,1 @@
+{"version":3,"file":"DiscordEventHandler.js","sourceRoot":"","sources":["../../../src/structures/extended/DiscordEventHandler.ts"],"names":[],"mappings":";;;AAEA,+DAA2D;AAE3D,MAAa,mBAAkD,SAAQ,mCAAiC;IAC7F,QAAQ,CAAC,MAAmB;QAC/B,MAAM,CAAC,EAAE,CAAC,IAAI,CAAC,IAAI,EAAE,IAAI,CAAC,QAAQ,CAAC,IAAI,CAAC,MAAM,CAAQ,CAAC,CAAA;IAC3D,CAAC;CACJ;AAJD,kDAIC"}

@@ -1,1 +1,1 @@
-{"version":3,"file":"httpRequest.d.ts","sourceRoot":"","sources":["../../src/native/httpRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,8BAA8B,CAAA;;;;;;;;;;;;;;;;;;;;AAItE,wBA+CE"}
+{"version":3,"file":"httpRequest.d.ts","sourceRoot":"","sources":["../../src/native/httpRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,wCAAwC,CAAA;;;;;;;;;;;;;;;;;;;;AAIhF,wBA+CE"}

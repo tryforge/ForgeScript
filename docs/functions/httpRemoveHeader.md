@@ -15,8 +15,8 @@ name | String | The header name | Yes | No
 </summary>
     
 ```ts
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return } from "../structures/Return"
+import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpRemoveHeader",

@@ -16,8 +16,8 @@ value | String | The header value | Yes | Yes
 </summary>
     
 ```ts
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return } from "../structures/Return"
+import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpAddHeader",

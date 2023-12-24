@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FunctionManager = void 0;
-const NativeFunction_1 = require("../structures/NativeFunction");
+const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const v8_1 = require("v8");
-const Logger_1 = require("../structures/Logger");
+const Logger_1 = require("../structures/@internal/Logger");
 class FunctionManager {
     static Functions = new Map();
     static loadNative() {

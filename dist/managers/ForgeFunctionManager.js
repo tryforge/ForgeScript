@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeFunctionManager = void 0;
-const ForgeFunction_1 = require("../structures/ForgeFunction");
+const ForgeFunction_1 = require("../structures/forge/ForgeFunction");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 class ForgeFunctionManager {
     client;

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreadManager = void 0;
 const worker_threads_1 = require("worker_threads");
 const events_1 = require("events");
-const Logger_1 = require("../structures/Logger");
+const Logger_1 = require("../structures/@internal/Logger");
 class ThreadManager {
     client;
     available = new Set();

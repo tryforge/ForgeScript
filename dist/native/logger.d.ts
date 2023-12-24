@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction } from "../structures";
-import { LogType } from "../structures/Logger";
+import { LogType } from "../structures/@internal/Logger";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;

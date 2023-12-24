@@ -1,6 +1,6 @@
 import { Message } from "discord.js"
 import { Interpreter } from "../../core"
-import { DiscordEventHandler } from "../../structures/DiscordEventHandler"
+import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 
 export default new DiscordEventHandler({
     name: "messageUpdate",

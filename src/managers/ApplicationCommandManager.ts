@@ -13,7 +13,7 @@ import {
     RESTPostAPIContextMenuApplicationCommandsJSONBody,
     SlashCommandBuilder,
 } from "discord.js"
-import { ApplicationCommand } from "../structures/ApplicationCommand"
+import { ApplicationCommand } from "../structures/base/ApplicationCommand"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { ForgeClient } from "../core"
 import { NativeEventName } from "./EventManager"

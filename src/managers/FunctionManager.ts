@@ -1,9 +1,9 @@
 import { readdirSync } from "fs"
-import { ArgType, INativeFunction, NativeFunction } from "../structures/NativeFunction"
+import { ArgType, INativeFunction, NativeFunction } from "../structures/@internal/NativeFunction"
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { deserialize, serialize } from "v8"
-import { Logger } from "../structures/Logger"
+import { Logger } from "../structures/@internal/Logger"
 
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()

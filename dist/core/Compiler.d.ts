@@ -1,4 +1,4 @@
-import { CompiledFunction } from "../structures/CompiledFunction";
+import { CompiledFunction } from "../structures/@internal/CompiledFunction";
 export interface IRawField {
     condition?: boolean;
     rest?: boolean;

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MyExtension = void 0;
 const FunctionManager_1 = require("../managers/FunctionManager");
-const ForgeExtension_1 = require("../structures/ForgeExtension");
+const ForgeExtension_1 = require("../structures/forge/ForgeExtension");
 // Just a ext test
 class MyExtension extends ForgeExtension_1.ForgeExtension {
     description = "Some description";

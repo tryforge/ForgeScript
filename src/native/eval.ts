@@ -1,8 +1,8 @@
 import { Compiler } from "../core/Compiler"
 import { Interpreter } from "../core/Interpreter"
-import { Logger } from "../structures/Logger"
-import { ArgType, NativeFunction } from "../structures/NativeFunction"
-import { Return } from "../structures/Return"
+import { Logger } from "../structures/@internal/Logger"
+import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
+import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$eval",

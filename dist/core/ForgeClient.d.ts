@@ -1,13 +1,13 @@
 import { Client, ClientOptions, IntentsBitField } from "discord.js";
-import { BaseCommand, CommandType } from "../structures/BaseCommand";
+import { BaseCommand, CommandType } from "../structures/base/BaseCommand";
 import { EventManager } from "../managers/EventManager";
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager";
-import { ForgeExtension } from "../structures/ForgeExtension";
+import { ForgeExtension } from "../structures/forge/ForgeExtension";
 import { CooldownManager } from "../managers/CooldownManager";
 import { NativeCommandManager } from "../managers/NativeCommandManager";
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
 import { ThreadManager } from "../managers/ThreadManager";
-import { LogPriority } from "../structures/Logger";
+import { LogPriority } from "../structures/@internal/Logger";
 export interface IRestriction {
     guildIDs?: string[];
     userIDs?: string[];

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
-const InviteSystem_1 = require("../structures/InviteSystem");
+const InviteSystem_1 = require("../structures/extras/InviteSystem");
 exports.default = new structures_1.NativeFunction({
     name: "$inviterID",
     version: "1.0.3",

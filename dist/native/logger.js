@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
-const Logger_1 = require("../structures/Logger");
+const Logger_1 = require("../structures/@internal/Logger");
 exports.default = new structures_1.NativeFunction({
     name: "$logger",
     version: "1.3.0",

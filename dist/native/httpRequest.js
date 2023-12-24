@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const NativeFunction_1 = require("../structures/NativeFunction");
+const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 const undici_1 = require("undici");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRequest",
