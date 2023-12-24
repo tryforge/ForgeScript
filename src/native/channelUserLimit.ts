@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelUserLimit",
+    version: "1.4.0",
     description: "Returns the user limit of the voice channel",
     unwrap: true,
     brackets: false,

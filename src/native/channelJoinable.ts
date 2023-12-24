@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelJoinable",
+    version: "1.4.0",
     description: "Returns whether the voice channel is joinable by the bot",
     unwrap: true,
     brackets: false,
