@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$attachments",
-    version: "1.0.3",
-    description: "Retrieve an attachment url from a message with given index",
+    name: "$messageAttachments",
+    description: "Retrieves all attachments of this message",
     brackets: false,
     unwrap: true,
     args: [
@@ -25,15 +24,14 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Message,
         },
         {
-            name: "index",
+            name: "separator",
             rest: false,
-            description: "The index to get this attachment",
-            type: structures_1.ArgType.Number,
-        },
+            description: "The separator to use for every attachment",
+            type: structures_1.ArgType.String,
+        }
     ],
-    execute(ctx, [, message, index]) {
-        index ??= 1;
-        return this.success((message ?? ctx.message)?.attachments.at(index)?.url);
+    execute(ctx, [, message, sep]) {
+        return this.success((message ?? ctx.message)?.attachments.map(x => x.url).join(sep ?? ", "));
     },
 });
-//# sourceMappingURL=attachments.js.map
+//# sourceMappingURL=messageAttachments.js.map

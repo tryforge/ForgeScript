@@ -2,9 +2,9 @@ import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
-    name: "$attachments",
-    version: "1.0.3",
-    description: "Retrieve an attachment url from a message with given index",
+    name: "$messageAttachmentCount",
+    version: "1.4.0",
+    description: "Retrieve the amount of attachments in this message",
     brackets: false,
     unwrap: true,
     args: [
@@ -19,20 +19,13 @@ export default new NativeFunction({
         {
             name: "message ID",
             pointer: 0,
-            description: "The message to get its attachments",
+            description: "The message to get its attachment count",
             rest: false,
             required: true,
             type: ArgType.Message,
-        },
-        {
-            name: "index",
-            rest: false,
-            description: "The index to get this attachment",
-            type: ArgType.Number,
-        },
+        }
     ],
-    execute(ctx, [, message, index]) {
-        index ??= 1
-        return this.success((message ?? ctx.message)?.attachments.at(index)?.url)
+    execute(ctx, [, message]) {
+        return this.success((message ?? ctx.message)?.attachments.size)
     },
 })

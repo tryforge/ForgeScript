@@ -6,12 +6,12 @@ $platform
 ```
 ---
 ```
-$platform[guild ID;guild ID;separator]
+$platform[guild ID;user ID;separator]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
 guild ID | Guild | The guild id to return the member from | Yes | No
-guild ID | Member | The member id return its platform | Yes | No
+user ID | Member | The member id return its platform | Yes | No
 separator | String | The separator for each platform | No | No
 <details>
 <summary>
@@ -38,7 +38,7 @@ export default new NativeFunction({
             required: true,
         },
         {
-            name: "guild ID",
+            name: "user ID",
             description: "The member id return its platform",
             rest: false,
             type: ArgType.Member,

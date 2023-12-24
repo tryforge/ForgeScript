@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
         {
-            name: "guild ID",
+            name: "user ID",
             description: "The member id return its platform",
             rest: false,
             type: structures_1.ArgType.Member,
