@@ -45,8 +45,7 @@ class ForgeClient extends discord_js_1.Client {
             InviteSystem_1.InviteSystem["init"](this);
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
-                const ext = this.options.extensions[i];
-                ext["validateAndInit"](this);
+                this.options.extensions[i]["validateAndInit"](this);
             }
         }
         FunctionManager_1.FunctionManager.loadNative();

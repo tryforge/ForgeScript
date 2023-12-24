@@ -1,6 +1,6 @@
 import { inspect } from "util"
 import { CompiledFunction } from "../structures/@internal/CompiledFunction"
-import { ErrorType, ForgeError } from "../structures/@internal/ForgeError"
+import { ErrorType, ForgeError } from "../structures/forge/ForgeError"
 import { Collection } from "discord.js"
 
 export interface IRawField {

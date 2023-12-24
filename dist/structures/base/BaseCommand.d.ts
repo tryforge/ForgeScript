@@ -25,6 +25,8 @@ export declare class BaseCommand<T> {
     readonly data: IBaseCommand<T>;
     readonly compiled: ICompiledCommand;
     constructor(data: IBaseCommand<T>);
+    setPath(p: string): this;
+    validate(): void;
     static from(code: string): BaseCommand<null>;
     get name(): string | undefined;
     get type(): T;

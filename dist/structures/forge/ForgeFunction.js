@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeFunction = void 0;
 const Compiler_1 = require("../../core/Compiler");
-const ForgeError_1 = require("../@internal/ForgeError");
+const ForgeError_1 = require("./ForgeError");
 const Return_1 = require("../@internal/Return");
 class ForgeFunction {
     data;

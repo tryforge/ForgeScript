@@ -3,7 +3,7 @@ import { IRawFunction } from "../core/Compiler";
 export declare class FunctionManager {
     private static readonly Functions;
     static loadNative(): void;
-    static load(path: string): Promise<void>;
+    static load(provider: string, path: string): void;
     static disable(fns: string[]): void;
     static get(name: string): NativeFunction<import("../structures/@internal/NativeFunction").IArg<ArgType, boolean, boolean, import("../structures/@internal/NativeFunction").EnumLike<any>>[], boolean>;
     static toJSON(): INativeFunction<any>[];

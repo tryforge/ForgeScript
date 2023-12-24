@@ -12,20 +12,23 @@ class FunctionManager {
     static Functions = new Map();
     static loadNative() {
         // eslint-disable-next-line no-undef
-        FunctionManager.load(`${__dirname}/../native`);
+        FunctionManager.load("ForgeScript", `${__dirname}/../native`);
     }
-    static async load(path) {
+    static load(provider, path) {
+        const overrideAttempts = new Array();
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
             if (this.Functions.has(req.name)) {
-                Logger_1.Logger.warn(`Attempted to override already existing function ${req.name}`);
+                overrideAttempts.push(req.name);
                 continue;
             }
             if (!req.data.args?.length)
                 req.data.unwrap = false;
             this.Functions.set(req.name, req);
         }
+        if (overrideAttempts.length !== 0)
+            Logger_1.Logger.warn(`${provider} | Attempted to override the following ${overrideAttempts.length} functions: ${overrideAttempts.join(", ")}`);
     }
     static disable(fns) {
         for (let i = 0, len = fns.length; i < len; i++) {

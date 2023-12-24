@@ -19,7 +19,7 @@ __exportStar(require("./@internal/CompiledFunction"), exports);
 __exportStar(require("./@internal/Container"), exports);
 __exportStar(require("./@internal/Context"), exports);
 __exportStar(require("./base/BaseEventHandler"), exports);
-__exportStar(require("./@internal/ForgeError"), exports);
+__exportStar(require("./forge/ForgeError"), exports);
 __exportStar(require("./forge/ForgeExtension"), exports);
 __exportStar(require("./forge/ForgeFunction"), exports);
 __exportStar(require("./@internal/NativeFunction"), exports);

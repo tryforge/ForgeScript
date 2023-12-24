@@ -10,16 +10,18 @@ export class FunctionManager {
 
     public static loadNative() {    
         // eslint-disable-next-line no-undef
-        FunctionManager.load(`${__dirname}/../native`)
+        FunctionManager.load("ForgeScript", `${__dirname}/../native`)
     }
 
-    public static async load(path: string) {
+    public static load(provider: string, path: string) {
+        const overrideAttempts = new Array<string>()
+
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default as NativeFunction
             
             if (this.Functions.has(req.name)) {
-                Logger.warn(`Attempted to override already existing function ${req.name}`)
+                overrideAttempts.push(req.name)
                 continue
             }
 
@@ -28,6 +30,9 @@ export class FunctionManager {
             
             this.Functions.set(req.name, req)
         }
+
+        if (overrideAttempts.length !== 0)
+            Logger.warn(`${provider} | Attempted to override the following ${overrideAttempts.length} functions: ${overrideAttempts.join(", ")}`)
     }
 
     public static disable(fns: string[]) {

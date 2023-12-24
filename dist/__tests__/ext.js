@@ -1,22 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MyExtension = void 0;
-const FunctionManager_1 = require("../managers/FunctionManager");
 const ForgeExtension_1 = require("../structures/forge/ForgeExtension");
 // Just a ext test
 class MyExtension extends ForgeExtension_1.ForgeExtension {
     description = "Some description";
-    name = "My extension";
+    name = "UwU";
     version = "1.0.0";
-    requireExtensions = [
-        "Tmr"
-    ];
-    targetVersions = [
-        "1.3.0"
-    ];
     init(client) {
         // eslint-disable-next-line no-undef
-        FunctionManager_1.FunctionManager.load(`${__dirname}/custom`);
+        this.load(__dirname + "/custom");
     }
 }
 exports.MyExtension = MyExtension;

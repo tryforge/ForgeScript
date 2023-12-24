@@ -1,6 +1,6 @@
 import { ClientEvents, Interaction, InteractionType } from "discord.js"
 import { Compiler, IExtendedCompilationResult } from "../../core/Compiler"
-import { Context, Logger } from ".."
+import { Context, ErrorType, ForgeError, Logger } from ".."
 import { IRunnable } from "../../core"
 
 export type CommandType = keyof ClientEvents
@@ -40,6 +40,16 @@ export class BaseCommand<T> {
             name: Compiler.compile(data.name, this.data.path),
             code: Compiler.compile(data.code, this.data.path),
         }
+    }
+
+    public setPath(p: string) {
+        this.data.path = p
+        return this
+    }
+
+    public validate() {
+        if (!this.data.type)
+            throw new ForgeError(null, ErrorType.MissingCommandType, this.data.path)
     }
 
     public static from(code: string) {

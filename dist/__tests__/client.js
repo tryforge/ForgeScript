@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ForgeClient_1 = require("../core/ForgeClient");
 const dotenv_1 = require("dotenv");
+const ext_1 = require("./ext");
 const discord_js_1 = require("discord.js");
 const Logger_1 = require("../structures/@internal/Logger");
 (0, dotenv_1.config)();
@@ -38,7 +39,9 @@ const client = new ForgeClient_1.ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: []
+    extensions: [
+        new ext_1.MyExtension()
+    ]
 });
 console.log("Started");
 client.commands.add({

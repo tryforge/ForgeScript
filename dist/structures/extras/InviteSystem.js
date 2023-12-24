@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InviteSystem = void 0;
 const discord_js_1 = require("discord.js");
 const noop_1 = __importDefault(require("../../functions/noop"));
-const ForgeError_1 = require("../@internal/ForgeError");
+const ForgeError_1 = require("../forge/ForgeError");
 const managers_1 = require("../../managers");
 const Logger_1 = require("../@internal/Logger");
 class InviteSystem {

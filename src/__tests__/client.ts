@@ -40,7 +40,9 @@ const client = new ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     optionalGuildID: true,
-    extensions: []
+    extensions: [
+        new MyExtension()
+    ]
 })
 
 console.log("Started")

@@ -5,8 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeExtension = void 0;
 const getVersionNumber_1 = __importDefault(require("../../functions/getVersionNumber"));
-const ForgeError_1 = require("../@internal/ForgeError");
+const ForgeError_1 = require("./ForgeError");
 const Logger_1 = require("../@internal/Logger");
+const managers_1 = require("../../managers");
 class ForgeExtension {
     /**
      * Only the versions written here will be allowed
@@ -31,6 +32,9 @@ class ForgeExtension {
         }
         this.init(client);
         Logger_1.Logger.info(`Extension ${this.name} has been loaded! Version ${this.version}`);
+    }
+    load(path) {
+        return managers_1.FunctionManager.load(this.name, path);
     }
 }
 exports.ForgeExtension = ForgeExtension;

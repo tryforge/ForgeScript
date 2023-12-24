@@ -83,12 +83,12 @@ export class ForgeClient extends Client<true> {
 
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
-                const ext = this.options.extensions[i]
-                ext["validateAndInit"](this)
+                this.options.extensions[i]["validateAndInit"](this)
             }
         }
 
         FunctionManager.loadNative()
+        
         if (this.options.disableFunctions?.length)
             FunctionManager.disable(this.options.disableFunctions)
 

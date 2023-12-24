@@ -1,6 +1,6 @@
 import { Compiler, IExtendedCompilationResult } from "../../core/Compiler"
 import { Context } from "../@internal/Context"
-import { ErrorType, ForgeError } from "../@internal/ForgeError"
+import { ErrorType, ForgeError } from "./ForgeError"
 import { Return, ReturnType } from "../@internal/Return"
 
 export interface IForgeFunction {

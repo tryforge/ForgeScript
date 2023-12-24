@@ -43,8 +43,8 @@ export class BaseCommandManager<T> {
             const req = FileReader.read(file, path)
             if (!req) continue
 
-            if (Array.isArray(req)) this.addPath(path, ...req)
-            else this.addPath(path, req)
+            if (Array.isArray(req)) this.addPath(true, path, ...req)
+            else this.addPath(true, path, req)
         }
     }
 
@@ -55,24 +55,20 @@ export class BaseCommandManager<T> {
     }
 
     public add(...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
-        for (let i = 0, len = commands.length; i < len; i++) {
-            const req = commands[i]
-            if (!req.type) continue
-
-            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
-
-            const col = this.commands.ensure(cmd.type as T, () => new Array())
-            col.push(cmd)
-        }
+        this.addPath(false, undefined, ...commands)
     }
 
-    private addPath(path: string, ...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
+    private addPath(unloadable: boolean, path?: string, ...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i]
-            const cmd = req instanceof BaseCommand ? req : new BaseCommand({ ...req, path })
+            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
+            if (path)
+                cmd.setPath(path)
+
+            cmd.validate()
 
             const col = this.commands.ensure(cmd.type as T, () => new Array())
-            cmd.data.unloadable = true
+            cmd.data.unloadable = unloadable
 
             col.push(cmd)
         }

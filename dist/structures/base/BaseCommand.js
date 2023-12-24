@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseCommand = void 0;
 const Compiler_1 = require("../../core/Compiler");
+const __1 = require("..");
 class BaseCommand {
     data;
     compiled;
@@ -11,6 +12,14 @@ class BaseCommand {
             name: Compiler_1.Compiler.compile(data.name, this.data.path),
             code: Compiler_1.Compiler.compile(data.code, this.data.path),
         };
+    }
+    setPath(p) {
+        this.data.path = p;
+        return this;
+    }
+    validate() {
+        if (!this.data.type)
+            throw new __1.ForgeError(null, __1.ErrorType.MissingCommandType, this.data.path);
     }
     static from(code) {
         return new this({

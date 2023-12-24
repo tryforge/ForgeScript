@@ -13,5 +13,6 @@ export declare abstract class ForgeExtension {
     requireExtensions?: string[];
     abstract init(client: ForgeClient): void;
     protected validateAndInit(client: ForgeClient): void;
+    protected load(path: string): void;
 }
 //# sourceMappingURL=ForgeExtension.d.ts.map

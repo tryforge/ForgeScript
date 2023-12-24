@@ -1,5 +1,5 @@
 import { inspect } from "util"
-import { ForgeError } from "./ForgeError"
+import { ForgeError } from "../forge/ForgeError"
 
 export enum ReturnType {
     Error,

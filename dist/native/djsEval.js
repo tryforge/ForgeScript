@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("util");
-const ForgeError_1 = require("../structures/@internal/ForgeError");
+const ForgeError_1 = require("../structures/forge/ForgeError");
 const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$djsEval",

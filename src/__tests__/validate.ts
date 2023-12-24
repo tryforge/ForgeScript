@@ -3,7 +3,7 @@ import { ArgType } from "../structures"
 import { Logger } from "../structures/@internal/Logger"
 
 // eslint-disable-next-line no-undef
-FunctionManager.load(__dirname + "/../native")
+FunctionManager.load("Validator", __dirname + "/../native")
 
 for (const [, fn] of FunctionManager["Functions"]) {
     if (fn.data.args?.length) {

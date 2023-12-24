@@ -11,7 +11,7 @@ import {
 } from "discord.js"
 import noop from "../../functions/noop"
 import { ForgeClient } from "../../core"
-import { ErrorType, ForgeError } from "../@internal/ForgeError"
+import { ErrorType, ForgeError } from "../forge/ForgeError"
 import { setTimeout } from "timers/promises"
 import { NativeEventName } from "../../managers"
 import { Logger } from "../@internal/Logger"

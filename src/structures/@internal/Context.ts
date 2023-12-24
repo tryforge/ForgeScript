@@ -20,7 +20,7 @@ import { IArg, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../../core/Interpreter"
 import noop from "../../functions/noop"
-import { ForgeError } from "./ForgeError"
+import { ForgeError } from "../forge/ForgeError"
 import { Logger } from "./Logger"
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (

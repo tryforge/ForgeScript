@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compiler = exports.Conditions = exports.Operators = exports.OperatorType = void 0;
 const CompiledFunction_1 = require("../structures/@internal/CompiledFunction");
-const ForgeError_1 = require("../structures/@internal/ForgeError");
+const ForgeError_1 = require("../structures/forge/ForgeError");
 const discord_js_1 = require("discord.js");
 var OperatorType;
 (function (OperatorType) {

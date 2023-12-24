@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const ForgeError_1 = require("../structures/@internal/ForgeError");
+const ForgeError_1 = require("../structures/forge/ForgeError");
 const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$callFunction",

@@ -44,9 +44,9 @@ class BaseCommandManager {
             if (!req)
                 continue;
             if (Array.isArray(req))
-                this.addPath(path, ...req);
+                this.addPath(true, path, ...req);
             else
-                this.addPath(path, req);
+                this.addPath(true, path, req);
         }
     }
     get(type, fn) {
@@ -56,21 +56,17 @@ class BaseCommandManager {
         return cmds.filter(fn);
     }
     add(...commands) {
-        for (let i = 0, len = commands.length; i < len; i++) {
-            const req = commands[i];
-            if (!req.type)
-                continue;
-            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand(req);
-            const col = this.commands.ensure(cmd.type, () => new Array());
-            col.push(cmd);
-        }
+        this.addPath(false, undefined, ...commands);
     }
-    addPath(path, ...commands) {
+    addPath(unloadable, path, ...commands) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i];
-            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand({ ...req, path });
+            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand(req);
+            if (path)
+                cmd.setPath(path);
+            cmd.validate();
             const col = this.commands.ensure(cmd.type, () => new Array());
-            cmd.data.unloadable = true;
+            cmd.data.unloadable = unloadable;
             col.push(cmd);
         }
     }

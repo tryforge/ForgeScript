@@ -19,7 +19,7 @@ import {
 import noop from "../../functions/noop"
 import { FunctionManager } from "../../managers/FunctionManager"
 import { Context } from "./Context"
-import { ErrorType, ForgeError, GetErrorArgs } from "./ForgeError"
+import { ErrorType, ForgeError, GetErrorArgs } from "../forge/ForgeError"
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType, ReturnValue } from "./Return"
 import { TimeParser } from "../../constants"

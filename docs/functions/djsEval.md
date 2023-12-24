@@ -16,7 +16,7 @@ code | String | The code to eval | Yes | Yes
     
 ```ts
 import { inspect } from "util"
-import { ErrorType } from "../structures/@internal/ForgeError"
+import { ErrorType } from "../structures/forge/ForgeError"
 import { ArgType, NativeFunction } from "../structures/@internal/NativeFunction"
 import { Return } from "../structures/@internal/Return"
 

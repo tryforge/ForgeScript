@@ -1,7 +1,8 @@
 import { ForgeClient } from "../../core/ForgeClient"
 import getVersionNumber from "../../functions/getVersionNumber"
-import { ErrorType, ForgeError } from "../@internal/ForgeError"
+import { ErrorType, ForgeError } from "./ForgeError"
 import { Logger } from "../@internal/Logger"
+import { FunctionManager } from "../../managers"
 
 export abstract class ForgeExtension {
     public abstract name: string
@@ -48,5 +49,9 @@ export abstract class ForgeExtension {
 
         this.init(client)
         Logger.info(`Extension ${this.name} has been loaded! Version ${this.version}`)
+    }
+
+    protected load(path: string) {
+        return FunctionManager.load(this.name, path)
     }
 }
