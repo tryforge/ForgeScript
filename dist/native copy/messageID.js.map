@@ -1,1 +1,0 @@
-{"version":3,"file":"messageID.js","sourceRoot":"","sources":["../../src/native copy/messageID.ts"],"names":[],"mappings":";;AAAA,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,YAAY;IAClB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,wBAAwB;IACrC,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,IAAI,CAAC,OAAO,CAAC,GAAG,CAAC,OAAO,EAAE,EAAE,CAAC,CAAA;IACxC,CAAC;CACJ,CAAC,CAAA"}

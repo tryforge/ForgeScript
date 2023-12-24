@@ -1,1 +1,0 @@
-{"version":3,"file":"cpuCores.js","sourceRoot":"","sources":["../../src/native copy/cpuCores.ts"],"names":[],"mappings":";;;;;AAAA,8CAAsD;AACtD,sDAAwB;AAExB,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,WAAW;IACjB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,iCAAiC;IAC9C,MAAM,EAAE,KAAK;IACb,OAAO;QACH,OAAO,IAAI,CAAC,OAAO,CAAC,iBAAE,CAAC,IAAI,EAAE,CAAC,MAAM,CAAC,CAAA;IACzC,CAAC;CACJ,CAAC,CAAA"}
