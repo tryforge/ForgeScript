@@ -1,5 +1,5 @@
 # $elseIf
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates a else if statement
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Creates an else if statement
 ## Usage
 ```
 $elseIf[condition;if true]
@@ -27,7 +27,7 @@ import {
 export default new NativeFunction({
     name: "$elseIf",
     version: "1.2.0",
-    description: "Creates a else if statement",
+    description: "Creates an else if statement",
     unwrap: false,
     args: [
         {

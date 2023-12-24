@@ -1,5 +1,5 @@
 # $jsonSet
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Adds a json key with a value
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Adds a JSON key with a value
 ## Usage
 ```
 $jsonSet[variable;value]
@@ -21,7 +21,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$jsonSet",
     version: "1.2.0",
-    description: "Adds a json key with a value",
+    description: "Adds a JSON key with a value",
     unwrap: true,
     brackets: true,
     args: [

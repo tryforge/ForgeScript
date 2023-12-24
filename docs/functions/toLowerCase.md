@@ -1,5 +1,5 @@
 # $toLowerCase
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Makes a string lowercase
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Converts a string to lowercase
 ## Usage
 ```
 $toLowerCase[...string]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$toLowerCase",
     version: "1.0.0",
-    description: "Makes a string lowercase",
+    description: "Converts a string to lowercase",
     unwrap: true,
     args: [
         {

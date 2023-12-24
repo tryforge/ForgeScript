@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$toUpperCase",
     version: "1.0.0",
-    description: "Makes a string uppercase",
+    description: "Converts a string to uppercase",
     unwrap: true,
     args: [
         {

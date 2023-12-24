@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$applicationCommandID",
     version: "1.0.7",
-    description: "Returns the application command id",
+    description: "Returns an application command id",
     brackets: false,
     args: [
         {

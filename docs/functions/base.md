@@ -1,5 +1,5 @@
 # $base
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Convert number from one base to another
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Converts number from one base to another
 ## Usage
 ```
 $base[number;to;from]
@@ -22,7 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$base",
     version: "1.1.0",
-    description: "Convert number from one base to another",
+    description: "Converts number from one base to another",
     brackets: true,
     unwrap: true,
     args: [

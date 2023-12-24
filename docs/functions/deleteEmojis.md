@@ -1,5 +1,5 @@
 # $deleteEmojis
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given emoji ids, returns the count of emotes deleted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Deletes given emoji ids, returns the count of emotes deleted
 ## Usage
 ```
 $deleteEmojis[guild ID;...emojis]
@@ -24,7 +24,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Delete given emoji ids, returns the count of emotes deleted",
+    description: "Deletes given emoji ids, returns the count of emotes deleted",
     args: [
         {
             name: "guild ID",

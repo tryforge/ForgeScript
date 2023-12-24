@@ -1,5 +1,5 @@
 # $isGuildMuted
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Whether a member is server muted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether a member is server muted
 ## Usage
 ```
 $isGuildMuted
@@ -25,7 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$isGuildMuted",
     version: "1.0.0",
-    description: "Whether a member is server muted",
+    description: "Returns whether a member is server muted",
     brackets: false,
     unwrap: true,
     args: [

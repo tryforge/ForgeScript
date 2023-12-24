@@ -1,5 +1,5 @@
 # $sendDM
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Sends a dm to the user
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Sends a DM to a user
 ## Usage
 ```
 $sendDM[user ID;content;return message ID]
@@ -23,13 +23,13 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$sendDM",
     version: "1.0.0",
-    description: "Sends a dm to the user",
+    description: "Sends a DM to a user",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "user ID",
-            description: "The user to dm",
+            description: "The user to DM",
             rest: false,
             type: ArgType.User,
             required: true,

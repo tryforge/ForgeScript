@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$replace",
     version: "1.0.0",
-    description: "Replace text in a string",
+    description: "Replaces text in a string",
     unwrap: true,
     args: [
         {

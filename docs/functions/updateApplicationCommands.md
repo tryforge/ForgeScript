@@ -1,5 +1,5 @@
 # $updateApplicationCommands
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Updates application commands commands
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Updates application commands
 ## Usage
 ```
 $updateApplicationCommands
@@ -17,7 +17,7 @@ import { NativeFunction } from "../structures"
 export default new NativeFunction({
     name: "$updateApplicationCommands",
     version: "1.2.0",
-    description: "Updates application commands commands",
+    description: "Updates application commands",
     unwrap: false,
     async execute(ctx) {
         ctx.client.applicationCommands.load()

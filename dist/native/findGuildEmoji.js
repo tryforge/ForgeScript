@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$findGuildEmoji",
     version: "1.0.0",
-    description: "Finds a emoji of a guild",
+    description: "Finds an emoji of a guild",
     brackets: true,
     args: [
         {

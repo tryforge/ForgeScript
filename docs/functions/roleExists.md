@@ -1,5 +1,5 @@
 # $roleExists
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether an role id exists
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether a role id exists
 ## Usage
 ```
 $roleExists[guild ID;role ID]
@@ -21,7 +21,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 export default new NativeFunction({
     name: "$roleExists",
     version: "1.0.0",
-    description: "Returns whether an role id exists",
+    description: "Returns whether a role id exists",
     unwrap: true,
     brackets: true,
     args: [

@@ -5,7 +5,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$readFile",
     version: "1.0.0",
-    description: "reads text from a file",
+    description: "Reads text from a file",
     unwrap: true,
     brackets: true,
     args: [

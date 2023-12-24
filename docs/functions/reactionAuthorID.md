@@ -1,5 +1,5 @@
 # $reactionAuthorID
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> The reaction author id that reacted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the reaction author id that reacted
 ## Usage
 ```
 $reactionAuthorID
@@ -17,7 +17,7 @@ import { NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$reactionAuthorID",
     version: "1.0.0",
-    description: "The reaction author id that reacted",
+    description: "Returns the reaction author id that reacted",
     unwrap: true,
     execute(ctx) {
         return this.success(ctx.states?.user?.new?.id)

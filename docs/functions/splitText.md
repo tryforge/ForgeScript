@@ -1,5 +1,5 @@
 # $splitText
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Gets element of textSplit
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Gets an element of textSplit
 ## Usage
 ```
 $splitText[index]
@@ -21,7 +21,7 @@ import { SplitTextName } from "./textSplit"
 export default new NativeFunction({
     name: "$splitText",
     version: "1.2.0",
-    description: "Gets element of textSplit",
+    description: "Gets an element of textSplit",
     brackets: true,
     unwrap: true,
     args: [

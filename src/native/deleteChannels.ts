@@ -7,7 +7,7 @@ export default new NativeFunction({
     version: "1.0.5",
     brackets: true,
     unwrap: true,
-    description: "Delete given channel ids, returns the count of channels deleted",
+    description: "Deletes given channel ids, returns the count of channels deleted",
     args: [
         {
             name: "channels",

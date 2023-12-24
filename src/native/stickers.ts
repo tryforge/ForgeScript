@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$stickers",
     version: "1.0.3",
-    description: "Retrieve a sticker url from a message with given index",
+    description: "Retrieves a sticker url from a message with given index",
     brackets: false,
     unwrap: true,
     args: [

@@ -1,5 +1,5 @@
 # $isSelfMuted
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Whether a member is self muted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether a member is self muted
 ## Usage
 ```
 $isSelfMuted
@@ -25,7 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$isSelfMuted",
     version: "1.0.0",
-    description: "Whether a member is self muted",
+    description: "Returns whether a member is self muted",
     brackets: false,
     unwrap: true,
     args: [

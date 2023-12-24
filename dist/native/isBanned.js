@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Whether this user is banned",
+    description: "Returns whether the user is banned",
     args: [
         {
             name: "guild ID",

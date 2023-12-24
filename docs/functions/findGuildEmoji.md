@@ -1,5 +1,5 @@
 # $findGuildEmoji
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds a emoji of a guild
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Finds an emoji of a guild
 ## Usage
 ```
 $findGuildEmoji[guild ID;query]
@@ -21,7 +21,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 export default new NativeFunction({
     name: "$findGuildEmoji",
     version: "1.0.0",
-    description: "Finds a emoji of a guild",
+    description: "Finds an emoji of a guild",
     brackets: true,
     args: [
         {

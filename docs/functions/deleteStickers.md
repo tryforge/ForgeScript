@@ -1,5 +1,5 @@
 # $deleteStickers
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Delete given sticker ids, returns the count of stickers deleted
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Deletes given sticker ids, returns the count of stickers deleted
 ## Usage
 ```
 $deleteStickers[guild ID;...stickers]
@@ -24,7 +24,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Delete given sticker ids, returns the count of stickers deleted",
+    description: "Deletes given sticker ids, returns the count of stickers deleted",
     args: [
         {
             name: "guild ID",

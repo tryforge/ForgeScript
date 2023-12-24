@@ -1,5 +1,5 @@
 # $isInteger
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Whether the number is an integer
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns whether the number is an integer
 ## Usage
 ```
 $isInteger[number]
@@ -20,7 +20,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$isInteger",
     version: "1.0.0",
-    description: "Whether the number is an integer",
+    description: "Returns whether the number is an integer",
     unwrap: true,
     args: [
         {

@@ -14,7 +14,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The channel id to set its nsfw state",
+            description: "The channel id to set its slowmode",
             rest: false,
             check: (i) => "setRateLimitPerUser" in i,
             type: structures_1.ArgType.Channel,

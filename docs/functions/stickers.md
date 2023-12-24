@@ -1,5 +1,5 @@
 # $stickers
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieve a sticker url from a message with given index
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves a sticker url from a message with given index
 ## Usage
 ```
 $stickers
@@ -27,7 +27,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$stickers",
     version: "1.0.3",
-    description: "Retrieve a sticker url from a message with given index",
+    description: "Retrieves a sticker url from a message with given index",
     brackets: false,
     unwrap: true,
     args: [

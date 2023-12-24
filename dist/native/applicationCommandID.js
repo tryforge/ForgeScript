@@ -5,7 +5,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$applicationCommandID",
     version: "1.0.7",
-    description: "Returns the application command id",
+    description: "Returns an application command id",
     brackets: false,
     args: [
         {

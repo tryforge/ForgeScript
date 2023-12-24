@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isSelfMuted",
     version: "1.0.0",
-    description: "Whether a member is self muted",
+    description: "Returns whether a member is self muted",
     brackets: false,
     unwrap: true,
     args: [

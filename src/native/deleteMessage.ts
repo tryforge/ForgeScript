@@ -7,7 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Delete given message ids, returns the count of messages deleted",
+    description: "Deletes given message ids, returns the count of messages deleted",
     args: [
         {
             name: "channel ID",

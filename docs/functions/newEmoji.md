@@ -1,5 +1,5 @@
 # $newEmoji
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves new data from an event whose context was a emoji instance
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Retrieves new data from an event whose context was an emoji instance
 ## Usage
 ```
 $newEmoji[property;separator]
@@ -22,7 +22,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$newEmoji",
     version: "1.0.0",
-    description: "Retrieves new data from an event whose context was a emoji instance",
+    description: "Retrieves new data from an event whose context was an emoji instance",
     brackets: true,
     unwrap: true,
     args: [

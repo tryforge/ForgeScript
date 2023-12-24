@@ -5,7 +5,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newInvite",
     version: "1.0.3",
-    description: "Retrieves new data from an event whose context was a invite instance",
+    description: "Retrieves new data from an event whose context was an invite instance",
     brackets: true,
     unwrap: true,
     args: [

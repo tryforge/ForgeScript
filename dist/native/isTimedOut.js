@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isTimedOut",
     version: "1.0.0",
-    description: "Whether an member is timed out",
+    description: "Returns whether a member is timed out",
     unwrap: true,
     brackets: false,
     args: [

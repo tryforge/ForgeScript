@@ -1,5 +1,5 @@
 # $applicationCommandID
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the application command id
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns an application command id
 ## Usage
 ```
 $applicationCommandID
@@ -25,7 +25,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$applicationCommandID",
     version: "1.0.7",
-    description: "Returns the application command id",
+    description: "Returns an application command id",
     brackets: false,
     args: [
         {

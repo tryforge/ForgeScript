@@ -9,7 +9,7 @@ import {
 export default new NativeFunction({
     name: "$elseIf",
     version: "1.2.0",
-    description: "Creates a else if statement",
+    description: "Creates an else if statement",
     unwrap: false,
     args: [
         {

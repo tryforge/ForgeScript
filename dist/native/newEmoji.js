@@ -5,7 +5,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newEmoji",
     version: "1.0.0",
-    description: "Retrieves new data from an event whose context was a emoji instance",
+    description: "Retrieves new data from an event whose context was an emoji instance",
     brackets: true,
     unwrap: true,
     args: [

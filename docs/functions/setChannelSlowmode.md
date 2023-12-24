@@ -6,7 +6,7 @@ $setChannelSlowmode[channel ID;seconds]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-channel ID | Channel | The channel id to set its nsfw state | Yes | No
+channel ID | Channel | The channel id to set its slowmode | Yes | No
 seconds | Number | The number of seconds per message | No | No
 <details>
 <summary>
@@ -29,7 +29,7 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The channel id to set its nsfw state",
+            description: "The channel id to set its slowmode",
             rest: false,
             check: (i: BaseChannel) => "setRateLimitPerUser" in i,
             type: ArgType.Channel,

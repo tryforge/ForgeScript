@@ -8,7 +8,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberExists",
     version: "1.0.0",
-    description: "Returns whether an member id exists",
+    description: "Returns whether a member id exists",
     unwrap: true,
     brackets: true,
     args: [

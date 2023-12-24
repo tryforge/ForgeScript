@@ -1,5 +1,5 @@
 # $reactionEmoji
-> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> The emoji that was used
+> <img align="top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png?20150409153300" alt="image" width="25" height="auto"> Returns the emoji that was used
 ## Usage
 ```
 $reactionEmoji
@@ -17,7 +17,7 @@ import { NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$reactionEmoji",
     version: "1.0.0",
-    description: "The emoji that was used",
+    description: "Returns the emoji that was used",
     unwrap: true,
     execute(ctx) {
         return this.success(ctx.reaction?.emoji.toString())

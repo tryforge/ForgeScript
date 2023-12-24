@@ -6,7 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
-    description: "Delete given sticker ids, returns the count of stickers deleted",
+    description: "Deletes given sticker ids, returns the count of stickers deleted",
     args: [
         {
             name: "guild ID",

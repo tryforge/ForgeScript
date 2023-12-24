@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 export default new NativeFunction({
     name: "$replaceRegex",
     version: "1.0.0",
-    description: "Replace text in a string using regex",
+    description: "Replaces text in a string using regex",
     unwrap: true,
     args: [
         {

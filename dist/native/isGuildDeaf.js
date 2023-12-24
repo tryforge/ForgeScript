@@ -4,7 +4,7 @@ const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isGuildDeaf",
     version: "1.0.0",
-    description: "Whether a member is server deafened",
+    description: "Returns whether a member is server deafened",
     brackets: false,
     unwrap: true,
     args: [
