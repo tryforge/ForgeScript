@@ -23,22 +23,25 @@ export declare enum LogPriority {
 }
 export declare enum LogType {
     Warn = 0,
-    Debug = 1,
-    Info = 2,
-    Error = 3
+    Deprecated = 1,
+    Debug = 2,
+    Info = 3,
+    Error = 4
 }
 export declare class Logger {
     static Priority: LogPriority;
     static readonly Colors: {
+        2: clc.Chalk;
+        4: clc.Chalk;
+        0: clc.Chalk;
         1: clc.Chalk;
         3: clc.Chalk;
-        0: clc.Chalk;
-        2: clc.Chalk;
     };
     static readonly DateColor: clc.Chalk;
     private static log;
     static debug(...args: unknown[]): void;
     static warn(...args: unknown[]): void;
+    static deprecated(...args: unknown[]): void;
     static error(...args: unknown[]): void;
     static info(...args: unknown[]): void;
 }

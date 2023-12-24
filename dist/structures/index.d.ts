@@ -10,7 +10,7 @@ export * from "./@internal/NativeFunction";
 export * from "./@internal/Return";
 export * from "./base/BaseEventHandler";
 export * from "./extended/DiscordEventHandler";
-export * from "./extras/InviteSystem";
+export * from "./trackers/InviteTracker";
 export * from "./base/ApplicationCommand";
 export * from "./@internal/Logger";
 //# sourceMappingURL=index.d.ts.map

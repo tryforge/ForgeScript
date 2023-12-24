@@ -1,13 +1,13 @@
 import { Interpreter } from "../../core"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
 export default new DiscordEventHandler({
     name: "inviteDelete",
     version: "1.0.3",
     description: "This event is fired when an invite is deleted",
     listener: async function (inv) {
-        if (this.options.useInviteSystem) await InviteSystem.inviteDeleteHandler(inv)
+        if (this.options.trackers?.invites) await InviteTracker.inviteDeleteHandler(inv)
 
         const commands = this.commands.get("inviteDelete")
 

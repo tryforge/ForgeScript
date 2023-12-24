@@ -13,7 +13,7 @@ $inviterID
     
 ```ts
 import { NativeFunction, Return } from "../structures"
-import { InviteSystem } from "../structures/extras/InviteSystem"
+import { InviteTracker } from "../structures/trackers/InviteTracker"
 
 export default new NativeFunction({
     name: "$inviterID",
@@ -21,7 +21,7 @@ export default new NativeFunction({
     description: "Returns the user who invited this person",
     unwrap: true,
     execute(ctx) {
-        return this.success(InviteSystem.Inviters.get(ctx.guild?.id!)?.get(ctx.user?.id!)?.inviterId)
+        return this.success(InviteTracker.Inviters.get(ctx.guild?.id!)?.get(ctx.user?.id!)?.inviterId)
     },
 })
 

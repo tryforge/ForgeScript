@@ -1,6 +1,6 @@
 import { GuildMember } from "discord.js"
 import { Interpreter } from "../../core"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 
 export default new DiscordEventHandler({
@@ -9,13 +9,13 @@ export default new DiscordEventHandler({
     description: "This event is fired when a member is updated in a guild",
     listener: async function (old, newer) {
         if (
-            this.options.useInviteSystem &&
+            this.options.trackers?.invites &&
             newer.id === this.user.id &&
             !old.permissions.has("ManageGuild") &&
             newer.permissions.has("ManageGuild")
         ) {
             // We gained invite perms
-            await InviteSystem.cache(newer.guild)
+            await InviteTracker.cache(newer.guild)
         }
 
         const commands = this.commands.get("guildMemberUpdate")

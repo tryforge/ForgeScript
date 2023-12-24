@@ -26,7 +26,7 @@ __exportStar(require("./@internal/NativeFunction"), exports);
 __exportStar(require("./@internal/Return"), exports);
 __exportStar(require("./base/BaseEventHandler"), exports);
 __exportStar(require("./extended/DiscordEventHandler"), exports);
-__exportStar(require("./extras/InviteSystem"), exports);
+__exportStar(require("./trackers/InviteTracker"), exports);
 __exportStar(require("./base/ApplicationCommand"), exports);
 __exportStar(require("./@internal/Logger"), exports);
 //# sourceMappingURL=index.js.map

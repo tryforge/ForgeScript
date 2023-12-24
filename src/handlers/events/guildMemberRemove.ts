@@ -1,6 +1,6 @@
 import { GuildMember } from "discord.js"
 import { Interpreter } from "../../core"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 
 export default new DiscordEventHandler({
@@ -8,7 +8,7 @@ export default new DiscordEventHandler({
     version: "1.0.1",
     description: "This event is fired when a member leaves, is kicked or banned from a guild",
     listener: async function (m) {
-        if (this.options.useInviteSystem) InviteSystem.deleteInviter(m)
+        if (this.options.trackers?.invites) InviteTracker.deleteInviter(m)
 
         const commands = this.commands.get("guildMemberRemove")
 

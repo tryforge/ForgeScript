@@ -5,16 +5,22 @@ import { Compiler } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
 import { ForgeExtension } from "../structures/forge/ForgeExtension"
-import { InviteSystem } from "../structures/extras/InviteSystem"
+import { InviteTracker } from "../structures/trackers/InviteTracker"
 import { CooldownManager } from "../managers/CooldownManager"
 import { NativeCommandManager } from "../managers/NativeCommandManager"
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
 import { ThreadManager } from "../managers/ThreadManager"
 import { LogPriority, Logger } from "../structures/@internal/Logger"
+import { VoiceTracker } from "../structures/trackers/VoiceTracker"
 
 disableValidators()
 
-export interface IRestriction {
+export interface ITrackers {
+    invites?: boolean
+    voice?: boolean
+}
+
+export interface IRestrictions {
     guildIDs?: string[]
     userIDs?: string[]
 }
@@ -27,15 +33,20 @@ export interface IForgeClientOptions extends ClientOptions {
     functions?: string
     allowBots?: boolean
     token?: string
+
+    /**
+     * @deprecated use trackers: { invites: true } instead
+     */
     useInviteSystem?: boolean
     mobile?: boolean
-    
+    trackers?: ITrackers
+
     /**
      * @deprecated Does not work
      */
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
-    restrictions?: IRestriction
+    restrictions?: IRestrictions
 
     /**
      * Array of function names you want to disable.
@@ -79,7 +90,18 @@ export class ForgeClient extends Client<true> {
             Reflect.set(DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS")
         }
         
-        if (this.options.useInviteSystem) InviteSystem["init"](this)
+        if (this.options.useInviteSystem) {
+            this.options.trackers ??= {}
+            this.options.trackers.invites = true
+            Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.")
+        }
+
+        if (this.options.trackers) {
+            if (this.options.trackers.invites)
+                InviteTracker["init"](this)
+            if (this.options.trackers.voice)
+                VoiceTracker["init"](this)
+        }
 
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {

@@ -1,6 +1,6 @@
 import { Interpreter } from "../../core"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
 export default new DiscordEventHandler({
     name: "ready",
@@ -21,8 +21,8 @@ export default new DiscordEventHandler({
             console.log(`Ready on client ${this.user.displayName}`)
         }
 
-        if (this.options.useInviteSystem) {
-            await InviteSystem.cacheAll(this)
+        if (this.options.trackers?.invites) {
+            await InviteTracker.cacheAll(this)
         }
     },
 })

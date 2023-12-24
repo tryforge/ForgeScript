@@ -30,6 +30,7 @@ export enum LogPriority {
 
 export enum LogType {
     Warn,
+    Deprecated,
     Debug,
     Info,
     Error,
@@ -41,6 +42,7 @@ export class Logger {
         [LogType.Debug]: clc.whiteBright.bold,
         [LogType.Error]: clc.red.bold,
         [LogType.Warn]: clc.yellow.bold,
+        [LogType.Deprecated]: clc.magenta.bold,
         [LogType.Info]: clc.cyan.bold
     } satisfies Record<LogType, Chalk>
     public static readonly DateColor = clc.green.bold
@@ -60,6 +62,10 @@ export class Logger {
 
     public static warn(...args: unknown[]) {
         this.log(LogPriority.Medium, LogType.Warn, ...args)
+    }
+
+    public static deprecated(...args: unknown[]) {
+        this.log(LogPriority.Medium, LogType.Deprecated, ...args)
     }
 
     public static error(...args: unknown[]) {

@@ -32,9 +32,10 @@ var LogPriority;
 var LogType;
 (function (LogType) {
     LogType[LogType["Warn"] = 0] = "Warn";
-    LogType[LogType["Debug"] = 1] = "Debug";
-    LogType[LogType["Info"] = 2] = "Info";
-    LogType[LogType["Error"] = 3] = "Error";
+    LogType[LogType["Deprecated"] = 1] = "Deprecated";
+    LogType[LogType["Debug"] = 2] = "Debug";
+    LogType[LogType["Info"] = 3] = "Info";
+    LogType[LogType["Error"] = 4] = "Error";
 })(LogType || (exports.LogType = LogType = {}));
 class Logger {
     static Priority = LogPriority.Medium;
@@ -42,6 +43,7 @@ class Logger {
         [LogType.Debug]: chalk_1.default.whiteBright.bold,
         [LogType.Error]: chalk_1.default.red.bold,
         [LogType.Warn]: chalk_1.default.yellow.bold,
+        [LogType.Deprecated]: chalk_1.default.magenta.bold,
         [LogType.Info]: chalk_1.default.cyan.bold
     };
     static DateColor = chalk_1.default.green.bold;
@@ -55,6 +57,9 @@ class Logger {
     }
     static warn(...args) {
         this.log(LogPriority.Medium, LogType.Warn, ...args);
+    }
+    static deprecated(...args) {
+        this.log(LogPriority.Medium, LogType.Deprecated, ...args);
     }
     static error(...args) {
         this.log(LogPriority.Low, LogType.Error, ...args);

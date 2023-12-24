@@ -6,7 +6,7 @@ $logger[log type;text]
 ```
 | Name | Type | Description | Required | Spread
 | :---: | :---: | :---: | :---: | :---: |
-log type | Enum (`Warn`, `Debug`, `Info`, `Error`) | The log type | Yes | No
+log type | Enum (`Warn`, `Deprecated`, `Debug`, `Info`, `Error`) | The log type | Yes | No
 text | String | What to log | Yes | No
 <details>
 <summary>

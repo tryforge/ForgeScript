@@ -6,12 +6,13 @@ const EventManager_1 = require("../managers/EventManager");
 const Compiler_1 = require("./Compiler");
 const FunctionManager_1 = require("../managers/FunctionManager");
 const ForgeFunctionManager_1 = require("../managers/ForgeFunctionManager");
-const InviteSystem_1 = require("../structures/extras/InviteSystem");
+const InviteTracker_1 = require("../structures/trackers/InviteTracker");
 const CooldownManager_1 = require("../managers/CooldownManager");
 const NativeCommandManager_1 = require("../managers/NativeCommandManager");
 const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
 const ThreadManager_1 = require("../managers/ThreadManager");
 const Logger_1 = require("../structures/@internal/Logger");
+const VoiceTracker_1 = require("../structures/trackers/VoiceTracker");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -41,8 +42,17 @@ class ForgeClient extends discord_js_1.Client {
         if (this.options.mobile) {
             Reflect.set(discord_js_1.DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS");
         }
-        if (this.options.useInviteSystem)
-            InviteSystem_1.InviteSystem["init"](this);
+        if (this.options.useInviteSystem) {
+            this.options.trackers ??= {};
+            this.options.trackers.invites = true;
+            Logger_1.Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.");
+        }
+        if (this.options.trackers) {
+            if (this.options.trackers.invites)
+                InviteTracker_1.InviteTracker["init"](this);
+            if (this.options.trackers.voice)
+                VoiceTracker_1.VoiceTracker["init"](this);
+        }
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 this.options.extensions[i]["validateAndInit"](this);

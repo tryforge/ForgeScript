@@ -1,6 +1,6 @@
 import { Interpreter } from "../../core"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
 export default new DiscordEventHandler({
     name: "guildDelete",
@@ -8,7 +8,7 @@ export default new DiscordEventHandler({
     description: "This event is fired when a guild is deleted",
     intents: ["Guilds"],
     listener: async function (g) {
-        if (this.options.useInviteSystem) InviteSystem.uncache(g)
+        if (this.options.trackers?.invites) InviteTracker.uncache(g)
 
         const commands = this.commands.get("guildDelete")
 

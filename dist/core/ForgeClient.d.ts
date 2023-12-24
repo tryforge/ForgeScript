@@ -8,7 +8,11 @@ import { NativeCommandManager } from "../managers/NativeCommandManager";
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
 import { ThreadManager } from "../managers/ThreadManager";
 import { LogPriority } from "../structures/@internal/Logger";
-export interface IRestriction {
+export interface ITrackers {
+    invites?: boolean;
+    voice?: boolean;
+}
+export interface IRestrictions {
     guildIDs?: string[];
     userIDs?: string[];
 }
@@ -20,14 +24,18 @@ export interface IForgeClientOptions extends ClientOptions {
     functions?: string;
     allowBots?: boolean;
     token?: string;
+    /**
+     * @deprecated use trackers: { invites: true } instead
+     */
     useInviteSystem?: boolean;
     mobile?: boolean;
+    trackers?: ITrackers;
     /**
      * @deprecated Does not work
      */
     optionalGuildID?: boolean;
     extensions?: ForgeExtension[];
-    restrictions?: IRestriction;
+    restrictions?: IRestrictions;
     /**
      * Array of function names you want to disable.
      */

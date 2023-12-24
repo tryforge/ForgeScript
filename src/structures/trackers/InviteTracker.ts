@@ -27,7 +27,7 @@ export interface IGuildInvite {
     code: string
 }
 
-export class InviteSystem {
+export class InviteTracker {
     public static readonly Invites = new Collection<string, IGuildInvite[]>()
 
     public static readonly RequiredIntents = ["Guilds", "GuildInvites", "GuildMembers"] as GatewayIntentsString[]
@@ -48,7 +48,7 @@ export class InviteSystem {
     public static readonly Inviters = new Collection<string, Collection<string, IGuildInviter>>()
 
     private static init(client: ForgeClient) {
-        if (!client.options.intents.has(InviteSystem.RequiredIntents))
+        if (!client.options.intents.has(InviteTracker.RequiredIntents))
             throw new ForgeError(
                 null,
                 ErrorType.Custom,
@@ -56,7 +56,7 @@ export class InviteSystem {
             )
 
         client.events.load(NativeEventName, this.RequiredEvents)
-        Logger.warn("The Invite System is still beta, correct functionality is not guaranteed")
+        Logger.warn("The Invite Tracker is still beta, correct functionality is not guaranteed")
     }
 
     public static hasPermissions(guild: Guild) {

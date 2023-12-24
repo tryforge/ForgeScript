@@ -1,13 +1,13 @@
 import { Interpreter } from "../../core"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
-import { InviteSystem } from "../../structures/extras/InviteSystem"
+import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
 export default new DiscordEventHandler({
     name: "guildCreate",
     version: "1.0.1",
     description: "This event is fired when the bot is added to a guild",
     listener: async function (g) {
-        if (this.options.useInviteSystem) await InviteSystem.cache(g)
+        if (this.options.trackers?.invites) await InviteTracker.cache(g)
 
         const commands = this.commands.get("guildCreate")
 
