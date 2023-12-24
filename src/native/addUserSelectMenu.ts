@@ -3,7 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$addUserSelectMenu",
-    version: "1.4ºº.0",
+    version: "1.4.0",
     description: "Creates a user select menu",
     brackets: true,
     unwrap: true,

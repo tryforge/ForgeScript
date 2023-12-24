@@ -22,7 +22,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$voiceKick",
-    version: "1.4ºº.0",
+    version: "1.4.0",
     description: "Kicks a member from voice channel",
     brackets: true,
     args: [

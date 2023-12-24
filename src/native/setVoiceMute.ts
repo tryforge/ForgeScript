@@ -3,7 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$setVoiceMute",
-    version: "1.4ºº.0",
+    version: "1.4.0",
     description: "Mutes a member from voice channel",
     brackets: true,
     args: [

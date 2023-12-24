@@ -4,7 +4,7 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setVoiceDeaf",
-    version: "1.4ºº.0",
+    version: "1.4.0",
     description: "Deafens a member from voice channel",
     brackets: true,
     args: [
