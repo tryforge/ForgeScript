@@ -3,6 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$setVoiceUnmute",
+    category: "unknown",
     version: "1.4.0",
     description: "Unmutes a member from voice channel",
     brackets: true,

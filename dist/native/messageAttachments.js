@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageAttachments",
+    category: "unknown",
+    version: "1.4.0",
     description: "Retrieves all attachments of this message",
     brackets: false,
     unwrap: true,

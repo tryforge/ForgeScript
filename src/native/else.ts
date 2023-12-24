@@ -8,6 +8,7 @@ import {
 
 export default new NativeFunction({
     name: "$else",
+    category: "unknown",
     version: "1.2.0",
     description: "Creates a else statement",
     unwrap: true,

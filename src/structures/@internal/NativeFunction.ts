@@ -105,6 +105,12 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
      */
     version?: string
 
+
+    /**
+     * Do not provide this
+     */
+    category?: string
+
     /**
      * If undefined, function has no brackets
      *
@@ -181,7 +187,8 @@ export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...
 
 export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     public readonly async: boolean
-
+    public path!: string
+    
     public constructor(public readonly data: INativeFunction<T, Unwrap>) {
         // @ts-ignore
         this.async = data.execute[Symbol.toStringTag] === "AsyncFunction"
@@ -189,5 +196,5 @@ export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boole
 
     public get name() {
         return this.data.name
-    }
+    } 
 }

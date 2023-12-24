@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$min",
+    category: "unknown",
     version: "1.0.7",
     description: "Returns the smallest number of the ones given",
     brackets: true,

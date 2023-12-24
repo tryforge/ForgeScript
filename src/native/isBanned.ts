@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isBanned",
+    category: "unknown",
     version: "1.0.0",
     brackets: true,
     unwrap: true,

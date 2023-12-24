@@ -8,6 +8,7 @@ const noop_1 = __importDefault(require("../functions/noop"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addRole",
+    category: "unknown",
     version: "1.0.0",
     description: "Adds a role to a guild, returns role id if success",
     unwrap: true,

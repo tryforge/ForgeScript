@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isUserDMEnabled",
+    category: "unknown",
     version: "1.2.0",
     description: "Checks whether given user can be DMed",
     unwrap: true,

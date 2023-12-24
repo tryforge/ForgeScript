@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$coroutine",
+    category: "unknown",
     version: "1.2.0",
     description: "Runs given code in a separate thread",
     experimental: true,

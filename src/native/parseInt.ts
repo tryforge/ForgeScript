@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$parseInt",
+    category: "unknown",
     version: "1.2.0",
     description: "Implements native parseInt's function into ForgeScript",
     unwrap: true,

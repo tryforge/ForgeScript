@@ -4,6 +4,7 @@ const NoNumberRegex = /[^0-9.]/g
 
 export default new NativeFunction({
     name: "$separateBigint",
+    category: "unknown",
     version: "1.3.0",
     description: "Separates thousands in the number",
     unwrap: true,

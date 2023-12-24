@@ -7,6 +7,7 @@ const noop_1 = __importDefault(require("../functions/noop"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$dmChannelID",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the dm channel id of a user",
     brackets: false,

@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildMaximumBitrate",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns the maximum bitrate for voice channels of this guild",
     brackets: false,

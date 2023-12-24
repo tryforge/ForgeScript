@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$abs",
+    category: "unknown",
     version: "1.0.1",
     description:
         "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",

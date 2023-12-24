@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$networkCardIPs",
+    category: "unknown",
     version: "1.2.0",
     description: "Returns your network's card ips",
     unwrap: true,

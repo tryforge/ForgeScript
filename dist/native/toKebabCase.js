@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$toKebabCase",
+    category: "unknown",
     version: "1.0.6",
     description: "Converts a string to kebab case",
     brackets: true,

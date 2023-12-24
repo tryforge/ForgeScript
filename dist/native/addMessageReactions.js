@@ -7,6 +7,7 @@ const structures_1 = require("../structures");
 const noop_1 = __importDefault(require("../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$addMessageReactions",
+    category: "unknown",
     version: "1.0.0",
     description: "Adds reactions to a message, returns amount of emojis successfully reacted",
     unwrap: true,

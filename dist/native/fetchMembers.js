@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchMembers",
+    category: "unknown",
     version: "1.0.0",
     description: "Caches all members of a guild",
     unwrap: true,

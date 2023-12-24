@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arraySplice",
+    category: "unknown",
     version: "1.0.0",
     description: "Removes x elements starting from y index",
     unwrap: true,

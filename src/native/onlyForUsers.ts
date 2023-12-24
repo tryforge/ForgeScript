@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$onlyForUsers",
+    category: "unknown",
     version: "1.1.0",
     description: "Only executes code if given ids match the author",
     brackets: true,

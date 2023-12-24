@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildSafetyAlertsChannelID",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns the server's safety alerts channel ID",
     brackets: false,

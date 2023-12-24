@@ -4,6 +4,7 @@ const member_1 = require("../properties/member");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newMember",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves new data from an event whose context was a guild member instance",
     brackets: true,

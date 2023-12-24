@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$thumbnail",
+    category: "unknown",
     version: "1.0.0",
     description: "Adds an embed thumbnail",
     unwrap: true,

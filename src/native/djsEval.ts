@@ -5,6 +5,7 @@ import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$djsEval",
+    category: "unknown",
     version: "1.0.0",
     description: "Eval js code",
     unwrap: true,

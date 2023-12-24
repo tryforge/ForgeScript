@@ -4,6 +4,7 @@ export const ChannelMentionCharRegex = /[<>#]/g
 
 export default new NativeFunction({
     name: "$findGuildChannel",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a channel of a guild",
     brackets: true,

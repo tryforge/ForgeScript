@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$floor",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the greatest integer less than or equal to its numeric argument",
     brackets: true,

@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildMaxVideoChannelUsers",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns the maximum video channel users for this guild",
     brackets: false,

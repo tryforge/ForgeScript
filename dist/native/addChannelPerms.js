@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addChannelPerms",
+    category: "unknown",
     version: "1.0.3",
     description: "Adds permission overwrites to a channel, returns bool",
     brackets: true,

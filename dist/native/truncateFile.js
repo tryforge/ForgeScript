@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$truncateFile",
+    category: "unknown",
     version: "1.0.0",
     description: "Truncates text in a file to given length",
     unwrap: true,

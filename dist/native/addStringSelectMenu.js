@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addStringSelectMenu",
+    category: "unknown",
     version: "1.0.0",
     description: "Adds a string select menu",
     unwrap: true,

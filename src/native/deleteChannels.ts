@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteChannels",
+    category: "unknown",
     version: "1.0.5",
     brackets: true,
     unwrap: true,

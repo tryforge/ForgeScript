@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$createThread",
+    category: "unknown",
     version: "1.0.3",
     description: "Creates a thread, returns thread channel id on success",
     unwrap: true,

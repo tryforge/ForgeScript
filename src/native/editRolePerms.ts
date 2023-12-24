@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$editRolePerms",
+    category: "unknown",
     version: "1.0.7",
     description: "Edits a role's perms, returns boolean",
     unwrap: true,

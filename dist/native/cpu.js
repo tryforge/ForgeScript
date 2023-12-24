@@ -5,6 +5,7 @@ const os_1 = require("os");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$cpu",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the cpu usage of the host (not accurate)",
     unwrap: false,

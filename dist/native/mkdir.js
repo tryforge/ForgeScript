@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$mkdir",
+    category: "unknown",
     version: "1.0.0",
     description: "Creates a directory",
     unwrap: true,

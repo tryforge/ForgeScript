@@ -1,13 +1,15 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs"
 import { EventManager, FunctionManager, NativeEventName } from "./managers"
-import generateFunctionDoc from "./functions/generateFunctionDoc"
 import { execSync } from "child_process"
 import { argv } from "process"
 import { Logger } from "./structures"
 
 FunctionManager.loadNative()
 
+const mainPathName = "native"
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
+const FunctionCategoryRegex = /(category: "\$?(\w+)"),?/m
+
 const path = "./docs/functions"
 const metaOutPath = "./metadata"
 
@@ -17,9 +19,22 @@ if (!existsSync(path)) mkdirSync(path)
 const v = require("../package.json").version
 
 for (const [, fn] of FunctionManager["Functions"]) {
-    const nativePath = `./src/native/${fn.name.slice(1)}.ts`
+    const nativePath = fn.path.replace(".js", ".ts").replace("dist", "src")
     let txt = readFileSync(nativePath, "utf-8")
     let modified = false
+    const pathSplits = fn.path.split(/(?:\\|\/)/gim)
+    const category = pathSplits.at(-2) === mainPathName ? "unknown" : pathSplits.at(-2)!
+
+    if (fn.data.category !== category) {
+        const existed = !!fn.data.category
+        fn.data.category = category
+        if (!existed) {
+            txt = txt.replace(FunctionNameRegex, `$1,\n    category: "${category}",`)
+        } else {
+            txt = txt.replace(FunctionCategoryRegex, `category: "${category}",`)
+        }
+        modified = true
+    }
 
     if (!fn.data.version) {
         fn.data.version = v
@@ -29,7 +44,6 @@ for (const [, fn] of FunctionManager["Functions"]) {
 
     if (modified)
         writeFileSync(nativePath, txt)
-    writeFileSync(`${path}/${fn.name.slice(1)}.md`, generateFunctionDoc(fn))
 }
 
 writeFileSync(`${metaOutPath}/functions.json`, JSON.stringify(FunctionManager.toJSON()))

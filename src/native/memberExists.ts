@@ -3,6 +3,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 
 export default new NativeFunction({
     name: "$memberExists",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns whether an member id exists",
     unwrap: true,

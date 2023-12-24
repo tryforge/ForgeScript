@@ -5,6 +5,7 @@ export const UnderscoreEscapeRegex = /(_)/gim
 
 export default new NativeFunction({
     name: "$underscore",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Adds underscore to text",

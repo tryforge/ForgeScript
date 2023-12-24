@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$setBotAvatar",
+    category: "unknown",
     version: "1.0.0",
     description: "Sets the bot profile icon",
     brackets: true,

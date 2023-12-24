@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$findEmoji",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a emoji",
     brackets: true,

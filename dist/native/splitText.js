@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const textSplit_1 = require("./textSplit");
 exports.default = new structures_1.NativeFunction({
     name: "$splitText",
+    category: "unknown",
     version: "1.2.0",
     description: "Gets element of textSplit",
     brackets: true,

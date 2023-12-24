@@ -3,6 +3,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$automodCustomMessage",
+    category: "unknown",
     version: "1.2.0",
     description: "The custom message used by automod on this detection",
     unwrap: false,

@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures";
 
 export default new NativeFunction({
     name: "$bufferWriteUtf8",
+    category: "unknown",
     version: "1.1.0",
     description: "Writes utf8 string to a buffer",
     unwrap: true,

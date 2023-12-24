@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arrayRandomIndex",
+    category: "unknown",
     version: "1.4.0",
     description: "Returns a random index",
     unwrap: true,

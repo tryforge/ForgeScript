@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelPosition",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns the channel position",
     unwrap: true,

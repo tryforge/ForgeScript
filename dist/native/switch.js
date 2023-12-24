@@ -7,6 +7,7 @@ const structures_1 = require("../structures");
 const case_1 = __importDefault(require("./case"));
 exports.default = new structures_1.NativeFunction({
     name: "$switch",
+    category: "unknown",
     version: "1.0.3",
     description: "Switch-case statement for javascript",
     unwrap: false,

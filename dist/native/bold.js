@@ -6,6 +6,7 @@ const structures_1 = require("../structures");
 exports.BoldEscapeRegex = /(\*)/gim;
 exports.default = new structures_1.NativeFunction({
     name: "$bold",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Makes given text bold",

@@ -6,6 +6,7 @@ const Logger_1 = require("../structures/@internal/Logger");
 const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$eval",
+    category: "unknown",
     version: "1.0.0",
     description: "Evaluates given code",
     unwrap: true,

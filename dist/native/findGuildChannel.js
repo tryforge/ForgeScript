@@ -5,6 +5,7 @@ const structures_1 = require("../structures");
 exports.ChannelMentionCharRegex = /[<>#]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$findGuildChannel",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a channel of a guild",
     brackets: true,

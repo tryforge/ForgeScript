@@ -5,6 +5,7 @@ const structures_1 = require("../structures");
 const markdown_1 = require("./markdown");
 exports.default = new structures_1.NativeFunction({
     name: "$codeBlock",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Creates a code block with given text",

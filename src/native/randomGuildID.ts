@@ -2,6 +2,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$randomGuildID",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns a random guild ID",
     unwrap: false,

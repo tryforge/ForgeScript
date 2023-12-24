@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$option",
+    category: "unknown",
     version: "1.0.6",
     description: "Returns an option value with given name (interaction command)",
     brackets: true,

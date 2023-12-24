@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildPreferredLocale",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns the server's preferred locale",
     brackets: false,

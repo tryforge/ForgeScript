@@ -3,6 +3,7 @@ import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$let",
+    category: "unknown",
     version: "1.0.0",
     description: "Create a keyword",
     unwrap: true,

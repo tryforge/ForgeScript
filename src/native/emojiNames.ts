@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$emojiNames",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the emote names of a guild",
     brackets: false,

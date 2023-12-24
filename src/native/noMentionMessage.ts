@@ -5,6 +5,7 @@ const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g
 
 export default new NativeFunction({
     name: "$noMentionMessage",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves arguments from a message without mentions",
     args: [

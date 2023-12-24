@@ -4,6 +4,7 @@ import { MentionableSelectMenuBuilder, RoleSelectMenuBuilder } from "@discordjs/
 
 export default new NativeFunction({
     name: "$addChannelType",
+    category: "unknown",
     version: "1.4.0",
     description: "Adds a channel type to the last select menu",
     unwrap: true,

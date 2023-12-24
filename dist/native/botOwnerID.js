@@ -8,6 +8,7 @@ const noop_1 = __importDefault(require("../functions/noop"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$botOwnerID",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the bot owner id",
     brackets: false,

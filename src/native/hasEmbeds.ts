@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$hasEmbeds",
+    category: "unknown",
     version: "1.2.0",
     brackets: false,
     description: "Checks whether given message has embeds",

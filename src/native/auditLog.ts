@@ -4,6 +4,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$auditLog",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieves new data from an event whose context was audit log instance",
     brackets: true,

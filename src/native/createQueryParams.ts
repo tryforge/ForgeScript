@@ -3,6 +3,7 @@ import { stringify } from "node:querystring"
 
 export default new NativeFunction({
     name: "$createQueryParams",
+    category: "unknown",
     version: "1.0.7",
     description: "Creates query params with given fields",
     brackets: true,

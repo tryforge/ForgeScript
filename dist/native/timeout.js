@@ -7,6 +7,7 @@ const noop_1 = __importDefault(require("../functions/noop"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$timeout",
+    category: "unknown",
     version: "1.0.0",
     description: "Times a member out for X milliseconds",
     unwrap: true,

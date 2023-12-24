@@ -5,6 +5,7 @@ export const MarkdownEscapeRegex = /(`)/gim
 
 export default new NativeFunction({
     name: "$markdown",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Adds backticks to text",

@@ -3,6 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$isRoleMentioned",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns whether a role was mentioned in this message",
     unwrap: true,

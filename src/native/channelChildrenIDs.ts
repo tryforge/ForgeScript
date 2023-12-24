@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelChildrenIDs",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns the children ids this category has",
     brackets: false,

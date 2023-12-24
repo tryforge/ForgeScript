@@ -8,6 +8,7 @@ const structures_1 = require("../structures");
 const noop_1 = __importDefault(require("../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$createChannel",
+    category: "unknown",
     version: "1.0.0",
     description: "Creates a channel in a guild, returns the channel id",
     unwrap: true,

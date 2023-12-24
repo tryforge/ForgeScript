@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$env",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves an environment value",
     args: [

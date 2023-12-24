@@ -4,6 +4,7 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setVoiceUserLimit",
+    category: "unknown",
     version: "1.4.0",
     description: "Sets the limit of users that can connect to this voice channel",
     brackets: true,

@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$isInteger",
+    category: "unknown",
     version: "1.0.0",
     description: "Whether the number is an integer",
     unwrap: true,

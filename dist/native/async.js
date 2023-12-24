@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$async",
+    category: "unknown",
     version: "1.0.0",
     description: "Runs code asynchronously, will not return any value",
     unwrap: false,

@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$interactionUpdate",
+    category: "unknown",
     version: "1.0.3",
     description: "Forces an interaction update",
     unwrap: true,

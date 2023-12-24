@@ -2,6 +2,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$deferUpdate",
+    category: "unknown",
     version: "1.3.0",
     description: "Defers this interaction as an update",
     unwrap: false,

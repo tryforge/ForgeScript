@@ -7,6 +7,7 @@ const isTrue_1 = __importDefault(require("../functions/isTrue"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arraySome",
+    category: "unknown",
     version: "1.0.0",
     description: "Loops through every element of the array to find a match",
     unwrap: false,

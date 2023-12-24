@@ -1,1 +1,1 @@
-{"version":3,"file":"bufferAllocUnsafe.d.ts","sourceRoot":"","sources":["../../src/native/bufferAllocUnsafe.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAC;;;;;;;;;;;;;;AAEhE,wBAyBE"}
+{"version":3,"file":"bufferAllocUnsafe.d.ts","sourceRoot":"","sources":["../../src/native/bufferAllocUnsafe.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,eAAe,CAAC;;;;;;;;;;;;;;AAEhE,wBA0BE"}

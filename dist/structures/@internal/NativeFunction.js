@@ -31,6 +31,7 @@ var ArgType;
 class NativeFunction {
     data;
     async;
+    path;
     constructor(data) {
         this.data = data;
         // @ts-ignore

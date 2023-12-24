@@ -1,0 +1,1 @@
+{"version":3,"file":"randomUUID.js","sourceRoot":"","sources":["../../src/native copy/randomUUID.ts"],"names":[],"mappings":";;AAAA,mCAAmC;AACnC,8CAAsD;AAEtD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,aAAa;IACnB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,uBAAuB;IACpC,MAAM,EAAE,KAAK;IACb,OAAO;QACH,OAAO,IAAI,CAAC,OAAO,CAAC,IAAA,mBAAU,GAAE,CAAC,CAAA;IACrC,CAAC;CACJ,CAAC,CAAA"}

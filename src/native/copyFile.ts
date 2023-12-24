@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$copyFile",
+    category: "unknown",
     version: "1.2.0",
     description: "Copies given path to another path",
     brackets: true,

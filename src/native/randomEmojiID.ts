@@ -2,6 +2,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$randomEmojiID",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns a random emoji ID",
     unwrap: false,

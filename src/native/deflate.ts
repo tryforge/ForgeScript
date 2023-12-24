@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$deflate",
+    category: "unknown",
     version: "1.2.0",
     description: "Compresses given input",
     unwrap: true,

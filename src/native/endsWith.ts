@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$endsWith",
+    category: "unknown",
     version: "1.0.0",
     description: "Checks whether given string ends with X string",
     unwrap: true,

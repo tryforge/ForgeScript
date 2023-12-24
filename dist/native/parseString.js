@@ -4,6 +4,7 @@ const constants_1 = require("../constants");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$parseString",
+    category: "unknown",
     version: "1.0.2",
     description: "Parses valid duration string to ms",
     brackets: true,

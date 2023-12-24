@@ -3,6 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$ordinal",
+    category: "unknown",
     version: "1.3.0",
     description: "Appends a suffix to the number",
     brackets: true,

@@ -5,6 +5,7 @@ export const StrikeThroughEscapeRegex = /(~)/gim
 
 export default new NativeFunction({
     name: "$strikethrough",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Makes given text strikethrough",

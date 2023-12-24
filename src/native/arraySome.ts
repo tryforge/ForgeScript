@@ -3,6 +3,7 @@ import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunc
 
 export default new NativeFunction({
     name: "$arraySome",
+    category: "unknown",
     version: "1.0.0",
     description: "Loops through every element of the array to find a match",
     unwrap: false,

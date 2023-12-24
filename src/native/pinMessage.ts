@@ -4,6 +4,7 @@ import { noop } from "lodash"
 
 export default new NativeFunction({
     name: "$pinMessage",
+    category: "unknown",
     version: "1.1.0",
     description: "Pins a message in a channel, returns bool",
     brackets: false,

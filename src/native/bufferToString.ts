@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures";
 
 export default new NativeFunction({
     name: "$bufferToString",
+    category: "unknown",
     version: "1.1.0",
     description: "Stringifies a buffer",
     unwrap: true,

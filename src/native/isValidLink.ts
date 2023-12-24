@@ -5,6 +5,7 @@ export const LinkRegex =
 
 export default new NativeFunction({
     name: "$isValidLink",
+    category: "unknown",
     version: "1.0.0",
     brackets: true,
     unwrap: true,

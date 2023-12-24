@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$setGuildSplash",
+    category: "unknown",
     version: "1.0.0",
     description: "Sets a guild splash, returns boolean",
     unwrap: true,

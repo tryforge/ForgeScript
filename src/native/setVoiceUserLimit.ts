@@ -4,6 +4,7 @@ import { BaseChannel, VoiceChannel } from "discord.js"
 
 export default new NativeFunction({
     name: "$setVoiceUserLimit",
+    category: "unknown",
     version: "1.4.0",
     description: "Sets the limit of users that can connect to this voice channel",
     brackets: true,

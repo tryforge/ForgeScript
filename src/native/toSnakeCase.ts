@@ -3,6 +3,7 @@ import { snakeCase } from "lodash"
 
 export default new NativeFunction({
     name: "$toSnakeCase",
+    category: "unknown",
     version: "1.0.6",
     description: "Converts a string to snake case",
     brackets: true,

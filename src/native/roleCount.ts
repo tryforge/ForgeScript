@@ -2,6 +2,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$roleCount",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the role count of all servers",
     unwrap: true,

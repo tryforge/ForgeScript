@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$repeat",
+    category: "unknown",
     version: "1.1.0",
     description: "Repeats given text for x times",
     brackets: true,

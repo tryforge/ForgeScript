@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayIndexOf",
+    category: "unknown",
     version: "1.0.0",
     description: "Gets the index of an element in the array",
     unwrap: true,

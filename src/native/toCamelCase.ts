@@ -3,6 +3,7 @@ import { camelCase } from "lodash"
 
 export default new NativeFunction({
     name: "$toCamelCase",
+    category: "unknown",
     version: "1.0.6",
     description: "Converts a string to camel case",
     brackets: true,

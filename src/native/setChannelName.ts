@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$setChannelName",
+    category: "unknown",
     version: "1.0.0",
     description: "Sets a channel name, returns bool",
     brackets: true,

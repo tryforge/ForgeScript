@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$charCodeAt",
+    category: "unknown",
     version: "1.0.6",
     description: "Returns the char code at given index",
     brackets: true,

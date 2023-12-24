@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$cooldown",
+    category: "unknown",
     version: "1.0.3",
     description: "Adds a command cooldown",
     brackets: true,

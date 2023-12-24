@@ -3,6 +3,7 @@ import { ArgType, NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$addRoleSelectMenu",
+    category: "unknown",
     version: "1.3.0",
     description: "Creates a role select menu",
     brackets: true,

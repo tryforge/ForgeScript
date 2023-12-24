@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$arraySort",
+    category: "unknown",
     version: "1.2.0",
     description: "Sorts given array",
     unwrap: true,

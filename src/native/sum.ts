@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$sum",
+    category: "unknown",
     version: "1.0.0",
     description: "Adds multiple numbers",
     brackets: true,

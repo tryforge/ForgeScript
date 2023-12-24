@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$inRange",
+    category: "unknown",
     version: "1.0.0",
     description: "Whether a number is in range",
     brackets: true,

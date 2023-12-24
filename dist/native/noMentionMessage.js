@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g;
 exports.default = new structures_1.NativeFunction({
     name: "$noMentionMessage",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves arguments from a message without mentions",
     args: [

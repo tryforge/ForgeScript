@@ -2,6 +2,7 @@ import { NativeFunction } from "../structures"
 
 export default new NativeFunction({
     name: "$updateApplicationCommands",
+    category: "unknown",
     version: "1.2.0",
     description: "Updates application commands commands",
     unwrap: false,

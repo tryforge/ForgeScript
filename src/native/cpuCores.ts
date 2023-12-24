@@ -3,6 +3,7 @@ import os from "node:os"
 
 export default new NativeFunction({
     name: "$cpuCores",
+    category: "unknown",
     version: "1.0.7",
     description: "Returns the amount of cpu cores",
     unwrap: false,

@@ -5,6 +5,7 @@ const structures_1 = require("../structures");
 const builders_1 = require("@discordjs/builders");
 exports.default = new structures_1.NativeFunction({
     name: "$addDefaultRoleOption",
+    category: "unknown",
     version: "1.4.0",
     description: "Adds a default role option to the last select menu",
     unwrap: true,

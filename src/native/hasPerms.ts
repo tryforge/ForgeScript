@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$hasPerms",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns whether given member has X perms",
     unwrap: true,

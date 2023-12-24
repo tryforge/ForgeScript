@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelFull",
+    category: "unknown",
     version: "1.4.0",
     description: "Returns whether the voice channel is full",
     unwrap: true,

@@ -4,6 +4,7 @@ import { MarkdownEscapeRegex } from "./markdown"
 
 export default new NativeFunction({
     name: "$codeBlock",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Creates a code block with given text",

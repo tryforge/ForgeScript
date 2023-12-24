@@ -3,6 +3,7 @@ import { Return } from "../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$log",
+    category: "unknown",
     version: "1.0.0",
     description: "Log something to console",
     unwrap: true,

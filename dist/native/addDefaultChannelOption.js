@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addDefaultChannelOption",
+    category: "unknown",
     version: "1.4.0",
     description: "Adds a default channel option to the last select menu",
     unwrap: true,

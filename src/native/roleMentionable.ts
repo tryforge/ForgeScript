@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$roleMentionable",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns whether the role is mentionable",
     brackets: false,

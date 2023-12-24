@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures";
 
 export default new NativeFunction({
     name: "$bufferAllocUnsafe",
+    category: "unknown",
     version: "1.1.0",
     description: "Unsafely allocates given number of bytes in a buffer",
     unwrap: true,

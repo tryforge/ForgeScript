@@ -4,6 +4,7 @@ import { noop } from "lodash"
 
 export default new NativeFunction({
     name: "$lastMessageID",
+    category: "unknown",
     version: "1.2.0",
     brackets: false,
     unwrap: true,

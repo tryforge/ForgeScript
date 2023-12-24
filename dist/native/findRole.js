@@ -5,6 +5,7 @@ const structures_1 = require("../structures");
 exports.RoleMentionCharRegex = /[@<>&]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$findRole",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a role of a guild",
     brackets: true,

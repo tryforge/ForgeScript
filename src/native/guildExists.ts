@@ -2,6 +2,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 
 export default new NativeFunction({
     name: "$guildExists",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns whether a guild id exists",
     unwrap: true,

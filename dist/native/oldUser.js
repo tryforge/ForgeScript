@@ -4,6 +4,7 @@ const user_1 = require("../properties/user");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$oldUser",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves old data from an event whose context was a user instance",
     brackets: true,

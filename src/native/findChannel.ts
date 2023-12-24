@@ -3,6 +3,7 @@ import { ChannelMentionCharRegex } from "./findGuildChannel"
 
 export default new NativeFunction({
     name: "$findChannel",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a channel",
     brackets: true,

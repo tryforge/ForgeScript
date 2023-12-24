@@ -4,6 +4,7 @@ const audit_1 = require("../properties/audit");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$auditLog",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieves new data from an event whose context was audit log instance",
     brackets: true,

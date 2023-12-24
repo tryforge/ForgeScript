@@ -8,6 +8,7 @@ const splitNumber_1 = __importDefault(require("../functions/splitNumber"));
 const noop_1 = __importDefault(require("../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$clearUserMessages",
+    category: "unknown",
     version: "1.0.0",
     description: "Clears x amount of messages from a channel of given user, returns the number of messages deleted",
     unwrap: true,

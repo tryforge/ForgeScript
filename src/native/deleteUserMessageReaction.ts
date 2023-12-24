@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteUserMessageReaction",
+    category: "unknown",
     version: "1.0.6",
     description: "Deletes user emoji reaction from a message, returns bool",
     unwrap: true,

@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$stickers",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieve a sticker url from a message with given index",
     brackets: false,

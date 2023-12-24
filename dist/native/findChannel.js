@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const findGuildChannel_1 = require("./findGuildChannel");
 exports.default = new structures_1.NativeFunction({
     name: "$findChannel",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a channel",
     brackets: true,

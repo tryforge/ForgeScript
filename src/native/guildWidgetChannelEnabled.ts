@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildWidgetChannelEnabled",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns whether widget channel is enabled for this guild",
     brackets: false,

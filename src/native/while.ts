@@ -8,6 +8,7 @@ import {
 
 export default new NativeFunction({
     name: "$while",
+    category: "unknown",
     version: "1.0.3",
     description: "Executes code while a condition is true",
     unwrap: false,

@@ -2,6 +2,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../structures
 
 export default new NativeFunction({
     name: "$findGuildEmoji",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a emoji of a guild",
     brackets: true,

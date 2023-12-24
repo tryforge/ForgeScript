@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$channelID",
+    category: "unknown",
     version: "1.0.0",
     description: "Gets the channel id of a channel name",
     unwrap: true,

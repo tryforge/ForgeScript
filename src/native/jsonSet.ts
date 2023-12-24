@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$jsonSet",
+    category: "unknown",
     version: "1.2.0",
     description: "Adds a json key with a value",
     unwrap: true,

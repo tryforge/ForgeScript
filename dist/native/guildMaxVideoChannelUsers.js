@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildMaxVideoChannelUsers",
+    category: "unknown",
     version: "1.3.0",
     description: "Returns the maximum video channel users for this guild",
     brackets: false,

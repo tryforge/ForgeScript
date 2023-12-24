@@ -4,6 +4,7 @@ const child_process_1 = require("child_process");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$exec",
+    category: "unknown",
     version: "1.0.0",
     brackets: true,
     description: "Runs a command in console",

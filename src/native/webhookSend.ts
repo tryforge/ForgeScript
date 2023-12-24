@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$webhookSend",
+    category: "unknown",
     version: "1.0.0",
     description: "Sends a message with a webhook",
     brackets: true,

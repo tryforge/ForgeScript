@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$sendMessage",
+    category: "unknown",
     version: "1.0.0",
     description: "Sends a message to a channel",
     unwrap: true,

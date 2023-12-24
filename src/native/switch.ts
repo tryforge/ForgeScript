@@ -3,6 +3,7 @@ import _case from "./case"
 
 export default new NativeFunction({
     name: "$switch",
+    category: "unknown",
     version: "1.0.3",
     description: "Switch-case statement for javascript",
     unwrap: false,

@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$sha512",
+    category: "unknown",
     version: "1.2.0",
     description: "Creates a sha512 key from given input",
     unwrap: true,

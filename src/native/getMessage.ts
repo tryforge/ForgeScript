@@ -4,6 +4,7 @@ import { MessageProperties, MessageProperty } from "../properties/message"
 
 export default new NativeFunction({
     name: "$getMessage",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieves data of a message",
     unwrap: true,

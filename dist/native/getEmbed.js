@@ -5,6 +5,7 @@ const structures_1 = require("../structures");
 const embed_1 = require("../properties/embed");
 exports.default = new structures_1.NativeFunction({
     name: "$getEmbed",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieves data of an embed",
     unwrap: true,

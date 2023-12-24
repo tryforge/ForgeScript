@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$writeFile",
+    category: "unknown",
     version: "1.0.0",
     description: "Writes text to a file",
     unwrap: true,

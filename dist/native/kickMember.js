@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$kickMember",
+    category: "unknown",
     version: "1.0.0",
     description: "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,

@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$padStart",
+    category: "unknown",
     version: "1.0.6",
     description: "Pads a string at the start",
     brackets: true,

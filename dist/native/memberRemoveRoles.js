@@ -7,6 +7,7 @@ const noop_1 = __importDefault(require("../functions/noop"));
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberRemoveRoles",
+    category: "unknown",
     version: "1.0.0",
     description: "Removes roles from a member and returns bool",
     unwrap: true,

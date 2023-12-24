@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$newInvite",
+    category: "unknown",
     version: "1.0.3",
     description: "Retrieves new data from an event whose context was a invite instance",
     brackets: true,

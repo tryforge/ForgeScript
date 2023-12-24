@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$copyFile",
+    category: "unknown",
     version: "1.2.0",
     description: "Copies given path to another path",
     brackets: true,

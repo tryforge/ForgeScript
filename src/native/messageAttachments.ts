@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$messageAttachments",
+    category: "unknown",
     version: "1.4.0",
     description: "Retrieves all attachments of this message",
     brackets: false,

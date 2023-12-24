@@ -6,6 +6,7 @@ const structures_1 = require("../structures");
 exports.MarkdownEscapeRegex = /(`)/gim;
 exports.default = new structures_1.NativeFunction({
     name: "$markdown",
+    category: "unknown",
     version: "1.3.0",
     brackets: true,
     description: "Adds backticks to text",

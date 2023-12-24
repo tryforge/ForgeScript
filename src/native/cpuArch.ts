@@ -3,6 +3,7 @@ import os from "node:os"
 
 export default new NativeFunction({
     name: "$cpuArch",
+    category: "unknown",
     version: "1.0.7",
     description: "Returns the cpu architecture",
     unwrap: false,

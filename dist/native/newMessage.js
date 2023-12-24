@@ -4,6 +4,7 @@ const message_1 = require("../properties/message");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newMessage",
+    category: "unknown",
     version: "1.0.0",
     description: "Retrieves new data from an event whose context was a message instance",
     brackets: true,

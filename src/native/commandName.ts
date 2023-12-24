@@ -2,6 +2,7 @@ import { NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$commandName",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns the current command name",
     unwrap: true,

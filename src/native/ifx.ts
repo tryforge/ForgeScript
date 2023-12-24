@@ -5,6 +5,7 @@ import ifFunc from "./if"
 
 export default new NativeFunction({
     name: "$ifx",
+    category: "unknown",
     version: "1.2.0",
     description: "WIP if statements",
     brackets: true,

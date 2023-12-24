@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$voiceID",
+    category: "unknown",
     version: "1.0.3",
     description: "Returns the voice channel id a member is connected to",
     unwrap: true,

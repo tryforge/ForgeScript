@@ -4,6 +4,7 @@ import noop from "../functions/noop"
 
 export default new NativeFunction({
     name: "$getThreadMembers",
+    category: "unknown",
     version: "1.0.0",
     description: "Gets thread members",
     brackets: true,

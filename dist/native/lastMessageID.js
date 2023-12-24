@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$lastMessageID",
+    category: "unknown",
     version: "1.2.0",
     brackets: false,
     unwrap: true,

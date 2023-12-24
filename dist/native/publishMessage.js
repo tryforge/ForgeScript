@@ -4,6 +4,7 @@ const structures_1 = require("../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$publishMessage",
+    category: "unknown",
     version: "1.1.0",
     description: "Crossposts a message in an announcement channel, returns bool",
     brackets: false,

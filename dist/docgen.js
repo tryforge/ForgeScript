@@ -1,13 +1,11 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const managers_1 = require("./managers");
-const generateFunctionDoc_1 = __importDefault(require("./functions/generateFunctionDoc"));
 managers_1.FunctionManager.loadNative();
+const mainPathName = "native";
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
+const FunctionCategoryRegex = /(category: "\$?(\w+)"),?/m;
 const path = "./docs/functions";
 const metaOutPath = "./metadata";
 if (!(0, fs_1.existsSync)(metaOutPath))
@@ -16,9 +14,22 @@ if (!(0, fs_1.existsSync)(path))
     (0, fs_1.mkdirSync)(path);
 const v = require("../package.json").version;
 for (const [, fn] of managers_1.FunctionManager["Functions"]) {
-    const nativePath = `./src/native/${fn.name.slice(1)}.ts`;
+    const nativePath = fn.path.replace(".js", ".ts").replace("dist", "src");
     let txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
     let modified = false;
+    const pathSplits = fn.path.split(/(?:\\|\/)/gim);
+    const category = pathSplits.at(-2) === mainPathName ? "unknown" : pathSplits.at(-2);
+    if (fn.data.category !== category) {
+        const existed = !!fn.data.category;
+        fn.data.category = category;
+        if (!existed) {
+            txt = txt.replace(FunctionNameRegex, `$1,\n    category: "${category}",`);
+        }
+        else {
+            txt = txt.replace(FunctionCategoryRegex, `category: "${category}",`);
+        }
+        modified = true;
+    }
     if (!fn.data.version) {
         fn.data.version = v;
         txt = txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`);
@@ -26,7 +37,6 @@ for (const [, fn] of managers_1.FunctionManager["Functions"]) {
     }
     if (modified)
         (0, fs_1.writeFileSync)(nativePath, txt);
-    (0, fs_1.writeFileSync)(`${path}/${fn.name.slice(1)}.md`, (0, generateFunctionDoc_1.default)(fn));
 }
 (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
 for (const event of Object.values(managers_1.EventManager["Loaded"][managers_1.NativeEventName])) {

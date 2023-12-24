@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$memberRoles",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the role ids of a member",
     unwrap: true,

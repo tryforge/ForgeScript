@@ -3,6 +3,7 @@ import { ArgType, ErrorType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$exec",
+    category: "unknown",
     version: "1.0.0",
     brackets: true,
     description: "Runs a command in console",

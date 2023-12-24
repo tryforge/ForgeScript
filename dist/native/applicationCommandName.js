@@ -4,6 +4,7 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$applicationCommandName",
+    category: "unknown",
     version: "1.0.7",
     description: "Returns an application command name",
     brackets: false,

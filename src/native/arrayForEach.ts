@@ -2,6 +2,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arrayForEach",
+    category: "unknown",
     version: "1.0.0",
     description: "Loops through every element of the array",
     unwrap: false,

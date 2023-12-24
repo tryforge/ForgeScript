@@ -4,6 +4,7 @@ const ordinal_1 = require("../functions/ordinal");
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$ordinal",
+    category: "unknown",
     version: "1.3.0",
     description: "Appends a suffix to the number",
     brackets: true,

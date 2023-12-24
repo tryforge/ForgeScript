@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$fileSize",
+    category: "unknown",
     version: "1.2.0",
     description: "Gets size of a file or directory in bytes",
     brackets: true,

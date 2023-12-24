@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$guildShardID",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns the server shard ID",
     brackets: false,

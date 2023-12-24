@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setGuildBanner",
+    category: "unknown",
     version: "1.0.0",
     description: "Sets a guild banner, returns boolean",
     unwrap: true,

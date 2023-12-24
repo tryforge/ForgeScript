@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$addChannelPerms",
+    category: "unknown",
     version: "1.0.3",
     description: "Adds permission overwrites to a channel, returns bool",
     brackets: true,

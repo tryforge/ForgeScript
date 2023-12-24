@@ -2,6 +2,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$encodeURIComponent",
+    category: "unknown",
     version: "1.0.0",
     description: "Encodes text for a url",
     brackets: true,

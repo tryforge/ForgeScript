@@ -5,6 +5,7 @@ export const MemberMentionCharRegex = /[<>@!]/g
 
 export default new NativeFunction({
     name: "$findMember",
+    category: "unknown",
     version: "1.0.0",
     description: "Finds a member of a guild",
     brackets: true,

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isRoleSelectMenu",
+    category: "unknown",
     version: "1.0.0",
     description: "Returns whether the context is a role select menu",
     unwrap: false,

@@ -7,6 +7,7 @@ const structures_1 = require("../structures");
 const noop_1 = __importDefault(require("../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$createThread",
+    category: "unknown",
     version: "1.0.3",
     description: "Creates a thread, returns thread channel id on success",
     unwrap: true,

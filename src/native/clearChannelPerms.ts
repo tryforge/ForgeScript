@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../structures"
 
 export default new NativeFunction({
     name: "$clearChannelPerms",
+    category: "unknown",
     version: "1.0.3",
     description: "Deletes all permission overwrites for given id, returns bool",
     brackets: true,
