@@ -1,0 +1,22 @@
+import { ArgType, NativeFunction, Return } from "../../structures"
+
+export default new NativeFunction({
+    name: "$userCreatedAt",
+    category: "user",
+    version: "1.0.2",
+    description: "Returns the timestamp this user created their account",
+    unwrap: true,
+    args: [
+        {
+            name: "user ID",
+            description: "The user to return its creation date",
+            required: true,
+            rest: false,
+            type: ArgType.User,
+        },
+    ],
+    brackets: false,
+    async execute(ctx, [user]) {
+        return this.success((user ?? ctx.user)?.createdTimestamp)
+    },
+})

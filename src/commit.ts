@@ -2,16 +2,8 @@ import { execSync } from "child_process"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { argv, stdin, stdout } from "process"
 import { createInterface } from "readline"
+import prompt from "./functions/prompt"
 
-async function prompt(q: string) {
-    const itf = createInterface(stdin, stdout)
-    return new Promise<string>(r => {
-        itf.question(q, input => {
-            itf.close()
-            r(input)
-        })
-    })
-}
 
 const path = "./metadata"
 if (!existsSync(path)) mkdirSync(path)
