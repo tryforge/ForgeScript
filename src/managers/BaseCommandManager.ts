@@ -61,7 +61,7 @@ export class BaseCommandManager<T> {
     private addPath(unloadable: boolean, path?: string, ...commands: (IBaseCommand<T> | BaseCommand<T>)[]) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i]
-            const cmd = req instanceof BaseCommand ? req : new BaseCommand(req)
+            const cmd = req instanceof BaseCommand ? req : new BaseCommand({ ...req, path })
             if (path)
                 cmd.setPath(path)
 

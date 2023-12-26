@@ -61,7 +61,7 @@ class BaseCommandManager {
     addPath(unloadable, path, ...commands) {
         for (let i = 0, len = commands.length; i < len; i++) {
             const req = commands[i];
-            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand(req);
+            const cmd = req instanceof structures_1.BaseCommand ? req : new structures_1.BaseCommand({ ...req, path });
             if (path)
                 cmd.setPath(path);
             cmd.validate();
