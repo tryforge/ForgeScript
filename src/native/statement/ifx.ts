@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import _else from "../mention/else"
+import _else from "./else"
 import elseif from "./elseif"
 import ifFunc from "./if"
 

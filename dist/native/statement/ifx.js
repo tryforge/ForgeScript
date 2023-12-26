@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const else_1 = __importDefault(require("../mention/else"));
+const else_1 = __importDefault(require("./else"));
 const elseif_1 = __importDefault(require("./elseif"));
 const if_1 = __importDefault(require("./if"));
 exports.default = new structures_1.NativeFunction({
