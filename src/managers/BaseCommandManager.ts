@@ -42,7 +42,7 @@ export class BaseCommandManager<T> {
 
             const req = FileReader.read(file, path)
             if (!req) continue
-
+            
             if (Array.isArray(req)) this.addPath(true, path, ...req)
             else this.addPath(true, path, req)
         }

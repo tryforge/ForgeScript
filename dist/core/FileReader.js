@@ -30,7 +30,7 @@ class FileReader {
             else if (Object.keys(this.req).length !== 0)
                 return this.req;
             else
-                null;
+                return null;
         }
         let char;
         const obj = {};
