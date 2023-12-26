@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$addChoice",
-    category: "component",
     version: "1.0.6",
     description: "Adds an autocomplete choice",
     unwrap: true,

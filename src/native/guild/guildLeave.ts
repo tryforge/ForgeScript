@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildLeave",
-    category: "guild",
     version: "1.0.0",
     description: "Leaves a guild",
     brackets: false,

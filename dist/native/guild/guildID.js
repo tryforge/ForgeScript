@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildID",
-    category: "guild",
     version: "1.0.0",
     description: "Returns the guild id with given name",
     unwrap: true,

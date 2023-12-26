@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$addButton",
-    category: "component",
     version: "1.0.0",
     description: "Adds a button component to the newest row",
     unwrap: true,

@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$setStatus",
-    category: "bot",
     version: "1.0.0",
     description: "Sets the client's status",
     unwrap: true,

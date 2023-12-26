@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$return",
-    category: "statement",
     version: "1.0.0",
     description: "Returns a value",
     unwrap: true,

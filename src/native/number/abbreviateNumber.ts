@@ -7,7 +7,6 @@ const Formatter = Intl.NumberFormat("en-US", {
 
 export default new NativeFunction({
     name: "$abbreviateNumber",
-    category: "number",
     version: "1.0.0",
     description: "Abbreviates given number",
     unwrap: true,

@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$deleteEmojiMessageReactions",
-    category: "emoji",
     version: "1.0.0",
     description: "Deletes all emoji reactions from a message, returns amount of reaction emojis successfully deleted",
     unwrap: true,

@@ -12,7 +12,6 @@ export const CharArray = [
 
 export default new NativeFunction({
     name: "$randomString",
-    category: "string",
     version: "1.2.0",
     description: "Creates a random string",
     brackets: true,

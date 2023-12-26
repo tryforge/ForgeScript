@@ -4,7 +4,6 @@ export const RoleMentionCharRegex = /[@<>&]/g
 
 export default new NativeFunction({
     name: "$findRole",
-    category: "lookup",
     version: "1.0.0",
     description: "Finds a role of a guild",
     brackets: true,

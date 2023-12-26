@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$memberJoinedAt",
-    category: "member",
     version: "1.0.0",
     description: "Returns the timestamp the member joined at",
     unwrap: true,

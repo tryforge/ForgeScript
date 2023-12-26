@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$trimEnd",
-    category: "string",
     version: "1.0.6",
     description: "Trims at the end of a string",
     brackets: true,

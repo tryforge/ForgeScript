@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageAttachmentCount",
-    category: "message",
     version: "1.4.0",
     description: "Retrieve the amount of attachments in this message",
     brackets: false,

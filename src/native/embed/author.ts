@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$author",
-    category: "embed",
     version: "1.0.0",
     description: "Adds an embed author",
     unwrap: true,

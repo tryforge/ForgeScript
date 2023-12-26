@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$createChannel",
-    category: "channel",
     version: "1.0.0",
     description: "Creates a channel in a guild, returns the channel id",
     unwrap: true,

@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$parseInt",
-    category: "number",
     version: "1.2.0",
     description: "Implements native parseInt's function into ForgeScript",
     unwrap: true,

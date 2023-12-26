@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const node_os_1 = __importDefault(require("node:os"));
 exports.default = new structures_1.NativeFunction({
     name: "$osUptime",
-    category: "system",
     version: "1.0.7",
     description: "Returns the operating system uptime (seconds)",
     unwrap: false,

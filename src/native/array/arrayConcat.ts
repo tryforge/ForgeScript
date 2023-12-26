@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayConcat",
-    category: "array",
     version: "1.0.0",
     description: "Concat arrays and load them into another variable",
     unwrap: true,

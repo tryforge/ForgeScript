@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$letSub",
-    category: "variable",
     version: "1.3.0",
     description: "Short-hand for $let[...;$sub[$get[...];...]]",
     unwrap: true,

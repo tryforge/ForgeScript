@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayRandomValue",
-    category: "array",
     version: "1.4.0",
     description: "Returns a random element",
     unwrap: true,

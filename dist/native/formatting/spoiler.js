@@ -6,7 +6,6 @@ const structures_1 = require("../../structures");
 exports.SpoilerEscapeRegex = /(\|)/gim;
 exports.default = new structures_1.NativeFunction({
     name: "$spoiler",
-    category: "formatting",
     version: "1.3.0",
     brackets: true,
     description: "Makes given text a spoiler",

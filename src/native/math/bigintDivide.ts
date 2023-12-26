@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bigintDivide",
-    category: "math",
     version: "1.3.0",
     description: "Divides multiple numbers",
     brackets: true,

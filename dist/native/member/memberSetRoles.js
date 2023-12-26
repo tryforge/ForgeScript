@@ -7,7 +7,6 @@ const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberSetRoles",
-    category: "member",
     version: "1.0.0",
     description: "Sets roles to a member and returns bool",
     unwrap: true,

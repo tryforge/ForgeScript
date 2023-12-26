@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayPushJSON",
-    category: "array",
     version: "1.3.0",
     description: "Appends an element to an array",
     unwrap: true,

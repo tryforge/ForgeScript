@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$memberSetNickname",
-    category: "member",
     version: "1.0.7",
     description: "Edits a member's nickname",
     brackets: true,

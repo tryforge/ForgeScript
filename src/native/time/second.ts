@@ -2,7 +2,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$second",
-    category: "time",
     version: "1.2.0",
     description: "Returns current UTC second",
     unwrap: true,

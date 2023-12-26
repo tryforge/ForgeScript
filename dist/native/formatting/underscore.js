@@ -6,7 +6,6 @@ const structures_1 = require("../../structures");
 exports.UnderscoreEscapeRegex = /(_)/gim;
 exports.default = new structures_1.NativeFunction({
     name: "$underscore",
-    category: "formatting",
     version: "1.3.0",
     brackets: true,
     description: "Adds underscore to text",

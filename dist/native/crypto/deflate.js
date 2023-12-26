@@ -4,7 +4,6 @@ const zlib_1 = require("zlib");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deflate",
-    category: "crypto",
     version: "1.2.0",
     description: "Compresses given input",
     unwrap: true,

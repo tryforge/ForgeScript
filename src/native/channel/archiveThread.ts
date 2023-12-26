@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$archiveThread",
-    category: "channel",
     version: "1.0.0",
     description: "Archives a thread, returns bool",
     brackets: true,

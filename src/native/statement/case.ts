@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$case",
-    category: "statement",
     version: "1.0.3",
     description: "Adds a switch case",
     brackets: true,

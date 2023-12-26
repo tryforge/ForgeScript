@@ -3,7 +3,6 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 
 export default new NativeFunction({
     name: "$userExists",
-    category: "user",
     version: "1.0.0",
     description: "Returns whether a user id exists",
     unwrap: true,

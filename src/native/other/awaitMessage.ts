@@ -5,7 +5,6 @@ import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({
     name: "$awaitMessage",
-    category: "other",
     version: "1.0.7",
     description: "Awaits a message, returns message ID or nothing if no valid response",
     unwrap: false,

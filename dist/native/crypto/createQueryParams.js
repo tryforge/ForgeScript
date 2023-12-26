@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const node_querystring_1 = require("node:querystring");
 exports.default = new structures_1.NativeFunction({
     name: "$createQueryParams",
-    category: "crypto",
     version: "1.0.7",
     description: "Creates query params with given fields",
     brackets: true,

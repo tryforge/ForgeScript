@@ -9,7 +9,6 @@ const structures_1 = require("../../structures");
 exports.MemberMentionCharRegex = /[<>@!]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$findMember",
-    category: "lookup",
     version: "1.0.0",
     description: "Finds a member of a guild",
     brackets: true,

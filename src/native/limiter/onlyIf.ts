@@ -8,7 +8,6 @@ import {
 
 export default new NativeFunction({
     name: "$onlyIf",
-    category: "limiter",
     version: "1.0.0",
     description: "Stop execution if condition is not matched",
     unwrap: false,

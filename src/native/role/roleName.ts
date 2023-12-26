@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleName",
-    category: "role",
     version: "1.0.0",
     description: "Returns a role name with given id",
     brackets: false,

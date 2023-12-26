@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferReadUtf8",
-    category: "buffer",
     version: "1.1.0",
     description: "Reads utf8 string from a buffer",
     unwrap: true,

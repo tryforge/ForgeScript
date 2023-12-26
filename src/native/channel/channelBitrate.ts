@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$channelBitrate",
-    category: "channel",
     version: "1.4.0",
     description: "Returns the bitrate of the voice channel",
     unwrap: true,

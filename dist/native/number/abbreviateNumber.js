@@ -7,7 +7,6 @@ const Formatter = Intl.NumberFormat("en-US", {
 });
 exports.default = new structures_1.NativeFunction({
     name: "$abbreviateNumber",
-    category: "number",
     version: "1.0.0",
     description: "Abbreviates given number",
     unwrap: true,

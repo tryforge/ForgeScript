@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$startTyping",
-    category: "channel",
     version: "1.0.0",
     description: "Starts typing in a channel",
     unwrap: true,

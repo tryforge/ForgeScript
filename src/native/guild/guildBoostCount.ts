@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildBoostCount",
-    category: "guild",
     version: "1.0.0",
     description: "Returns the server boost count",
     brackets: false,

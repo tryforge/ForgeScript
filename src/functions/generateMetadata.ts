@@ -4,11 +4,11 @@ import { execSync } from "child_process"
 import { argv, cwd } from "process"
 import { Logger } from "../structures"
 
+const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
+const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
+
 export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string) {
     FunctionManager.load("Metadata", functionsAbsolutePath)
-
-    const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
-    const FunctionCategoryRegex = /(category: "\$?(\w+)"),?/m
 
     const metaOutPath = "./metadata"
 
@@ -22,16 +22,13 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
             let txt = readFileSync(nativePath, "utf-8")
             let modified = false
             const pathSplits = fn.path.split(/(?:\\|\/)/gim)
-            const category = pathSplits.at(-2) === mainCategoryName ? "unknown" : pathSplits.at(-2)!
-    
-            if (fn.data.category !== category) {
-                const existed = !!fn.data.category
-                fn.data.category = category
-                if (!existed) {
-                    txt = txt.replace(FunctionNameRegex, `$1,\n    category: "${category}",`)
-                } else {
-                    txt = txt.replace(FunctionCategoryRegex, `category: "${category}",`)
-                }
+            const category = pathSplits.at(-2) === mainCategoryName ? null : pathSplits.at(-2)!
+            if (category)
+                Reflect.set(fn.data, "category", category)
+
+            if (txt.includes("category: ")) {
+                Logger.warn("Deleting category block from " + fn.name)
+                txt = txt.replace(FunctionCategoryRegex, "")
                 modified = true
             }
     

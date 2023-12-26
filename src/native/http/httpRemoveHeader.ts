@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpRemoveHeader",
-    category: "http",
     version: "1.0.0",
     description: "Removes an HTTP header",
     unwrap: true,

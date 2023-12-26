@@ -4,7 +4,6 @@ const fs_1 = require("fs");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteFile",
-    category: "file",
     version: "1.0.0",
     description: "Deletes a file",
     unwrap: true,

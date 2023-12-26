@@ -3,7 +3,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$automodActionType",
-    category: "automod",
     version: "1.2.0",
     description: "The action type automod used",
     unwrap: false,

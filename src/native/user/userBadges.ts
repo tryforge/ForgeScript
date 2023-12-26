@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$userBadges",
-    category: "user",
     version: "1.0.0",
     description: "Returns the public badges of a user",
     unwrap: true,

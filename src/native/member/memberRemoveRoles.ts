@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$memberRemoveRoles",
-    category: "member",
     version: "1.0.0",
     description: "Removes roles from a member and returns bool",
     unwrap: true,

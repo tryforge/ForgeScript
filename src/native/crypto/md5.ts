@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$md5",
-    category: "crypto",
     version: "1.2.0",
     description: "Creates a md5 key from given input",
     unwrap: true,

@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildRulesChannelID",
-    category: "guild",
     version: "1.3.0",
     description: "Returns the server's rules channel ID",
     brackets: false,

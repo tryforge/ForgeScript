@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$userCreatedAt",
-    category: "user",
     version: "1.0.2",
     description: "Returns the timestamp this user created their account",
     unwrap: true,

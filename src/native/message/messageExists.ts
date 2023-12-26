@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$messageExists",
-    category: "message",
     version: "1.0.5",
     description: "Returns whether given message id exists",
     unwrap: true,

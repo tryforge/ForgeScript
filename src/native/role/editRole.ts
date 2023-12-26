@@ -4,7 +4,6 @@ import { ColorResolvable } from "discord.js"
 
 export default new NativeFunction({
     name: "$editRole",
-    category: "role",
     version: "1.0.7",
     description: "Edits role data, returns boolean",
     unwrap: true,

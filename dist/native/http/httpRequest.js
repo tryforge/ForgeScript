@@ -4,7 +4,6 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 const undici_1 = require("undici");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRequest",
-    category: "http",
     version: "1.0.0",
     description: "Performs an http request, returns the status code",
     args: [

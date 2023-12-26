@@ -5,7 +5,6 @@ const structures_1 = require("../../structures");
 exports.LinkRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 exports.default = new structures_1.NativeFunction({
     name: "$isValidLink",
-    category: "condition",
     version: "1.0.0",
     brackets: true,
     unwrap: true,

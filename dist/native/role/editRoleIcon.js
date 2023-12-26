@@ -4,7 +4,6 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editRoleIcon",
-    category: "role",
     version: "1.0.7",
     description: "Edits a role's icon, returns boolean",
     unwrap: true,

@@ -2,7 +2,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$botID",
-    category: "bot",
     version: "1.0.0",
     description: "Returns the client's id",
     unwrap: false,

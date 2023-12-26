@@ -3,7 +3,6 @@ export const SplitTextName = "splits" as const
 
 export default new NativeFunction({
     name: "$textSplit",
-    category: "array",
     version: "1.2.0",
     description: "Creates an array on given text with a separator",
     brackets: true,

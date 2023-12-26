@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$webhookCreate",
-    category: "webhook",
     version: "1.0.0",
     description: "Creates a webhook in a channel, returns the webhook id",
     brackets: true,

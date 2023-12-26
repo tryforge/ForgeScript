@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$messageSlice",
-    category: "message",
     version: "1.3.0",
     description: "Slices this message's args",
     brackets: true,

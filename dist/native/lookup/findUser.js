@@ -9,7 +9,6 @@ const structures_1 = require("../../structures");
 exports.UserMentionCharRegex = /[<>@]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$findUser",
-    category: "lookup",
     version: "1.0.0",
     description: "Finds a user",
     brackets: true,

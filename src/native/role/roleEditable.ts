@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleEditable",
-    category: "role",
     version: "1.3.0",
     description: "Returns whether the role is editable by the bot",
     brackets: false,

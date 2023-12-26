@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$newChannel",
-    category: "state",
     version: "1.0.0",
     description: "Retrieves new data from an event whose context was a channel instance",
     brackets: true,

@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$roleName",
-    category: "role",
     version: "1.0.0",
     description: "Returns a role name with given id",
     brackets: false,

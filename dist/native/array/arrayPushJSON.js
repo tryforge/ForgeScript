@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayPushJSON",
-    category: "array",
     version: "1.3.0",
     description: "Appends an element to an array",
     unwrap: true,

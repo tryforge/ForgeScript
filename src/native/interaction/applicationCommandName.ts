@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$applicationCommandName",
-    category: "interaction",
     version: "1.0.7",
     description: "Returns an application command name",
     brackets: false,

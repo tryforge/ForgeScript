@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferWriteInt32",
-    category: "buffer",
     version: "1.2.0",
     description: "Writes int32 to a buffer",
     unwrap: true,

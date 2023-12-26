@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$mentioned",
-    category: "mention",
     version: "1.0.0",
     brackets: false,
     description: "Returns the mentioned users",

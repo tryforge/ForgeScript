@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$getCooldownTime",
-    category: "cooldown",
     version: "1.0.3",
     description: "Retrieves current cooldown time in ms for given id",
     brackets: true,

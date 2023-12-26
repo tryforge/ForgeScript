@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferReadInt32",
-    category: "buffer",
     version: "1.2.0",
     description: "Reads int from a buffer",
     unwrap: true,

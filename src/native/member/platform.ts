@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$platform",
-    category: "member",
     version: "1.0.0",
     description: "Returns the member platforms",
     brackets: false,

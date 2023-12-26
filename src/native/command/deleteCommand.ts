@@ -3,7 +3,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteCommand",
-    category: "command",
     version: "1.2.0",
     description: "Deletes the author's message",
     unwrap: false,

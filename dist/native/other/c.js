@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$c",
-    category: "other",
     version: "1.0.0",
     description: "Marks any code inside as a comment",
     unwrap: false,

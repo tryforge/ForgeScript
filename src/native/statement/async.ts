@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$async",
-    category: "statement",
     version: "1.0.0",
     description: "Runs code asynchronously, will not return any value",
     unwrap: false,

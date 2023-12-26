@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$trunc",
-    category: "math",
     version: "1.0.0",
     description:
         "Returns the integer part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",

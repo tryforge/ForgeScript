@@ -3,7 +3,6 @@ import lodash from "lodash"
 
 export default new NativeFunction({
     name: "$toTitleCase",
-    category: "string",
     version: "1.0.6",
     description: "Converts a string to title case",
     brackets: true,

@@ -3,7 +3,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteEmojis",
-    category: "emoji",
     version: "1.0.0",
     brackets: true,
     unwrap: true,

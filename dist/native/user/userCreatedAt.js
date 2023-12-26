@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$userCreatedAt",
-    category: "user",
     version: "1.0.2",
     description: "Returns the timestamp this user created their account",
     unwrap: true,

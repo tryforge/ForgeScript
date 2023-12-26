@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$isBool",
-    category: "condition",
     version: "1.0.6",
     description: "Checks whether given value is bool like",
     brackets: true,

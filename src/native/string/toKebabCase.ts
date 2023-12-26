@@ -3,7 +3,6 @@ import { kebabCase } from "lodash"
 
 export default new NativeFunction({
     name: "$toKebabCase",
-    category: "string",
     version: "1.0.6",
     description: "Converts a string to kebab case",
     brackets: true,

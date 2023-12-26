@@ -4,7 +4,6 @@ const ForgeError_1 = require("../../structures/forge/ForgeError");
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$callFunction",
-    category: "other",
     version: "1.0.0",
     description: "Calls a forge function made by the user",
     unwrap: true,

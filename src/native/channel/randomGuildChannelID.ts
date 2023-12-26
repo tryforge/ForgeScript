@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomGuildChannelID",
-    category: "channel",
     version: "1.0.3",
     description: "Returns a random channel ID of a guild",
     unwrap: true,

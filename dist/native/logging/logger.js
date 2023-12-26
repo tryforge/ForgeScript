@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const Logger_1 = require("../../structures/@internal/Logger");
 exports.default = new structures_1.NativeFunction({
     name: "$logger",
-    category: "logging",
     version: "1.3.0",
     description: "Implements Logger API of ForgeScript.",
     unwrap: true,

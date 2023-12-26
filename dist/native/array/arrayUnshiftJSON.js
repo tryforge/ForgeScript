@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayUnshiftJSON",
-    category: "array",
     version: "1.3.0",
     description: "Adds elements to the beginning of an array",
     unwrap: true,

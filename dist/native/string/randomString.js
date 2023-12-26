@@ -12,7 +12,6 @@ exports.CharArray = [
 ];
 exports.default = new structures_1.NativeFunction({
     name: "$randomString",
-    category: "string",
     version: "1.2.0",
     description: "Creates a random string",
     brackets: true,

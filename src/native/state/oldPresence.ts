@@ -4,7 +4,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$oldPresence",
-    category: "state",
     version: "1.1.0",
     description: "Retrieves old data from an event whose context was a presence instance",
     brackets: true,

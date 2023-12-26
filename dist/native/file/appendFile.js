@@ -4,7 +4,6 @@ const fs_1 = require("fs");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$appendFile",
-    category: "file",
     version: "1.0.0",
     description: "Appends text to a file",
     unwrap: true,

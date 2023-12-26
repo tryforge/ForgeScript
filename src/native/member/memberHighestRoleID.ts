@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$memberHighestRoleID",
-    category: "member",
     version: "1.0.0",
     description: "Returns the highest role id of a member",
     unwrap: true,

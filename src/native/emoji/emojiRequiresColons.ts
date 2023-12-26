@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$emojiRequiresColons",
-    category: "emoji",
     version: "1.0.0",
     description: "Returns whether the emoji requires colons",
     brackets: false,

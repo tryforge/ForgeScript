@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildMaximumPresences",
-    category: "guild",
     version: "1.3.0",
     description: "Returns the maximum presences for this guild",
     brackets: false,

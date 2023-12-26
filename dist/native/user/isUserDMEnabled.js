@@ -4,7 +4,6 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isUserDMEnabled",
-    category: "user",
     version: "1.2.0",
     description: "Checks whether given user can be DMed",
     unwrap: true,

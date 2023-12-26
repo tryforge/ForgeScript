@@ -4,7 +4,6 @@ const hex_1 = require("../../functions/hex");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$hexToInt",
-    category: "number",
     version: "1.2.0",
     brackets: true,
     description: "Turns hex string to number",

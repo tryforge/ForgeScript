@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferReadInt32",
-    category: "buffer",
     version: "1.2.0",
     description: "Reads int from a buffer",
     unwrap: true,

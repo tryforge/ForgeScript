@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$fetchRows",
-    category: "message",
     version: "1.0.0",
     description: "Fetch a message's components, this will override any other component added to the response",
     unwrap: true,

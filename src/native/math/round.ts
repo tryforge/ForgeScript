@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$round",
-    category: "math",
     version: "1.0.0",
     description: "Rounds provided number to a certain number of decimal places",
     brackets: true,

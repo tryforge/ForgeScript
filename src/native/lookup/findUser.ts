@@ -5,7 +5,6 @@ export const UserMentionCharRegex = /[<>@]/g
 
 export default new NativeFunction({
     name: "$findUser",
-    category: "lookup",
     version: "1.0.0",
     description: "Finds a user",
     brackets: true,

@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$letMulti",
-    category: "variable",
     version: "1.3.0",
     description: "Short-hand for $let[...;$multi[$get[...];...]]",
     unwrap: true,

@@ -7,7 +7,6 @@ const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayFindIndex",
-    category: "array",
     version: "1.0.0",
     description: "Finds the index of an element in the array",
     unwrap: false,

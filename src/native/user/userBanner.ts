@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$userBanner",
-    category: "user",
     version: "1.0.0",
     description: "Returns the user banner",
     brackets: false,

@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferLength",
-    category: "buffer",
     version: "1.1.0",
     description: "Returns the length of a buffer",
     unwrap: true,

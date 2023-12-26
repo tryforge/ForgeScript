@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomMemberID",
-    category: "member",
     version: "1.0.3",
     description: "Returns a random member ID of a guild",
     unwrap: true,

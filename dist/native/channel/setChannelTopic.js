@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$setChannelTopic",
-    category: "channel",
     version: "1.0.0",
     description: "Sets a channel topic, returns bool",
     brackets: true,

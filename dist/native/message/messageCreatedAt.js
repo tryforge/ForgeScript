@@ -4,7 +4,6 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageCreatedAt",
-    category: "message",
     version: "1.0.2",
     description: "Returns the timestamp of the message",
     unwrap: true,

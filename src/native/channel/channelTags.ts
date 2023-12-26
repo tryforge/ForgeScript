@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$channelTags",
-    category: "channel",
     version: "1.0.3",
     description: "Retrieves tags from a forum thread",
     unwrap: true,

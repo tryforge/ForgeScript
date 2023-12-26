@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomText",
-    category: "string",
     version: "1.0.0",
     description: "Returns a random text (no cache)",
     unwrap: true,

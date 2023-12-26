@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRemoveHeader",
-    category: "http",
     version: "1.0.0",
     description: "Removes an HTTP header",
     unwrap: true,

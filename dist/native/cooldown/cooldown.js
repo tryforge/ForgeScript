@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$cooldown",
-    category: "cooldown",
     version: "1.0.3",
     description: "Adds a command cooldown",
     brackets: true,

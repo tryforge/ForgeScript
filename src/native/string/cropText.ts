@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$cropText",
-    category: "string",
     version: "1.0.3",
     description: "Crops given text",
     brackets: true,

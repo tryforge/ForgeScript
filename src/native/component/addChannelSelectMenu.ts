@@ -3,7 +3,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$addChannelSelectMenu",
-    category: "component",
     version: "1.4.0",
     description: "Creates a channel select menu",
     brackets: true,

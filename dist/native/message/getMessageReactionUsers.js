@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$getMessageReactionUsers",
-    category: "message",
     version: "1.0.0",
     description: "Gets the user ids that have reacted to a specific emoji",
     unwrap: true,

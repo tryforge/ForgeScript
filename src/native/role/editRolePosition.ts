@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$editRolePosition",
-    category: "role",
     version: "1.0.7",
     description: "Edits a role's position, returns boolean",
     unwrap: true,

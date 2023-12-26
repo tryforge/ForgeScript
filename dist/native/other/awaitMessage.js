@@ -8,7 +8,6 @@ const lodash_1 = require("lodash");
 const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 exports.default = new structures_1.NativeFunction({
     name: "$awaitMessage",
-    category: "other",
     version: "1.0.7",
     description: "Awaits a message, returns message ID or nothing if no valid response",
     unwrap: false,

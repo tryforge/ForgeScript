@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteComponent",
-    category: "component",
     version: "1.0.0",
     description: "Deletes a component with given custom id",
     brackets: true,

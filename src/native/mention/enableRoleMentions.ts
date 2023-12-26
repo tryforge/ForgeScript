@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$enableRoleMentions",
-    category: "mention",
     version: "1.3.0",
     description: "Only parses these roles for mentions",
     unwrap: true,

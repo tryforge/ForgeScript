@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferResize",
-    category: "buffer",
     version: "1.1.0",
     description: "Resizes a buffer",
     unwrap: true,

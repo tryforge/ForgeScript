@@ -1,7 +1,7 @@
-import { ApplicationCommand } from "../../../structures";
+import { ApplicationCommand } from "../../../structures"
 
 export default new ApplicationCommand({
-    code: `ok!`,
+    code: "ok!",
     data: {
         name: "sure",
         description: "bye"

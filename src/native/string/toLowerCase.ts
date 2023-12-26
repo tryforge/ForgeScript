@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$toLowerCase",
-    category: "string",
     version: "1.0.0",
     description: "Makes a string lowercase",
     unwrap: true,

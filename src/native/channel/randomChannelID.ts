@@ -2,7 +2,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomChannelID",
-    category: "channel",
     version: "1.0.3",
     description: "Returns a random channel ID",
     unwrap: false,

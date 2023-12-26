@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildSplashURL",
-    category: "guild",
     version: "1.0.0",
     description: "Returns the guild splash url",
     brackets: false,

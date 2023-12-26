@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferReadUtf8",
-    category: "buffer",
     version: "1.1.0",
     description: "Reads utf8 string from a buffer",
     unwrap: true,

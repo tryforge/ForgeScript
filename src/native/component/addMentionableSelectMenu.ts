@@ -3,7 +3,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$addMentionableSelectMenu",
-    category: "component",
     version: "1.4.0",
     description: "Creates a mentionable select menu",
     brackets: true,

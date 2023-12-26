@@ -2,7 +2,6 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 
 export default new NativeFunction({
     name: "$emojiExists",
-    category: "emoji",
     version: "1.0.0",
     description: "Returns whether an emoji id exists",
     unwrap: true,

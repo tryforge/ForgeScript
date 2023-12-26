@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$parseMS",
-    category: "time",
     version: "1.0.2",
     description: "Parses valid ms to duration",
     brackets: true,

@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$botInvite",
-    category: "bot",
     version: "1.0.0",
     description: "Returns a bot's invite link",
     brackets: false,

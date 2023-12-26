@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$truncateFile",
-    category: "file",
     version: "1.0.0",
     description: "Truncates text in a file to given length",
     unwrap: true,

@@ -3,7 +3,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookExists",
-    category: "webhook",
     version: "1.0.0",
     description: "Checks whether given webhook id eixsts",
     brackets: true,

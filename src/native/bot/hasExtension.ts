@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$hasExtension",
-    category: "bot",
     version: "1.2.0",
     description: "Checks whether client has an extension",
     unwrap: true,

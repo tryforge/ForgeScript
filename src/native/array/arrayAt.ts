@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayAt",
-    category: "array",
     version: "1.0.0",
     description: "Returns the element at given index",
     unwrap: true,

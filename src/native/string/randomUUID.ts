@@ -3,7 +3,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomUUID",
-    category: "string",
     version: "1.2.0",
     description: "Returns a random uuid",
     unwrap: false,

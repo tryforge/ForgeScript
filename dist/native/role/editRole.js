@@ -4,7 +4,6 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editRole",
-    category: "role",
     version: "1.0.7",
     description: "Edits role data, returns boolean",
     unwrap: true,

@@ -5,7 +5,6 @@ export const MinHexIntValue = 0 as const
 
 export default new NativeFunction({
     name: "$isValidHex",
-    category: "condition",
     version: "1.3.0",
     description: "Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.",
     unwrap: true,

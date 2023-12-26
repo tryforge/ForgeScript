@@ -4,7 +4,6 @@ const MathRegex = /[^0-9%\-+./*\t\n\s()<>]/
 
 export default new NativeFunction({
     name: "$math",
-    category: "math",
     version: "1.0.0",
     description: "Run math expression, returns nothing if incorrect expression",
     brackets: true,

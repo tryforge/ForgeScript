@@ -5,7 +5,6 @@ const ForgeError_1 = require("../../structures/forge/ForgeError");
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$djsEval",
-    category: "unsafe",
     version: "1.0.0",
     description: "Eval js code",
     unwrap: true,

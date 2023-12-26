@@ -4,7 +4,6 @@ const voiceState_1 = require("../../properties/voiceState");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newState",
-    category: "state",
     version: "1.0.0",
     description: "Retrieves new data from an event whose context was a voice state instance",
     brackets: true,

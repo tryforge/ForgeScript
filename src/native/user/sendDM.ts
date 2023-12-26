@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$sendDM",
-    category: "user",
     version: "1.0.0",
     description: "Sends a dm to the user",
     unwrap: true,

@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildDefaultMessageNotifications",
-    category: "guild",
     version: "1.3.0",
     description: "Returns the default message notifications for this guild",
     brackets: false,

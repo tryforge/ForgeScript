@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$get",
-    category: "variable",
     version: "1.0.0",
     description: "Get a keyword value",
     unwrap: true,

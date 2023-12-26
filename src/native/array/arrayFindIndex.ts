@@ -3,7 +3,6 @@ import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunc
 
 export default new NativeFunction({
     name: "$arrayFindIndex",
-    category: "array",
     version: "1.0.0",
     description: "Finds the index of an element in the array",
     unwrap: false,

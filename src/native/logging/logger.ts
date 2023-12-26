@@ -3,7 +3,6 @@ import { LogType, Logger } from "../../structures/@internal/Logger"
 
 export default new NativeFunction({
     name: "$logger",
-    category: "logging",
     version: "1.3.0",
     description: "Implements Logger API of ForgeScript.",
     unwrap: true,

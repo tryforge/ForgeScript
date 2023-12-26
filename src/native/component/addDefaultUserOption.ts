@@ -4,7 +4,6 @@ import { MentionableSelectMenuBuilder, RoleSelectMenuBuilder } from "@discordjs/
 
 export default new NativeFunction({
     name: "$addDefaultUserOption",
-    category: "component",
     version: "1.4.0",
     description: "Adds a default user option to the last select menu",
     unwrap: true,

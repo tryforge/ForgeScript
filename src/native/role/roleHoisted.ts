@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleHoisted",
-    category: "role",
     version: "1.0.0",
     description: "Returns whether the role is hoisted",
     brackets: false,

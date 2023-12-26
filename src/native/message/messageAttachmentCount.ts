@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$messageAttachmentCount",
-    category: "message",
     version: "1.4.0",
     description: "Retrieve the amount of attachments in this message",
     brackets: false,

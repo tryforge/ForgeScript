@@ -3,7 +3,6 @@ import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
 export default new NativeFunction({
     name: "$inviterCode",
-    category: "invite",
     version: "1.0.3",
     description: "Returns the invite code that was used by this person",
     unwrap: true,

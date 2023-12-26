@@ -4,7 +4,6 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberSetNickname",
-    category: "member",
     version: "1.0.7",
     description: "Edits a member's nickname",
     brackets: true,

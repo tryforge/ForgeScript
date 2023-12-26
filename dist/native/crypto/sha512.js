@@ -4,7 +4,6 @@ const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$sha512",
-    category: "crypto",
     version: "1.2.0",
     description: "Creates a sha512 key from given input",
     unwrap: true,

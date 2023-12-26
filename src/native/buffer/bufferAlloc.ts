@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bufferAlloc",
-    category: "buffer",
     version: "1.1.0",
     description: "Allocates given number of bytes in a buffer",
     unwrap: true,

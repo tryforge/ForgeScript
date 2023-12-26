@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$unpinMessage",
-    category: "message",
     version: "1.1.0",
     description: "Unpins a message from a channel, returns bool",
     brackets: false,

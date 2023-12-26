@@ -4,7 +4,6 @@ const os_1 = require("os");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$networkCardNames",
-    category: "system",
     version: "1.2.0",
     description: "Returns your network's card names",
     unwrap: true,

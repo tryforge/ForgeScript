@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferWriteUtf8",
-    category: "buffer",
     version: "1.1.0",
     description: "Writes utf8 string to a buffer",
     unwrap: true,

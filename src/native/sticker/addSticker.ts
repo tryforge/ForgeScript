@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$addSticker",
-    category: "sticker",
     version: "1.0.0",
     description: "Adds a sticker to a guild, returns boolean",
     unwrap: true,

@@ -3,7 +3,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$isUserMentioned",
-    category: "mention",
     version: "1.3.0",
     description: "Returns whether an user was mentioned in this message",
     unwrap: true,

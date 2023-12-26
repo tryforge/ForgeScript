@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteCooldown",
-    category: "cooldown",
     version: "1.0.3",
     description: "Deletes cooldown of given id",
     brackets: true,

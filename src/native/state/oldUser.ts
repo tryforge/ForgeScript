@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$oldUser",
-    category: "state",
     version: "1.0.0",
     description: "Retrieves old data from an event whose context was a user instance",
     brackets: true,

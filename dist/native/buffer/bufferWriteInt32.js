@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferWriteInt32",
-    category: "buffer",
     version: "1.2.0",
     description: "Writes int32 to a buffer",
     unwrap: true,

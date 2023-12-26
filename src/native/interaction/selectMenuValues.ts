@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$selectMenuValues",
-    category: "interaction",
     version: "1.0.0",
     description: "Returns select menu values",
     brackets: false,

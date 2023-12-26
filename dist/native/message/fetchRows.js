@@ -4,7 +4,6 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchRows",
-    category: "message",
     version: "1.0.0",
     description: "Fetch a message's components, this will override any other component added to the response",
     unwrap: true,

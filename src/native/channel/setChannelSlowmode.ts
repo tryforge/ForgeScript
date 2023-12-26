@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$setChannelSlowmode",
-    category: "channel",
     version: "1.0.0",
     description: "Sets a channel slowmode, returns bool",
     brackets: true,

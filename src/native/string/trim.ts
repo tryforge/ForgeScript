@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$trim",
-    category: "string",
     version: "1.0.6",
     description: "Trims a string",
     brackets: true,

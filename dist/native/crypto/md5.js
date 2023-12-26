@@ -4,7 +4,6 @@ const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$md5",
-    category: "crypto",
     version: "1.2.0",
     description: "Creates a md5 key from given input",
     unwrap: true,

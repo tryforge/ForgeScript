@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$toSnakeCase",
-    category: "string",
     version: "1.0.6",
     description: "Converts a string to snake case",
     brackets: true,

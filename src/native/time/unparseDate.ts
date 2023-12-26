@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$unparseDate",
-    category: "time",
     version: "1.2.0",
     description: "Unparses given date to ms",
     brackets: true,

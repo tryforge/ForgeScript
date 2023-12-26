@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$bigintSub",
-    category: "math",
     version: "1.3.0",
     description: "Subtracts multiple numbers",
     brackets: true,

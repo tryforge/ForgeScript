@@ -4,7 +4,6 @@ const presence_1 = require("../../properties/presence");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newPresence",
-    category: "state",
     version: "1.1.0",
     description: "Retrieves new data from an event whose context was a presence instance",
     brackets: true,

@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$emojiName",
-    category: "emoji",
     version: "1.2.0",
     description: "Returns the emoji name",
     brackets: false,

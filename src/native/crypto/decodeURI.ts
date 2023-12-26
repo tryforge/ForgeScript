@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$decodeURI",
-    category: "crypto",
     version: "1.0.0",
     description: "Decodes text from a url",
     brackets: true,

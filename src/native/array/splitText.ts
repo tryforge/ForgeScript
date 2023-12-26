@@ -3,7 +3,6 @@ import { SplitTextName } from "./textSplit"
 
 export default new NativeFunction({
     name: "$splitText",
-    category: "array",
     version: "1.2.0",
     description: "Gets element of textSplit",
     brackets: true,

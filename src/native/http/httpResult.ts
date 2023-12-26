@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpResult",
-    category: "http",
     version: "1.2.0",
     description: "Retrieve an http result value",
     args: [

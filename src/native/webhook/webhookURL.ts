@@ -3,7 +3,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookURL",
-    category: "webhook",
     version: "1.0.0",
     description: "Gets webhook url with given id",
     brackets: true,

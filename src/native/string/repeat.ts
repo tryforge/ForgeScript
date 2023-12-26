@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$repeat",
-    category: "string",
     version: "1.1.0",
     description: "Repeats given text for x times",
     brackets: true,

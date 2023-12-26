@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$fileExists",
-    category: "file",
     version: "1.0.0",
     description: "Checks whether a path exists",
     brackets: true,

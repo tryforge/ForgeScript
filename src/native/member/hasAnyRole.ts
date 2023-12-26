@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$hasAnyRole",
-    category: "member",
     version: "1.1.0",
     description: "Returns whether given member has any role",
     unwrap: true,

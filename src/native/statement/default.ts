@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$default",
-    category: "statement",
     version: "1.0.6",
     brackets: true,
     unwrap: true,

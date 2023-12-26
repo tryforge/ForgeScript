@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$input",
-    category: "interaction",
     version: "1.0.0",
     description: "Returns a value from a text field",
     brackets: true,

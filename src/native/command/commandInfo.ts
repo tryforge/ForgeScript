@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$commandInfo",
-    category: "command",
     version: "1.0.3",
     description: "Retrieves command info",
     unwrap: true,

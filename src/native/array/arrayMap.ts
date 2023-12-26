@@ -2,7 +2,6 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$arrayMap",
-    category: "array",
     version: "1.0.0",
     description: "Maps through every element of the array and loads the results to another array",
     unwrap: false,

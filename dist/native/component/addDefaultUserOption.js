@@ -5,7 +5,6 @@ const structures_1 = require("../../structures");
 const builders_1 = require("@discordjs/builders");
 exports.default = new structures_1.NativeFunction({
     name: "$addDefaultUserOption",
-    category: "component",
     version: "1.4.0",
     description: "Adds a default user option to the last select menu",
     unwrap: true,

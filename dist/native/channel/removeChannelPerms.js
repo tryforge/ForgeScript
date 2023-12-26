@@ -4,7 +4,6 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$removeChannelPerms",
-    category: "channel",
     version: "1.0.3",
     description: "Removes permission overwrites from a channel, returns bool",
     brackets: true,

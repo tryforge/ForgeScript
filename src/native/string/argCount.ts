@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$argCount",
-    category: "string",
     version: "1.0.0",
     brackets: false,
     description: "Counts number of args in message",

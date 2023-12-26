@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$fetchMembers",
-    category: "member",
     version: "1.0.0",
     description: "Caches all members of a guild",
     unwrap: true,

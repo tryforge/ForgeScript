@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayUnshiftJSON",
-    category: "array",
     version: "1.3.0",
     description: "Adds elements to the beginning of an array",
     unwrap: true,

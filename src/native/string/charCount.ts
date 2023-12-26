@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$charCount",
-    category: "string",
     version: "1.0.0",
     description: "Gets the char count of a text",
     brackets: true,

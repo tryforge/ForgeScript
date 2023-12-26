@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$messageExists",
-    category: "message",
     version: "1.0.5",
     description: "Returns whether given message id exists",
     unwrap: true,

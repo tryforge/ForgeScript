@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$appendFile",
-    category: "file",
     version: "1.0.0",
     description: "Appends text to a file",
     unwrap: true,

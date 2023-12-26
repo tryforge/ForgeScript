@@ -8,7 +8,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$createForumPost",
-    category: "channel",
     version: "1.0.0",
     description: "Creates a forum post, returns the post channel id",
     unwrap: true,

@@ -5,7 +5,6 @@ export const SpoilerEscapeRegex = /(\|)/gim
 
 export default new NativeFunction({
     name: "$spoiler",
-    category: "formatting",
     version: "1.3.0",
     brackets: true,
     description: "Makes given text a spoiler",

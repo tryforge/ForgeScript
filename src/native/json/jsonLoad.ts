@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$jsonLoad",
-    category: "json",
     version: "1.0.0",
     description: "Loads JSON to an env variable",
     brackets: true,

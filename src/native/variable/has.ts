@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$has",
-    category: "variable",
     version: "1.0.0",
     description: "Checks whether a keyword exists",
     brackets: true,

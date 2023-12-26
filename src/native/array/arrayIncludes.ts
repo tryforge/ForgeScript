@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayIncludes",
-    category: "array",
     version: "1.0.0",
     description: "Checks whether a value exists in an array",
     unwrap: true,

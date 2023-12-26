@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bufferAllocUnsafe",
-    category: "buffer",
     version: "1.1.0",
     description: "Unsafely allocates given number of bytes in a buffer",
     unwrap: true,

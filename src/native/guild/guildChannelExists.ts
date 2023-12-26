@@ -2,7 +2,6 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 
 export default new NativeFunction({
     name: "$guildChannelExists",
-    category: "guild",
     version: "1.0.0",
     description: "Returns whether a guild channel id exists",
     unwrap: true,

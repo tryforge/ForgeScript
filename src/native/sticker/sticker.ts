@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$sticker",
-    category: "sticker",
     version: "1.3.0",
     description: "Attach a sticker to the response",
     brackets: true,

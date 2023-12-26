@@ -5,7 +5,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$clearUserMessages",
-    category: "channel",
     version: "1.0.0",
     description: "Clears x amount of messages from a channel of given user, returns the number of messages deleted",
     unwrap: true,

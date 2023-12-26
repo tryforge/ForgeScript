@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayShift",
-    category: "array",
     version: "1.0.0",
     description: "Deletes the first element of the array and returns it",
     unwrap: true,

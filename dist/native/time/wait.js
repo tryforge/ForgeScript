@@ -4,7 +4,6 @@ const promises_1 = require("timers/promises");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$wait",
-    category: "time",
     version: "1.0.0",
     description: "Delays the code below for x milliseconds",
     brackets: true,

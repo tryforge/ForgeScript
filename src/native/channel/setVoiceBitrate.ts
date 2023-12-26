@@ -4,7 +4,6 @@ import { BaseChannel, VoiceChannel } from "discord.js"
 
 export default new NativeFunction({
     name: "$setVoiceBitrate",
-    category: "channel",
     version: "1.4.0",
     description: "Sets the bitrate quality voice channel",
     brackets: true,

@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$deleteMessage",
-    category: "message",
     version: "1.0.0",
     brackets: true,
     unwrap: true,

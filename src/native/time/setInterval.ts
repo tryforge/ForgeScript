@@ -2,7 +2,6 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 
 export default new NativeFunction({
     name: "$setInterval",
-    category: "time",
     version: "1.0.2",
     description: "Executes code after given duration until canceled",
     unwrap: false,

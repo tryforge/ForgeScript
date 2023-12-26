@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$hexToInt",
-    category: "number",
     version: "1.2.0",
     brackets: true,
     description: "Turns hex string to number",

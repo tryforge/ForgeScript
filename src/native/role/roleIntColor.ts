@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleIntColor",
-    category: "role",
     version: "1.3.0",
     description: "Returns the role color as int",
     brackets: false,

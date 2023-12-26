@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayClear",
-    category: "array",
     version: "1.0.0",
     description: "Clears all elements from an array",
     unwrap: true,

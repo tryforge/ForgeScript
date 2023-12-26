@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$channelCreatedAt",
-    category: "channel",
     version: "1.0.0",
     description: "Returns the channel timestamp",
     unwrap: true,

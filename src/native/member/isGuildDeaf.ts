@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$isGuildDeaf",
-    category: "member",
     version: "1.0.0",
     description: "Whether a member is server deafened",
     brackets: false,

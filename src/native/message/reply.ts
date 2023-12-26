@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$reply",
-    category: "message",
     version: "1.0.0",
     description: "Marks the response as a reply",
     unwrap: true,

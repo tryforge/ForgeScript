@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$createInvite",
-    category: "channel",
     version: "1.0.0",
     brackets: true,
     description: "Creates an invite, returns the code",

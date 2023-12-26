@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleUnicodeEmoji",
-    category: "role",
     version: "1.3.0",
     description: "Returns the unicode emoji used by the role",
     brackets: false,

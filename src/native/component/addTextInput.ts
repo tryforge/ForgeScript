@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$addTextInput",
-    category: "component",
     version: "1.0.0",
     description: "Adds a text input field to the modal",
     brackets: true,

@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$pinMessage",
-    category: "message",
     version: "1.1.0",
     description: "Pins a message in a channel, returns bool",
     brackets: false,

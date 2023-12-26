@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$timeout",
-    category: "member",
     version: "1.0.0",
     description: "Times a member out for X milliseconds",
     unwrap: true,

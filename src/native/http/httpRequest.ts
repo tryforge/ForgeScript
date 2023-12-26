@@ -4,7 +4,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpRequest",
-    category: "http",
     version: "1.0.0",
     description: "Performs an http request, returns the status code",
     args: [

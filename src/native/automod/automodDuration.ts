@@ -3,7 +3,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$automodDuration",
-    category: "automod",
     version: "1.2.0",
     description: "The duration in ms by this automod action",
     unwrap: false,

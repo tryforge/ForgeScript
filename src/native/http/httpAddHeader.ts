@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpAddHeader",
-    category: "http",
     version: "1.0.0",
     description: "Adds an HTTP header",
     unwrap: true,

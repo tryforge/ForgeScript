@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$webhookURL",
-    category: "webhook",
     version: "1.0.0",
     description: "Gets webhook url with given id",
     brackets: true,

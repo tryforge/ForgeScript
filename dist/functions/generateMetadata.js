@@ -3,10 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const managers_1 = require("../managers");
 const process_1 = require("process");
+const structures_1 = require("../structures");
+const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
+const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m;
 function default_1(functionsAbsolutePath, mainCategoryName, eventName) {
     managers_1.FunctionManager.load("Metadata", functionsAbsolutePath);
-    const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
-    const FunctionCategoryRegex = /(category: "\$?(\w+)"),?/m;
     const metaOutPath = "./metadata";
     if (!(0, fs_1.existsSync)(metaOutPath))
         (0, fs_1.mkdirSync)(metaOutPath);
@@ -17,16 +18,12 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName) {
             let txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
             let modified = false;
             const pathSplits = fn.path.split(/(?:\\|\/)/gim);
-            const category = pathSplits.at(-2) === mainCategoryName ? "unknown" : pathSplits.at(-2);
-            if (fn.data.category !== category) {
-                const existed = !!fn.data.category;
-                fn.data.category = category;
-                if (!existed) {
-                    txt = txt.replace(FunctionNameRegex, `$1,\n    category: "${category}",`);
-                }
-                else {
-                    txt = txt.replace(FunctionCategoryRegex, `category: "${category}",`);
-                }
+            const category = pathSplits.at(-2) === mainCategoryName ? null : pathSplits.at(-2);
+            if (category)
+                Reflect.set(fn.data, "category", category);
+            if (txt.includes("category: ")) {
+                structures_1.Logger.warn("Deleting category block from " + fn.name);
+                txt = txt.replace(FunctionCategoryRegex, "");
                 modified = true;
             }
             if (!fn.data.version) {

@@ -4,7 +4,6 @@ const role_1 = require("../../properties/role");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newRole",
-    category: "state",
     version: "1.0.0",
     description: "Retrieves new data from an event whose context was a role instance",
     brackets: true,

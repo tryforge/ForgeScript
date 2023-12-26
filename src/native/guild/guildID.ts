@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildID",
-    category: "guild",
     version: "1.0.0",
     description: "Returns the guild id with given name",
     unwrap: true,

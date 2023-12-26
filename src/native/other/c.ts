@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$c",
-    category: "other",
     version: "1.0.0",
     description: "Marks any code inside as a comment",
     unwrap: false,

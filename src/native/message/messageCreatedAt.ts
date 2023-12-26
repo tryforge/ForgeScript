@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$messageCreatedAt",
-    category: "message",
     version: "1.0.2",
     description: "Returns the timestamp of the message",
     unwrap: true,

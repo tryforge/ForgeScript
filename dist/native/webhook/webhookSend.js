@@ -4,7 +4,6 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$webhookSend",
-    category: "webhook",
     version: "1.0.0",
     description: "Sends a message with a webhook",
     brackets: true,

@@ -4,7 +4,6 @@ import { EmbedProperties, EmbedProperty } from "../../properties/embed"
 
 export default new NativeFunction({
     name: "$getEmbed",
-    category: "message",
     version: "1.0.3",
     description: "Retrieves data of an embed",
     unwrap: true,

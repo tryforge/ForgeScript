@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildVerified",
-    category: "guild",
     version: "1.3.0",
     description: "Returns whether the server is verified",
     brackets: false,

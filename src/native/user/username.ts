@@ -3,7 +3,6 @@ import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$username",
-    category: "user",
     version: "1.0.0",
     description: "Retrieves a user's username",
     brackets: false,

@@ -4,7 +4,6 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookCreate",
-    category: "webhook",
     version: "1.0.0",
     description: "Creates a webhook in a channel, returns the webhook id",
     brackets: true,

@@ -7,7 +7,6 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$deleteInvite",
-    category: "invite",
     version: "1.0.0",
     brackets: true,
     description: "Deletes an invite, returns the code",

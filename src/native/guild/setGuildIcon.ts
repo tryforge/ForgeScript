@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$setGuildIcon",
-    category: "guild",
     version: "1.0.0",
     description: "Sets a guild icon, returns boolean",
     unwrap: true,

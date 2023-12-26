@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$max",
-    category: "math",
     version: "1.0.7",
     description: "Returns the largest number of the ones given",
     brackets: true,

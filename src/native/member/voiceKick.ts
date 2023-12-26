@@ -3,7 +3,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$voiceKick",
-    category: "member",
     version: "1.4.0",
     description: "Kicks a member from voice channel",
     brackets: true,

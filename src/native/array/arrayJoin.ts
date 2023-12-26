@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayJoin",
-    category: "array",
     version: "1.0.0",
     description: "Joins all elements from an array with given separator",
     unwrap: true,

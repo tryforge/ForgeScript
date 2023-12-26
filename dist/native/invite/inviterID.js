@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const InviteTracker_1 = require("../../structures/trackers/InviteTracker");
 exports.default = new structures_1.NativeFunction({
     name: "$inviterID",
-    category: "invite",
     version: "1.0.3",
     description: "Returns the user who invited this person",
     unwrap: true,

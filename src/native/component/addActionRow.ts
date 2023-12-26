@@ -3,7 +3,6 @@ import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$addActionRow",
-    category: "component",
     version: "1.0.0",
     description: "Adds an action row",
     unwrap: true,

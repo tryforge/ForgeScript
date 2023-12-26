@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const NoNumberRegex = /[^0-9.]/g;
 exports.default = new structures_1.NativeFunction({
     name: "$separateNumber",
-    category: "number",
     version: "1.0.0",
     description: "Separates thousands in the number",
     unwrap: true,

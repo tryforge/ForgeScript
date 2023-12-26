@@ -4,7 +4,6 @@ import { noop } from "lodash"
 
 export default new NativeFunction({
     name: "$publishMessage",
-    category: "message",
     version: "1.1.0",
     description: "Crossposts a message in an announcement channel, returns bool",
     brackets: false,

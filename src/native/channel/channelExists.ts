@@ -2,7 +2,6 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 
 export default new NativeFunction({
     name: "$channelExists",
-    category: "channel",
     version: "1.0.0",
     description: "Returns whether an channel id exists",
     unwrap: true,

@@ -4,7 +4,6 @@ import { MentionableSelectMenuBuilder, RoleSelectMenuBuilder } from "@discordjs/
 
 export default new NativeFunction({
     name: "$addDefaultChannelOption",
-    category: "component",
     version: "1.4.0",
     description: "Adds a default channel option to the last select menu",
     unwrap: true,

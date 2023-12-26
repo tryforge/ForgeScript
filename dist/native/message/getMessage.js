@@ -4,7 +4,6 @@ const structures_1 = require("../../structures");
 const message_1 = require("../../properties/message");
 exports.default = new structures_1.NativeFunction({
     name: "$getMessage",
-    category: "message",
     version: "1.0.3",
     description: "Retrieves data of a message",
     unwrap: true,

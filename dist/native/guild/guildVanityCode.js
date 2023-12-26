@@ -7,7 +7,6 @@ const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildVanityCode",
-    category: "guild",
     version: "1.0.0",
     description: "Returns the guilds vanity code",
     unwrap: true,

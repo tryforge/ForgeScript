@@ -8,7 +8,6 @@ import {
 
 export default new NativeFunction({
     name: "$if",
-    category: "statement",
     version: "1.0.0",
     description: "Creates an if statement",
     unwrap: false,

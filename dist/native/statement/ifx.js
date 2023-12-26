@@ -9,7 +9,6 @@ const elseif_1 = __importDefault(require("./elseif"));
 const if_1 = __importDefault(require("./if"));
 exports.default = new structures_1.NativeFunction({
     name: "$ifx",
-    category: "statement",
     version: "1.2.0",
     description: "WIP if statements",
     brackets: true,

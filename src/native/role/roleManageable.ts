@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleManageable",
-    category: "role",
     version: "1.3.0",
     description: "Returns whether the role is managed by discord",
     brackets: false,

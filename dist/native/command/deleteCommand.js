@@ -4,7 +4,6 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteCommand",
-    category: "command",
     version: "1.2.0",
     description: "Deletes the author's message",
     unwrap: false,

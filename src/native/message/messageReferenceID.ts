@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$messageReferenceID",
-    category: "message",
     version: "1.0.0",
     description: "Returns the message id that this message replies to",
     unwrap: true,

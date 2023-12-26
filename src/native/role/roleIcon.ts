@@ -3,7 +3,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$roleIcon",
-    category: "role",
     version: "1.0.0",
     description: "Returns the role icon",
     brackets: false,

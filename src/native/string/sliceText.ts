@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$sliceText",
-    category: "string",
     version: "1.3.0",
     description: "Slices given text",
     brackets: true,

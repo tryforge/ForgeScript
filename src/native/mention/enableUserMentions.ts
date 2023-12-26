@@ -2,7 +2,6 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$enableUserMentions",
-    category: "mention",
     version: "1.3.0",
     description: "Only parses these users for mentions",
     unwrap: true,

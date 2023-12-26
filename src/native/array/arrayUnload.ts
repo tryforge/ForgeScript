@@ -2,7 +2,6 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayUnload",
-    category: "array",
     version: "1.0.0",
     description: "Unloads an array from an environment variable",
     args: [
