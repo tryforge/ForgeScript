@@ -1,9 +1,10 @@
 import { ForgeClient } from "../core/ForgeClient";
 import { BaseCommand, IBaseCommand } from "../structures";
-export declare class BaseCommandManager<T> {
+export declare abstract class BaseCommandManager<T> {
     private readonly client;
     private readonly commands;
     private readonly paths;
+    abstract handlerName: string;
     constructor(client: ForgeClient);
     refresh(): void;
     load(path: string): void;

@@ -7,7 +7,6 @@ export declare class EventManager {
     private events;
     constructor(client: ForgeClient);
     load(name: string, ...events: (string | string[])[]): void;
-    has(event: string): boolean;
     static load(name: string, path: string): void;
     static toJSON(name: string): {
         name: string;
@@ -16,5 +15,6 @@ export declare class EventManager {
         version?: string | undefined;
         intents?: ("Guilds" | "GuildMembers" | "GuildModeration" | "GuildBans" | "GuildEmojisAndStickers" | "GuildIntegrations" | "GuildWebhooks" | "GuildInvites" | "GuildVoiceStates" | "GuildPresences" | "GuildMessages" | "GuildMessageReactions" | "GuildMessageTyping" | "DirectMessages" | "DirectMessageReactions" | "DirectMessageTyping" | "MessageContent" | "GuildScheduledEvents" | "AutoModerationConfiguration" | "AutoModerationExecution")[] | undefined;
     }[];
+    has(handler: string, type: any): boolean;
 }
 //# sourceMappingURL=EventManager.d.ts.map

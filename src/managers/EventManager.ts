@@ -26,10 +26,6 @@ export class EventManager {
         }
     }
 
-    public has(event: string) {
-        return this.events.has(event)
-    }
-
     public static load(name: string, path: string) {
         this.Loaded[name] = {}
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
@@ -40,6 +36,10 @@ export class EventManager {
 
     public static toJSON(name: string) {
         return Object.values(this.Loaded[name]!).map((x) => ({ ...x!.data }))
+    }
+
+    public has(handler: string, type: any) {
+        return this.events.get(handler)?.has(type) ?? false
     }
 }
 

@@ -27,9 +27,6 @@ class EventManager {
             event.register(this.client);
         }
     }
-    has(event) {
-        return this.events.has(event);
-    }
     static load(name, path) {
         this.Loaded[name] = {};
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
@@ -39,6 +36,9 @@ class EventManager {
     }
     static toJSON(name) {
         return Object.values(this.Loaded[name]).map((x) => ({ ...x.data }));
+    }
+    has(handler, type) {
+        return this.events.get(handler)?.has(type) ?? false;
     }
 }
 exports.EventManager = EventManager;

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$logn",
-    category: "number",
+    category: "math",
     version: "1.0.0",
     description: "Returns the natural logarithm (base e) of a number",
     brackets: true,

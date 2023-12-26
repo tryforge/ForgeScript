@@ -24,6 +24,7 @@ const client = new ForgeClient_1.ForgeClient({
         "guildAuditLogEntryCreate",
         "ready",
         "messageCreate",
+        "messageUpdate",
         "messageReactionAdd",
         "guildMemberAdd",
         "interactionCreate",
@@ -38,6 +39,7 @@ const client = new ForgeClient_1.ForgeClient({
     restrictions: {
         userIDs: ["1096285761365610576"],
     },
+    respondOnEdit: 10000,
     optionalGuildID: true,
     extensions: [
         new ext_1.MyExtension()
@@ -47,6 +49,10 @@ console.log("Started");
 client.commands.add({
     type: discord_js_1.Events.MessageReactionAdd,
     code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
+});
+client.commands.add({
+    type: "webhooksUpdate",
+    code: "Hewwo"
 });
 client.commands.add({
     type: discord_js_1.Events.InteractionCreate,

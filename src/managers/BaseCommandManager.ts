@@ -2,13 +2,15 @@ import { Collection, Message } from "discord.js"
 import { ForgeClient } from "../core/ForgeClient"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { FileReader } from "../core/FileReader"
-import { BaseCommand, IBaseCommand } from "../structures"
+import { BaseCommand, IBaseCommand, Logger } from "../structures"
 import { cwd } from "process"
 import { join } from "path"
 
-export class BaseCommandManager<T> {
+export abstract class BaseCommandManager<T> {
     private readonly commands = new Collection<T, BaseCommand<T>[]>()
     private readonly paths = new Array<string>()
+
+    public abstract handlerName: string
 
     public constructor(private readonly client: ForgeClient) {}
 
@@ -66,6 +68,10 @@ export class BaseCommandManager<T> {
                 cmd.setPath(path)
 
             cmd.validate()
+            
+            if (this.handlerName && !this.client.events.has(this.handlerName, cmd.type)) {
+                Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path})`)
+            }
 
             const col = this.commands.ensure(cmd.type as T, () => new Array())
             cmd.data.unloadable = unloadable

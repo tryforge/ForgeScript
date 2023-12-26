@@ -4,7 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addChannelType",
-    category: "array",
+    category: "component",
     version: "1.4.0",
     description: "Adds a channel type to the last select menu",
     unwrap: true,

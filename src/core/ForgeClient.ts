@@ -26,11 +26,30 @@ export interface IRestrictions {
 }
 
 export interface IForgeClientOptions extends ClientOptions {
+    /**
+     * Specifies a folder (path) to load all commands from it
+     */
     commands?: string
+
+    /**
+     * The discord.js events our bot will use
+     */
     events?: CommandType[]
+
+    /**
+     * The prefixes our bot will act upon for command messages
+     */
     prefixes: string[]
+
+    /**
+     * Specifies the logs to be received
+     */
     logLevel?: LogPriority
     functions?: string
+
+    /**
+     * Allows the bot to execute events triggered by other bots (and itself)
+     */
     allowBots?: boolean
     token?: string
 
@@ -38,6 +57,10 @@ export interface IForgeClientOptions extends ClientOptions {
      * @deprecated use trackers: { invites: true } instead
      */
     useInviteSystem?: boolean
+
+    /**
+     * This will connect the client to Discord with the mobile status
+     */
     mobile?: boolean
     trackers?: ITrackers
 
@@ -46,7 +69,15 @@ export interface IForgeClientOptions extends ClientOptions {
      */
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
+    
     restrictions?: IRestrictions
+
+    /**
+     * Allows the bot to re-use messages that were edited to find possibly command calls. 
+     * If a number is passed, it's treated as the amount of milliseconds that can pass before
+     * the message becomes completely unusable.  
+     */
+    respondOnEdit?: number | boolean
 
     /**
      * Array of function names you want to disable.

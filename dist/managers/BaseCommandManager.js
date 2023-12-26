@@ -65,6 +65,9 @@ class BaseCommandManager {
             if (path)
                 cmd.setPath(path);
             cmd.validate();
+            if (this.handlerName && !this.client.events.has(this.handlerName, cmd.type)) {
+                structures_1.Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path})`);
+            }
             const col = this.commands.ensure(cmd.type, () => new Array());
             cmd.data.unloadable = unloadable;
             col.push(cmd);

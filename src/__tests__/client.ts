@@ -2,7 +2,7 @@ import { ForgeClient } from "../core/ForgeClient"
 import { config } from "dotenv"
 import { MyExtension } from "./ext"
 import { ActivityType, Events } from "discord.js"
-import { FunctionManager } from "../managers"
+import { EventManager, FunctionManager } from "../managers"
 import { Compiler } from "../core"
 import { LogPriority } from "../structures/@internal/Logger"
 config()
@@ -25,6 +25,7 @@ const client = new ForgeClient({
         "guildAuditLogEntryCreate",
         "ready",
         "messageCreate",
+        "messageUpdate",
         "messageReactionAdd",
         "guildMemberAdd",
         "interactionCreate",
@@ -39,6 +40,7 @@ const client = new ForgeClient({
     restrictions: {
         userIDs: ["1096285761365610576"],
     },
+    respondOnEdit: 10000,
     optionalGuildID: true,
     extensions: [
         new MyExtension()
@@ -50,6 +52,11 @@ console.log("Started")
 client.commands.add({
     type: Events.MessageReactionAdd,
     code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
+})
+
+client.commands.add({
+    type: "webhooksUpdate",
+    code: "Hewwo"
 })
 
 client.commands.add({
