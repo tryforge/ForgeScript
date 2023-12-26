@@ -18,11 +18,12 @@ export class FileReader {
         return new this(str, req).read()
     }
 
-    read(): IBaseCommand<any> | BaseCommand<any> | (IBaseCommand<any> | BaseCommand<any>)[] {
+    read(): null | IBaseCommand<any> | BaseCommand<any> | (IBaseCommand<any> | BaseCommand<any>)[] {
         if (this.req !== null) {
             if ("default" in this.req) return this.req.default
             else if (Array.isArray(this.req)) return this.req
             else if (Object.keys(this.req).length !== 0) return this.req
+            else null
         }
 
         let char: string

@@ -29,6 +29,8 @@ class FileReader {
                 return this.req;
             else if (Object.keys(this.req).length !== 0)
                 return this.req;
+            else
+                null;
         }
         let char;
         const obj = {};
