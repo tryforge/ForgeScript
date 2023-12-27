@@ -33,6 +33,6 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [, message, index]) {
-        return this.success((message ?? ctx.message)?.attachments.at(index))
+        return this.success((message ?? ctx.message)?.attachments.at(index)?.url)
     },
 })

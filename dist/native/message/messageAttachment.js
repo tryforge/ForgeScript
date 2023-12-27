@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [, message, index]) {
-        return this.success((message ?? ctx.message)?.attachments.at(index));
+        return this.success((message ?? ctx.message)?.attachments.at(index)?.url);
     },
 });
 //# sourceMappingURL=messageAttachment.js.map
