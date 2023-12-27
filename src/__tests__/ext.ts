@@ -9,7 +9,6 @@ export class MyExtension extends ForgeExtension {
     public version: string = "1.0.0"
 
     public init(client: ForgeClient): void {
-        // eslint-disable-next-line no-undef
-        this.load(__dirname + "/custom")
+        throw new Error("uwu")
     }
 }

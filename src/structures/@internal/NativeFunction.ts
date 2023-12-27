@@ -106,6 +106,11 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     version?: string
 
     /**
+     * Aliases this function has
+     */
+    aliases?: string[]
+
+    /**
      * If undefined, function has no brackets
      *
      * If false, function can have brackets.

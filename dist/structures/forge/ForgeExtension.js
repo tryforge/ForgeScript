@@ -30,8 +30,13 @@ class ForgeExtension {
                 }
             }
         }
-        this.init(client);
-        Logger_1.Logger.info(`Extension ${this.name}@${this.version} has been loaded!`);
+        try {
+            this.init(client);
+            Logger_1.Logger.info(`Extension ${this.name}@${this.version} has been loaded!`);
+        }
+        catch (error) {
+            Logger_1.Logger.error(`Extension ${this.name}@${this.version} failed to load:`, error);
+        }
     }
     load(path) {
         return managers_1.FunctionManager.load(this.name, path);

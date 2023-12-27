@@ -60,6 +60,7 @@ class FunctionManager {
         return Array.from(this.Functions).map((x) => {
             const [name, { data }] = x;
             return {
+                aliases: data.aliases ?? null,
                 name,
                 args: data.brackets === undefined
                     ? null

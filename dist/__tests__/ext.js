@@ -8,8 +8,7 @@ class MyExtension extends ForgeExtension_1.ForgeExtension {
     name = "UwU";
     version = "1.0.0";
     init(client) {
-        // eslint-disable-next-line no-undef
-        this.load(__dirname + "/custom");
+        throw new Error("uwu");
     }
 }
 exports.MyExtension = MyExtension;

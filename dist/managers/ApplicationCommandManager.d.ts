@@ -32,7 +32,7 @@ export declare class ApplicationCommandManager {
     add(...values: (ApplicationCommand | IApplicationCommandData | ApplicationCommand[] | IApplicationCommandData[])[]): void;
     private loadOne;
     private validate;
-    resolve(value: ApplicationCommand | IApplicationCommandData): ApplicationCommand;
+    resolve(value: ApplicationCommand | IApplicationCommandData, path: string | null): ApplicationCommand;
     toJSON(): ApplicationCommandDataResolvable[];
     register(): Promise<Collection<string, import("discord.js").ApplicationCommand<{
         guild: import("discord.js").GuildResolvable;

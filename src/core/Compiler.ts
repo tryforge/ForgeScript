@@ -14,6 +14,7 @@ export interface IRawFunctionFieldDefinition {
 }
 
 export interface IRawFunction {
+    aliases: null | string[]
     name: string
     /**
      * If undefined, function has no fields.
@@ -88,9 +89,11 @@ export interface IExtendedCompilationResult extends Omit<ICompilationResult, "fu
     functions: CompiledFunction[]
 }
 
-export interface IRawFunctionMatch extends IRawFunction {
+export interface IRawFunctionMatch {
     index: number
+    length: number
     negated: boolean
+    fn: IRawFunction
 }
 
 /**
@@ -120,7 +123,8 @@ export class Compiler {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
                 negated: !!x[1],
-                ...(Compiler.Functions.get(`$${x[2]}`) ?? Compiler.Functions.find(fn => fn.name.toLowerCase() === `$${x[2].toLowerCase()}`))!,
+                length: x[0].length,
+                fn: Compiler.Functions.get("$" + x[2].toLowerCase())!
             }))
         } else this.matches = []
     }
@@ -171,15 +175,15 @@ export class Compiler {
     }
 
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
-        this.moveTo(match.index + match.name.length + (match.negated as unknown as number))
+        this.moveTo(match.index + match.length + (match.negated as unknown as number))
 
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open
 
-        const name = match.name
+        const name = match.fn.name
         const id = this.getNextId()
 
-        if (match.args === null || (!usesFields && !match.args.required)) {
+        if (match.fn.args === null || (!usesFields && !match.fn.args.required)) {
             // Increment index if escape character, just to skip it.
             if (char === Compiler.Syntax.Escape) this.index++
 
@@ -191,8 +195,8 @@ export class Compiler {
             }
         }
 
-        if (match.args.required && !usesFields) {
-            this.error(`Function ${match.name} requires brackets`)
+        if (match.fn.args.required && !usesFields) {
+            this.error(`Function ${match.fn.name} requires brackets`)
         }
 
         const fields = new Array<ICompiledFunctionConditionField | ICompiledFunctionField>()
@@ -200,9 +204,9 @@ export class Compiler {
         // Skip brace open
         this.index++
 
-        for (let i = 0, len = match.args.fields.length; i < len; i++) {
-            const isLast = i + 1 === match.args.fields.length
-            const arg = match.args.fields[i]
+        for (let i = 0, len = match.fn.args.fields.length; i < len; i++) {
+            const isLast = i + 1 === match.fn.args.fields.length
+            const arg = match.fn.args.fields[i]
 
             if (arg.rest === true) {
                 for (;;) {
@@ -221,7 +225,7 @@ export class Compiler {
             const old = this.char()
             if (isLast) {
                 if (old !== Compiler.Syntax.Close) {
-                    this.error(`Function ${match.name} expects ${match.args.fields.length} arguments at most`)
+                    this.error(`Function ${match.fn.name} expects ${match.fn.args.fields.length} arguments at most`)
                 }
             } else if (old === Compiler.Syntax.Close) break
         }
@@ -254,7 +258,7 @@ export class Compiler {
 
         for (;;) {
             const char = this.char()
-            if (char === undefined) this.error("Reached end of code and found no brace closure for " + match.name)
+            if (char === undefined) this.error("Reached end of code and found no brace closure for " + match.fn.name)
 
             const isEscape = char === Compiler.Syntax.Escape
             const isClosure = char === Compiler.Syntax.Close
@@ -393,12 +397,24 @@ export class Compiler {
     }
 
     public static setFunctions(fns: IRawFunction[]) {
-        fns.map((x) => this.Functions.set(x.name, x))
+        fns.map((x) => {
+            this.Functions.set(x.name.toLowerCase(), x)
+            x.aliases?.map(alias => this.Functions.set(alias.toLowerCase(), x))
+        })
+
+        const mapped = new Array<string>()
+        for (const [, fn] of this.Functions) {
+            mapped.push(fn.name)
+            if (fn.aliases?.length)
+                mapped.push(...fn.aliases)
+        }
+
         this.Regex = new RegExp(
-            `\\$(\\!)?(${Array.from(this.Functions.values())
-                .sort((x, y) => y.name.length - x.name.length)
-                .map((x) => x.name.slice(1))
-                .join("|")})`,
+            `\\$(\\!)?(${
+                mapped
+                    .map(x => x.slice(1).toLowerCase())
+                    .sort((x, y) => y.length - x.length)
+                    .join("|")})`,
             "gim"
         )
     }

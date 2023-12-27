@@ -70,7 +70,7 @@ export abstract class BaseCommandManager<T> {
             cmd.validate()
             
             if (this.handlerName && !this.client.events.has(this.handlerName, cmd.type)) {
-                Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path})`)
+                Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path ?? "index file"})`)
             }
 
             const col = this.commands.ensure(cmd.type as T, () => new Array())

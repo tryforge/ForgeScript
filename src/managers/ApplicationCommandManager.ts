@@ -118,7 +118,7 @@ export class ApplicationCommandManager {
     ): void {
         for (const value of values) {
             if (Array.isArray(value)) return this.add(...value)
-            const resolved = this.resolve(value)
+            const resolved = this.resolve(value, null)
             this.commands.set(resolved.name, resolved)
         }
     }
@@ -130,19 +130,19 @@ export class ApplicationCommandManager {
         let value = req.default ?? req
         if (!value || !Object.keys(value).length) return null
         else if (Array.isArray(value)) throw new Error("Disallowed")
-        return this.resolve(value)
+        return this.resolve(value, reqPath)
     }
 
-    private validate(app: ApplicationCommand) {
+    private validate(app: ApplicationCommand, path: string | null) {
         const json = app.toJSON()
         if (json.options?.some(x => x.type === ApplicationCommandOptionType.Subcommand || x.type === ApplicationCommandOptionType.SubcommandGroup)) {
-            throw new Error("Attempt to define subcommand / subcommand group without using path tree definition.")
+            throw new Error(`Attempted to define subcommand / subcommand group without using path tree definition. (${path ?? "index file"})`)
         }
     }
 
-    public resolve(value: ApplicationCommand | IApplicationCommandData) {
+    public resolve(value: ApplicationCommand | IApplicationCommandData, path: string | null) {
         const v = value instanceof ApplicationCommand ? value : new ApplicationCommand(value)
-        this.validate(v)
+        this.validate(v, path)
         return v
     }
 

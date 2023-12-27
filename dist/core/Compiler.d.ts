@@ -8,6 +8,7 @@ export interface IRawFunctionFieldDefinition {
     fields: IRawField[];
 }
 export interface IRawFunction {
+    aliases: null | string[];
     name: string;
     /**
      * If undefined, function has no fields.
@@ -61,9 +62,11 @@ export interface ICompilationResult {
 export interface IExtendedCompilationResult extends Omit<ICompilationResult, "functions"> {
     functions: CompiledFunction[];
 }
-export interface IRawFunctionMatch extends IRawFunction {
+export interface IRawFunctionMatch {
     index: number;
+    length: number;
     negated: boolean;
+    fn: IRawFunction;
 }
 /**
  * REWRITE NEEDED

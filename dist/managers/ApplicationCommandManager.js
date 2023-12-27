@@ -94,7 +94,7 @@ class ApplicationCommandManager {
         for (const value of values) {
             if (Array.isArray(value))
                 return this.add(...value);
-            const resolved = this.resolve(value);
+            const resolved = this.resolve(value, null);
             this.commands.set(resolved.name, resolved);
         }
     }
@@ -108,17 +108,17 @@ class ApplicationCommandManager {
             return null;
         else if (Array.isArray(value))
             throw new Error("Disallowed");
-        return this.resolve(value);
+        return this.resolve(value, reqPath);
     }
-    validate(app) {
+    validate(app, path) {
         const json = app.toJSON();
         if (json.options?.some(x => x.type === discord_js_1.ApplicationCommandOptionType.Subcommand || x.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup)) {
-            throw new Error("Attempt to define subcommand / subcommand group without using path tree definition.");
+            throw new Error(`Attempted to define subcommand / subcommand group without using path tree definition. (${path ?? "index file"})`);
         }
     }
-    resolve(value) {
+    resolve(value, path) {
         const v = value instanceof ApplicationCommand_1.ApplicationCommand ? value : new ApplicationCommand_1.ApplicationCommand(value);
-        this.validate(v);
+        this.validate(v, path);
         return v;
     }
     toJSON() {
