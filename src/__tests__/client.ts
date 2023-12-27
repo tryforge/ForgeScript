@@ -1,9 +1,6 @@
-import { ForgeClient } from "../core/ForgeClient"
+import { ForgeClient } from "../core"
 import { config } from "dotenv"
-import { MyExtension } from "./ext"
 import { ActivityType, Events } from "discord.js"
-import { EventManager, FunctionManager } from "../managers"
-import { Compiler } from "../core"
 import { LogPriority } from "../structures/@internal/Logger"
 config()
 
@@ -41,10 +38,7 @@ const client = new ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     respondOnEdit: 10000,
-    optionalGuildID: true,
-    extensions: [
-        new MyExtension()
-    ]
+    optionalGuildID: true
 })
 
 console.log("Started")
@@ -101,11 +95,12 @@ client.commands.add({
 
 client.commands.add({
     name: "djs",
-    type: "messageCreate",
     code: `
-    $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
-$if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\n\`\`\`json\n$get[text]\n\`\`\`]
- `,
+        $if[$true==true;Ping: \`$pingMS\` | Uptime: <t:$round[$math[$math[$getTimestamp-$uptime]/1000];0]:R>;]                
+        $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
+        $if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\`\`\`json\n$get[text]\n\`\`\`]
+    `,
+    type: "messageCreate"
 })
 
 client.commands.add({

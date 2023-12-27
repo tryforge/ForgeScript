@@ -335,7 +335,7 @@ export class Compiler {
 
     private error(str: string) {
         const { line, column } = this.locate(this.index)
-        throw new ForgeError(null, ErrorType.CompilerError, str, line, column, this.path)
+        throw new ForgeError(null, ErrorType.CompilerError, str, line, column, this.path ?? "index file")
     }
 
     private locate(index: number): ILocation {

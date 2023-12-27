@@ -231,7 +231,7 @@ class Compiler {
     }
     error(str) {
         const { line, column } = this.locate(this.index);
-        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column, this.path);
+        throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.CompilerError, str, line, column, this.path ?? "index file");
     }
     locate(index) {
         const data = {

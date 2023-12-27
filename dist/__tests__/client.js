@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const ForgeClient_1 = require("../core/ForgeClient");
+const core_1 = require("../core");
 const dotenv_1 = require("dotenv");
-const ext_1 = require("./ext");
 const discord_js_1 = require("discord.js");
 const Logger_1 = require("../structures/@internal/Logger");
 (0, dotenv_1.config)();
-const client = new ForgeClient_1.ForgeClient({
+const client = new core_1.ForgeClient({
     logLevel: Logger_1.LogPriority.High,
     intents: [
         "Guilds",
@@ -40,10 +39,7 @@ const client = new ForgeClient_1.ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     respondOnEdit: 10000,
-    optionalGuildID: true,
-    extensions: [
-        new ext_1.MyExtension()
-    ]
+    optionalGuildID: true
 });
 console.log("Started");
 client.commands.add({
@@ -91,11 +87,12 @@ client.commands.add({
 });
 client.commands.add({
     name: "djs",
-    type: "messageCreate",
     code: `
-    $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
-$if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\n\`\`\`json\n$get[text]\n\`\`\`]
- `,
+        $if[$true==true;Ping: \`$pingMS\` | Uptime: <t:$round[$math[$math[$getTimestamp-$uptime]/1000];0]:R>;]                
+        $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
+        $if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\`\`\`json\n$get[text]\n\`\`\`]
+    `,
+    type: "messageCreate"
 });
 client.commands.add({
     type: "autoModerationActionExecution",
