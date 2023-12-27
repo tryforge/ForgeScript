@@ -175,7 +175,7 @@ export class Compiler {
     }
 
     private parseFunction(match: IRawFunctionMatch): ICompiledFunction {
-        this.moveTo(match.index + match.length + (match.negated as unknown as number))
+        this.moveTo(match.index + match.length)
 
         const char = this.char()
         const usesFields = char === Compiler.Syntax.Open

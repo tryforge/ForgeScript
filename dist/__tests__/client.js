@@ -96,7 +96,7 @@ client.commands.add({
 });
 client.commands.add({
     type: "autoModerationActionExecution",
-    code: "$log[Blocked]"
+    code: "$log[Blocked] $!djsEval[e]"
 });
 client.commands.add({
     allowedInteractionTypes: [

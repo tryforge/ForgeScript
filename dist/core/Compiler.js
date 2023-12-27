@@ -95,7 +95,7 @@ class Compiler {
         };
     }
     parseFunction(match) {
-        this.moveTo(match.index + match.length + match.negated);
+        this.moveTo(match.index + match.length);
         const char = this.char();
         const usesFields = char === Compiler.Syntax.Open;
         const name = match.fn.name;
