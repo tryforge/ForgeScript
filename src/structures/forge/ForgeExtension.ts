@@ -48,7 +48,7 @@ export abstract class ForgeExtension {
         }
 
         this.init(client)
-        Logger.info(`Extension ${this.name} has been loaded! Version ${this.version}`)
+        Logger.info(`Extension ${this.name}@${this.version} has been loaded!`)
     }
 
     protected load(path: string) {

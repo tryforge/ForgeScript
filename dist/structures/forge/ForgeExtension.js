@@ -31,7 +31,7 @@ class ForgeExtension {
             }
         }
         this.init(client);
-        Logger_1.Logger.info(`Extension ${this.name} has been loaded! Version ${this.version}`);
+        Logger_1.Logger.info(`Extension ${this.name}@${this.version} has been loaded!`);
     }
     load(path) {
         return managers_1.FunctionManager.load(this.name, path);
