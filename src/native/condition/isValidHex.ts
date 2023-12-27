@@ -2,6 +2,7 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export const MaxHexIntValue = 0xffffff as const
 export const MinHexIntValue = 0 as const
+export const HexHashtagStripping = /^#/
 
 export default new NativeFunction({
     name: "$isValidHex",
@@ -19,7 +20,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ hex ]) {
-        const int = parseInt(hex.replace("#", ""), 16)
+        const int = parseInt(hex.replace(HexHashtagStripping, ""), 16)
         return this.success(!isNaN(int) && int >= MinHexIntValue && int <= MaxHexIntValue)
     },
 })

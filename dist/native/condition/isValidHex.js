@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MinHexIntValue = exports.MaxHexIntValue = void 0;
+exports.HexHashtagStripping = exports.MinHexIntValue = exports.MaxHexIntValue = void 0;
 const structures_1 = require("../../structures");
 exports.MaxHexIntValue = 0xffffff;
 exports.MinHexIntValue = 0;
+exports.HexHashtagStripping = /^#/;
 exports.default = new structures_1.NativeFunction({
     name: "$isValidHex",
     version: "1.3.0",
@@ -20,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [hex]) {
-        const int = parseInt(hex.replace("#", ""), 16);
+        const int = parseInt(hex.replace(exports.HexHashtagStripping, ""), 16);
         return this.success(!isNaN(int) && int >= exports.MinHexIntValue && int <= exports.MaxHexIntValue);
     },
 });
