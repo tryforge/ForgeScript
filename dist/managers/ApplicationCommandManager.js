@@ -48,6 +48,10 @@ class ApplicationCommandManager {
                             const loaded = this.loadOne((0, path_1.join)((0, process_1.cwd)(), thirdResolved));
                             if (!loaded)
                                 continue;
+                            else if (loaded.options.independent) {
+                                this.commands.set(loaded.name, loaded);
+                                continue;
+                            }
                             nextCol.set(loaded.name, loaded);
                         }
                         col.set(secondPath, nextCol);
@@ -56,6 +60,10 @@ class ApplicationCommandManager {
                         const loaded = this.loadOne((0, path_1.join)((0, process_1.cwd)(), secondResolved));
                         if (!loaded)
                             continue;
+                        else if (loaded.options.independent) {
+                            this.commands.set(loaded.name, loaded);
+                            continue;
+                        }
                         col.set(loaded.name, loaded);
                     }
                 }

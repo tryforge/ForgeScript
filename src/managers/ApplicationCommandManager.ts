@@ -24,6 +24,7 @@ import { cwd } from "process"
 export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody
     code: string
+    independent?: boolean
     path?: string
 }
 
@@ -68,6 +69,11 @@ export class ApplicationCommandManager {
                             if (stats.isDirectory()) throw new Error(`Disallowed folder found for slash command tree: ${thirdResolved}`)
                             const loaded = this.loadOne(join(cwd(), thirdResolved))
                             if (!loaded) continue
+                            else if (loaded.options.independent) {
+                                this.commands.set(loaded.name, loaded)
+                                continue
+                            }
+
                             nextCol.set(loaded.name, loaded)
                         }
 
@@ -75,6 +81,11 @@ export class ApplicationCommandManager {
                     } else {
                         const loaded = this.loadOne(join(cwd(), secondResolved))
                         if (!loaded) continue
+                        else if (loaded.options.independent) {
+                            this.commands.set(loaded.name, loaded)
+                            continue
+                        }
+
                         col.set(loaded.name, loaded)
                     }
                 }
