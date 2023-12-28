@@ -54,6 +54,8 @@ class ApplicationCommandManager {
                             }
                             nextCol.set(loaded.name, loaded);
                         }
+                        if (nextCol.size === 0)
+                            continue;
                         col.set(secondPath, nextCol);
                     }
                     else {
@@ -67,6 +69,8 @@ class ApplicationCommandManager {
                         col.set(loaded.name, loaded);
                     }
                 }
+                if (col.size === 0)
+                    continue;
                 this.commands.set(mainPath, col);
             }
             else {

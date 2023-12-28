@@ -77,6 +77,8 @@ export class ApplicationCommandManager {
                             nextCol.set(loaded.name, loaded)
                         }
 
+                        if (nextCol.size === 0)
+                            continue
                         col.set(secondPath, nextCol)
                     } else {
                         const loaded = this.loadOne(join(cwd(), secondResolved))
@@ -90,6 +92,8 @@ export class ApplicationCommandManager {
                     }
                 }
 
+                if (col.size === 0)
+                    continue
                 this.commands.set(mainPath, col)
             } else {
                 const loaded = this.loadOne(join(cwd(), resolved))
