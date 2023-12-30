@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Interpreter = void 0;
 const Context_1 = require("../structures/@internal/Context");
+const structures_1 = require("../structures");
 class Interpreter {
     static async run(runtime) {
         const ctx = new Context_1.Context(runtime);
@@ -30,7 +31,9 @@ class Interpreter {
                 args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value;
             }
         }
-        catch {
+        catch (err) {
+            if (err instanceof Error)
+                structures_1.Logger.error(err);
             return null;
         }
         const content = runtime.data.resolve(args);

@@ -30,10 +30,12 @@ export enum ArgType {
     URL,
     String,
     BigInt,
+    OverwritePermission,
     Number,
     User,
     Date,
     Guild,
+    RoleOrUser,
     Invite,
     Permission,
     Json,
@@ -68,6 +70,7 @@ export interface IArg<
      * Arg index to look at when a type requires a previously guild arg or depends on something.
      */
     pointer?: number
+    pointerProperty?: string
 
     condition?: boolean
     delimiter?: string
@@ -121,6 +124,11 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     execute: NativeFunctionExecutor<T, Unwrap>
 }
 
+export type OverwritePermission = {
+    permission: PermissionsString
+    value: null | boolean
+}
+
 export type MarkRest<T, B extends boolean> = B extends true ? T[] : T
 export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number
     ? number
@@ -132,6 +140,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? string
     : T extends ArgType.Json
     ? Record<string, unknown>
+    : T extends ArgType.RoleOrUser
+    ? Role | User
     : T extends ArgType.Guild
     ? Guild
     : T extends ArgType.Color 
@@ -156,6 +166,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? GuildMember
     : T extends ArgType.GuildEmoji
     ? GuildEmoji
+    : T extends ArgType.OverwritePermission 
+    ? OverwritePermission
     : T extends ArgType.GuildSticker
     ? Sticker
     : T extends ArgType.Reaction

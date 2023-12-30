@@ -22,6 +22,11 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 }
 export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
     private readonly raw;
+    static readonly OverwriteSymbolMapping: {
+        "/": null;
+        "+": boolean;
+        "-": boolean;
+    };
     static readonly IdRegex: RegExp;
     static readonly URLRegex: RegExp;
     static readonly CDNIdRegex: RegExp;
@@ -60,6 +65,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveGuild;
     private resolveJson;
     private resolveUser;
+    private resolveRoleOrUser;
     private resolveGuildEmoji;
     private resolveForumTag;
     private resolveGuildSticker;
@@ -69,15 +75,17 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveURL;
     private resolveInvite;
     private resolveWebhook;
+    private resolveOverwritePermission;
     private resolveRole;
     private resolveDate;
+    private resolvePointer;
     private resolveArg;
     get hasFields(): boolean;
     error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): ForgeError<T>;
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
     private fail;
-    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveURL" | "resolveString" | "resolveBigInt" | "resolveNumber" | "resolveDate" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
+    static toResolveArgString(type: ArgType): "resolveGuild" | "resolveChannel" | "resolveUser" | "resolveRole" | "resolveInvite" | "resolveWebhook" | "resolveMessage" | "resolveURL" | "resolveString" | "resolveBigInt" | "resolveOverwritePermission" | "resolveNumber" | "resolveDate" | "resolveRoleOrUser" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveGuildSticker" | "resolveTime" | "resolveMember";
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
     return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;

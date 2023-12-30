@@ -18,6 +18,11 @@ const undici_1 = require("undici");
 const node_fs_1 = require("node:fs");
 class CompiledFunction {
     raw;
+    static OverwriteSymbolMapping = {
+        "/": null,
+        "+": true,
+        "-": false
+    };
     static IdRegex = /^(\d{16,23})$/;
     static URLRegex = /^http?s:\/\//;
     static CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/;
@@ -210,8 +215,8 @@ class CompiledFunction {
     resolveMessage(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        const ch = (ref[arg.pointer] ?? ctx.channel);
-        return (ch || undefined)?.messages?.fetch(str).catch(noop_1.default);
+        const ch = this.resolvePointer(arg, ref, ctx.channel);
+        return ch?.messages?.fetch(str).catch(noop_1.default);
     }
     resolveChannel(ctx, arg, str, ref) {
         return ctx.client.channels.cache.get(str);
@@ -232,6 +237,11 @@ class CompiledFunction {
             return;
         return ctx.client.users.fetch(str).catch(noop_1.default);
     }
+    resolveRoleOrUser(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        return this.resolveRole(ctx, arg, str, ref) ?? this.resolveUser(ctx, arg, str, ref);
+    }
     resolveGuildEmoji(ctx, arg, str, ref) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
         if (fromUrl !== null)
@@ -241,15 +251,15 @@ class CompiledFunction {
         return ctx.client.emojis.cache.get(id);
     }
     resolveForumTag(ctx, arg, str, ref) {
-        return ref[arg.pointer].availableTags.find((x) => x.id === str || x.name === str);
+        return this.resolvePointer(arg, ref, ctx.channel)?.availableTags.find((x) => x.id === str || x.name === str);
     }
     resolveGuildSticker(ctx, arg, str, ref) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
         if (fromUrl !== null)
-            return (ref[arg.pointer] ?? ctx.guild).stickers.fetch(fromUrl[2]);
+            return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(fromUrl[2]);
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        return (ref[arg.pointer] ?? ctx.guild).stickers.fetch(str).catch(noop_1.default);
+        return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(str).catch(noop_1.default);
     }
     async resolveAttachment(ctx, arg, str, ref) {
         const splits = str.split(/(\\\\|\/)/);
@@ -269,15 +279,15 @@ class CompiledFunction {
     resolveMember(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        return (ref[arg.pointer] ?? ctx.guild).members.fetch(str).catch(noop_1.default);
+        return this.resolvePointer(arg, ref, ctx.guild)?.members.fetch(str).catch(noop_1.default);
     }
     resolveReaction(ctx, arg, str, ref) {
-        const reactions = ref[arg.pointer].reactions;
+        const reactions = this.resolvePointer(arg, ref, ctx.message)?.reactions;
         const parsed = (0, discord_js_1.parseEmoji)(str);
         if (!parsed)
             return;
         const identifier = parsed.id ?? parsed.name;
-        return reactions.cache.get(identifier);
+        return reactions?.cache.get(identifier);
     }
     resolveURL(ctx, arg, str, ref) {
         if (!CompiledFunction.URLRegex.test(str)) {
@@ -298,11 +308,27 @@ class CompiledFunction {
             return;
         return ctx.client.fetchWebhook(str).catch(noop_1.default);
     }
+    resolveOverwritePermission(ctx, arg, str, ref) {
+        const symbol = str[0];
+        if (!(symbol in CompiledFunction.OverwriteSymbolMapping))
+            return;
+        const perm = str.slice(1);
+        if (!(perm in discord_js_1.PermissionFlagsBits))
+            return;
+        return {
+            permission: perm,
+            value: CompiledFunction.OverwriteSymbolMapping[symbol]
+        };
+    }
     resolveRole(ctx, arg, str, ref) {
-        return (ref[arg.pointer] ?? ctx.guild).roles.cache.get(str);
+        return this.resolvePointer(arg, ref, ctx.guild)?.roles.cache.get(str);
     }
     resolveDate(ctx, arg, str, ref) {
         return new Date(str);
+    }
+    resolvePointer(arg, ref, fallback) {
+        const ptr = ref[arg.pointer] ?? fallback;
+        return arg.pointerProperty ? ptr?.[arg.pointerProperty] : ptr;
     }
     async resolveArg(ctx, arg, field, value, ref) {
         const strValue = `${value}`;
@@ -310,7 +336,7 @@ class CompiledFunction {
             return this.unsafeSuccess(value ?? null);
         }
         if (field !== undefined) {
-            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)];
+            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)].bind(this);
             value = field.resolveArg(ctx, arg, strValue, ref);
             if (value instanceof Promise)
                 value = await value;

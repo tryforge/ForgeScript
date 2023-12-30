@@ -83,7 +83,9 @@ export class Interpreter {
                 const rt = await fn.execute(ctx)
                 args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value
             }
-        } catch {
+        } catch (err: unknown) {
+            if (err instanceof Error)
+                Logger.error(err)
             return null
         }
 

@@ -5,7 +5,9 @@ import {
     Guild,
     Message,
     PermissionFlagsBits,
+    PermissionsString,
     TextBasedChannel,
+    TextChannel,
     parseEmoji,
 } from "discord.js"
 import {
@@ -20,7 +22,7 @@ import noop from "../../functions/noop"
 import { FunctionManager } from "../../managers/FunctionManager"
 import { Context } from "./Context"
 import { ErrorType, ForgeError, GetErrorArgs } from "../forge/ForgeError"
-import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
+import { ArgType, IArg, NativeFunction, OverwritePermission, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType, ReturnValue } from "./Return"
 import { TimeParser } from "../../constants"
 import { resolveColor as any2int } from "../../functions/hex"
@@ -50,6 +52,12 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
 }
 
 export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
+    public static readonly OverwriteSymbolMapping = {
+        "/": null,
+        "+": true,
+        "-": false
+    }
+
     public static readonly IdRegex = /^(\d{16,23})$/
     public static readonly URLRegex = /^http?s:\/\//
     public static readonly CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/
@@ -275,8 +283,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     private resolveMessage(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
 
-        const ch = (ref[arg.pointer!] ?? ctx.channel) as BaseChannel | null
-        return ((ch as TextBasedChannel) || undefined)?.messages?.fetch(str).catch(noop)
+        const ch = this.resolvePointer(arg, ref, ctx.channel) as TextChannel | undefined
+        return ch?.messages?.fetch(str).catch(noop)
     }
 
     private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -300,6 +308,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.users.fetch(str).catch(noop)
     }
 
+    private resolveRoleOrUser(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return this.resolveRole(ctx, arg, str, ref) ?? this.resolveUser(ctx, arg, str, ref)
+    }
+
     private resolveGuildEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
         if (fromUrl !== null) 
@@ -311,16 +324,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveForumTag(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return (ref[arg.pointer!] as ForumChannel).availableTags.find((x) => x.id === str || x.name === str)
+        return (this.resolvePointer(arg, ref, ctx.channel) as ForumChannel)?.availableTags.find((x) => x.id === str || x.name === str)
     }
 
     private resolveGuildSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
         if (fromUrl !== null)
-            return ((ref[arg.pointer!] ?? ctx.guild) as Guild).stickers.fetch(fromUrl[2])
+            return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(fromUrl[2])
 
         if (!CompiledFunction.IdRegex.test(str)) return
-        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).stickers.fetch(str).catch(noop)
+        return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(str).catch(noop)
     }
 
     private async resolveAttachment(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -344,17 +357,17 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveMember(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
-        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).members.fetch(str).catch(noop)
+        return this.resolvePointer(arg, ref, ctx.guild)?.members.fetch(str).catch(noop)
     }
 
     private resolveReaction(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        const reactions = (ref[arg.pointer!] as Message).reactions
+        const reactions = this.resolvePointer(arg, ref, ctx.message)?.reactions
         const parsed = parseEmoji(str)
         if (!parsed) return
 
         const identifier = parsed.id ?? parsed.name
 
-        return reactions.cache.get(identifier)
+        return reactions?.cache.get(identifier)
     }
 
     private resolveURL(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -377,12 +390,30 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.fetchWebhook(str).catch(noop)
     }
 
+    private resolveOverwritePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>): OverwritePermission | undefined {
+        const symbol = str[0]
+        if (!(symbol in CompiledFunction.OverwriteSymbolMapping))
+            return
+        const perm = str.slice(1)
+        if (!(perm in PermissionFlagsBits))
+            return
+        return {
+            permission: perm as PermissionsString,
+            value: CompiledFunction.OverwriteSymbolMapping[symbol as keyof typeof CompiledFunction.OverwriteSymbolMapping]
+        }
+    }
+
     private resolveRole(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return ((ref[arg.pointer!] ?? ctx.guild) as Guild).roles.cache.get(str)
+        return this.resolvePointer(arg, ref, ctx.guild)?.roles.cache.get(str)
     }
 
     private resolveDate(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return new Date(str)
+    }
+
+    private resolvePointer<T>(arg: IArg, ref: Array<unknown>, fallback?: T) {
+        const ptr = ref[arg.pointer!] as T ?? fallback
+        return arg.pointerProperty ? ptr?.[arg.pointerProperty as keyof T] as T : ptr
     }
 
     private async resolveArg(
@@ -399,10 +430,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
 
         if (field !== undefined) {
-            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)]
-
+            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)].bind(this)
             value = field.resolveArg(ctx, arg, strValue, ref)
-            if (value instanceof Promise) value = await value
+            if (value instanceof Promise)
+                value = await value
         }
 
         if (value === undefined) return this.argTypeRejection(arg, strValue)
