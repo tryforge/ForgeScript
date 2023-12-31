@@ -3,6 +3,9 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$checkContains",
     version: "1.0.0",
+    aliases: [
+        "$includes"
+    ],
     description: "Checks whether a string contains a set of other trings",
     unwrap: true,
     args: [
