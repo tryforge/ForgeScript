@@ -172,6 +172,11 @@ export class Context {
     }
 
     public alert(content: string) {
+        if (this.runtime.redirectErrorsToConsole) {
+            Logger.error(content)
+            return Promise.resolve()
+        }
+
         this.container.reset()
         return this.container.send(this.obj, content)
     }

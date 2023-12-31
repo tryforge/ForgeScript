@@ -1,7 +1,7 @@
-import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Partials, disableValidators } from "discord.js"
+import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Message, Partials, disableValidators } from "discord.js"
 import { BaseCommand, CommandType } from "../structures/base/BaseCommand"
 import { EventManager, NativeEventName } from "../managers/EventManager"
-import { Compiler } from "./Compiler"
+import { Compiler, IExtendedCompilationResult } from "./Compiler"
 import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
 import { ForgeExtension } from "../structures/forge/ForgeExtension"
@@ -12,6 +12,7 @@ import { ApplicationCommandManager } from "../managers/ApplicationCommandManager
 import { ThreadManager } from "../managers/ThreadManager"
 import { LogPriority, Logger } from "../structures/@internal/Logger"
 import { VoiceTracker } from "../structures/trackers/VoiceTracker"
+import { Interpreter } from "./Interpreter"
 
 disableValidators()
 
@@ -25,7 +26,7 @@ export interface IRestrictions {
     userIDs?: string[]
 }
 
-export interface IForgeClientOptions extends ClientOptions {
+export interface IRawForgeClientOptions extends ClientOptions {
     /**
      * Specifies a folder (path) to load all commands from it
      */
@@ -85,6 +86,10 @@ export interface IForgeClientOptions extends ClientOptions {
     disableFunctions?: string[]
 }
 
+export interface IForgeClientOptions extends Omit<IRawForgeClientOptions, "prefixes"> {
+    prefixes: IExtendedCompilationResult[]
+}
+
 export class ForgeClient extends Client<true> {
     public declare options: (Omit<ClientOptions, "intents"> & { intents: IntentsBitField }) & IForgeClientOptions
     public readonly commands = new NativeCommandManager(this)
@@ -97,7 +102,7 @@ export class ForgeClient extends Client<true> {
     // eslint-disable-next-line no-undef
     [x: PropertyKey]: unknown
 
-    public constructor(options: IForgeClientOptions) {
+    public constructor(options: IRawForgeClientOptions) {
         super({
             partials: [
                 Partials.Channel,
@@ -111,10 +116,10 @@ export class ForgeClient extends Client<true> {
             ...options,
         })
 
-        this.#init()
+        this.#init(options)
     }
 
-    #init() {
+    #init(raw: IRawForgeClientOptions) {
         if (this.options.logLevel !== undefined) Logger.Priority = this.options.logLevel
 
         if (this.options.mobile) {
@@ -158,6 +163,9 @@ export class ForgeClient extends Client<true> {
         if (this.options.events?.length) {
             this.events.load(NativeEventName, this.options.events)
         }
+        
+        // At last, load prefixes
+        this.options.prefixes = raw.prefixes.map(x => Compiler.compile(x))
     }
 
     get<T>(key: string) {
@@ -166,6 +174,26 @@ export class ForgeClient extends Client<true> {
 
     public get version() {
         return require("../../package.json").version as string
+    }
+
+    public async getPrefix(msg: Message): Promise<string | null> {
+        for (let i = 0, len = this.options.prefixes.length;i < len;i++) {
+            const raw = this.options.prefixes[i]
+            const resolved = await Interpreter.run({
+                client: this,
+                command: null,
+                data: raw,
+                obj: msg,
+                redirectErrorsToConsole: true,
+                doNotSend: true
+            })
+
+            if (resolved !== null && msg.content.startsWith(resolved)) {
+                return resolved
+            }
+        }
+
+        return null
     }
 
     public canRespondToBots(cmd: BaseCommand<any>): boolean {

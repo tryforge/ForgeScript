@@ -34,7 +34,7 @@ const client = new core_1.ForgeClient({
     ],
     mobile: true,
     useInviteSystem: true,
-    prefixes: ["!"],
+    prefixes: ["!", "<@$botID>"],
     restrictions: {
         userIDs: ["1096285761365610576"],
     },

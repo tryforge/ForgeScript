@@ -1,6 +1,7 @@
-import { Client, ClientOptions, IntentsBitField } from "discord.js";
+import { Client, ClientOptions, IntentsBitField, Message } from "discord.js";
 import { BaseCommand, CommandType } from "../structures/base/BaseCommand";
 import { EventManager } from "../managers/EventManager";
+import { IExtendedCompilationResult } from "./Compiler";
 import { ForgeFunctionManager } from "../managers/ForgeFunctionManager";
 import { ForgeExtension } from "../structures/forge/ForgeExtension";
 import { CooldownManager } from "../managers/CooldownManager";
@@ -16,7 +17,7 @@ export interface IRestrictions {
     guildIDs?: string[];
     userIDs?: string[];
 }
-export interface IForgeClientOptions extends ClientOptions {
+export interface IRawForgeClientOptions extends ClientOptions {
     /**
      * Specifies a folder (path) to load all commands from it
      */
@@ -65,6 +66,9 @@ export interface IForgeClientOptions extends ClientOptions {
      */
     disableFunctions?: string[];
 }
+export interface IForgeClientOptions extends Omit<IRawForgeClientOptions, "prefixes"> {
+    prefixes: IExtendedCompilationResult[];
+}
 export declare class ForgeClient extends Client<true> {
     #private;
     options: (Omit<ClientOptions, "intents"> & {
@@ -77,9 +81,10 @@ export declare class ForgeClient extends Client<true> {
     readonly functions: ForgeFunctionManager;
     readonly threading: ThreadManager;
     [x: PropertyKey]: unknown;
-    constructor(options: IForgeClientOptions);
+    constructor(options: IRawForgeClientOptions);
     get<T>(key: string): T;
     get version(): string;
+    getPrefix(msg: Message): Promise<string | null>;
     canRespondToBots(cmd: BaseCommand<any>): boolean;
     login(token?: string | undefined): Promise<string>;
 }

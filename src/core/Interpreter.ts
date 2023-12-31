@@ -47,6 +47,7 @@ export interface IRunnable {
     command: BaseCommand<unknown> | null
     doNotSend?: boolean
     extras?: unknown
+    redirectErrorsToConsole?: boolean
     states?: States
     keywords?: Record<string, string>
     environment?: Record<string, unknown>
@@ -71,25 +72,29 @@ export class Interpreter {
             }
         }
 
-        let args: Array<unknown>
+        const args = new Array<unknown>(runtime.data.functions.length)
+        let content: string
 
-        args = new Array<unknown>(runtime.data.functions.length)
+        if (ctx.runtime.data.functions.length === 0) {
+            content = ctx.runtime.data.code
+        } else {
+            ctx.executionTimestamp = performance.now()
 
-        ctx.executionTimestamp = performance.now()
-
-        try {
-            for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
-                const fn = runtime.data.functions[i]
-                const rt = await fn.execute(ctx)
-                args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value
-            }
-        } catch (err: unknown) {
-            if (err instanceof Error)
-                Logger.error(err)
-            return null
+            try {
+                for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
+                    const fn = runtime.data.functions[i]
+                    const rt = await fn.execute(ctx)
+                    args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value
+                }
+            } catch (err: unknown) {
+                if (err instanceof Error)
+                    Logger.error(err)
+                return null
+            }            
+            
+            content = runtime.data.resolve(args)
         }
 
-        const content = runtime.data.resolve(args)
         if (!runtime.doNotSend) {
             ctx.container.content = content
             await ctx.container.send(runtime.obj)

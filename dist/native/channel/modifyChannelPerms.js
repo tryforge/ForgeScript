@@ -9,6 +9,7 @@ const overwritePermissionsArrayToObject_1 = __importDefault(require("../../funct
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$modifyChannelPerms",
+    version: "1.4.0",
     description: "Modifies given channel perms for a role or user",
     unwrap: true,
     brackets: true,

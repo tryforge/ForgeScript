@@ -13,6 +13,7 @@ const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManag
 const ThreadManager_1 = require("../managers/ThreadManager");
 const Logger_1 = require("../structures/@internal/Logger");
 const VoiceTracker_1 = require("../structures/trackers/VoiceTracker");
+const Interpreter_1 = require("./Interpreter");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -34,9 +35,9 @@ class ForgeClient extends discord_js_1.Client {
             ],
             ...options,
         });
-        this.#init();
+        this.#init(options);
     }
-    #init() {
+    #init(raw) {
         if (this.options.logLevel !== undefined)
             Logger_1.Logger.Priority = this.options.logLevel;
         if (this.options.mobile) {
@@ -71,12 +72,31 @@ class ForgeClient extends discord_js_1.Client {
         if (this.options.events?.length) {
             this.events.load(EventManager_1.NativeEventName, this.options.events);
         }
+        // At last, load prefixes
+        this.options.prefixes = raw.prefixes.map(x => Compiler_1.Compiler.compile(x));
     }
     get(key) {
         return this[key];
     }
     get version() {
         return require("../../package.json").version;
+    }
+    async getPrefix(msg) {
+        for (let i = 0, len = this.options.prefixes.length; i < len; i++) {
+            const raw = this.options.prefixes[i];
+            const resolved = await Interpreter_1.Interpreter.run({
+                client: this,
+                command: null,
+                data: raw,
+                obj: msg,
+                redirectErrorsToConsole: true,
+                doNotSend: true
+            });
+            if (resolved !== null && msg.content.startsWith(resolved)) {
+                return resolved;
+            }
+        }
+        return null;
     }
     canRespondToBots(cmd) {
         return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined);

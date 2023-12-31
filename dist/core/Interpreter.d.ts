@@ -29,6 +29,7 @@ export interface IRunnable {
     command: BaseCommand<unknown> | null;
     doNotSend?: boolean;
     extras?: unknown;
+    redirectErrorsToConsole?: boolean;
     states?: States;
     keywords?: Record<string, string>;
     environment?: Record<string, unknown>;

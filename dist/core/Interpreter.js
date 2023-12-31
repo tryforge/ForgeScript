@@ -21,22 +21,27 @@ class Interpreter {
                     return null;
             }
         }
-        let args;
-        args = new Array(runtime.data.functions.length);
-        ctx.executionTimestamp = performance.now();
-        try {
-            for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
-                const fn = runtime.data.functions[i];
-                const rt = await fn.execute(ctx);
-                args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value;
+        const args = new Array(runtime.data.functions.length);
+        let content;
+        if (ctx.runtime.data.functions.length === 0) {
+            content = ctx.runtime.data.code;
+        }
+        else {
+            ctx.executionTimestamp = performance.now();
+            try {
+                for (let i = 0, len = runtime.data.functions.length; i < len; i++) {
+                    const fn = runtime.data.functions[i];
+                    const rt = await fn.execute(ctx);
+                    args[i] = (!rt.success && !ctx.handleNotSuccess(rt)) ? ctx["error"]() : rt.value;
+                }
             }
+            catch (err) {
+                if (err instanceof Error)
+                    structures_1.Logger.error(err);
+                return null;
+            }
+            content = runtime.data.resolve(args);
         }
-        catch (err) {
-            if (err instanceof Error)
-                structures_1.Logger.error(err);
-            return null;
-        }
-        const content = runtime.data.resolve(args);
         if (!runtime.doNotSend) {
             ctx.container.content = content;
             await ctx.container.send(runtime.obj);

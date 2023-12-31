@@ -117,6 +117,10 @@ class Context {
         return cb(unwrap.value);
     }
     alert(content) {
+        if (this.runtime.redirectErrorsToConsole) {
+            Logger_1.Logger.error(content);
+            return Promise.resolve();
+        }
         this.container.reset();
         return this.container.send(this.obj, content);
     }
