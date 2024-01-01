@@ -46,6 +46,8 @@ class FunctionManager {
     static toJSON() {
         return Array.from(this.Functions.values()).map((x) => {
             const d = { ...x.data };
+            if (d.aliases?.length)
+                d.aliases = d.aliases.map(x => typeof x === "string" ? x : x.source);
             d.args?.forEach((x) => Reflect.deleteProperty(x, "check"));
             Reflect.deleteProperty(d, "execute");
             const data = (0, v8_1.deserialize)((0, v8_1.serialize)(d));

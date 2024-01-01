@@ -52,11 +52,17 @@ class Compiler {
                 index: x.index,
                 negated: !!x[1],
                 length: x[0].length,
-                fn: Compiler.Functions.get("$" + x[2].toLowerCase())
+                fn: this.getFunction(x[2])
             }));
         }
         else
             this.matches = [];
+    }
+    getFunction(str) {
+        const fn = str.toLowerCase();
+        return Compiler.Functions.get(`$${fn}`) ??
+            Compiler.Functions.find(x => x.aliases?.some(x => typeof x === "string" ? x === `$${fn}` : x.test(fn)) ?? false) ??
+            this.error(`Function ${fn} is not registered.`);
     }
     compile() {
         if (!this.code || this.matches.length === 0)
@@ -283,16 +289,16 @@ class Compiler {
     static setFunctions(fns) {
         fns.map((x) => {
             this.Functions.set(x.name.toLowerCase(), x);
-            x.aliases?.map(alias => this.Functions.set(alias.toLowerCase(), x));
+            x.aliases?.filter(x => typeof x === "string")?.map(alias => this.Functions.set(alias.toLowerCase(), x));
         });
         const mapped = new Array();
         for (const [, fn] of this.Functions) {
             mapped.push(fn.name);
             if (fn.aliases?.length)
-                mapped.push(...fn.aliases);
+                mapped.push(...fn.aliases.map(x => typeof x === "string" ? x : x.source));
         }
         this.Regex = new RegExp(`\\$(\\!)?(${mapped
-            .map(x => x.slice(1).toLowerCase())
+            .map(x => x.startsWith("$") ? x.slice(1).toLowerCase() : x)
             .sort((x, y) => y.length - x.length)
             .join("|")})`, "gim");
     }

@@ -7,7 +7,7 @@ export default new NativeFunction({
     description: "Returns the guild banner",
     brackets: false,
     aliases: [
-        "$serverBanner"
+        /(?:get)?(?:server|guild)banner(?:url)?/
     ],
     args: [
         {

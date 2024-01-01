@@ -54,10 +54,13 @@ export class FunctionManager {
     public static toJSON(): INativeFunction<any>[] {
         return Array.from(this.Functions.values()).map((x) => {
             const d = { ...x.data }
+            if (d.aliases?.length)
+                d.aliases = d.aliases.map(x => typeof x === "string" ? x : x.source)
+            
             d.args?.forEach((x) => Reflect.deleteProperty(x, "check"))
             Reflect.deleteProperty(d, "execute")
             const data = deserialize(serialize(d)) as INativeFunction<any>
-
+            
             data.args?.map((x) => {
                 x.type = ArgType[x.type]
                 if (x.enum) x.enum = enumToArray(x.enum)

@@ -4,6 +4,7 @@ const lodash_1 = require("lodash");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildBanReason",
+    version: "1.4.0",
     unwrap: true,
     brackets: true,
     aliases: [

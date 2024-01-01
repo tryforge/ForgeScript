@@ -14,7 +14,7 @@ export interface IRawFunctionFieldDefinition {
 }
 
 export interface IRawFunction {
-    aliases: null | string[]
+    aliases: null | (string | RegExp)[]
     name: string
     /**
      * If undefined, function has no fields.
@@ -111,7 +111,7 @@ export class Compiler {
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
-    private static Functions = new Collection<string, IRawFunction>()
+    private static Functions = new Collection<string | RegExp, IRawFunction>()
 
     private id = 0
     private matches: Array<IRawFunctionMatch>
@@ -124,9 +124,16 @@ export class Compiler {
                 index: x.index!,
                 negated: !!x[1],
                 length: x[0].length,
-                fn: Compiler.Functions.get("$" + x[2].toLowerCase())!
+                fn: this.getFunction(x[2])
             }))
         } else this.matches = []
+    }
+
+    private getFunction(str: string) {
+        const fn = str.toLowerCase()
+        return Compiler.Functions.get(`$${fn}`)! ?? 
+            Compiler.Functions.find(x => x.aliases?.some(x => typeof x === "string" ? x === `$${fn}` : x.test(fn)) ?? false) ??
+            this.error(`Function ${fn} is not registered.`)
     }
 
     private compile(): ICompilationResult {
@@ -333,7 +340,7 @@ export class Compiler {
         return data
     }
 
-    private error(str: string) {
+    private error(str: string): never {
         const { line, column } = this.locate(this.index)
         throw new ForgeError(null, ErrorType.CompilerError, str, line, column, this.path ?? "index file")
     }
@@ -399,20 +406,20 @@ export class Compiler {
     public static setFunctions(fns: IRawFunction[]) {
         fns.map((x) => {
             this.Functions.set(x.name.toLowerCase(), x)
-            x.aliases?.map(alias => this.Functions.set(alias.toLowerCase(), x))
+            x.aliases?.filter(x => typeof x === "string")?.map(alias => this.Functions.set((alias as string).toLowerCase(), x))
         })
 
         const mapped = new Array<string>()
         for (const [, fn] of this.Functions) {
             mapped.push(fn.name)
             if (fn.aliases?.length)
-                mapped.push(...fn.aliases)
+                mapped.push(...fn.aliases.map(x => typeof x === "string" ? x : x.source))
         }
 
         this.Regex = new RegExp(
             `\\$(\\!)?(${
                 mapped
-                    .map(x => x.slice(1).toLowerCase())
+                    .map(x => x.startsWith("$") ? x.slice(1).toLowerCase() : x)
                     .sort((x, y) => y.length - x.length)
                     .join("|")})`,
             "gim"

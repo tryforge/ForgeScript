@@ -7,17 +7,10 @@ const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildBannedMembers",
+    version: "1.4.0",
     description: "Returns banned member ids of a guild",
     aliases: [
-        "$serverBannedMembers",
-        "$guildBannedUsers",
-        "$serverBannedUsers",
-        "$getGuildBannedUsers",
-        "$getServerBannedUsers",
-        "$getGuildBannedMembers",
-        "$getServerBannedMembers",
-        "$bannedUsers",
-        "$bannedMembers"
+        /(?:get)?(?:guild|server)banned(?:users?|members?)/
     ],
     unwrap: true,
     brackets: false,

@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the guild banner",
     brackets: false,
     aliases: [
-        "$serverBanner"
+        /(?:get)?(?:server|guild)banner(?:url)?/
     ],
     args: [
         {
