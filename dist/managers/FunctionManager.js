@@ -8,6 +8,7 @@ const NativeFunction_1 = require("../structures/@internal/NativeFunction");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const v8_1 = require("v8");
 const Logger_1 = require("../structures/@internal/Logger");
+const enum_1 = require("../functions/enum");
 class FunctionManager {
     static Functions = new Map();
     static loadNative() {
@@ -51,7 +52,7 @@ class FunctionManager {
             data.args?.map((x) => {
                 x.type = NativeFunction_1.ArgType[x.type];
                 if (x.enum)
-                    x.enum = Object.keys(x.enum).filter((x) => isNaN(Number(x)));
+                    x.enum = (0, enum_1.enumToArray)(x.enum);
             });
             return data;
         });

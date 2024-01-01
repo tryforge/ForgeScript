@@ -4,6 +4,7 @@ import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { deserialize, serialize } from "v8"
 import { Logger } from "../structures/@internal/Logger"
+import { enumToArray } from "../functions/enum"
 
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
@@ -59,7 +60,7 @@ export class FunctionManager {
 
             data.args?.map((x) => {
                 x.type = ArgType[x.type]
-                if (x.enum) x.enum = Object.keys(x.enum).filter((x) => isNaN(Number(x)))
+                if (x.enum) x.enum = enumToArray(x.enum)
             })
 
             return data

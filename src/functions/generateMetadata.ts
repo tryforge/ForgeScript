@@ -3,11 +3,15 @@ import { EventManager, FunctionManager } from "../managers"
 import { execSync } from "child_process"
 import { argv, cwd } from "process"
 import { Logger } from "../structures"
+import { enumToArray } from "./enum"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
+const ArgEnumRegex = /enum: +(\w+),?/gim
 
 export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string) {
+    const enums: Record<string, string[]> = {}
+
     FunctionManager.load("Metadata", functionsAbsolutePath)
 
     const metaOutPath = "./metadata"
@@ -20,6 +24,20 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
         for (const [, fn] of FunctionManager["Functions"]) {
             const nativePath = fn.path.replace(".js", ".ts").replace("dist", "src")
             let txt = readFileSync(nativePath, "utf-8")
+            const enumNames = Array.from(txt.matchAll(ArgEnumRegex))
+            if (enumNames.length) {
+                let i = 0
+                for (const arg of fn.data.args!) {
+                    if (arg.enum) {
+                        const name = enumNames[i++][1]
+                        Reflect.set(arg, "enumName", name)
+                        if (name in enums)
+                            continue
+                        enums[name] = enumToArray(arg.enum)
+                    }
+                }
+            }
+
             let modified = false
             const pathSplits = fn.path.split(/(?:\\|\/)/gim)
             const category = pathSplits.at(-2) === mainCategoryName ? null : pathSplits.at(-2)!
@@ -42,6 +60,7 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
                 writeFileSync(nativePath, txt)
         }
     
+        writeFileSync(`${metaOutPath}/enums.json`, JSON.stringify(enums), "utf-8")
         writeFileSync(`${metaOutPath}/functions.json`, JSON.stringify(FunctionManager.toJSON()))
     }
     
@@ -51,8 +70,8 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
             const txt = readFileSync(nativePath, "utf-8")
 
             if (!event!.data.version) {
-        event!.data.version = v
-        writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`))
+                event!.data.version = v
+                writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`))
             }
         }
 
