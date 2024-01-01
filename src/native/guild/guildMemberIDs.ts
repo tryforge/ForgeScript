@@ -4,7 +4,8 @@ export default new NativeFunction({
     name: "$guildMemberIDs",
     version: "1.4.0",
     aliases: [
-        "$memberIDs"
+        "$memberIDs",
+        "$serverMemberIDs"
     ],
     description: "Returns all cached member ids of a guild",
     brackets: false,

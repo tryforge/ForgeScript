@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the client token",
     unwrap: false,
+    aliases: [
+        "$clientToken"
+    ],
     execute(ctx) {
         return this.success(ctx.client.token)
     },

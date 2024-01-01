@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns the approximated member count",
     brackets: false,
+    aliases: [
+        "$serverApproximateMemberCount"
+    ],
     args: [
         {
             name: "guild ID",

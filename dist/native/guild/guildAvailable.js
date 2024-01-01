@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns whether the server is available",
     brackets: false,
+    aliases: [
+        "$serverAvailable"
+    ],
     args: [
         {
             name: "guild ID",

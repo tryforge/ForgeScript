@@ -1,1 +1,1 @@
-{"version":3,"file":"guildDefaultMessageNotifications.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildDefaultMessageNotifications.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAmBE"}
+{"version":3,"file":"guildDefaultMessageNotifications.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildDefaultMessageNotifications.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAsBE"}

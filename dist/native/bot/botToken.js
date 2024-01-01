@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the client token",
     unwrap: false,
+    aliases: [
+        "$clientToken"
+    ],
     execute(ctx) {
         return this.success(ctx.client.token);
     },

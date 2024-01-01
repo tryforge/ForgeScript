@@ -7,6 +7,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the bot owner id",
     brackets: false,
+    aliases: [
+        "$clientOwnerID"
+    ],
     args: [
         {
             name: "return members",

@@ -6,6 +6,10 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Sets the client's status",
     unwrap: true,
+    aliases: [
+        "$setBotStatus",
+        "$setClientStatus"
+    ],
     args: [
         {
             name: "presence",

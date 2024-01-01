@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the nsfw level for this guild",
     brackets: false,
+    aliases: [
+        "$serverNSFWLevel"
+    ],
     args: [
         {
             name: "guild ID",

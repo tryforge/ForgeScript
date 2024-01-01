@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the guilds vanity uses",
     unwrap: true,
+    aliases: [
+        "$serverVanityUses"
+    ],
     args: [
         {
             name: "guild ID",

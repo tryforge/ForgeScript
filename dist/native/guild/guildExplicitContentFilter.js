@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns the explicit content filter level for this guild",
     brackets: false,
+    aliases: [
+        "$serverExplicitContentFilter"
+    ],
     args: [
         {
             name: "guild ID",

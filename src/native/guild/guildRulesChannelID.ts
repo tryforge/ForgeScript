@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the server's rules channel ID",
     brackets: false,
+    aliases: [
+        "$serverRulesChannelID"
+    ],
     args: [
         {
             name: "guild ID",

@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the guild id with given name",
     unwrap: true,
+    aliases: [
+        "$serverID"
+    ],
     brackets: false,
     args: [
         {

@@ -3,7 +3,10 @@ import { NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$botDestroy",
     version: "1.0.0",
-    description: "Destroy Client",
+    aliases: [
+        "$clientDestroy"
+    ],
+    description: "Destroys the discord.js client",
     unwrap: true,
     execute(ctx) {
         ctx.client.destroy()

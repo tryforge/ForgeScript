@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the server's system channel ID",
     brackets: false,
+    aliases: [
+        "$serverSystemChannelID"
+    ],
     args: [
         {
             name: "guild ID",

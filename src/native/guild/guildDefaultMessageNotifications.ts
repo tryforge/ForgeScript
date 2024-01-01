@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the default message notifications for this guild",
     brackets: false,
+    aliases: [
+        "$serverDefaultMessageNotifications"
+    ],
     args: [
         {
             name: "guild ID",

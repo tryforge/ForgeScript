@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the server's safety alerts channel ID",
     brackets: false,
+    aliases: [
+        "$serverSafetyAlertsChannelID"
+    ],
     args: [
         {
             name: "guild ID",

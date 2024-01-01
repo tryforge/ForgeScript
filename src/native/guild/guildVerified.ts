@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns whether the server is verified",
     brackets: false,
+    aliases: [
+        "$serverVerified"
+    ],
     args: [
         {
             name: "guild ID",

@@ -8,6 +8,9 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a bot's invite link",
     brackets: false,
     unwrap: true,
+    aliases: [
+        "$clientInvite"
+    ],
     args: [
         {
             name: "perms",

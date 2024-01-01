@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the guild features",
     brackets: false,
+    aliases: [
+        "$serverFeatures"
+    ],
     args: [
         {
             name: "guild ID",

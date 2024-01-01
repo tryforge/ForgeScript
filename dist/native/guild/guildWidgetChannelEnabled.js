@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns whether widget channel is enabled for this guild",
     brackets: false,
+    aliases: [
+        "$serverWidgetChannelEnabled"
+    ],
     args: [
         {
             name: "guild ID",

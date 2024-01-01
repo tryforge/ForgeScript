@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the server's preferred locale",
     brackets: false,
+    aliases: [
+        "$serverPreferredLocale"
+    ],
     args: [
         {
             name: "guild ID",

@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Sets a guild name, returns boolean",
     unwrap: true,
+    aliases: [
+        "$setServerName"
+    ],
     args: [
         {
             name: "guild ID",

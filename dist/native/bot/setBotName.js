@@ -11,6 +11,9 @@ exports.default = new structures_1.NativeFunction({
     description: "Sets the bot name",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$setClientName"
+    ],
     args: [
         {
             name: "name",

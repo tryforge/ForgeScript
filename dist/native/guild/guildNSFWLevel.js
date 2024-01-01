@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns the nsfw level for this guild",
     brackets: false,
+    aliases: [
+        "$serverNSFWLevel"
+    ],
     args: [
         {
             name: "guild ID",

@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the maximum video channel users for stage channels of this guild",
     brackets: false,
+    aliases: [
+        "$serverMaxStageVideoChannelUsers"
+    ],
     args: [
         {
             name: "guild ID",

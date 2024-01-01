@@ -4,6 +4,10 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$shardID",
     version: "1.0.0",
+    aliases: [
+        "$botShardIDs",
+        "$clientShardIDs"
+    ],
     description: "Returns the shard id of the client",
     unwrap: false,
     execute(ctx) {

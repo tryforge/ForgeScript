@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Returns a random guild ID",
     unwrap: false,
+    aliases: [
+        "$randomServerID"
+    ],
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.randomKey());
     },

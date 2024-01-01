@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the server's afk timeout",
     brackets: false,
+    aliases: [
+        "$serverAfkTimeout"
+    ],
     args: [
         {
             name: "guild ID",

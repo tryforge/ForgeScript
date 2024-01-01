@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     unwrap: true,
     brackets: false,
+    aliases: [
+        "$serverChannelIDs"
+    ],
     description: "Returns every channel id of the guild",
     args: [
         {

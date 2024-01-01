@@ -10,6 +10,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Leaves a guild",
     brackets: false,
+    aliases: [
+        "$serverLeave"
+    ],
     args: [
         {
             name: "guild ID",

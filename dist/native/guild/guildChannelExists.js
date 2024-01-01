@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns whether a guild channel id exists",
     unwrap: true,
+    aliases: [
+        "$serverChannelExists"
+    ],
     brackets: true,
     args: [
         {

@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns the guild discovery splash",
     brackets: false,
+    aliases: [
+        "$serverDiscoverySplash"
+    ],
     args: [
         {
             name: "guild ID",

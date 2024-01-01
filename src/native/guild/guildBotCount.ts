@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the bot count of a guild",
     brackets: false,
+    aliases: [
+        "$serverBotCount"
+    ],
     args: [
         {
             name: "guild ID",

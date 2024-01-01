@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the server boost tier",
     brackets: false,
+    aliases: [
+        "$serverBoostLevel"
+    ],
     args: [
         {
             name: "guild ID",

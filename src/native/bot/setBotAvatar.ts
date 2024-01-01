@@ -7,6 +7,9 @@ export default new NativeFunction({
     description: "Sets the bot profile icon",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$setClientAvatar"
+    ],
     args: [
         {
             name: "url",

@@ -7,6 +7,9 @@ export default new NativeFunction({
     description: "Sets the bot name",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$setClientName"
+    ],
     args: [
         {
             name: "name",

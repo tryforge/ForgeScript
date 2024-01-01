@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Sets a guild icon, returns boolean",
     unwrap: true,
+    aliases: [
+        "$setServerIcon"
+    ],
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns whether the server is partnered",
     brackets: false,
+    aliases: [
+        "$serverPartnered"
+    ],
     args: [
         {
             name: "guild ID",

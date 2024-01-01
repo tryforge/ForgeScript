@@ -4,6 +4,9 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildSplashURL",
     version: "1.0.0",
+    aliases: [
+        "$serverSplashURL"
+    ],
     description: "Returns the guild splash url",
     brackets: false,
     args: [

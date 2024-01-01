@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Leaves a guild",
     brackets: false,
+    aliases: [
+        "$serverLeave"
+    ],
     args: [
         {
             name: "guild ID",

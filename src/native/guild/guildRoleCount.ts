@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the role count of a guild",
     brackets: false,
+    aliases: [
+        "$serverRoleCount"
+    ],
     unwrap: true,
     args: [
         {

@@ -5,6 +5,9 @@ exports.default = new structures_1.NativeFunction({
     name: "$guildRoleIDs",
     version: "1.3.0",
     unwrap: true,
+    aliases: [
+        "$serverRoleIDs"
+    ],
     brackets: false,
     description: "Returns every role id of the guild",
     args: [

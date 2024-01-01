@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the server shard ID",
     brackets: false,
+    aliases: [
+        "$serverShardID"
+    ],
     args: [
         {
             name: "guild ID",

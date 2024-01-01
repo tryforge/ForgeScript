@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the approximated member count",
     brackets: false,
+    aliases: [
+        "$serverApproximateMemberCount"
+    ],
     args: [
         {
             name: "guild ID",

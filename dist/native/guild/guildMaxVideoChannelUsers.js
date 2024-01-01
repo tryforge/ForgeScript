@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns the maximum video channel users for this guild",
     brackets: false,
+    aliases: [
+        "$serverMaxVideoChannelUsers"
+    ],
     args: [
         {
             name: "guild ID",

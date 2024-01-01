@@ -7,6 +7,9 @@ export default new NativeFunction({
     description: "Returns a bot's invite link",
     brackets: false,
     unwrap: true,
+    aliases: [
+        "$clientInvite"
+    ],
     args: [
         {
             name: "perms",

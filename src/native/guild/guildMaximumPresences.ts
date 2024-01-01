@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the maximum presences for this guild",
     brackets: false,
+    aliases: [
+        "$serverMaximumPresences"
+    ],
     args: [
         {
             name: "guild ID",

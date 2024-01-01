@@ -11,6 +11,9 @@ exports.default = new structures_1.NativeFunction({
     description: "Sets the bot profile icon",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$setClientAvatar"
+    ],
     args: [
         {
             name: "url",

@@ -6,6 +6,10 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "The current bot ping",
     unwrap: false,
+    aliases: [
+        "$clientPing",
+        "$botPing"
+    ],
     execute(ctx) {
         return this.success(ctx.client.ws.ping);
     },

@@ -11,6 +11,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the bot owner id",
     brackets: false,
+    aliases: [
+        "$clientOwnerID"
+    ],
     args: [
         {
             name: "return members",

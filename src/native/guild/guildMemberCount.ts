@@ -5,6 +5,10 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the user count of a guild",
     brackets: false,
+    aliases: [
+        "$serverMemberCount",
+        "$serverMembersCount"
+    ],
     args: [
         {
             name: "guild ID",

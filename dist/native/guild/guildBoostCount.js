@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the server boost count",
     brackets: false,
+    aliases: [
+        "$serverBoostCount"
+    ],
     args: [
         {
             name: "guild ID",

@@ -4,6 +4,9 @@ export default new NativeFunction({
     name: "$guildEmojiIDs",
     version: "1.3.0",
     unwrap: true,
+    aliases: [
+        "$serverEmojiIDs"
+    ],
     brackets: false,
     description: "Returns every emoji id of the guild",
     args: [

@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns whether a guild channel id exists",
     unwrap: true,
+    aliases: [
+        "$serverChannelExists"
+    ],
     brackets: true,
     args: [
         {

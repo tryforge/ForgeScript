@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the server channel count",
     brackets: false,
+    aliases: [
+        "$serverChannelCount"
+    ],
     unwrap: true,
     args: [
         {

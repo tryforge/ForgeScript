@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the server boost role id",
     brackets: false,
+    aliases: [
+        "$serverBoostRoleID"
+    ],
     args: [
         {
             name: "guild ID",

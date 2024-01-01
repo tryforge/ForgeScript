@@ -5,6 +5,9 @@ exports.default = new structures_1.NativeFunction({
     name: "$guildStickerIDs",
     version: "1.3.0",
     unwrap: true,
+    aliases: [
+        "$serverStickerIDs"
+    ],
     brackets: false,
     description: "Returns every sticker id of the guild",
     args: [

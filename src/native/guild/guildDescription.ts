@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the server description",
     brackets: false,
+    aliases: [
+        "$serverDescription"
+    ],
     args: [
         {
             name: "guild ID",
