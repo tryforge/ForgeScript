@@ -21,6 +21,7 @@ var MemberProperty;
     MemberProperty["timedOutUntil"] = "timedOutUntil";
     MemberProperty["status"] = "status";
     MemberProperty["addedRoles"] = "addedRoles";
+    MemberProperty["roleCount"] = "roleCount";
     MemberProperty["removedRoles"] = "removedRoles";
     MemberProperty["platform"] = "platform";
     MemberProperty["timestamp"] = "timestamp";
@@ -38,6 +39,7 @@ exports.MemberProperties = (0, defineProperties_1.default)({
         const updated = m?.guild.members.cache.get(m.id);
         return m?.roles.cache.filter(r => !updated?.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", ");
     },
+    roleCount: (m) => m?.roles.cache.size ?? 0,
     avatar: (i) => i?.displayAvatarURL(),
     nickname: (i) => i?.nickname,
     roles: (i, sep) => i?.roles.cache.map((x) => x.id).join(sep || ", "),

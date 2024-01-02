@@ -14,6 +14,7 @@ export declare enum MemberProperty {
     timedOutUntil = "timedOutUntil",
     status = "status",
     addedRoles = "addedRoles",
+    roleCount = "roleCount",
     removedRoles = "removedRoles",
     platform = "platform",
     timestamp = "timestamp",

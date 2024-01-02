@@ -8,6 +8,7 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$fetchAuditLogCount",
+    version: "1.4.0",
     description: "Fetches audit log count using the type of it",
     brackets: true,
     unwrap: true,

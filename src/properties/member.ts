@@ -16,6 +16,7 @@ export enum MemberProperty {
     timedOutUntil = "timedOutUntil",
     status = "status",
     addedRoles = "addedRoles",
+    roleCount = "roleCount",
     removedRoles = "removedRoles",
     platform = "platform",
     timestamp = "timestamp",
@@ -34,6 +35,7 @@ export const MemberProperties = defineProperties<typeof MemberProperty, GuildMem
         const updated = m?.guild.members.cache.get(m.id)
         return m?.roles.cache.filter(r => !updated?.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", ")
     },
+    roleCount: (m) => m?.roles.cache.size ?? 0,
     avatar: (i) => i?.displayAvatarURL(),
     nickname: (i) => i?.nickname,
     roles: (i, sep) => i?.roles.cache.map((x) => x.id).join(sep || ", "),
