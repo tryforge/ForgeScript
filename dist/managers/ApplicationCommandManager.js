@@ -81,23 +81,23 @@ class ApplicationCommandManager {
             }
         }
     }
-    getDisplayOptions(input) {
+    getDisplayOptions(input, hideName) {
         const arr = new Array();
         for (const data of input) {
             if (data.value !== undefined) {
-                arr.push(`${data.name}: ${data.value}`);
+                arr.push(`${hideName ? "" : `${data.name}: `}${data.value}`);
             }
             else if (data.options?.length)
-                arr.push(...this.getDisplayOptions(data.options));
+                arr.push(...this.getDisplayOptions(data.options, hideName));
         }
         return arr;
     }
-    getDisplay(input) {
+    getDisplay(input, hideName) {
         if (input instanceof discord_js_1.ChatInputCommandInteraction) {
             const commandName = input.commandName;
             const subcommandName = input.options.getSubcommand(false);
             const subcommandGroupName = input.options.getSubcommandGroup(false);
-            const filteredOptions = this.getDisplayOptions(input.options.data);
+            const filteredOptions = this.getDisplayOptions(input.options.data, hideName);
             return `/${commandName}${subcommandGroupName ? subcommandName ? ` ${subcommandGroupName} ${subcommandName}` : ` ${subcommandGroupName}` : subcommandName ? ` ${subcommandName}` : ""} ${filteredOptions.join(" ")}`;
         }
         else if (input instanceof discord_js_1.ContextMenuCommandInteraction)

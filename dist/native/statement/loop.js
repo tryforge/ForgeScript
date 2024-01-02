@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$loop",
+    version: "1.4.0",
     description: "Executes given code for N times",
     unwrap: false,
     brackets: true,

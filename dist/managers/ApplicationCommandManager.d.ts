@@ -25,7 +25,7 @@ export declare class ApplicationCommandManager {
      */
     load(path?: string): void;
     private getDisplayOptions;
-    getDisplay(input: Interaction | null): string | null;
+    getDisplay(input: Interaction | null, hideName: boolean): string | null;
     get(input: CommandInteraction): ApplicationCommand | null;
     /**
      * **WARNING** This function does not allow subcommand & subcommand group options. Consider using ApplicationCommandManager#load to load a tree from a folder.
