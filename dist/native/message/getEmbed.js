@@ -42,15 +42,15 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
         {
-            name: "separator",
-            description: "Separator to use in case of array",
+            name: "field index",
+            description: "Index of field to get",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Number
         },
     ],
-    execute(_, [, m, index, prop, sep]) {
+    execute(_, [, m, index, prop, fieldIndex]) {
         const embed = m.embeds[index];
-        return this.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, sep || ", "));
+        return this.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, undefined, fieldIndex));
     },
 });
 //# sourceMappingURL=getEmbed.js.map

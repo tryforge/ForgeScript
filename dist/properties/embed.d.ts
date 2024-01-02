@@ -11,7 +11,10 @@ export declare enum EmbedProperty {
     description = "description",
     timestamp = "timestamp",
     authorURL = "authorURL",
-    color = "color"
+    color = "color",
+    fieldName = "fieldName",
+    fieldInline = "fieldInline",
+    fieldValue = "fieldValue"
 }
 export declare const EmbedProperties: import("../functions/defineProperties").Properties<typeof EmbedProperty, EmbedBuilder>;
 //# sourceMappingURL=embed.d.ts.map

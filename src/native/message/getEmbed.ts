@@ -41,14 +41,14 @@ export default new NativeFunction({
             required: true,
         },
         {
-            name: "separator",
-            description: "Separator to use in case of array",
+            name: "field index",
+            description: "Index of field to get",
             rest: false,
-            type: ArgType.String,
+            type: ArgType.Number
         },
     ],
-    execute(_, [, m, index, prop, sep]) {
+    execute(_, [, m, index, prop, fieldIndex]) {
         const embed = m.embeds[index] as Embed | undefined
-        return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, sep || ", "))
+        return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, undefined, fieldIndex))
     },
 })
