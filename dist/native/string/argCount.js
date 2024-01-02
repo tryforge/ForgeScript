@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [text]) {
         if (this.hasFields) {
             const trimmed = text.trim();
-            this.success(trimmed ? trimmed.trim().split(/ +/).length : 0);
+            this.success(trimmed ? trimmed.split(/ +/).length : 0);
         }
         return this.success(ctx.args.length);
     },
