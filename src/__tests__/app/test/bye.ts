@@ -1,9 +1,18 @@
+import { ApplicationCommandOptionType } from "discord.js"
 import { ApplicationCommand } from "../../../structures"
 
 export default new ApplicationCommand({
-    code: "ok!",
+    code: "ok! $applicationCommandDisplay",
     data: {
         name: "sure",
-        description: "bye"
+        description: "bye",
+        options: [
+            {
+                name: "hi",
+                description: "tmr",
+                type: ApplicationCommandOptionType.String,
+                required: false
+            }
+        ]
     }
 })

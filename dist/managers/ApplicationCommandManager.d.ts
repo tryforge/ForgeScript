@@ -1,4 +1,4 @@
-import { ApplicationCommandDataResolvable, Collection, CommandInteraction, ContextMenuCommandBuilder, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
+import { ApplicationCommandDataResolvable, Collection, CommandInteraction, ContextMenuCommandBuilder, Interaction, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
 import { ApplicationCommand } from "../structures/base/ApplicationCommand";
 import { ForgeClient } from "../core";
 export interface IApplicationCommandData {
@@ -24,6 +24,8 @@ export declare class ApplicationCommandManager {
      * @param path
      */
     load(path?: string): void;
+    private getDisplayOptions;
+    getDisplay(input: Interaction | null): string | null;
     get(input: CommandInteraction): ApplicationCommand | null;
     /**
      * **WARNING** This function does not allow subcommand & subcommand group options. Consider using ApplicationCommandManager#load to load a tree from a folder.

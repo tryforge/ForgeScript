@@ -81,6 +81,29 @@ class ApplicationCommandManager {
             }
         }
     }
+    getDisplayOptions(input) {
+        const arr = new Array();
+        for (const data of input) {
+            if (data.value !== undefined) {
+                arr.push(`${data.name}: ${data.value}`);
+            }
+            else if (data.options?.length)
+                arr.push(...this.getDisplayOptions(data.options));
+        }
+        return arr;
+    }
+    getDisplay(input) {
+        if (input instanceof discord_js_1.ChatInputCommandInteraction) {
+            const commandName = input.commandName;
+            const subcommandName = input.options.getSubcommand(false);
+            const subcommandGroupName = input.options.getSubcommandGroup(false);
+            const filteredOptions = this.getDisplayOptions(input.options.data);
+            return `/${commandName}${subcommandGroupName ? subcommandName ? ` ${subcommandGroupName} ${subcommandName}` : ` ${subcommandGroupName}` : subcommandName ? ` ${subcommandName}` : ""} ${filteredOptions.join(" ")}`;
+        }
+        else if (input instanceof discord_js_1.ContextMenuCommandInteraction)
+            return `/${input.commandName}`;
+        return null;
+    }
     get(input) {
         const commandName = input.commandName;
         if (!input.isChatInputCommand())

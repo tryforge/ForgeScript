@@ -5,10 +5,14 @@ import {
     ApplicationCommandDataResolvable,
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Collection,
     CommandInteraction,
+    CommandInteractionOption,
     ContextMenuCommandBuilder,
+    ContextMenuCommandInteraction,
     Events,
+    Interaction,
     RESTPostAPIChatInputApplicationCommandsJSONBody,
     RESTPostAPIContextMenuApplicationCommandsJSONBody,
     SlashCommandBuilder,
@@ -101,6 +105,30 @@ export class ApplicationCommandManager {
                 this.commands.set(loaded.name, loaded)
             }
         }
+    }
+
+    private getDisplayOptions(input: readonly CommandInteractionOption[]) {
+        const arr = new Array<string>()
+
+        for (const data of input) {
+            if (data.value !== undefined) {
+                arr.push(`${data.name}: ${data.value}`)
+            } else if (data.options?.length)
+                arr.push(...this.getDisplayOptions(data.options))
+        }
+
+        return arr
+    }
+
+    public getDisplay(input: Interaction | null) {
+        if (input instanceof ChatInputCommandInteraction) {
+            const commandName = input.commandName
+            const subcommandName = input.options.getSubcommand(false)
+            const subcommandGroupName = input.options.getSubcommandGroup(false)
+            const filteredOptions = this.getDisplayOptions(input.options.data)
+            return `/${commandName}${subcommandGroupName ? subcommandName ? ` ${subcommandGroupName} ${subcommandName}` : ` ${subcommandGroupName}` : subcommandName ? ` ${subcommandName}` : ""} ${filteredOptions.join(" ")}`
+        } else if (input instanceof ContextMenuCommandInteraction) return `/${input.commandName}`
+        return null
     }
 
     public get(input: CommandInteraction): ApplicationCommand | null {

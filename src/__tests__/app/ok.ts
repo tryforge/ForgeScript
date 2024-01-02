@@ -19,14 +19,7 @@ export default new ApplicationCommand(module.exports = {
             }
         ]
     },
-    code: `$let[rand;$round[$randomNumber[0;1.1;true];2]]
-    $ifx[
-    $if[$get[rand]<0.10;1]
-    $elseIf[$get[rand]<0.20;2]
-    $elseIf[$get[rand]<0.30;3]
-    $elseIf[$get[rand]<0.40;4]
-    $elseIf[$get[rand]<0.50;5]
-    $else[l]
-    ]
+    code: `
+    $applicationCommandDisplay
  `
 })
