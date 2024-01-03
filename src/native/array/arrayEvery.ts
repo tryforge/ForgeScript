@@ -50,7 +50,7 @@ export default new NativeFunction({
                 const rt = (await this["resolveCode"](ctx, code)) as Return
 
                 if (rt.return || rt.success) {
-                    if (!isTrue(rt)) continue
+                    if (isTrue(rt)) continue
                     return this.success(false)
                 } else if (!this["isValidReturnType"](rt)) return rt
             }
