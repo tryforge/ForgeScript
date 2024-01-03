@@ -17,6 +17,8 @@ export default new NativeFunction({
     brackets: false,
     unwrap: true,
     execute(ctx, [args]) {
+        if (!this.hasFields)
+            return this.successJSON(ctx.getEnvironmentKey("result"))
         const env = ctx.getEnvironmentKey("result", ...args)
         return this.successJSON(env)
     },
