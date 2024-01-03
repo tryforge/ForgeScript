@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [, code] = this.data.fields;
+        const [, , code] = this.data.fields;
         const { args: { "0": name, "1": variable }, return: rt, } = await this["resolveMultipleArgs"](ctx, 0, 1);
         if (!this["isValidReturnType"](rt))
             return rt;

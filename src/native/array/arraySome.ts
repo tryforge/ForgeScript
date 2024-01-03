@@ -32,7 +32,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [, code] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const [,, code] = this.data.fields! as IExtendedCompiledFunctionField[]
 
         const {
             args: { "0": name, "1": variable },
