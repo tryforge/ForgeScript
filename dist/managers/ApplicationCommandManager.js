@@ -152,7 +152,7 @@ class ApplicationCommandManager {
         }
     }
     resolve(value, path) {
-        const v = value instanceof ApplicationCommand_1.ApplicationCommand ? value : new ApplicationCommand_1.ApplicationCommand(value);
+        const v = value instanceof ApplicationCommand_1.ApplicationCommand ? value : new ApplicationCommand_1.ApplicationCommand({ ...value, path });
         this.validate(v, path);
         return v;
     }

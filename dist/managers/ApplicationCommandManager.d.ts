@@ -5,7 +5,7 @@ export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody;
     code: string;
     independent?: boolean;
-    path?: string;
+    path?: string | null;
 }
 export declare class ApplicationCommandManager {
     readonly client: ForgeClient;

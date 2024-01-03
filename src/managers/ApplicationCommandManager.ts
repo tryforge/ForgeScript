@@ -29,7 +29,7 @@ export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody
     code: string
     independent?: boolean
-    path?: string
+    path?: string | null
 }
 
 export class ApplicationCommandManager {
@@ -184,7 +184,7 @@ export class ApplicationCommandManager {
     }
 
     public resolve(value: ApplicationCommand | IApplicationCommandData, path: string | null) {
-        const v = value instanceof ApplicationCommand ? value : new ApplicationCommand(value)
+        const v = value instanceof ApplicationCommand ? value : new ApplicationCommand({ ...value, path })
         this.validate(v, path)
         return v
     }

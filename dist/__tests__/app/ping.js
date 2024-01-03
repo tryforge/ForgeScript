@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const ApplicationCommand_1 = require("../../structures/base/ApplicationCommand");
-exports.default = new ApplicationCommand_1.ApplicationCommand({
+exports.default = {
     data: {
         name: "ping",
-        description: "A simple ping command",
+        description: "A simple ping command ",
         type: discord_js_1.ApplicationCommandType.ChatInput,
         options: [
             {
@@ -17,6 +16,6 @@ exports.default = new ApplicationCommand_1.ApplicationCommand({
             },
         ],
     },
-    code: "uwu rawr $option[uwu]",
-});
+    code: "uwu rawr $option[uwu]$log",
+};
 //# sourceMappingURL=ping.js.map

@@ -118,7 +118,7 @@ export class Compiler {
 
     private index = 0
 
-    private constructor(private readonly path?: string, private readonly code?: string) {
+    private constructor(private readonly path?: null | string, private readonly code?: string) {
         if (code) {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
@@ -426,7 +426,7 @@ export class Compiler {
         )
     }
 
-    public static compile(code?: string, path?: string): IExtendedCompilationResult {
+    public static compile(code?: string, path?: string | null): IExtendedCompilationResult {
         const result = new this(path, code).compile()
         return {
             ...result,

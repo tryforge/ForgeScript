@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.ApplicationCommand(module.exports = {
     data: {
         name: "eval",
-        description: "Evaluate a code.",
+        description: "Evaluate a code. ",
         options: [
             {
                 type: 3,

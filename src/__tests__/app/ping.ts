@@ -1,10 +1,10 @@
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js"
 import { ApplicationCommand } from "../../structures/base/ApplicationCommand"
 
-export default new ApplicationCommand({
+export default {
     data: {
         name: "ping",
-        description: "A simple ping command",
+        description: "A simple ping command ",
         type: ApplicationCommandType.ChatInput,
         options: [
             {
@@ -16,5 +16,5 @@ export default new ApplicationCommand({
             },
         ],
     },
-    code: "uwu rawr $option[uwu]",
-})
+    code: "uwu rawr $option[uwu]$log",
+} 

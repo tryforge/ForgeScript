@@ -4,7 +4,7 @@ import { ApplicationCommand } from "../../structures"
 export default new ApplicationCommand(module.exports = {
     data: {
         name: "eval",
-        description: "Evaluate a code.",
+        description: "Evaluate a code. ",
         options: [
             {
                 type: 3,
