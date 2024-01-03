@@ -16,7 +16,7 @@ export default new NativeFunction({
             rest: false
         },
     ],
-    brackets: false,
+    brackets: true,
     unwrap: true,
     execute(ctx, [type]) {
         ctx.http.contentType = type

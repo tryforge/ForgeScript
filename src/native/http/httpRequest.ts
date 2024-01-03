@@ -40,12 +40,13 @@ export default new NativeFunction({
             ...ctx.http,
         })
 
-        ctx.clearHttpOptions()
-
         const contentType = req.headers.get("content-type")?.split(";")[0]
+        const overrideType = ctx.http.contentType
+
+        ctx.clearHttpOptions()
         
-        if (ctx.http.contentType !== undefined) {
-            ctx.setEnvironmentKey(name, await req[HTTPContentType[ctx.http.contentType].toLowerCase() as Lowercase<keyof typeof HTTPContentType>]())
+        if (overrideType !== undefined) {
+            ctx.setEnvironmentKey(name, await req[HTTPContentType[overrideType].toLowerCase() as Lowercase<keyof typeof HTTPContentType>]())
         } else {
             if (contentType === "application/json") {
                 ctx.setEnvironmentKey(name, await req.json())

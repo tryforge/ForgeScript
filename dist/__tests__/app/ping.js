@@ -16,6 +16,6 @@ exports.default = {
             },
         ],
     },
-    code: "uwu rawr $option[uwu]$log",
+    code: "uwu rawr $option[uwu]",
 };
 //# sourceMappingURL=ping.js.map

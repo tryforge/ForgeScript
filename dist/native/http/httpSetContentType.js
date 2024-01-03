@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpSetContentType",
+    version: "1.4.0",
     description: "Forces the http request to be decoded using given content type",
     args: [
         {
@@ -15,7 +16,7 @@ exports.default = new NativeFunction_1.NativeFunction({
             rest: false
         },
     ],
-    brackets: false,
+    brackets: true,
     unwrap: true,
     execute(ctx, [type]) {
         ctx.http.contentType = type;

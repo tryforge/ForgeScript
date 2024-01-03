@@ -16,5 +16,5 @@ export default {
             },
         ],
     },
-    code: "uwu rawr $option[uwu]$log",
+    code: "uwu rawr $option[uwu]",
 } 
