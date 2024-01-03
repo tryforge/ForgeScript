@@ -1,6 +1,7 @@
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
 import { fetch } from "undici"
 import { Return } from "../../structures/@internal/Return"
+import { HTTPContentType } from "../../structures"
 
 export default new NativeFunction({
     name: "$httpRequest",
@@ -42,10 +43,14 @@ export default new NativeFunction({
         ctx.clearHttpOptions()
 
         const contentType = req.headers.get("content-type")?.split(";")[0]
-
-        if (contentType === "application/json") {
-            ctx.setEnvironmentKey(name, await req.json())
-        } else ctx.setEnvironmentKey(name, await req.text())
+        
+        if (ctx.http.contentType !== undefined) {
+            ctx.setEnvironmentKey(name, await req[HTTPContentType[ctx.http.contentType].toLowerCase() as Lowercase<keyof typeof HTTPContentType>]())
+        } else {
+            if (contentType === "application/json") {
+                ctx.setEnvironmentKey(name, await req.json())
+            } else ctx.setEnvironmentKey(name, await req.text())
+        }
 
         return this.success(req.status)
     },

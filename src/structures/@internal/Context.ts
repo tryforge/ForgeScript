@@ -27,8 +27,14 @@ export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
 ) => Promise<Return> | Return
 
+export enum HTTPContentType {
+    Json,
+    Text
+}
+
 export interface IHttpOptions {
     body: string
+    contentType?: HTTPContentType
     headers: Record<string, string>
     method: string
 }

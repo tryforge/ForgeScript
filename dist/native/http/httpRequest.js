@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 const undici_1 = require("undici");
+const structures_1 = require("../../structures");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRequest",
     version: "1.0.0",
@@ -39,11 +40,16 @@ exports.default = new NativeFunction_1.NativeFunction({
         });
         ctx.clearHttpOptions();
         const contentType = req.headers.get("content-type")?.split(";")[0];
-        if (contentType === "application/json") {
-            ctx.setEnvironmentKey(name, await req.json());
+        if (ctx.http.contentType !== undefined) {
+            ctx.setEnvironmentKey(name, await req[structures_1.HTTPContentType[ctx.http.contentType].toLowerCase()]());
         }
-        else
-            ctx.setEnvironmentKey(name, await req.text());
+        else {
+            if (contentType === "application/json") {
+                ctx.setEnvironmentKey(name, await req.json());
+            }
+            else
+                ctx.setEnvironmentKey(name, await req.text());
+        }
         return this.success(req.status);
     },
 });

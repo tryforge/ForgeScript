@@ -1,10 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Context = void 0;
+exports.Context = exports.HTTPContentType = void 0;
 const discord_js_1 = require("discord.js");
 const Container_1 = require("./Container");
 const Return_1 = require("./Return");
 const Logger_1 = require("./Logger");
+var HTTPContentType;
+(function (HTTPContentType) {
+    HTTPContentType[HTTPContentType["Json"] = 0] = "Json";
+    HTTPContentType[HTTPContentType["Text"] = 1] = "Text";
+})(HTTPContentType || (exports.HTTPContentType = HTTPContentType = {}));
 class Context {
     runtime;
     #member;
