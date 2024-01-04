@@ -44,6 +44,7 @@ export declare class Context {
     handleNotSuccess(rt: Return): boolean;
     clearHttpOptions(): void;
     setEnvironmentKey(name: string, value: unknown): unknown;
+    traverseDeleteEnvironmentKey(...keys: string[]): boolean;
     traverseAddEnvironmentKey(value: unknown, ...keys: string[]): boolean;
     deleteEnvironmentKey(name: string): boolean;
     getEnvironmentKey(...args: string[]): any;

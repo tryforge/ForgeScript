@@ -207,6 +207,18 @@ export class Context {
         return (this.#environment[name] = value)
     }
 
+    public traverseDeleteEnvironmentKey(...keys: string[]) {
+        let data = this.#environment
+        for (let i = 0, len = keys.length - 1;i < len;i++) {
+            const key = keys[i]
+            if (!(key in data))
+                return false
+            data = data[key] as Record<string, unknown>
+        }
+
+        return delete data[keys[keys.length - 1]]
+    }
+
     public traverseAddEnvironmentKey(value: unknown, ...keys: string[]) {
         let data = this.#environment
         for (let i = 0, len = keys.length - 1;i < len;i++) {
