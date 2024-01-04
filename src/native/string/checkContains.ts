@@ -6,6 +6,7 @@ export default new NativeFunction({
     aliases: [
         "$includes"
     ],
+    output: ArgType.Boolean,
     description: "Checks whether a string contains a set of other trings",
     unwrap: true,
     args: [

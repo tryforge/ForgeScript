@@ -29,6 +29,7 @@ export default new NativeFunction({
             rest: false
         },
     ],
+    output: ArgType.String,
     execute(ctx, [ name, begin, end ]) {
         return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString("utf-8", begin, end || undefined))
     },

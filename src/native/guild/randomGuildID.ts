@@ -1,4 +1,4 @@
-import { NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$randomGuildID",
@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$randomServerID"
     ],
+    output: ArgType.Guild,
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.randomKey())
     },

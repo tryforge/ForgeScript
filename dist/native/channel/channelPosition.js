@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the channel position",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "channel ID",

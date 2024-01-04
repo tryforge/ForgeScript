@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     description: "Counts number of args in message",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "text",

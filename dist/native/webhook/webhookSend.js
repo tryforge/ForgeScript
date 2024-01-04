@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Sends a message with a webhook",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Message,
     args: [
         {
             name: "url",

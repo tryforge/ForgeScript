@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Awaits a message, returns message ID or nothing if no valid response",
     unwrap: false,
+    output: structures_1.ArgType.Message,
     brackets: true,
     args: [
         {

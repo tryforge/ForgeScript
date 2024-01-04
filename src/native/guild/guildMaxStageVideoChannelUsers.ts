@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverMaxStageVideoChannelUsers"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns a random text (no cache)",
     unwrap: true,
     brackets: true,
+    output: ArgType.String,
     args: [
         {
             name: "texts",

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverNSFWLevel"
     ],
+    output: discord_js_1.GuildNSFWLevel,
     args: [
         {
             name: "guild ID",

@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the greatest integer less than or equal to its numeric argument",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "number",

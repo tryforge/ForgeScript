@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns whether a user id exists",
     unwrap: true,
+    output: ArgType.Boolean,
     brackets: true,
     args: [
         {

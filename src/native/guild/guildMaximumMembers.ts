@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverMaximumMembers"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

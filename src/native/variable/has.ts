@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Checks whether a keyword exists",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "name",

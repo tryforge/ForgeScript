@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Unparses given date to ms",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "date",

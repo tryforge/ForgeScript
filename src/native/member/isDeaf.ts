@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Whether a member is deafened",
     brackets: false,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

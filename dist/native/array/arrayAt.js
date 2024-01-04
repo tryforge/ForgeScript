@@ -23,6 +23,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
+    output: structures_1.ArgType.Unknown,
     execute(ctx, [variable, index]) {
         const arr = ctx.getEnvironmentKey(variable);
         return this.successJSON(Array.isArray(arr) ? arr.at(index) : undefined);

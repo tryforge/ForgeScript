@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the natural logarithm (base e) of a number",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "number",

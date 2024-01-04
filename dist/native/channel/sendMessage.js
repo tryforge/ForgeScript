@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Sends a message to a channel",
     unwrap: true,
+    output: structures_1.ArgType.Message,
     args: [
         {
             name: "channel ID",

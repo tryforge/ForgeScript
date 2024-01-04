@@ -8,6 +8,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Creates a code block with given text",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Checks whether a value exists in an array",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "variable",

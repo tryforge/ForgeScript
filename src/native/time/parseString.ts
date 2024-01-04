@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.2",
     description: "Parses valid duration string to ms",
     brackets: true,
+    output: ArgType.Number,
     args: [
         {
             name: "duration",

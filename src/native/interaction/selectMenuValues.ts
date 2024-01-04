@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -14,6 +15,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
+    output: array<ArgType.String>(),
     unwrap: true,
     execute(ctx, [index]) {
         if (!ctx.isSelectMenu()) return this.success()

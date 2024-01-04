@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the char code at given index",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "message",

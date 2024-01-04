@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Deletes a keyword",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "key",

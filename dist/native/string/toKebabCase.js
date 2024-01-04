@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Converts a string to kebab case",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "message",

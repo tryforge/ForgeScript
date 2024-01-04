@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Forces an interaction reply",
     unwrap: true,
     brackets: false,
+    output: ArgType.Message,
     args: [
         {
             name: "content",

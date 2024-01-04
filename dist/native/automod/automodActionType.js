@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "The action type automod used",
     unwrap: false,
+    output: discord_js_1.AutoModerationActionType,
     execute(ctx) {
         const type = ctx.automod?.action.type;
         return this.success(type ? discord_js_1.AutoModerationActionType[type] : null);

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Gets the char count of a text",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "text",

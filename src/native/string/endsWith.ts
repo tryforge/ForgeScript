@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Checks whether given string ends with X string",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "str",

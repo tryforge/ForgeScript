@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns a random number (no cache)",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     brackets: true,
     args: [
         {

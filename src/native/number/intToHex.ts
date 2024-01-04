@@ -7,6 +7,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Turns integer to hex",
     unwrap: true,
+    output: ArgType.Color,
     args: [
         {
             name: "int",

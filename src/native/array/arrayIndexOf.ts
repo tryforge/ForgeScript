@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets the index of an element in the array",
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "name",

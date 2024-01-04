@@ -6,6 +6,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     version: "1.0.0",
     description: "Retrieves a user's username",
     brackets: false,
+    output: NativeFunction_1.ArgType.String,
     args: [
         {
             name: "id",

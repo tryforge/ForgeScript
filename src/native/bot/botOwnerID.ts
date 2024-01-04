@@ -1,6 +1,7 @@
 import { User } from "discord.js"
 import noop from "../../functions/noop"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$botOwnerID",
@@ -25,6 +26,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
+    output: array<ArgType.User>(),
     unwrap: true,
     async execute(ctx, [ returnAll, sep ]) {
         if (!ctx.client.application.owner) await ctx.client.application.fetch().catch(noop)

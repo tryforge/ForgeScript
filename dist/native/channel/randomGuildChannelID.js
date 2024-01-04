@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random channel ID of a guild",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Reduces an array of elements and returns the result",
     unwrap: false,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "name",

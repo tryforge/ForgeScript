@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets the channel id of a channel name",
     unwrap: true,
+    output: ArgType.Channel,
     brackets: false,
     args: [
         {

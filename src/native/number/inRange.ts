@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Whether a number is in range",
     brackets: true,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

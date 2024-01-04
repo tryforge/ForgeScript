@@ -7,6 +7,7 @@ export default new NativeFunction({
         "Returns the integer part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

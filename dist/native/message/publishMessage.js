@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Crossposts a message in an announcement channel, returns bool",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

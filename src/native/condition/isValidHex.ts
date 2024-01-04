@@ -10,6 +10,7 @@ export default new NativeFunction({
     description: "Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "hex",

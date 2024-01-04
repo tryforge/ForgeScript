@@ -6,6 +6,7 @@ export default new NativeFunction({
     aliases: [
         "$replaceText"
     ],
+    output: ArgType.String,
     description: "Replace text in a string",
     unwrap: true,
     args: [

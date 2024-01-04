@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Fetches an audit log using the type of it",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     aliases: [
         /(?:get|fetch)(?:server|guild)?audit(?:logs?)?/
     ],

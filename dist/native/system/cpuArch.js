@@ -8,6 +8,7 @@ const node_os_1 = __importDefault(require("node:os"));
 exports.default = new structures_1.NativeFunction({
     name: "$cpuArch",
     version: "1.0.7",
+    output: structures_1.ArgType.String,
     description: "Returns the cpu architecture",
     unwrap: false,
     execute() {

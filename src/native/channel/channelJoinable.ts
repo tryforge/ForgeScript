@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Returns whether the voice channel is joinable by the bot",
     unwrap: true,
+    output: ArgType.Boolean,
     brackets: false,
     args: [
         {

@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Creates a webhook in a channel, returns the webhook id",
     brackets: true,
     unwrap: true,
+    output: ArgType.Webhook,
     args: [
         {
             name: "channel ID",

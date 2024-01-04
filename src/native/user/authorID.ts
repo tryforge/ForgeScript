@@ -1,4 +1,4 @@
-import { NativeFunction } from "../../structures/@internal/NativeFunction"
+import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
 import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Retrieves a user's id",
     unwrap: false,
+    output: ArgType.User,
     execute(ctx) {
         return this.success(ctx.user?.id)
     },

@@ -264,6 +264,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return str
     }
 
+    private get resolveUnknown() {
+        return this.resolveString.bind(this)
+    }
+
     private resolveTime(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         try {
             return !isNaN(Number(str)) ? Number(str) : TimeParser.parseToMS(str)

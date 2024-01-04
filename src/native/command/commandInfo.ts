@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Retrieves command info",
     unwrap: true,
     brackets: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "type",

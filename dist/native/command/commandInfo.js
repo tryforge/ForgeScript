@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Retrieves command info",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "type",

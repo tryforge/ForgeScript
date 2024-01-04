@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverLeave"
     ],
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Archives a thread, returns bool",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

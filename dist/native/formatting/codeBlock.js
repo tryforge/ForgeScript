@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     description: "Creates a code block with given text",
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "text",

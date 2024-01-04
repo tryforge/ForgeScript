@@ -9,6 +9,7 @@ export default new NativeFunction({
     description: "Fetches an audit log from an user using the type of it",
     brackets: true,
     unwrap: true,
+    output: ArgType.Unknown,
     aliases: [
         /(?:get|fetch)(?:user|member)(?:server|guild)?audit(?:logs?)?/
     ],

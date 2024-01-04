@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Adds reactions to a message, returns amount of emojis successfully reacted",
     unwrap: true,
+    output: ArgType.Number,
     brackets: true,
     args: [
         {

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the message id that this message replies to",
     unwrap: true,
+    output: ArgType.Message,
     brackets: false,
     args: [
         {

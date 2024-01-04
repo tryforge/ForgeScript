@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverWidgetChannelID"
     ],
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

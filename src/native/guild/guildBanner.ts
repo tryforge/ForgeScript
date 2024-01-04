@@ -30,6 +30,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
+    output: ArgType.URL,
     unwrap: true,
     execute(ctx, [g, size, ext]) {
         return this.success(

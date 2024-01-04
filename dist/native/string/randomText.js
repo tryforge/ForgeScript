@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random text (no cache)",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "texts",

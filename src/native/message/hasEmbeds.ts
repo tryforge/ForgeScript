@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$hasEmbeds",
     version: "1.2.0",
     brackets: false,
+    output: ArgType.Boolean,
     description: "Checks whether given message has embeds",
     unwrap: true,
     args: [

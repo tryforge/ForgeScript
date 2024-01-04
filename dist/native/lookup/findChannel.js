@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Finds a channel",
     brackets: true,
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "query",

@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "number",

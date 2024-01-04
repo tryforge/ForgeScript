@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Returns the cpu speed in MHz",
     unwrap: false,
+    output: structures_1.ArgType.Number,
     execute() {
         return this.success(node_os_1.default.cpus()[0]?.speed);
     },

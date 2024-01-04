@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Sets the bitrate quality voice channel",
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

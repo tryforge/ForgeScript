@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Crossposts a message in an announcement channel, returns bool",
     brackets: false,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

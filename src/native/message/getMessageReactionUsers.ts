@@ -1,11 +1,13 @@
 import { TextBasedChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$getMessageReactionUsers",
     version: "1.0.0",
     description: "Gets the user ids that have reacted to a specific emoji",
     unwrap: true,
+    output: array<ArgType.User>(),
     brackets: true,
     args: [
         {

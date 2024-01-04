@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "The emoji that was used",
     unwrap: true,
+    output: structures_1.ArgType.String,
     execute(ctx) {
         return this.success(ctx.reaction?.emoji.toString());
     },

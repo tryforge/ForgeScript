@@ -1,11 +1,13 @@
 import { ClientEvents } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$commandNames",
     version: "1.0.6",
     description: "Return commands with given type",
     brackets: true,
+    output: array<ArgType.String>(),
     args: [
         {
             name: "type",

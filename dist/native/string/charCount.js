@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Gets the char count of a text",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "text",

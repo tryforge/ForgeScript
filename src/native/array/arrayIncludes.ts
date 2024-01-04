@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Checks whether a value exists in an array",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "variable",

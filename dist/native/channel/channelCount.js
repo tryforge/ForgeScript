@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the channel count of all servers",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "categories",

@@ -4,6 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$messageAttachmentCount",
     version: "1.4.0",
+    output: ArgType.Number,
     description: "Retrieve the amount of attachments in this message",
     brackets: false,
     unwrap: true,

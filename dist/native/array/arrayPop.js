@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Deletes the last element of the array and returns it",
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "name",

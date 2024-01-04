@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the emoji name",
     brackets: false,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "emoji ID",

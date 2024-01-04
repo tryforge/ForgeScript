@@ -6,6 +6,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     version: "1.0.0",
     description: "Returns a value",
     unwrap: true,
+    output: NativeFunction_1.ArgType.Unknown,
     args: [
         {
             name: "value",

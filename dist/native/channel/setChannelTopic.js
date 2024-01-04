@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Sets a channel topic, returns bool",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

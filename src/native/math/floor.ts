@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the greatest integer less than or equal to its numeric argument",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

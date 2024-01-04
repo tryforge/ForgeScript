@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverMaximumPresences"
     ],
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "guild ID",

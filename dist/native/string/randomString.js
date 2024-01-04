@@ -16,6 +16,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Creates a random string",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "length",

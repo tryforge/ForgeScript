@@ -19,6 +19,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
+    output: ArgType.URL,
     execute(ctx, [perms]) {
         return this.success(
             ctx.client.generateInvite({

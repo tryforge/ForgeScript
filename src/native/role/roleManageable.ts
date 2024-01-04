@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns whether the role is managed by discord",
     brackets: false,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

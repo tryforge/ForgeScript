@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.2.0",
     description: "Gets element of textSplit",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

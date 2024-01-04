@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverExplicitContentFilter"
     ],
+    output: discord_js_1.GuildExplicitContentFilter,
     args: [
         {
             name: "guild ID",

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
         "$clientPing",
         "$botPing"
     ],
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         return this.success(ctx.client.ws.ping);
     },

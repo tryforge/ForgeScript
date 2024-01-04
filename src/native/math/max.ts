@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the largest number of the ones given",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "numbers",

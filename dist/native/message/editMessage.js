@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Edits a message in a channel",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

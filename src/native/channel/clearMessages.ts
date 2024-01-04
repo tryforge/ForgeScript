@@ -8,6 +8,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Clears x amount of messages from a channel, returns the number of messages deleted",
     unwrap: true,
+    output: ArgType.Number,
     brackets: true,
     args: [
         {

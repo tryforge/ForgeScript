@@ -1,4 +1,6 @@
+import { RoleFlags } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$roleFlags",
@@ -6,6 +8,7 @@ export default new NativeFunction({
     description: "Returns the role flags",
     brackets: false,
     unwrap: true,
+    output: array(RoleFlags),
     args: [
         {
             name: "guild ID",

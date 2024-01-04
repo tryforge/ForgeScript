@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns whether the context is a role select menu",
     unwrap: false,
+    output: structures_1.ArgType.Boolean,
     execute(ctx) {
         return this.success(Boolean(ctx.interaction?.isRoleSelectMenu()));
     },

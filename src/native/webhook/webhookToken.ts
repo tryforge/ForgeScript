@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets webhook token of given id",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

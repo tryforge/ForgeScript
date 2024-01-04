@@ -7,6 +7,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     version: "1.0.0",
     description: "Calls a forge function made by the user",
     unwrap: true,
+    output: NativeFunction_1.ArgType.Unknown,
     args: [
         {
             name: "name",

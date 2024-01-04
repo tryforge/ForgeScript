@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverExists"
     ],
+    output: ArgType.Boolean,
     brackets: true,
     args: [
         {

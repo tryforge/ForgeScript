@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Crops given text",
     brackets: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "text",

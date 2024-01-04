@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.2",
     description: "Returns the timestamp this user created their account",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "user ID",

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
         "$serverCount",
         "$serversCount"
     ],
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.size);
     },

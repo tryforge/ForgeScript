@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverExists"
     ],
+    output: structures_1.ArgType.Boolean,
     brackets: true,
     args: [
         {

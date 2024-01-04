@@ -1,5 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
+const array_1 = __importDefault(require("../../functions/array"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberPerms",
@@ -7,6 +12,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the member perms",
     brackets: false,
     unwrap: true,
+    output: (0, array_1.default)(discord_js_1.PermissionFlagsBits),
     args: [
         {
             name: "guild ID",

@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$setServerBanner"
     ],
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

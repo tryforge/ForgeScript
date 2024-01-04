@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Checks whether given webhook id eixsts",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "id",

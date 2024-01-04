@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the role position",
     brackets: false,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Implements native parseInt's function into ForgeScript",
     unwrap: true,
     brackets: true,
+    output: ArgType.Number,
     args: [
         {
             name: "value",

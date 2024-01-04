@@ -1,4 +1,4 @@
-import { PermissionsString } from "discord.js"
+import { PermissionFlagsBits, PermissionsString } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns whether given member has X perms",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",
@@ -28,6 +29,7 @@ export default new NativeFunction({
             description: "The perms to check for",
             rest: true,
             type: ArgType.String,
+            enum: PermissionFlagsBits,
             required: true,
         },
     ],

@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverVanityUses"
     ],
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "guild ID",

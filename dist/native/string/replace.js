@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$replaceText"
     ],
+    output: structures_1.ArgType.String,
     description: "Replace text in a string",
     unwrap: true,
     args: [

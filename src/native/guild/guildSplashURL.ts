@@ -7,6 +7,7 @@ export default new NativeFunction({
     aliases: [
         "$serverSplashURL"
     ],
+    output: ArgType.URL,
     description: "Returns the guild splash url",
     brackets: false,
     args: [

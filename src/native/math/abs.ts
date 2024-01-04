@@ -7,6 +7,7 @@ export default new NativeFunction({
         "Returns the absolute value of a number (the value without regard to whether it is positive or negative)",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

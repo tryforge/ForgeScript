@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Retrieves a message url",
     unwrap: true,
     brackets: false,
+    output: ArgType.URL,
     args: [
         {
             name: "channel ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Divides multiple numbers",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "numbers",

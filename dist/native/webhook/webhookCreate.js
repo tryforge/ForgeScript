@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Creates a webhook in a channel, returns the webhook id",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Webhook,
     args: [
         {
             name: "channel ID",

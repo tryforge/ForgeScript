@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$hasPerms",
@@ -7,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether given member has X perms",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",
@@ -28,6 +30,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The perms to check for",
             rest: true,
             type: structures_1.ArgType.String,
+            enum: discord_js_1.PermissionFlagsBits,
             required: true,
         },
     ],

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets webhook url with given id",
     brackets: true,
+    output: ArgType.URL,
     unwrap: true,
     args: [
         {

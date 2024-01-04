@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Deletes all reactions from a message, returns bool",
     unwrap: true,
+    output: ArgType.Boolean,
     brackets: false,
     args: [
         {

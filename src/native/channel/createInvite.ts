@@ -8,6 +8,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Creates an invite, returns the code",
     unwrap: true,
+    output: ArgType.Invite,
     args: [
         {
             name: "channel ID",

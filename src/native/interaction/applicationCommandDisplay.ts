@@ -15,6 +15,7 @@ export default new NativeFunction({
             type: ArgType.Boolean
         }
     ],
+    output: ArgType.String,
     execute(ctx, [ suppress ]) {
         suppress ??= false
         return this.success(ctx.client.applicationCommands.getDisplay(ctx.interaction, suppress))

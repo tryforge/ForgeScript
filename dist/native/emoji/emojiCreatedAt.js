@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the emoji creation timestamp",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "emoji ID",

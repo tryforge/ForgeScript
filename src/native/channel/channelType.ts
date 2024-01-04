@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the channel type",
     unwrap: true,
+    output: ChannelType,
     brackets: false,
     args: [
         {

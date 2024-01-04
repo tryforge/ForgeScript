@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Crops given text",
     brackets: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

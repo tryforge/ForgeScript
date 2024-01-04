@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverVanityCode"
     ],
+    output: structures_1.ArgType.Invite,
     args: [
         {
             name: "guild ID",

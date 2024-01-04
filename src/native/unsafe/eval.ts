@@ -9,6 +9,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Evaluates given code",
     unwrap: true,
+    output: ArgType.Unknown,
     brackets: true,
     args: [
         {

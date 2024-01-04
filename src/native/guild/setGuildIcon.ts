@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$setServerIcon"
     ],
+    output: ArgType.URL,
     args: [
         {
             name: "guild ID",

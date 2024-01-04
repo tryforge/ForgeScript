@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.1.0",
     description: "Pins a message in a channel, returns bool",
     brackets: false,
+    output: structures_1.ArgType.Boolean,
     unwrap: true,
     args: [
         {

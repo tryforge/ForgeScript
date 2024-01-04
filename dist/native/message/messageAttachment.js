@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageAttachment",
     version: "1.4.0",
+    output: structures_1.ArgType.URL,
     description: "Retrieves an attachment from this message",
     brackets: false,
     unwrap: true,

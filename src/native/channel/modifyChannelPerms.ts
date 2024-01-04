@@ -9,6 +9,7 @@ export default new NativeFunction({
     description: "Modifies given channel perms for a role or user",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

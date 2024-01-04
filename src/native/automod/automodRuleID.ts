@@ -1,11 +1,12 @@
 import { AutoModerationActionType } from "discord.js"
-import { NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$automodRuleID",
     version: "1.2.0",
     description: "The rule id used by automod",
     unwrap: false,
+    output: ArgType.String,
     execute(ctx) {
         return this.success(ctx.automod?.ruleId)
     },

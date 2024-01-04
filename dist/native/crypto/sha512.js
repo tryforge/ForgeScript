@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Creates a sha512 key from given input",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "input",

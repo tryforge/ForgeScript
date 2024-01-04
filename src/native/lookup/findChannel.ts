@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Finds a channel",
     brackets: true,
+    output: ArgType.Channel,
     args: [
         {
             name: "query",

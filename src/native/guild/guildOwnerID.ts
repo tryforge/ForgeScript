@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverOwnerID"
     ],
+    output: ArgType.User,
     args: [
         {
             name: "guild ID",

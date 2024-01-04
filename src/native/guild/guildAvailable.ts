@@ -17,6 +17,7 @@ export default new NativeFunction({
             type: ArgType.Guild,
         },
     ],
+    output: ArgType.Boolean,
     unwrap: true,
     execute(ctx, [guild]) {
         guild.maximumBitrate

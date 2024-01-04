@@ -1,5 +1,6 @@
 import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$stickers",
@@ -7,6 +8,7 @@ export default new NativeFunction({
     description: "Retrieve a sticker url from a message with given index",
     brackets: false,
     unwrap: true,
+    output: array<ArgType.GuildSticker>(),
     args: [
         {
             name: "channel ID",

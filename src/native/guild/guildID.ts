@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverID"
     ],
+    output: ArgType.Guild,
     brackets: false,
     args: [
         {

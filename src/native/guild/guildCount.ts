@@ -1,4 +1,4 @@
-import { NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$guildCount",
@@ -9,6 +9,7 @@ export default new NativeFunction({
         "$serverCount",
         "$serversCount"
     ],
+    output: ArgType.Number,
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.size)
     },

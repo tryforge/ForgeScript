@@ -9,6 +9,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Creates an hyperlink text",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

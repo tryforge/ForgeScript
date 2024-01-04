@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.1.0",
     description: "Retrieves old data from an event whose context was a presence instance",
     brackets: true,
+    output: ArgType.Unknown,
     unwrap: true,
     args: [
         {

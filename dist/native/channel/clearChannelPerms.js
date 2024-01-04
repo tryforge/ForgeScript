@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Deletes all permission overwrites for given id, returns bool",
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     unwrap: true,
     args: [
         {

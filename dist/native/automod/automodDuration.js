@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "The duration in ms by this automod action",
     unwrap: false,
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         const dur = ctx.automod?.action.metadata.durationSeconds;
         return this.success(dur ? dur * 1000 : null);

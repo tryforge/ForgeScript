@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the emoji guild id",
     brackets: false,
     unwrap: true,
+    output: ArgType.Guild,
     args: [
         {
             name: "emoji ID",

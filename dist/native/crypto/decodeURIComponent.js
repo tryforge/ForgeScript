@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Decodes text from a url",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "text",

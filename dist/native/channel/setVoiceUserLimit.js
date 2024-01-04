@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Sets the limit of users that can connect to this voice channel",
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

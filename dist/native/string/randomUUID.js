@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "Returns a random uuid",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute() {
         return this.success((0, crypto_1.randomUUID)());
     }

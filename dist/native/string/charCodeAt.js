@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the char code at given index",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "message",

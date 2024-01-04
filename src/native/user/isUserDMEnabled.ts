@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Checks whether given user can be DMed",
     unwrap: true,
     brackets: false,
+    output: ArgType.Boolean,
     args: [
         {
             name: "user",

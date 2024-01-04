@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Deletes user emoji reaction from a message, returns bool",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

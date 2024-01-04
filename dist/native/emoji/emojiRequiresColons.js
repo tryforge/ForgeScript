@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether the emoji requires colons",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "emoji ID",

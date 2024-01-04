@@ -23,6 +23,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
+    output: structures_1.ArgType.Boolean,
     async execute(ctx, [name]) {
         return this.success(!!(await ctx.client.user.setUsername(name).catch(noop_1.default)));
     },

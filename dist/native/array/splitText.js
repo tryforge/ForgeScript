@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "Gets element of textSplit",
     brackets: true,
+    output: structures_1.ArgType.String,
     unwrap: true,
     args: [
         {

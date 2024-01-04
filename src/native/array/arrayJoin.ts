@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Joins all elements from an array with given separator",
     unwrap: true,
+    output: array<ArgType.Unknown>(),
     args: [
         {
             name: "variable",

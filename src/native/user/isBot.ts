@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Whether the user is a bot",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "user ID",

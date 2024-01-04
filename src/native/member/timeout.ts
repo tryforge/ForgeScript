@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Times a member out for X milliseconds",
     unwrap: true,
+    output: ArgType.Number,
     brackets: true,
     args: [
         {

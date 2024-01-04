@@ -198,6 +198,9 @@ class CompiledFunction {
     resolveString(ctx, arg, str, ref) {
         return str;
     }
+    get resolveUnknown() {
+        return this.resolveString.bind(this);
+    }
     resolveTime(ctx, arg, str, ref) {
         try {
             return !isNaN(Number(str)) ? Number(str) : constants_1.TimeParser.parseToMS(str);

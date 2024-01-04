@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const array_1 = __importDefault(require("../../functions/array"));
 const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
@@ -29,6 +30,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The separator for each id"
         }
     ],
+    output: (0, array_1.default)(),
     async execute(ctx, [g, sep]) {
         g ??= ctx.guild;
         const bans = await g?.bans.fetch().catch(noop_1.default);

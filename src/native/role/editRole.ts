@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Edits role data, returns boolean",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

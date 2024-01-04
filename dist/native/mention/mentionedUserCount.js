@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$mentionedUsersCount"
     ],
+    output: structures_1.ArgType.Number,
     version: "1.3.0",
     description: "Returns the mentioned user count",
     unwrap: false,

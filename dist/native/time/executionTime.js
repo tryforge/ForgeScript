@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Returns current execution time",
     unwrap: false,
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         return this.success(performance.now() - ctx.executionTimestamp);
     },

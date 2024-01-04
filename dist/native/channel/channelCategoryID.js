@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the channel category id",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "channel ID",

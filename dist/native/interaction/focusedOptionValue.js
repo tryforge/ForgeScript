@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.6",
     description: "Returns the focused option value of the command",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute(ctx) {
         return this.success(ctx.interaction?.isAutocomplete() ? ctx.interaction.options.getFocused(true).value : undefined);
     },

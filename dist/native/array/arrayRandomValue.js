@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Returns a random element",
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     brackets: true,
     args: [
         {

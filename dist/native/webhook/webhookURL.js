@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Gets webhook url with given id",
     brackets: true,
+    output: structures_1.ArgType.URL,
     unwrap: true,
     args: [
         {

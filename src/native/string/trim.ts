@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Trims a string",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "message",

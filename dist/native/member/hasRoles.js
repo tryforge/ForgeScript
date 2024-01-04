@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether given member has all roles",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

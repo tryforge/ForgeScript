@@ -5,6 +5,7 @@ import { noop } from "lodash"
 export default new NativeFunction({
     name: "$unpinMessage",
     version: "1.1.0",
+    output: ArgType.Boolean,
     description: "Unpins a message from a channel, returns bool",
     brackets: false,
     unwrap: true,

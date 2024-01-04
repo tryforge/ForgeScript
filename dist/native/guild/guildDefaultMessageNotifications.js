@@ -19,6 +19,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Guild,
         },
     ],
+    output: discord_js_1.GuildDefaultMessageNotifications,
     unwrap: true,
     execute(ctx, [guild]) {
         guild.explicitContentFilter;

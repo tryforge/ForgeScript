@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Retrieves data of a message",
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     brackets: true,
     args: [
         {

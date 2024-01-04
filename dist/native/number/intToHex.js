@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     description: "Turns integer to hex",
     unwrap: true,
+    output: structures_1.ArgType.Color,
     args: [
         {
             name: "int",

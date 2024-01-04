@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns whether a user id exists",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     brackets: true,
     args: [
         {

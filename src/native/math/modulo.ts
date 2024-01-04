@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the remainder of multiple numbers",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "numbers",

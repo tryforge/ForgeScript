@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
         "$botUptime",
         "$clientUptime"
     ],
+    output: structures_1.ArgType.Number,
     description: "Returns the bots uptime",
     unwrap: false,
     execute(ctx) {

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns whether an user was mentioned in this message",
     unwrap: true,
+    output: ArgType.Boolean,
     brackets: true,
     args: [
         {

@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Adds an emoji to a guild, returns the emoji id",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.GuildEmoji,
     args: [
         {
             name: "guild ID",

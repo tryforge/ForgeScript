@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverNames"
     ],
+    output: array<ArgType.String>(),
     args: [
         {
             name: "separator",

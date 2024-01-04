@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Slices given text",
     brackets: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

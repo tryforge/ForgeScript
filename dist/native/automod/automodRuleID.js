@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "The rule id used by automod",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute(ctx) {
         return this.success(ctx.automod?.ruleId);
     },

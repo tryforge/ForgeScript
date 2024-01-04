@@ -5,6 +5,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$hasEmbeds",
     version: "1.2.0",
     brackets: false,
+    output: structures_1.ArgType.Boolean,
     description: "Checks whether given message has embeds",
     unwrap: true,
     args: [

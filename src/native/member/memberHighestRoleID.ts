@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the highest role id of a member",
     unwrap: true,
+    output: ArgType.Role,
     brackets: false,
     args: [
         {

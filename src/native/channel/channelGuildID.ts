@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the channel guild id",
     unwrap: true,
+    output: ArgType.Guild,
     brackets: false,
     args: [
         {

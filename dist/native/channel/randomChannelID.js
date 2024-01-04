@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Returns a random channel ID",
     unwrap: false,
+    output: structures_1.ArgType.Channel,
     execute(ctx) {
         return this.success(ctx.client.channels.cache.randomKey());
     },

@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Returns the smallest number of the ones given",
     brackets: true,
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

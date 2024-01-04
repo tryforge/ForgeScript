@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Creates a forum post, returns the post channel id",
     unwrap: true,
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "channel ID",

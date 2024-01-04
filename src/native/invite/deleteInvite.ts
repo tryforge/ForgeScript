@@ -7,6 +7,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Deletes an invite, returns the code",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "code",

@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Adds a member to a thread, returns bool",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns the channel count of all servers",
     brackets: false,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "categories",

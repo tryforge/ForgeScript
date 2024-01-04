@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,7 @@ export default new NativeFunction({
     aliases: [
         "$mentionedChannel"
     ],
+    output: array<ArgType.Channel>(),
     version: "1.0.0",
     brackets: false,
     description: "Returns the mentioned channels",

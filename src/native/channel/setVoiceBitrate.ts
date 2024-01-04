@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Sets the bitrate quality voice channel",
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

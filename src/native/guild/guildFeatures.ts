@@ -1,3 +1,5 @@
+import { GuildFeature } from "discord.js"
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +10,7 @@ export default new NativeFunction({
     aliases: [
         "$serverFeatures"
     ],
+    output: array(GuildFeature),
     args: [
         {
             name: "guild ID",

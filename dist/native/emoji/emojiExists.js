@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether an emoji id exists",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "emoji ID",

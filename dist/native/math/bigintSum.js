@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Adds multiple numbers",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.BigInt,
     args: [
         {
             name: "numbers",

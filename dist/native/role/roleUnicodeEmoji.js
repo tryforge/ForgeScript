@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$roleUnicodeEmoji",
     version: "1.3.0",
+    output: structures_1.ArgType.String,
     description: "Returns the unicode emoji used by the role",
     brackets: false,
     unwrap: true,

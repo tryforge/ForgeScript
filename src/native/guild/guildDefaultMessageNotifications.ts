@@ -18,6 +18,7 @@ export default new NativeFunction({
             type: ArgType.Guild,
         },
     ],
+    output: GuildDefaultMessageNotifications,
     unwrap: true,
     execute(ctx, [guild]) {
         guild.explicitContentFilter

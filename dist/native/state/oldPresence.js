@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.1.0",
     description: "Retrieves old data from an event whose context was a presence instance",
     brackets: true,
+    output: structures_1.ArgType.Unknown,
     unwrap: true,
     args: [
         {

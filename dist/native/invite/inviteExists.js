@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether an invite code exists",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "code",

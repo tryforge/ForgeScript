@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.5",
     description: "Returns whether given message id exists",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     brackets: true,
     args: [
         {

@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,7 @@ export default new NativeFunction({
     version: "1.3.0",
     unwrap: true,
     brackets: false,
+    output: array<ArgType.GuildEmoji>(),
     description: "Returns every emoji id",
     args: [
         {

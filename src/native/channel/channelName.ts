@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the channel name",
     unwrap: true,
+    output: ArgType.String,
     brackets: false,
     args: [
         {

@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns all role tags",
     brackets: false,
+    output: array<ArgType.String>(),
     unwrap: true,
     args: [
         {

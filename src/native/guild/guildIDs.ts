@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverIDs"
     ],
+    output: array<ArgType.Guild>(),
     brackets: false,
     args: [
         {

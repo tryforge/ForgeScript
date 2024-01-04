@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns whether an channel id exists",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

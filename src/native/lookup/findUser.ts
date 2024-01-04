@@ -8,6 +8,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Finds a user",
     brackets: true,
+    output: ArgType.User,
     args: [
         {
             name: "query",

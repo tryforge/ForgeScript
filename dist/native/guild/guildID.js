@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverID"
     ],
+    output: structures_1.ArgType.Guild,
     brackets: false,
     args: [
         {

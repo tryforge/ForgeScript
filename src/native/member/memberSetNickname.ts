@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Edits a member's nickname",
     brackets: true,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

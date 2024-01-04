@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Deletes all permission overwrites for given id, returns bool",
     brackets: true,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

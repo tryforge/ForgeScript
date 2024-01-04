@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether a role was mentioned in this message",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns whether the emoji requires colons",
     brackets: false,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "emoji ID",

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Returns the operating system name",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute() {
         return this.success(node_os_1.default.platform());
     },

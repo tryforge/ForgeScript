@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverVanityCode"
     ],
+    output: ArgType.Invite,
     args: [
         {
             name: "guild ID",

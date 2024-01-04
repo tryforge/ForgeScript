@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.2.0",
     brackets: false,
     unwrap: true,
+    output: ArgType.Message,
     description: "Returns the latest message sent in a channel",
     args: [
         {

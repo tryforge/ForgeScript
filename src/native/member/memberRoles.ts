@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -6,6 +7,7 @@ export default new NativeFunction({
     description: "Returns the role ids of a member",
     unwrap: true,
     brackets: false,
+    output: array<ArgType.Role>(),
     args: [
         {
             name: "guild ID",

@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Switch-case statement for javascript",
     unwrap: false,
     experimental: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "value",

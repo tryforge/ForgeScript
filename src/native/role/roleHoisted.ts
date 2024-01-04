@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns whether the role is hoisted",
     brackets: false,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

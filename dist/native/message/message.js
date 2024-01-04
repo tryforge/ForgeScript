@@ -4,6 +4,7 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$message",
     version: "1.0.0",
+    output: NativeFunction_1.ArgType.String,
     description: "Retrieves arguments from a message command",
     args: [
         {

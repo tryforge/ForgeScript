@@ -8,6 +8,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Finds a member of a guild",
     brackets: true,
+    output: ArgType.Member,
     args: [
         {
             name: "guild ID",

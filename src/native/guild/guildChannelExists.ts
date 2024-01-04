@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverChannelExists"
     ],
+    output: ArgType.Boolean,
     brackets: true,
     args: [
         {

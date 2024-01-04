@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverVanityUses"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

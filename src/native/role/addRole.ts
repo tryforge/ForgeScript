@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Adds a role to a guild, returns role id if success",
     unwrap: true,
     brackets: true,
+    output: ArgType.Role,
     args: [
         {
             name: "guild ID",

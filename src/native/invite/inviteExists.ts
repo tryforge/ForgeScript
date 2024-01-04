@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns whether an invite code exists",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "code",

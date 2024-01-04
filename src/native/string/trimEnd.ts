@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.6",
     description: "Trims at the end of a string",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

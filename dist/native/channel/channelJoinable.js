@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Returns whether the voice channel is joinable by the bot",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     brackets: false,
     args: [
         {

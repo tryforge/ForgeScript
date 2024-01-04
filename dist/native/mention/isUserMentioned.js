@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.3.0",
     description: "Returns whether an user was mentioned in this message",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     brackets: true,
     args: [
         {

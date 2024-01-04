@@ -15,6 +15,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
+    output: ArgType.String,
     unwrap: true,
     async execute(ctx, [name]) {
         if (this.hasFields) {

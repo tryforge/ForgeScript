@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     description: "Delete given emoji ids, returns the count of emotes deleted",
     args: [
         {

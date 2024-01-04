@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Appends a suffix to the number",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

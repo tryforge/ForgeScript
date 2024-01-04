@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Retrieves old data from an event whose context was a guild member instance",
     brackets: true,
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "property",

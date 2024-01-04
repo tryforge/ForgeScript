@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Checks whether a path exists",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "path",

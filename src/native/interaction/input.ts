@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns a value from a text field",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "custom ID",

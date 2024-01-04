@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
         "$getGuildBanReason",
         "$getServerBanReason"
     ],
+    output: structures_1.ArgType.String,
     description: "Fetches a ban reason of a user",
     args: [
         {

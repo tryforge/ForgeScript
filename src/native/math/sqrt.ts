@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the square root of a number",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

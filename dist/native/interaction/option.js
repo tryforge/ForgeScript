@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns an option value with given name (interaction command)",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "option name",

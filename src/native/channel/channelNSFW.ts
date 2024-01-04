@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns whether the channel is nsfw",
     unwrap: true,
     brackets: false,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Convert number from one base to another",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

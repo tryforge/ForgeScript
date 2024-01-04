@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the channel timestamp",
     unwrap: true,
     brackets: false,
+    output: ArgType.Number,
     args: [
         {
             name: "channel ID",

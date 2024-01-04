@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Removes a thread member",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the timestamp the member joined at",
     unwrap: true,
     brackets: false,
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

@@ -8,8 +8,9 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addSticker",
     version: "1.0.0",
-    description: "Adds a sticker to a guild, returns boolean",
+    description: "Adds a sticker to a guild, returns sticker id",
     unwrap: true,
+    output: structures_1.ArgType.GuildSticker,
     brackets: true,
     args: [
         {
@@ -56,7 +57,7 @@ exports.default = new structures_1.NativeFunction({
             description: desc || null,
         })
             .catch(noop_1.default);
-        return this.success(!!created);
+        return this.success(created?.id);
     },
 });
 //# sourceMappingURL=addSticker.js.map

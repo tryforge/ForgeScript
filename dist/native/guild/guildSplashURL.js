@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverSplashURL"
     ],
+    output: structures_1.ArgType.URL,
     description: "Returns the guild splash url",
     brackets: false,
     args: [

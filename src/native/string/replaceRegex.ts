@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Replace text in a string using regex",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

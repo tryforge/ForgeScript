@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Creates an if statement",
     unwrap: false,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "condition",

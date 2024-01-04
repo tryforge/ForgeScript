@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Forces an interaction follow up",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Message,
     args: [
         {
             name: "content",

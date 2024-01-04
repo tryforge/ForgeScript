@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a value from a text field",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "custom ID",

@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the display color of a member",
     unwrap: true,
     brackets: false,
+    output: ArgType.Color,
     args: [
         {
             name: "guild ID",

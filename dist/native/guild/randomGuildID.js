@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$randomServerID"
     ],
+    output: structures_1.ArgType.Guild,
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.randomKey());
     },

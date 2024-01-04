@@ -4,6 +4,7 @@ import { Return } from "../../structures/@internal/Return"
 export default new NativeFunction({
     name: "$message",
     version: "1.0.0",
+    output: ArgType.String,
     description: "Retrieves arguments from a message command",
     args: [
         {

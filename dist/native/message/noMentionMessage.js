@@ -5,6 +5,7 @@ const NoMentionRegex = /<(?:@[&!]?|#)\d{16,23}>/g;
 exports.default = new structures_1.NativeFunction({
     name: "$noMentionMessage",
     version: "1.0.0",
+    output: structures_1.ArgType.String,
     description: "Retrieves arguments from a message without mentions",
     args: [
         {

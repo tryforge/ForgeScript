@@ -7,6 +7,7 @@ export default new NativeFunction({
         "Kicks a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

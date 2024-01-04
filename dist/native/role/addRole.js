@@ -12,6 +12,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Adds a role to a guild, returns role id if success",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Role,
     args: [
         {
             name: "guild ID",

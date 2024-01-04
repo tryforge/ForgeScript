@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Creates a thread, returns thread channel id on success",
     unwrap: true,
+    output: structures_1.ArgType.Channel,
     brackets: true,
     args: [
         {

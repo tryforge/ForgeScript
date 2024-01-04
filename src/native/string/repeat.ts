@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Repeats given text for x times",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

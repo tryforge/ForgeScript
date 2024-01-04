@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the role color as int",
     brackets: false,
     unwrap: true,
+    output: ArgType.Color,
     args: [
         {
             name: "guild ID",

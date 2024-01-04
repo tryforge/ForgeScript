@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Run math expression, returns nothing if incorrect expression",
     brackets: true,
+    output: structures_1.ArgType.Number,
     unwrap: true,
     args: [
         {

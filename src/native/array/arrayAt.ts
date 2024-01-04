@@ -22,6 +22,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
+    output: ArgType.Unknown,
     execute(ctx, [variable, index]) {
         const arr = ctx.getEnvironmentKey(variable)
         return this.successJSON(Array.isArray(arr) ? arr.at(index) : undefined)

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Edits a message in a channel",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

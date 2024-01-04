@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverCreatedAt"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

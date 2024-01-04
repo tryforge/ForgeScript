@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverDiscoverySplash"
     ],
+    output: ArgType.URL,
     args: [
         {
             name: "guild ID",

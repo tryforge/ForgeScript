@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the role count of all servers",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         return this.success(ctx.client.guilds.cache.reduce((x, y) => x + y.roles.cache.size, 0));
     },

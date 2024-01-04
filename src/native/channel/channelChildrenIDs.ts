@@ -1,11 +1,13 @@
 import { BaseChannel, CategoryChannel, ChannelType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$channelChildrenIDs",
     version: "1.0.3",
     description: "Returns the children ids this category has",
     brackets: false,
+    output: array<ArgType.Channel>(),
     unwrap: true,
     args: [
         {

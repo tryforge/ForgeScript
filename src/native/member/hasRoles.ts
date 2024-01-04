@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns whether given member has all roles",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

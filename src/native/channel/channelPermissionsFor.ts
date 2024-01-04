@@ -1,5 +1,6 @@
-import { BaseChannel, GuildTextBasedChannel } from "discord.js"
+import { BaseChannel, GuildTextBasedChannel, PermissionFlagsBits } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$channelPermissionsFor",
@@ -10,6 +11,7 @@ export default new NativeFunction({
         "$memberChannelPerms",
         "$roleChannelPerms"
     ],
+    output: array(PermissionFlagsBits),
     unwrap: true,
     args: [
         {

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Retrieves current cooldown time in ms for given id",
     brackets: true,
+    output: structures_1.ArgType.Number,
     unwrap: true,
     args: [
         {

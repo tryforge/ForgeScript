@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Multiplies multiple numbers",
     brackets: true,
     unwrap: true,
+    output: ArgType.BigInt,
     args: [
         {
             name: "numbers",

@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Runs a function",
     unwrap: false,
     experimental: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "code",

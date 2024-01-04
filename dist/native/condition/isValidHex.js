@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Checks whether given hex is a valid integer number between 0x00000 and 0xffffff.",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "hex",

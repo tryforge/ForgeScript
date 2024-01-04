@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverSafetyAlertsChannelID"
     ],
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

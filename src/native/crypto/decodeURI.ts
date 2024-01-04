@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Decodes text from a url",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$hexToInt",
     version: "1.2.0",
     brackets: true,
+    output: ArgType.Color,
     description: "Turns hex string to number",
     unwrap: true,
     args: [

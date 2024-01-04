@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Creates query params with given fields",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

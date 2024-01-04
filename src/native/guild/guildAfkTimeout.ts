@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverAfkTimeout"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

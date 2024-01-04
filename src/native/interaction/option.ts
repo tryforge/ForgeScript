@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns an option value with given name (interaction command)",
     brackets: true,
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "option name",

@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "reads text from a file",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "path",

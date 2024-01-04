@@ -23,8 +23,9 @@ exports.default = new structures_1.NativeFunction({
             rest: false
         }
     ],
+    output: structures_1.ArgType.Number,
     execute(ctx, [name, begin]) {
-        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.readInt32LE(begin));
+        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.readInt32LE(begin) ?? 0);
     },
 });
 //# sourceMappingURL=bufferReadInt32.js.map

@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the role raw position",
     brackets: false,
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

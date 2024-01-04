@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the display color of a member",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Color,
     args: [
         {
             name: "guild ID",

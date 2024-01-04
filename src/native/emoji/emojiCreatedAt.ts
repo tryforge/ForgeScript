@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the emoji creation timestamp",
     brackets: false,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "emoji ID",

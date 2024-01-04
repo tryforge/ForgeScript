@@ -1,3 +1,5 @@
+import { PermissionFlagsBits } from "discord.js"
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -6,6 +8,7 @@ export default new NativeFunction({
     description: "Returns the member perms",
     brackets: false,
     unwrap: true,
+    output: array(PermissionFlagsBits),
     args: [
         {
             name: "guild ID",

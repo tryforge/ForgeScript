@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverChannelCount"
     ],
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

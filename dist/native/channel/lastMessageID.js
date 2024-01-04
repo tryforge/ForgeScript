@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Message,
     description: "Returns the latest message sent in a channel",
     args: [
         {

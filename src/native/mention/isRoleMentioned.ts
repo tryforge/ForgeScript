@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns whether a role was mentioned in this message",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "channel ID",

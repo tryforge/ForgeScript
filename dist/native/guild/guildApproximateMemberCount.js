@@ -18,6 +18,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Guild,
         },
     ],
+    output: structures_1.ArgType.Number,
     unwrap: true,
     execute(ctx, [guild]) {
         return this.success((guild ?? ctx.guild)?.approximateMemberCount ?? 0);

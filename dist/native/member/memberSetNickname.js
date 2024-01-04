@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Edits a member's nickname",
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     unwrap: true,
     args: [
         {

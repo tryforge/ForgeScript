@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Checks whether a condition is valid",
     brackets: true,
     unwrap: false,
+    output: ArgType.Boolean,
     args: [
         {
             name: "condition",

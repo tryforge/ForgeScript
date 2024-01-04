@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Loops through every element of the array to find a match",
     unwrap: false,
+    output: ArgType.Boolean,
     args: [
         {
             name: "name",

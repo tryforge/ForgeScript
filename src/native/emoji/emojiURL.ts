@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the emoji url",
     brackets: false,
     unwrap: true,
+    output: ArgType.URL,
     args: [
         {
             name: "emoji ID",

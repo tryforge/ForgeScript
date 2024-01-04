@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.2",
     description: "Parses valid ms to duration",
     brackets: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "ms",

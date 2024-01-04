@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Edits a role's icon, returns boolean",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

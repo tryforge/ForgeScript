@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Edits webhook with given id",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "id",

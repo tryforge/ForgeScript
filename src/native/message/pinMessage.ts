@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.1.0",
     description: "Pins a message in a channel, returns bool",
     brackets: false,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

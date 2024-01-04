@@ -9,6 +9,7 @@ export default new NativeFunction({
     description: "Fetches audit log count using the type of it",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     aliases: [
         /(?:get|fetch)(?:server|guild)?audit(?:logs?)?count/
     ],

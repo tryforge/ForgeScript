@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
 import { Return } from "../../structures/@internal/Return"
 
@@ -5,6 +6,7 @@ export default new NativeFunction({
     name: "$httpResult",
     version: "1.2.0",
     description: "Retrieve an http result value",
+    output: array<ArgType.Json | ArgType.String>(),
     args: [
         {
             name: "key",

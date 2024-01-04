@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Retrieves new data from an event whose context was audit log instance",
     brackets: true,
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "property",

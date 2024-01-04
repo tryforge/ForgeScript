@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the global name of a user",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "user ID",

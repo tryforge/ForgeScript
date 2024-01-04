@@ -30,6 +30,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
+    output: ArgType.Boolean,
     brackets: true,
     async execute(ctx) {
         const [nameField, varField, code] = this.data.fields! as IExtendedCompiledFunctionField[]

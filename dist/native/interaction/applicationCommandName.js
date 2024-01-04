@@ -16,6 +16,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
+    output: structures_1.ArgType.String,
     unwrap: true,
     async execute(ctx, [id]) {
         if (this.hasFields) {

@@ -3,6 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
+const array_1 = __importDefault(require("../../functions/array"));
 const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
@@ -10,6 +12,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the public badges of a user",
     unwrap: true,
+    output: (0, array_1.default)(discord_js_1.UserFlags),
     args: [
         {
             name: "user ID",

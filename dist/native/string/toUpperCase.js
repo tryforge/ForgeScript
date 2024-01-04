@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Makes a string uppercase",
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "string",

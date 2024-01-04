@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Deafens a member from voice channel",
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

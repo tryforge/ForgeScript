@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -7,6 +8,7 @@ export default new NativeFunction({
         "$memberIDs",
         "$serverMemberIDs"
     ],
+    output: array<ArgType.Member>(),
     description: "Returns all cached member ids of a guild",
     brackets: false,
     unwrap: true,

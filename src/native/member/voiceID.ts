@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the voice channel id a member is connected to",
     unwrap: true,
     brackets: false,
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

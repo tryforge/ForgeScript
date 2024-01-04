@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Returns a random member ID of a guild",
     unwrap: true,
+    output: structures_1.ArgType.Member,
     brackets: false,
     args: [
         {

@@ -17,6 +17,7 @@ export default new NativeFunction({
             type: ArgType.Guild,
         },
     ],
+    output: ArgType.Role,
     unwrap: true,
     execute(ctx, [guild]) {
         return this.success((guild ?? ctx.guild)?.roles.premiumSubscriberRole?.id)

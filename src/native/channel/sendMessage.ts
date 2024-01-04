@@ -9,6 +9,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Sends a message to a channel",
     unwrap: true,
+    output: ArgType.Message,
     args: [
         {
             name: "channel ID",

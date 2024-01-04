@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the user decoration",
     brackets: false,
+    output: structures_1.ArgType.URL,
     args: [
         {
             name: "user ID",

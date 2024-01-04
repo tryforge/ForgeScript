@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "The reaction id that was used",
     unwrap: true,
+    output: structures_1.ArgType.GuildEmoji,
     execute(ctx) {
         return this.success(ctx.reaction?.emoji.id);
     },

@@ -11,6 +11,7 @@ export default new NativeFunction({
     version: "1.2.0",
     description: "Creates a else if statement",
     unwrap: false,
+    output: ArgType.Unknown,
     args: [
         {
             name: "condition",

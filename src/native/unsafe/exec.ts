@@ -7,6 +7,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Runs a command in console",
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "command",

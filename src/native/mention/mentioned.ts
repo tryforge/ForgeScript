@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -6,6 +7,7 @@ export default new NativeFunction({
     brackets: false,
     description: "Returns the mentioned users",
     unwrap: true,
+    output: array<ArgType.User>(),
     args: [
         {
             name: "index",

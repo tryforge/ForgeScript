@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.2",
     description: "Returns the timestamp this user created their account",
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "user ID",

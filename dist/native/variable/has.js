@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Checks whether a keyword exists",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "name",

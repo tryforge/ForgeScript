@@ -1,4 +1,4 @@
-import { NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$uptime",
@@ -7,6 +7,7 @@ export default new NativeFunction({
         "$botUptime",
         "$clientUptime"
     ],
+    output: ArgType.Number,
     description: "Returns the bots uptime",
     unwrap: false,
     execute(ctx) {

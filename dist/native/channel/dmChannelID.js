@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the dm channel id of a user",
     brackets: false,
+    output: structures_1.ArgType.Channel,
     unwrap: true,
     args: [
         {

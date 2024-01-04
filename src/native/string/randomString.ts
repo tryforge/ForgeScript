@@ -16,6 +16,7 @@ export default new NativeFunction({
     description: "Creates a random string",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "length",

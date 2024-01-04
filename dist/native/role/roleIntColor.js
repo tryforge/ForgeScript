@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the role color as int",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.Color,
     args: [
         {
             name: "guild ID",

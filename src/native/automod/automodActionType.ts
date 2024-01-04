@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.2.0",
     description: "The action type automod used",
     unwrap: false,
+    output: AutoModerationActionType,
     execute(ctx) {
         const type = ctx.automod?.action.type
         return this.success(type ? AutoModerationActionType[type] : null)

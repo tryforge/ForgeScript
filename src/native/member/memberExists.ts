@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns whether an member id exists",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

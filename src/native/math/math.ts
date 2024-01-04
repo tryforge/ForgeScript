@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Run math expression, returns nothing if incorrect expression",
     brackets: true,
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

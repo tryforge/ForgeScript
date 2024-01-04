@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.6",
     description: "Converts a string to title case",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

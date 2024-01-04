@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverLeave"
     ],
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

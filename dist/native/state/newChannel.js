@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Retrieves new data from an event whose context was a channel instance",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "property",

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "The message id of the reacted message",
     unwrap: true,
+    output: structures_1.ArgType.Message,
     execute(ctx) {
         return this.success(ctx.reaction?.message.id);
     },

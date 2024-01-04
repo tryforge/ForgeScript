@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.6",
     description: "Returns the characters from given codes",
     brackets: true,
+    output: ArgType.String,
     unwrap: true,
     args: [
         {

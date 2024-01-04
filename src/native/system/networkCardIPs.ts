@@ -1,11 +1,13 @@
 import { networkInterfaces } from "os"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$networkCardIPs",
     version: "1.2.0",
     description: "Returns your network's card ips",
     unwrap: true,
+    output: array<ArgType.String>(),
     brackets: false,
     args: [
         {

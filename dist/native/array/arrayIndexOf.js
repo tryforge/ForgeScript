@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Gets the index of an element in the array",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "name",

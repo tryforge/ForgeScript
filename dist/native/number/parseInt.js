@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Implements native parseInt's function into ForgeScript",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "value",

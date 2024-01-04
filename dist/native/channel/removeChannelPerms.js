@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Removes permission overwrites from a channel, returns bool",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Sets roles to a member and returns bool",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

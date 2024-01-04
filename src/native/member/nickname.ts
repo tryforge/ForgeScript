@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the member nickname",
     brackets: false,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "guild ID",

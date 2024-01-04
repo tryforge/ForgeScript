@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -7,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverStickerIDs"
     ],
+    output: array<ArgType.GuildSticker>(),
     brackets: false,
     description: "Returns every sticker id of the guild",
     args: [

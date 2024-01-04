@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     description: "Adds backticks to text",
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "text",

@@ -12,6 +12,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Finds a user",
     brackets: true,
+    output: structures_1.ArgType.User,
     args: [
         {
             name: "query",

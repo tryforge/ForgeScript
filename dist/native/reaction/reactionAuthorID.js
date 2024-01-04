@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "The reaction author id that reacted",
     unwrap: true,
+    output: structures_1.ArgType.User,
     execute(ctx) {
         return this.success(ctx.states?.user?.new?.id);
     },

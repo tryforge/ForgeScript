@@ -8,6 +8,7 @@ export default new NativeFunction({
     version: "1.0.7",
     description: "Awaits a message, returns message ID or nothing if no valid response",
     unwrap: false,
+    output: ArgType.Message,
     brackets: true,
     args: [
         {

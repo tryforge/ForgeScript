@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -5,6 +6,7 @@ export default new NativeFunction({
     aliases: [
         "$mentionedUsersCount"
     ],
+    output: ArgType.Number,
     version: "1.3.0",
     description: "Returns the mentioned user count",
     unwrap: false,

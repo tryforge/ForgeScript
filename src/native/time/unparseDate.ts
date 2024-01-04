@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Unparses given date to ms",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "date",

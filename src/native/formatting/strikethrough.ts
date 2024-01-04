@@ -9,6 +9,7 @@ export default new NativeFunction({
     brackets: true,
     description: "Makes given text strikethrough",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "text",

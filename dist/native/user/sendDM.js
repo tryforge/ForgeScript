@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Sends a dm to the user",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Message,
     args: [
         {
             name: "user ID",

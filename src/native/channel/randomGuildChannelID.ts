@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Returns a random channel ID of a guild",
     unwrap: true,
     brackets: false,
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

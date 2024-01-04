@@ -34,6 +34,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
+    output: structures_1.ArgType.Boolean,
     brackets: true,
     async execute(ctx) {
         const [nameField, varField, code] = this.data.fields;

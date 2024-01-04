@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverExplicitContentFilter"
     ],
+    output: GuildExplicitContentFilter,
     args: [
         {
             name: "guild ID",

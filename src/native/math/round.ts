@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Rounds provided number to a certain number of decimal places",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "number",

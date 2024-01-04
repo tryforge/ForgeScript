@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverMaximumBitrate"
     ],
+    output: structures_1.ArgType.Number,
     description: "Returns the maximum bitrate for voice channels of this guild",
     brackets: false,
     args: [

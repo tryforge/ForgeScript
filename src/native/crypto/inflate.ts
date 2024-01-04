@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Decompresses given input",
     unwrap: true,
     brackets: true,
+    output: ArgType.String,
     args: [
         {
             name: "input",

@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverAfkTimeout"
     ],
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "guild ID",

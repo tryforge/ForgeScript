@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Retrieves current cooldown time in ms for given id",
     brackets: true,
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

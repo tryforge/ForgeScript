@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverChannelIDs"
     ],
+    output: array<ArgType.Channel>(),
     description: "Returns every channel id of the guild",
     args: [
         {

@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Checks whether a condition is valid",
     brackets: true,
     unwrap: false,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "condition",

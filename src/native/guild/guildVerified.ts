@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverVerified"
     ],
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverChannelCount"
     ],
+    output: structures_1.ArgType.Number,
     unwrap: true,
     args: [
         {

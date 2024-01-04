@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Loops through every element of the array to find a match",
     unwrap: false,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "name",

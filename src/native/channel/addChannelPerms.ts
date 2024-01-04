@@ -32,6 +32,7 @@ export default new NativeFunction({
             enum: PermissionFlagsBits,
         },
     ],
+    output: ArgType.Boolean,
     async execute(_, [ch, id, perms]) {
         const channel = ch as TextChannel
 

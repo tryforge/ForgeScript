@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.6",
     description: "Trims at the end of a string",
     brackets: true,
+    output: structures_1.ArgType.String,
     unwrap: true,
     args: [
         {

@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

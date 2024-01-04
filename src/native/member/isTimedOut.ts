@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Whether an member is timed out",
     unwrap: true,
     brackets: false,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

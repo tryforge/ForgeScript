@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Whether the number is valid",
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "number",

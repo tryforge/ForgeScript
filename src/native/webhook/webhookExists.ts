@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Checks whether given webhook id eixsts",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "id",

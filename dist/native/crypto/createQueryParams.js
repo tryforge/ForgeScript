@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Creates query params with given fields",
     brackets: true,
+    output: structures_1.ArgType.String,
     unwrap: true,
     args: [
         {

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     description: "Returns the shard id of the client",
     unwrap: false,
+    output: structures_1.ArgType.Number,
     execute(ctx) {
         return this.success(ctx.runtime.extras ?? ctx.client.shard?.ids.join(", "));
     },

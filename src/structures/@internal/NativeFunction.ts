@@ -30,6 +30,7 @@ export enum ArgType {
     URL,
     String,
     BigInt,
+    Unknown,
     OverwritePermission,
     Number,
     User,
@@ -102,6 +103,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
      */
     unwrap: Unwrap
     args?: [...T]
+    output?: ArgType | EnumLike | (ArgType | EnumLike)[]
 
     /**
      * Do not provide this.
@@ -152,6 +154,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? AttachmentBuilder
     : T extends ArgType.BigInt
     ? bigint
+    : T extends ArgType.Unknown 
+    ? unknown
     : T extends ArgType.Boolean
     ? boolean
     : T extends ArgType.Date

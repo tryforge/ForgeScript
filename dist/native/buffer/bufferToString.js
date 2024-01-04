@@ -22,6 +22,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false
         }
     ],
+    output: structures_1.ArgType.String,
     execute(ctx, [name, encoding]) {
         return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding || "utf-8"));
     },

@@ -7,6 +7,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpRequest",
     version: "1.0.0",
     description: "Performs an http request, returns the status code",
+    output: NativeFunction_1.ArgType.Number,
     args: [
         {
             name: "url",

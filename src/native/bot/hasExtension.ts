@@ -15,6 +15,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
+    output: ArgType.Boolean,
     execute(ctx, [ ext ]) {
         return this.success(!!ctx.client.options.extensions?.some(x => x.name === ext))
     },

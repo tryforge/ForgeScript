@@ -11,29 +11,30 @@ export declare enum ArgType {
     URL = 0,
     String = 1,
     BigInt = 2,
-    OverwritePermission = 3,
-    Number = 4,
-    User = 5,
-    Date = 6,
-    Guild = 7,
-    RoleOrUser = 8,
-    Invite = 9,
-    Permission = 10,
-    Json = 11,
-    Color = 12,
-    Enum = 13,
-    ForumTag = 14,
-    GuildEmoji = 15,
-    Boolean = 16,
-    Attachment = 17,
-    Reaction = 18,
-    Message = 19,
-    Channel = 20,
-    Role = 21,
-    Webhook = 22,
-    GuildSticker = 23,
-    Time = 24,
-    Member = 25
+    Unknown = 3,
+    OverwritePermission = 4,
+    Number = 5,
+    User = 6,
+    Date = 7,
+    Guild = 8,
+    RoleOrUser = 9,
+    Invite = 10,
+    Permission = 11,
+    Json = 12,
+    Color = 13,
+    Enum = 14,
+    ForumTag = 15,
+    GuildEmoji = 16,
+    Boolean = 17,
+    Attachment = 18,
+    Reaction = 19,
+    Message = 20,
+    Channel = 21,
+    Role = 22,
+    Webhook = 23,
+    GuildSticker = 24,
+    Time = 25,
+    Member = 26
 }
 export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean, Enum extends EnumLike = EnumLike> {
     name: string;
@@ -68,6 +69,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
      */
     unwrap: Unwrap;
     args?: [...T];
+    output?: ArgType | EnumLike | (ArgType | EnumLike)[];
     /**
      * Do not provide this.
      */
@@ -91,7 +93,7 @@ export type OverwritePermission = {
     value: null | boolean;
 };
 export type MarkRest<T, B extends boolean> = B extends true ? T[] : T;
-export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.URL ? string : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.RoleOrUser ? Role | User : T extends ArgType.Guild ? Guild : T extends ArgType.Color ? number : T extends ArgType.Role ? Role : T extends ArgType.Attachment ? AttachmentBuilder : T extends ArgType.BigInt ? bigint : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.OverwritePermission ? OverwritePermission : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
+export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.URL ? string : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.RoleOrUser ? Role | User : T extends ArgType.Guild ? Guild : T extends ArgType.Color ? number : T extends ArgType.Role ? Role : T extends ArgType.Attachment ? AttachmentBuilder : T extends ArgType.BigInt ? bigint : T extends ArgType.Unknown ? unknown : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.OverwritePermission ? OverwritePermission : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null;
 export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never;
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];

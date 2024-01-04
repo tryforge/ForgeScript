@@ -30,6 +30,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
+    output: structures_1.ArgType.URL,
     unwrap: true,
     execute(ctx, [g, size, ext]) {
         return this.success((g ?? ctx.guild)?.bannerURL({

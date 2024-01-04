@@ -9,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverMFALevel"
     ],
+    output: GuildMFALevel,
     args: [
         {
             name: "guild ID",

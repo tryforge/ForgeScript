@@ -8,6 +8,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Eval js code",
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "code",

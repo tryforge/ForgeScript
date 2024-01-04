@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Sends a message with a webhook",
     brackets: true,
     unwrap: true,
+    output: ArgType.Message,
     args: [
         {
             name: "url",

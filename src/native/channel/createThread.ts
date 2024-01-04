@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Creates a thread, returns thread channel id on success",
     unwrap: true,
+    output: ArgType.Channel,
     brackets: true,
     args: [
         {

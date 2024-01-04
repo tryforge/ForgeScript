@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Converts a string to kebab case",
     brackets: true,
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "message",

@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Sends a dm to the user",
     unwrap: true,
     brackets: true,
+    output: ArgType.Message,
     args: [
         {
             name: "user ID",

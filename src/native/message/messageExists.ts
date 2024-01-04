@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.5",
     description: "Returns whether given message id exists",
     unwrap: true,
+    output: ArgType.Boolean,
     brackets: true,
     args: [
         {

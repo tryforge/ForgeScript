@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Checks whether given value is bool like",
     brackets: true,
     unwrap: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "value",

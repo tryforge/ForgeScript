@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Deletes all emoji reactions from a message, returns amount of reaction emojis successfully deleted",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "channel ID",

@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     description: "Runs a command in console",
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "command",

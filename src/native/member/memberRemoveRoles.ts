@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Removes roles from a member and returns bool",
     unwrap: true,
     brackets: true,
+    output: ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
+const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$botOwnerID",
     version: "1.0.0",
@@ -29,6 +30,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         }
     ],
+    output: (0, array_1.default)(),
     unwrap: true,
     async execute(ctx, [returnAll, sep]) {
         if (!ctx.client.application.owner)

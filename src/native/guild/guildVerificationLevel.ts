@@ -1,3 +1,4 @@
+import { GuildVerificationLevel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverVerificationLevel"
     ],
+    output: GuildVerificationLevel,
     args: [
         {
             name: "guild ID",
@@ -19,6 +21,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return this.success((guild ?? ctx.guild)?.verificationLevel)
+        return this.success(GuildVerificationLevel[(guild ?? ctx.guild)?.verificationLevel])
     },
 })

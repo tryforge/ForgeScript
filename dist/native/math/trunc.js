@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the integer part of the a numeric expression, x, removing any fractional digits. If x is already an integer, the result is x",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Number,
     args: [
         {
             name: "number",

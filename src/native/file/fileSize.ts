@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Gets size of a file or directory in bytes",
     brackets: true,
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "path",

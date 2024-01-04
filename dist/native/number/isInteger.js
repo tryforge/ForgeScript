@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Whether the number is an integer",
     unwrap: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "number",

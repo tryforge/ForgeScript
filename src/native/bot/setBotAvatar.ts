@@ -19,6 +19,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
+    output: ArgType.Boolean,
     async execute(ctx, [url]) {
         return this.success(!!(await ctx.client.user.setAvatar(url).catch(noop)))
     },

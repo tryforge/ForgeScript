@@ -16,6 +16,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         }
     ],
+    output: structures_1.ArgType.Boolean,
     execute(ctx, [ext]) {
         return this.success(!!ctx.client.options.extensions?.some(x => x.name === ext));
     },

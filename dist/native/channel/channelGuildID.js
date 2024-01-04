@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the channel guild id",
     unwrap: true,
+    output: structures_1.ArgType.Guild,
     brackets: false,
     args: [
         {

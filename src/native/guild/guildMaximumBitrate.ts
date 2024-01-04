@@ -6,6 +6,7 @@ export default new NativeFunction({
     aliases: [
         "$serverMaximumBitrate"
     ],
+    output: ArgType.Number,
     description: "Returns the maximum bitrate for voice channels of this guild",
     brackets: false,
     args: [

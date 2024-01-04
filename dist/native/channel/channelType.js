@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the channel type",
     unwrap: true,
+    output: discord_js_1.ChannelType,
     brackets: false,
     args: [
         {

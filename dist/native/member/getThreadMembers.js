@@ -5,11 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
+const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$getThreadMembers",
     version: "1.0.0",
     description: "Gets thread members",
     brackets: true,
+    output: (0, array_1.default)(),
     unwrap: true,
     args: [
         {

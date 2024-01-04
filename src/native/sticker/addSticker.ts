@@ -4,8 +4,9 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$addSticker",
     version: "1.0.0",
-    description: "Adds a sticker to a guild, returns boolean",
+    description: "Adds a sticker to a guild, returns sticker id",
     unwrap: true,
+    output: ArgType.GuildSticker,
     brackets: true,
     args: [
         {
@@ -52,6 +53,6 @@ export default new NativeFunction({
                 description: desc || null,
             })
             .catch(noop)
-        return this.success(!!created)
+        return this.success(created?.id)
     },
 })

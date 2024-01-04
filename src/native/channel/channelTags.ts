@@ -1,15 +1,17 @@
 import { BaseChannel, ThreadChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$channelTags",
     version: "1.0.3",
     description: "Retrieves tags from a forum thread",
     unwrap: true,
+    output: array<ArgType.String>(),
     args: [
         {
             name: "channel ID",
-            description: "The channeol to get tags of",
+            description: "The channel to get tags of",
             rest: false,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isThread(),

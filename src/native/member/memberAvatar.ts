@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the member avatar",
     brackets: false,
+    output: ArgType.URL,
     args: [
         {
             name: "guild ID",

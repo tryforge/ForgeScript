@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverNameAcronym"
     ],
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "guild ID",

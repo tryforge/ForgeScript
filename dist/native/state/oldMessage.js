@@ -8,6 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Retrieves old data from an event whose context was a message instance",
     brackets: true,
     unwrap: true,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "property",

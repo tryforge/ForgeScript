@@ -9,6 +9,7 @@ export default new NativeFunction({
         "$serverMemberCount",
         "$serverMembersCount"
     ],
+    output: ArgType.Number,
     args: [
         {
             name: "guild ID",

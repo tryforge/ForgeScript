@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the error message",
     unwrap: false,
+    output: structures_1.ArgType.Unknown,
     execute(ctx) {
         return this.success(ctx.runtime.extras);
     },

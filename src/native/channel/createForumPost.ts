@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Creates a forum post, returns the post channel id",
     unwrap: true,
+    output: ArgType.Channel,
     args: [
         {
             name: "channel ID",

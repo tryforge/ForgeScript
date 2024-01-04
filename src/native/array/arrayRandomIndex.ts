@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Returns a random index",
     unwrap: true,
+    output: ArgType.Number,
     brackets: true,
     args: [
         {

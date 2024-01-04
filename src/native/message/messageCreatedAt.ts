@@ -4,6 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$messageCreatedAt",
     version: "1.0.2",
+    output: ArgType.Number,
     description: "Returns the timestamp of the message",
     unwrap: true,
     brackets: false,

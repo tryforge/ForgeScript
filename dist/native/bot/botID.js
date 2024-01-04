@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$clientID"
     ],
+    output: structures_1.ArgType.User,
     execute(ctx) {
         return this.success(ctx.client.user.id);
     },

@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import noop from "../../functions/noop"
 import { ArgType, NativeFunction } from "../../structures"
 
@@ -25,6 +26,7 @@ export default new NativeFunction({
             description: "The separator for each id"
         }
     ],
+    output: array<ArgType.User>(),
     async execute(ctx, [ g, sep ]) {
         g ??= ctx.guild!
         const bans = await g?.bans.fetch().catch(noop)

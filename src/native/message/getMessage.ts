@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Retrieves data of a message",
     unwrap: true,
+    output: ArgType.Unknown,
     brackets: true,
     args: [
         {

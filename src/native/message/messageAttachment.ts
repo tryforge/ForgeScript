@@ -4,6 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$messageAttachment",
     version: "1.4.0",
+    output: ArgType.URL,
     description: "Retrieves an attachment from this message",
     brackets: false,
     unwrap: true,

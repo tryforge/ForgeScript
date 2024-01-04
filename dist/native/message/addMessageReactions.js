@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Adds reactions to a message, returns amount of emojis successfully reacted",
     unwrap: true,
+    output: structures_1.ArgType.Number,
     brackets: true,
     args: [
         {

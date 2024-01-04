@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Creates a channel in a guild, returns the channel id",
     unwrap: true,
     brackets: true,
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Separates thousands in the number",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "number",

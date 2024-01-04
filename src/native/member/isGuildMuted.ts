@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Whether a member is server muted",
     brackets: false,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

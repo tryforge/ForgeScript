@@ -8,6 +8,7 @@ export default new NativeFunction({
     description: "Deletes all emoji reactions from a message, returns amount of reaction emojis successfully deleted",
     unwrap: true,
     brackets: true,
+    output: ArgType.Number,
     args: [
         {
             name: "channel ID",

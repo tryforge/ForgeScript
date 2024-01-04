@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Returns a random member ID of a guild",
     unwrap: true,
+    output: ArgType.Member,
     brackets: false,
     args: [
         {

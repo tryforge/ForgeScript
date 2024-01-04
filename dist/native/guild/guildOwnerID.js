@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverOwnerID"
     ],
+    output: structures_1.ArgType.User,
     args: [
         {
             name: "guild ID",

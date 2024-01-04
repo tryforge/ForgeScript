@@ -12,6 +12,7 @@ export default new NativeFunction({
         "$getGuildBanReason",
         "$getServerBanReason"
     ],
+    output: ArgType.String,
     description: "Fetches a ban reason of a user",
     args: [
         {

@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$debug",
     version: "1.0.0",
+    output: structures_1.ArgType.String,
     description: "Returns the debug message",
     unwrap: false,
     execute(ctx) {

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Deletes some permission overwrites from a channel, returns bool",
     brackets: true,
+    output: ArgType.Boolean,
     unwrap: true,
     args: [
         {

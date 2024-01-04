@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Makes a string lowercase",
     unwrap: true,
+    output: ArgType.String,
     args: [
         {
             name: "string",

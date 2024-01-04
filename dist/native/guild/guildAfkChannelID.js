@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     description: "Returns the server's afk channel ID",
     brackets: false,
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "guild ID",

@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the numbers of elements in an array",
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "name",

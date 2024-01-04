@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the node version",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute(ctx) {
         // eslint-disable-next-line no-undef
         return this.success(process.version);

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Gets the channel id of a channel name",
     unwrap: true,
+    output: structures_1.ArgType.Channel,
     brackets: false,
     args: [
         {

@@ -1,9 +1,11 @@
 import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$messageAttachments",
     version: "1.4.0",
+    output: array<ArgType.Attachment>(),
     description: "Retrieves all attachments of this message",
     brackets: false,
     unwrap: true,

@@ -6,6 +6,7 @@ export default new NativeFunction({
     brackets: false,
     description: "Counts number of args in message",
     unwrap: true,
+    output: ArgType.Number,
     args: [
         {
             name: "text",

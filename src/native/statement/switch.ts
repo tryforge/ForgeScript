@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Switch-case statement for javascript",
     unwrap: false,
     experimental: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "value",

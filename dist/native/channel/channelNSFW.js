@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns whether the channel is nsfw",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

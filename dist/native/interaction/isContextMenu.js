@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.6",
     description: "Whether the interaction is a context menu",
     unwrap: false,
+    output: structures_1.ArgType.Boolean,
     execute(ctx) {
         return this.success(Boolean(ctx.isContextCommand()));
     },

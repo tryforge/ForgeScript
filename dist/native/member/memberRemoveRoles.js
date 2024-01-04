@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Removes roles from a member and returns bool",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

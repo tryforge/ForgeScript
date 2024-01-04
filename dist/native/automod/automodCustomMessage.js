@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "The custom message used by automod on this detection",
     unwrap: false,
+    output: structures_1.ArgType.String,
     execute(ctx) {
         return this.success(ctx.automod?.action.metadata.customMessage);
     },

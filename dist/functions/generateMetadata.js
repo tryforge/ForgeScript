@@ -8,7 +8,48 @@ const enum_1 = require("./enum");
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m;
 const ArgEnumRegex = /enum: +(\w+),?/gim;
-function default_1(functionsAbsolutePath, mainCategoryName, eventName) {
+const OutputRegex = /output:(array(<[A-z.]+>)?\((\w+)?\)|(\w+)|ArgType.(\w+)|\[((\w+|ArgType.(\w+)),?)+\]),/im;
+function getOutputValues(fn, txt, enums) {
+    const output = OutputRegex.exec(txt.replace(/[^0-9A-z:,.[\]<>()|]/gm, ""))?.[1].replace(/[[\]]/g, "").trim();
+    if (!output) {
+        if (fn.output) {
+            structures_1.Logger.error(`OUTPUT LOOKUP FAILURE: in ${fn.name}, out: ${output}`);
+            (0, process_1.exit)();
+        }
+        return null;
+    }
+    const arr = new Array();
+    let i = 0;
+    for (const out of output.split(/,/)) {
+        const arrMatch = /array(?:<(.*)>)?\((\w+)?\)/gim.exec(out);
+        const match = out.match(/\.(\w+)/)?.[1];
+        if (!arrMatch && match)
+            arr.push(match);
+        else {
+            if (arrMatch) {
+                const [, raw, enumName] = arrMatch;
+                const types = raw?.replaceAll("ArgType.", "") ?? enumName;
+                const isMultiple = types.includes("|");
+                arr.push(`${isMultiple ? `(${types.trim().split("|").join(" | ")})` : types}[]`);
+                if (enumName) {
+                    const en = Array.isArray(fn.output) ? fn.output[i] : fn.output;
+                    if (!(enumName in enums))
+                        enums[enumName] = (0, enum_1.enumToArray)(en);
+                }
+            }
+            else {
+                arr.push(out);
+                const en = Array.isArray(fn.output) ? fn.output[i] : fn.output;
+                if (!(out in enums))
+                    enums[out] = (0, enum_1.enumToArray)(en);
+            }
+        }
+        i++;
+    }
+    return arr;
+}
+function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false) {
+    let total = 0;
     const enums = {};
     managers_1.FunctionManager.load("Metadata", functionsAbsolutePath);
     const metaOutPath = "./metadata";
@@ -32,6 +73,15 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName) {
                     }
                 }
             }
+            const output = getOutputValues(fn.data, txt, enums);
+            if (output?.length)
+                Reflect.set(fn.data, "output", output);
+            else {
+                if (warnOnNoOutput)
+                    structures_1.Logger.warn(`Function ${fn.name} does not return anything!`);
+                total++;
+                Reflect.deleteProperty(fn.data, "output");
+            }
             let modified = false;
             const pathSplits = fn.path.split(/(?:\\|\/)/gim);
             const category = pathSplits.at(-2) === mainCategoryName ? null : pathSplits.at(-2);
@@ -50,6 +100,8 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName) {
             if (modified)
                 (0, fs_1.writeFileSync)(nativePath, txt);
         }
+        if (warnOnNoOutput)
+            structures_1.Logger.warn(`${total.toLocaleString()} functions are missing output value`);
         (0, fs_1.writeFileSync)(`${metaOutPath}/enums.json`, JSON.stringify(enums), "utf-8");
         (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
     }

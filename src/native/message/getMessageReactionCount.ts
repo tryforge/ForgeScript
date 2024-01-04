@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Gets the amount of users that have reacted to a specific emoji",
     unwrap: true,
+    output: ArgType.Number,
     brackets: true,
     args: [
         {

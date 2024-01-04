@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$mentionedRolesCount"
     ],
+    output: structures_1.ArgType.Number,
     version: "1.3.0",
     description: "Returns the mentioned role count",
     unwrap: false,

@@ -11,6 +11,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Deletes user emoji reaction from a message, returns bool",
     unwrap: true,
     brackets: true,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "channel ID",

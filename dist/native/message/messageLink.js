@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Retrieves a message url",
     unwrap: true,
     brackets: false,
+    output: structures_1.ArgType.URL,
     args: [
         {
             name: "channel ID",

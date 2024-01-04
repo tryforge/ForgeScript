@@ -5,6 +5,7 @@ export default new NativeFunction({
     aliases: [
         "$mentionedRolesCount"
     ],
+    output: ArgType.Number,
     version: "1.3.0",
     description: "Returns the mentioned role count",
     unwrap: false,

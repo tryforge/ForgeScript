@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a role name with given id",
     brackets: false,
     unwrap: true,
+    output: structures_1.ArgType.String,
     args: [
         {
             name: "guild ID",

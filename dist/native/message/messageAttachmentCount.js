@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageAttachmentCount",
     version: "1.4.0",
+    output: structures_1.ArgType.Number,
     description: "Retrieve the amount of attachments in this message",
     brackets: false,
     unwrap: true,

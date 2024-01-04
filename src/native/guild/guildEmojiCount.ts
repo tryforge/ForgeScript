@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverEmojiCount"
     ],
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

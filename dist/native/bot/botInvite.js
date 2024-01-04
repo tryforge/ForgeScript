@@ -20,6 +20,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
+    output: structures_1.ArgType.URL,
     execute(ctx, [perms]) {
         return this.success(ctx.client.generateInvite({
             scopes: [discord_js_1.OAuth2Scopes.Bot],

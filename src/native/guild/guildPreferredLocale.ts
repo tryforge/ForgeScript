@@ -1,3 +1,4 @@
+import { Locale } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,6 +9,7 @@ export default new NativeFunction({
     aliases: [
         "$serverPreferredLocale"
     ],
+    output: Locale,
     args: [
         {
             name: "guild ID",

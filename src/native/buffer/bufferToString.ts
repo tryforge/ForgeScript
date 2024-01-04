@@ -21,6 +21,7 @@ export default new NativeFunction({
             rest: false
         }
     ],
+    output: ArgType.String,
     execute(ctx, [ name, encoding ]) {
         return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding as BufferEncoding || "utf-8"))
     },

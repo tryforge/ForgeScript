@@ -8,6 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverRulesChannelID"
     ],
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

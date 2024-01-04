@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Returns the amount of children this category has",
     brackets: false,
+    output: ArgType.Number,
     unwrap: true,
     args: [
         {

@@ -16,6 +16,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Boolean
         }
     ],
+    output: structures_1.ArgType.String,
     execute(ctx, [suppress]) {
         suppress ??= false;
         return this.success(ctx.client.applicationCommands.getDisplay(ctx.interaction, suppress));

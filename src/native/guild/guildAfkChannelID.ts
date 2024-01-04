@@ -8,6 +8,7 @@ export default new NativeFunction({
     ],
     description: "Returns the server's afk channel ID",
     brackets: false,
+    output: ArgType.Channel,
     args: [
         {
             name: "guild ID",

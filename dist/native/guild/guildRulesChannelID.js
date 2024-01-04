@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$serverRulesChannelID"
     ],
+    output: structures_1.ArgType.Channel,
     args: [
         {
             name: "guild ID",

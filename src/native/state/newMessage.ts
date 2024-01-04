@@ -7,6 +7,7 @@ export default new NativeFunction({
     description: "Retrieves new data from an event whose context was a message instance",
     brackets: true,
     unwrap: true,
+    output: ArgType.Unknown,
     args: [
         {
             name: "property",

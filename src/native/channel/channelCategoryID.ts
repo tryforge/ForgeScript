@@ -6,6 +6,7 @@ export default new NativeFunction({
     description: "Returns the channel category id",
     unwrap: true,
     brackets: false,
+    output: ArgType.Channel,
     args: [
         {
             name: "channel ID",
