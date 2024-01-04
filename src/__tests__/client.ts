@@ -76,6 +76,18 @@ client.commands.add({
 })
 
 client.commands.add({
+    type: "messageCreate",
+    name: "body",
+    code: `
+    $!jsonLoad[json;{}]
+    $!jsonSet[$message;json;message]
+    $!jsonSet[$authorID;json;id]
+    $!jsonSet[$userAvatar;json;avatar]
+    $!httpSetBody[$env[json]]
+    $codeBlock[$env[json]]
+    `
+})
+client.commands.add({
     type: Events.GuildMemberAdd,
     code: "$sendMessage[1146874219515346984;<@$authorID> has joined using invite code $inviterCode by <@$inviterID>]",
 })

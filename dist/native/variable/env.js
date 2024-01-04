@@ -4,6 +4,9 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$env",
     version: "1.0.0",
+    aliases: [
+        "$jsonDump"
+    ],
     output: NativeFunction_1.ArgType.Unknown,
     description: "Retrieves an environment value",
     args: [

@@ -303,7 +303,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         try {
             return JSON.parse(str)
         } catch (error: unknown) {
-            return
+            return str
         }
     }
 

@@ -9,23 +9,23 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     args: [
         {
-            name: "variable",
-            description: "The $env variable to set this value on",
+            name: "value",
+            description: "The value to set",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.Json
         },
         {
-            name: "value",
-            description: "The value to assign",
-            type: structures_1.ArgType.Json,
-            rest: false,
+            name: "keys",
+            description: "The keys to traverse",
+            type: structures_1.ArgType.String,
+            rest: true,
             required: true
         }
     ],
-    execute(ctx, [key, value]) {
-        ctx.setEnvironmentKey(key, value);
-        return this.success();
+    output: structures_1.ArgType.Boolean,
+    execute(ctx, [value, keys]) {
+        return this.success(ctx.traverseAddEnvironmentKey(value, ...keys));
     },
 });
 //# sourceMappingURL=jsonSet.js.map

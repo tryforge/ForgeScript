@@ -232,7 +232,7 @@ class CompiledFunction {
             return JSON.parse(str);
         }
         catch (error) {
-            return;
+            return str;
         }
     }
     resolveUser(ctx, arg, str, ref) {

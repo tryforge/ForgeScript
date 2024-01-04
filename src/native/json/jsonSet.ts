@@ -8,22 +8,22 @@ export default new NativeFunction({
     brackets: true,
     args: [
         {
-            name: "variable",
-            description: "The $env variable to set this value on",
+            name: "value",
+            description: "The value to set",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.Json
         },
         {
-            name: "value",
-            description: "The value to assign",
-            type: ArgType.Json,
-            rest: false,
+            name: "keys",
+            description: "The keys to traverse",
+            type: ArgType.String,
+            rest: true,
             required: true
         }
     ],
-    execute(ctx, [ key, value ]) {
-        ctx.setEnvironmentKey(key, value)
-        return this.success()
+    output: ArgType.Boolean,
+    execute(ctx, [ value, keys ]) {
+        return this.success(ctx.traverseAddEnvironmentKey(value, ...keys))
     },
 })

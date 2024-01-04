@@ -146,6 +146,18 @@ class Context {
     setEnvironmentKey(name, value) {
         return (this.#environment[name] = value);
     }
+    traverseAddEnvironmentKey(value, ...keys) {
+        let data = this.#environment;
+        for (let i = 0, len = keys.length - 1; i < len; i++) {
+            const key = keys[i];
+            if (!(key in data))
+                return false;
+            data = data[key];
+        }
+        const lastKey = keys[keys.length - 1];
+        data[lastKey] = value;
+        return true;
+    }
     deleteEnvironmentKey(name) {
         return delete this.#environment[name];
     }

@@ -4,6 +4,9 @@ import { Return } from "../../structures/@internal/Return"
 export default new NativeFunction({
     name: "$env",
     version: "1.0.0",
+    aliases: [
+        "$jsonDump"
+    ],
     output: ArgType.Unknown,
     description: "Retrieves an environment value",
     args: [
