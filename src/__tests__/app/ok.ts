@@ -1,10 +1,17 @@
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js"
 import { ApplicationCommand } from "../../structures"
 
-export default new ApplicationCommand(module.exports = {
+export default new ApplicationCommand({
     data: {
         name: "eval",
-        description: "Evaluate a code. ",
+        name_localizations: {
+            "es-ES": "evaluar",
+
+        },
+        description_localizations: {
+            "es-ES": "Evalua un codigo"
+        },
+        description: "Evaluate a code.",
         options: [
             {
                 type: 3,

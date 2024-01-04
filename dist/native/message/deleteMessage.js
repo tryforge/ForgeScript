@@ -10,6 +10,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$deleteMessages"
+    ],
     description: "Delete given message ids, returns the count of messages deleted",
     args: [
         {
@@ -22,20 +25,21 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "messages",
-            description: "The messages to delete",
+            description: "The message ids to delete",
             rest: true,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.Message,
+            type: structures_1.ArgType.String,
         },
     ],
     async execute(_, [channel, messages]) {
+        const ch = channel;
         if (!messages.length)
             return this.success(0);
         if (messages.length === 1) {
             return this.success(
             // @ts-ignore
-            !!(await messages[0].delete().catch(noop_1.default)) + false);
+            !!(await ch.messages.delete(messages[0]).catch(noop_1.default)) + 0);
         }
         const col = (await channel
             .bulkDelete(messages, true)

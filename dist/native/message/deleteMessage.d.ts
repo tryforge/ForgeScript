@@ -13,7 +13,7 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     pointer: number;
-    type: ArgType.Message;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=deleteMessage.d.ts.map

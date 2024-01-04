@@ -1,10 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-exports.default = new structures_1.ApplicationCommand(module.exports = {
+exports.default = new structures_1.ApplicationCommand({
     data: {
         name: "eval",
-        description: "Evaluate a code. ",
+        name_localizations: {
+            "es-ES": "evaluar",
+        },
+        description_localizations: {
+            "es-ES": "Evalua un codigo"
+        },
+        description: "Evaluate a code.",
         options: [
             {
                 type: 3,
