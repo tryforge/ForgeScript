@@ -48,12 +48,6 @@ export default new NativeFunction({
             description: "The separator to use in case of array output",
             type: ArgType.String,
             rest: false
-        },
-        {
-            name: "user",
-            rest: false,
-            description: "The user to filter by",
-            type: ArgType.User
         }
     ],
     async execute(ctx, [ g, type, prop, index, sep ]) {

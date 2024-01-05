@@ -58,12 +58,6 @@ exports.default = new structures_1.NativeFunction({
             description: "The separator to use in case of array output",
             type: structures_1.ArgType.String,
             rest: false
-        },
-        {
-            name: "user",
-            rest: false,
-            description: "The user to filter by",
-            type: structures_1.ArgType.User
         }
     ],
     async execute(ctx, [g, user, type, prop, index, sep]) {

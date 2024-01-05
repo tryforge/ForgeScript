@@ -31,11 +31,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.String;
     rest: false;
-}, {
-    name: string;
-    rest: false;
-    description: string;
-    type: ArgType.User;
 }], true>;
 export default _default;
 //# sourceMappingURL=fetchAuditLog.d.ts.map
