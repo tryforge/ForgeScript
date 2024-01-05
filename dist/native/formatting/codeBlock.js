@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
-const markdown_1 = require("./markdown");
+const inlineCode_1 = require("./inlineCode");
 exports.default = new structures_1.NativeFunction({
     name: "$codeBlock",
     version: "1.3.0",
@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [str, lang]) {
-        str = str.replace(markdown_1.MarkdownEscapeRegex, "\\$1");
+        str = str.replace(inlineCode_1.MarkdownEscapeRegex, "\\$1");
         return this.success(lang ?
             (0, discord_js_1.codeBlock)(lang, str) :
             (0, discord_js_1.codeBlock)(str));

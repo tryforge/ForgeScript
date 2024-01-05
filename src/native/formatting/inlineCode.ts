@@ -4,7 +4,11 @@ import { ArgType, NativeFunction } from "../../structures"
 export const MarkdownEscapeRegex = /(`)/gim
 
 export default new NativeFunction({
-    name: "$markdown",
+    name: "$inlineCode",
+    aliases: [
+        "$inline",
+        "$markdown"
+    ],
     version: "1.3.0",
     brackets: true,
     description: "Adds backticks to text",

@@ -4,7 +4,11 @@ exports.MarkdownEscapeRegex = void 0;
 const structures_1 = require("../../structures");
 exports.MarkdownEscapeRegex = /(`)/gim;
 exports.default = new structures_1.NativeFunction({
-    name: "$markdown",
+    name: "$inlineCode",
+    aliases: [
+        "$inline",
+        "$markdown"
+    ],
     version: "1.3.0",
     brackets: true,
     description: "Adds backticks to text",
@@ -23,4 +27,4 @@ exports.default = new structures_1.NativeFunction({
         return this.success(`\`${str.replace(exports.MarkdownEscapeRegex, "\\$1")}\``);
     },
 });
-//# sourceMappingURL=markdown.js.map
+//# sourceMappingURL=inlineCode.js.map

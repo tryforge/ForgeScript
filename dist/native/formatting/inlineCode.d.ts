@@ -8,4 +8,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
 }], true>;
 export default _default;
-//# sourceMappingURL=markdown.d.ts.map
+//# sourceMappingURL=inlineCode.d.ts.map

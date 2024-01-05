@@ -1,6 +1,6 @@
 import { bold, codeBlock } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
-import { MarkdownEscapeRegex } from "./markdown"
+import { MarkdownEscapeRegex } from "./inlineCode"
 
 export default new NativeFunction({
     name: "$codeBlock",
