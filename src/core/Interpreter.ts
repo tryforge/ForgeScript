@@ -14,6 +14,7 @@ import {
     Message,
     Presence,
     Role,
+    StageInstance,
     User,
     VoiceState,
 } from "discord.js"
@@ -30,6 +31,7 @@ export interface IStates {
     audit: GuildAuditLogsEntry
     channel: Channel
     guild: Guild
+    stage: StageInstance
     invite: Invite
 }
 

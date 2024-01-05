@@ -1,7 +1,7 @@
 import { Sendable } from "../structures/@internal/Container";
 import { IExtendedCompilationResult } from "./Compiler";
 import { ForgeClient } from "./ForgeClient";
-import { Channel, Guild, GuildAuditLogsEntry, GuildEmoji, GuildMember, Invite, Message, Presence, Role, User, VoiceState } from "discord.js";
+import { Channel, Guild, GuildAuditLogsEntry, GuildEmoji, GuildMember, Invite, Message, Presence, Role, StageInstance, User, VoiceState } from "discord.js";
 import { BaseCommand } from "../structures";
 export interface IStates {
     message: Message;
@@ -14,6 +14,7 @@ export interface IStates {
     audit: GuildAuditLogsEntry;
     channel: Channel;
     guild: Guild;
+    stage: StageInstance;
     invite: Invite;
 }
 export type States = {
