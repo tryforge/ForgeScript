@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseCommand = void 0;
 const Compiler_1 = require("../../core/Compiler");
 const __1 = require("..");
+let id = 0;
 class BaseCommand {
     data;
     compiled;
+    id = ++id;
     constructor(data) {
         this.data = data;
         this.compiled = {

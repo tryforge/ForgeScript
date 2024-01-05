@@ -32,8 +32,10 @@ export interface ICompiledCommand {
     code: IExtendedCompilationResult
 }
 
+let id = 0
 export class BaseCommand<T> {
     public readonly compiled: ICompiledCommand
+    public readonly id = ++id
 
     public constructor(public readonly data: IBaseCommand<T>) {
         this.compiled = {

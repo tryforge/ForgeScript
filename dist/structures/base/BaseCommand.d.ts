@@ -24,6 +24,7 @@ export interface ICompiledCommand {
 export declare class BaseCommand<T> {
     readonly data: IBaseCommand<T>;
     readonly compiled: ICompiledCommand;
+    readonly id: number;
     constructor(data: IBaseCommand<T>);
     setPath(p: string): this;
     validate(): void;
