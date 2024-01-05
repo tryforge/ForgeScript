@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MarkdownEscapeRegex = void 0;
-const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.MarkdownEscapeRegex = /(`)/gim;
 exports.default = new structures_1.NativeFunction({
@@ -21,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     execute(ctx, [str]) {
-        return this.success((0, discord_js_1.bold)(str.replace(exports.MarkdownEscapeRegex, "\\$1")));
+        return this.success(`\`${str.replace(exports.MarkdownEscapeRegex, "\\$1")}\``);
     },
 });
 //# sourceMappingURL=markdown.js.map

@@ -21,6 +21,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ str ]) {
         
-        return this.success(bold(str.replace(MarkdownEscapeRegex, "\\$1")))
+        return this.success(`\`${str.replace(MarkdownEscapeRegex, "\\$1")}\``)
     },
 })
