@@ -26,7 +26,7 @@ export default new NativeFunction({
             if (typeof evaled !== "string") evaled = inspect(evaled, { depth: 1 })
             return this.success(evaled)
         } catch (error: unknown) {
-            return this.err(this.error(ErrorType.Custom, (error as Error).message))
+            return this.error(ErrorType.Custom, (error as Error).message)
         }
     },
 })

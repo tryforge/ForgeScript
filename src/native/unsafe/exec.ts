@@ -22,7 +22,7 @@ export default new NativeFunction({
             const exec = await execSync(command, { encoding: "utf-8" })
             return this.success(exec)
         } catch (error: any) {
-            return this.err(this.error(ErrorType.Custom, (error as Error).message))
+            return this.error(error)
         }
     },
 })

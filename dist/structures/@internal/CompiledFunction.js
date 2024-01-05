@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompiledFunction = void 0;
 const discord_js_1 = require("discord.js");
-const Compiler_1 = require("../../core/Compiler");
 const noop_1 = __importDefault(require("../../functions/noop"));
 const FunctionManager_1 = require("../../managers/FunctionManager");
 const ForgeError_1 = require("../forge/ForgeError");
@@ -176,7 +175,7 @@ class CompiledFunction {
         return this.unsafeSuccess(resolver(args));
     }
     argTypeRejection(arg, value) {
-        return this.err(this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]));
+        return this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]);
     }
     resolveNumber(ctx, arg, str, ref) {
         const value = Number(str);
@@ -347,7 +346,7 @@ class CompiledFunction {
         if (value === undefined)
             return this.argTypeRejection(arg, strValue);
         if (value === null && arg.required) {
-            return this.err(this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name));
+            return this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name);
         }
         if (arg.check !== undefined && !arg.check(value))
             return this.argTypeRejection(arg, strValue);
@@ -357,7 +356,12 @@ class CompiledFunction {
         return this.data.fields !== null;
     }
     error(type, ...args) {
-        return new ForgeError_1.ForgeError(this, type, ...args);
+        if (type instanceof Error)
+            return new Return_1.Return(Return_1.ReturnType.Error, type);
+        return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(this, type, ...args));
+    }
+    customError(msg) {
+        return this.error(ForgeError_1.ErrorType.Custom, msg);
     }
     async execute(ctx) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -396,9 +400,6 @@ class CompiledFunction {
     return(value) {
         return new Return_1.Return(Return_1.ReturnType.Return, value);
     }
-    err(value) {
-        return new Return_1.Return(Return_1.ReturnType.Error, value);
-    }
     stop() {
         return new Return_1.Return(Return_1.ReturnType.Stop, null);
     }
@@ -419,38 +420,6 @@ class CompiledFunction {
     }
     success(value = null) {
         return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : value);
-    }
-    toExecutableCode(index, previousStore = "args", previousStoreFn = "ctx.runtime.data.functions") {
-        if (!this.fn.data.unwrap || !this.data.fields?.length) {
-            return `
-            rt = await ${previousStoreFn}[${index}].execute(ctx)
-            if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-            ${previousStore}[${index}] = rt.value
-            `;
-        }
-        const store = `${previousStore}_${this.data.name}_${index}`;
-        const storeFn = `${store}_fn`;
-        return `
-        const ${storeFn} = ${previousStoreFn}[${index}]
-        const ${store} = new Array(${this.data.fields.length})
-        ${this.data.fields.map((x, i) => {
-            const field = x;
-            const isRest = this.fn.data.args[i]?.rest !== false;
-            const nextStore = `${store}_args`;
-            const nextStoreFn = `${storeFn}.data.fields[${i}].functions`;
-            let matches = 0;
-            return `
-                ${field.functions.length ? `const ${nextStore} = new Array(${field.functions.length})` : ""}
-                ${field.functions.map((x, i) => x.toExecutableCode(i, nextStore, nextStoreFn)).join("\n")}
-                ${`${store}[${i}] = ${isRest ? nextStore : `\`${field.value.replace(Compiler_1.Compiler["SystemRegex"], (match) => {
-                return `\${${nextStore}[${matches++}] ?? ""}`;
-            }).replaceAll("`", "\\`")}\``}`}
-                `;
-        }).join("\n")}
-        rt = await ${storeFn}.execute(ctx, ${store})
-        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-        ${previousStore}[${index}] = rt.value
-        `;
     }
 }
 exports.CompiledFunction = CompiledFunction;

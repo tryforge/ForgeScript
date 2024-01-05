@@ -38,7 +38,7 @@ exports.default = new NativeFunction_1.NativeFunction({
         }
         catch (error) {
             Logger_1.Logger.error(error);
-            return this.err(error);
+            return this.error(error);
         }
     },
 });

@@ -36,9 +36,9 @@ export default new NativeFunction({
             })
 
             return result === null ? this.stop() : this.success(send ? undefined : result)
-        } catch (error: unknown) {
+        } catch (error: any) {
             Logger.error(error)
-            return this.err(error as Error)
+            return this.error(error)
         }
     },
 })

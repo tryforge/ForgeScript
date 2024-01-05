@@ -28,7 +28,7 @@ exports.default = new NativeFunction_1.NativeFunction({
             return this.success(evaled);
         }
         catch (error) {
-            return this.err(this.error(ForgeError_1.ErrorType.Custom, error.message));
+            return this.error(ForgeError_1.ErrorType.Custom, error.message);
         }
     },
 });

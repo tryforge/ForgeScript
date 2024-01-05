@@ -28,7 +28,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     execute(ctx, [name, args]) {
         const fn = ctx.client.functions.get(name);
         if (!fn)
-            return this.err(this.error(ForgeError_1.ErrorType.UnknownXName, "function", name));
+            return this.error(ForgeError_1.ErrorType.UnknownXName, "function", name);
         return fn.call(ctx, args);
     },
 });

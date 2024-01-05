@@ -238,7 +238,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private argTypeRejection(arg: IArg, value: unknown) {
-        return this.err(this.error(ErrorType.InvalidArgType, `${value}`, arg.name, ArgType[arg.type]))
+        return this.error(ErrorType.InvalidArgType, `${value}`, arg.name, ArgType[arg.type])
     }
 
     private resolveNumber(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -443,7 +443,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (value === undefined) return this.argTypeRejection(arg, strValue)
 
         if (value === null && arg.required) {
-            return this.err(this.error(ErrorType.MissingArg, this.data.name, arg.name))
+            return this.error(ErrorType.MissingArg, this.data.name, arg.name)
         }
 
         if (arg.check !== undefined && !arg.check(value)) return this.argTypeRejection(arg, strValue)
@@ -455,8 +455,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return this.data.fields !== null
     }
 
-    public error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): ForgeError<T> {
-        return new ForgeError(this, type, ...args)
+    public error(err: Error): Return<ReturnType.Error>
+    public error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): Return<ReturnType.Error>
+    public error<T extends ErrorType>(type: T | Error, ...args: GetErrorArgs<T>): Return<ReturnType.Error> {
+        if (type instanceof Error)
+            return new Return(ReturnType.Error, type)
+        return new Return(ReturnType.Error, new ForgeError(this, type, ...args))
+    }
+
+    public customError(msg: string) {
+        return this.error(ErrorType.Custom, msg)
     }
 
     public async execute(ctx: Context): Promise<Return> {
@@ -503,10 +511,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return new Return(ReturnType.Return, value)
     }
 
-    public err(value: ReturnValue<ReturnType.Error>) {
-        return new Return(ReturnType.Error, value)
-    }
-
     public stop() {
         return new Return(ReturnType.Stop, null)
     }
@@ -533,47 +537,5 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     public success(value: ReturnValue<ReturnType.Success> = null) {
         return new Return(ReturnType.Success, this.data.negated ? null : value)
-    }
-
-    private toExecutableCode(index: number, previousStore = "args", previousStoreFn = "ctx.runtime.data.functions"): string {
-        if (!this.fn.data.unwrap || !this.data.fields?.length) {
-            return `
-            rt = await ${previousStoreFn}[${index}].execute(ctx)
-            if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-            ${previousStore}[${index}] = rt.value
-            `
-        }
-
-        const store = `${previousStore}_${this.data.name}_${index}`
-        const storeFn = `${store}_fn`
-
-        return `
-        const ${storeFn} = ${previousStoreFn}[${index}]
-        const ${store} = new Array(${this.data.fields!.length})
-        ${
-            this.data.fields!.map((x, i) => {
-                const field = x as IExtendedCompiledFunctionField
-                const isRest = this.fn.data.args![i]?.rest !== false
-                const nextStore = `${store}_args`
-                const nextStoreFn = `${storeFn}.data.fields[${i}].functions` 
-
-                let matches = 0
-                return `
-                ${field.functions.length ? `const ${nextStore} = new Array(${field.functions.length})` : ""}
-                ${field.functions.map((x, i) => x.toExecutableCode(i, nextStore, nextStoreFn)).join("\n")}
-                ${
-    `${store}[${i}] = ${
-        isRest ? nextStore : `\`${field.value.replace(Compiler["SystemRegex"], (match) => {
-            return `\${${nextStore}[${matches++}] ?? ""}`
-        }).replaceAll("`", "\\`")}\``
-    }`
-}
-                `
-            }).join("\n")
-}
-        rt = await ${storeFn}.execute(ctx, ${store})
-        if (!rt.success && !ctx.handleNotSuccess(rt)) return null
-        ${previousStore}[${index}] = rt.value
-        `
     }
 }

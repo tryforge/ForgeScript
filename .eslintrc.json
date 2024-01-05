@@ -12,6 +12,14 @@
         "eslint:recommended",
         "prettier"
     ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "no-dupe-class-members": "off"
+            }
+        }
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 12

@@ -1,6 +1,6 @@
 import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField } from "../../core/Compiler";
 import { Context } from "./Context";
-import { ErrorType, ForgeError, GetErrorArgs } from "../forge/ForgeError";
+import { ErrorType, GetErrorArgs } from "../forge/ForgeError";
 import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction";
 import { Return, ReturnType, ReturnValue } from "./Return";
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
@@ -82,7 +82,9 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolvePointer;
     private resolveArg;
     get hasFields(): boolean;
-    error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): ForgeError<T>;
+    error(err: Error): Return<ReturnType.Error>;
+    error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): Return<ReturnType.Error>;
+    customError(msg: string): Return<ReturnType.Error>;
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
     private fail;
@@ -90,7 +92,6 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
     return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;
-    err(value: ReturnValue<ReturnType.Error>): Return<ReturnType.Error>;
     stop(): Return<ReturnType.Stop>;
     break(): Return<ReturnType.Break>;
     continue(): Return<ReturnType.Continue>;
@@ -98,6 +99,5 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     successFormatted(value: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     unsafeSuccess(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
     success(value?: ReturnValue<ReturnType.Success>): Return<ReturnType.Success>;
-    private toExecutableCode;
 }
 //# sourceMappingURL=CompiledFunction.d.ts.map

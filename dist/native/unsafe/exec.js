@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
             return this.success(exec);
         }
         catch (error) {
-            return this.err(this.error(structures_1.ErrorType.Custom, error.message));
+            return this.error(error);
         }
     },
 });
