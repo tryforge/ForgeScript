@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchResponse",
+    version: "1.4.0",
     brackets: false,
     unwrap: true,
     description: "Fetches all data from the message and loads it to response, this includes: embeds, components, attachments, stickers",

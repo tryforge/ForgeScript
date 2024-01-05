@@ -39,7 +39,7 @@ const client = new ForgeClient({
         userIDs: ["1096285761365610576"],
     },
     respondOnEdit: 10000,
-    optionalGuildID: true
+    optionalGuildID: true,
 })
 
 console.log("Started")

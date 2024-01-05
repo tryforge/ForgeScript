@@ -1,17 +1,13 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
-    name: "$stickers",
-    version: "1.0.3",
-    description: "Retrieve a sticker url from a message with given index",
+    name: "$messageSticker",
+    version: "1.4.0",
+    output: structures_1.ArgType.GuildSticker,
+    description: "Retrieves a sticker url of this message",
     brackets: false,
     unwrap: true,
-    output: (0, array_1.default)(),
     args: [
         {
             name: "channel ID",
@@ -32,13 +28,13 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "index",
             rest: false,
-            description: "The index to get this sticker",
+            required: true,
+            description: "The index to get sticker",
             type: structures_1.ArgType.Number,
-        },
+        }
     ],
     execute(ctx, [, message, index]) {
-        index ??= 0;
         return this.success((message ?? ctx.message)?.stickers.at(index)?.url);
     },
 });
-//# sourceMappingURL=stickers.js.map
+//# sourceMappingURL=messageSticker.js.map

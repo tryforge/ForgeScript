@@ -3,12 +3,12 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 
 export default new NativeFunction({
-    name: "$stickers",
-    version: "1.0.3",
-    description: "Retrieve a sticker url from a message with given index",
+    name: "$messageStickerCount",
+    version: "1.4.0",
+    output: ArgType.Number,
+    description: "Retrieves sticker count of this message",
     brackets: false,
     unwrap: true,
-    output: array<ArgType.GuildSticker>(),
     args: [
         {
             name: "channel ID",
@@ -21,20 +21,13 @@ export default new NativeFunction({
         {
             name: "message ID",
             pointer: 0,
-            description: "The message to get its stickers",
+            description: "The message to get its sticker count",
             rest: false,
             required: true,
             type: ArgType.Message,
-        },
-        {
-            name: "index",
-            rest: false,
-            description: "The index to get this sticker",
-            type: ArgType.Number,
-        },
+        }
     ],
-    execute(ctx, [, message, index]) {
-        index ??= 0
-        return this.success((message ?? ctx.message)?.stickers.at(index)?.url)
+    execute(ctx, [, message]) {
+        return this.success((message ?? ctx.message)?.stickers.size)
     },
 })
