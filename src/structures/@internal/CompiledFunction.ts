@@ -295,6 +295,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.channels.cache.get(str)
     }
 
+    private resolveTextChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const ch = ctx.client.channels.cache.get(str)
+        if (!ch || !("messages" in ch))
+            return
+        return ch
+    }
+
     private resolveGuild(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return ctx.client.guilds.cache.get(str)
     }

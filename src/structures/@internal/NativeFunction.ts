@@ -12,6 +12,7 @@ import {
     PermissionsString,
     Role,
     Sticker,
+    TextBasedChannel,
     User,
     Webhook,
 } from "discord.js"
@@ -31,6 +32,7 @@ export enum ArgType {
     String,
     BigInt,
     Unknown,
+    TextChannel,
     OverwritePermission,
     Number,
     User,
@@ -150,6 +152,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? number 
     : T extends ArgType.Role
     ? Role
+    : T extends ArgType.TextChannel
+    ? TextBasedChannel
     : T extends ArgType.Attachment
     ? AttachmentBuilder
     : T extends ArgType.BigInt

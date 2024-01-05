@@ -1,4 +1,4 @@
-import { AttachmentBuilder, BaseChannel, Guild, GuildEmoji, GuildForumTag, GuildMember, Invite, Message, MessageReaction, PermissionsString, Role, Sticker, User, Webhook } from "discord.js";
+import { AttachmentBuilder, BaseChannel, Guild, GuildEmoji, GuildForumTag, GuildMember, Invite, Message, MessageReaction, PermissionsString, Role, Sticker, TextBasedChannel, User, Webhook } from "discord.js";
 import { CompiledFunction } from "./CompiledFunction";
 import { Context } from "./Context";
 import { Return } from "./Return";
@@ -12,29 +12,30 @@ export declare enum ArgType {
     String = 1,
     BigInt = 2,
     Unknown = 3,
-    OverwritePermission = 4,
-    Number = 5,
-    User = 6,
-    Date = 7,
-    Guild = 8,
-    RoleOrUser = 9,
-    Invite = 10,
-    Permission = 11,
-    Json = 12,
-    Color = 13,
-    Enum = 14,
-    ForumTag = 15,
-    GuildEmoji = 16,
-    Boolean = 17,
-    Attachment = 18,
-    Reaction = 19,
-    Message = 20,
-    Channel = 21,
-    Role = 22,
-    Webhook = 23,
-    GuildSticker = 24,
-    Time = 25,
-    Member = 26
+    TextChannel = 4,
+    OverwritePermission = 5,
+    Number = 6,
+    User = 7,
+    Date = 8,
+    Guild = 9,
+    RoleOrUser = 10,
+    Invite = 11,
+    Permission = 12,
+    Json = 13,
+    Color = 14,
+    Enum = 15,
+    ForumTag = 16,
+    GuildEmoji = 17,
+    Boolean = 18,
+    Attachment = 19,
+    Reaction = 20,
+    Message = 21,
+    Channel = 22,
+    Role = 23,
+    Webhook = 24,
+    GuildSticker = 25,
+    Time = 26,
+    Member = 27
 }
 export interface IArg<Type extends ArgType = ArgType, Required extends boolean = boolean, Rest extends boolean = boolean, Enum extends EnumLike = EnumLike> {
     name: string;
@@ -93,7 +94,7 @@ export type OverwritePermission = {
     value: null | boolean;
 };
 export type MarkRest<T, B extends boolean> = B extends true ? T[] : T;
-export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.URL ? string : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.RoleOrUser ? Role | User : T extends ArgType.Guild ? Guild : T extends ArgType.Color ? number : T extends ArgType.Role ? Role : T extends ArgType.Attachment ? AttachmentBuilder : T extends ArgType.BigInt ? bigint : T extends ArgType.Unknown ? unknown : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.OverwritePermission ? OverwritePermission : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
+export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends ArgType.Number ? number : T extends ArgType.String ? string : T extends ArgType.User ? User : T extends ArgType.URL ? string : T extends ArgType.Json ? Record<string, unknown> : T extends ArgType.RoleOrUser ? Role | User : T extends ArgType.Guild ? Guild : T extends ArgType.Color ? number : T extends ArgType.Role ? Role : T extends ArgType.TextChannel ? TextBasedChannel : T extends ArgType.Attachment ? AttachmentBuilder : T extends ArgType.BigInt ? bigint : T extends ArgType.Unknown ? unknown : T extends ArgType.Boolean ? boolean : T extends ArgType.Date ? Date : T extends ArgType.Enum ? GetEnum<Enum> : T extends ArgType.Channel ? BaseChannel : T extends ArgType.Message ? Message<true> : T extends ArgType.Member ? GuildMember : T extends ArgType.GuildEmoji ? GuildEmoji : T extends ArgType.OverwritePermission ? OverwritePermission : T extends ArgType.GuildSticker ? Sticker : T extends ArgType.Reaction ? MessageReaction : T extends ArgType.Webhook ? Webhook : T extends ArgType.Invite ? Invite : T extends ArgType.ForumTag ? GuildForumTag : T extends ArgType.Time ? number : T extends ArgType.Permission ? PermissionsString : null;
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null;
 export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never;
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];

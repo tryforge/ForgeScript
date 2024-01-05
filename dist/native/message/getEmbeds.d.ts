@@ -19,7 +19,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    required: true;
+    required: false;
     type: ArgType.Number;
 }, {
     name: string;
@@ -27,7 +27,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof EmbedProperty;
-    required: true;
+    required: false;
 }, {
     name: string;
     description: string;
@@ -35,4 +35,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.Number;
 }], true>;
 export default _default;
-//# sourceMappingURL=getEmbed.d.ts.map
+//# sourceMappingURL=getEmbeds.d.ts.map

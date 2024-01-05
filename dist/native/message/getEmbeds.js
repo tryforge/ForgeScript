@@ -4,12 +4,15 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 const embed_1 = require("../../properties/embed");
 exports.default = new structures_1.NativeFunction({
-    name: "$getEmbed",
+    name: "$getEmbeds",
     version: "1.0.3",
-    description: "Retrieves data of an embed",
+    description: "Retrieves data of an embed, not providing any property returns embed json",
     unwrap: true,
     output: structures_1.ArgType.Unknown,
-    brackets: true,
+    brackets: false,
+    aliases: [
+        "$getEmbed"
+    ],
     args: [
         {
             name: "channel ID",
@@ -31,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
             name: "embed index",
             description: "The embed index to get data from",
             rest: false,
-            required: true,
+            required: false,
             type: structures_1.ArgType.Number,
         },
         {
@@ -40,7 +43,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: embed_1.EmbedProperty,
-            required: true,
+            required: false,
         },
         {
             name: "field index",
@@ -49,9 +52,15 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number
         },
     ],
-    execute(_, [, m, index, prop, fieldIndex]) {
+    execute(ctx, [, m, index, prop, fieldIndex]) {
+        if (typeof index !== "number") {
+            return this.successJSON((m ?? ctx.message)?.embeds.map(x => x.data));
+        }
         const embed = m.embeds[index];
+        if (prop === null) {
+            return this.successJSON(embed);
+        }
         return this.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, undefined, fieldIndex));
     },
 });
-//# sourceMappingURL=getEmbed.js.map
+//# sourceMappingURL=getEmbeds.js.map

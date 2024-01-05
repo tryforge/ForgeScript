@@ -223,6 +223,12 @@ class CompiledFunction {
     resolveChannel(ctx, arg, str, ref) {
         return ctx.client.channels.cache.get(str);
     }
+    resolveTextChannel(ctx, arg, str, ref) {
+        const ch = ctx.client.channels.cache.get(str);
+        if (!ch || !("messages" in ch))
+            return;
+        return ch;
+    }
     resolveGuild(ctx, arg, str, ref) {
         return ctx.client.guilds.cache.get(str);
     }

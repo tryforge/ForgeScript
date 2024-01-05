@@ -3,12 +3,15 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 import { EmbedProperties, EmbedProperty } from "../../properties/embed"
 
 export default new NativeFunction({
-    name: "$getEmbed",
+    name: "$getEmbeds",
     version: "1.0.3",
-    description: "Retrieves data of an embed",
+    description: "Retrieves data of an embed, not providing any property returns embed json",
     unwrap: true,
     output: ArgType.Unknown,
-    brackets: true,
+    brackets: false,
+    aliases: [
+        "$getEmbed"
+    ],
     args: [
         {
             name: "channel ID",
@@ -30,7 +33,7 @@ export default new NativeFunction({
             name: "embed index",
             description: "The embed index to get data from",
             rest: false,
-            required: true,
+            required: false,
             type: ArgType.Number,
         },
         {
@@ -39,7 +42,7 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: EmbedProperty,
-            required: true,
+            required: false,
         },
         {
             name: "field index",
@@ -48,8 +51,16 @@ export default new NativeFunction({
             type: ArgType.Number
         },
     ],
-    execute(_, [, m, index, prop, fieldIndex]) {
+    execute(ctx, [, m, index, prop, fieldIndex]) {
+        if (typeof index !== "number") {
+            return this.successJSON((m ?? ctx.message)?.embeds.map(x => x.data))
+        }
+        
         const embed = m.embeds[index] as Embed | undefined
+        if (prop === null) {
+            return this.successJSON(embed)
+        }
+
         return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, undefined, fieldIndex))
     },
 })
