@@ -297,4 +297,8 @@ export class Context {
     private error() {
         throw null
     }
+
+    public get getExtension() {
+        return this.client.getExtension.bind(this.client)
+    }
 }

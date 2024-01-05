@@ -8,7 +8,9 @@ export class MyExtension extends ForgeExtension {
     public name: string = "UwU"
     public version: string = "1.0.0"
 
+    public static client: ForgeClient
+
     public init(client: ForgeClient): void {
-        throw new Error("uwu")
+        MyExtension.client = client
     }
 }

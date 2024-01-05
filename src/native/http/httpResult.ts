@@ -6,7 +6,10 @@ export default new NativeFunction({
     name: "$httpResult",
     version: "1.2.0",
     description: "Retrieve an http result value",
-    output: array<ArgType.Json | ArgType.String>(),
+    output: [
+        ArgType.Json,
+        ArgType.String
+    ],
     args: [
         {
             name: "key",

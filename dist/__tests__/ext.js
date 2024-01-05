@@ -7,8 +7,9 @@ class MyExtension extends ForgeExtension_1.ForgeExtension {
     description = "Some description";
     name = "UwU";
     version = "1.0.0";
+    static client;
     init(client) {
-        throw new Error("uwu");
+        MyExtension.client = client;
     }
 }
 exports.MyExtension = MyExtension;

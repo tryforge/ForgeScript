@@ -220,6 +220,9 @@ class Context {
     error() {
         throw null;
     }
+    get getExtension() {
+        return this.client.getExtension.bind(this.client);
+    }
 }
 exports.Context = Context;
 //# sourceMappingURL=Context.js.map

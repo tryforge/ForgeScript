@@ -2,6 +2,7 @@ import { ForgeClient } from "../core"
 import { config } from "dotenv"
 import { ActivityType, Events } from "discord.js"
 import { LogPriority } from "../structures/@internal/Logger"
+import { MyExtension } from "./ext"
 config()
 
 const client = new ForgeClient({
@@ -87,6 +88,7 @@ client.commands.add({
     $codeBlock[$env[json]]
     `
 })
+
 client.commands.add({
     type: Events.GuildMemberAdd,
     code: "$sendMessage[1146874219515346984;<@$authorID> has joined using invite code $inviterCode by <@$inviterID>]",

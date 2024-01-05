@@ -13,6 +13,7 @@ import { ThreadManager } from "../managers/ThreadManager"
 import { LogPriority, Logger } from "../structures/@internal/Logger"
 import { VoiceTracker } from "../structures/trackers/VoiceTracker"
 import { Interpreter } from "./Interpreter"
+import { ClassInstance, ClassType, ErrorType, ForgeError } from "../structures"
 
 disableValidators()
 
@@ -166,6 +167,19 @@ export class ForgeClient extends Client<true> {
         
         // At last, load prefixes
         this.options.prefixes = raw.prefixes.map(x => Compiler.compile(x))
+    }
+
+    public getExtension<T extends ClassType, B extends boolean>(type: T, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null {
+        const finder = this.options.extensions?.find(x => x instanceof type)
+        if (!finder && required)  {
+            throw new ForgeError(
+                null,
+                ErrorType.ExtensionNotFound,
+                type.constructor.name
+            )
+        }
+
+        return (finder ?? null) as ClassInstance<T>
     }
 
     get<T>(key: string) {

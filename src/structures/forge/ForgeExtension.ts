@@ -3,6 +3,7 @@ import getVersionNumber from "../../functions/getVersionNumber"
 import { ErrorType, ForgeError } from "./ForgeError"
 import { Logger } from "../@internal/Logger"
 import { FunctionManager } from "../../managers"
+import { ClassInstance, ClassType } from ".."
 
 export abstract class ForgeExtension {
     public abstract name: string

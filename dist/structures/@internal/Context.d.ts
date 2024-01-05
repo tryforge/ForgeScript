@@ -66,5 +66,6 @@ export declare class Context {
     getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null;
     get<T>(key: PropertyKey): T;
     private error;
+    get getExtension(): <T extends ClassType, B extends boolean>(type: T, required?: B | undefined) => B extends true ? ClassInstance<T> : ClassInstance<T> | null;
 }
 //# sourceMappingURL=Context.d.ts.map

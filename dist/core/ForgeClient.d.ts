@@ -9,6 +9,7 @@ import { NativeCommandManager } from "../managers/NativeCommandManager";
 import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
 import { ThreadManager } from "../managers/ThreadManager";
 import { LogPriority } from "../structures/@internal/Logger";
+import { ClassInstance, ClassType } from "../structures";
 export interface ITrackers {
     invites?: boolean;
     voice?: boolean;
@@ -82,6 +83,7 @@ export declare class ForgeClient extends Client<true> {
     readonly threading: ThreadManager;
     [x: PropertyKey]: unknown;
     constructor(options: IRawForgeClientOptions);
+    getExtension<T extends ClassType, B extends boolean>(type: T, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null;
     get<T>(key: string): T;
     get version(): string;
     getPrefix(msg: Message): Promise<string | null>;

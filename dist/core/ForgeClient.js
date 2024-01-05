@@ -14,6 +14,7 @@ const ThreadManager_1 = require("../managers/ThreadManager");
 const Logger_1 = require("../structures/@internal/Logger");
 const VoiceTracker_1 = require("../structures/trackers/VoiceTracker");
 const Interpreter_1 = require("./Interpreter");
+const structures_1 = require("../structures");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
     commands = new NativeCommandManager_1.NativeCommandManager(this);
@@ -74,6 +75,13 @@ class ForgeClient extends discord_js_1.Client {
         }
         // At last, load prefixes
         this.options.prefixes = raw.prefixes.map(x => Compiler_1.Compiler.compile(x));
+    }
+    getExtension(type, required) {
+        const finder = this.options.extensions?.find(x => x instanceof type);
+        if (!finder && required) {
+            throw new structures_1.ForgeError(null, structures_1.ErrorType.ExtensionNotFound, type.constructor.name);
+        }
+        return (finder ?? null);
     }
     get(key) {
         return this[key];
