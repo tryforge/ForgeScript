@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$memberUnban"
+    ],
     output: ArgType.Boolean,
     description: "Unbans a user",
     args: [

@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Whether a member is server deafened",
     brackets: false,
+    aliases: [
+        "$memberIsGuildDeaf"
+    ],
     unwrap: true,
     output: ArgType.Boolean,
     args: [

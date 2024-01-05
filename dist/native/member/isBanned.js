@@ -10,6 +10,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$memberIsBanned"
+    ],
     output: structures_1.ArgType.Boolean,
     description: "Whether this user is banned",
     args: [

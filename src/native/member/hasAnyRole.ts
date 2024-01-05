@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.1.0",
     description: "Returns whether given member has any role",
     unwrap: true,
+    aliases: [
+        "$memberHasAnyRole"
+    ],
     brackets: true,
     output: ArgType.Boolean,
     args: [

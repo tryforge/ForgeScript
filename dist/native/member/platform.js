@@ -10,6 +10,11 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the member platforms",
     brackets: false,
+    aliases: [
+        "$memberPlatforms",
+        "$platforms",
+        "$memberPlatform"
+    ],
     unwrap: true,
     output: (0, array_1.default)(),
     args: [

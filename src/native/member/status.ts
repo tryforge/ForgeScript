@@ -6,6 +6,11 @@ export default new NativeFunction({
     description: "Returns the member status",
     brackets: false,
     unwrap: true,
+    aliases: [
+        "$memberStatus",
+        "$statuses",
+        "$memberStatuses"
+    ],
     output: ArgType.String,
     args: [
         {

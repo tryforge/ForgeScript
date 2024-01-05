@@ -6,6 +6,9 @@ export default new NativeFunction({
     name: "$lastMessageID",
     version: "1.2.0",
     brackets: false,
+    aliases: [
+        "$channelLastMessageID"
+    ],
     unwrap: true,
     output: ArgType.Message,
     description: "Returns the latest message sent in a channel",

@@ -10,6 +10,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Times a member out for X milliseconds",
     unwrap: true,
+    aliases: [
+        "$memberTimeout"
+    ],
     output: structures_1.ArgType.Number,
     brackets: true,
     args: [

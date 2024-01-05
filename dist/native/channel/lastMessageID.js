@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     name: "$lastMessageID",
     version: "1.2.0",
     brackets: false,
+    aliases: [
+        "$channelLastMessageID"
+    ],
     unwrap: true,
     output: structures_1.ArgType.Message,
     description: "Returns the latest message sent in a channel",

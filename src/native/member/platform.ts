@@ -6,6 +6,11 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the member platforms",
     brackets: false,
+    aliases: [
+        "$memberPlatforms",
+        "$platforms",
+        "$memberPlatform"
+    ],
     unwrap: true,
     output: array<ArgType.String>(),
     args: [

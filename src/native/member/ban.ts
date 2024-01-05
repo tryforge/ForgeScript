@@ -3,6 +3,9 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$ban",
     version: "1.0.0",
+    aliases: [
+        "$memberBan"
+    ],
     description:
         "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,

@@ -4,6 +4,9 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$ban",
     version: "1.0.0",
+    aliases: [
+        "$memberBan"
+    ],
     description: "Bans a member from the guild, returns true or false depending on whether the action was successfully performed",
     unwrap: true,
     brackets: true,

@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns whether given member has X perms",
     unwrap: true,
+    aliases: [
+        "$memberHasPerms"
+    ],
     brackets: true,
     output: ArgType.Boolean,
     args: [

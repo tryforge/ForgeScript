@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchEmbeds",
+    version: "1.4.0",
     aliases: [
         "$fetchEmbed"
     ],

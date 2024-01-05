@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Starts typing in a channel",
     unwrap: true,
+    aliases: [
+        "$channelStartTyping"
+    ],
     brackets: true,
     args: [
         {

@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns whether given member has X perms",
     unwrap: true,
+    aliases: [
+        "$memberHasPerms"
+    ],
     brackets: true,
     output: structures_1.ArgType.Boolean,
     args: [

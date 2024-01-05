@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Mutes a member from voice channel",
     brackets: true,
+    aliases: [
+        "$voiceMute"
+    ],
     output: structures_1.ArgType.Boolean,
     args: [
         {

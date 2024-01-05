@@ -6,6 +6,9 @@ export default new NativeFunction({
     description: "Whether an member is timed out",
     unwrap: true,
     brackets: false,
+    aliases: [
+        "$memberIsTimedOut"
+    ],
     output: ArgType.Boolean,
     args: [
         {

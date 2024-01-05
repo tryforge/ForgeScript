@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether a member is deafened",
     brackets: false,
     unwrap: true,
+    aliases: [
+        "$memberIsDeaf"
+    ],
     output: structures_1.ArgType.Boolean,
     args: [
         {

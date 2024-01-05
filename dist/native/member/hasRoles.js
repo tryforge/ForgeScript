@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.1.0",
     description: "Returns whether given member has all roles",
     unwrap: true,
+    aliases: [
+        "$memberHasRoles"
+    ],
     brackets: true,
     output: structures_1.ArgType.Boolean,
     args: [

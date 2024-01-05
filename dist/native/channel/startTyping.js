@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Starts typing in a channel",
     unwrap: true,
+    aliases: [
+        "$channelStartTyping"
+    ],
     brackets: true,
     args: [
         {

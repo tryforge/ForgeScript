@@ -6,6 +6,9 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Undeafens a member from voice channel",
     brackets: true,
+    aliases: [
+        "$voiceUndeaf"
+    ],
     output: ArgType.Boolean,
     args: [
         {

@@ -6,6 +6,9 @@ export default new NativeFunction({
     description: "Whether a member is self muted",
     brackets: false,
     unwrap: true,
+    aliases: [
+        "$memberIsSelfMuted"
+    ],
     output: ArgType.Boolean,
     args: [
         {

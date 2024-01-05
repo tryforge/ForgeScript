@@ -10,6 +10,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     brackets: true,
     unwrap: true,
+    aliases: [
+        "$memberUnban"
+    ],
     output: structures_1.ArgType.Boolean,
     description: "Unbans a user",
     args: [

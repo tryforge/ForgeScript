@@ -5,6 +5,9 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the member nickname",
     brackets: false,
+    aliases: [
+        "$memberNickname"
+    ],
     unwrap: true,
     output: ArgType.String,
     args: [

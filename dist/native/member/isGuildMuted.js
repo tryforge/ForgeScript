@@ -6,6 +6,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Whether a member is server muted",
     brackets: false,
+    aliases: [
+        "$memberIsGuildMuted"
+    ],
     output: structures_1.ArgType.Boolean,
     unwrap: true,
     args: [

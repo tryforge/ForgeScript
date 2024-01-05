@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     description: "Whether an member is timed out",
     unwrap: true,
     brackets: false,
+    aliases: [
+        "$memberIsTimedOut"
+    ],
     output: structures_1.ArgType.Boolean,
     args: [
         {
