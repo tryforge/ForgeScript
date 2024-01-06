@@ -13,4 +13,5 @@ export * from "./extended/DiscordEventHandler";
 export * from "./trackers/InviteTracker";
 export * from "./base/ApplicationCommand";
 export * from "./@internal/Logger";
+export * from "./trackers/VoiceTracker";
 //# sourceMappingURL=index.d.ts.map

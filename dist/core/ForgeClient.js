@@ -2,27 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeClient = void 0;
 const discord_js_1 = require("discord.js");
-const EventManager_1 = require("../managers/EventManager");
-const Compiler_1 = require("./Compiler");
-const FunctionManager_1 = require("../managers/FunctionManager");
-const ForgeFunctionManager_1 = require("../managers/ForgeFunctionManager");
-const InviteTracker_1 = require("../structures/trackers/InviteTracker");
-const CooldownManager_1 = require("../managers/CooldownManager");
-const NativeCommandManager_1 = require("../managers/NativeCommandManager");
-const ApplicationCommandManager_1 = require("../managers/ApplicationCommandManager");
-const ThreadManager_1 = require("../managers/ThreadManager");
-const Logger_1 = require("../structures/@internal/Logger");
+const _1 = require(".");
+const managers_1 = require("../managers");
+const structures_1 = require("../structures");
 const VoiceTracker_1 = require("../structures/trackers/VoiceTracker");
 const Interpreter_1 = require("./Interpreter");
-const structures_1 = require("../structures");
 (0, discord_js_1.disableValidators)();
 class ForgeClient extends discord_js_1.Client {
-    commands = new NativeCommandManager_1.NativeCommandManager(this);
-    applicationCommands = new ApplicationCommandManager_1.ApplicationCommandManager(this);
-    events = new EventManager_1.EventManager(this);
-    cooldowns = new CooldownManager_1.CooldownManager(this);
-    functions = new ForgeFunctionManager_1.ForgeFunctionManager(this);
-    threading = new ThreadManager_1.ThreadManager(this);
+    commands = new managers_1.NativeCommandManager(this);
+    applicationCommands = new managers_1.ApplicationCommandManager(this);
+    events = new managers_1.EventManager(this);
+    cooldowns = new managers_1.CooldownManager(this);
+    functions = new managers_1.ForgeFunctionManager(this);
+    threading = new managers_1.ThreadManager(this);
     constructor(options) {
         super({
             partials: [
@@ -40,31 +32,31 @@ class ForgeClient extends discord_js_1.Client {
     }
     #init(raw) {
         if (this.options.logLevel !== undefined)
-            Logger_1.Logger.Priority = this.options.logLevel;
+            structures_1.Logger.Priority = this.options.logLevel;
         if (this.options.mobile) {
             Reflect.set(discord_js_1.DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS");
         }
         if (this.options.useInviteSystem) {
             this.options.trackers ??= {};
             this.options.trackers.invites = true;
-            Logger_1.Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.");
+            structures_1.Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.");
         }
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 this.options.extensions[i]["validateAndInit"](this);
             }
         }
-        FunctionManager_1.FunctionManager.loadNative();
-        EventManager_1.EventManager.loadNative();
+        managers_1.FunctionManager.loadNative();
+        managers_1.EventManager.loadNative();
         if (this.options.trackers) {
             if (this.options.trackers.invites)
-                InviteTracker_1.InviteTracker["init"](this);
+                structures_1.InviteTracker["init"](this);
             if (this.options.trackers.voice)
                 VoiceTracker_1.VoiceTracker["init"](this);
         }
         if (this.options.disableFunctions?.length)
-            FunctionManager_1.FunctionManager.disable(this.options.disableFunctions);
-        Compiler_1.Compiler.setFunctions(FunctionManager_1.FunctionManager.raw);
+            managers_1.FunctionManager.disable(this.options.disableFunctions);
+        _1.Compiler.setFunctions(managers_1.FunctionManager.raw);
         if (this.options.commands) {
             this.commands.load(this.options.commands);
         }
@@ -72,10 +64,10 @@ class ForgeClient extends discord_js_1.Client {
             this.functions.load(this.options.functions);
         }
         if (this.options.events?.length) {
-            this.events.load(EventManager_1.NativeEventName, this.options.events);
+            this.events.load(managers_1.NativeEventName, this.options.events);
         }
         // At last, load prefixes
-        this.options.prefixes = raw.prefixes.map(x => Compiler_1.Compiler.compile(x));
+        this.options.prefixes = raw.prefixes.map(x => _1.Compiler.compile(x));
     }
     getExtension(type, required) {
         const finder = this.options.extensions?.find(x => x instanceof type);

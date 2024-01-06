@@ -9,7 +9,7 @@ export declare class FileReader {
     };
     private index;
     constructor(code: string, req: any);
-    static read(fsPath: string, reqPath: string): IBaseCommand<any> | BaseCommand<any> | (IBaseCommand<any> | BaseCommand<any>)[] | null;
+    static read(fsPath: string, reqPath: string): BaseCommand<any> | IBaseCommand<any> | (BaseCommand<any> | IBaseCommand<any>)[] | null;
     read(): null | IBaseCommand<any> | BaseCommand<any> | (IBaseCommand<any> | BaseCommand<any>)[];
     private parseProperty;
     private readValue;

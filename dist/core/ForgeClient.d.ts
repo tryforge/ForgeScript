@@ -1,15 +1,7 @@
-import { Client, ClientOptions, IntentsBitField, Message } from "discord.js";
-import { BaseCommand, CommandType } from "../structures/base/BaseCommand";
-import { EventManager } from "../managers/EventManager";
-import { IExtendedCompilationResult } from "./Compiler";
-import { ForgeFunctionManager } from "../managers/ForgeFunctionManager";
-import { ForgeExtension } from "../structures/forge/ForgeExtension";
-import { CooldownManager } from "../managers/CooldownManager";
-import { NativeCommandManager } from "../managers/NativeCommandManager";
-import { ApplicationCommandManager } from "../managers/ApplicationCommandManager";
-import { ThreadManager } from "../managers/ThreadManager";
-import { LogPriority } from "../structures/@internal/Logger";
-import { ClassInstance, ClassType } from "../structures";
+import { ClientOptions, Client, IntentsBitField, Message } from "discord.js";
+import { IExtendedCompilationResult } from ".";
+import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, ApplicationCommandManager, ThreadManager } from "../managers";
+import { CommandType, LogPriority, ForgeExtension, ClassType, ClassInstance, BaseCommand } from "../structures";
 export interface ITrackers {
     invites?: boolean;
     voice?: boolean;

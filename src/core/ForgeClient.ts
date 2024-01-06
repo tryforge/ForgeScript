@@ -1,19 +1,9 @@
-import { Client, ClientOptions, DefaultWebSocketManagerOptions, IntentsBitField, Message, Partials, disableValidators } from "discord.js"
-import { BaseCommand, CommandType } from "../structures/base/BaseCommand"
-import { EventManager, NativeEventName } from "../managers/EventManager"
-import { Compiler, IExtendedCompilationResult } from "./Compiler"
-import { FunctionManager } from "../managers/FunctionManager"
-import { ForgeFunctionManager } from "../managers/ForgeFunctionManager"
-import { ForgeExtension } from "../structures/forge/ForgeExtension"
-import { InviteTracker } from "../structures/trackers/InviteTracker"
-import { CooldownManager } from "../managers/CooldownManager"
-import { NativeCommandManager } from "../managers/NativeCommandManager"
-import { ApplicationCommandManager } from "../managers/ApplicationCommandManager"
-import { ThreadManager } from "../managers/ThreadManager"
-import { LogPriority, Logger } from "../structures/@internal/Logger"
+import { disableValidators, ClientOptions, Client, IntentsBitField, Partials, DefaultWebSocketManagerOptions, Message } from "discord.js"
+import { IExtendedCompilationResult, Compiler } from "."
+import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, FunctionManager, NativeEventName, ApplicationCommandManager, ThreadManager } from "../managers"
+import { CommandType, LogPriority, ForgeExtension, Logger, InviteTracker, ClassType, ClassInstance, ForgeError, ErrorType, BaseCommand } from "../structures"
 import { VoiceTracker } from "../structures/trackers/VoiceTracker"
 import { Interpreter } from "./Interpreter"
-import { ClassInstance, ClassType, ErrorType, ForgeError } from "../structures"
 
 disableValidators()
 

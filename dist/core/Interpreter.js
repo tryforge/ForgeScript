@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Interpreter = void 0;
-const Context_1 = require("../structures/@internal/Context");
 const structures_1 = require("../structures");
 class Interpreter {
     static async run(runtime) {
-        const ctx = new Context_1.Context(runtime);
+        const ctx = new structures_1.Context(runtime);
         if (runtime.client !== null) {
             if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot)
                 return null;

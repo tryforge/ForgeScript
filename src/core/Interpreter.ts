@@ -1,24 +1,8 @@
-import { inspect } from "util"
-import { Sendable } from "../structures/@internal/Container"
-import { Context } from "../structures/@internal/Context"
-import { ReturnType } from "../structures/@internal/Return"
-import { IExtendedCompilationResult } from "./Compiler"
+import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite } from "discord.js"
+import { IExtendedCompilationResult } from "."
+import { Sendable, BaseCommand, Context, Logger } from "../structures"
 import { ForgeClient } from "./ForgeClient"
-import {
-    Channel,
-    Guild,
-    GuildAuditLogsEntry,
-    GuildEmoji,
-    GuildMember,
-    Invite,
-    Message,
-    Presence,
-    Role,
-    StageInstance,
-    User,
-    VoiceState,
-} from "discord.js"
-import { BaseCommand, Logger } from "../structures"
+
 
 export interface IStates {
     message: Message

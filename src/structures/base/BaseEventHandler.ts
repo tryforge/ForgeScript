@@ -1,5 +1,5 @@
 import { ClientEvents, GatewayIntentsString } from "discord.js"
-import { ForgeClient } from "../../core/ForgeClient"
+import { type ForgeClient } from "../../core/ForgeClient"
 
 export type AssertArgs<T> = T extends unknown[] ? T : never
 
