@@ -4,6 +4,7 @@ const stage_1 = require("../../properties/stage");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newStage",
+    version: "1.4.0",
     description: "Retrieves new data from an event whose context was a stage instance",
     brackets: true,
     unwrap: true,

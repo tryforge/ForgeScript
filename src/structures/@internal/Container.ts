@@ -164,10 +164,10 @@ export class Container {
                             failIfNotExists: false,
                         }
                         : undefined,
-                    files: this.files,
                     ephemeral: this.ephemeral,
-                    stickers: this.stickers.length === 0 ? undefined : this.stickers,
-                    content: this.content || null,
+                    files: this.files.length === 0 ? null : this.files,
+                    stickers: this.stickers.length === 0 ? null : this.stickers,
+                    content: this.content?.trim() || null,
                     components: this.components,
                     embeds: this.embeds,
                 }
