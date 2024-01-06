@@ -48,7 +48,7 @@ function getOutputValues(fn, txt, enums) {
     }
     return arr;
 }
-function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false, expose) {
+function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false, expose, eventsAbsolutePath) {
     let total = 0;
     const enums = {};
     if (expose?.length)
@@ -108,6 +108,8 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoO
         (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
     }
     if (eventName) {
+        if (eventsAbsolutePath)
+            managers_1.EventManager.load(eventName, eventsAbsolutePath);
         for (const event of Object.values(managers_1.EventManager["Loaded"][eventName])) {
             const nativePath = `./src/handlers/events/${event.name}.ts`;
             const txt = (0, fs_1.readFileSync)(nativePath, "utf-8");

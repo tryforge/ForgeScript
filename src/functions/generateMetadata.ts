@@ -58,7 +58,7 @@ function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record
     return arr
 }
 
-export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>) {
+export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string) {
     let total = 0
     const enums: Record<string, string[]> = {}
 
@@ -131,6 +131,9 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
     }
     
     if (eventName) {
+        if (eventsAbsolutePath)
+            EventManager.load(eventName, eventsAbsolutePath)
+
         for (const event of Object.values(EventManager["Loaded"]![eventName]!)) {
             const nativePath = `./src/handlers/events/${event!.name}.ts`
             const txt = readFileSync(nativePath, "utf-8")

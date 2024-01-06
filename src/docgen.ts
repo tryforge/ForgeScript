@@ -11,7 +11,7 @@ generateMetadata(
     // eslint-disable-next-line no-undef
     `${__dirname}/native`, 
     "native", 
-    NativeEventName, 
+    NativeEventName,
     false, 
     expose
 )
