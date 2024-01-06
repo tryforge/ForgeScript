@@ -58,9 +58,12 @@ function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record
     return arr
 }
 
-export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false) {
+export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>) {
     let total = 0
     const enums: Record<string, string[]> = {}
+
+    if (expose?.length)
+        Object.entries(expose).forEach(x => enums[x[0]] = enumToArray(x[1]))
 
     FunctionManager.load("Metadata", functionsAbsolutePath)
 

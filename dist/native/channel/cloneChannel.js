@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$cloneChannel",
+    version: "1.4.0",
     description: "Clones given channel",
     brackets: true,
     output: structures_1.ArgType.Channel,

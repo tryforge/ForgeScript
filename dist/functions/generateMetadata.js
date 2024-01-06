@@ -48,9 +48,11 @@ function getOutputValues(fn, txt, enums) {
     }
     return arr;
 }
-function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false) {
+function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false, expose) {
     let total = 0;
     const enums = {};
+    if (expose?.length)
+        Object.entries(expose).forEach(x => enums[x[0]] = (0, enum_1.enumToArray)(x[1]));
     managers_1.FunctionManager.load("Metadata", functionsAbsolutePath);
     const metaOutPath = "./metadata";
     if (!(0, fs_1.existsSync)(metaOutPath))

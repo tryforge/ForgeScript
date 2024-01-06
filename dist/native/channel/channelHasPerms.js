@@ -7,6 +7,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Returns whether role or member has perms in a channel",
     output: structures_1.ArgType.Boolean,
+    aliases: [
+        "$hasChannelPerm"
+    ],
     unwrap: true,
     args: [
         {
