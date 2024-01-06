@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 exports.default = new structures_1.NativeFunction({
     name: "$awaitMessage",
@@ -64,7 +64,7 @@ exports.default = new structures_1.NativeFunction({
                 else
                     return false;
             }
-        }).catch(lodash_1.noop);
+        }).catch(noop_1.default);
         return this.success(msg?.first()?.id);
     },
 });

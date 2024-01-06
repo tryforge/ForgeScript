@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$cloneChannel",
     version: "1.4.0",
@@ -20,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [raw]) {
-        return this.success(!!((await raw.clone().catch(lodash_1.noop))?.id));
+        return this.success(!!((await raw.clone().catch(noop_1.default))?.id));
     },
 });
 //# sourceMappingURL=cloneChannel.js.map

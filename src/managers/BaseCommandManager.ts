@@ -1,9 +1,9 @@
 import { Collection } from "discord.js"
-import { join } from "lodash"
 import { cwd } from "process"
 import { FileReader, ForgeClient } from "../core"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { BaseCommand, IBaseCommand, Logger } from "../structures"
+import { join } from "path"
 
 export abstract class BaseCommandManager<T> {
     private readonly commands = new Collection<T, BaseCommand<T>[]>()

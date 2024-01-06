@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$applicationCommandName",
@@ -20,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     async execute(ctx, [id]) {
         if (this.hasFields) {
-            const command = await ctx.client.application.commands.fetch(id).catch(lodash_1.noop);
+            const command = await ctx.client.application.commands.fetch(id).catch(noop_1.default);
             return this.success(command ? command.name : undefined);
         }
         return this.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.name : undefined);

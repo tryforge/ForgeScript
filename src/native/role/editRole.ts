@@ -1,4 +1,4 @@
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import { ColorResolvable } from "discord.js"
 

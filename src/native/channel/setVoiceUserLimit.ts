@@ -1,4 +1,4 @@
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 import { ArgType, NativeFunction } from "../../structures"
 import { BaseChannel, VoiceChannel } from "discord.js"
 

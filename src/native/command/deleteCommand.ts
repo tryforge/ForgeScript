@@ -1,4 +1,4 @@
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({

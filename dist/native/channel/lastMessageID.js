@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$lastMessageID",
     version: "1.2.0",
@@ -32,7 +35,7 @@ exports.default = new structures_1.NativeFunction({
     async execute(ctx, [ch, user]) {
         ch ??= ctx.channel;
         if (user) {
-            const messages = await ch.messages.fetch({ limit: 100 }).catch(lodash_1.noop);
+            const messages = await ch.messages.fetch({ limit: 100 }).catch(noop_1.default);
             return this.success(messages ? messages.find(x => x.author.id === user.id)?.id : undefined);
         }
         return this.success(ch.lastMessageId);

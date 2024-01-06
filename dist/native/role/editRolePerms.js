@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editRolePerms",
@@ -34,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(_, [, role, perms]) {
-        return this.success(!!(await role.setPermissions(perms).catch(lodash_1.noop)));
+        return this.success(!!(await role.setPermissions(perms).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=editRolePerms.js.map

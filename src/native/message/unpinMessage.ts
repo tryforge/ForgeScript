@@ -1,6 +1,6 @@
 import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$unpinMessage",

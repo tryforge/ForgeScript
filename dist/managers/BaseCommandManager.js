@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseCommandManager = void 0;
 const discord_js_1 = require("discord.js");
-const lodash_1 = require("lodash");
 const process_1 = require("process");
 const core_1 = require("../core");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const structures_1 = require("../structures");
+const path_1 = require("path");
 class BaseCommandManager {
     client;
     commands = new discord_js_1.Collection();
@@ -27,7 +27,7 @@ class BaseCommandManager {
         for (const p of this.paths) {
             for (const file of (0, recursiveReaddirSync_1.default)(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
                 // eslint-disable-next-line no-undef
-                const path = (0, lodash_1.join)((0, process_1.cwd)(), file);
+                const path = (0, path_1.join)((0, process_1.cwd)(), file);
                 delete require.cache[require.resolve(path)];
             }
             // Reload these commands
@@ -39,7 +39,7 @@ class BaseCommandManager {
             this.paths.push(path);
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
             // eslint-disable-next-line no-undef
-            const path = (0, lodash_1.join)((0, process_1.cwd)(), file);
+            const path = (0, path_1.join)((0, process_1.cwd)(), file);
             const req = core_1.FileReader.read(file, path);
             if (!req)
                 continue;

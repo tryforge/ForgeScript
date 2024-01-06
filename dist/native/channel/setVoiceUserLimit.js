@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setVoiceUserLimit",
@@ -34,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     async execute(ctx, [channel, limit, reason]) {
-        return this.success(!!(await channel.setUserLimit(limit, reason ?? undefined).catch(lodash_1.noop)));
+        return this.success(!!(await channel.setUserLimit(limit, reason ?? undefined).catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=setVoiceUserLimit.js.map

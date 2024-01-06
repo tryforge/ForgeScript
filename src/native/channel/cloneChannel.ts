@@ -1,6 +1,6 @@
 import { BaseChannel, GuildChannel } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$cloneChannel",

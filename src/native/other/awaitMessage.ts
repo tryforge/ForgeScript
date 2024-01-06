@@ -1,6 +1,6 @@
 import { BaseChannel, TextBasedChannel } from "discord.js"
 import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Return } from "../../structures"
-import { noop } from "lodash"
+import noop from "../../functions/noop"
 import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({

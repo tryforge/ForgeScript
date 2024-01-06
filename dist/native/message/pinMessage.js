@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const lodash_1 = require("lodash");
+const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$pinMessage",
     version: "1.1.0",
@@ -29,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx, [, m]) {
         const msg = m ?? ctx.message;
-        return this.success(!!(await msg.pin().catch(lodash_1.noop)));
+        return this.success(!!(await msg.pin().catch(noop_1.default)));
     },
 });
 //# sourceMappingURL=pinMessage.js.map
