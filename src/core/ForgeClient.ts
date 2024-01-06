@@ -133,13 +133,6 @@ export class ForgeClient extends Client<true> {
             Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.")
         }
 
-        if (this.options.trackers) {
-            if (this.options.trackers.invites)
-                InviteTracker["init"](this)
-            if (this.options.trackers.voice)
-                VoiceTracker["init"](this)
-        }
-
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 this.options.extensions[i]["validateAndInit"](this)
@@ -147,6 +140,14 @@ export class ForgeClient extends Client<true> {
         }
 
         FunctionManager.loadNative()
+        EventManager.loadNative()
+
+        if (this.options.trackers) {
+            if (this.options.trackers.invites)
+                InviteTracker["init"](this)
+            if (this.options.trackers.voice)
+                VoiceTracker["init"](this)
+        }
         
         if (this.options.disableFunctions?.length)
             FunctionManager.disable(this.options.disableFunctions)

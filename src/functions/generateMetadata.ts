@@ -65,7 +65,9 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
     if (expose?.length)
         Object.entries(expose).forEach(x => enums[x[0]] = enumToArray(x[1]))
 
+    Logger.info(`Loading functions from ${functionsAbsolutePath}`)
     FunctionManager.load("Metadata", functionsAbsolutePath)
+    Logger.info(`Loaded ${FunctionManager["Functions"].size} functions`)
 
     const metaOutPath = "./metadata"
 
@@ -131,11 +133,16 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
     }
     
     if (eventName) {
-        if (eventsAbsolutePath)
-            EventManager.load(eventName, eventsAbsolutePath)
+        if (!eventsAbsolutePath)
+            throw new Error("An absolute path to events must be provided")
+            
+        Logger.info(`Loading events from ${eventsAbsolutePath}`)
+        EventManager.load(eventName, eventsAbsolutePath)
+        const events = Object.values(EventManager["Loaded"]![eventName]!)
+        Logger.info(`Loaded ${events.length} events from ${eventsAbsolutePath}`)
 
-        for (const event of Object.values(EventManager["Loaded"]![eventName]!)) {
-            const nativePath = `./src/handlers/events/${event!.name}.ts`
+        for (const event of events) {
+            const nativePath = `${eventsAbsolutePath.replace("dist", "src")}/${event!.name}.ts`
             const txt = readFileSync(nativePath, "utf-8")
 
             if (!event!.data.version) {

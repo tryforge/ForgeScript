@@ -1,4 +1,4 @@
-import { ForgeClient } from "../core/ForgeClient";
+import { type ForgeClient } from "../core/ForgeClient";
 import { BaseEventHandler } from "../structures";
 export declare const NativeEventName = "native";
 export declare class EventManager {
@@ -6,6 +6,7 @@ export declare class EventManager {
     static readonly Loaded: Partial<Record<string, Record<string, BaseEventHandler>>>;
     private events;
     constructor(client: ForgeClient);
+    static loadNative(): void;
     load(name: string, ...events: (string | string[])[]): void;
     static load(name: string, path: string): void;
     static toJSON(name: string): {

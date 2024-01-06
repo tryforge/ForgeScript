@@ -1,17 +1,20 @@
 import { GatewayIntentBits } from "discord.js"
-import generateMetadata from "./functions/generateMetadata"
+import { EnumLike, Logger } from "./structures"
 import { NativeEventName } from "./managers"
-import { EnumLike } from "./structures"
+import generateMetadata from "./functions/generateMetadata"
 
 const expose = {
     "GatewayIntentBits": GatewayIntentBits
 } satisfies Record<string, EnumLike>
 
+Logger.info("Generating Metadata")
 generateMetadata(
     // eslint-disable-next-line no-undef
     `${__dirname}/native`, 
     "native", 
     NativeEventName,
     false, 
-    expose
+    expose,
+    // eslint-disable-next-line no-undef
+    `${__dirname}/handlers/events`
 )

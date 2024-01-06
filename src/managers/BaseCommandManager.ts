@@ -1,5 +1,5 @@
 import { Collection, Message } from "discord.js"
-import { ForgeClient } from "../core/ForgeClient"
+import { type ForgeClient } from "../core/ForgeClient"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { FileReader } from "../core/FileReader"
 import { BaseCommand, IBaseCommand, Logger } from "../structures"

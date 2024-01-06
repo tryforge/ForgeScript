@@ -20,7 +20,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateMetadata = void 0;
 const generateMetadata_1 = __importDefault(require("./functions/generateMetadata"));
 exports.generateMetadata = generateMetadata_1.default;
-__exportStar(require("./core"), exports);
 __exportStar(require("./managers"), exports);
 __exportStar(require("./structures"), exports);
+__exportStar(require("./core"), exports);
 //# sourceMappingURL=index.js.map

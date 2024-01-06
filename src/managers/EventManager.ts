@@ -1,5 +1,5 @@
 import { ClientEvents, Collection } from "discord.js"
-import { ForgeClient } from "../core/ForgeClient"
+import { type ForgeClient } from "../core/ForgeClient"
 import { CommandType } from "../structures/base/BaseCommand"
 import { readdirSync } from "fs"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
@@ -14,6 +14,11 @@ export class EventManager {
 
     public constructor(private readonly client: ForgeClient) {}
 
+    public static loadNative() {
+        // eslint-disable-next-line no-undef
+        EventManager.load(NativeEventName, __dirname + "/../handlers/events")
+    }
+    
     load(name: string, ...events: (string | string[])[]): void {
         for (const eventType of events.flat()) {
             EventManager.Loaded[name] ??= {}
@@ -42,6 +47,3 @@ export class EventManager {
         return this.events.get(handler)?.has(type) ?? false
     }
 }
-
-// eslint-disable-next-line no-undef
-EventManager.load(NativeEventName, __dirname + "/../handlers/events")

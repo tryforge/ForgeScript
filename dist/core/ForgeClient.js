@@ -49,18 +49,19 @@ class ForgeClient extends discord_js_1.Client {
             this.options.trackers.invites = true;
             Logger_1.Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.");
         }
-        if (this.options.trackers) {
-            if (this.options.trackers.invites)
-                InviteTracker_1.InviteTracker["init"](this);
-            if (this.options.trackers.voice)
-                VoiceTracker_1.VoiceTracker["init"](this);
-        }
         if (this.options.extensions?.length) {
             for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 this.options.extensions[i]["validateAndInit"](this);
             }
         }
         FunctionManager_1.FunctionManager.loadNative();
+        EventManager_1.EventManager.loadNative();
+        if (this.options.trackers) {
+            if (this.options.trackers.invites)
+                InviteTracker_1.InviteTracker["init"](this);
+            if (this.options.trackers.voice)
+                VoiceTracker_1.VoiceTracker["init"](this);
+        }
         if (this.options.disableFunctions?.length)
             FunctionManager_1.FunctionManager.disable(this.options.disableFunctions);
         Compiler_1.Compiler.setFunctions(FunctionManager_1.FunctionManager.raw);

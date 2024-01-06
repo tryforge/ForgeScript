@@ -53,7 +53,9 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoO
     const enums = {};
     if (expose?.length)
         Object.entries(expose).forEach(x => enums[x[0]] = (0, enum_1.enumToArray)(x[1]));
+    structures_1.Logger.info(`Loading functions from ${functionsAbsolutePath}`);
     managers_1.FunctionManager.load("Metadata", functionsAbsolutePath);
+    structures_1.Logger.info(`Loaded ${managers_1.FunctionManager["Functions"].size} functions`);
     const metaOutPath = "./metadata";
     if (!(0, fs_1.existsSync)(metaOutPath))
         (0, fs_1.mkdirSync)(metaOutPath);
@@ -108,10 +110,14 @@ function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoO
         (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
     }
     if (eventName) {
-        if (eventsAbsolutePath)
-            managers_1.EventManager.load(eventName, eventsAbsolutePath);
-        for (const event of Object.values(managers_1.EventManager["Loaded"][eventName])) {
-            const nativePath = `./src/handlers/events/${event.name}.ts`;
+        if (!eventsAbsolutePath)
+            throw new Error("An absolute path to events must be provided");
+        structures_1.Logger.info(`Loading events from ${eventsAbsolutePath}`);
+        managers_1.EventManager.load(eventName, eventsAbsolutePath);
+        const events = Object.values(managers_1.EventManager["Loaded"][eventName]);
+        structures_1.Logger.info(`Loaded ${events.length} events from ${eventsAbsolutePath}`);
+        for (const event of events) {
+            const nativePath = `${eventsAbsolutePath.replace("dist", "src")}/${event.name}.ts`;
             const txt = (0, fs_1.readFileSync)(nativePath, "utf-8");
             if (!event.data.version) {
                 event.data.version = v;

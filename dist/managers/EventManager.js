@@ -14,6 +14,10 @@ class EventManager {
     constructor(client) {
         this.client = client;
     }
+    static loadNative() {
+        // eslint-disable-next-line no-undef
+        EventManager.load(exports.NativeEventName, __dirname + "/../handlers/events");
+    }
     load(name, ...events) {
         for (const eventType of events.flat()) {
             EventManager.Loaded[name] ??= {};
@@ -42,6 +46,4 @@ class EventManager {
     }
 }
 exports.EventManager = EventManager;
-// eslint-disable-next-line no-undef
-EventManager.load(exports.NativeEventName, __dirname + "/../handlers/events");
 //# sourceMappingURL=EventManager.js.map

@@ -1,4 +1,4 @@
-import { ForgeClient } from "../core/ForgeClient";
+import { type ForgeClient } from "../core/ForgeClient";
 import { BaseCommand, IBaseCommand } from "../structures";
 export declare abstract class BaseCommandManager<T> {
     private readonly client;
