@@ -1,4 +1,7 @@
+import generateMetadata from "./functions/generateMetadata"
+
 export * from "./managers"
 export * from "./structures"
 export * from "./core"
-export * from "./functions/generateMetadata"
+
+export { generateMetadata }
