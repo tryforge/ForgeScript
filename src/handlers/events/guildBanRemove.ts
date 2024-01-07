@@ -8,7 +8,7 @@ export default new DiscordEventHandler({
     description: "This event is fired when a member is unbanned from a guild",
     listener: async function (m) {
         const commands = this.commands.get("guildBanRemove")
-
+        
         for (const command of commands) {
             Interpreter.run({
                 obj: m.user,

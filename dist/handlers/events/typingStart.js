@@ -4,6 +4,7 @@ const core_1 = require("../../core");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "typingStart",
+    version: "1.4.0",
     listener: async function (typing) {
         const commands = this.commands.get("typingStart");
         for (const command of commands) {

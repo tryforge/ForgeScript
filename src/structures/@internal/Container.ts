@@ -12,6 +12,7 @@ import {
     Guild,
     GuildEmoji,
     GuildMember,
+    GuildScheduledEvent,
     Interaction,
     InteractionEditReplyOptions,
     InteractionReplyOptions,
@@ -37,6 +38,7 @@ import { RawMessageData } from "discord.js/typings/rawDataTypes"
 export type Sendable =
     | {}
     | Sticker
+    | GuildScheduledEvent
     | Role
     | Presence
     | Message

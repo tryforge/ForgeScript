@@ -4,6 +4,7 @@ const core_1 = require("../../core");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "channelPinsUpdate",
+    version: "1.4.0",
     description: "This event is fired when a channel's pins are updated",
     listener: async function (ch) {
         const commands = this.commands.get("channelPinsUpdate");
