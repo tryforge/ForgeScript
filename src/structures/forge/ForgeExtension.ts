@@ -2,10 +2,12 @@ import { ForgeClient } from "../../core/ForgeClient"
 import getVersionNumber from "../../functions/getVersionNumber"
 import { ErrorType, ForgeError } from "./ForgeError"
 import { Logger } from "../@internal/Logger"
-import { FunctionManager } from "../../managers"
+import { BaseCommandManager, FunctionManager } from "../../managers"
 import { ClassInstance, ClassType } from ".."
 
 export abstract class ForgeExtension {
+    private _commands?: BaseCommandManager<unknown> | null
+
     public abstract name: string
     public abstract description: string
     public abstract version: string
@@ -58,5 +60,20 @@ export abstract class ForgeExtension {
 
     protected load(path: string) {
         return FunctionManager.load(this.name, path)
+    }
+
+    getCommandManager() {
+        if (this._commands === null)
+            return this._commands
+        
+        const keys = Object.getOwnPropertyNames(this)
+        for (let i = 0, len = keys.length;i < len;i++) {
+            const key = keys[i]
+            const value = Reflect.get(this, key)
+            if (value instanceof BaseCommandManager)
+                return this._commands = value
+        }
+
+        return this._commands = null
     }
 }

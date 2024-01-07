@@ -32,6 +32,9 @@ const client = new ForgeClient({
         "$guildName",
         "$cope"
     ],
+    extensions: [
+        new MyExtension()
+    ],
     mobile: true,
     useInviteSystem: true,
     prefixes: ["!", "<@$botID>"],

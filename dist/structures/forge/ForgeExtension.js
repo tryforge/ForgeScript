@@ -9,6 +9,7 @@ const ForgeError_1 = require("./ForgeError");
 const Logger_1 = require("../@internal/Logger");
 const managers_1 = require("../../managers");
 class ForgeExtension {
+    _commands;
     /**
      * Only the versions written here will be allowed
      */
@@ -40,6 +41,18 @@ class ForgeExtension {
     }
     load(path) {
         return managers_1.FunctionManager.load(this.name, path);
+    }
+    getCommandManager() {
+        if (this._commands === null)
+            return this._commands;
+        const keys = Object.getOwnPropertyNames(this);
+        for (let i = 0, len = keys.length; i < len; i++) {
+            const key = keys[i];
+            const value = Reflect.get(this, key);
+            if (value instanceof managers_1.BaseCommandManager)
+                return this._commands = value;
+        }
+        return this._commands = null;
     }
 }
 exports.ForgeExtension = ForgeExtension;

@@ -4,6 +4,7 @@ const core_1 = require("../core");
 const dotenv_1 = require("dotenv");
 const discord_js_1 = require("discord.js");
 const Logger_1 = require("../structures/@internal/Logger");
+const ext_1 = require("./ext");
 (0, dotenv_1.config)();
 const client = new core_1.ForgeClient({
     logLevel: Logger_1.LogPriority.High,
@@ -31,6 +32,9 @@ const client = new core_1.ForgeClient({
     disableFunctions: [
         "$guildName",
         "$cope"
+    ],
+    extensions: [
+        new ext_1.MyExtension()
     ],
     mobile: true,
     useInviteSystem: true,

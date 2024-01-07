@@ -4,6 +4,7 @@ const scheduledEvent_1 = require("../../properties/scheduledEvent");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$oldScheduledEvent",
+    version: "1.4.0",
     description: "Retrieves old data from an event whose context was a scheduled event instance",
     brackets: true,
     unwrap: true,

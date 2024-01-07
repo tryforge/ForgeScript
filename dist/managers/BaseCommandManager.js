@@ -49,6 +49,9 @@ class BaseCommandManager {
                 this.addPath(true, path, req);
         }
     }
+    get count() {
+        return this.commands.reduce((x, y) => x + y.length, 0);
+    }
     get(type, fn) {
         const cmds = this.commands.get(type) ?? [];
         if (!fn)

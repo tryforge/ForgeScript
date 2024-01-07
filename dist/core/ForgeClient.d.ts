@@ -1,6 +1,6 @@
 import { ClientOptions, Client, IntentsBitField, Message } from "discord.js";
 import { IExtendedCompilationResult } from ".";
-import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, ApplicationCommandManager, ThreadManager } from "../managers";
+import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, ApplicationCommandManager, ThreadManager, BaseCommandManager } from "../managers";
 import { CommandType, LogPriority, ForgeExtension, ClassType, ClassInstance, BaseCommand } from "../structures";
 export interface ITrackers {
     invites?: boolean;
@@ -80,6 +80,10 @@ export declare class ForgeClient extends Client<true> {
     get version(): string;
     getPrefix(msg: Message): Promise<string | null>;
     canRespondToBots(cmd: BaseCommand<any>): boolean;
+    /**
+     * Returns all available command managers
+     */
+    get commandManagers(): BaseCommandManager<unknown>[];
     login(token?: string | undefined): Promise<string>;
 }
 //# sourceMappingURL=ForgeClient.d.ts.map

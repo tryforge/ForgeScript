@@ -49,6 +49,10 @@ export abstract class BaseCommandManager<T> {
         }
     }
 
+    public get count() {
+        return this.commands.reduce((x, y) => x + y.length, 0)
+    }
+    
     public get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[] {
         const cmds = this.commands.get(type) ?? []
         if (!fn) return cmds

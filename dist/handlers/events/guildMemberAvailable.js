@@ -5,6 +5,7 @@ const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHan
 const InviteTracker_1 = require("../../structures/trackers/InviteTracker");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "guildMemberAvailable",
+    version: "1.4.0",
     description: "This event is fired when a member of a guild becomes available",
     listener: async function (m) {
         if (this.options.trackers?.invites)

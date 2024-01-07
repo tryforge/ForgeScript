@@ -8,6 +8,7 @@ export declare abstract class BaseCommandManager<T> {
     constructor(client: ForgeClient);
     refresh(): void;
     load(path: string): void;
+    get count(): number;
     get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[];
     add(...commands: (IBaseCommand<T> | BaseCommand<T>)[]): void;
     private addPath;

@@ -102,6 +102,22 @@ class ForgeClient extends discord_js_1.Client {
     canRespondToBots(cmd) {
         return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined);
     }
+    /**
+     * Returns all available command managers
+     */
+    get commandManagers() {
+        const arr = new Array(this.commands);
+        if (this.options.extensions?.length) {
+            for (let i = 0, len = this.options.extensions.length; i < len; i++) {
+                const ext = this.options.extensions[i];
+                const manager = ext.getCommandManager();
+                if (!manager)
+                    continue;
+                arr.push(manager);
+            }
+        }
+        return arr;
+    }
     login(token) {
         return super.login(token ?? this.options.token).then(async (str) => {
             await this.applicationCommands.register();

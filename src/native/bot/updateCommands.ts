@@ -6,7 +6,7 @@ export default new NativeFunction({
     description: "Updates bot commands, also registers new ones",
     unwrap: false,
     execute(ctx) {
-        ctx.client.commands.refresh()
+        ctx.client.commandManagers.forEach(x => x.refresh())
         return this.success()
     },
 })

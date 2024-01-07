@@ -1,6 +1,6 @@
 import { disableValidators, ClientOptions, Client, IntentsBitField, Partials, DefaultWebSocketManagerOptions, Message } from "discord.js"
 import { IExtendedCompilationResult, Compiler } from "."
-import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, FunctionManager, NativeEventName, ApplicationCommandManager, ThreadManager } from "../managers"
+import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, FunctionManager, NativeEventName, ApplicationCommandManager, ThreadManager, BaseCommandManager } from "../managers"
 import { CommandType, LogPriority, ForgeExtension, Logger, InviteTracker, ClassType, ClassInstance, ForgeError, ErrorType, BaseCommand } from "../structures"
 import { VoiceTracker } from "../structures/trackers/VoiceTracker"
 import { Interpreter } from "./Interpreter"
@@ -203,6 +203,25 @@ export class ForgeClient extends Client<true> {
 
     public canRespondToBots(cmd: BaseCommand<any>): boolean {
         return !!cmd.data.allowBots || (!!this.options.allowBots && cmd.data.allowBots === undefined)
+    }
+
+    /**
+     * Returns all available command managers
+     */
+    public get commandManagers()  {
+        const arr = new Array<BaseCommandManager<unknown>>(this.commands)
+
+        if (this.options.extensions?.length) {
+            for (let i = 0, len = this.options.extensions.length;i < len;i++) {
+                const ext = this.options.extensions[i]
+                const manager = ext.getCommandManager()
+                if (!manager)
+                    continue
+                arr.push(manager)
+            }
+        }
+
+        return  arr
     }
 
     override login(token?: string | undefined): Promise<string> {
