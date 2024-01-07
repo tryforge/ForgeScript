@@ -154,7 +154,10 @@ class Context {
                 return false;
             data = data[key];
         }
-        return delete data[keys[keys.length - 1]];
+        const key = keys[keys.length - 1];
+        if (Array.isArray(data))
+            return data.splice(Number(key), 1);
+        return delete data[key];
     }
     traverseAddEnvironmentKey(value, ...keys) {
         let data = this.#environment;
@@ -222,6 +225,19 @@ class Context {
     }
     get getExtension() {
         return this.client.getExtension.bind(this.client);
+    }
+    cloneEmpty() {
+        return new Context(this.runtime);
+    }
+    /**
+     * Clones keywords and environment vars
+     * @returns
+     */
+    clone() {
+        const empty = this.cloneEmpty();
+        empty.#keywords = { ...this.#keywords };
+        empty.#environment = { ...this.#environment };
+        return empty;
     }
 }
 exports.Context = Context;

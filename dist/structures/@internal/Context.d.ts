@@ -44,7 +44,7 @@ export declare class Context {
     handleNotSuccess(rt: Return): boolean;
     clearHttpOptions(): void;
     setEnvironmentKey(name: string, value: unknown): unknown;
-    traverseDeleteEnvironmentKey(...keys: string[]): boolean;
+    traverseDeleteEnvironmentKey(...keys: string[]): boolean | any[];
     traverseAddEnvironmentKey(value: unknown, ...keys: string[]): boolean;
     deleteEnvironmentKey(name: string): boolean;
     getEnvironmentKey(...args: string[]): any;
@@ -67,5 +67,11 @@ export declare class Context {
     get<T>(key: PropertyKey): T;
     private error;
     get getExtension(): <T extends ClassType, B extends boolean>(type: T, required?: B | undefined) => B extends true ? ClassInstance<T> : ClassInstance<T> | null;
+    cloneEmpty(): Context;
+    /**
+     * Clones keywords and environment vars
+     * @returns
+     */
+    clone(): Context;
 }
 //# sourceMappingURL=Context.d.ts.map

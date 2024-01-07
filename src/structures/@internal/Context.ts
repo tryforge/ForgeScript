@@ -216,7 +216,10 @@ export class Context {
             data = data[key] as Record<string, unknown>
         }
 
-        return delete data[keys[keys.length - 1]]
+        const key = keys[keys.length - 1]
+        if (Array.isArray(data))
+            return data.splice(Number(key), 1)
+        return delete data[key]
     }
 
     public traverseAddEnvironmentKey(value: unknown, ...keys: string[]) {
@@ -301,5 +304,22 @@ export class Context {
 
     public get getExtension() {
         return this.client.getExtension.bind(this.client)
+    }
+
+    public cloneEmpty() {
+        return new Context(this.runtime)
+    }
+
+    /**
+     * Clones keywords and environment vars
+     * @returns 
+     */
+    public clone() {
+        const empty = this.cloneEmpty()
+
+        empty.#keywords = {...this.#keywords}
+        empty.#environment = {...this.#environment}
+
+        return empty
     }
 }
