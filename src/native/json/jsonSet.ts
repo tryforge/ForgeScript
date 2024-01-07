@@ -1,3 +1,4 @@
+import parseJSON from "../../functions/parseJSON"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,22 +9,15 @@ export default new NativeFunction({
     brackets: true,
     args: [
         {
-            name: "value",
-            description: "The value to set",
-            rest: false,
-            required: true,
-            type: ArgType.Json
-        },
-        {
-            name: "keys",
-            description: "The keys to traverse",
+            name: "keys;value",
+            description: "The keys to traverse, with the value to use at the end",
             type: ArgType.String,
             rest: true,
             required: true
         }
     ],
     output: ArgType.Boolean,
-    execute(ctx, [ value, keys ]) {
-        return this.success(ctx.traverseAddEnvironmentKey(value, ...keys))
+    execute(ctx, [ keys ]) {
+        return this.success(ctx.traverseAddEnvironmentKey(parseJSON(keys[keys.length - 1]), ...keys.slice(0, -1)))
     },
 })

@@ -230,6 +230,7 @@ export class Context {
 
         const lastKey = keys[keys.length - 1]
         data[lastKey] = value
+
         return true
     }
 
