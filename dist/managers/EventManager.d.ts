@@ -14,8 +14,8 @@ export declare class EventManager {
         description: string;
         listener: (this: ForgeClient, ...args: unknown[]) => void | Promise<void>;
         version?: string | undefined;
-        intents?: ("Guilds" | "GuildMembers" | "GuildModeration" | "GuildBans" | "GuildEmojisAndStickers" | "GuildIntegrations" | "GuildWebhooks" | "GuildInvites" | "GuildVoiceStates" | "GuildPresences" | "GuildMessages" | "GuildMessageReactions" | "GuildMessageTyping" | "DirectMessages" | "DirectMessageReactions" | "DirectMessageTyping" | "MessageContent" | "GuildScheduledEvents" | "AutoModerationConfiguration" | "AutoModerationExecution")[] | undefined;
+        intents?: GatewayIntentsString[] | undefined;
     }[];
-    has(handler: string, type: any): boolean;
+    has(handler: string, type: any): any;
 }
 //# sourceMappingURL=EventManager.d.ts.map

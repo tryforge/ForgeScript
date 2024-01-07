@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [name, sep]) {
         const arr = ctx.getEnvironmentKey(name);
-        return this.success(Array.isArray(arr) ? arr.join(sep || ", ") : undefined);
+        return this.success(Array.isArray(arr) ? arr.join(sep ?? ", ") : undefined);
     },
 });
 //# sourceMappingURL=arrayJoin.js.map

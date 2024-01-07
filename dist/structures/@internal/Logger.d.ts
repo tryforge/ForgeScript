@@ -1,4 +1,3 @@
-import clc from "chalk";
 export declare enum LogPriority {
     /**
      * Does not log anything
@@ -31,13 +30,13 @@ export declare enum LogType {
 export declare class Logger {
     static Priority: LogPriority;
     static readonly Colors: {
-        2: clc.Chalk;
-        4: clc.Chalk;
-        0: clc.Chalk;
-        1: clc.Chalk;
-        3: clc.Chalk;
+        2: any;
+        4: any;
+        0: any;
+        1: any;
+        3: any;
     };
-    static readonly DateColor: clc.Chalk;
+    static readonly DateColor: any;
     private static log;
     static debug(...args: unknown[]): void;
     static warn(...args: unknown[]): void;

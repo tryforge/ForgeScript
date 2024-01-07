@@ -1,4 +1,3 @@
-import { GuildFeature } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
@@ -10,7 +9,7 @@ declare const _default: NativeFunction<[{
     name: string;
     rest: true;
     type: ArgType.Enum;
-    enum: typeof GuildFeature;
+    enum: any;
     description: string;
 }], true>;
 export default _default;

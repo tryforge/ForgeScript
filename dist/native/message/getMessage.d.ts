@@ -1,4 +1,3 @@
-import { BaseChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 import { MessageProperty } from "../../properties/message";
 declare const _default: NativeFunction<[{
@@ -7,7 +6,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => any;
 }, {
     name: string;
     description: string;
