@@ -1,4 +1,4 @@
-import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite } from "discord.js";
+import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker } from "discord.js";
 import { IExtendedCompilationResult } from ".";
 import { Sendable, BaseCommand } from "../structures";
 import { ForgeClient } from "./ForgeClient";
@@ -13,8 +13,10 @@ export interface IStates {
     audit: GuildAuditLogsEntry;
     channel: Channel;
     guild: Guild;
+    bulk: Array<Message | PartialMessage>;
     stage: StageInstance;
     invite: Invite;
+    sticker: Sticker;
 }
 export type States = {
     [K in keyof IStates]?: {

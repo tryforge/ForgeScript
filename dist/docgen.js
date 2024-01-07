@@ -7,7 +7,8 @@ const discord_js_1 = require("discord.js");
 const generateMetadata_1 = __importDefault(require("./functions/generateMetadata"));
 const managers_1 = require("./managers");
 const expose = {
-    "GatewayIntentBits": discord_js_1.GatewayIntentBits
+    "GatewayIntentBits": discord_js_1.GatewayIntentBits,
+    "StickerFormatType": discord_js_1.StickerFormatType
 };
 (0, generateMetadata_1.default)(
 // eslint-disable-next-line no-undef

@@ -1,10 +1,11 @@
-import { GatewayIntentBits } from "discord.js"
+import { GatewayIntentBits, StickerFormatType } from "discord.js"
 import generateMetadata from "./functions/generateMetadata"
 import { NativeEventName } from "./managers"
 import { EnumLike } from "./structures"
 
 const expose = {
-    "GatewayIntentBits": GatewayIntentBits
+    "GatewayIntentBits": GatewayIntentBits,
+    "StickerFormatType": StickerFormatType
 } satisfies Record<string, EnumLike>
 
 generateMetadata(

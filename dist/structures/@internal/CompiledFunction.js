@@ -17,7 +17,6 @@ const undici_1 = require("undici");
 const node_fs_1 = require("node:fs");
 const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 class CompiledFunction {
-    raw;
     static OverwriteSymbolMapping = {
         "/": null,
         "+": true,
@@ -29,7 +28,6 @@ class CompiledFunction {
     data;
     fn;
     constructor(raw) {
-        this.raw = raw;
         this.fn = FunctionManager_1.FunctionManager.get(raw.name);
         this.data = {
             ...raw,

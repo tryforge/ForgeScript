@@ -21,7 +21,6 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
     return: Return;
 }
 export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    private readonly raw;
     static readonly OverwriteSymbolMapping: {
         "/": null;
         "+": boolean;
