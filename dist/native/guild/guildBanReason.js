@@ -9,8 +9,9 @@ exports.default = new structures_1.NativeFunction({
     name: "$guildBanReason",
     version: "1.4.0",
     unwrap: true,
-    brackets: true,
+    brackets: false,
     aliases: [
+        "$banReason",
         "$serverBanReason",
         "$getBanReason",
         "$getGuildBanReason",
@@ -35,6 +36,8 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [g, u]) {
+        if (!this.hasFields)
+            return this.success(ctx.runtime.states?.ban?.new?.reason);
         const ban = await g.bans.fetch(u).catch(noop_1.default);
         return this.success(ban ? ban.reason : null);
     },

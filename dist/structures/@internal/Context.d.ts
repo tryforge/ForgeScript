@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, User } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
 import { CompiledFunction } from "./CompiledFunction";
 import { Container } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -32,6 +32,7 @@ export declare class Context {
     get automod(): AutoModerationActionExecution | null;
     get member(): GuildMember | null;
     get emoji(): GuildEmoji | null;
+    get sticker(): Sticker | null;
     get role(): Role | null;
     get reaction(): MessageReaction | null;
     get message(): Message<any> | null;

@@ -4,6 +4,7 @@ const sticker_1 = require("../../properties/sticker");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newSticker",
+    version: "1.4.0",
     description: "Retrieves new data from an event whose context was a sticker instance",
     brackets: true,
     unwrap: true,

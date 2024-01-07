@@ -4,6 +4,7 @@ const core_1 = require("../../core");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "messageReactionRemoveAll",
+    version: "1.4.0",
     description: "This event is fired when all emojis are removed from a message's reactions",
     intents: ["GuildMessageReactions", "DirectMessageReactions"],
     listener: async function (m) {

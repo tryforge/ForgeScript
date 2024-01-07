@@ -4,6 +4,7 @@ const bulk_1 = require("../../properties/bulk");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bulk",
+    version: "1.4.0",
     description: "Retrieves data from an event whose context was bulk delete event",
     brackets: true,
     unwrap: true,

@@ -12,6 +12,7 @@ import {
     Message,
     MessageReaction,
     Role,
+    Sticker,
     User,
 } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
@@ -53,6 +54,7 @@ export class Context {
     #reaction?: MessageReaction | null
     #emoji?: GuildEmoji | null
     #automod?: AutoModerationActionExecution | null
+    #sticker?: Sticker | null
 
     // eslint-disable-next-line no-undef
     [props: PropertyKey]: unknown
@@ -102,6 +104,10 @@ export class Context {
 
     public get emoji() {
         return (this.#emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
+    }
+
+    public get sticker() {
+        return (this.#sticker ??= this.obj instanceof Sticker ? this.obj : null)
     }
 
     public get role() {

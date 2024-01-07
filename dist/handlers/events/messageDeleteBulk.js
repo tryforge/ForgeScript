@@ -5,6 +5,7 @@ const core_1 = require("../../core");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "messageDeleteBulk",
+    version: "1.4.0",
     description: "This event is fired when a row of messages is deleted",
     listener: async function (ch, channel) {
         const commands = this.commands.get("messageDeleteBulk");

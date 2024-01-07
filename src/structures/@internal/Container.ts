@@ -23,6 +23,7 @@ import {
     ModalBuilder,
     Presence,
     Role,
+    Sticker,
     StickerResolvable,
     TextInputBuilder,
     User,
@@ -35,6 +36,7 @@ import { RawMessageData } from "discord.js/typings/rawDataTypes"
 
 export type Sendable =
     | {}
+    | Sticker
     | Role
     | Presence
     | Message

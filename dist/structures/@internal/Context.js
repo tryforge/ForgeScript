@@ -22,6 +22,7 @@ class Context {
     #reaction;
     #emoji;
     #automod;
+    #sticker;
     executionTimestamp;
     http = {};
     #keywords = {};
@@ -60,6 +61,9 @@ class Context {
     }
     get emoji() {
         return (this.#emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
+    }
+    get sticker() {
+        return (this.#sticker ??= this.obj instanceof discord_js_1.Sticker ? this.obj : null);
     }
     get role() {
         return (this.#role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
