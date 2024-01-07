@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const structures_1 = require("../../../structures");
-exports.default = new structures_1.ApplicationCommand({
+exports.default = {
     code: "ok! $applicationCommandDisplay",
     data: {
         name: "sure",
@@ -16,5 +15,5 @@ exports.default = new structures_1.ApplicationCommand({
             }
         ]
     }
-});
+};
 //# sourceMappingURL=bye.js.map

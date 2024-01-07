@@ -6,6 +6,7 @@ export declare enum ErrorType {
     MissingFields = "Function $1 requires brackets",
     UnknownXName = "Unknown $1 with name $2",
     Custom = "$1",
+    MissingApplicationCommandData = "An application command is missing data property ($1)",
     ExtensionNotFound = "Extension $1 does not seem to be loaded but is being used.",
     MissingCommandType = "A command is missing its type ($1)",
     UnsupportedExtensionVersion = "Extension $1 does not work for your ForgeScript version: $2",

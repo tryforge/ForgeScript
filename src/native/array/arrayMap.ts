@@ -1,3 +1,4 @@
+import parseJSON from "../../functions/parseJSON"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -62,7 +63,7 @@ export default new NativeFunction({
                 const rt = (await this["resolveCode"](ctx, code)) as Return
 
                 if (rt.return) {
-                    newArr.push(rt.value)
+                    newArr.push(parseJSON(rt.value))
                 } else if (!this["isValidReturnType"](rt)) return rt
             }
         }

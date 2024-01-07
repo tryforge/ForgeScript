@@ -15,6 +15,7 @@ const hex_1 = require("../../functions/hex");
 const node_util_1 = require("node:util");
 const undici_1 = require("undici");
 const node_fs_1 = require("node:fs");
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 class CompiledFunction {
     raw;
     static OverwriteSymbolMapping = {
@@ -233,12 +234,7 @@ class CompiledFunction {
         return ctx.client.guilds.cache.get(str);
     }
     resolveJson(ctx, arg, str, ref) {
-        try {
-            return JSON.parse(str);
-        }
-        catch (error) {
-            return str;
-        }
+        return (0, parseJSON_1.default)(str);
     }
     resolveUser(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))

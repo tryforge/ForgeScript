@@ -29,6 +29,7 @@ import { resolveColor as any2int } from "../../functions/hex"
 import { inspect } from "node:util"
 import { fetch } from "undici"
 import { existsSync } from "node:fs"
+import parseJSON from "../../functions/parseJSON"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -307,11 +308,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveJson(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        try {
-            return JSON.parse(str)
-        } catch (error: unknown) {
-            return str
-        }
+        return parseJSON(str)
     }
 
     private resolveUser(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

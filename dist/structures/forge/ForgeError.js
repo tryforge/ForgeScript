@@ -8,6 +8,7 @@ var ErrorType;
     ErrorType["MissingFields"] = "Function $1 requires brackets";
     ErrorType["UnknownXName"] = "Unknown $1 with name $2";
     ErrorType["Custom"] = "$1";
+    ErrorType["MissingApplicationCommandData"] = "An application command is missing data property ($1)";
     ErrorType["ExtensionNotFound"] = "Extension $1 does not seem to be loaded but is being used.";
     ErrorType["MissingCommandType"] = "A command is missing its type ($1)";
     ErrorType["UnsupportedExtensionVersion"] = "Extension $1 does not work for your ForgeScript version: $2";

@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [raw]) {
-        return this.success(!!((await raw.clone().catch(noop_1.default))?.id));
+        return this.success((await raw.clone().catch(noop_1.default))?.id);
     },
 });
 //# sourceMappingURL=cloneChannel.js.map

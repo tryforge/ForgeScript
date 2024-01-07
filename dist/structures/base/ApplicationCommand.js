@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApplicationCommand = void 0;
 const core_1 = require("../../core");
+const ForgeError_1 = require("../forge/ForgeError");
 class ApplicationCommand {
     options;
     compiled;
@@ -13,6 +14,8 @@ class ApplicationCommand {
         return this.options.data.name;
     }
     toJSON() {
+        if (!this.options.data)
+            throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.MissingApplicationCommandData, this.options.path ?? "index file");
         return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data;
     }
 }

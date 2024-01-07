@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayMap",
@@ -59,7 +63,7 @@ exports.default = new structures_1.NativeFunction({
                 ctx.setEnvironmentKey(varName, el);
                 const rt = (await this["resolveCode"](ctx, code));
                 if (rt.return) {
-                    newArr.push(rt.value);
+                    newArr.push((0, parseJSON_1.default)(rt.value));
                 }
                 else if (!this["isValidReturnType"](rt))
                     return rt;

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Delete a key from a traversed json",
     unwrap: true,
+    brackets: true,
     output: structures_1.ArgType.Boolean,
     args: [
         {

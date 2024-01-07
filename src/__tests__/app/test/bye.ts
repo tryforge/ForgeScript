@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType } from "discord.js"
 import { ApplicationCommand } from "../../../structures"
 
-export default new ApplicationCommand({
+export default {
     code: "ok! $applicationCommandDisplay",
     data: {
         name: "sure",
@@ -15,4 +15,4 @@ export default new ApplicationCommand({
             }
         ]
     }
-})
+}

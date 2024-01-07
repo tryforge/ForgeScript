@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Delete a key from a traversed json",
     unwrap: true,
+    brackets: true,
     output: ArgType.Boolean,
     args: [
         {

@@ -1,5 +1,6 @@
 import { Compiler, IExtendedCompilationResult } from "../../core"
 import { IApplicationCommandData } from "../../managers/ApplicationCommandManager"
+import { ErrorType, ForgeError } from "../forge/ForgeError"
 
 export class ApplicationCommand {
     compiled: IExtendedCompilationResult
@@ -13,6 +14,9 @@ export class ApplicationCommand {
     }
 
     public toJSON() {
+        if (!this.options.data)
+            throw new ForgeError(null, ErrorType.MissingApplicationCommandData, this.options.path ?? "index file")
+        
         return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data
     }
 }
