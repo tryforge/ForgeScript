@@ -2,8 +2,10 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { EventManager, FunctionManager } from "../managers"
 import { execSync } from "child_process"
 import { argv, cwd, exit } from "process"
-import { EnumLike, IArg, INativeFunction, Logger } from "../structures"
+import { ArgType, EnumLike, IArg, INativeFunction, Logger } from "../structures"
 import { enumToArray } from "./enum"
+import { ITraslateFunctionOptions, translateFunctions } from "./translate"
+import { capitalize } from "lodash"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
@@ -58,7 +60,7 @@ function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record
     return arr
 }
 
-export default function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string) {
+export default async function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translateFuncs?: Omit<ITraslateFunctionOptions, "functions" | "outputFile">) {
     let total = 0
     const enums: Record<string, string[]> = {}
 
@@ -93,6 +95,10 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
                 }
             }
 
+            for (const arg of fn.data.args ?? []) {
+                Reflect.set(arg, "type", capitalize(ArgType[arg.type]))
+            }
+            
             const output = getOutputValues(fn.data, txt, enums)
             if (output?.length)
                 Reflect.set(fn.data, "output", output)
@@ -152,5 +158,14 @@ export default function(functionsAbsolutePath: string, mainCategoryName?: string
         }
 
         writeFileSync(`${metaOutPath}/events.json`, JSON.stringify(EventManager.toJSON(eventName)))
+    }
+
+    if (translateFuncs) {
+        Logger.info("Now translating functions, hold tight")
+        await translateFunctions({
+            ...translateFuncs,
+            outputFile: "./metadata/translations.json",
+            functions: [...FunctionManager["Functions"].values()].map(x => x.data)
+        })
     }
 }

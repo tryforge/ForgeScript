@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Logger = exports.LogType = exports.LogPriority = void 0;
 const chalk_1 = __importDefault(require("chalk"));
+const process_1 = require("process");
 const util_1 = require("util");
 var LogPriority;
 (function (LogPriority) {
@@ -52,6 +53,10 @@ class Logger {
             return;
         console.log(Logger.DateColor(`[${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}]`), Logger.Colors[type](`[${LogType[type].toUpperCase()}]`), ...args.map(x => Logger.Colors[type](typeof x === "string" ? x : (0, util_1.inspect)(x))));
     }
+    static clearLine() {
+        process_1.stdout.moveCursor(0, -1);
+        process_1.stdout.clearLine(0);
+    }
     static debug(...args) {
         this.log(LogPriority.High, LogType.Debug, ...args);
     }
@@ -66,6 +71,26 @@ class Logger {
     }
     static info(...args) {
         this.log(LogPriority.VeryLow, LogType.Info, ...args);
+    }
+    static infoUpdate(...args) {
+        this.clearLine();
+        return this.info(...args);
+    }
+    static warnUpdate(...args) {
+        this.clearLine();
+        return this.warn(...args);
+    }
+    static debugUpdate(...args) {
+        this.clearLine();
+        return this.debug(...args);
+    }
+    static deprecatedUpdate(...args) {
+        this.clearLine();
+        return this.deprecated(...args);
+    }
+    static errorUpdate(...args) {
+        this.clearLine();
+        return this.error(...args);
     }
 }
 exports.Logger = Logger;

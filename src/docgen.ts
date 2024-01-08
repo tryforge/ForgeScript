@@ -1,4 +1,4 @@
-import { GatewayIntentBits, StickerFormatType } from "discord.js"
+import { GatewayIntentBits, Locale, StickerFormatType } from "discord.js"
 import generateMetadata from "./functions/generateMetadata"
 import { NativeEventName } from "./managers"
 import { EnumLike } from "./structures"
@@ -16,5 +16,10 @@ generateMetadata(
     false, 
     expose,
     // eslint-disable-next-line no-undef
-    `${__dirname}/handlers/events`
+    `${__dirname}/handlers/events`,
+    {
+        languages: [
+            "es"
+        ]
+    }
 )

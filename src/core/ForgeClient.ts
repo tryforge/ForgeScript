@@ -160,8 +160,10 @@ export class ForgeClient extends Client<true> {
         this.options.prefixes = raw.prefixes.map(x => Compiler.compile(x))
     }
 
-    public getExtension<T extends ClassType, B extends boolean>(type: T, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null {
-        const finder = this.options.extensions?.find(x => x instanceof type)
+    public getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null
+    public getExtension<T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null
+    public getExtension<T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null {
+        const finder = this.options.extensions?.find(x => typeof type === "string" ? x.name === type : x instanceof type)
         if (!finder && required)  {
             throw new ForgeError(
                 null,

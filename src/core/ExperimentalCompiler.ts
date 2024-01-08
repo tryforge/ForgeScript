@@ -190,15 +190,16 @@ export class ExperimentalCompiler {
             } else {
                 for (;;) {
                     fields.push(this.parseAnyField(match, field))
-                    if (!this.skipIf(ExperimentalCompiler.Syntax.Separator))
+                    if (this.back() !== ExperimentalCompiler.Syntax.Separator)
                         break
                 }
             }
 
-            const isSeparator = this.char() === ExperimentalCompiler.Syntax.Separator
+            const isSeparator = this.back() === ExperimentalCompiler.Syntax.Separator
             if (!isSeparator)
                 break
             else if (isLast && isSeparator) {
+                console.log(this.back(), isSeparator, this.index, i, len, field)
                 this.error(`Function ${match.fn.name} expects ${match.fn.args?.fields.length} arguments at most`)
             }
         }
@@ -338,11 +339,10 @@ export class ExperimentalCompiler {
     }
 
     private parseAnyField(ref: IRawFunctionMatch, field: IRawField): ICompiledFunctionField | ICompiledFunctionConditionField {
-        if (field.condition) {
-            return this.parseConditionField(ref)
-        } else {
-            return this.parseNormalField(ref)
-        }
+        const fld = field.condition ? this.parseConditionField(ref) : this.parseNormalField(ref)
+        console.log(`Skipping ${this.char()}`)
+        this.skip(1)
+        return fld
     }
 
     private prepareFunction(match: IRawFunctionMatch, fields: null | (ICompiledFunctionField | ICompiledFunctionConditionField)[]): ICompiledFunction {
@@ -410,8 +410,6 @@ export class ExperimentalCompiler {
         const gencode = code.replace(ExperimentalCompiler.InvalidCharRegex, "\\$1").replace(ExperimentalCompiler.SystemRegex, () => {
             return "${args[" + i++ + "] ?? ''}"
         })
-
-        console.log(gencode)
 
         return new Function("args", "return `" + gencode + "`") as WrappedCode
     }

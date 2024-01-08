@@ -1,4 +1,4 @@
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, Context, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayAt",

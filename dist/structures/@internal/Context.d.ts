@@ -65,9 +65,20 @@ export declare class Context {
         get interaction(): ChatInputCommandInteraction;
     };
     getEnvironmentInstance<T extends ClassType>(type: T, ...keys: string[]): ClassInstance<T> | null;
+    hasInstance<K extends string, V extends ClassType>(key: K, type: V): this is this & {
+        [P in keyof {
+            bro: boolean;
+        } as K]: ClassInstance<V>;
+    };
     get<T>(key: PropertyKey): T;
+    getInstance<K extends string, T extends ClassType>(key: K, type: T): (this & { [P in keyof {
+        bro: boolean;
+    } as K]: ClassInstance<T>; })[K] | null;
     private error;
-    get getExtension(): <T extends ClassType, B extends boolean>(type: T, required?: B | undefined) => B extends true ? ClassInstance<T> : ClassInstance<T> | null;
+    get getExtension(): {
+        <B extends boolean>(name: string, required?: B | undefined): B extends true ? import("..").ForgeExtension : import("..").ForgeExtension | null;
+        <T extends ClassType, B_1 extends boolean>(type: string | T, required?: B_1 | undefined): B_1 extends true ? ClassInstance<T> : ClassInstance<T> | null;
+    };
     cloneEmpty(): Context;
     /**
      * Clones keywords and environment vars

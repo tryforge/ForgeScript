@@ -70,7 +70,7 @@ class ForgeClient extends discord_js_1.Client {
         this.options.prefixes = raw.prefixes.map(x => _1.Compiler.compile(x));
     }
     getExtension(type, required) {
-        const finder = this.options.extensions?.find(x => x instanceof type);
+        const finder = this.options.extensions?.find(x => typeof type === "string" ? x.name === type : x instanceof type);
         if (!finder && required) {
             throw new structures_1.ForgeError(null, structures_1.ErrorType.ExtensionNotFound, type.constructor.name);
         }

@@ -300,8 +300,18 @@ export class Context {
         return got && got instanceof type ? got : null
     }
 
+    public hasInstance<K extends string, V extends ClassType>(key: K, type: V): this is this & { [P in keyof { bro: boolean } as K]: ClassInstance<V> } {
+        return this[key] !== undefined && this[key] instanceof type
+    }
+
     public get<T>(key: PropertyKey) {
         return this[key] as T
+    }
+
+    public getInstance<K extends string, T extends ClassType>(key: K, type: T) {
+        if (this.hasInstance(key, type))
+            return this[key]
+        return null
     }
 
     private error() {

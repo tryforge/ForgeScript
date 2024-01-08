@@ -221,8 +221,16 @@ class Context {
         const got = this.getEnvironmentKey(...keys);
         return got && got instanceof type ? got : null;
     }
+    hasInstance(key, type) {
+        return this[key] !== undefined && this[key] instanceof type;
+    }
     get(key) {
         return this[key];
+    }
+    getInstance(key, type) {
+        if (this.hasInstance(key, type))
+            return this[key];
+        return null;
     }
     error() {
         throw null;

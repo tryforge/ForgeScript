@@ -39,10 +39,16 @@ export declare class Logger {
     };
     static readonly DateColor: clc.Chalk;
     private static log;
+    private static clearLine;
     static debug(...args: unknown[]): void;
     static warn(...args: unknown[]): void;
     static deprecated(...args: unknown[]): void;
     static error(...args: unknown[]): void;
     static info(...args: unknown[]): void;
+    static infoUpdate(...args: unknown[]): void;
+    static warnUpdate(...args: unknown[]): void;
+    static debugUpdate(...args: unknown[]): void;
+    static deprecatedUpdate(...args: unknown[]): void;
+    static errorUpdate(...args: unknown[]): void;
 }
 //# sourceMappingURL=Logger.d.ts.map

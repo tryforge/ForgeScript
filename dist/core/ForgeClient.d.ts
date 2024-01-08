@@ -75,7 +75,8 @@ export declare class ForgeClient extends Client<true> {
     readonly threading: ThreadManager;
     [x: PropertyKey]: unknown;
     constructor(options: IRawForgeClientOptions);
-    getExtension<T extends ClassType, B extends boolean>(type: T, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null;
+    getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null;
+    getExtension<T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null;
     get<T>(key: string): T;
     get version(): string;
     getPrefix(msg: Message): Promise<string | null>;

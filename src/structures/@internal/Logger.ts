@@ -1,4 +1,5 @@
 import clc, { Chalk } from "chalk"
+import { stdout } from "process"
 import { inspect } from "util"
 
 export enum LogPriority {
@@ -56,6 +57,11 @@ export class Logger {
         )
     }
 
+    private static clearLine() {
+        stdout.moveCursor(0, -1)
+        stdout.clearLine(0)
+    }
+
     public static debug(...args: unknown[]) {
         this.log(LogPriority.High, LogType.Debug, ...args)
     }
@@ -74,5 +80,30 @@ export class Logger {
 
     public static info(...args: unknown[]) {
         this.log(LogPriority.VeryLow, LogType.Info, ...args)
+    }
+
+    public static infoUpdate(...args: unknown[]) {
+        this.clearLine()
+        return this.info(...args)
+    }
+
+    public static warnUpdate(...args: unknown[]) {
+        this.clearLine()
+        return this.warn(...args)
+    }
+
+    public static debugUpdate(...args: unknown[]) {
+        this.clearLine()
+        return this.debug(...args)
+    }
+
+    public static deprecatedUpdate(...args: unknown[]) {
+        this.clearLine()
+        return this.deprecated(...args)
+    }
+
+    public static errorUpdate(...args: unknown[]) {
+        this.clearLine()
+        return this.error(...args)
     }
 }
