@@ -5,8 +5,8 @@ const managers_1 = require("../managers");
 const process_1 = require("process");
 const structures_1 = require("../structures");
 const enum_1 = require("./enum");
-const translate_1 = require("./translate");
 const lodash_1 = require("lodash");
+const translate_1 = require("./translate");
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m;
 const ArgEnumRegex = /enum: +(\w+),?/gim;
@@ -50,7 +50,7 @@ function getOutputValues(fn, txt, enums) {
     }
     return arr;
 }
-async function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false, expose, eventsAbsolutePath, translateFuncs) {
+async function default_1(functionsAbsolutePath, mainCategoryName, eventName, warnOnNoOutput = false, expose, eventsAbsolutePath, translate = []) {
     let total = 0;
     const enums = {};
     if (expose?.length)
@@ -131,11 +131,11 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
         }
         (0, fs_1.writeFileSync)(`${metaOutPath}/events.json`, JSON.stringify(managers_1.EventManager.toJSON(eventName)));
     }
-    if (translateFuncs) {
-        structures_1.Logger.info("Now translating functions, hold tight");
-        await (0, translate_1.translateFunctions)({
-            ...translateFuncs,
-            outputFile: "./metadata/translations.json",
+    if (translate.length) {
+        structures_1.Logger.info("Now translating data, hold tight...");
+        await (0, translate_1.translateData)({
+            languages: translate,
+            events: eventName ? Object.values(managers_1.EventManager["Loaded"][eventName]).map(x => x.data) : [],
             functions: [...managers_1.FunctionManager["Functions"].values()].map(x => x.data)
         });
     }

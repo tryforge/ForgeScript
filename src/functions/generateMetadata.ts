@@ -2,10 +2,11 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { EventManager, FunctionManager } from "../managers"
 import { execSync } from "child_process"
 import { argv, cwd, exit } from "process"
-import { ArgType, EnumLike, IArg, INativeFunction, Logger } from "../structures"
+import { ArgType, EnumLike, IArg, IEvent, INativeFunction, Logger } from "../structures"
 import { enumToArray } from "./enum"
-import { ITraslateFunctionOptions, translateFunctions } from "./translate"
 import { capitalize } from "lodash"
+import { translateData } from "./translate"
+import { Locale } from "discord.js"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
@@ -60,7 +61,7 @@ function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record
     return arr
 }
 
-export default async function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translateFuncs?: Omit<ITraslateFunctionOptions, "functions" | "outputFile">) {
+export default async function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translate: Array<string | Locale> = []) {
     let total = 0
     const enums: Record<string, string[]> = {}
 
@@ -160,11 +161,11 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
         writeFileSync(`${metaOutPath}/events.json`, JSON.stringify(EventManager.toJSON(eventName)))
     }
 
-    if (translateFuncs) {
-        Logger.info("Now translating functions, hold tight")
-        await translateFunctions({
-            ...translateFuncs,
-            outputFile: "./metadata/translations.json",
+    if (translate.length) {
+        Logger.info("Now translating data, hold tight...")
+        await translateData({
+            languages: translate,
+            events: eventName ? Object.values(EventManager["Loaded"]![eventName]!).map(x => x.data as unknown as IEvent<unknown, keyof unknown>) : [],
             functions: [...FunctionManager["Functions"].values()].map(x => x.data)
         })
     }

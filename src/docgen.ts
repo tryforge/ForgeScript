@@ -17,9 +17,7 @@ generateMetadata(
     expose,
     // eslint-disable-next-line no-undef
     `${__dirname}/handlers/events`,
-    {
-        languages: [
-            "es"
-        ]
-    }
+    [
+        "es"
+    ]
 )

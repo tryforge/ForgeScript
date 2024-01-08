@@ -23,18 +23,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.translateFunctions = void 0;
+exports.translateData = void 0;
 const structures_1 = require("../structures");
 const fs_1 = require("fs");
 const crypto_1 = require("crypto");
 const constants_1 = require("../constants");
 const generateBar_1 = require("./generateBar");
+const path_1 = require("path");
 function hash(str) {
     return (0, crypto_1.createHash)("sha256").update(str).digest().toString("hex");
 }
 async function translate(str, to) {
     const raw = await Promise.resolve().then(() => __importStar(require("@iamtraction/google-translate"))).then(x => x.default);
     return raw(str, { from: "en", to }).then(x => x.text);
+}
+async function translateEventTo(event, lang, existing = {}) {
+    const newDescriptionHash = hash(event.description);
+    if (newDescriptionHash !== existing.descriptionHash) {
+        existing.descriptionHash = newDescriptionHash;
+        existing.description = await translate(event.description, lang);
+    }
+    return existing;
 }
 async function translateFunctionTo(fn, lang, existing = {}) {
     const newDescriptionHash = hash(fn.description);
@@ -62,20 +71,35 @@ async function translateFunctionTo(fn, lang, existing = {}) {
         delete existing.fields;
     return existing;
 }
-async function translateFunctions(options) {
-    const json = (0, fs_1.existsSync)(options.outputFile) ? JSON.parse((0, fs_1.readFileSync)(options.outputFile, "utf-8")) : {};
-    const startedAt = Date.now();
-    for (let i = 0, len = options.functions.length; i < len; i++) {
-        const fn = options.functions[i];
-        const existing = (json[fn.name] ?? {});
-        for (const lang of options.languages)
-            existing[lang] = await translateFunctionTo(fn, lang, existing[lang]);
-        json[fn.name] = existing;
-        const elapsed = Date.now() - startedAt;
-        const timeLeft = Math.floor((elapsed / i) * (len - i));
-        structures_1.Logger.infoUpdate(`[${(0, generateBar_1.generateBar)(i, len, 20)} ${(i * 100 / len).toFixed(2)}%] (${constants_1.TimeParser.parseToString(timeLeft, { limit: 1 })} left)`);
+const metaPath = "./metadata/translations";
+async function translateData(options) {
+    if (!(0, fs_1.existsSync)(metaPath))
+        (0, fs_1.mkdirSync)(metaPath);
+    for (const lang of options.languages) {
+        const resultPath = (0, path_1.join)(metaPath, `${lang}.json`);
+        const cached = (0, fs_1.existsSync)(resultPath) ? JSON.parse((0, fs_1.readFileSync)(resultPath, "utf-8")) : {};
+        cached.events ??= {};
+        cached.functions ??= {};
+        const functionsStartedAt = Date.now();
+        for (let i = 0, len = options.functions.length; i < len; i++) {
+            const fn = options.functions[i];
+            const existing = (cached.functions[fn.name] ?? {});
+            cached.functions[fn.name] = await translateFunctionTo(fn, lang, existing);
+            const elapsed = Date.now() - functionsStartedAt;
+            const timeLeft = Math.floor((elapsed / i) * (len - i));
+            structures_1.Logger.infoUpdate(`[${lang.toUpperCase()} TRANSLATION/FUNCTIONS] [${(0, generateBar_1.generateBar)(i, len, 20)} ${(i * 100 / len).toFixed(2)}%] (${constants_1.TimeParser.parseToString(timeLeft, { limit: 1 })} left)`);
+        }
+        const eventsStartedAt = Date.now();
+        for (let i = 0, len = options.events.length; i < len; i++) {
+            const ev = options.events[i];
+            const existing = (cached.events[ev.name] ?? {});
+            cached.events[ev.name] = await translateEventTo(ev, lang, existing);
+            const elapsed = Date.now() - eventsStartedAt;
+            const timeLeft = Math.floor((elapsed / i) * (len - i));
+            structures_1.Logger.infoUpdate(`[${lang.toUpperCase()} TRANSLATION/EVENTS] [${(0, generateBar_1.generateBar)(i, len, 20)} ${(i * 100 / len).toFixed(2)}%] (${constants_1.TimeParser.parseToString(timeLeft, { limit: 1 })} left)`);
+        }
+        (0, fs_1.writeFileSync)(resultPath, JSON.stringify(cached), "utf-8");
     }
-    (0, fs_1.writeFileSync)(options.outputFile, JSON.stringify(json), "utf-8");
 }
-exports.translateFunctions = translateFunctions;
+exports.translateData = translateData;
 //# sourceMappingURL=translate.js.map

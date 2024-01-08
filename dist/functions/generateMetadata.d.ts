@@ -1,4 +1,4 @@
 import { EnumLike } from "../structures";
-import { ITraslateFunctionOptions } from "./translate";
-export default function (functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput?: boolean, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translateFuncs?: Omit<ITraslateFunctionOptions, "functions" | "outputFile">): Promise<void>;
+import { Locale } from "discord.js";
+export default function (functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput?: boolean, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translate?: Array<string | Locale>): Promise<void>;
 //# sourceMappingURL=generateMetadata.d.ts.map

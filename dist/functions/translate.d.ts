@@ -1,13 +1,15 @@
 import { Locale } from "discord.js";
-import { IArg, INativeFunction } from "../structures";
+import { IArg, IEvent, INativeFunction } from "../structures";
 export interface IBaseTranslateOptions {
     languages: (Locale | string)[];
-    outputFile: string;
-}
-export interface ITraslateFunctionOptions extends IBaseTranslateOptions {
     functions: INativeFunction<IArg[]>[];
+    events: IEvent<unknown, keyof unknown>[];
 }
-export type ITranslateFunctionOutput = Record<Locale | string, {
+export interface ITranslateEventOutput {
+    description: string;
+    descriptionHash: string;
+}
+export interface ITranslateFunctionOutput {
     description: string;
     descriptionHash: string;
     fields: {
@@ -16,6 +18,10 @@ export type ITranslateFunctionOutput = Record<Locale | string, {
         description: string;
         descriptionHash: string;
     }[];
-}>;
-export declare function translateFunctions(options: ITraslateFunctionOptions): Promise<void>;
+}
+export interface ITranslateOutput {
+    functions: Record<string, ITranslateFunctionOutput>;
+    events: Record<string, ITranslateEventOutput>;
+}
+export declare function translateData(options: IBaseTranslateOptions): Promise<void>;
 //# sourceMappingURL=translate.d.ts.map

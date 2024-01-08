@@ -14,9 +14,7 @@ const expose = {
 // eslint-disable-next-line no-undef
 `${__dirname}/native`, "native", managers_1.NativeEventName, false, expose, 
 // eslint-disable-next-line no-undef
-`${__dirname}/handlers/events`, {
-    languages: [
-        "es"
-    ]
-});
+`${__dirname}/handlers/events`, [
+    "es"
+]);
 //# sourceMappingURL=docgen.js.map
