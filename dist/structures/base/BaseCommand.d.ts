@@ -1,6 +1,6 @@
 import { ClientEvents, Interaction } from "discord.js";
-import { IExtendedCompilationResult } from "../../core/Compiler";
 import { Context } from "..";
+import { IExtendedCompilationResult } from "../../core";
 export type CommandType = keyof ClientEvents;
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>;
 export type CommandInteractionTypes = "button" | "modal" | "autocomplete" | "contextMenu" | "selectMenu";

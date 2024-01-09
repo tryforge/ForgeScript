@@ -1,27 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Compiler_1 = require("../../core/Compiler");
-const Interpreter_1 = require("../../core/Interpreter");
-const Logger_1 = require("../../structures/@internal/Logger");
-const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
-exports.default = new NativeFunction_1.NativeFunction({
+const core_1 = require("../../core");
+const structures_1 = require("../../structures");
+exports.default = new structures_1.NativeFunction({
     name: "$eval",
     version: "1.0.0",
     description: "Evaluates given code",
     unwrap: true,
-    output: NativeFunction_1.ArgType.Unknown,
+    output: structures_1.ArgType.Unknown,
     brackets: true,
     args: [
         {
             name: "code",
-            type: NativeFunction_1.ArgType.String,
+            type: structures_1.ArgType.String,
             rest: false,
             required: true,
             description: "The code to eval",
         },
         {
             name: "send",
-            type: NativeFunction_1.ArgType.Boolean,
+            type: structures_1.ArgType.Boolean,
             rest: false,
             description: "Whether to send as new message",
         },
@@ -29,15 +27,15 @@ exports.default = new NativeFunction_1.NativeFunction({
     async execute(ctx, [code, send]) {
         send ??= true;
         try {
-            const result = await Interpreter_1.Interpreter.run({
+            const result = await core_1.Interpreter.run({
                 ...ctx.runtime,
-                data: Compiler_1.Compiler.compile(code),
+                data: core_1.Compiler.compile(code),
                 doNotSend: !send,
             });
             return result === null ? this.stop() : this.success(send ? undefined : result);
         }
         catch (error) {
-            Logger_1.Logger.error(error);
+            structures_1.Logger.error(error);
             return this.error(error);
         }
     },

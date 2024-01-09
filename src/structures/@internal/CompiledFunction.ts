@@ -1,35 +1,17 @@
-import {
-    AttachmentBuilder,
-    BaseChannel,
-    ForumChannel,
-    Guild,
-    Message,
-    PermissionFlagsBits,
-    PermissionsString,
-    TextBasedChannel,
-    TextChannel,
-    parseEmoji,
-} from "discord.js"
-import {
-    Compiler,
-    ICompiledFunction,
-    ICompiledFunctionConditionField,
-    ICompiledFunctionField,
-    WrappedCode,
-    WrappedConditionCode,
-} from "../../core/Compiler"
-import noop from "../../functions/noop"
-import { FunctionManager } from "../../managers/FunctionManager"
-import { Context } from "./Context"
-import { ErrorType, ForgeError, GetErrorArgs } from "../forge/ForgeError"
-import { ArgType, IArg, NativeFunction, OverwritePermission, UnwrapArgs } from "./NativeFunction"
-import { Return, ReturnType, ReturnValue } from "./Return"
+import { PermissionFlagsBits, TextChannel, parseEmoji, ForumChannel, AttachmentBuilder, PermissionsString } from "discord.js"
+import { existsSync } from "fs"
+import { inspect } from "util"
 import { TimeParser } from "../../constants"
-import { resolveColor as any2int } from "../../functions/hex"
-import { inspect } from "node:util"
-import { fetch } from "undici"
-import { existsSync } from "node:fs"
+import { ICompiledFunctionConditionField, ICompiledFunctionField, ICompiledFunction } from "../../core"
 import parseJSON from "../../functions/parseJSON"
+import { FunctionManager } from "../../managers"
+import { ErrorType, GetErrorArgs, ForgeError } from "../forge/ForgeError"
+import { Context } from "./Context"
+import { IArg, UnwrapArgs, NativeFunction, ArgType, OverwritePermission } from "./NativeFunction"
+import { Return, ReturnType, ReturnValue } from "./Return"
+import { resolveColor } from "../../functions/hex"
+import noop from "../../functions/noop"
+
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -253,7 +235,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveColor(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return any2int(str)
+        return resolveColor(str)
     }
 
     private resolvePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

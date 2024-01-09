@@ -1,4 +1,4 @@
-import { ForgeClient } from "../../core/ForgeClient";
+import { ForgeClient } from "../../core";
 import { BaseCommandManager } from "../../managers";
 export declare abstract class ForgeExtension {
     private _commands?;

@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeExtension = void 0;
 const getVersionNumber_1 = __importDefault(require("../../functions/getVersionNumber"));
-const ForgeError_1 = require("./ForgeError");
-const Logger_1 = require("../@internal/Logger");
 const managers_1 = require("../../managers");
+const Logger_1 = require("../@internal/Logger");
+const ForgeError_1 = require("./ForgeError");
 class ForgeExtension {
     _commands;
     /**

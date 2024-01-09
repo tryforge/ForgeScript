@@ -1,7 +1,8 @@
-import { ClientEvents, Interaction, InteractionType } from "discord.js"
-import { Compiler, IExtendedCompilationResult } from "../../core/Compiler"
-import { Context, ErrorType, ForgeError, Logger } from ".."
-import { IRunnable } from "../../core"
+import { ClientEvents, Interaction } from "discord.js"
+import { Context } from ".."
+import { IExtendedCompilationResult, Compiler } from "../../core"
+import { ForgeError, ErrorType } from "../forge/ForgeError"
+
 
 export type CommandType = keyof ClientEvents
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>

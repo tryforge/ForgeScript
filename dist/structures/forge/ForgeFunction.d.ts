@@ -1,5 +1,5 @@
-import { IExtendedCompilationResult } from "../../core/Compiler";
-import { Context } from "../@internal/Context";
+import { Context } from "..";
+import { IExtendedCompilationResult } from "../../core";
 import { Return, ReturnType } from "../@internal/Return";
 export interface IForgeFunction {
     name: string;

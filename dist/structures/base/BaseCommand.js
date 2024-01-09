@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseCommand = void 0;
-const Compiler_1 = require("../../core/Compiler");
-const __1 = require("..");
+const core_1 = require("../../core");
+const ForgeError_1 = require("../forge/ForgeError");
 let id = 0;
 class BaseCommand {
     data;
@@ -11,8 +11,8 @@ class BaseCommand {
     constructor(data) {
         this.data = data;
         this.compiled = {
-            name: Compiler_1.Compiler.compile(data.name, this.data.path),
-            code: Compiler_1.Compiler.compile(data.code, this.data.path),
+            name: core_1.Compiler.compile(data.name, this.data.path),
+            code: core_1.Compiler.compile(data.code, this.data.path),
         };
     }
     setPath(p) {
@@ -21,7 +21,7 @@ class BaseCommand {
     }
     validate() {
         if (!this.data.type)
-            throw new __1.ForgeError(null, __1.ErrorType.MissingCommandType, this.data.path);
+            throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.MissingCommandType, this.data.path);
     }
     static from(code) {
         return new this({

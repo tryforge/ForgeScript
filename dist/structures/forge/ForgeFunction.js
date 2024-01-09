@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgeFunction = void 0;
-const Compiler_1 = require("../../core/Compiler");
-const ForgeError_1 = require("./ForgeError");
+const core_1 = require("../../core");
 const Return_1 = require("../@internal/Return");
+const ForgeError_1 = require("./ForgeError");
 class ForgeFunction {
     data;
     compiled;
     constructor(data) {
         this.data = data;
         data.params ??= [];
-        this.compiled = Compiler_1.Compiler.compile(data.code, this.data.path);
+        this.compiled = core_1.Compiler.compile(data.code, this.data.path);
     }
     async call(ctx, args) {
         if (this.data.params.length !== args.length)

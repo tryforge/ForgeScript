@@ -5,17 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompiledFunction = void 0;
 const discord_js_1 = require("discord.js");
-const noop_1 = __importDefault(require("../../functions/noop"));
-const FunctionManager_1 = require("../../managers/FunctionManager");
+const fs_1 = require("fs");
+const util_1 = require("util");
+const constants_1 = require("../../constants");
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
+const managers_1 = require("../../managers");
 const ForgeError_1 = require("../forge/ForgeError");
 const NativeFunction_1 = require("./NativeFunction");
 const Return_1 = require("./Return");
-const constants_1 = require("../../constants");
 const hex_1 = require("../../functions/hex");
-const node_util_1 = require("node:util");
-const undici_1 = require("undici");
-const node_fs_1 = require("node:fs");
-const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
+const noop_1 = __importDefault(require("../../functions/noop"));
 class CompiledFunction {
     static OverwriteSymbolMapping = {
         "/": null,
@@ -28,7 +27,7 @@ class CompiledFunction {
     data;
     fn;
     constructor(raw) {
-        this.fn = FunctionManager_1.FunctionManager.get(raw.name);
+        this.fn = managers_1.FunctionManager.get(raw.name);
         this.data = {
             ...raw,
             fields: raw.fields?.map((x) => !("op" in x)
@@ -267,12 +266,12 @@ class CompiledFunction {
         const splits = str.split(/(\\\\|\/)/);
         if (CompiledFunction.URLRegex.test(str)) {
             const name = splits[splits.length - 1] ?? splits[splits.length - 2];
-            const buffer = await (0, undici_1.fetch)(str).then(x => x.arrayBuffer());
+            const buffer = await fetch(str).then(x => x.arrayBuffer());
             return new discord_js_1.AttachmentBuilder(Buffer.from(buffer), {
                 name
             });
         }
-        const exists = (0, node_fs_1.existsSync)(str);
+        const exists = (0, fs_1.existsSync)(str);
         const name = exists ? splits[splits.length - 1] ?? splits[splits.length - 2] : null;
         return new discord_js_1.AttachmentBuilder(exists ? str : Buffer.from(str, "utf-8"), {
             name: name ?? undefined
@@ -413,7 +412,7 @@ class CompiledFunction {
         return this.unsafeSuccess(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
     }
     successFormatted(value) {
-        return this.unsafeSuccess(typeof value !== "string" ? (0, node_util_1.inspect)(value, { depth: Infinity }) : value);
+        return this.unsafeSuccess(typeof value !== "string" ? (0, util_1.inspect)(value, { depth: Infinity }) : value);
     }
     unsafeSuccess(value = null) {
         return new Return_1.Return(Return_1.ReturnType.Success, value);

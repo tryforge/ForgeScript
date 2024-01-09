@@ -45,7 +45,7 @@ export default new NativeFunction({
         const [ times, varName ] = args
         const code = this.data.fields![1] as IExtendedCompiledFunctionField
 
-        for (let i = 0;i < (times === -1 ? Infinity : times);i++) {
+        for (let i = times === -1 ? Infinity : times;i > 0;i--) {
             if (varName)
                 ctx.setEnvironmentKey(varName, i)
             

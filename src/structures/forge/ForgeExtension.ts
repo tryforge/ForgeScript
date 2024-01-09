@@ -1,9 +1,8 @@
-import { ForgeClient } from "../../core/ForgeClient"
+import { ForgeClient } from "../../core"
 import getVersionNumber from "../../functions/getVersionNumber"
-import { ErrorType, ForgeError } from "./ForgeError"
-import { Logger } from "../@internal/Logger"
 import { BaseCommandManager, FunctionManager } from "../../managers"
-import { ClassInstance, ClassType } from ".."
+import { Logger } from "../@internal/Logger"
+import { ForgeError, ErrorType } from "./ForgeError"
 
 export abstract class ForgeExtension {
     private _commands?: BaseCommandManager<unknown> | null

@@ -1,7 +1,7 @@
-import { ICompiledFunction, ICompiledFunctionConditionField, ICompiledFunctionField } from "../../core/Compiler";
-import { Context } from "./Context";
+import { ICompiledFunctionConditionField, ICompiledFunctionField, ICompiledFunction } from "../../core";
 import { ErrorType, GetErrorArgs } from "../forge/ForgeError";
-import { ArgType, IArg, NativeFunction, UnwrapArgs } from "./NativeFunction";
+import { Context } from "./Context";
+import { IArg, UnwrapArgs, NativeFunction, ArgType } from "./NativeFunction";
 import { Return, ReturnType, ReturnValue } from "./Return";
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField;

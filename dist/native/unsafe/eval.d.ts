@@ -1,4 +1,4 @@
-import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction";
+import { NativeFunction, ArgType } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
     type: ArgType.String;

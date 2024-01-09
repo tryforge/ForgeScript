@@ -1,7 +1,7 @@
-import { Compiler, IExtendedCompilationResult } from "../../core/Compiler"
-import { Context } from "../@internal/Context"
-import { ErrorType, ForgeError } from "./ForgeError"
+import { Context } from ".."
+import { IExtendedCompilationResult, Compiler } from "../../core"
 import { Return, ReturnType } from "../@internal/Return"
+import { ForgeError, ErrorType } from "./ForgeError"
 
 export interface IForgeFunction {
     name: string

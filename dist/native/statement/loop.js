@@ -36,7 +36,7 @@ exports.default = new structures_1.NativeFunction({
             return rt;
         const [times, varName] = args;
         const code = this.data.fields[1];
-        for (let i = 0; i < (times === -1 ? Infinity : times); i++) {
+        for (let i = times === -1 ? Infinity : times; i > 0; i--) {
             if (varName)
                 ctx.setEnvironmentKey(varName, i);
             const exec = await this["resolveCode"](ctx, code);
