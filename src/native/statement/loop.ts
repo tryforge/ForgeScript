@@ -49,7 +49,7 @@ export default new NativeFunction({
             if (varName)
                 ctx.setEnvironmentKey(varName, i)
             
-            const exec = await this["resolveCode"](ctx, code)
+            const exec = await this["resolveCode"](ctx, code, false)
             if (exec.success || exec.continue) continue
             else if (exec.break) break
             else return exec

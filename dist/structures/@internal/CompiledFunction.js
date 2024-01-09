@@ -157,20 +157,20 @@ class CompiledFunction {
             return rhs;
         return this.unsafeSuccess(field.resolve(lhs.value, rhs.value));
     }
-    async resolveCode(ctx, { resolve: resolver, functions } = {}) {
+    async resolveCode(ctx, { resolve: resolver, functions } = {}, alloc = true) {
         if (!resolver || !functions)
             return this.unsafeSuccess(null);
-        const args = new Array(functions.length);
+        const args = alloc ? new Array(functions.length) : null;
         if (functions.length === 0)
-            return this.unsafeSuccess(resolver(args));
+            return this.unsafeSuccess(alloc ? resolver(args) : null);
         for (let i = 0, len = functions.length; i < len; i++) {
             const fn = functions[i];
             const rt = await fn.execute(ctx);
             if (!this.isValidReturnType(rt))
                 return rt;
-            args[i] = rt.value;
+            alloc ? args[i] = rt.value : void 0;
         }
-        return this.unsafeSuccess(resolver(args));
+        return this.unsafeSuccess(alloc ? resolver(args) : null);
     }
     argTypeRejection(arg, value) {
         return this.error(ForgeError_1.ErrorType.InvalidArgType, `${value}`, arg.name, NativeFunction_1.ArgType[arg.type]);
