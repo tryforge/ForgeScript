@@ -5,7 +5,6 @@ const managers_1 = require("../managers");
 const process_1 = require("process");
 const structures_1 = require("../structures");
 const enum_1 = require("./enum");
-const lodash_1 = require("lodash");
 const translate_1 = require("./translate");
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m;
@@ -78,9 +77,6 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
                         enums[name] = (0, enum_1.enumToArray)(arg.enum);
                     }
                 }
-            }
-            for (const arg of fn.data.args ?? []) {
-                Reflect.set(arg, "type", (0, lodash_1.capitalize)(structures_1.ArgType[arg.type]));
             }
             const output = getOutputValues(fn.data, txt, enums);
             if (output?.length)

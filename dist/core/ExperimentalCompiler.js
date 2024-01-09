@@ -126,8 +126,6 @@ class ExperimentalCompiler {
                 this.error(`Function ${match.fn.name} expects ${match.fn.args?.fields.length} arguments at most`);
             }
         }
-        // Skip ]
-        this.skip(1);
         return this.prepareFunction(match, fields);
     }
     parseConditionField(ref) {

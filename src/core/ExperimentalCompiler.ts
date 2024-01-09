@@ -204,9 +204,6 @@ export class ExperimentalCompiler {
             }
         }
 
-        // Skip ]
-        this.skip(1)
-
         return this.prepareFunction(match, fields)
     }
 

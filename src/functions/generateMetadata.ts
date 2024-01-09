@@ -95,10 +95,6 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
                     }
                 }
             }
-
-            for (const arg of fn.data.args ?? []) {
-                Reflect.set(arg, "type", capitalize(ArgType[arg.type]))
-            }
             
             const output = getOutputValues(fn.data, txt, enums)
             if (output?.length)

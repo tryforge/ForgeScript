@@ -7,7 +7,7 @@ import { ExperimentalCompiler } from "../core/ExperimentalCompiler"
 FunctionManager.loadNative()
 ExperimentalCompiler.setFunctions(FunctionManager.raw)
 
-const code = "$log[$channelID;hi;true]"
+const code = "$description[$sendMessage[$channelID;hi;true]]"
 
 const bro = `
 $modal[botinteract;Agregar un Robot]
