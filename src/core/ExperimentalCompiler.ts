@@ -282,7 +282,8 @@ export class ExperimentalCompiler {
             data.lhs = out
 
         data.op ??= OperatorType.None
-
+        data.resolve = this.wrapCondition(data.op)
+        
         return data
     }
 
