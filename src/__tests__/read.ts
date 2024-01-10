@@ -7,7 +7,9 @@ import { ExperimentalCompiler } from "../core/ExperimentalCompiler"
 FunctionManager.loadNative()
 ExperimentalCompiler.setFunctions(FunctionManager.raw)
 
-const code = "hi $username[12]"
+const code = `
+    $let[ok\\\\] $title[1]
+`
 
 const bro = `
 $modal[botinteract;Agregar un Robot]

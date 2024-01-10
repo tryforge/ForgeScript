@@ -5,7 +5,9 @@ const FunctionManager_1 = require("../managers/FunctionManager");
 const ExperimentalCompiler_1 = require("../core/ExperimentalCompiler");
 FunctionManager_1.FunctionManager.loadNative();
 ExperimentalCompiler_1.ExperimentalCompiler.setFunctions(FunctionManager_1.FunctionManager.raw);
-const code = "hi $username[12]";
+const code = `
+    $let[ok\\\\] $title[1]
+`;
 const bro = `
 $modal[botinteract;Agregar un Robot]
 $addTextInput[IDinput;ID del bot;Short;yes;ID de tu Robot;;0;20]

@@ -66,18 +66,10 @@ class ExperimentalCompiler {
             // Loop while functions are unmatched
             let match;
             while ((match = this.match) !== undefined) {
-                const isEscaped = this.code[match.index - 1] === ExperimentalCompiler.Syntax.Escape;
-                if (isEscaped) {
-                    this.outputCode += this.code.slice(this.index, (this.index = match.index) - 1);
-                    this.matchIndex++;
-                    continue;
-                }
-                else {
-                    this.outputCode += this.code.slice(this.index, this.index = match.index);
-                    const fn = this.parseFunction();
-                    this.outputCode += fn.id;
-                    this.outputFunctions.push(fn);
-                }
+                this.outputCode += this.code.slice(this.index, this.index = match.index);
+                const fn = this.parseFunction();
+                this.outputCode += fn.id;
+                this.outputFunctions.push(fn);
             }
             this.outputCode += this.code.slice(this.index);
         }
@@ -122,7 +114,6 @@ class ExperimentalCompiler {
             if (!isSeparator)
                 break;
             else if (isLast && isSeparator) {
-                console.log(this.back(), isSeparator, this.index, i, len, field);
                 this.error(`Function ${match.fn.name} expects ${match.fn.args?.fields.length} arguments at most`);
             }
         }
@@ -144,11 +135,12 @@ class ExperimentalCompiler {
             fn
         };
     }
-    processEscape(current) {
+    processEscape() {
         this.index++;
         const next = this.char();
         this.index++;
-        if (this.match.index === current?.index)
+        const now = this.match;
+        if (now && now.index === this.index)
             this.matchIndex++;
         return {
             nextMatch: this.match,
@@ -165,7 +157,7 @@ class ExperimentalCompiler {
         while ((char = this.char()) !== undefined) {
             const { isClosure, isEscape, isSeparator } = this.getCharInfo(char);
             if (isEscape) {
-                const { char, nextMatch } = this.processEscape(match);
+                const { char, nextMatch } = this.processEscape();
                 fieldValue += char;
                 match = nextMatch;
                 continue;
@@ -222,7 +214,7 @@ class ExperimentalCompiler {
         while ((char = this.char()) !== undefined) {
             const { isClosure, isEscape, isSeparator } = this.getCharInfo(char);
             if (isEscape) {
-                const { char, nextMatch } = this.processEscape(match);
+                const { char, nextMatch } = this.processEscape();
                 fieldValue += char;
                 match = nextMatch;
                 continue;
@@ -250,7 +242,6 @@ class ExperimentalCompiler {
     }
     parseAnyField(ref, field) {
         const fld = field.condition ? this.parseConditionField(ref) : this.parseNormalField(ref);
-        console.log(`Skipping ${this.char()}`);
         this.skip(1);
         return fld;
     }
