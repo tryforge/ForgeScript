@@ -8,7 +8,7 @@ FunctionManager.loadNative()
 ExperimentalCompiler.setFunctions(FunctionManager.raw)
 
 const code = `
-    $let[ok\\\\] $title[1]
+    \\$title[1]
 `
 
 const bro = `

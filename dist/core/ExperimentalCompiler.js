@@ -65,11 +65,21 @@ class ExperimentalCompiler {
         if (this.matches.length !== 0) {
             // Loop while functions are unmatched
             let match;
-            while ((match = this.match) !== undefined) {
-                this.outputCode += this.code.slice(this.index, this.index = match.index);
-                const fn = this.parseFunction();
-                this.outputCode += fn.id;
-                this.outputFunctions.push(fn);
+            loop: while ((match = this.match) !== undefined) {
+                while (match.index !== this.index) {
+                    const char = this.char();
+                    const { isEscape } = this.getCharInfo(char);
+                    if (isEscape) {
+                        const { char } = this.processEscape();
+                        this.outputCode += char;
+                        continue loop;
+                    }
+                    this.outputCode += char;
+                    this.index++;
+                }
+                const parsed = this.parseFunction();
+                this.outputFunctions.push(parsed);
+                this.outputCode += parsed.id;
             }
             this.outputCode += this.code.slice(this.index);
         }
@@ -138,10 +148,10 @@ class ExperimentalCompiler {
     processEscape() {
         this.index++;
         const next = this.char();
-        this.index++;
         const now = this.match;
         if (now && now.index === this.index)
             this.matchIndex++;
+        this.index++;
         return {
             nextMatch: this.match,
             char: next

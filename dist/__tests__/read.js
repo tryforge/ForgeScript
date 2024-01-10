@@ -6,7 +6,7 @@ const ExperimentalCompiler_1 = require("../core/ExperimentalCompiler");
 FunctionManager_1.FunctionManager.loadNative();
 ExperimentalCompiler_1.ExperimentalCompiler.setFunctions(FunctionManager_1.FunctionManager.raw);
 const code = `
-    $let[ok\\\\] $title[1]
+    \\$title[1]
 `;
 const bro = `
 $modal[botinteract;Agregar un Robot]
