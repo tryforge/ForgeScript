@@ -27,7 +27,7 @@ class Context {
     http = {};
     #keywords = {};
     #environment = {};
-    container = new Container_1.Container();
+    container;
     // eslint-disable-next-line no-unused-vars
     constructor(runtime) {
         this.runtime = runtime;
@@ -35,6 +35,7 @@ class Context {
             this.#environment = runtime.environment;
         if (runtime.keywords)
             this.#keywords = runtime.keywords;
+        this.container = runtime.container ??= new Container_1.Container();
     }
     get client() {
         return this.runtime.client;

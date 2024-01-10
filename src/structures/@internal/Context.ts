@@ -65,12 +65,13 @@ export class Context {
     #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}
 
-    public readonly container = new Container()
+    public readonly container: Container
 
     // eslint-disable-next-line no-unused-vars
     public constructor(public readonly runtime: IRunnable) {
         if (runtime.environment) this.#environment = runtime.environment
         if (runtime.keywords) this.#keywords = runtime.keywords
+        this.container = runtime.container ??= new Container()
     }
 
     public get client() {

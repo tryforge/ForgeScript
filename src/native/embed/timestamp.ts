@@ -26,7 +26,7 @@ export default new NativeFunction({
             return this.success()
         }
 
-        ctx.container.embed(index ?? 0).setTimestamp(timestamp ?? Date.now())
+        ctx.container.embed(index ?? 0).setTimestamp(timestamp || Date.now())
         return this.success()
     },
 })

@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Maps through every element of the array and loads the results to another array",
     unwrap: false,
+    output: ArgType.Json,
     experimental: true,
     args: [
         {
@@ -31,9 +32,9 @@ export default new NativeFunction({
         },
         {
             name: "other variable",
-            description: "The other variable to load the result to",
+            description: "The other variable to load the result to, leave empty to return output",
             rest: false,
-            required: true,
+            required: false,
             type: ArgType.String,
         },
     ],
@@ -52,7 +53,7 @@ export default new NativeFunction({
 
         const arr = ctx.getEnvironmentKey(name.value as string)
         const varName = variable.value as string
-        const otherVarName = otherVariable.value as string
+        const otherVarName = otherVariable.value as string | null
 
         const newArr = new Array<unknown>()
 
@@ -68,8 +69,8 @@ export default new NativeFunction({
             }
         }
 
-        ctx.setEnvironmentKey(otherVarName, newArr)
-
-        return this.success()
+        return otherVarName ? 
+            this.success(void ctx.setEnvironmentKey(otherVarName, newArr)) :
+            this.successJSON(newArr)
     },
 })

@@ -14,12 +14,24 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
             rest: false,
             required: true,
+        },
+        {
+            name: "other variable",
+            description: "The variable to load result to, leave empty to return output",
+            rest: false,
+            required: false,
+            type: structures_1.ArgType.String
         }
     ],
-    execute(ctx, [variable]) {
+    output: structures_1.ArgType.Json,
+    execute(ctx, [variable, other]) {
         const arr = ctx.getEnvironmentInstance(Array, variable);
-        if (arr !== null)
-            ctx.setEnvironmentKey(variable, arr.sort());
+        if (arr !== null) {
+            if (other)
+                return this.success(ctx.setEnvironmentKey(other, arr.sort()));
+            else
+                return this.successJSON(arr.sort());
+        }
         return this.success();
     },
 });

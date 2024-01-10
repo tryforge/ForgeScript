@@ -8,9 +8,9 @@ export default new NativeFunction({
     args: [
         {
             name: "variable",
-            description: "The variable to load the result to",
+            description: "The variable to load the result to, leave empty to return output",
             rest: false,
-            required: true,
+            required: false,
             type: ArgType.String,
         },
         {
@@ -21,6 +21,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
+    output: ArgType.Json,
     brackets: true,
     execute(ctx, [name, variables]) {
         const arr = new Array<unknown>()
@@ -31,7 +32,8 @@ export default new NativeFunction({
             if (Array.isArray(load)) arr.push(...load)
         }
 
-        ctx.setEnvironmentKey(name, arr)
-        return this.success()
+        return name ?
+            this.success(void ctx.setEnvironmentKey(name, arr)) :
+            this.successJSON(arr)
     },
 })

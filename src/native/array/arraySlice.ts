@@ -16,10 +16,10 @@ export default new NativeFunction({
         },
         {
             name: "other variable",
-            description: "The variable to load the result to",
+            description: "The variable to load the result to, leave empty to return output",
             rest: false,
             type: ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "start",
@@ -35,11 +35,16 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
     ],
+    output: ArgType.Json,
     execute(ctx, [var1, var2, start, end]) {
         const arr = ctx.getEnvironmentKey(var1)
 
         if (Array.isArray(arr)) {
-            ctx.setEnvironmentKey(var2, arr.slice(start, end || undefined))
+            const sliced = arr.slice(start, end || undefined)
+            if (var2)
+                return this.success(void ctx.setEnvironmentKey(var2, sliced))
+            else
+                return this.successJSON(sliced)
         }
 
         return this.success()

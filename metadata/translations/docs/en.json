@@ -1,0 +1,108 @@
+{
+    "main": {
+      "sidebar": {
+        "changelog": "Changelog",
+        "extensions": "Extensions",
+        "guides": "Guides",
+        "functions": "Functions",
+        "events": "Events",
+        "results": "Results",
+        "enums": "Enums",
+        "support": "Support",
+        "version": "Version",
+        "settings": "Settings"
+      },
+      "settings": {
+        "settings": "Settings",
+        "general": "General",
+        "visual": "Visual",
+        "accessibility": "Accessibility",
+        "language": "Language",
+        "settingsLabel": "Modify settings for the documentation site, including visuals, accessibility, and general configurations.",
+        "refreshNote1": "Note: This setting WILL refresh the page.",
+        "refreshNote2": "Note: This setting requires a page refresh.",
+        "devBranchTitle": "Development Branch",
+        "devBranchLabel": "Enable this switch to display updates from both stable and latest development versions, instead of just stable ones.",
+        "hideLoadingTitle": "Hide Loading Screen",
+        "hideLoadingLabel": "Enable this switch to stop seeing the loading screen when loading the website.",
+        "hideSidebarTooltipsTitle": "Hide Sidebar Tooltips",
+        "hideSidebarTooltipsLabel": "Enable to hide the tooltips from the sidebar/menu when you hover (PC) or click/hold (Mobile) a function.",
+        "disableFoldersTitle": "Disable Folders",
+        "disableFoldersLabel": "Enable if you don't want functions, events, and enums to be displayed in folders if the package allows them.",
+        "lowSaturationTitle": "Low Saturation Mode",
+        "lowSaturationLabel": "Enable this switch to activate low saturation mode, desaturating the entire website."
+      },
+      "buttons": {
+        "close": "Close",
+        "refresh": "Refresh",
+        "viewSource": "View source on GitHub",
+        "copyUrl": "Copy URL",
+        "functionsAndEvents": "Functions & Events",
+        "notes": "Notes"
+      },
+      "tooltips": {
+        "viewSource": "View the source code on GitHub?",
+        "copyUrl": "Copy documentation URL to your clipboard?",
+        "toggleStates": "Enable/Disable",
+        "bracketsRequired": "Brackets are required for this function! Refer to the function usage to know the bracket arguments.",
+        "guideArgTypes": "Click to get redirected to a guide about argument types.",
+        "viewExtensionSource": "View Extension's Source"
+      },
+      "other": {
+        "yes": "Yes",
+        "no": "No",
+        "new": "New",
+        "supportLabel1": "Problems? Questions?",
+        "supportLabel2": "Join us on Discord!",
+        "official": "Official",
+        "community": "Community",
+        "documentation": "Documentation",
+        "copyright1": "All rights reserved.",
+        "copyright2": "BotForge™ operates independently and is not affiliated with Discord, Inc."
+      }
+    },
+    "listContent": {
+      "outputs": {
+        "unknown": "Unknown",
+        "number": "Number",
+        "channel": "Channel",
+        "guild": "Guild",
+        "invite": "Invite",
+        "message": "Message",
+        "role": "Role",
+        "color": "Color",
+        "date": "Date",
+        "user": "User"
+      },
+      "labels": {
+        "usage": "Usage",
+        "fields": "Fields",
+        "output": "Output",
+        "list": "List",
+        "tableName": "Name",
+        "tableDescription": "Description",
+        "tableType": "Type",
+        "tableRequired": "Required",
+        "tableSpread": "Spread",
+        "orHandler": "Or with command handler...",
+        "requiredIntents": "This event requires the following intents to be enabled in order to work:",
+        "enumsLabel": "Enums are case-sensitive; they must be used exactly as written on the list below, 'Playing' is not the same thing as 'playing'."
+      },
+      "changelog": {
+        "title": "What's New?",
+        "description": "A rundown of the ForgeScript updates, covering new functions, events, and notes of the latest updates.",
+        "contributors": "Contributors",
+        "credits": "(#PKG) is made by (#AUT)"
+      },
+      "extensions": {
+        "title": "Extensions",
+        "description": "List of featured extensions, ranging from official to unofficial ones, along with their respective information and documentations, if available.",
+        "subLabel1": "Problems? Questions?",
+        "subLabel2": "Join us on Discord!",
+        "contributors": "Contributors",
+        "credits": "(#PKG) is made by (#AUT)",
+        "addIncentive": " Interested in adding your own extension? Contact us!"
+      }
+    }
+  }
+  

@@ -207,6 +207,38 @@ export class ExperimentalCompiler {
         return this.prepareFunction(match, fields)
     }
 
+    private getCharInfo(char: string) {
+        return {
+            isSeparator: char === ExperimentalCompiler.Syntax.Separator,
+            isClosure: char === ExperimentalCompiler.Syntax.Close,
+            isEscape: char === ExperimentalCompiler.Syntax.Escape
+        }
+    }
+
+    private parseFieldMatch(fns: Array<ICompiledFunction>, match: IRawFunctionMatch) {
+        const fn = this.parseFunction()
+        fns.push(fn)
+        // Next match
+        return {
+            nextMatch: this.match,
+            fn
+        }
+    }
+    
+    private processEscape(current?: IRawFunctionMatch) {
+        this.index++
+        const next = this.char()
+        this.index++
+
+        if (this.match.index === current?.index)
+            this.matchIndex++
+        
+        return {
+            nextMatch: this.match,
+            char: next
+        }
+    }
+
     private parseConditionField(ref: IRawFunctionMatch): ICompiledFunctionConditionField {
         const data = {
 
@@ -216,21 +248,15 @@ export class ExperimentalCompiler {
         let fieldValue = ""
         let closedGracefully = false
 
-        const match = this.match
+        let match = this.match
         let char: string | undefined
         while ((char = this.char()) !== undefined) {
-            const isSeparator = char === ExperimentalCompiler.Syntax.Separator
-            const isClosure = char === ExperimentalCompiler.Syntax.Close
-            const isEscape = char === ExperimentalCompiler.Syntax.Escape
+            const { isClosure, isEscape, isSeparator } = this.getCharInfo(char)
             
             if (isEscape) {
-                this.index++
-                fieldValue += this.char()
-                
-                if (match?.index === this.index) 
-                    this.matchIndex++
-                
-                this.index++
+                const { char, nextMatch } = this.processEscape(match)
+                fieldValue += char
+                match = nextMatch
                 continue
             }
 
@@ -240,8 +266,8 @@ export class ExperimentalCompiler {
             }
 
             if (match?.index === this.index) {
-                const fn = this.parseFunction()
-                functions.push(fn)
+                const { fn, nextMatch } = this.parseFieldMatch(functions, match)
+                match = nextMatch
                 fieldValue += fn.id
                 continue
             }
@@ -283,7 +309,7 @@ export class ExperimentalCompiler {
 
         data.op ??= OperatorType.None
         data.resolve = this.wrapCondition(data.op)
-        
+
         return data
     }
 
@@ -292,21 +318,15 @@ export class ExperimentalCompiler {
         let fieldValue = ""
         let closedGracefully = false
 
-        const match = this.match
+        let match = this.match
         let char: string | undefined
         while ((char = this.char()) !== undefined) {
-            const isSeparator = char === ExperimentalCompiler.Syntax.Separator
-            const isClosure = char === ExperimentalCompiler.Syntax.Close
-            const isEscape = char === ExperimentalCompiler.Syntax.Escape
+            const { isClosure, isEscape, isSeparator } = this.getCharInfo(char)
             
             if (isEscape) {
-                this.index++
-                fieldValue += this.char()
-                
-                if (match?.index === this.index) 
-                    this.matchIndex++
-                
-                this.index++
+                const { char, nextMatch } = this.processEscape(match)
+                fieldValue += char
+                match = nextMatch
                 continue
             }
 
@@ -316,13 +336,12 @@ export class ExperimentalCompiler {
             }
 
             if (match?.index === this.index) {
-                const fn = this.parseFunction()
-                functions.push(fn)
+                const { fn, nextMatch } = this.parseFieldMatch(functions, match)
+                match = nextMatch
                 fieldValue += fn.id
                 continue
             }
 
-            fieldValue += char
             this.index++
         }
 

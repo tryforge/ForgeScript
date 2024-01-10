@@ -99,7 +99,7 @@ client.commands.add({
     name: "eval",
     aliases: ["ev"],
     type: "messageCreate",
-    code: "$eval[$message;true]",
+    code: "Result: $eval[$message;false]",
 });
 client.commands.add({
     name: "djs",

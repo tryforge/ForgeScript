@@ -17,16 +17,20 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "other variable",
-            description: "The variable to load the result to",
+            description: "The variable to load the result to, leave empty to return output",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true,
+            required: false,
         },
     ],
+    output: structures_1.ArgType.Json,
     execute(ctx, [var1, var2]) {
         const arr = ctx.getEnvironmentKey(var1);
         if (Array.isArray(arr)) {
-            ctx.setEnvironmentKey(var2, arr.reverse());
+            if (var2)
+                return this.success(void ctx.setEnvironmentKey(var2, arr.reverse()));
+            else
+                return this.successJSON(arr.reverse());
         }
         return this.success();
     },

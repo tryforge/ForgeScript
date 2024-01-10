@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [description, index]) {
-        ctx.container.embed(index ?? 0).setDescription(description);
+        ctx.container.embed(index ?? 0).setDescription(description || null);
         return this.success();
     },
 });

@@ -5,6 +5,12 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     rest: false;
     required: true;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    required: false;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=arraySort.d.ts.map

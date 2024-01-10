@@ -5,7 +5,12 @@ const FunctionManager_1 = require("../managers/FunctionManager");
 const ExperimentalCompiler_1 = require("../core/ExperimentalCompiler");
 FunctionManager_1.FunctionManager.loadNative();
 ExperimentalCompiler_1.ExperimentalCompiler.setFunctions(FunctionManager_1.FunctionManager.raw);
-const code = "$checkCondition[$authorID==1]";
+const code = `
+$scope[
+    $get[ok]
+    $get[tmr]
+]
+`;
 const bro = `
 $modal[botinteract;Agregar un Robot]
 $addTextInput[IDinput;ID del bot;Short;yes;ID de tu Robot;;0;20]

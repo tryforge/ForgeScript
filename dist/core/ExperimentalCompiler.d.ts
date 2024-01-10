@@ -94,6 +94,9 @@ export declare class ExperimentalCompiler {
     private constructor();
     compile(): ICompilationResult;
     private parseFunction;
+    private getCharInfo;
+    private parseFieldMatch;
+    private processEscape;
     private parseConditionField;
     private parseNormalField;
     private parseAnyField;

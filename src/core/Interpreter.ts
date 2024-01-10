@@ -1,6 +1,6 @@
 import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent } from "discord.js"
 import { IExtendedCompilationResult } from "."
-import { Sendable, BaseCommand, Context, Logger } from "../structures"
+import { Sendable, BaseCommand, Context, Logger, Container } from "../structures"
 import { ForgeClient } from "./ForgeClient"
 
 
@@ -85,6 +85,11 @@ export interface IRunnable {
      * The args used in the message command
      */
     args?: string[]
+
+    /**
+     * The container reference to use
+     */
+    container?: Container
 }
 
 export class Interpreter {

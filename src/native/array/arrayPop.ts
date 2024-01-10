@@ -5,7 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Deletes the last element of the array and returns it",
     unwrap: true,
-    output: ArgType.Unknown,
+    output: ArgType.Json,
     args: [
         {
             name: "name",

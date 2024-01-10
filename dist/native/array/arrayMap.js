@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Maps through every element of the array and loads the results to another array",
     unwrap: false,
+    output: structures_1.ArgType.Json,
     experimental: true,
     args: [
         {
@@ -35,9 +36,9 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "other variable",
-            description: "The other variable to load the result to",
+            description: "The other variable to load the result to, leave empty to return output",
             rest: false,
-            required: true,
+            required: false,
             type: structures_1.ArgType.String,
         },
     ],
@@ -69,8 +70,9 @@ exports.default = new structures_1.NativeFunction({
                     return rt;
             }
         }
-        ctx.setEnvironmentKey(otherVarName, newArr);
-        return this.success();
+        return otherVarName ?
+            this.success(void ctx.setEnvironmentKey(otherVarName, newArr)) :
+            this.successJSON(newArr);
     },
 });
 //# sourceMappingURL=arrayMap.js.map

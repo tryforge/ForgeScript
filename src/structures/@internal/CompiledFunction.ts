@@ -203,22 +203,21 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private async resolveCode(
         ctx: Context,
-        { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {},
-        alloc = true
+        { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}
     ): Promise<Return> {
         if (!resolver || !functions) return this.unsafeSuccess(null)
 
-        const args = alloc ? new Array(functions.length) : null
-        if (functions.length === 0) return this.unsafeSuccess(alloc ? resolver(args!) : null)
+        const args = new Array(functions.length)
+        if (functions.length === 0) return this.unsafeSuccess(resolver(args))
 
         for (let i = 0, len = functions.length; i < len; i++) {
             const fn = functions[i]
             const rt = await fn.execute(ctx)
             if (!this.isValidReturnType(rt)) return rt
-            alloc ? args![i] = rt.value : void 0
+            args![i] = rt.value
         }
 
-        return this.unsafeSuccess(alloc ? resolver(args!) : null)
+        return this.unsafeSuccess(resolver(args!))
     }
 
     private argTypeRejection(arg: IArg, value: unknown) {

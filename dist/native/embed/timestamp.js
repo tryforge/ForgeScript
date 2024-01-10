@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
             ctx.container.embed(0).setTimestamp();
             return this.success();
         }
-        ctx.container.embed(index ?? 0).setTimestamp(timestamp ?? Date.now());
+        ctx.container.embed(index ?? 0).setTimestamp(timestamp || Date.now());
         return this.success();
     },
 });

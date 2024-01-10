@@ -24,7 +24,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [color, index]) {
-        ctx.container.embed(index ?? 0).setColor(color)
+        ctx.container.embed(index ?? 0).setColor(color || null)
         return this.success()
     },
 })

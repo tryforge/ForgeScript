@@ -7,7 +7,12 @@ import { ExperimentalCompiler } from "../core/ExperimentalCompiler"
 FunctionManager.loadNative()
 ExperimentalCompiler.setFunctions(FunctionManager.raw)
 
-const code = "$checkCondition[$authorID==1]"
+const code = `
+$scope[
+    $get[ok]
+    $get[tmr]
+]
+`
 
 const bro = `
 $modal[botinteract;Agregar un Robot]

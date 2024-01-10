@@ -23,8 +23,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [image, index]) {
-        if (image)
-            ctx.container.embed(index ?? 0).setImage(image);
+        ctx.container.embed(index ?? 0).setImage(image || null);
         return this.success();
     },
 });

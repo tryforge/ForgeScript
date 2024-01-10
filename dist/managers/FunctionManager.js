@@ -27,10 +27,13 @@ class FunctionManager {
             }
             if (!req.data.args?.length)
                 req.data.unwrap = false;
-            this.Functions.set(req.name, req);
+            this.add(req);
         }
         if (overrideAttempts.length !== 0)
             Logger_1.Logger.warn(`${provider} | Attempted to override the following ${overrideAttempts.length} functions: ${overrideAttempts.join(", ")}`);
+    }
+    static add(fn) {
+        this.Functions.set(fn.name, fn);
     }
     static disable(fns) {
         for (let i = 0, len = fns.length; i < len; i++) {

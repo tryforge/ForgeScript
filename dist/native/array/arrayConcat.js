@@ -9,9 +9,9 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "variable",
-            description: "The variable to load the result to",
+            description: "The variable to load the result to, leave empty to return output",
             rest: false,
-            required: true,
+            required: false,
             type: structures_1.ArgType.String,
         },
         {
@@ -22,6 +22,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
+    output: structures_1.ArgType.Json,
     brackets: true,
     execute(ctx, [name, variables]) {
         const arr = new Array();
@@ -31,8 +32,9 @@ exports.default = new structures_1.NativeFunction({
             if (Array.isArray(load))
                 arr.push(...load);
         }
-        ctx.setEnvironmentKey(name, arr);
-        return this.success();
+        return name ?
+            this.success(void ctx.setEnvironmentKey(name, arr)) :
+            this.successJSON(arr);
     },
 });
 //# sourceMappingURL=arrayConcat.js.map

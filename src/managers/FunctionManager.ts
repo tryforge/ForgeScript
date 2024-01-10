@@ -1,5 +1,5 @@
 import { readdirSync } from "fs"
-import { ArgType, INativeFunction, NativeFunction } from "../structures/@internal/NativeFunction"
+import { ArgType, IArg, INativeFunction, NativeFunction } from "../structures/@internal/NativeFunction"
 import { IRawFunction } from "../core/Compiler"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { deserialize, serialize } from "v8"
@@ -30,11 +30,15 @@ export class FunctionManager {
             if (!req.data.args?.length)
                 req.data.unwrap = false
             
-            this.Functions.set(req.name, req)
+            this.add(req)
         }
 
         if (overrideAttempts.length !== 0)
             Logger.warn(`${provider} | Attempted to override the following ${overrideAttempts.length} functions: ${overrideAttempts.join(", ")}`)
+    }
+
+    public static add(fn: NativeFunction<IArg[]>) {
+        this.Functions.set(fn.name, fn)
     }
 
     public static disable(fns: string[]) {

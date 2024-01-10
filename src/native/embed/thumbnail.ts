@@ -22,7 +22,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [thumbnail, index]) {
-        ctx.container.embed(index ?? 0).setThumbnail(thumbnail)
+        ctx.container.embed(index ?? 0).setThumbnail(thumbnail || null)
         return this.success()
     },
 })
