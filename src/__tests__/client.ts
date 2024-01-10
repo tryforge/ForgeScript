@@ -107,7 +107,7 @@ client.commands.add({
     name: "eval",
     aliases: ["ev"],
     type: "messageCreate",
-    code: "Result: $eval[$message;false]",
+    code: "$eval[$message]",
 })
 
 client.commands.add({

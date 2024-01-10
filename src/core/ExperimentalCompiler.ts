@@ -342,6 +342,7 @@ export class ExperimentalCompiler {
                 continue
             }
 
+            fieldValue += char
             this.index++
         }
 

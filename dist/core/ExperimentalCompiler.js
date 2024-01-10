@@ -237,6 +237,7 @@ class ExperimentalCompiler {
                 fieldValue += fn.id;
                 continue;
             }
+            fieldValue += char;
             this.index++;
         }
         if (!closedGracefully)
