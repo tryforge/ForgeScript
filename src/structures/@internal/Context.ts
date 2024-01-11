@@ -42,6 +42,9 @@ export interface IHttpOptions {
 
 export type ClassType = new (...args: any[]) => any
 export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never
+export type FilterProperties<T> = {
+    [P in keyof T as T[P] extends (...args: any[]) => any ? never : P]: T[P]
+}
 
 export class Context {
     #member?: GuildMember | null
@@ -195,7 +198,9 @@ export class Context {
     }
 
     public handleNotSuccess(rt: Return) {
-        if (rt.return || rt.break || rt.continue) {
+        if (rt.return && this.runtime.allowTopLevelReturn) {
+            throw new Return(ReturnType.Return, rt.value as string)
+        } else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
             this.alert(log).catch(Logger.error.bind(null, log))
         } else if (rt.error) {
@@ -324,19 +329,27 @@ export class Context {
     }
 
     public cloneEmpty() {
-        return new Context(this.runtime)
+        return new Context({...this.runtime})
     }
 
     /**
      * Clones keywords and environment vars
      * @returns 
      */
-    public clone() {
+    public clone(props?: Partial<IRunnable>) {
         const empty = this.cloneEmpty()
 
         empty.#keywords = {...this.#keywords}
         empty.#environment = {...this.#environment}
 
+        if (props) {
+            const keys = Object.keys(props)
+            for (let i = 0, len = keys.length;i < len;i++) {
+                const key = keys[i]
+                Reflect.set(empty.runtime, key, props[key as keyof IRunnable])
+            }
+        }
+        
         return empty
     }
 }

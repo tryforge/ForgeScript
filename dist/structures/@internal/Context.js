@@ -135,7 +135,10 @@ class Context {
         return this.container.send(this.obj, content);
     }
     handleNotSuccess(rt) {
-        if (rt.return || rt.break || rt.continue) {
+        if (rt.return && this.runtime.allowTopLevelReturn) {
+            throw new Return_1.Return(Return_1.ReturnType.Return, rt.value);
+        }
+        else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
             this.alert(log).catch(Logger_1.Logger.error.bind(null, log));
         }
@@ -240,16 +243,23 @@ class Context {
         return this.client.getExtension.bind(this.client);
     }
     cloneEmpty() {
-        return new Context(this.runtime);
+        return new Context({ ...this.runtime });
     }
     /**
      * Clones keywords and environment vars
      * @returns
      */
-    clone() {
+    clone(props) {
         const empty = this.cloneEmpty();
         empty.#keywords = { ...this.#keywords };
         empty.#environment = { ...this.#environment };
+        if (props) {
+            const keys = Object.keys(props);
+            for (let i = 0, len = keys.length; i < len; i++) {
+                const key = keys[i];
+                Reflect.set(empty.runtime, key, props[key]);
+            }
+        }
         return empty;
     }
 }

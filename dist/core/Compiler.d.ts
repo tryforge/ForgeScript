@@ -85,6 +85,7 @@ export declare class Compiler {
     private static Regex;
     private static InvalidCharRegex;
     private static Functions;
+    private static EscapeRegex;
     private id;
     private matches;
     private index;
@@ -103,7 +104,7 @@ export declare class Compiler {
     private char;
     private peek;
     private next;
-    static setFunctions(fns: IRawFunction[]): void;
+    private static setFunctions;
     static compile(code?: string, path?: string | null): IExtendedCompilationResult;
     static setSyntax(syntax: typeof this.Syntax): void;
 }

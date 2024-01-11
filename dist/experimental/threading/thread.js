@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 const core_1 = require("../../core");
 const managers_1 = require("../../managers");
 managers_1.FunctionManager.loadNative();
-core_1.Compiler.setFunctions(managers_1.FunctionManager.raw);
+core_1.Compiler["setFunctions"](managers_1.FunctionManager.raw);
 worker_threads_1.parentPort?.on("message", async (ctx) => {
     const cmd = structures_1.BaseCommand.from(ctx.code);
     const run = await core_1.Interpreter.run({

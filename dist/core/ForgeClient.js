@@ -56,7 +56,6 @@ class ForgeClient extends discord_js_1.Client {
         }
         if (this.options.disableFunctions?.length)
             managers_1.FunctionManager.disable(this.options.disableFunctions);
-        _1.Compiler.setFunctions(managers_1.FunctionManager.raw);
         if (this.options.commands) {
             this.commands.load(this.options.commands);
         }

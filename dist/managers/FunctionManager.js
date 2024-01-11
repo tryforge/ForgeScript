@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FunctionManager = void 0;
 const NativeFunction_1 = require("../structures/@internal/NativeFunction");
+const core_1 = require("../core");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const v8_1 = require("v8");
 const Logger_1 = require("../structures/@internal/Logger");
@@ -16,7 +17,11 @@ class FunctionManager {
         FunctionManager.load("ForgeScript", `${__dirname}/../native`);
     }
     static load(provider, path) {
+        // Backwards compatibility smh
+        if (!path)
+            return this.load("Unknown", provider);
         const overrideAttempts = new Array();
+        const loader = new Array();
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
@@ -27,13 +32,28 @@ class FunctionManager {
             }
             if (!req.data.args?.length)
                 req.data.unwrap = false;
-            this.add(req);
+            loader.push(req);
         }
+        this.addMany(loader);
         if (overrideAttempts.length !== 0)
             Logger_1.Logger.warn(`${provider} | Attempted to override the following ${overrideAttempts.length} functions: ${overrideAttempts.join(", ")}`);
     }
+    static addMany(...fns) {
+        for (let i = 0, len = fns.length; i < len; i++) {
+            const fn = fns[i];
+            if (Array.isArray(fn))
+                this.addMany(...fn);
+            else
+                this.Functions.set(fn.name, fn);
+        }
+        this.reload();
+    }
     static add(fn) {
         this.Functions.set(fn.name, fn);
+        this.reload();
+    }
+    static reload() {
+        core_1.Compiler["setFunctions"](this.raw);
     }
     static disable(fns) {
         for (let i = 0, len = fns.length; i < len; i++) {

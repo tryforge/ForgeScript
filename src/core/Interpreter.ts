@@ -1,6 +1,6 @@
 import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent } from "discord.js"
 import { IExtendedCompilationResult } from "."
-import { Sendable, BaseCommand, Context, Logger, Container } from "../structures"
+import { Sendable, BaseCommand, Context, Logger, Container, Return, ReturnType } from "../structures"
 import { ForgeClient } from "./ForgeClient"
 
 
@@ -40,6 +40,8 @@ export interface IRunnable {
      * The compiled data to execute
      */
     data: IExtendedCompilationResult
+
+    allowTopLevelReturn?: boolean
 
     /**
      * The context this code will run in
@@ -93,8 +95,11 @@ export interface IRunnable {
 }
 
 export class Interpreter {
-    public static async run(runtime: IRunnable): Promise<string | null> {
-        const ctx = new Context(runtime)
+    public static async run(ctx: Context): Promise<string | null>
+    public static async run(runtime: IRunnable): Promise<string | null>
+    public static async run(raw: Context | IRunnable): Promise<string | null> {
+        const ctx = raw instanceof Context ? raw : new Context(raw)
+        const runtime = ctx.runtime
 
         if (runtime.client !== null) {
             if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot) return null
@@ -127,6 +132,11 @@ export class Interpreter {
             } catch (err: unknown) {
                 if (err instanceof Error)
                     Logger.error(err)
+                else if (err instanceof Return) {
+                    if (err.return)
+                        return err.value as string
+                }
+
                 return null
             }            
             

@@ -41,6 +41,7 @@ class Compiler {
     static Regex;
     static InvalidCharRegex = /(\$\{|`)/g;
     static Functions = new discord_js_1.Collection();
+    static EscapeRegex = /(\.|\$|\(|\)|\*|\[|\]|\{|\}|\?|!|\^)/gim;
     id = 0;
     matches;
     index = 0;
@@ -298,7 +299,7 @@ class Compiler {
                 mapped.push(...fn.aliases.map(x => typeof x === "string" ? x : x.source));
         }
         this.Regex = new RegExp(`\\$(\\!)?(${mapped
-            .map(x => x.startsWith("$") ? x.slice(1).toLowerCase() : x)
+            .map(x => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
             .sort((x, y) => y.length - x.length)
             .join("|")})`, "gim");
     }

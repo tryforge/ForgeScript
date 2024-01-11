@@ -112,6 +112,7 @@ export class Compiler {
     private static Regex: RegExp
     private static InvalidCharRegex = /(\$\{|`)/g
     private static Functions = new Collection<string | RegExp, IRawFunction>()
+    private static EscapeRegex = /(\.|\$|\(|\)|\*|\[|\]|\{|\}|\?|!|\^)/gim
 
     private id = 0
     private matches: Array<IRawFunctionMatch>
@@ -403,7 +404,7 @@ export class Compiler {
         return this.code![this.index++]
     }
 
-    public static setFunctions(fns: IRawFunction[]) {
+    private static setFunctions(fns: IRawFunction[]) {
         fns.map((x) => {
             this.Functions.set(x.name.toLowerCase(), x)
             x.aliases?.filter(x => typeof x === "string")?.map(alias => this.Functions.set((alias as string).toLowerCase(), x))
@@ -419,7 +420,7 @@ export class Compiler {
         this.Regex = new RegExp(
             `\\$(\\!)?(${
                 mapped
-                    .map(x => x.startsWith("$") ? x.slice(1).toLowerCase() : x)
+                    .map(x => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
                     .sort((x, y) => y.length - x.length)
                     .join("|")})`,
             "gim"

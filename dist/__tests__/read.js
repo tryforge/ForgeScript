@@ -4,9 +4,9 @@ const util_1 = require("util");
 const FunctionManager_1 = require("../managers/FunctionManager");
 const ExperimentalCompiler_1 = require("../core/ExperimentalCompiler");
 FunctionManager_1.FunctionManager.loadNative();
-ExperimentalCompiler_1.ExperimentalCompiler.setFunctions(FunctionManager_1.FunctionManager.raw);
+ExperimentalCompiler_1.ExperimentalCompiler["setFunctions"](FunctionManager_1.FunctionManager.raw);
 const code = `
-    \\$title[1]
+    $let[result;$get[result]$if[$env[token;escaped];\\\\]$env[token;value]]
 `;
 const bro = `
 $modal[botinteract;Agregar un Robot]

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Interpreter = void 0;
 const structures_1 = require("../structures");
 class Interpreter {
-    static async run(runtime) {
-        const ctx = new structures_1.Context(runtime);
+    static async run(raw) {
+        const ctx = raw instanceof structures_1.Context ? raw : new structures_1.Context(raw);
+        const runtime = ctx.runtime;
         if (runtime.client !== null) {
             if (runtime.command && !ctx.client.canRespondToBots(runtime.command) && ctx.user?.bot)
                 return null;
@@ -37,6 +38,10 @@ class Interpreter {
             catch (err) {
                 if (err instanceof Error)
                     structures_1.Logger.error(err);
+                else if (err instanceof structures_1.Return) {
+                    if (err.return)
+                        return err.value;
+                }
                 return null;
             }
             content = runtime.data.resolve(args);

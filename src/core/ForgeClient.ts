@@ -142,8 +142,6 @@ export class ForgeClient extends Client<true> {
         if (this.options.disableFunctions?.length)
             FunctionManager.disable(this.options.disableFunctions)
 
-        Compiler.setFunctions(FunctionManager.raw)
-
         if (this.options.commands) {
             this.commands.load(this.options.commands)
         }

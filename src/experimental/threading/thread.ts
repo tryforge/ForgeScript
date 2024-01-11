@@ -5,7 +5,7 @@ import { FunctionManager } from "../../managers"
 import { IThreadContext } from "../../managers/ThreadManager"
 
 FunctionManager.loadNative()
-Compiler.setFunctions(FunctionManager.raw)
+Compiler["setFunctions"](FunctionManager.raw)
 
 export interface IThreadResponse {
     value: string | null

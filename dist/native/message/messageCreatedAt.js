@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageCreatedAt",
@@ -28,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, message]) {
-        return this.success(discord_js_1.MessageType[(message ?? ctx.message)?.createdTimestamp]);
+        return this.success((message ?? ctx.message)?.createdTimestamp);
     },
 });
 //# sourceMappingURL=messageCreatedAt.js.map

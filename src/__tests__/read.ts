@@ -5,10 +5,10 @@ import { IExtendedCompiledFunctionConditionField } from "../structures"
 import { ExperimentalCompiler } from "../core/ExperimentalCompiler"
 
 FunctionManager.loadNative()
-ExperimentalCompiler.setFunctions(FunctionManager.raw)
+ExperimentalCompiler["setFunctions"](FunctionManager.raw)
 
 const code = `
-    \\$title[1]
+    $let[result;$get[result]$if[$env[token;escaped];\\\\]$env[token;value]]
 `
 
 const bro = `

@@ -1,6 +1,6 @@
 import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent } from "discord.js";
 import { IExtendedCompilationResult } from ".";
-import { Sendable, BaseCommand, Container } from "../structures";
+import { Sendable, BaseCommand, Context, Container } from "../structures";
 import { ForgeClient } from "./ForgeClient";
 export interface IStates {
     message: Message;
@@ -35,6 +35,7 @@ export interface IRunnable {
      * The compiled data to execute
      */
     data: IExtendedCompilationResult;
+    allowTopLevelReturn?: boolean;
     /**
      * The context this code will run in
      */
@@ -77,6 +78,7 @@ export interface IRunnable {
     container?: Container;
 }
 export declare class Interpreter {
+    static run(ctx: Context): Promise<string | null>;
     static run(runtime: IRunnable): Promise<string | null>;
 }
 //# sourceMappingURL=Interpreter.d.ts.map

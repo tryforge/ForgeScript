@@ -17,6 +17,9 @@ export interface IHttpOptions {
 }
 export type ClassType = new (...args: any[]) => any;
 export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
+export type FilterProperties<T> = {
+    [P in keyof T as T[P] extends (...args: any[]) => any ? never : P]: T[P];
+};
 export declare class Context {
     #private;
     readonly runtime: IRunnable;
@@ -84,6 +87,6 @@ export declare class Context {
      * Clones keywords and environment vars
      * @returns
      */
-    clone(): Context;
+    clone(props?: Partial<IRunnable>): Context;
 }
 //# sourceMappingURL=Context.d.ts.map
