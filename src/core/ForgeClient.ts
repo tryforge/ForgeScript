@@ -31,7 +31,7 @@ export interface IRawForgeClientOptions extends ClientOptions {
     /**
      * The prefixes our bot will act upon for command messages
      */
-    prefixes: string[]
+    prefixes?: string[]
 
     /**
      * Specifies the logs to be received
@@ -155,7 +155,7 @@ export class ForgeClient extends Client<true> {
         }
         
         // At last, load prefixes
-        this.options.prefixes = raw.prefixes.map(x => Compiler.compile(x))
+        this.options.prefixes = raw.prefixes?.map(x => Compiler.compile(x)) ?? []
     }
 
     public getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null

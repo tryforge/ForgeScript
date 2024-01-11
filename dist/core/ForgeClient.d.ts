@@ -22,7 +22,7 @@ export interface IRawForgeClientOptions extends ClientOptions {
     /**
      * The prefixes our bot will act upon for command messages
      */
-    prefixes: string[];
+    prefixes?: string[];
     /**
      * Specifies the logs to be received
      */

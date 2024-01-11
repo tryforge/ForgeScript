@@ -66,7 +66,7 @@ class ForgeClient extends discord_js_1.Client {
             this.events.load(managers_1.NativeEventName, this.options.events);
         }
         // At last, load prefixes
-        this.options.prefixes = raw.prefixes.map(x => _1.Compiler.compile(x));
+        this.options.prefixes = raw.prefixes?.map(x => _1.Compiler.compile(x)) ?? [];
     }
     getExtension(type, required) {
         const finder = this.options.extensions?.find(x => typeof type === "string" ? x.name === type : x instanceof type);
