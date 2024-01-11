@@ -90,7 +90,7 @@
       },
       "changelog": {
         "title": "What's New?",
-        "description": "A rundown of the ForgeScript updates, covering new functions, events, and notes of the latest updates.",
+        "description": "A rundown of the (#PKG) updates, covering new functions, events, and notes of the latest updates.",
         "contributors": "Contributors",
         "credits": "(#PKG) is made by (#AUT)"
       },
