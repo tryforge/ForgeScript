@@ -10,7 +10,7 @@ export interface IForgeFunction {
 }
 export declare class ForgeFunction {
     readonly data: IForgeFunction;
-    readonly compiled: IExtendedCompilationResult;
+    compiled?: IExtendedCompilationResult;
     constructor(data: IForgeFunction);
     populate(): void;
     asNative(): NativeFunction<IArg<ArgType.String, boolean, boolean, import("..").EnumLike<any>>[], any>;

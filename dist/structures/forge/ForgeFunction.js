@@ -16,7 +16,6 @@ class ForgeFunction {
     constructor(data) {
         this.data = data;
         data.params ??= [];
-        this.compiled = core_1.Compiler.compile(data.code, this.data.path);
     }
     populate() {
         managers_1.FunctionManager.add(this.asNative());
@@ -55,6 +54,7 @@ class ForgeFunction {
         });
     }
     async call(ctx, args) {
+        this.compiled ??= core_1.Compiler.compile(this.data.code, this.data.path);
         if (this.data.params.length !== args.length)
             return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${this.data.params.length} arguments, received ${args.length}`));
         for (let i = 0, len = this.data.params.length; i < len; i++) {

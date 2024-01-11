@@ -15,11 +15,10 @@ export interface IForgeFunction {
 }
 
 export class ForgeFunction {
-    public readonly compiled: IExtendedCompilationResult
+    public compiled?: IExtendedCompilationResult
 
     public constructor(public readonly data: IForgeFunction) {
         data.params ??= []
-        this.compiled = Compiler.compile(data.code, this.data.path)
     }
     
     public populate() {
@@ -60,6 +59,8 @@ export class ForgeFunction {
     }
 
     async call(ctx: Context, args: string[]) {
+        this.compiled ??= Compiler.compile(this.data.code, this.data.path)
+
         if (this.data.params!.length !== args.length)
             return new Return(
                 ReturnType.Error,
