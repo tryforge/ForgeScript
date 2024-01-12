@@ -82,4 +82,8 @@ export abstract class BaseCommandManager<T> {
             col.push(cmd)
         }
     }
+
+    public toArray() {
+        return Array.from(this.commands.values()).flat()
+    }
 }

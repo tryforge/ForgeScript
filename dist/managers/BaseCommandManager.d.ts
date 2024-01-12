@@ -12,5 +12,6 @@ export declare abstract class BaseCommandManager<T> {
     get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[];
     add(...commands: (IBaseCommand<T> | BaseCommand<T>)[]): void;
     private addPath;
+    toArray(): BaseCommand<T>[];
 }
 //# sourceMappingURL=BaseCommandManager.d.ts.map

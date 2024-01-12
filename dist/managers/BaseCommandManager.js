@@ -76,6 +76,9 @@ class BaseCommandManager {
             col.push(cmd);
         }
     }
+    toArray() {
+        return Array.from(this.commands.values()).flat();
+    }
 }
 exports.BaseCommandManager = BaseCommandManager;
 //# sourceMappingURL=BaseCommandManager.js.map
