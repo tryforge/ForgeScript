@@ -51,13 +51,6 @@ client.commands.add({
     code: "Hewwo"
 });
 client.commands.add({
-    type: discord_js_1.Events.InteractionCreate,
-    code: `$onlyIf[$isButton]
-    $title[hello!]
-    $interactionUpdate
-    `
-});
-client.commands.add({
     type: discord_js_1.Events.GuildAuditLogEntryCreate,
     code: `
     $sendMessage[1148787451490476092;
@@ -107,6 +100,22 @@ client.commands.add({
     type: "messageCreate"
 });
 client.commands.add({
+    name: "bro",
+    type: "interactionCreate",
+    code: `
+    $if[$isButton;
+        $log[run]
+        $modal[yes;yes]
+        $addActionRow
+        $addTextInput[this;is;Paragraph;true]
+        $showModal
+        $log[$awaitModalSubmit[yes;
+            $interactionReply[Yeshy $input[this]]
+        ;10s]]
+    ]
+    `
+});
+client.commands.add({
     type: "autoModerationActionExecution",
     code: "$log[Blocked] $!djsEval[e]"
 });
@@ -120,7 +129,6 @@ client.commands.add({
     $addChoice[tmr;land]
     `,
 });
-client.commands.load("dist/__tests__/commands");
 client.applicationCommands.load("dist/__tests__/app");
 // eslint-disable-next-line no-undef
 client.login(process.env.TOKEN);

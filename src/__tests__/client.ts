@@ -54,14 +54,6 @@ client.commands.add({
 })
 
 client.commands.add({
-    type: Events.InteractionCreate,
-    code: `$onlyIf[$isButton]
-    $title[hello!]
-    $interactionUpdate
-    `
-})
-
-client.commands.add({
     type: Events.GuildAuditLogEntryCreate,
     code: `
     $sendMessage[1148787451490476092;
@@ -117,6 +109,23 @@ client.commands.add({
 })
 
 client.commands.add({
+    name: "bro",
+    type: "interactionCreate",
+    code: `
+    $if[$isButton;
+        $log[run]
+        $modal[yes;yes]
+        $addActionRow
+        $addTextInput[this;is;Paragraph;true]
+        $showModal
+        $log[$awaitModalSubmit[yes;
+            $interactionReply[Yeshy $input[this]]
+        ;10s]]
+    ]
+    `
+})
+
+client.commands.add({
     type: "autoModerationActionExecution",
     code: "$log[Blocked] $!djsEval[e]"
 })
@@ -132,7 +141,6 @@ client.commands.add({
     `,
 })
 
-client.commands.load("dist/__tests__/commands")
 client.applicationCommands.load("dist/__tests__/app")
 
 // eslint-disable-next-line no-undef
