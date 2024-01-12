@@ -28,7 +28,7 @@ var ArgType;
     ArgType[ArgType["Channel"] = 22] = "Channel";
     ArgType[ArgType["Role"] = 23] = "Role";
     ArgType[ArgType["Webhook"] = 24] = "Webhook";
-    ArgType[ArgType["GuildSticker"] = 25] = "GuildSticker";
+    ArgType[ArgType["Sticker"] = 25] = "Sticker";
     ArgType[ArgType["Time"] = 26] = "Time";
     ArgType[ArgType["Member"] = 27] = "Member";
 })(ArgType || (exports.ArgType = ArgType = {}));

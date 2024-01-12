@@ -9,22 +9,14 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "guild ID",
-            rest: false,
-            required: true,
-            type: ArgType.Guild,
-            description: "The guild to get sticker from"
-        },
-        {
             name: "sticker ID",
             rest: false,
             required: true,
-            type: ArgType.GuildSticker,
-            pointer: 0,
+            type: ArgType.Sticker,
             description: "The sticker to use"
         }
     ],
-    execute(ctx, [, sticker]) {
+    execute(ctx, [sticker]) {
         ctx.container.stickers.push(sticker.id)
         return this.success()
     },

@@ -11,7 +11,7 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     pointer: number;
-    type: ArgType.GuildSticker;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=deleteStickers.d.ts.map

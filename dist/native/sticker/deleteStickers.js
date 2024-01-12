@@ -26,14 +26,14 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: structures_1.ArgType.GuildSticker,
+            type: structures_1.ArgType.String,
         },
     ],
-    async execute(_, [, stickers]) {
+    async execute(_, [g, stickers]) {
         let count = 0;
         for (let i = 0, len = stickers.length; i < len; i++) {
             const sticker = stickers[i];
-            const success = await sticker.delete().catch(noop_1.default);
+            const success = await g.stickers.delete(sticker).then(x => true).catch(noop_1.default);
             if (success)
                 count++;
         }

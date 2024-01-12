@@ -317,13 +317,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return (this.resolvePointer(arg, ref, ctx.channel) as ForumChannel)?.availableTags.find((x) => x.id === str || x.name === str)
     }
 
-    private resolveGuildSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+    private resolveSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
         if (fromUrl !== null)
-            return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(fromUrl[2])
+            return ctx.client.fetchSticker(fromUrl[2]).catch(noop)
 
         if (!CompiledFunction.IdRegex.test(str)) return
-        return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(str).catch(noop)
+        return ctx.client.fetchSticker(str).catch(noop)
     }
 
     private async resolveAttachment(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

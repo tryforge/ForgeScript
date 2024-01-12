@@ -8,7 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$stickers"
     ],
-    output: array<ArgType.GuildSticker>(),
+    output: array<ArgType.Sticker>(),
     description: "Retrieves all stickers s of this message",
     brackets: false,
     unwrap: true,

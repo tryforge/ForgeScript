@@ -254,13 +254,13 @@ class CompiledFunction {
     resolveForumTag(ctx, arg, str, ref) {
         return this.resolvePointer(arg, ref, ctx.channel)?.availableTags.find((x) => x.id === str || x.name === str);
     }
-    resolveGuildSticker(ctx, arg, str, ref) {
+    resolveSticker(ctx, arg, str, ref) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
         if (fromUrl !== null)
-            return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(fromUrl[2]);
+            return ctx.client.fetchSticker(fromUrl[2]).catch(noop_1.default);
         if (!CompiledFunction.IdRegex.test(str))
             return;
-        return this.resolvePointer(arg, ref, ctx.guild)?.stickers.fetch(str).catch(noop_1.default);
+        return ctx.client.fetchSticker(str).catch(noop_1.default);
     }
     async resolveAttachment(ctx, arg, str, ref) {
         const splits = str.split(/(\\\\|\/)/);

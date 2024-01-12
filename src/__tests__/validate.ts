@@ -10,7 +10,7 @@ for (const [, fn] of FunctionManager["Functions"]) {
         for (const arg of fn.data.args) {
             if (
                 arg.pointer === undefined &&
-                [ArgType.Role, ArgType.Member, ArgType.Message, ArgType.GuildEmoji, ArgType.GuildSticker].includes(
+                [ArgType.Role, ArgType.Member, ArgType.Message, ArgType.GuildEmoji].includes(
                     arg.type
                 )
             ) {

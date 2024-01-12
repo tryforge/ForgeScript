@@ -5,7 +5,7 @@ import array from "../../functions/array"
 export default new NativeFunction({
     name: "$messageSticker",
     version: "1.4.0",
-    output: ArgType.GuildSticker,
+    output: ArgType.Sticker,
     description: "Retrieves a sticker url of this message",
     brackets: false,
     unwrap: true,

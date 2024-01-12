@@ -6,7 +6,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Adds a sticker to a guild, returns sticker id",
     unwrap: true,
-    output: ArgType.GuildSticker,
+    output: ArgType.Sticker,
     brackets: true,
     args: [
         {

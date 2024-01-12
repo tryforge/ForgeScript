@@ -22,14 +22,14 @@ export default new NativeFunction({
             rest: true,
             required: true,
             pointer: 0,
-            type: ArgType.GuildSticker,
+            type: ArgType.String,
         },
     ],
-    async execute(_, [, stickers]) {
+    async execute(_, [g, stickers]) {
         let count = 0
         for (let i = 0, len = stickers.length; i < len; i++) {
             const sticker = stickers[i]
-            const success = await sticker.delete().catch(noop)
+            const success = await g.stickers.delete(sticker).then(x => true).catch(noop)
             if (success) count++
         }
 

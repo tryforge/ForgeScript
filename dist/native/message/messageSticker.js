@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageSticker",
     version: "1.4.0",
-    output: structures_1.ArgType.GuildSticker,
+    output: structures_1.ArgType.Sticker,
     description: "Retrieves a sticker url of this message",
     brackets: false,
     unwrap: true,

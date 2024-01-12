@@ -3,14 +3,7 @@ declare const _default: NativeFunction<[{
     name: string;
     rest: false;
     required: true;
-    type: ArgType.Guild;
-    description: string;
-}, {
-    name: string;
-    rest: false;
-    required: true;
-    type: ArgType.GuildSticker;
-    pointer: number;
+    type: ArgType.Sticker;
     description: string;
 }], true>;
 export default _default;

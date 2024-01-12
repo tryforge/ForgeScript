@@ -53,7 +53,7 @@ export enum ArgType {
     Channel,
     Role,
     Webhook,
-    GuildSticker,
+    Sticker,
     Time,
     Member,
 }
@@ -176,7 +176,7 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? GuildEmoji
     : T extends ArgType.OverwritePermission 
     ? OverwritePermission
-    : T extends ArgType.GuildSticker
+    : T extends ArgType.Sticker
     ? Sticker
     : T extends ArgType.Reaction
     ? MessageReaction

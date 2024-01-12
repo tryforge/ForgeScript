@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Adds a sticker to a guild, returns sticker id",
     unwrap: true,
-    output: structures_1.ArgType.GuildSticker,
+    output: structures_1.ArgType.Sticker,
     brackets: true,
     args: [
         {

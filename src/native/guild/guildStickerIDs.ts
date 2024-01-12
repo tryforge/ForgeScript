@@ -8,7 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$serverStickerIDs"
     ],
-    output: array<ArgType.GuildSticker>(),
+    output: array<ArgType.Sticker>(),
     brackets: false,
     description: "Returns every sticker id of the guild",
     args: [
