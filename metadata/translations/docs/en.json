@@ -10,7 +10,8 @@
         "enums": "Enums",
         "support": "Support",
         "version": "Version",
-        "settings": "Settings"
+        "settings": "Settings",
+        "search": "Search!"
       },
       "settings": {
         "settings": "Settings",
@@ -46,7 +47,11 @@
         "toggleStates": "Enable/Disable",
         "bracketsRequired": "Brackets are required for this function! Refer to the function usage to know the bracket arguments.",
         "guideArgTypes": "Click to get redirected to a guide about argument types.",
-        "viewExtensionSource": "View Extension's Source"
+        "viewExtensionSource": "View Extension's Source",
+        "languageTip": "Even with a language selected, not everything might be translated.",
+        "unallowedDev": "This package does not allow development branch.",
+        "enumsTip": "Case-sensitive means that distinctions between uppercase and lowercase letters are important. 'Hello' and 'hello' would be treated as different and not interchangeable.",
+        "aliasesTip": "Aliases for this function."
       },
       "other": {
         "yes": "Yes",
@@ -101,7 +106,7 @@
         "subLabel2": "Join us on Discord!",
         "contributors": "Contributors",
         "credits": "(#PKG) is made by (#AUT)",
-        "addIncentive": " Interested in adding your own extension? Contact us!"
+        "addIncentive": "Interested in adding your own extension? Contact us!"
       }
     }
   }
