@@ -7,6 +7,7 @@ const structures_1 = require("../../structures");
 const noop_1 = __importDefault(require("../../functions/noop"));
 exports.default = new structures_1.NativeFunction({
     name: "$awaitModalSubmit",
+    version: "1.4.0",
     description: "Awaits a modal submit, executing the code as the interaction context, returns bool depending on whether the interaction was received",
     unwrap: false,
     output: structures_1.ArgType.Boolean,

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$advancedTextSplit",
+    version: "1.4.0",
     description: "Split and get all at the same time multiple times",
     brackets: true,
     unwrap: true,
