@@ -25,12 +25,6 @@ export default new NativeFunction({
             required: true,
         },
         {
-            name: "content",
-            description: "The content to use for the starter message",
-            rest: false,
-            type: ArgType.String,
-        },
-        {
             name: "message ID",
             description: "The message to start thread for",
             rest: false,
@@ -38,18 +32,15 @@ export default new NativeFunction({
             type: ArgType.Message,
         },
     ],
-    async execute(ctx, [channel, name, content]) {
+    async execute(_, [channel, name, m]) {
         const ch = channel as TextChannel
 
-        ctx.container.content = content || undefined
         const success = await ch.threads
             .create({
                 name,
-                startMessage: ctx.container.getOptions(),
+                startMessage: m ?? undefined,
             })
             .catch(noop)
-
-        ctx.container.reset()
 
         return this.success(success ? success.id : undefined)
     },

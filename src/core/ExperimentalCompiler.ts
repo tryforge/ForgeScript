@@ -14,7 +14,7 @@ export interface IRawFunctionFieldDefinition {
 }
 
 export interface IRawFunction {
-    aliases: null | (string | RegExp)[]
+    aliases: null | string[]
     name: string
     /**
      * If undefined, function has no fields.
@@ -394,9 +394,9 @@ export class ExperimentalCompiler {
     }
 
     private getFunction(str: string) {
-        const fn = str.toLowerCase()
-        return ExperimentalCompiler.Functions.get(`$${fn}`)! ?? 
-            ExperimentalCompiler.Functions.find(x => x.aliases?.some(x => typeof x === "string" ? x === `$${fn}` : x.test(fn)) ?? false) ??
+        const fn = `$${str.toLowerCase()}`
+        return ExperimentalCompiler.Functions.get(fn)! ?? 
+            ExperimentalCompiler.Functions.find(x => x.aliases?.some(x => x.toLowerCase() === fn)) ??
             this.error(`Function ${fn} is not registered.`)
     }
 
@@ -469,7 +469,7 @@ export class ExperimentalCompiler {
         for (const [, fn] of this.Functions) {
             mapped.push(fn.name)
             if (fn.aliases?.length)
-                mapped.push(...fn.aliases.map(x => typeof x === "string" ? x : x.source))
+                mapped.push(...fn.aliases)
         }
 
         this.Regex = new RegExp(

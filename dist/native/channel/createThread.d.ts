@@ -16,11 +16,6 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.String;
-}, {
-    name: string;
-    description: string;
-    rest: false;
     pointer: number;
     type: ArgType.Message;
 }], true>;

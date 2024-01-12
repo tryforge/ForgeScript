@@ -78,7 +78,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     /**
      * Aliases this function has
      */
-    aliases?: (string | RegExp)[];
+    aliases?: string[];
     /**
      * If undefined, function has no brackets
      *

@@ -60,9 +60,9 @@ class Compiler {
             this.matches = [];
     }
     getFunction(str) {
-        const fn = str.toLowerCase();
-        return Compiler.Functions.get(`$${fn}`) ??
-            Compiler.Functions.find(x => x.aliases?.some(x => typeof x === "string" ? x === `$${fn}` : x.test(fn)) ?? false) ??
+        const fn = `$${str.toLowerCase()}`;
+        return Compiler.Functions.get(fn) ??
+            Compiler.Functions.find(x => x.aliases?.some(x => x.toLowerCase() === fn)) ??
             this.error(`Function ${fn} is not registered.`);
     }
     compile() {
@@ -296,7 +296,7 @@ class Compiler {
         for (const [, fn] of this.Functions) {
             mapped.push(fn.name);
             if (fn.aliases?.length)
-                mapped.push(...fn.aliases.map(x => typeof x === "string" ? x : x.source));
+                mapped.push(...fn.aliases);
         }
         this.Regex = new RegExp(`\\$(\\!)?(${mapped
             .map(x => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))

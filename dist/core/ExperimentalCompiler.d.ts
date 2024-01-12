@@ -8,7 +8,7 @@ export interface IRawFunctionFieldDefinition {
     fields: IRawField[];
 }
 export interface IRawFunction {
-    aliases: null | (string | RegExp)[];
+    aliases: null | string[];
     name: string;
     /**
      * If undefined, function has no fields.

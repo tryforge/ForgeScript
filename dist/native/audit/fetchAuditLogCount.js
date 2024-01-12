@@ -13,9 +13,6 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Number,
-    aliases: [
-        /(?:get|fetch)(?:server|guild)?audit(?:logs?)?count/
-    ],
     args: [
         {
             name: "guild ID",

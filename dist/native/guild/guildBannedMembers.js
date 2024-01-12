@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Returns banned member ids of a guild",
     aliases: [
-        /(?:get)?(?:guild|server)banned(?:users?|members?)/
+        "$serverBannedMembers"
     ],
     unwrap: true,
     brackets: false,

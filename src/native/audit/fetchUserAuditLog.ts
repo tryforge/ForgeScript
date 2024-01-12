@@ -10,9 +10,6 @@ export default new NativeFunction({
     brackets: true,
     unwrap: true,
     output: ArgType.Unknown,
-    aliases: [
-        /(?:get|fetch)(?:user|member)(?:server|guild)?audit(?:logs?)?/
-    ],
     args: [
         {
             name: "guild ID",
