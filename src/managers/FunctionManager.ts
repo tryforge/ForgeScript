@@ -62,8 +62,7 @@ export class FunctionManager {
     }
 
     public static add(fn: NativeFunction<IArg[]>) {
-        this.Functions.set(fn.name, fn)
-        this.reload()
+        return this.addMany(fn)
     }
 
     public static reload() {

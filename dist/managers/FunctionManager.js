@@ -50,8 +50,7 @@ class FunctionManager {
         this.reload();
     }
     static add(fn) {
-        this.Functions.set(fn.name, fn);
-        this.reload();
+        return this.addMany(fn);
     }
     static reload() {
         core_1.Compiler["setFunctions"](this.raw);
