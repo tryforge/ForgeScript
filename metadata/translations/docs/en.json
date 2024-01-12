@@ -52,7 +52,8 @@
         "languageTip": "Even with a language selected, not everything might be translated.",
         "unallowedDev": "This package does not allow development branch.",
         "enumsTip": "Case-sensitive means that distinctions between uppercase and lowercase letters are important. 'Hello' and 'hello' would be treated as different and not interchangeable.",
-        "aliasesTip": "Aliases for this function."
+        "aliasesTip": "Aliases for this function.",
+        "typeRedirect": "Click to get redirected to a guide about argument types."
       },
       "other": {
         "yes": "Yes",
