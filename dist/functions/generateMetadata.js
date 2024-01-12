@@ -6,6 +6,7 @@ const process_1 = require("process");
 const structures_1 = require("../structures");
 const enum_1 = require("./enum");
 const translate_1 = require("./translate");
+const path_1 = require("path");
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m;
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m;
 const ArgEnumRegex = /enum: +(\w+),?/gim;
@@ -107,8 +108,8 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
         }
         if (warnOnNoOutput)
             structures_1.Logger.warn(`${total.toLocaleString()} functions are missing output value`);
-        (0, fs_1.writeFileSync)(`${metaOutPath}/enums.json`, JSON.stringify(enums), "utf-8");
-        (0, fs_1.writeFileSync)(`${metaOutPath}/functions.json`, JSON.stringify(managers_1.FunctionManager.toJSON()));
+        (0, fs_1.writeFileSync)((0, path_1.join)(metaOutPath, "enums.json"), JSON.stringify(enums), "utf-8");
+        (0, fs_1.writeFileSync)((0, path_1.join)(metaOutPath, "functions.json"), JSON.stringify(managers_1.FunctionManager.toJSON()));
     }
     if (eventName) {
         if (!eventsAbsolutePath)
@@ -125,7 +126,7 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
                 (0, fs_1.writeFileSync)(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`));
             }
         }
-        (0, fs_1.writeFileSync)(`${metaOutPath}/events.json`, JSON.stringify(managers_1.EventManager.toJSON(eventName)));
+        (0, fs_1.writeFileSync)((0, path_1.join)(metaOutPath, "events.json"), JSON.stringify(managers_1.EventManager.toJSON(eventName)));
     }
     if (translate.length) {
         structures_1.Logger.info("Now translating data, hold tight...");

@@ -5,6 +5,7 @@ import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { deserialize, serialize } from "v8"
 import { Logger } from "../structures/@internal/Logger"
 import { enumToArray } from "../functions/enum"
+import { join } from "path"
 
 export type RecursiveArray<T> = T | T[]
 
@@ -13,7 +14,7 @@ export class FunctionManager {
 
     public static loadNative() {    
         // eslint-disable-next-line no-undef
-        FunctionManager.load("ForgeScript", `${__dirname}/../native`)
+        FunctionManager.load("ForgeScript", join(__dirname, "..", "native"))
     }
 
     public static load(provider: string, path: string): void
@@ -67,16 +68,6 @@ export class FunctionManager {
 
     public static reload() {
         Compiler["setFunctions"](this.raw)
-    }
-
-    public static disable(fns: string[]) {
-        for (let i = 0, len = fns.length;i < len;i++) {
-            const fn = fns[i]
-            if (!this.Functions.delete(fn))
-                Logger.warn(`Attempted to disable non existing function: ${fn}`)
-        }
-
-        Logger.info(`The following ${fns.length} functions were disabled: ${fns.join(", ")}`)
     }
 
     public static get(name: string) {

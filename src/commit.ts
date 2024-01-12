@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { argv, stdin, stdout } from "process"
 import { createInterface } from "readline"
 import prompt from "./functions/prompt"
+import { join } from "path"
 
 
 const path = "./metadata"
@@ -32,7 +33,7 @@ async function main() {
         } 
     ).trim()
 
-    const fileName = `${path}/changelogs.json`
+    const fileName = join(path, "changelogs.json")
     const json: Record<string, string[]> = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : {}
     json[version] ??= []
 

@@ -336,11 +336,11 @@ export class Context {
      * Clones keywords and environment vars
      * @returns 
      */
-    public clone(props?: Partial<IRunnable>) {
+    public clone(props?: Partial<IRunnable>, syncVars = false) {
         const empty = this.cloneEmpty()
 
-        empty.#keywords = {...this.#keywords}
-        empty.#environment = {...this.#environment}
+        empty.#keywords = syncVars ? this.#keywords : {...this.#keywords}
+        empty.#environment = syncVars ? this.#environment : {...this.#environment}
 
         if (props) {
             const keys = Object.keys(props)

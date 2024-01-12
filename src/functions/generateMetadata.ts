@@ -7,6 +7,7 @@ import { enumToArray } from "./enum"
 import { capitalize } from "lodash"
 import { translateData } from "./translate"
 import { Locale } from "discord.js"
+import { join } from "path"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
@@ -131,8 +132,8 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
         if (warnOnNoOutput)
             Logger.warn(`${total.toLocaleString()} functions are missing output value`)
 
-        writeFileSync(`${metaOutPath}/enums.json`, JSON.stringify(enums), "utf-8")
-        writeFileSync(`${metaOutPath}/functions.json`, JSON.stringify(FunctionManager.toJSON()))
+        writeFileSync(join(metaOutPath, "enums.json"), JSON.stringify(enums), "utf-8")
+        writeFileSync(join(metaOutPath, "functions.json"), JSON.stringify(FunctionManager.toJSON()))
     }
     
     if (eventName) {
@@ -154,7 +155,7 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
             }
         }
 
-        writeFileSync(`${metaOutPath}/events.json`, JSON.stringify(EventManager.toJSON(eventName)))
+        writeFileSync(join(metaOutPath, "events.json"), JSON.stringify(EventManager.toJSON(eventName)))
     }
 
     if (translate.length) {

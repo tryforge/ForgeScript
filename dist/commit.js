@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 const prompt_1 = __importDefault(require("./functions/prompt"));
+const path_1 = require("path");
 const path = "./metadata";
 if (!(0, fs_1.existsSync)(path))
     (0, fs_1.mkdirSync)(path);
@@ -25,7 +26,7 @@ async function main() {
         }
         return "";
     }).trim();
-    const fileName = `${path}/changelogs.json`;
+    const fileName = (0, path_1.join)(path, "changelogs.json");
     const json = (0, fs_1.existsSync)(fileName) ? JSON.parse((0, fs_1.readFileSync)(fileName, "utf-8")) : {};
     json[version] ??= [];
     if (!skip) {

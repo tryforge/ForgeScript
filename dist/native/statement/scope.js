@@ -13,12 +13,21 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.String
+        },
+        {
+            name: "sync vars",
+            description: "Whether to pass vars as reference",
+            type: structures_1.ArgType.Boolean,
+            rest: false
         }
     ],
     unwrap: false,
     output: structures_1.ArgType.Unknown,
     async execute(ctx) {
-        return this["resolveCode"](ctx.clone(), this.data.fields[0]);
+        const data = await this["resolveMultipleArgs"](ctx, 1);
+        if (!this["isValidReturnType"](data.return))
+            return data.return;
+        return this["resolveCode"](ctx.clone(undefined, data.args[0] ?? false), this.data.fields[0]);
     },
 });
 //# sourceMappingURL=scope.js.map

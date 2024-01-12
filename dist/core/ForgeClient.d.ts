@@ -54,10 +54,6 @@ export interface IRawForgeClientOptions extends ClientOptions {
      * the message becomes completely unusable.
      */
     respondOnEdit?: number | boolean;
-    /**
-     * Array of function names you want to disable.
-     */
-    disableFunctions?: string[];
 }
 export interface IForgeClientOptions extends Omit<IRawForgeClientOptions, "prefixes"> {
     prefixes: IExtendedCompilationResult[];

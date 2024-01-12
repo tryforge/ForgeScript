@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreadManager = void 0;
-const worker_threads_1 = require("worker_threads");
-const events_1 = require("events");
 const Logger_1 = require("../structures/@internal/Logger");
+const thread_1 = require("../functions/thread");
 class ThreadManager {
     client;
     available = new Set();
@@ -63,11 +62,10 @@ class ThreadManager {
         if (this.workerCount >= this.maxWorkerCount)
             return null;
         // eslint-disable-next-line no-undef
-        const worker = new worker_threads_1.Worker(`${__dirname}/../experimental/threading/thread.js`);
+        const worker = await (0, thread_1.spawn)("thread");
         worker.on("error", this.onWorkerError.bind(this, worker));
         worker.on("message", this.onWorkerMessage.bind(this, worker));
         worker.on("exit", this.onWorkerExit.bind(this, worker));
-        await (0, events_1.once)(worker, "online");
         this.available.add(worker);
         return worker;
     }

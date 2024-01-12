@@ -1,4 +1,5 @@
 import { Interpreter } from "../../core"
+import { Logger } from "../../structures"
 import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
 import { InviteTracker } from "../../structures/trackers/InviteTracker"
 
@@ -18,7 +19,7 @@ export default new DiscordEventHandler({
                 })
             }
         } else {
-            console.log(`Ready on client ${this.user.displayName}`)
+            Logger.info(`Ready on client ${this.user.displayName}`)
         }
 
         if (this.options.trackers?.invites) {

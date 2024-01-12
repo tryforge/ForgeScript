@@ -87,6 +87,6 @@ export declare class Context {
      * Clones keywords and environment vars
      * @returns
      */
-    clone(props?: Partial<IRunnable>): Context;
+    clone(props?: Partial<IRunnable>, syncVars?: boolean): Context;
 }
 //# sourceMappingURL=Context.d.ts.map

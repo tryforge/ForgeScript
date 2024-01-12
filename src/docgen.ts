@@ -2,6 +2,7 @@ import { GatewayIntentBits, Locale, StickerFormatType } from "discord.js"
 import generateMetadata from "./functions/generateMetadata"
 import { NativeEventName } from "./managers"
 import { EnumLike } from "./structures"
+import { join } from "path"
 
 const expose = {
     "GatewayIntentBits": GatewayIntentBits,
@@ -10,13 +11,13 @@ const expose = {
 
 generateMetadata(
     // eslint-disable-next-line no-undef
-    `${__dirname}/native`, 
+    join(__dirname, "native"), 
     "native", 
     NativeEventName,
     false, 
     expose,
     // eslint-disable-next-line no-undef
-    `${__dirname}/handlers/events`,
+    join(__dirname, "handlers", "events"),
     [
         "es"
     ]

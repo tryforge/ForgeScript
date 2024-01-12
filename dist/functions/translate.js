@@ -78,9 +78,9 @@ async function translateFunctionTo(worker, fn, lang, existing = {}) {
         delete existing.fields;
     return existing;
 }
-const metaPath = "./metadata/translations";
-const docsPath = `${metaPath}/docs`;
-const docsEnPath = `${docsPath}/en.json`;
+const metaPath = (0, path_1.join)("metadata", "translations");
+const docsPath = (0, path_1.join)(metaPath, "docs");
+const docsEnPath = (0, path_1.join)(docsPath, "en.json");
 const docs = (0, fs_1.existsSync)(docsEnPath) ? JSON.parse((0, fs_1.readFileSync)(docsEnPath, "utf-8")) : null;
 // For every 300mb available, 1 thread.
 const threadCount = Math.floor((((0, os_1.totalmem)() - (0, os_1.freemem)()) / (1024 ** 2)) / 300) || 1;

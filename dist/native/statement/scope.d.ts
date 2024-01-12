@@ -5,6 +5,11 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.String;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.Boolean;
+    rest: false;
 }], false>;
 export default _default;
 //# sourceMappingURL=scope.d.ts.map

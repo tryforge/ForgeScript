@@ -2,6 +2,7 @@ import { Worker } from "worker_threads"
 import { ForgeClient, IRunnable } from "../core"
 import { once } from "events"
 import { Logger } from "../structures/@internal/Logger"
+import { spawn } from "../functions/thread"
 
 export interface IThreadContext {
     code: string
@@ -88,12 +89,10 @@ export class ThreadManager {
         if (this.available.size !== 0) return this.available.values().next().value
         if (this.workerCount >= this.maxWorkerCount) return null
         // eslint-disable-next-line no-undef
-        const worker = new Worker(`${__dirname}/../experimental/threading/thread.js`)
-        
+        const worker = await spawn("thread")
         worker.on("error", this.onWorkerError.bind(this, worker))
         worker.on("message", this.onWorkerMessage.bind(this, worker))
         worker.on("exit", this.onWorkerExit.bind(this, worker))
-        await once(worker, "online")
         this.available.add(worker)
         return worker
     }

@@ -1,9 +1,10 @@
 import { once } from "events"
+import { join } from "path"
 import { Worker } from "worker_threads"
 
 export async function spawn(name: string) {
     // eslint-disable-next-line no-undef
-    const worker = new Worker(`${__dirname}/../experimental/threading/${name}.js`)
+    const worker = new Worker(join(__dirname, "..", "experimental", "threading", `${name}.js`))
     await once(worker, "online")
     return worker
 }

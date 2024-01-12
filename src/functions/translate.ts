@@ -124,9 +124,9 @@ async function translateFunctionTo(worker: Worker, fn: INativeFunction<IArg[]>, 
     return existing as ITranslateFunctionOutput
 }
 
-const metaPath = "./metadata/translations"
-const docsPath = `${metaPath}/docs`
-const docsEnPath = `${docsPath}/en.json`
+const metaPath = join("metadata", "translations")
+const docsPath = join(metaPath, "docs")
+const docsEnPath = join(docsPath, "en.json")
 
 const docs: Record<string, unknown> = existsSync(docsEnPath) ? JSON.parse(readFileSync(docsEnPath, "utf-8")) : null
 

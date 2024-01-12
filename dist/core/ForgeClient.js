@@ -54,8 +54,6 @@ class ForgeClient extends discord_js_1.Client {
             if (this.options.trackers.voice)
                 VoiceTracker_1.VoiceTracker["init"](this);
         }
-        if (this.options.disableFunctions?.length)
-            managers_1.FunctionManager.disable(this.options.disableFunctions);
         if (this.options.commands) {
             this.commands.load(this.options.commands);
         }

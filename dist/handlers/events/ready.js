@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("../../core");
+const structures_1 = require("../../structures");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 const InviteTracker_1 = require("../../structures/trackers/InviteTracker");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
@@ -20,7 +21,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             }
         }
         else {
-            console.log(`Ready on client ${this.user.displayName}`);
+            structures_1.Logger.info(`Ready on client ${this.user.displayName}`);
         }
         if (this.options.trackers?.invites) {
             await InviteTracker_1.InviteTracker.cacheAll(this);

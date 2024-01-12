@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.terminate = exports.postMessage = exports.spawn = void 0;
 const events_1 = require("events");
+const path_1 = require("path");
 const worker_threads_1 = require("worker_threads");
 async function spawn(name) {
     // eslint-disable-next-line no-undef
-    const worker = new worker_threads_1.Worker(`${__dirname}/../experimental/threading/${name}.js`);
+    const worker = new worker_threads_1.Worker((0, path_1.join)(__dirname, "..", "experimental", "threading", `${name}.js`));
     await (0, events_1.once)(worker, "online");
     return worker;
 }

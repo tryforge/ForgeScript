@@ -249,10 +249,10 @@ class Context {
      * Clones keywords and environment vars
      * @returns
      */
-    clone(props) {
+    clone(props, syncVars = false) {
         const empty = this.cloneEmpty();
-        empty.#keywords = { ...this.#keywords };
-        empty.#environment = { ...this.#environment };
+        empty.#keywords = syncVars ? this.#keywords : { ...this.#keywords };
+        empty.#environment = syncVars ? this.#environment : { ...this.#environment };
         if (props) {
             const keys = Object.keys(props);
             for (let i = 0, len = keys.length; i < len; i++) {

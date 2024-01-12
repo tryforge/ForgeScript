@@ -29,10 +29,6 @@ const client = new core_1.ForgeClient({
         "guildMemberAdd",
         "interactionCreate",
     ],
-    disableFunctions: [
-        "$guildName",
-        "$cope"
-    ],
     extensions: [
         new ext_1.MyExtension()
     ],

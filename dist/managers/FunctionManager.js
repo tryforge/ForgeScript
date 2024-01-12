@@ -10,11 +10,12 @@ const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveRe
 const v8_1 = require("v8");
 const Logger_1 = require("../structures/@internal/Logger");
 const enum_1 = require("../functions/enum");
+const path_1 = require("path");
 class FunctionManager {
     static Functions = new Map();
     static loadNative() {
         // eslint-disable-next-line no-undef
-        FunctionManager.load("ForgeScript", `${__dirname}/../native`);
+        FunctionManager.load("ForgeScript", (0, path_1.join)(__dirname, "..", "native"));
     }
     static load(provider, path) {
         // Backwards compatibility smh
@@ -54,14 +55,6 @@ class FunctionManager {
     }
     static reload() {
         core_1.Compiler["setFunctions"](this.raw);
-    }
-    static disable(fns) {
-        for (let i = 0, len = fns.length; i < len; i++) {
-            const fn = fns[i];
-            if (!this.Functions.delete(fn))
-                Logger_1.Logger.warn(`Attempted to disable non existing function: ${fn}`);
-        }
-        Logger_1.Logger.info(`The following ${fns.length} functions were disabled: ${fns.join(", ")}`);
     }
     static get(name) {
         return this.Functions.get(name);
