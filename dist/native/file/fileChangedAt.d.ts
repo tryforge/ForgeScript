@@ -7,4 +7,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
 }], true>;
 export default _default;
-//# sourceMappingURL=fileBirtchAt.d.ts.map
+//# sourceMappingURL=fileChangedAt.d.ts.map

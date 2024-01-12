@@ -2,9 +2,9 @@ import { existsSync, statSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
-    name: "$fileBirtchAt",
+    name: "$fileChangedAt",
     version: "1.4.0",
-    description: "Gets birtchtime of a file or directory",
+    description: "Gets last time a file was changed",
     brackets: true,
     unwrap: true,
     output: ArgType.Number,
@@ -18,6 +18,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return this.success(statSync(path).birthtimeMs)
+        return this.success(statSync(path).ctimeMs)
     },
 })

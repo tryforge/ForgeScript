@@ -2,9 +2,9 @@ import { existsSync, statSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
-    name: "$fileModifiedAt",
+    name: "$fileAccessedAt",
     version: "1.4.0",
-    description: "Gets timestamp of a file or directory when it was last modified",
+    description: "Gets last time a file was accessed",
     brackets: true,
     unwrap: true,
     output: ArgType.Number,
@@ -18,6 +18,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return this.success(statSync(path).ctimeMs)
+        return this.success(statSync(path).atimeMs)
     },
 })

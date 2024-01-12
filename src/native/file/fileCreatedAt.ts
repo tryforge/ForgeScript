@@ -18,6 +18,6 @@ export default new NativeFunction({
         },
     ],
     execute(_, [path]) {
-        return this.success(statSync(path).ctimeMs)
+        return this.success(statSync(path).birthtimeMs)
     },
 })
