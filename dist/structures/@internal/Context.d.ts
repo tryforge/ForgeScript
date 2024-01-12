@@ -1,6 +1,6 @@
 import { AnySelectMenuInteraction, AutoModerationActionExecution, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
 import { CompiledFunction } from "./CompiledFunction";
-import { Container } from "./Container";
+import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
 import { Return } from "./Return";
 import { IRunnable } from "../../core/Interpreter";
@@ -20,6 +20,19 @@ export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : n
 export type FilterProperties<T> = {
     [P in keyof T as T[P] extends (...args: any[]) => any ? never : P]: T[P];
 };
+export interface IContextCache {
+    member: GuildMember | null;
+    user: User | null;
+    guild: Guild | null;
+    channel: BaseChannel | null;
+    message: Message | null;
+    interaction: Interaction | null;
+    role: Role | null;
+    reaction: MessageReaction | null;
+    emoji: GuildEmoji | null;
+    automod: AutoModerationActionExecution | null;
+    sticker: Sticker | null;
+}
 export declare class Context {
     #private;
     readonly runtime: IRunnable;
@@ -29,7 +42,8 @@ export declare class Context {
     readonly container: Container;
     constructor(runtime: IRunnable);
     get client(): import("../..").ForgeClient;
-    get obj(): import("./Container").Sendable;
+    set obj(o: Sendable);
+    get obj(): Sendable;
     get args(): string[];
     get states(): import("../../core/Interpreter").States | undefined;
     get automod(): AutoModerationActionExecution | null;
@@ -88,5 +102,6 @@ export declare class Context {
      * @returns
      */
     clone(props?: Partial<IRunnable>, syncVars?: boolean): Context;
+    private clearCache;
 }
 //# sourceMappingURL=Context.d.ts.map

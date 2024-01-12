@@ -12,17 +12,7 @@ var HTTPContentType;
 })(HTTPContentType || (exports.HTTPContentType = HTTPContentType = {}));
 class Context {
     runtime;
-    #member;
-    #user;
-    #guild;
-    #channel;
-    #message;
-    #interaction;
-    #role;
-    #reaction;
-    #emoji;
-    #automod;
-    #sticker;
+    #cache = {};
     executionTimestamp;
     http = {};
     #keywords = {};
@@ -40,6 +30,10 @@ class Context {
     get client() {
         return this.runtime.client;
     }
+    set obj(o) {
+        this.runtime.obj = o;
+        this.clearCache();
+    }
     get obj() {
         return this.runtime.obj;
     }
@@ -50,10 +44,10 @@ class Context {
         return this.runtime.states;
     }
     get automod() {
-        return this.#automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
+        return this.#cache.automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
     }
     get member() {
-        return (this.#member ??=
+        return (this.#cache.member ??=
             this.obj instanceof discord_js_1.GuildMember
                 ? this.obj
                 : "member" in this.obj && this.obj.member instanceof discord_js_1.GuildMember
@@ -61,19 +55,19 @@ class Context {
                     : null);
     }
     get emoji() {
-        return (this.#emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
+        return (this.#cache.emoji ??= this.obj instanceof discord_js_1.GuildEmoji ? this.obj : null);
     }
     get sticker() {
-        return (this.#sticker ??= this.obj instanceof discord_js_1.Sticker ? this.obj : null);
+        return (this.#cache.sticker ??= this.obj instanceof discord_js_1.Sticker ? this.obj : null);
     }
     get role() {
-        return (this.#role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
+        return (this.#cache.role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
     }
     get reaction() {
-        return (this.#reaction ??= this.obj instanceof discord_js_1.MessageReaction ? this.obj : null);
+        return (this.#cache.reaction ??= this.obj instanceof discord_js_1.MessageReaction ? this.obj : null);
     }
     get message() {
-        return (this.#message ??=
+        return (this.#cache.message ??=
             "message" in this.obj && this.obj.message
                 ? this.obj.message
                 : this.obj instanceof discord_js_1.Message
@@ -81,10 +75,10 @@ class Context {
                     : null);
     }
     get interaction() {
-        return (this.#interaction ??= this.obj instanceof discord_js_1.BaseInteraction ? this.obj : null);
+        return (this.#cache.interaction ??= this.obj instanceof discord_js_1.BaseInteraction ? this.obj : null);
     }
     get user() {
-        return (this.#user ??=
+        return (this.#cache.user ??=
             "user" in this.obj
                 ? this.obj.user
                 : "author" in this.obj
@@ -96,7 +90,7 @@ class Context {
                             : null);
     }
     get guild() {
-        return (this.#guild ??=
+        return (this.#cache.guild ??=
             "guild" in this.obj
                 ? this.obj.guild
                 : this.obj instanceof discord_js_1.Guild
@@ -106,7 +100,7 @@ class Context {
                         : null);
     }
     get channel() {
-        return (this.#channel ??=
+        return (this.#cache.channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
                     ? null
@@ -261,6 +255,9 @@ class Context {
             }
         }
         return empty;
+    }
+    clearCache() {
+        this.#cache = {};
     }
 }
 exports.Context = Context;

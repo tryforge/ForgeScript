@@ -16,7 +16,7 @@ import {
     User,
 } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
-import { Container } from "./Container"
+import { Container, Sendable } from "./Container"
 import { IArg, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../../core/Interpreter"
@@ -46,18 +46,22 @@ export type FilterProperties<T> = {
     [P in keyof T as T[P] extends (...args: any[]) => any ? never : P]: T[P]
 }
 
+export interface IContextCache {
+    member: GuildMember | null
+    user: User | null
+    guild: Guild | null
+    channel: BaseChannel | null
+    message: Message | null
+    interaction: Interaction | null
+    role: Role | null
+    reaction: MessageReaction | null
+    emoji: GuildEmoji | null
+    automod: AutoModerationActionExecution | null
+    sticker: Sticker | null
+}
+
 export class Context {
-    #member?: GuildMember | null
-    #user?: User | null
-    #guild?: Guild | null
-    #channel?: BaseChannel | null
-    #message?: Message | null
-    #interaction?: Interaction | null
-    #role?: Role | null
-    #reaction?: MessageReaction | null
-    #emoji?: GuildEmoji | null
-    #automod?: AutoModerationActionExecution | null
-    #sticker?: Sticker | null
+    #cache: Partial<IContextCache> = {};
 
     // eslint-disable-next-line no-undef
     [props: PropertyKey]: unknown
@@ -81,6 +85,11 @@ export class Context {
         return this.runtime.client
     }
 
+    public set obj(o: Sendable) {
+        this.runtime.obj = o
+        this.clearCache()
+    }
+
     public get obj() {
         return this.runtime.obj
     }
@@ -94,11 +103,11 @@ export class Context {
     }
 
     public get automod() {
-        return this.#automod ??= this.obj instanceof AutoModerationActionExecution ? this.obj : null
+        return this.#cache.automod ??= this.obj instanceof AutoModerationActionExecution ? this.obj : null
     }
 
     public get member() {
-        return (this.#member ??=
+        return (this.#cache.member ??=
             this.obj instanceof GuildMember
                 ? this.obj
                 : "member" in this.obj && this.obj.member instanceof GuildMember
@@ -107,23 +116,23 @@ export class Context {
     }
 
     public get emoji() {
-        return (this.#emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
+        return (this.#cache.emoji ??= this.obj instanceof GuildEmoji ? this.obj : null)
     }
 
     public get sticker() {
-        return (this.#sticker ??= this.obj instanceof Sticker ? this.obj : null)
+        return (this.#cache.sticker ??= this.obj instanceof Sticker ? this.obj : null)
     }
 
     public get role() {
-        return (this.#role ??= this.obj instanceof Role ? this.obj : null)
+        return (this.#cache.role ??= this.obj instanceof Role ? this.obj : null)
     }
 
     public get reaction() {
-        return (this.#reaction ??= this.obj instanceof MessageReaction ? this.obj : null)
+        return (this.#cache.reaction ??= this.obj instanceof MessageReaction ? this.obj : null)
     }
 
     public get message() {
-        return (this.#message ??=
+        return (this.#cache.message ??=
             "message" in this.obj && this.obj.message
                 ? (this.obj.message as Message)
                 : this.obj instanceof Message
@@ -132,11 +141,11 @@ export class Context {
     }
 
     public get interaction() {
-        return (this.#interaction ??= this.obj instanceof BaseInteraction ? this.obj as Interaction : null)
+        return (this.#cache.interaction ??= this.obj instanceof BaseInteraction ? this.obj as Interaction : null)
     }
 
     public get user() {
-        return (this.#user ??=
+        return (this.#cache.user ??=
             "user" in this.obj
                 ? this.obj.user
                 : "author" in this.obj
@@ -149,7 +158,7 @@ export class Context {
     }
 
     public get guild() {
-        return (this.#guild ??=
+        return (this.#cache.guild ??=
             "guild" in this.obj
                 ? (this.obj.guild as Guild)
                 : this.obj instanceof Guild
@@ -160,7 +169,7 @@ export class Context {
     }
 
     public get channel() {
-        return (this.#channel ??=
+        return (this.#cache.channel ??=
             "channel" in this.obj
                 ? this.obj.channel?.partial
                     ? null
@@ -351,5 +360,9 @@ export class Context {
         }
         
         return empty
+    }
+
+    private clearCache() {
+        this.#cache = {}
     }
 }
