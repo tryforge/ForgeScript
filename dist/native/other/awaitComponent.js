@@ -8,6 +8,7 @@ const noop_1 = __importDefault(require("../../functions/noop"));
 const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 exports.default = new structures_1.NativeFunction({
     name: "$awaitComponent",
+    version: "1.4.0",
     description: "Awaits a component, executing the code as the interaction context, returns bool depending on whether the interaction was received",
     unwrap: false,
     output: structures_1.ArgType.Boolean,
