@@ -38,6 +38,7 @@
         "refresh": "Refresh",
         "viewSource": "View source on GitHub",
         "copyUrl": "Copy URL",
+        "copyUrlPressed": "URL Copied!",
         "functionsAndEvents": "Functions & Events",
         "notes": "Notes"
       },
