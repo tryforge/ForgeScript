@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fileBlockSize",
+    version: "1.4.0",
     description: "Gets block size of a file or directory",
     brackets: true,
     unwrap: true,
