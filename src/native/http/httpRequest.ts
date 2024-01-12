@@ -37,8 +37,9 @@ export default new NativeFunction({
         name ??= "result"
         
         const req = await fetch(url, {
-            method,
             ...ctx.http,
+            method,
+            body: ctx.http.body ?? ctx.http.form
         })
 
         const contentType = req.headers.get("content-type")?.split(";")[0]

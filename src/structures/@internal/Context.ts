@@ -23,6 +23,7 @@ import { IRunnable } from "../../core/Interpreter"
 import noop from "../../functions/noop"
 import { ForgeError } from "../forge/ForgeError"
 import { Logger } from "./Logger"
+import { FormData } from "undici"
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
@@ -35,6 +36,7 @@ export enum HTTPContentType {
 
 export interface IHttpOptions {
     body: string
+    form?: FormData
     contentType?: HTTPContentType
     headers: Record<string, string>
     method: string

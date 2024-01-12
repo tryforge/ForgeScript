@@ -4,6 +4,7 @@ import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
 import { Return } from "./Return";
 import { IRunnable } from "../../core/Interpreter";
+import { FormData } from "undici";
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (args: UnwrapArgs<T>) => Promise<Return> | Return;
 export declare enum HTTPContentType {
     Json = 0,
@@ -11,6 +12,7 @@ export declare enum HTTPContentType {
 }
 export interface IHttpOptions {
     body: string;
+    form?: FormData;
     contentType?: HTTPContentType;
     headers: Record<string, string>;
     method: string;
