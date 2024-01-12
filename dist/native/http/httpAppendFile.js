@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$httpAppendFile",
+    version: "1.4.0",
     description: "Appends a file to form data",
     brackets: true,
     unwrap: true,

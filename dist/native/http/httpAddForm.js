@@ -4,6 +4,7 @@ const undici_1 = require("undici");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$httpAddForm",
+    version: "1.4.0",
     description: "Adds form data to request",
     unwrap: false,
     execute(ctx) {
