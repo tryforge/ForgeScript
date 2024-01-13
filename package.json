@@ -25,7 +25,10 @@
     "tryforge",
     "forgescript",
     "discord",
-    "discord bot"
+    "discord-api",
+    "discord-bot",
+    "api",
+    "bot"
   ],
   "author": "ruben40000",
   "contributors": [],
