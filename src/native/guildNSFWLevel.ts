@@ -17,7 +17,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.nameAcronym
         return this.success(GuildNSFWLevel[(guild ?? ctx.guild)?.nsfwLevel])
     },
 })
