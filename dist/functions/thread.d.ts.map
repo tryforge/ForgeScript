@@ -1,0 +1,1 @@
+{"version":3,"file":"thread.d.ts","sourceRoot":"","sources":["../../src/functions/thread.ts"],"names":[],"mappings":";AAEA,OAAO,EAAE,MAAM,EAAE,MAAM,gBAAgB,CAAA;AAEvC,wBAAsB,KAAK,CAAC,IAAI,EAAE,MAAM,mBAKvC;AAED,wBAAsB,WAAW,CAAC,CAAC,EAAE,MAAM,EAAE,MAAM,EAAE,GAAG,EAAE,GAAG,GAAG,OAAO,CAAC,CAAC,CAAC,CAIzE;AAED,wBAAsB,SAAS,CAAC,GAAG,OAAO,EAAE,MAAM,EAAE,iBAKnD"}

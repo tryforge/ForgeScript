@@ -1,0 +1,24 @@
+import { ChannelType } from "discord.js"
+import { ArgType, NativeFunction, Return } from "../../structures"
+
+export default new NativeFunction({
+    name: "$channelType",
+    version: "1.0.0",
+    description: "Returns the channel type",
+    unwrap: true,
+    output: ChannelType,
+    brackets: false,
+    args: [
+        {
+            name: "channel ID",
+            description: "The id of the channel",
+            rest: false,
+            type: ArgType.Channel,
+            required: true,
+        },
+    ],
+    execute(ctx, [ch]) {
+        const chan = ch ?? ctx.channel
+        return this.success(ChannelType[chan?.type])
+    },
+})

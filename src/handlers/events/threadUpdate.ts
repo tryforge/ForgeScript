@@ -1,0 +1,28 @@
+import { Interpreter } from "../../core"
+import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandler"
+
+export default new DiscordEventHandler({
+    name: "threadUpdate",
+    version: "1.4.0",
+    intents: ["Guilds"],
+    description: "This event is fired when a thread is updated",
+    listener: async function (old, newer) {
+        const commands = this.commands.get("threadUpdate")
+
+        for (const command of commands) {
+            Interpreter.run({
+                obj: newer,
+                command,
+                client: this,
+                states: {
+                    channel: {
+                        new: newer,
+                        old,
+                    },
+                },
+                data: command.compiled.code,
+                args: [],
+            })
+        }
+    },
+})

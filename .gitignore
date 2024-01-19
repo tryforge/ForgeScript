@@ -1,0 +1,6 @@
+node_modules
+*.db
+*.sqlite
+\.env
+act.exe
+PUBLISHING.md

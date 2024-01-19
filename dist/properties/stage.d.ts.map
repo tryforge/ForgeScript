@@ -1,0 +1,1 @@
+{"version":3,"file":"stage.d.ts","sourceRoot":"","sources":["../../src/properties/stage.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiD,aAAa,EAA6B,MAAM,YAAY,CAAA;AAGpH,oBAAY,aAAa;IACrB,SAAS,cAAc;IACvB,EAAE,OAAO;IACT,KAAK,UAAU;IACf,SAAS,cAAc;IACvB,OAAO,YAAY;IACnB,YAAY,iBAAiB;IAC7B,OAAO,YAAY;CACtB;AAED,eAAO,MAAM,eAAe,yFAQ1B,CAAA"}

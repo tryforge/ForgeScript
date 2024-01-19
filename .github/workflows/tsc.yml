@@ -1,0 +1,29 @@
+name: tsc
+on:
+  pull_request:
+    branches: 
+        - "*"
+  push: 
+    branches:
+        - '*'
+jobs:
+  build:
+    name: Run tsc
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repo
+        uses: actions/checkout@v3
+        with: 
+          node-version: 16.11.0
+      
+      - name: Set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      
+      - name: Install node.js deps
+        run: npm i eslint typescript --save-dev
+
+      - name: Run tsc
+        run: npx tsc 

@@ -1,0 +1,1 @@
+{"version":3,"file":"VoiceTracker.js","sourceRoot":"","sources":["../../../src/structures/trackers/VoiceTracker.ts"],"names":[],"mappings":";;;AACA,gDAA4C;AAE5C,MAAa,YAAY;IACrB,gBAAuB,CAAC;IAEhB,MAAM,CAAC,IAAI,CAAC,MAAmB;QACnC,eAAM,CAAC,IAAI,CAAC,0EAA0E,CAAC,CAAA;IAC3F,CAAC;CACJ;AAND,oCAMC"}

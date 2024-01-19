@@ -1,0 +1,26 @@
+import array from "../../functions/array"
+import { ArgType, NativeFunction, Return } from "../../structures"
+
+export default new NativeFunction({
+    name: "$guildIDs",
+    version: "1.0.0",
+    description: "Returns all the guilds this bot is in",
+    unwrap: true,
+    aliases: [
+        "$serverIDs"
+    ],
+    output: array<ArgType.Guild>(),
+    brackets: false,
+    args: [
+        {
+            name: "separator",
+            description: "The separator for each guild",
+            type: ArgType.String,
+            required: true,
+            rest: false,
+        },
+    ],
+    execute(ctx, [sep]) {
+        return this.success(ctx.client.guilds.cache.map((x) => x.id).join(sep || ", "))
+    },
+})

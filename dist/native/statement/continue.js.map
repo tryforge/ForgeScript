@@ -1,0 +1,1 @@
+{"version":3,"file":"continue.js","sourceRoot":"","sources":["../../../src/native/statement/continue.ts"],"names":[],"mappings":";;AAAA,iDAAyD;AAEzD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,WAAW;IACjB,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,yCAAyC;IACtD,MAAM,EAAE,KAAK;IACb,OAAO;QACH,OAAO,IAAI,CAAC,QAAQ,EAAE,CAAA;IAC1B,CAAC;CACJ,CAAC,CAAA"}

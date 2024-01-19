@@ -1,0 +1,62 @@
+{
+  "name": "forgescript",
+  "version": "1.4.0",
+  "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "tsc",
+    "docgen": "tsc && typedoc ./src --out ./docs && node dist/docgen",
+    "eslint": "eslint ./src/**/* --fix",
+    "commit": "npm run docgen && node dist/commit",
+    "test": "tsc && node dist/__tests__/runner"
+  },
+  "keywords": [
+    "bdfd",
+    "aoi.js",
+    "aoi",
+    "dbd",
+    "dbd.ts",
+    "dbd.js",
+    "easy",
+    "fast",
+    "efficient",
+    "bdscript",
+    "tryforge",
+    "forgescript",
+    "discord",
+    "discord-api",
+    "discord-bot",
+    "api",
+    "bot"
+  ],
+  "author": "ruben40000",
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@iamtraction/google-translate": "^2.0.1",
+    "@types/cli-color": "^2.0.6",
+    "@types/express": "^4.17.17",
+    "@types/lodash": "^4.14.198",
+    "@types/node": "^20.5.7",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "express": "^4.18.2",
+    "prettier": "3.0.3",
+    "typedoc": "^0.25.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.14.1",
+    "ms-utility": "^3.3.0",
+    "tiny-typed-emitter": "^2.1.0",
+    "undici": "^5.23.0"
+  },
+  "engines": {
+    "node": ">=16.11.0"
+  }
+}

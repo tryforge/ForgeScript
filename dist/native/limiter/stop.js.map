@@ -1,0 +1,1 @@
+{"version":3,"file":"stop.js","sourceRoot":"","sources":["../../../src/native/limiter/stop.ts"],"names":[],"mappings":";;AAAA,iDAAyD;AAEzD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,OAAO;IACb,OAAO,EAAE,OAAO;IAChB,WAAW,EAAE,sBAAsB;IACnC,MAAM,EAAE,KAAK;IACb,OAAO;QACH,OAAO,IAAI,CAAC,IAAI,EAAE,CAAA;IACtB,CAAC;CACJ,CAAC,CAAA"}
