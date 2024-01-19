@@ -6,9 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Returns the member nickname",
     brackets: false,
-    aliases: [
-        "$memberNickname"
-    ],
+    aliases: ["$memberNickname"],
     unwrap: true,
     output: structures_1.ArgType.String,
     args: [
@@ -20,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
         {
-            name: "role ID",
+            name: "user ID",
             description: "The member id return its nick",
             rest: false,
             type: structures_1.ArgType.Member,

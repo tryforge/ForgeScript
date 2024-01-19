@@ -5,9 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Returns the member nickname",
     brackets: false,
-    aliases: [
-        "$memberNickname"
-    ],
+    aliases: ["$memberNickname"],
     unwrap: true,
     output: ArgType.String,
     args: [
@@ -19,7 +17,7 @@ export default new NativeFunction({
             required: true,
         },
         {
-            name: "role ID",
+            name: "user ID",
             description: "The member id return its nick",
             rest: false,
             type: ArgType.Member,
