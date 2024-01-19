@@ -7,7 +7,7 @@ export default new NativeFunction({
     unwrap: false,
     async execute(ctx) {
         ctx.client.applicationCommands.load()
-        await ctx.client.applicationCommands.register()
+        await ctx.client.applicationCommands.registerGlobal()
         return this.success()
     },
 })

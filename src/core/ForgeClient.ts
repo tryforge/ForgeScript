@@ -1,7 +1,36 @@
-import { disableValidators, ClientOptions, Client, IntentsBitField, Partials, DefaultWebSocketManagerOptions, Message } from "discord.js"
+import {
+    disableValidators,
+    ClientOptions,
+    Client,
+    IntentsBitField,
+    Partials,
+    DefaultWebSocketManagerOptions,
+    Message,
+} from "discord.js"
 import { IExtendedCompilationResult, Compiler } from "."
-import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, FunctionManager, NativeEventName, ApplicationCommandManager, ThreadManager, BaseCommandManager } from "../managers"
-import { CommandType, LogPriority, ForgeExtension, Logger, InviteTracker, ClassType, ClassInstance, ForgeError, ErrorType, BaseCommand } from "../structures"
+import {
+    NativeCommandManager,
+    EventManager,
+    CooldownManager,
+    ForgeFunctionManager,
+    FunctionManager,
+    NativeEventName,
+    ApplicationCommandManager,
+    ThreadManager,
+    BaseCommandManager,
+} from "../managers"
+import {
+    CommandType,
+    LogPriority,
+    ForgeExtension,
+    Logger,
+    InviteTracker,
+    ClassType,
+    ClassInstance,
+    ForgeError,
+    ErrorType,
+    BaseCommand,
+} from "../structures"
 import { VoiceTracker } from "../structures/trackers/VoiceTracker"
 import { Interpreter } from "./Interpreter"
 
@@ -63,13 +92,13 @@ export interface IRawForgeClientOptions extends ClientOptions {
      */
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
-    
+
     restrictions?: IRestrictions
 
     /**
-     * Allows the bot to re-use messages that were edited to find possibly command calls. 
+     * Allows the bot to re-use messages that were edited to find possibly command calls.
      * If a number is passed, it's treated as the amount of milliseconds that can pass before
-     * the message becomes completely unusable.  
+     * the message becomes completely unusable.
      */
     respondOnEdit?: number | boolean
 }
@@ -86,7 +115,7 @@ export class ForgeClient extends Client<true> {
     public readonly cooldowns = new CooldownManager(this)
     public readonly functions = new ForgeFunctionManager(this)
     public readonly threading = new ThreadManager(this);
-    
+
     // eslint-disable-next-line no-undef
     [x: PropertyKey]: unknown
 
@@ -113,11 +142,13 @@ export class ForgeClient extends Client<true> {
         if (this.options.mobile) {
             Reflect.set(DefaultWebSocketManagerOptions.identifyProperties, "browser", "Discord iOS")
         }
-        
+
         if (this.options.useInviteSystem) {
             this.options.trackers ??= {}
             this.options.trackers.invites = true
-            Logger.deprecated("ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead.")
+            Logger.deprecated(
+                "ForgeClient#useInviteSystem is deprecated and will be removed in future versions, please use ForgeClient#trackers#invites instead."
+            )
         }
 
         if (this.options.extensions?.length) {
@@ -130,12 +161,10 @@ export class ForgeClient extends Client<true> {
         EventManager.loadNative()
 
         if (this.options.trackers) {
-            if (this.options.trackers.invites)
-                InviteTracker["init"](this)
-            if (this.options.trackers.voice)
-                VoiceTracker["init"](this)
+            if (this.options.trackers.invites) InviteTracker["init"](this)
+            if (this.options.trackers.voice) VoiceTracker["init"](this)
         }
-        
+
         if (this.options.commands) {
             this.commands.load(this.options.commands)
         }
@@ -147,21 +176,28 @@ export class ForgeClient extends Client<true> {
         if (this.options.events?.length) {
             this.events.load(NativeEventName, this.options.events)
         }
-        
+
         // At last, load prefixes
-        this.options.prefixes = raw.prefixes?.map(x => Compiler.compile(x)) ?? []
+        this.options.prefixes = raw.prefixes?.map((x) => Compiler.compile(x)) ?? []
     }
 
-    public getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null
-    public getExtension<T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null
-    public getExtension<T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null {
-        const finder = this.options.extensions?.find(x => typeof type === "string" ? x.name === type : x instanceof type)
-        if (!finder && required)  {
-            throw new ForgeError(
-                null,
-                ErrorType.ExtensionNotFound,
-                type.constructor.name
-            )
+    public getExtension<B extends boolean>(
+        name: string,
+        required?: B
+    ): B extends true ? ForgeExtension : ForgeExtension | null
+    public getExtension<T extends ClassType, B extends boolean>(
+        type: T | string,
+        required?: B
+    ): B extends true ? ClassInstance<T> : ClassInstance<T> | null
+    public getExtension<T extends ClassType, B extends boolean>(
+        type: T | string,
+        required?: B
+    ): B extends true ? ClassInstance<T> : ClassInstance<T> | null {
+        const finder = this.options.extensions?.find((x) =>
+            typeof type === "string" ? x.name === type : x instanceof type
+        )
+        if (!finder && required) {
+            throw new ForgeError(null, ErrorType.ExtensionNotFound, type.constructor.name)
         }
 
         return (finder ?? null) as ClassInstance<T>
@@ -176,7 +212,7 @@ export class ForgeClient extends Client<true> {
     }
 
     public async getPrefix(msg: Message): Promise<string | null> {
-        for (let i = 0, len = this.options.prefixes.length;i < len;i++) {
+        for (let i = 0, len = this.options.prefixes.length; i < len; i++) {
             const raw = this.options.prefixes[i]
             const resolved = await Interpreter.run({
                 client: this,
@@ -184,7 +220,7 @@ export class ForgeClient extends Client<true> {
                 data: raw,
                 obj: msg,
                 redirectErrorsToConsole: true,
-                doNotSend: true
+                doNotSend: true,
             })
 
             if (resolved !== null && msg.content.startsWith(resolved.toLowerCase())) {
@@ -202,25 +238,24 @@ export class ForgeClient extends Client<true> {
     /**
      * Returns all available command managers
      */
-    public get commandManagers()  {
+    public get commandManagers() {
         const arr = new Array<BaseCommandManager<unknown>>(this.commands)
 
         if (this.options.extensions?.length) {
-            for (let i = 0, len = this.options.extensions.length;i < len;i++) {
+            for (let i = 0, len = this.options.extensions.length; i < len; i++) {
                 const ext = this.options.extensions[i]
                 const manager = ext.getCommandManager()
-                if (!manager)
-                    continue
+                if (!manager) continue
                 arr.push(manager)
             }
         }
 
-        return  arr
+        return arr
     }
 
     override login(token?: string | undefined): Promise<string> {
         return super.login(token ?? this.options.token).then(async (str) => {
-            await this.applicationCommands.register()
+            await this.applicationCommands.registerGlobal()
             return str
         })
     }

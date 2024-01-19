@@ -64,10 +64,10 @@ class ForgeClient extends discord_js_1.Client {
             this.events.load(managers_1.NativeEventName, this.options.events);
         }
         // At last, load prefixes
-        this.options.prefixes = raw.prefixes?.map(x => _1.Compiler.compile(x)) ?? [];
+        this.options.prefixes = raw.prefixes?.map((x) => _1.Compiler.compile(x)) ?? [];
     }
     getExtension(type, required) {
-        const finder = this.options.extensions?.find(x => typeof type === "string" ? x.name === type : x instanceof type);
+        const finder = this.options.extensions?.find((x) => typeof type === "string" ? x.name === type : x instanceof type);
         if (!finder && required) {
             throw new structures_1.ForgeError(null, structures_1.ErrorType.ExtensionNotFound, type.constructor.name);
         }
@@ -88,7 +88,7 @@ class ForgeClient extends discord_js_1.Client {
                 data: raw,
                 obj: msg,
                 redirectErrorsToConsole: true,
-                doNotSend: true
+                doNotSend: true,
             });
             if (resolved !== null && msg.content.startsWith(resolved.toLowerCase())) {
                 return resolved;
@@ -117,7 +117,7 @@ class ForgeClient extends discord_js_1.Client {
     }
     login(token) {
         return super.login(token ?? this.options.token).then(async (str) => {
-            await this.applicationCommands.register();
+            await this.applicationCommands.registerGlobal();
             return str;
         });
     }

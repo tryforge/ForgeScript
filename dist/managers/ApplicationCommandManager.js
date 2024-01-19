@@ -1,12 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApplicationCommandManager = void 0;
+exports.ApplicationCommandManager = exports.RegistrationType = void 0;
+/* eslint-disable indent */
 const discord_js_1 = require("discord.js");
 const ApplicationCommand_1 = require("../structures/base/ApplicationCommand");
 const EventManager_1 = require("./EventManager");
 const fs_1 = require("fs");
 const path_1 = require("path");
 const process_1 = require("process");
+var RegistrationType;
+(function (RegistrationType) {
+    RegistrationType[RegistrationType["Global"] = 0] = "Global";
+    RegistrationType[RegistrationType["Guild"] = 1] = "Guild";
+    RegistrationType[RegistrationType["All"] = 2] = "All";
+})(RegistrationType || (exports.RegistrationType = RegistrationType = {}));
 class ApplicationCommandManager {
     client;
     /**
@@ -98,7 +105,13 @@ class ApplicationCommandManager {
             const subcommandName = input.options.getSubcommand(false);
             const subcommandGroupName = input.options.getSubcommandGroup(false);
             const filteredOptions = this.getDisplayOptions(input.options.data, hideName);
-            return `/${commandName}${subcommandGroupName ? subcommandName ? ` ${subcommandGroupName} ${subcommandName}` : ` ${subcommandGroupName}` : subcommandName ? ` ${subcommandName}` : ""} ${filteredOptions.join(" ")}`;
+            return `/${commandName}${subcommandGroupName
+                ? subcommandName
+                    ? ` ${subcommandGroupName} ${subcommandName}`
+                    : ` ${subcommandGroupName}`
+                : subcommandName
+                    ? ` ${subcommandName}`
+                    : ""} ${filteredOptions.join(" ")}`;
         }
         else if (input instanceof discord_js_1.ContextMenuCommandInteraction)
             return `/${input.commandName}`;
@@ -147,7 +160,8 @@ class ApplicationCommandManager {
     }
     validate(app, path) {
         const json = app.toJSON();
-        if (json.options?.some(x => x.type === discord_js_1.ApplicationCommandOptionType.Subcommand || x.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup)) {
+        if (json.options?.some((x) => x.type === discord_js_1.ApplicationCommandOptionType.Subcommand ||
+            x.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup)) {
             throw new Error(`Attempted to define subcommand / subcommand group without using path tree definition. (${path ?? "index file"})`);
         }
     }
@@ -156,10 +170,12 @@ class ApplicationCommandManager {
         this.validate(v, path);
         return v;
     }
-    toJSON() {
+    toJSON(type) {
         const arr = new Array();
         for (const [commandName, value] of this.commands) {
             if (value instanceof ApplicationCommand_1.ApplicationCommand) {
+                if (!value.mustRegisterAs(type))
+                    continue;
                 arr.push(value.options.data);
             }
             else {
@@ -167,7 +183,7 @@ class ApplicationCommandManager {
                     name: commandName,
                     description: "none",
                     type: discord_js_1.ApplicationCommandType.ChatInput,
-                    options: []
+                    options: [],
                 };
                 for (const [nextName, values] of value) {
                     if (values instanceof discord_js_1.Collection) {
@@ -175,34 +191,47 @@ class ApplicationCommandManager {
                             name: nextName,
                             description: "none",
                             type: discord_js_1.ApplicationCommandOptionType.SubcommandGroup,
-                            options: []
+                            options: [],
                         };
                         for (const [lastName, command] of values) {
+                            if (!command.mustRegisterAs(type))
+                                continue;
                             raw.options.push({
                                 ...command.toJSON(),
                                 name: lastName,
-                                type: discord_js_1.ApplicationCommandOptionType.Subcommand
+                                type: discord_js_1.ApplicationCommandOptionType.Subcommand,
                             });
                         }
+                        if (!raw.options?.length)
+                            continue;
                         json.options.push(raw);
                     }
                     else {
+                        if (!values.mustRegisterAs(type))
+                            continue;
                         const raw = values.toJSON();
                         json.options.push({
                             ...raw,
-                            type: discord_js_1.ApplicationCommandOptionType.Subcommand
+                            type: discord_js_1.ApplicationCommandOptionType.Subcommand,
                         });
                     }
                 }
+                if (!json.options?.length)
+                    continue;
                 arr.push(json);
             }
         }
         return arr;
     }
-    register() {
+    registerGlobal() {
         if (this.commands.size)
             this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
-        return this.client.application.commands.set(this.toJSON());
+        return this.client.application.commands.set(this.toJSON(RegistrationType.Global));
+    }
+    registerGuild(g) {
+        if (this.commands.size)
+            this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
+        return g.commands.set(this.toJSON(RegistrationType.Guild));
     }
 }
 exports.ApplicationCommandManager = ApplicationCommandManager;

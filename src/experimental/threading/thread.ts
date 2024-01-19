@@ -22,11 +22,11 @@ parentPort?.on("message", async (ctx: IThreadContext & { taskId: number }) => {
         keywords: ctx.keywords,
         environment: ctx.environment,
         data: cmd.compiled.code,
-        obj: {}
+        obj: {},
     })
 
     parentPort?.postMessage({
         taskId: ctx.taskId,
-        value: run
+        value: run,
     })
 })

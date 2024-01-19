@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
     APIApplicationCommandOption,
     APIApplicationCommandSubcommandOption,
@@ -12,6 +13,7 @@ import {
     ContextMenuCommandBuilder,
     ContextMenuCommandInteraction,
     Events,
+    Guild,
     Interaction,
     RESTPostAPIChatInputApplicationCommandsJSONBody,
     RESTPostAPIContextMenuApplicationCommandsJSONBody,
@@ -25,9 +27,20 @@ import { readdirSync, statSync } from "fs"
 import { join } from "path"
 import { cwd } from "process"
 
+export enum RegistrationType {
+    Global,
+    Guild,
+    All,
+}
+
 export interface IApplicationCommandData {
-    data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIChatInputApplicationCommandsJSONBody | RESTPostAPIContextMenuApplicationCommandsJSONBody
+    data:
+        | SlashCommandBuilder
+        | ContextMenuCommandBuilder
+        | RESTPostAPIChatInputApplicationCommandsJSONBody
+        | RESTPostAPIContextMenuApplicationCommandsJSONBody
     code: string
+    type?: RegistrationType
     independent?: boolean
     path?: string | null
 }
@@ -40,18 +53,21 @@ export class ApplicationCommandManager {
      *  - value is slash command = subcommands
      *  - value is collection = group with subcommands
      */
-    private commands = new Collection<string, ApplicationCommand | Collection<string, ApplicationCommand | Collection<string, ApplicationCommand>>>()
+    private commands = new Collection<
+        string,
+        ApplicationCommand | Collection<string, ApplicationCommand | Collection<string, ApplicationCommand>>
+    >()
     private path!: string
 
     public constructor(public readonly client: ForgeClient) {}
 
     /**
      * PATH TREE MATTERS
-     * @param path 
+     * @param path
      */
     public load(path: string = this.path) {
         if (!path) return
-        
+
         this.path ??= path
         this.commands.clear()
 
@@ -70,7 +86,8 @@ export class ApplicationCommandManager {
                         for (const lastPath of readdirSync(secondResolved)) {
                             const thirdResolved = join(secondResolved, lastPath)
                             const stats = statSync(thirdResolved)
-                            if (stats.isDirectory()) throw new Error(`Disallowed folder found for slash command tree: ${thirdResolved}`)
+                            if (stats.isDirectory())
+                                throw new Error(`Disallowed folder found for slash command tree: ${thirdResolved}`)
                             const loaded = this.loadOne(join(cwd(), thirdResolved))
                             if (!loaded) continue
                             else if (loaded.options.independent) {
@@ -81,8 +98,7 @@ export class ApplicationCommandManager {
                             nextCol.set(loaded.name, loaded)
                         }
 
-                        if (nextCol.size === 0)
-                            continue
+                        if (nextCol.size === 0) continue
                         col.set(secondPath, nextCol)
                     } else {
                         const loaded = this.loadOne(join(cwd(), secondResolved))
@@ -96,8 +112,7 @@ export class ApplicationCommandManager {
                     }
                 }
 
-                if (col.size === 0)
-                    continue
+                if (col.size === 0) continue
                 this.commands.set(mainPath, col)
             } else {
                 const loaded = this.loadOne(join(cwd(), resolved))
@@ -113,8 +128,7 @@ export class ApplicationCommandManager {
         for (const data of input) {
             if (data.value !== undefined) {
                 arr.push(`${hideName ? "" : `${data.name}: `}${data.value}`)
-            } else if (data.options?.length)
-                arr.push(...this.getDisplayOptions(data.options, hideName))
+            } else if (data.options?.length) arr.push(...this.getDisplayOptions(data.options, hideName))
         }
 
         return arr
@@ -126,15 +140,22 @@ export class ApplicationCommandManager {
             const subcommandName = input.options.getSubcommand(false)
             const subcommandGroupName = input.options.getSubcommandGroup(false)
             const filteredOptions = this.getDisplayOptions(input.options.data, hideName)
-            return `/${commandName}${subcommandGroupName ? subcommandName ? ` ${subcommandGroupName} ${subcommandName}` : ` ${subcommandGroupName}` : subcommandName ? ` ${subcommandName}` : ""} ${filteredOptions.join(" ")}`
+            return `/${commandName}${
+                subcommandGroupName
+                    ? subcommandName
+                        ? ` ${subcommandGroupName} ${subcommandName}`
+                        : ` ${subcommandGroupName}`
+                    : subcommandName
+                    ? ` ${subcommandName}`
+                    : ""
+            } ${filteredOptions.join(" ")}`
         } else if (input instanceof ContextMenuCommandInteraction) return `/${input.commandName}`
         return null
     }
 
     public get(input: CommandInteraction): ApplicationCommand | null {
         const commandName = input.commandName
-        if (!input.isChatInputCommand())
-            return this.commands.get(commandName) as ApplicationCommand
+        if (!input.isChatInputCommand()) return this.commands.get(commandName) as ApplicationCommand
         const subcommandName = input.options.getSubcommand(false)
         const subcommandGroupName = input.options.getSubcommandGroup(false)
 
@@ -153,8 +174,8 @@ export class ApplicationCommandManager {
 
     /**
      * **WARNING** This function does not allow subcommand & subcommand group options. Consider using ApplicationCommandManager#load to load a tree from a folder.
-     * @param values 
-     * @returns 
+     * @param values
+     * @returns
      */
     public add(
         ...values: (ApplicationCommand | IApplicationCommandData | ApplicationCommand[] | IApplicationCommandData[])[]
@@ -178,8 +199,18 @@ export class ApplicationCommandManager {
 
     private validate(app: ApplicationCommand, path: string | null) {
         const json = app.toJSON()
-        if (json.options?.some(x => x.type === ApplicationCommandOptionType.Subcommand || x.type === ApplicationCommandOptionType.SubcommandGroup)) {
-            throw new Error(`Attempted to define subcommand / subcommand group without using path tree definition. (${path ?? "index file"})`)
+        if (
+            json.options?.some(
+                (x) =>
+                    x.type === ApplicationCommandOptionType.Subcommand ||
+                    x.type === ApplicationCommandOptionType.SubcommandGroup
+            )
+        ) {
+            throw new Error(
+                `Attempted to define subcommand / subcommand group without using path tree definition. (${
+                    path ?? "index file"
+                })`
+            )
         }
     }
 
@@ -189,46 +220,52 @@ export class ApplicationCommandManager {
         return v
     }
 
-    toJSON(): ApplicationCommandDataResolvable[] {
+    toJSON(type: Parameters<ApplicationCommand["mustRegisterAs"]>[0]): ApplicationCommandDataResolvable[] {
         const arr = new Array<ApplicationCommandDataResolvable>()
-        
-        for (const [ commandName, value ] of this.commands) {
+
+        for (const [commandName, value] of this.commands) {
             if (value instanceof ApplicationCommand) {
+                if (!value.mustRegisterAs(type)) continue
                 arr.push(value.options.data)
             } else {
                 const json: RESTPostAPIChatInputApplicationCommandsJSONBody = {
                     name: commandName,
                     description: "none",
                     type: ApplicationCommandType.ChatInput,
-                    options: []
+                    options: [],
                 }
 
-                for (const [ nextName, values ] of value) {
+                for (const [nextName, values] of value) {
                     if (values instanceof Collection) {
                         const raw: APIApplicationCommandOption = {
                             name: nextName,
                             description: "none",
                             type: ApplicationCommandOptionType.SubcommandGroup,
-                            options: []
+                            options: [],
                         }
 
-                        for (const [ lastName, command ] of values) {
+                        for (const [lastName, command] of values) {
+                            if (!command.mustRegisterAs(type)) continue
                             raw.options!.push({
                                 ...command.toJSON(),
                                 name: lastName,
-                                type: ApplicationCommandOptionType.Subcommand
+                                type: ApplicationCommandOptionType.Subcommand,
                             } as APIApplicationCommandSubcommandOption)
                         }
 
+                        if (!raw.options?.length) continue
                         json.options!.push(raw)
                     } else {
+                        if (!values.mustRegisterAs(type)) continue
                         const raw = values.toJSON()
                         json.options!.push({
                             ...raw,
-                            type: ApplicationCommandOptionType.Subcommand
+                            type: ApplicationCommandOptionType.Subcommand,
                         } as APIApplicationCommandOption)
                     }
                 }
+
+                if (!json.options?.length) continue
 
                 arr.push(json)
             }
@@ -237,8 +274,13 @@ export class ApplicationCommandManager {
         return arr
     }
 
-    public register() {
+    public registerGlobal() {
         if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
-        return this.client.application.commands.set(this.toJSON())
+        return this.client.application.commands.set(this.toJSON(RegistrationType.Global))
+    }
+
+    public registerGuild(g: Guild) {
+        if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
+        return g.commands.set(this.toJSON(RegistrationType.Guild))
     }
 }

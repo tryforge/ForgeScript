@@ -8,6 +8,7 @@ const member_1 = require("../../properties/member");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$findMembers",
+    version: "1.4.0",
     description: "Finds member of a guild using a query",
     brackets: true,
     unwrap: true,

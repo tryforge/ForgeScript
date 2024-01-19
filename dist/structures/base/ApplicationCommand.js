@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApplicationCommand = void 0;
 const core_1 = require("../../core");
+const ApplicationCommandManager_1 = require("../../managers/ApplicationCommandManager");
 const ForgeError_1 = require("../forge/ForgeError");
 class ApplicationCommand {
     options;
@@ -12,6 +13,12 @@ class ApplicationCommand {
     }
     get name() {
         return this.options.data.name;
+    }
+    get registrationType() {
+        return this.options.type ?? ApplicationCommandManager_1.RegistrationType.Global;
+    }
+    mustRegisterAs(type) {
+        return this.registrationType === ApplicationCommandManager_1.RegistrationType.All || this.registrationType === type;
     }
     toJSON() {
         if (!this.options.data)
