@@ -5,9 +5,7 @@ export default new NativeFunction({
     version: "1.3.0",
     description: "Returns the server's public updates channel ID",
     brackets: false,
-    aliases: [
-        "$serverPublicUpdatesChannelID"
-    ],
+    aliases: ["$serverPublicUpdatesChannelID"],
     output: ArgType.Channel,
     args: [
         {

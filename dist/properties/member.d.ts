@@ -4,6 +4,7 @@ export declare enum MemberProperty {
     displayName = "displayName",
     displayColor = "displayColor",
     roles = "roles",
+    mention = "mention",
     avatar = "avatar",
     bannable = "bannable",
     kickable = "kickable",

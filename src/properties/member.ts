@@ -1,4 +1,4 @@
-import { GuildMember, Message, MessageType } from "discord.js"
+import { GuildMember, Message, MessageType, userMention } from "discord.js"
 import defineProperties from "../functions/defineProperties"
 
 export enum MemberProperty {
@@ -6,6 +6,7 @@ export enum MemberProperty {
     displayName = "displayName",
     displayColor = "displayColor",
     roles = "roles",
+    mention = "mention",
     avatar = "avatar",
     bannable = "bannable",
     kickable = "kickable",
@@ -27,13 +28,22 @@ export enum MemberProperty {
 export const MemberProperties = defineProperties<typeof MemberProperty, GuildMember>({
     timestamp: (i) => i?.joinedTimestamp,
     displayColor: (i) => i?.displayHexColor,
+    mention: (i) => userMention(i?.id!),
     displayName: (i) => i?.displayName,
     // Assuming m is old state
-    addedRoles: (m, sep) => m?.guild.members.cache.get(m.id)?.roles.cache.filter(r => !m.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", "),
+    addedRoles: (m, sep) =>
+        m?.guild.members.cache
+            .get(m.id)
+            ?.roles.cache.filter((r) => !m.roles.cache.has(r.id))
+            .map((x) => x.id)
+            .join(sep ?? ", "),
     // Assuming m is old state
     removedRoles: (m, sep) => {
         const updated = m?.guild.members.cache.get(m.id)
-        return m?.roles.cache.filter(r => !updated?.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", ")
+        return m?.roles.cache
+            .filter((r) => !updated?.roles.cache.has(r.id))
+            .map((x) => x.id)
+            .join(sep ?? ", ")
     },
     roleCount: (m) => m?.roles.cache.size ?? 0,
     avatar: (i) => i?.displayAvatarURL(),

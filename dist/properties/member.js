@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemberProperties = exports.MemberProperty = void 0;
+const discord_js_1 = require("discord.js");
 const defineProperties_1 = __importDefault(require("../functions/defineProperties"));
 var MemberProperty;
 (function (MemberProperty) {
@@ -11,6 +12,7 @@ var MemberProperty;
     MemberProperty["displayName"] = "displayName";
     MemberProperty["displayColor"] = "displayColor";
     MemberProperty["roles"] = "roles";
+    MemberProperty["mention"] = "mention";
     MemberProperty["avatar"] = "avatar";
     MemberProperty["bannable"] = "bannable";
     MemberProperty["kickable"] = "kickable";
@@ -31,13 +33,21 @@ var MemberProperty;
 exports.MemberProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.joinedTimestamp,
     displayColor: (i) => i?.displayHexColor,
+    mention: (i) => (0, discord_js_1.userMention)(i?.id),
     displayName: (i) => i?.displayName,
     // Assuming m is old state
-    addedRoles: (m, sep) => m?.guild.members.cache.get(m.id)?.roles.cache.filter(r => !m.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", "),
+    addedRoles: (m, sep) => m?.guild.members.cache
+        .get(m.id)
+        ?.roles.cache.filter((r) => !m.roles.cache.has(r.id))
+        .map((x) => x.id)
+        .join(sep ?? ", "),
     // Assuming m is old state
     removedRoles: (m, sep) => {
         const updated = m?.guild.members.cache.get(m.id);
-        return m?.roles.cache.filter(r => !updated?.roles.cache.has(r.id)).map(x => x.id).join(sep ?? ", ");
+        return m?.roles.cache
+            .filter((r) => !updated?.roles.cache.has(r.id))
+            .map((x) => x.id)
+            .join(sep ?? ", ");
     },
     roleCount: (m) => m?.roles.cache.size ?? 0,
     avatar: (i) => i?.displayAvatarURL(),
