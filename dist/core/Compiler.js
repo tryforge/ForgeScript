@@ -35,16 +35,19 @@ class Compiler {
         Close: "]",
         Escape: "\\",
         Negation: "!",
-        Separator: ";"
+        Separator: ";",
     };
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
-    static InvalidCharRegex = /(\$\{|`)/g;
+    static InvalidCharRegex = /(\\|\${|`)/g;
     static Functions = new discord_js_1.Collection();
     static EscapeRegex = /(\.|\$|\(|\)|\*|\[|\]|\{|\}|\?|!|\^)/gim;
     id = 0;
     matches;
+    matchIndex = 0;
     index = 0;
+    outputFunctions = new Array();
+    outputCode = "";
     constructor(path, code) {
         this.path = path;
         this.code = code;
@@ -53,190 +56,232 @@ class Compiler {
                 index: x.index,
                 negated: !!x[1],
                 length: x[0].length,
-                fn: this.getFunction(x[2])
+                fn: this.getFunction(x[2]),
             }));
         }
         else
             this.matches = [];
     }
-    getFunction(str) {
-        const fn = `$${str.toLowerCase()}`;
-        return Compiler.Functions.get(fn) ??
-            Compiler.Functions.find(x => x.aliases?.some(x => x.toLowerCase() === fn)) ??
-            this.error(`Function ${fn} is not registered.`);
-    }
     compile() {
-        if (!this.code || this.matches.length === 0)
-            return {
-                code: this.code ?? "",
-                resolve: this.wrap(this.code ?? ""),
-                functions: [],
-            };
-        let out = "";
-        const functions = new Array();
-        while (this.matches.length !== 0) {
-            const match = this.matches.shift();
-            let escaped = false;
-            while (match.index !== this.index) {
-                const char = this.next();
-                const isEscape = char === Compiler.Syntax.Escape;
-                if (!escaped && isEscape) {
-                    escaped = true;
-                    continue;
+        if (this.matches.length !== 0) {
+            // Loop while functions are unmatched
+            let match;
+            loop: while ((match = this.match) !== undefined) {
+                while (match.index !== this.index) {
+                    const char = this.char();
+                    const { isEscape } = this.getCharInfo(char);
+                    if (isEscape) {
+                        const { char } = this.processEscape();
+                        this.outputCode += char;
+                        continue loop;
+                    }
+                    this.outputCode += char;
+                    this.index++;
                 }
-                escaped = false;
-                out += char;
+                const parsed = this.parseFunction();
+                this.outputFunctions.push(parsed);
+                this.outputCode += parsed.id;
             }
-            if (escaped)
-                continue;
-            const fn = this.parseFunction(match);
-            out += fn.id;
-            functions.push(fn);
+            this.outputCode += this.code.slice(this.index);
         }
-        if (this.index !== this.code.length)
-            out += this.code.slice(this.index);
+        else
+            this.outputCode = this.code ?? "";
         return {
-            code: out,
-            functions,
-            resolve: this.wrap(out),
+            code: this.outputCode,
+            functions: this.outputFunctions,
+            resolve: this.wrap(this.outputCode),
         };
     }
-    parseFunction(match) {
-        this.moveTo(match.index + match.length);
-        const char = this.char();
-        const usesFields = char === Compiler.Syntax.Open;
-        const name = match.fn.name;
-        const id = this.getNextId();
-        if (match.fn.args === null || (!usesFields && !match.fn.args.required)) {
-            // Increment index if escape character, just to skip it.
-            if (char === Compiler.Syntax.Escape)
-                this.index++;
-            return {
-                index: 0,
-                id,
-                name,
-                negated: match.negated,
-                fields: null,
-            };
-        }
-        if (match.fn.args.required && !usesFields) {
+    parseFunction() {
+        // Skip this match already
+        const match = this.matches[this.matchIndex++];
+        // Skip function
+        this.skip(match.length);
+        const hasFields = this.code[this.index] === Compiler.Syntax.Open;
+        if (!hasFields && match.fn.args?.required) {
             this.error(`Function ${match.fn.name} requires brackets`);
         }
+        else if (!hasFields) {
+            return this.prepareFunction(match, null);
+        }
+        // Skip [
+        this.skip(1);
         const fields = new Array();
-        // Skip brace open
-        this.index++;
+        // Field parsing
         for (let i = 0, len = match.fn.args.fields.length; i < len; i++) {
-            const isLast = i + 1 === match.fn.args.fields.length;
-            const arg = match.fn.args.fields[i];
-            if (arg.rest === true) {
+            let isLast = i + 1 === len;
+            const field = match.fn.args.fields[i];
+            if (!field.rest) {
+                fields.push(this.parseAnyField(match, field));
+            }
+            else {
                 for (;;) {
-                    fields.push(this.parseField(match, arg));
-                    if (this.char() === Compiler.Syntax.Separator)
-                        this.index++;
-                    else if (this.char() === Compiler.Syntax.Close)
+                    fields.push(this.parseAnyField(match, field));
+                    if (this.back() !== Compiler.Syntax.Separator)
                         break;
                 }
             }
-            else {
-                fields.push(this.parseField(match, arg, isLast));
-                if (this.char() === Compiler.Syntax.Separator) {
-                    this.index++;
-                    if (!isLast)
-                        continue;
-                }
-            }
-            const old = this.char();
-            if (isLast) {
-                if (old !== Compiler.Syntax.Close) {
-                    this.error(`Function ${match.fn.name} expects ${match.fn.args.fields.length} arguments at most`);
-                }
-            }
-            else if (old === Compiler.Syntax.Close)
+            const isSeparator = this.back() === Compiler.Syntax.Separator;
+            if (!isSeparator)
                 break;
+            else if (isLast && isSeparator) {
+                this.error(`Function ${match.fn.name} expects ${match.fn.args?.fields.length} arguments at most`);
+            }
         }
-        // Skip closure
-        this.index++;
+        return this.prepareFunction(match, fields);
+    }
+    getCharInfo(char) {
         return {
-            index: 0,
-            id,
-            name,
-            negated: match.negated,
-            fields,
+            isSeparator: char === Compiler.Syntax.Separator,
+            isClosure: char === Compiler.Syntax.Close,
+            isEscape: char === Compiler.Syntax.Escape,
         };
     }
-    parseField(match, arg, requireEndBrace = false) {
-        let nextMatch = this.matches[0];
-        const condition = {};
-        let value = "";
-        const functions = new Array();
-        let braceClosure = false;
-        let escaped = false;
-        for (;;) {
-            const char = this.char();
-            if (char === undefined)
-                this.error("Reached end of code and found no brace closure for " + match.fn.name);
-            const isEscape = char === Compiler.Syntax.Escape;
-            const isClosure = char === Compiler.Syntax.Close;
-            const isSeparator = char === Compiler.Syntax.Separator;
-            // Mark as escaped
-            if (!escaped && isEscape)
-                escaped = true;
-            if (!escaped) {
-                if (isClosure || isSeparator) {
-                    if (isClosure)
-                        braceClosure = true;
-                    break;
-                }
-                else if (arg.condition === true && condition.op === undefined) {
-                    const possibleOp = [char + this.peek(), char].find((x) => exports.Operators.has(x));
-                    if (possibleOp !== undefined) {
-                        this.index += possibleOp.length;
-                        condition.op = possibleOp;
-                        condition.lhs = {
-                            functions: Array.from(functions),
-                            value,
-                            resolve: this.wrap(value),
-                        };
-                        functions.length = 0;
-                        value = "";
-                        continue;
-                    }
-                }
-            }
-            if (nextMatch?.index === this.index) {
-                // Remove the function that we are about to parse
-                this.matches.shift();
-                if (!escaped) {
-                    const fn = this.parseFunction(nextMatch);
-                    functions.push(fn);
-                    value += fn.id;
-                }
-                // Next function to match
-                nextMatch = this.matches[0];
-                if (!escaped)
-                    continue;
-            }
-            if (!isEscape)
-                escaped = false;
-            this.index++;
-            if (!escaped)
-                value += char;
-        }
-        const data = {
-            functions,
-            value,
-            resolve: this.wrap(value),
+    parseFieldMatch(fns, match) {
+        const fn = this.parseFunction();
+        fns.push(fn);
+        // Next match
+        return {
+            nextMatch: this.match,
+            fn,
         };
-        if (arg.condition === true) {
-            condition.op ??= OperatorType.None;
-            condition.resolve = this.wrapCondition(condition.op);
-            if (!condition.lhs)
-                condition.lhs = data;
-            else if (!condition.rhs)
-                condition.rhs = data;
-            return condition;
+    }
+    processEscape() {
+        this.index++;
+        const next = this.char();
+        const now = this.match;
+        if (now && now.index === this.index)
+            this.matchIndex++;
+        this.index++;
+        return {
+            nextMatch: this.match,
+            char: next,
+        };
+    }
+    parseConditionField(ref) {
+        const data = {};
+        const functions = new Array();
+        let fieldValue = "";
+        let closedGracefully = false;
+        let match = this.match;
+        let char;
+        while ((char = this.char()) !== undefined) {
+            const { isClosure, isEscape, isSeparator } = this.getCharInfo(char);
+            if (isEscape) {
+                const { char, nextMatch } = this.processEscape();
+                fieldValue += char;
+                match = nextMatch;
+                continue;
+            }
+            if (isClosure || isSeparator) {
+                closedGracefully = true;
+                break;
+            }
+            if (match?.index === this.index) {
+                const { fn, nextMatch } = this.parseFieldMatch(functions, match);
+                match = nextMatch;
+                fieldValue += fn.id;
+                continue;
+            }
+            if (data.op === undefined) {
+                const possibleOperator = [char + this.peek(), char].find((x) => exports.Operators.has(x));
+                if (possibleOperator) {
+                    data.op = possibleOperator;
+                    data.lhs = {
+                        functions: [...functions],
+                        resolve: this.wrap(fieldValue),
+                        value: fieldValue,
+                    };
+                    fieldValue = "";
+                    functions.length = 0;
+                    this.index += data.op.length;
+                    continue;
+                }
+            }
+            fieldValue += char;
+            this.index++;
         }
+        if (!closedGracefully)
+            this.error(`Function ${ref.fn.name} is missing brace closure`);
+        const out = {
+            functions,
+            value: fieldValue,
+            resolve: this.wrap(fieldValue),
+        };
+        if (data.op)
+            data.rhs = out;
+        else
+            data.lhs = out;
+        data.op ??= OperatorType.None;
+        data.resolve = this.wrapCondition(data.op);
         return data;
+    }
+    parseNormalField(ref) {
+        const functions = new Array();
+        let fieldValue = "";
+        let closedGracefully = false;
+        let match = this.match;
+        let char;
+        while ((char = this.char()) !== undefined) {
+            const { isClosure, isEscape, isSeparator } = this.getCharInfo(char);
+            if (isEscape) {
+                const { char, nextMatch } = this.processEscape();
+                fieldValue += char;
+                match = nextMatch;
+                continue;
+            }
+            if (isClosure || isSeparator) {
+                closedGracefully = true;
+                break;
+            }
+            if (match?.index === this.index) {
+                const { fn, nextMatch } = this.parseFieldMatch(functions, match);
+                match = nextMatch;
+                fieldValue += fn.id;
+                continue;
+            }
+            fieldValue += char;
+            this.index++;
+        }
+        if (!closedGracefully)
+            this.error(`Function ${ref.fn.name} is missing brace closure`);
+        return {
+            resolve: this.wrap(fieldValue),
+            functions,
+            value: fieldValue,
+        };
+    }
+    parseAnyField(ref, field) {
+        const fld = field.condition ? this.parseConditionField(ref) : this.parseNormalField(ref);
+        this.skip(1);
+        return fld;
+    }
+    prepareFunction(match, fields) {
+        const id = this.getNextId();
+        return {
+            index: this.id - 1,
+            id,
+            fields,
+            name: match.fn.name,
+            negated: match.negated,
+        };
+    }
+    skip(n) {
+        return this.moveTo(n + this.index);
+    }
+    skipIf(char) {
+        if (char === this.code[this.index])
+            return this.skip(1), true;
+        return false;
+    }
+    get match() {
+        return this.matches[this.matchIndex];
+    }
+    getFunction(str) {
+        const fn = `$${str.toLowerCase()}`;
+        return (Compiler.Functions.get(fn) ??
+            Compiler.Functions.find((x) => x.aliases?.some((x) => x.toLowerCase() === fn)) ??
+            this.error(`Function ${fn} is not registered.`));
     }
     error(str) {
         const { line, column } = this.locate(this.index);
@@ -245,12 +290,12 @@ class Compiler {
     locate(index) {
         const data = {
             column: 0,
-            line: 1
+            line: 1,
         };
         for (let i = 0; i < index; i++) {
             const char = this.code[i];
             if (char === "\n")
-                data.line++, data.column = 0;
+                data.line++, (data.column = 0);
             else
                 data.column++;
         }
@@ -270,15 +315,10 @@ class Compiler {
         return new Function("args", "return `" + gencode + "`");
     }
     moveTo(index) {
-        let out = "";
-        if (this.index >= index)
-            return out;
-        while (this.index !== index)
-            out += this.next();
-        return out;
+        this.index = index;
     }
     getNextId() {
-        return `[SYSTEM_FUNCTION(${++this.id})]`;
+        return `[SYSTEM_FUNCTION(${this.id++})]`;
     }
     char() {
         return this.code[this.index];
@@ -292,7 +332,9 @@ class Compiler {
     static setFunctions(fns) {
         fns.map((x) => {
             this.Functions.set(x.name.toLowerCase(), x);
-            x.aliases?.filter(x => typeof x === "string")?.map(alias => this.Functions.set(alias.toLowerCase(), x));
+            x.aliases
+                ?.filter((x) => typeof x === "string")
+                ?.map((alias) => this.Functions.set(alias.toLowerCase(), x));
         });
         const mapped = new Array();
         for (const [, fn] of this.Functions) {
@@ -301,7 +343,7 @@ class Compiler {
                 mapped.push(...fn.aliases);
         }
         this.Regex = new RegExp(`\\$(\\!)?(${mapped
-            .map(x => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
+            .map((x) => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
             .sort((x, y) => y.length - x.length)
             .join("|")})`, "gim");
     }

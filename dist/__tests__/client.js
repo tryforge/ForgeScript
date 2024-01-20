@@ -17,7 +17,7 @@ const client = new core_1.ForgeClient({
         "GuildInvites",
         "GuildModeration",
         "GuildMessageReactions",
-        "AutoModerationExecution"
+        "AutoModerationExecution",
     ],
     events: [
         "autoModerationActionExecution",
@@ -29,9 +29,7 @@ const client = new core_1.ForgeClient({
         "guildMemberAdd",
         "interactionCreate",
     ],
-    extensions: [
-        new ext_1.MyExtension()
-    ],
+    extensions: [new ext_1.MyExtension()],
     mobile: true,
     useInviteSystem: true,
     prefixes: ["!", "<@$botID>"],
@@ -48,7 +46,7 @@ client.commands.add({
 });
 client.commands.add({
     type: "webhooksUpdate",
-    code: "Hewwo"
+    code: "Hewwo",
 });
 client.commands.add({
     type: discord_js_1.Events.GuildAuditLogEntryCreate,
@@ -73,7 +71,7 @@ client.commands.add({
     $!jsonSet[$userAvatar;json;avatar]
     $!httpSetBody[$env[json]]
     $codeBlock[$env[json]]
-    `
+    `,
 });
 client.commands.add({
     type: discord_js_1.Events.GuildMemberAdd,
@@ -97,7 +95,7 @@ client.commands.add({
         $let[text;$replace[$djsEval[const channel = ctx.message.channel \nconst message = ctx.message \nconst author = ctx.message.author \nconst client = ctx.message.client \nconst guild = ctx.message.guild \n$message];<ref *1> ;;1]]
         $if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\`\`\`json\n$get[text]\n\`\`\`]
     `,
-    type: "messageCreate"
+    type: "messageCreate",
 });
 client.commands.add({
     name: "bro",
@@ -113,23 +111,20 @@ client.commands.add({
             $interactionReply[Yeshy $input[this]]
         ;10s]]
     ]
-    `
+    `,
 });
 client.commands.add({
     type: "autoModerationActionExecution",
-    code: "$log[Blocked] $!djsEval[e]"
+    code: "$log[Blocked] $!djsEval[e]",
 });
 client.commands.add({
-    allowedInteractionTypes: [
-        "autocomplete"
-    ],
+    allowedInteractionTypes: ["autocomplete"],
     type: "interactionCreate",
     code: `
     $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
     $addChoice[tmr;land]
     `,
 });
-client.applicationCommands.load("dist/__tests__/app");
 // eslint-disable-next-line no-undef
 client.login(process.env.TOKEN);
 //# sourceMappingURL=client.js.map

@@ -2,7 +2,7 @@ import { inspect } from "util"
 import { FunctionManager } from "../managers/FunctionManager"
 import { Interpreter } from "../core/Interpreter"
 import { IExtendedCompiledFunctionConditionField } from "../structures"
-import { ExperimentalCompiler } from "../core/ExperimentalCompiler"
+import { Compiler as ExperimentalCompiler } from "../core/Compiler"
 
 FunctionManager.loadNative()
 ExperimentalCompiler["setFunctions"](FunctionManager.raw)

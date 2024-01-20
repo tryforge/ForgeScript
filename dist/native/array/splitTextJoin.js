@@ -8,6 +8,7 @@ const structures_1 = require("../../structures");
 const textSplit_1 = require("./textSplit");
 exports.default = new structures_1.NativeFunction({
     name: "$splitTextJoin",
+    version: "1.4.0",
     description: "Joins all elements from array with given separator",
     unwrap: true,
     aliases: ["$textSplitJoin"],
