@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteGuildApplicationCommands",
+    version: "1.4.0",
     description: "Deletes all guild commands of your bot from a guild",
     unwrap: true,
     brackets: false,

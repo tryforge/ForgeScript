@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
     ActionRowBuilder,
     AnyComponentBuilder,
@@ -71,7 +72,7 @@ export class Container {
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
     public allowedMentions: MessageMentionOptions = {}
-    
+
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
@@ -94,9 +95,15 @@ export class Container {
                     res = obj.showModal(this.modal)
                 } else {
                     res =
-                        obj[(this.followUp ? "followUp" : obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply") as "reply"](
-                            options
-                        )
+                        obj[
+                            (this.followUp
+                                ? "followUp"
+                                : obj.deferred || obj.replied
+                                ? "editReply"
+                                : this.update
+                                ? "update"
+                                : "reply") as "reply"
+                        ](options)
                 }
             } else {
                 res = (obj as AutocompleteInteraction).respond(this.choices)
@@ -109,7 +116,7 @@ export class Container {
             res = Promise.resolve(null)
         }
 
-        const result = await res.catch(noop) as T 
+        const result = (await res.catch(noop)) as T
         this.reset()
         return result
     }
@@ -150,7 +157,7 @@ export class Container {
         this.components.length = 0
         this.embeds.length = 0
         this.files.length = 0
-        
+
         this.allowedMentions = {}
     }
 
@@ -158,24 +165,25 @@ export class Container {
         return (
             content
                 ? {
-                    content,
-                }
+                      content,
+                  }
                 : {
-                    allowedMentions: Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
-                    fetchReply: this.fetchReply,
-                    reply: this.reference
-                        ? {
-                            messageReference: this.reference,
-                            failIfNotExists: false,
-                        }
-                        : undefined,
-                    ephemeral: this.ephemeral,
-                    files: this.files.length === 0 ? null : this.files,
-                    stickers: this.stickers.length === 0 ? null : this.stickers,
-                    content: this.content?.trim() || null,
-                    components: this.components,
-                    embeds: this.embeds,
-                }
+                      allowedMentions:
+                          Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
+                      fetchReply: this.fetchReply,
+                      reply: this.reference
+                          ? {
+                                messageReference: this.reference,
+                                failIfNotExists: false,
+                            }
+                          : undefined,
+                      ephemeral: this.ephemeral,
+                      files: this.files.length === 0 ? null : this.files,
+                      stickers: this.stickers.length === 0 ? null : this.stickers,
+                      content: this.content?.trim() || null,
+                      components: this.components,
+                      embeds: this.embeds,
+                  }
         ) as T
     }
 }

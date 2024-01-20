@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Container = void 0;
+/* eslint-disable indent */
 const discord_js_1 = require("discord.js");
 const noop_1 = __importDefault(require("../../functions/noop"));
 class Container {
@@ -48,7 +49,13 @@ class Container {
                 }
                 else {
                     res =
-                        obj[(this.followUp ? "followUp" : obj.deferred || obj.replied ? "editReply" : this.update ? "update" : "reply")](options);
+                        obj[(this.followUp
+                            ? "followUp"
+                            : obj.deferred || obj.replied
+                                ? "editReply"
+                                : this.update
+                                    ? "update"
+                                    : "reply")](options);
                 }
             }
             else {
@@ -64,7 +71,7 @@ class Container {
         else {
             res = Promise.resolve(null);
         }
-        const result = await res.catch(noop_1.default);
+        const result = (await res.catch(noop_1.default));
         this.reset();
         return result;
     }

@@ -27,13 +27,12 @@ exports.default = new structures_1.NativeFunction({
             name: "disable ping",
             description: "Whether to disable ping of reply",
             rest: false,
-            type: structures_1.ArgType.Boolean
-        }
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     execute(ctx, [, message, disable]) {
         ctx.container.reference = (message ?? ctx.message)?.id;
-        if (disable !== null)
-            ctx.container.allowedMentions.repliedUser = !disable;
+        ctx.container.allowedMentions.repliedUser = !disable;
         return this.success();
     },
 });
