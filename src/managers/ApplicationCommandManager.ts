@@ -275,12 +275,14 @@ export class ApplicationCommandManager {
     }
 
     public registerGlobal() {
-        if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
+        if (!this.commands.size) return
+        this.client.events.load(NativeEventName, Events.InteractionCreate)
         return this.client.application.commands.set(this.toJSON(RegistrationType.Global))
     }
 
     public registerGuild(g: Guild) {
-        if (this.commands.size) this.client.events.load(NativeEventName, Events.InteractionCreate)
+        if (!this.commands.size) return
+        this.client.events.load(NativeEventName, Events.InteractionCreate)
         return g.commands.set(this.toJSON(RegistrationType.Guild))
     }
 }

@@ -10,6 +10,6 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     async execute(ctx, [g]) {
         g ??= ctx.guild!
-        return this.success(!!(await ctx.client.applicationCommands.registerGuild(g).catch(ctx.noop)))
+        return this.success(!!(await ctx.client.applicationCommands.registerGuild(g)?.catch(ctx.noop)))
     },
 })

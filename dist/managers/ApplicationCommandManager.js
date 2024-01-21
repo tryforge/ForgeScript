@@ -224,13 +224,15 @@ class ApplicationCommandManager {
         return arr;
     }
     registerGlobal() {
-        if (this.commands.size)
-            this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
+        if (!this.commands.size)
+            return;
+        this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
         return this.client.application.commands.set(this.toJSON(RegistrationType.Global));
     }
     registerGuild(g) {
-        if (this.commands.size)
-            this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
+        if (!this.commands.size)
+            return;
+        this.client.events.load(EventManager_1.NativeEventName, discord_js_1.Events.InteractionCreate);
         return g.commands.set(this.toJSON(RegistrationType.Guild));
     }
 }

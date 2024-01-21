@@ -45,7 +45,7 @@ export declare class ApplicationCommandManager {
     toJSON(type: Parameters<ApplicationCommand["mustRegisterAs"]>[0]): ApplicationCommandDataResolvable[];
     registerGlobal(): Promise<Collection<string, import("discord.js").ApplicationCommand<{
         guild: import("discord.js").GuildResolvable;
-    }>>>;
-    registerGuild(g: Guild): Promise<Collection<string, import("discord.js").ApplicationCommand<{}>>>;
+    }>>> | undefined;
+    registerGuild(g: Guild): Promise<Collection<string, import("discord.js").ApplicationCommand<{}>>> | undefined;
 }
 //# sourceMappingURL=ApplicationCommandManager.d.ts.map

@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Boolean,
     async execute(ctx, [g]) {
         g ??= ctx.guild;
-        return this.success(!!(await ctx.client.applicationCommands.registerGuild(g).catch(ctx.noop)));
+        return this.success(!!(await ctx.client.applicationCommands.registerGuild(g)?.catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=registerGuildApplicationCommands.js.map
