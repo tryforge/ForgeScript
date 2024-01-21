@@ -11,6 +11,7 @@ export declare enum ComponentProperty {
     optionCount = "optionCount",
     options = "options",
     optionNames = "optionNames",
+    emoji = "emoji",
     optionDescriptions = "optionDescriptions",
     optionValues = "optionValues"
 }

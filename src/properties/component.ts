@@ -23,6 +23,7 @@ export enum ComponentProperty {
     optionCount = "optionCount",
     options = "options",
     optionNames = "optionNames",
+    emoji = "emoji",
     optionDescriptions = "optionDescriptions",
     optionValues = "optionValues",
 }
@@ -30,6 +31,12 @@ export enum ComponentProperty {
 export const ComponentProperties = defineProperties<typeof ComponentProperty, MessageActionRowComponent>({
     type: (i) => ComponentType[i?.type!],
     customID: (i) => (i && "customId" in i ? i.customId : null),
+    emoji: (i) =>
+        i && "emoji" in i
+            ? i.emoji?.id
+                ? `<${i.emoji?.animated ? "a" : ""}:${i.emoji?.name}:${i.emoji?.id}>`
+                : i.emoji?.name
+            : null,
     label: (i) => (i && "label" in i ? i.label : null),
     style: (i) => (i && "style" in i ? ButtonStyle[i.style] : null),
     disabled: (i) => (i && "disabled" in i ? i.disabled : null),

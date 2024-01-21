@@ -19,12 +19,18 @@ var ComponentProperty;
     ComponentProperty["optionCount"] = "optionCount";
     ComponentProperty["options"] = "options";
     ComponentProperty["optionNames"] = "optionNames";
+    ComponentProperty["emoji"] = "emoji";
     ComponentProperty["optionDescriptions"] = "optionDescriptions";
     ComponentProperty["optionValues"] = "optionValues";
 })(ComponentProperty || (exports.ComponentProperty = ComponentProperty = {}));
 exports.ComponentProperties = (0, defineProperties_1.default)({
     type: (i) => discord_js_1.ComponentType[i?.type],
     customID: (i) => (i && "customId" in i ? i.customId : null),
+    emoji: (i) => i && "emoji" in i
+        ? i.emoji?.id
+            ? `<${i.emoji?.animated ? "a" : ""}:${i.emoji?.name}:${i.emoji?.id}>`
+            : i.emoji?.name
+        : null,
     label: (i) => (i && "label" in i ? i.label : null),
     style: (i) => (i && "style" in i ? discord_js_1.ButtonStyle[i.style] : null),
     disabled: (i) => (i && "disabled" in i ? i.disabled : null),
