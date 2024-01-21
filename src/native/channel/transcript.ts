@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import fetchAllMessages from "../../functions/fetchAllMessages"
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
@@ -7,6 +8,7 @@ export default new NativeFunction({
     aliases: ["$channelTranscript", "$createTranscript"],
     description: "Creates a channel transcript",
     brackets: true,
+    output: array<ArgType.String>(),
     unwrap: false,
     args: [
         {

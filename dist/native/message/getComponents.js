@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const component_1 = require("../../properties/component");
 exports.default = new structures_1.NativeFunction({
     name: "$getComponents",
+    version: "1.4.0",
     description: "Retrieves data of a component, not providing any property returns component json",
     unwrap: true,
     output: structures_1.ArgType.Unknown,

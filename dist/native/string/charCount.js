@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$charCount",
     version: "1.0.0",
+    aliases: ["$textLength"],
     description: "Gets the char count of a text",
     brackets: true,
     unwrap: true,
