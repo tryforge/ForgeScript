@@ -1,4 +1,11 @@
-import { PermissionFlagsBits, TextChannel, parseEmoji, ForumChannel, AttachmentBuilder, PermissionsString } from "discord.js"
+import {
+    PermissionFlagsBits,
+    TextChannel,
+    parseEmoji,
+    ForumChannel,
+    AttachmentBuilder,
+    PermissionsString,
+} from "discord.js"
 import { existsSync } from "fs"
 import { inspect } from "util"
 import { TimeParser } from "../../constants"
@@ -11,7 +18,6 @@ import { IArg, UnwrapArgs, NativeFunction, ArgType, OverwritePermission } from "
 import { Return, ReturnType, ReturnValue } from "./Return"
 import { resolveColor } from "../../functions/hex"
 import noop from "../../functions/noop"
-
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -38,7 +44,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public static readonly OverwriteSymbolMapping = {
         "/": null,
         "+": true,
-        "-": false
+        "-": false,
     }
 
     public static readonly IdRegex = /^(\d{16,23})$/
@@ -56,34 +62,33 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 raw.fields?.map((x) =>
                     !("op" in x)
                         ? {
-                            ...x,
-                            functions: x.functions.map((x) => new CompiledFunction(x)),
-                        }
+                              ...x,
+                              functions: x.functions.map((x) => new CompiledFunction(x)),
+                          }
                         : {
-                            ...x,
-                            lhs: {
-                                ...x.lhs,
-                                functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
-                            },
-                            rhs: x.rhs
-                                ? {
-                                    ...x.rhs,
-                                    functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
-                                }
-                                : undefined,
-                        }
+                              ...x,
+                              lhs: {
+                                  ...x.lhs,
+                                  functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
+                              },
+                              rhs: x.rhs
+                                  ? {
+                                        ...x.rhs,
+                                        functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
+                                    }
+                                  : undefined,
+                          }
                 ) ?? null,
         }
     }
-    
+
     public displayField(i: number) {
         const field = this.data.fields![i]
         if ("op" in field) {
             if (field.rhs) {
-                return `${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${
-                    field.op
-                }${field.rhs.resolve(field.rhs.functions.map((x) => x.display))}`
-                
+                return `${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(
+                    field.rhs.functions.map((x) => x.display)
+                )}`
             } else return field.lhs.resolve(field.lhs.functions.map((x) => x.display))
         }
         return field.resolve(field.functions.map((x) => x.display))
@@ -271,7 +276,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!CompiledFunction.IdRegex.test(str)) return
 
         const ch = this.resolvePointer(arg, ref, ctx.channel) as TextChannel | undefined
-        return ch?.messages?.fetch(str).catch(ctx.noop)
+        return str === ctx.message?.id ? ctx.message : ch?.messages?.fetch(str).catch(ctx.noop)
     }
 
     private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -280,8 +285,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveTextChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const ch = ctx.client.channels.cache.get(str)
-        if (!ch || !("messages" in ch))
-            return
+        if (!ch || !("messages" in ch)) return
         return ch
     }
 
@@ -305,8 +309,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveGuildEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
-        if (fromUrl !== null) 
-            return ctx.client.emojis.cache.get(fromUrl[2])
+        if (fromUrl !== null) return ctx.client.emojis.cache.get(fromUrl[2])
 
         const parsed = parseEmoji(str)
         const id = parsed?.id ?? str
@@ -314,13 +317,14 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveForumTag(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return (this.resolvePointer(arg, ref, ctx.channel) as ForumChannel)?.availableTags.find((x) => x.id === str || x.name === str)
+        return (this.resolvePointer(arg, ref, ctx.channel) as ForumChannel)?.availableTags.find(
+            (x) => x.id === str || x.name === str
+        )
     }
 
     private resolveSticker(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
-        if (fromUrl !== null)
-            return ctx.client.fetchSticker(fromUrl[2]).catch(ctx.noop)
+        if (fromUrl !== null) return ctx.client.fetchSticker(fromUrl[2]).catch(ctx.noop)
 
         if (!CompiledFunction.IdRegex.test(str)) return
         return ctx.client.fetchSticker(str).catch(ctx.noop)
@@ -331,17 +335,17 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
         if (CompiledFunction.URLRegex.test(str)) {
             const name = splits[splits.length - 1] ?? splits[splits.length - 2]
-            const buffer = await fetch(str).then(x => x.arrayBuffer())
+            const buffer = await fetch(str).then((x) => x.arrayBuffer())
             return new AttachmentBuilder(Buffer.from(buffer), {
-                name
+                name,
             })
         }
 
         const exists = existsSync(str)
         const name = exists ? splits[splits.length - 1] ?? splits[splits.length - 2] : null
-        
+
         return new AttachmentBuilder(exists ? str : Buffer.from(str, "utf-8"), {
-            name: name ?? undefined
+            name: name ?? undefined,
         })
     }
 
@@ -363,7 +367,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     private resolveURL(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.URLRegex.test(str)) {
             const em = parseEmoji(str)
-            if (em !== null) return `https://cdn.discordapp.com/emojis/${em.id}.${em.animated ? "gif" : "png"}?size=128&quality=lossless`
+            if (em !== null)
+                return `https://cdn.discordapp.com/emojis/${em.id}.${
+                    em.animated ? "gif" : "png"
+                }?size=128&quality=lossless`
             return
         }
 
@@ -380,16 +387,21 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.fetchWebhook(str).catch(ctx.noop)
     }
 
-    private resolveOverwritePermission(ctx: Context, arg: IArg, str: string, ref: Array<unknown>): OverwritePermission | undefined {
+    private resolveOverwritePermission(
+        ctx: Context,
+        arg: IArg,
+        str: string,
+        ref: Array<unknown>
+    ): OverwritePermission | undefined {
         const symbol = str[0]
-        if (!(symbol in CompiledFunction.OverwriteSymbolMapping))
-            return
+        if (!(symbol in CompiledFunction.OverwriteSymbolMapping)) return
         const perm = str.slice(1)
-        if (!(perm in PermissionFlagsBits))
-            return
+        if (!(perm in PermissionFlagsBits)) return
         return {
             permission: perm as PermissionsString,
-            value: CompiledFunction.OverwriteSymbolMapping[symbol as keyof typeof CompiledFunction.OverwriteSymbolMapping]
+            value: CompiledFunction.OverwriteSymbolMapping[
+                symbol as keyof typeof CompiledFunction.OverwriteSymbolMapping
+            ],
         }
     }
 
@@ -402,8 +414,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolvePointer<T>(arg: IArg, ref: Array<unknown>, fallback?: T) {
-        const ptr = ref[arg.pointer!] as T ?? fallback
-        return arg.pointerProperty ? ptr?.[arg.pointerProperty as keyof T] as T : ptr
+        const ptr = (ref[arg.pointer!] as T) ?? fallback
+        return arg.pointerProperty ? (ptr?.[arg.pointerProperty as keyof T] as T) : ptr
     }
 
     private async resolveArg(
@@ -422,8 +434,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (field !== undefined) {
             field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)].bind(this)
             value = field.resolveArg(ctx, arg, strValue, ref)
-            if (value instanceof Promise)
-                value = await value
+            if (value instanceof Promise) value = await value
         }
 
         if (value === undefined) return this.argTypeRejection(arg, strValue)
@@ -444,8 +455,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public error(err: Error): Return<ReturnType.Error>
     public error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): Return<ReturnType.Error>
     public error<T extends ErrorType>(type: T | Error, ...args: GetErrorArgs<T>): Return<ReturnType.Error> {
-        if (type instanceof Error)
-            return new Return(ReturnType.Error, type)
+        if (type instanceof Error) return new Return(ReturnType.Error, type)
         return new Return(ReturnType.Error, new ForgeError(this, type, ...args))
     }
 
@@ -490,7 +500,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public getFunctions(fieldIndex: number, ref: NativeFunction) {
-        return this.hasFields ? (this.data.fields![fieldIndex] as IExtendedCompiledFunctionField).functions.filter(x => x.data.name === ref.name) : new Array<CompiledFunction>()
+        return this.hasFields
+            ? (this.data.fields![fieldIndex] as IExtendedCompiledFunctionField).functions.filter(
+                  (x) => x.data.name === ref.name
+              )
+            : new Array<CompiledFunction>()
     }
 
     public return(value: ReturnValue<ReturnType.Return>) {

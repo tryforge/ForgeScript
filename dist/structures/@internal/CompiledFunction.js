@@ -18,7 +18,7 @@ class CompiledFunction {
     static OverwriteSymbolMapping = {
         "/": null,
         "+": true,
-        "-": false
+        "-": false,
     };
     static IdRegex = /^(\d{16,23})$/;
     static URLRegex = /^http?s:\/\//;
@@ -215,7 +215,7 @@ class CompiledFunction {
         if (!CompiledFunction.IdRegex.test(str))
             return;
         const ch = this.resolvePointer(arg, ref, ctx.channel);
-        return ch?.messages?.fetch(str).catch(ctx.noop);
+        return str === ctx.message?.id ? ctx.message : ch?.messages?.fetch(str).catch(ctx.noop);
     }
     resolveChannel(ctx, arg, str, ref) {
         return ctx.client.channels.cache.get(str);
@@ -265,15 +265,15 @@ class CompiledFunction {
         const splits = str.split(/(\\\\|\/)/);
         if (CompiledFunction.URLRegex.test(str)) {
             const name = splits[splits.length - 1] ?? splits[splits.length - 2];
-            const buffer = await fetch(str).then(x => x.arrayBuffer());
+            const buffer = await fetch(str).then((x) => x.arrayBuffer());
             return new discord_js_1.AttachmentBuilder(Buffer.from(buffer), {
-                name
+                name,
             });
         }
         const exists = (0, fs_1.existsSync)(str);
         const name = exists ? splits[splits.length - 1] ?? splits[splits.length - 2] : null;
         return new discord_js_1.AttachmentBuilder(exists ? str : Buffer.from(str, "utf-8"), {
-            name: name ?? undefined
+            name: name ?? undefined,
         });
     }
     resolveMember(ctx, arg, str, ref) {
@@ -317,7 +317,7 @@ class CompiledFunction {
             return;
         return {
             permission: perm,
-            value: CompiledFunction.OverwriteSymbolMapping[symbol]
+            value: CompiledFunction.OverwriteSymbolMapping[symbol],
         };
     }
     resolveRole(ctx, arg, str, ref) {
@@ -393,7 +393,9 @@ class CompiledFunction {
         return this.getFunctions(fieldIndex, ref)?.[0];
     }
     getFunctions(fieldIndex, ref) {
-        return this.hasFields ? this.data.fields[fieldIndex].functions.filter(x => x.data.name === ref.name) : new Array();
+        return this.hasFields
+            ? this.data.fields[fieldIndex].functions.filter((x) => x.data.name === ref.name)
+            : new Array();
     }
     return(value) {
         return new Return_1.Return(Return_1.ReturnType.Return, value);
