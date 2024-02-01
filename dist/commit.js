@@ -38,5 +38,6 @@ async function main() {
         stdio: "inherit"
     });
 }
+// Nothing
 main();
 //# sourceMappingURL=commit.js.map
