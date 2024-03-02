@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const textSplit_1 = require("./textSplit");
 exports.default = new structures_1.NativeFunction({
     name: "$getSplitTextLength",
+    version: "1.4.0",
     description: "Gets count of elements from $textSplit",
     aliases: [
         "$getTextSplitLength"
