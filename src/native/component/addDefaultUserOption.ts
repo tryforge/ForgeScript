@@ -7,6 +7,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Adds a default user option to the last select menu",
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: "user ID",

@@ -7,6 +7,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$userIDs",
+    version: "1.4.0",
     description: "Returns all the users that are currently cached",
     unwrap: true,
     brackets: false,

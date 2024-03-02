@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.4.0",
     description: "Adds a channel type to the last select menu",
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: "type",
