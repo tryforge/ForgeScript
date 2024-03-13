@@ -21,7 +21,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.widgetChannelId
         return this.success(GuildExplicitContentFilter[(guild ?? ctx.guild)?.explicitContentFilter])
     },
 })

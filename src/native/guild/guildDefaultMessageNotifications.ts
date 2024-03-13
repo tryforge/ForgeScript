@@ -21,7 +21,6 @@ export default new NativeFunction({
     output: GuildDefaultMessageNotifications,
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.explicitContentFilter
         return this.success(GuildDefaultMessageNotifications[(guild ?? ctx.guild)?.defaultMessageNotifications])
     },
 })

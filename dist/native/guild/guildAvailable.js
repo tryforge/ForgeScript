@@ -21,7 +21,6 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Boolean,
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.maximumBitrate;
         return this.success((guild ?? ctx.guild)?.available);
     },
 });

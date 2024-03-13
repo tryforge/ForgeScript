@@ -21,7 +21,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.widgetChannelId
         return this.success(GuildMFALevel[(guild ?? ctx.guild)?.mfaLevel])
     },
 })

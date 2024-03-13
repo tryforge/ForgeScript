@@ -22,7 +22,6 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.widgetChannelId;
         return this.success(discord_js_1.GuildMFALevel[(guild ?? ctx.guild)?.mfaLevel]);
     },
 });
