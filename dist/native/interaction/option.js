@@ -18,7 +18,8 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.options.get(name)?.value : null);
+        const data = ctx.interaction?.isCommand() ? ctx.interaction.options.get(name) : null;
+        return this.success(data?.attachment?.url ?? data?.value);
     },
 });
 //# sourceMappingURL=option.js.map
