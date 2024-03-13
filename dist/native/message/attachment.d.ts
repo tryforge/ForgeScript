@@ -16,6 +16,11 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Boolean;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=attachment.d.ts.map

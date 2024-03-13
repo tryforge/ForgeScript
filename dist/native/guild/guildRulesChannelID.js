@@ -21,7 +21,6 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.safetyAlertsChannelId;
         return this.success((guild ?? ctx.guild)?.rulesChannelId);
     },
 });

@@ -8,6 +8,9 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     description: "Adds an attachment to the response",
     unwrap: true,
+    aliases: [
+        "$addAttachment"
+    ],
     args: [
         {
             name: "path",
@@ -28,10 +31,16 @@ exports.default = new structures_1.NativeFunction({
             description: "Whether to use url param as text",
             rest: false,
             type: structures_1.ArgType.Boolean
+        },
+        {
+            name: "encoding",
+            description: "Encoding to use for text, utf-8 default",
+            rest: false,
+            type: structures_1.ArgType.String
         }
     ],
-    execute(ctx, [url, name, asText]) {
-        const attachment = new discord_js_1.AttachmentBuilder(asText ? Buffer.from(url, "utf-8") : url, {
+    execute(ctx, [url, name, asText, enc]) {
+        const attachment = new discord_js_1.AttachmentBuilder(asText ? Buffer.from(url, enc ?? "utf-8") : url, {
             name,
         });
         ctx.container.files.push(attachment);

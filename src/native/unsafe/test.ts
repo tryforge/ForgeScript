@@ -1,15 +1,19 @@
 import { MessageType } from "discord.js"
 import { Arg, NativeFunction } from "../../structures"
+import { customImport } from "../../functions/customImport"
 
 export default new NativeFunction({
     name: "$test",
     version: "1.4.0",
     description: "This is just a test function",
     unwrap: true,
+    brackets: true,
     args: [
-        Arg.requiredEnum(MessageType)
+        Arg.requiredString("test")
     ],
-    execute(ctx, args) {
+    async execute(ctx, args) {
+        const imported = await customImport(args[0])
+        console.log(imported)
         return this.success()
     },
 })

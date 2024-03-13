@@ -20,7 +20,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        guild.safetyAlertsChannelId
         return this.success((guild ?? ctx.guild)?.rulesChannelId)
     },
 })

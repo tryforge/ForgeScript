@@ -7,6 +7,9 @@ export default new NativeFunction({
     brackets: true,
     description: "Adds an attachment to the response",
     unwrap: true,
+    aliases: [
+        "$addAttachment"
+    ],
     args: [
         {
             name: "path",
@@ -27,10 +30,16 @@ export default new NativeFunction({
             description: "Whether to use url param as text",
             rest: false,
             type: ArgType.Boolean
+        },
+        {
+            name: "encoding",
+            description: "Encoding to use for text, utf-8 default",
+            rest: false,
+            type: ArgType.String
         }
     ],
-    execute(ctx, [url, name, asText]) {
-        const attachment = new AttachmentBuilder(asText ? Buffer.from(url, "utf-8") : url, {
+    execute(ctx, [url, name, asText, enc]) {
+        const attachment = new AttachmentBuilder(asText ? Buffer.from(url, enc as BufferEncoding ?? "utf-8") : url, {
             name,
         })
 

@@ -50,8 +50,12 @@ exports.default = new NativeFunction_1.NativeFunction({
             if (contentType === "application/json") {
                 ctx.setEnvironmentKey(name, await req.json());
             }
-            else
+            else if (contentType?.includes("image")) {
+                ctx.setEnvironmentKey(name, await req.arrayBuffer().then(x => Buffer.from(x).toString("base64")));
+            }
+            else {
                 ctx.setEnvironmentKey(name, await req.text());
+            }
         }
         return this.success(req.status);
     },
