@@ -14,10 +14,9 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
                     client: this,
                     command: null,
                     data: command.compiled,
-                    obj: i,
+                    obj: i
                 });
             }
-            return;
         }
         const commands = this.commands.get("interactionCreate", cmd => cmd.matchesInteractionType(i));
         for (const command of commands) {

@@ -3,7 +3,7 @@ import { Context } from "..";
 import { IExtendedCompilationResult, ForgeClient } from "../../core";
 export type CommandType = keyof ClientEvents;
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>;
-export type CommandInteractionTypes = "button" | "modal" | "autocomplete" | "contextMenu" | "selectMenu";
+export type CommandInteractionTypes = "button" | "modal" | "slashCommand" | "autocomplete" | "contextMenu" | "selectMenu";
 export interface IBaseCommand<T> {
     name?: string;
     path?: string;

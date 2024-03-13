@@ -13,11 +13,9 @@ export default new DiscordEventHandler({
                     client: this,
                     command: null,
                     data: command.compiled,
-                    obj: i,
+                    obj: i
                 })
             }
-
-            return
         }
 
         const commands = this.commands.get(

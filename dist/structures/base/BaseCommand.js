@@ -41,7 +41,8 @@ class BaseCommand {
     matchesInteractionType(i) {
         return (!this.data.name ||
             ("customId" in i &&
-                this.data.name === i.customId)) && (!this.data.allowedInteractionTypes?.length || (this.data.allowedInteractionTypes.some(type => (type === "button" && i.isButton()) ||
+                this.data.name === i.customId)) && (!this.data.allowedInteractionTypes?.length || (this.data.allowedInteractionTypes.some(type => (type === "slashCommand" && i.isChatInputCommand) ||
+            (type === "button" && i.isButton()) ||
             (type === "selectMenu" && i.isAnySelectMenu()) ||
             (type === "modal" && i.isModalSubmit()) ||
             (type === "autocomplete" && i.isAutocomplete()) ||
