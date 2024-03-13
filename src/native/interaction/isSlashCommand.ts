@@ -7,6 +7,6 @@ export default new NativeFunction({
     unwrap: false,
     output: ArgType.Boolean,
     execute(ctx) {
-        return this.success(Boolean(ctx.interaction?.isChatInputCommand))
+        return this.success(Boolean(ctx.interaction?.isChatInputCommand()))
     },
 })

@@ -87,7 +87,7 @@ export class BaseCommand<T> {
             !this.data.allowedInteractionTypes?.length || (
                 this.data.allowedInteractionTypes.some(
                     type =>
-                        (type === "slashCommand" && i.isChatInputCommand) || 
+                        (type === "slashCommand" && i.isChatInputCommand()) || 
                         (type === "button" && i.isButton()) ||
                         (type === "selectMenu" && i.isAnySelectMenu()) ||
                         (type === "modal" && i.isModalSubmit()) ||
