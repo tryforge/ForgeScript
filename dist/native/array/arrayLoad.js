@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The separator to use for the array elements",
             rest: false,
             type: structures_1.ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "values",
@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     brackets: true,
     execute(ctx, [name, sep, values]) {
-        ctx.setEnvironmentKey(name, values.join(";").split(sep));
+        ctx.setEnvironmentKey(name, sep === null ? [] : values.join(";").split(sep));
         return this.success();
     },
 });

@@ -17,7 +17,7 @@ export default new NativeFunction({
             description: "The separator to use for the array elements",
             rest: false,
             type: ArgType.String,
-            required: true,
+            required: false,
         },
         {
             name: "values",
@@ -30,7 +30,7 @@ export default new NativeFunction({
     unwrap: true,
     brackets: true,
     execute(ctx, [name, sep, values]) {
-        ctx.setEnvironmentKey(name, values.join(";").split(sep))
+        ctx.setEnvironmentKey(name, sep === null ? [] : values.join(";").split(sep))
         return this.success()
     },
 })
