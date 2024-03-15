@@ -1,9 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 exports.default = new structures_1.NativeFunction({
     name: "$api",
+    version: "1.5.0",
     description: "Sends a discord api request, using a discord-api-types route",
     unwrap: true,
     args: [
@@ -22,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "route params;body",
-            description: "Parameters for this route, body must be passed stringified, if provided",
+            description: "Parameters for this route, body has to be json",
             rest: true,
             required: true,
             type: structures_1.ArgType.String
@@ -36,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
         // @ts-ignore
         const path = routeFn(...params.slice(0, routeFn.length));
         const body = params[routeFn.length + 1];
-        return this.successFormatted(await ctx.client.rest[method.toLowerCase()](path, { body }).catch(ctx.noop));
+        return this.successFormatted(await ctx.client.rest[method.toLowerCase()](path, { body: body ? (0, parseJSON_1.default)(body) : undefined }).catch(ctx.noop));
     }
 });
 //# sourceMappingURL=api.js.map

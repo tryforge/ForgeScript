@@ -1,5 +1,6 @@
 import { Routes } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
+import parseJSON from "../../functions/parseJSON"
 
 export default new NativeFunction({
     name: "$api",
@@ -22,7 +23,7 @@ export default new NativeFunction({
         },
         {
             name: "route params;body",
-            description: "Parameters for this route, body must be passed stringified, if provided",
+            description: "Parameters for this route, body has to be json",
             rest: true,
             required: true,
             type: ArgType.String
@@ -38,7 +39,7 @@ export default new NativeFunction({
         const body = params[routeFn.length + 1]
         
         return this.successFormatted(
-            await ctx.client.rest[method.toLowerCase() as "post"](path, { body }).catch(ctx.noop)
+            await ctx.client.rest[method.toLowerCase() as "post"](path, { body: body ? parseJSON(body) : undefined }).catch(ctx.noop)
         )
     }
 })

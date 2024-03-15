@@ -1,1 +1,1 @@
-{"version":3,"file":"api.d.ts","sourceRoot":"","sources":["../../../src/native/unsafe/api.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAE1D,wBAuCE"}
+{"version":3,"file":"api.d.ts","sourceRoot":"","sources":["../../../src/native/unsafe/api.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAG1D,wBAwCE"}
