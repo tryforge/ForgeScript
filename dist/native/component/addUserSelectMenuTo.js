@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addUserSelectMenuTo",
+    version: "1.5.0",
     output: structures_1.ArgType.Boolean,
     description: "Creates a user select menu on a message",
     brackets: true,

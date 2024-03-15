@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addRoleSelectMenuTo",
+    version: "1.5.0",
     description: "Creates a role select menu on a message",
     output: structures_1.ArgType.Boolean,
     brackets: true,

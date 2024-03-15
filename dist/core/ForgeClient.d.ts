@@ -2,6 +2,7 @@ import { ClientOptions, Client, IntentsBitField, Message } from "discord.js";
 import { IExtendedCompilationResult } from ".";
 import { NativeCommandManager, EventManager, CooldownManager, ForgeFunctionManager, ApplicationCommandManager, ThreadManager, BaseCommandManager } from "../managers";
 import { CommandType, LogPriority, ForgeExtension, ClassType, ClassInstance, BaseCommand } from "../structures";
+import { WebSocket } from "ws";
 export interface ITrackers {
     invites?: boolean;
     voice?: boolean;
@@ -70,6 +71,7 @@ export declare class ForgeClient extends Client<true> {
     readonly cooldowns: CooldownManager;
     readonly functions: ForgeFunctionManager;
     readonly threading: ThreadManager;
+    readonly websockets: Map<number, WebSocket>;
     [x: PropertyKey]: unknown;
     constructor(options: IRawForgeClientOptions);
     getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null;

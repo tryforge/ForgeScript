@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editStringSelectMenuOf",
+    version: "1.5.0",
     description: "Edits a string select menu of a message",
     unwrap: true,
     brackets: true,

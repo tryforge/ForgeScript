@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteComponentFrom",
+    version: "1.5.0",
     description: "Deletes a component with given custom id from a message",
     brackets: true,
     args: [

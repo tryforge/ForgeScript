@@ -5,6 +5,7 @@ const structures_1 = require("../../structures");
 const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteActionRowFrom",
+    version: "1.5.0",
     description: "Deletes an action row at given index",
     brackets: true,
     args: [
