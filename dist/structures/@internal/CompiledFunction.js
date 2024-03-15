@@ -410,10 +410,10 @@ class CompiledFunction {
         return new Return_1.Return(Return_1.ReturnType.Continue, null);
     }
     successJSON(value) {
-        return this.unsafeSuccess(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
+        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
     }
     successFormatted(value) {
-        return this.unsafeSuccess(typeof value !== "string" ? (0, util_1.inspect)(value, { depth: Infinity }) : value);
+        return this.success(typeof value !== "string" ? (0, util_1.inspect)(value, { depth: Infinity }) : value);
     }
     unsafeSuccess(value = null) {
         return new Return_1.Return(Return_1.ReturnType.Success, value);

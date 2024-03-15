@@ -524,11 +524,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public successJSON(value: ReturnValue<ReturnType.Success>) {
-        return this.unsafeSuccess(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
+        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
     }
 
     public successFormatted(value: ReturnValue<ReturnType.Success>) {
-        return this.unsafeSuccess(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
+        return this.success(typeof value !== "string" ? inspect(value, { depth: Infinity }) : value)
     }
 
     public unsafeSuccess(value: ReturnValue<ReturnType.Success> = null) {
