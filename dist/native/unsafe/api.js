@@ -11,6 +11,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.5.0",
     description: "Sends a discord api request, using a discord-api-types route",
     unwrap: true,
+    aliases: [
+        "$discordAPI"
+    ],
     args: [
         {
             name: "route name",
