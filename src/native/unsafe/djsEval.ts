@@ -6,6 +6,10 @@ import { Return } from "../../structures/@internal/Return"
 export default new NativeFunction({
     name: "$djsEval",
     version: "1.0.0",
+    aliases: [
+        "$js",
+        "$djsEval"
+    ],
     description: "Eval js code",
     unwrap: true,
     output: ArgType.Unknown,

@@ -6,6 +6,10 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$djsEval",
     version: "1.0.0",
+    aliases: [
+        "$js",
+        "$djsEval"
+    ],
     description: "Eval js code",
     unwrap: true,
     output: NativeFunction_1.ArgType.Unknown,
