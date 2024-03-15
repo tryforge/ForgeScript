@@ -1,0 +1,72 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
+const structures_1 = require("../../structures");
+exports.default = new structures_1.NativeFunction({
+    name: "$addStringSelectMenuTo",
+    description: "Adds a string select menu to a message",
+    unwrap: true,
+    brackets: true,
+    args: [
+        {
+            name: "channel ID",
+            description: "The channel id to pull message from",
+            rest: false,
+            required: true,
+            type: structures_1.ArgType.TextChannel
+        },
+        {
+            name: "message ID",
+            description: "The message to add select menu to",
+            rest: false,
+            required: true,
+            type: structures_1.ArgType.Message,
+            pointer: 0
+        },
+        {
+            name: "custom ID",
+            description: "The custom id to use for this menu",
+            rest: false,
+            required: true,
+            type: structures_1.ArgType.String,
+        },
+        {
+            name: "placeholder",
+            description: "The placeholder to use for the menu",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
+        {
+            name: "disabled",
+            description: "Whether to keep this menu disabled",
+            type: structures_1.ArgType.Boolean,
+            rest: false,
+        },
+        {
+            name: "min values",
+            description: "The min values to choose for the menu",
+            rest: false,
+            type: structures_1.ArgType.Number,
+        },
+        {
+            name: "max values",
+            description: "The max values to choose for the menu",
+            rest: false,
+            type: structures_1.ArgType.Number,
+        },
+    ],
+    output: structures_1.ArgType.Boolean,
+    async execute(ctx, [, m, id, placeholder, disabled, min, max]) {
+        const menu = new discord_js_1.StringSelectMenuBuilder().setCustomId(id).setDisabled(disabled || false);
+        if (placeholder)
+            menu.setPlaceholder(placeholder);
+        if (min !== null)
+            menu.setMinValues(min);
+        if (max !== null)
+            menu.setMaxValues(max);
+        const components = m.components.map(x => discord_js_1.ActionRowBuilder.from(x));
+        components.at(-1)?.addComponents(menu);
+        return this.success(!!(await m.edit({ components: components }).catch(ctx.noop)));
+    },
+});
+//# sourceMappingURL=addStringSelectMenuTo.js.map

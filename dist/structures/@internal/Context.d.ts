@@ -41,7 +41,7 @@ export declare class Context {
     [props: PropertyKey]: unknown;
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
-    readonly container: Container;
+    container: Container;
     constructor(runtime: IRunnable);
     get client(): import("../..").ForgeClient;
     set obj(o: Sendable);

@@ -75,7 +75,7 @@ export class Context {
     #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}
 
-    public readonly container: Container
+    public container: Container
 
     // eslint-disable-next-line no-unused-vars
     public constructor(public readonly runtime: IRunnable) {
