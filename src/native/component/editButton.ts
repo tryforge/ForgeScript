@@ -61,14 +61,15 @@ export default new NativeFunction({
         ) as ButtonBuilder
 
         if (!btn) return this.success()
-
-        btn.setCustomId(id)
+        
+        // @ts-ignore
+        btn.setCustomId(id || btn.data.custom_id)
             .setDisabled(disabled || false)
-            .setStyle(style)
-            .setLabel(label)
+            .setStyle(style || btn.data.style!)
+            .setLabel(label || btn.data.label!)
 
-        if (style === ButtonStyle.Link) btn.setURL(id)
-        else btn.setCustomId(id)
+        // @ts-ignore
+        if (style === ButtonStyle.Link) btn.setURL(id || btn.data.custom_id)
 
         if (emoji) btn.setEmoji(emoji)
 

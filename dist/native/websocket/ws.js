@@ -5,6 +5,7 @@ const ws_1 = require("ws");
 let IncrementalWebsocketIds = 0;
 exports.default = new structures_1.NativeFunction({
     name: "$ws",
+    version: "1.5.0",
     description: "Creates a WebSocket connection to a server",
     aliases: [
         "$websocket"

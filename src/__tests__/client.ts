@@ -66,6 +66,35 @@ client.commands.add({
 })
 
 client.commands.add({
+    type: "interactionCreate",
+    allowedInteractionTypes: [ "modal" ],
+    code: `
+    $log[hello $channelID | $messageID]
+    $editButtonOf[$channelID;$messageID;yes;;;Danger;;true]
+    `
+})
+
+client.commands.add({
+    type: "messageCreate",
+    name: "modal",
+    code: `
+    $addActionRow
+    $addButton[yes;yes;Primary]
+    Click
+    `
+})
+
+client.commands.add({
+    type: "interactionCreate",
+    allowedInteractionTypes: [ "button" ],
+    code: `
+    $modal[yes;owa]
+    $addTextInput[owa;owa;Short;true]
+    $showModal
+    `
+})
+
+client.commands.add({
     type: "messageCreate",
     name: "body",
     code: `
@@ -104,23 +133,6 @@ client.commands.add({
         $if[$charCount[$get[text]]>1950;$attachment[$get[text];result.json;true];\`\`\`json\n$get[text]\n\`\`\`]
     `,
     type: "messageCreate",
-})
-
-client.commands.add({
-    name: "bro",
-    type: "interactionCreate",
-    code: `
-    $if[$isButton;
-        $log[run]
-        $modal[yes;yes]
-        $addActionRow
-        $addTextInput[this;is;Paragraph;true]
-        $showModal
-        $log[$awaitModalSubmit[yes;
-            $interactionReply[Yeshy $input[this]]
-        ;10s]]
-    ]
-    `,
 })
 
 client.commands.add({

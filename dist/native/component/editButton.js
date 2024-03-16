@@ -58,14 +58,14 @@ exports.default = new structures_1.NativeFunction({
         const btn = ctx.container.components[rowIndex].components.find((x) => "custom_id" in x.data && x.data.custom_id === oldId);
         if (!btn)
             return this.success();
-        btn.setCustomId(id)
+        // @ts-ignore
+        btn.setCustomId(id || btn.data.custom_id)
             .setDisabled(disabled || false)
-            .setStyle(style)
-            .setLabel(label);
+            .setStyle(style || btn.data.style)
+            .setLabel(label || btn.data.label);
+        // @ts-ignore
         if (style === discord_js_1.ButtonStyle.Link)
-            btn.setURL(id);
-        else
-            btn.setCustomId(id);
+            btn.setURL(id || btn.data.custom_id);
         if (emoji)
             btn.setEmoji(emoji);
         return this.success();

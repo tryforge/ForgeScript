@@ -7,6 +7,7 @@ const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$wsOn",
+    version: "1.5.0",
     description: "Attach a listener to a websocket",
     unwrap: false,
     aliases: [
