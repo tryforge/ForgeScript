@@ -1,7 +1,5 @@
 name: publish_dev
-on:
-    schedule:
-        - cron: '*/5 * * * *'
+on: [push]
 jobs:
   publish:
     if: ${{ contains(github.ref_name, 'dev') }}
