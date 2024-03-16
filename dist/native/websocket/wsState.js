@@ -15,6 +15,7 @@ var ConnectionState;
 })(ConnectionState || (exports.ConnectionState = ConnectionState = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$wsState",
+    version: "1.5.0",
     output: ConnectionState,
     description: "Returns a websocket's connection state",
     unwrap: true,

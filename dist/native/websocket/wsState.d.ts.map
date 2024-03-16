@@ -1,1 +1,1 @@
-{"version":3,"file":"wsState.d.ts","sourceRoot":"","sources":["../../../src/native/websocket/wsState.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAE1D,oBAAY,eAAe;IACvB,UAA0B;IAC1B,MAAkB;IAClB,OAAoB;IACpB,IAAc;CACjB;;;;;;;;AAED,wBAmBE"}
+{"version":3,"file":"wsState.d.ts","sourceRoot":"","sources":["../../../src/native/websocket/wsState.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAE1D,oBAAY,eAAe;IACvB,UAA0B;IAC1B,MAAkB;IAClB,OAAoB;IACpB,IAAc;CACjB;;;;;;;;AAED,wBAoBE"}
