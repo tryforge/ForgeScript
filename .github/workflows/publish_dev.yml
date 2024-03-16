@@ -21,6 +21,6 @@ jobs:
         
         - name: Publish NPM
           run: |
-            npm publish --provenance --no-git-checks --access public --tag dev || true
+            npm publish --no-git-checks --access public --tag dev
           env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
