@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateBar = void 0;
 function generateBar(current, max, len = 10, fill = "█", empty = "▒") {
-    return fill.repeat(Math.round(Math.min(current, max) / max * len)).padEnd(len, empty);
+    const fillN = Math.round(Math.min(current, max) / max * len);
+    return fill.repeat(fillN).padEnd((len * empty.length + fillN), empty);
 }
 exports.generateBar = generateBar;
 //# sourceMappingURL=generateBar.js.map
