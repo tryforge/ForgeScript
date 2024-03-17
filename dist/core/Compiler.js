@@ -101,7 +101,7 @@ class Compiler {
         if (!hasFields && match.fn.args?.required) {
             this.error(`Function ${match.fn.name} requires brackets`);
         }
-        else if (!hasFields) {
+        else if (!hasFields || match.fn.args === null) {
             return this.prepareFunction(match, null);
         }
         // Skip [
