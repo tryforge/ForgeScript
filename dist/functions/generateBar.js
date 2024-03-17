@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateBar = void 0;
-function generateBar(current, max, len, fill = "█", empty = "▒") {
+function generateBar(current, max, len = 10, fill = "█", empty = "▒") {
     const fillN = Math.round(Math.min(current, max) / max * len);
     return fill.repeat(fillN).padEnd(len, empty);
 }
