@@ -4,6 +4,7 @@ const generateBar_1 = require("../../functions/generateBar");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bar",
+    version: "1.5.0",
     aliases: [
         "$generateBar"
     ],
