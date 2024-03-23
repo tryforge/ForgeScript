@@ -178,6 +178,7 @@ export class Container {
                             }
                           : undefined,
                       ephemeral: this.ephemeral,
+                      attachments: [],
                       files: this.files.length === 0 ? null : this.files,
                       stickers: this.stickers.length === 0 ? null : this.stickers,
                       content: this.content?.trim() || null,
