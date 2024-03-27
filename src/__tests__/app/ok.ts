@@ -1,7 +1,9 @@
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js"
 import { ApplicationCommand } from "../../structures"
+import { RegistrationType } from "../../managers"
 
 export default new ApplicationCommand({
+    type: 1,
     data: {
         name: "eval",
         name_localizations: {
