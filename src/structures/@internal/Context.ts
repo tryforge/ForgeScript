@@ -17,7 +17,7 @@ import {
 } from "discord.js"
 import { CompiledFunction } from "./CompiledFunction"
 import { Container, Sendable } from "./Container"
-import { IArg, UnwrapArgs } from "./NativeFunction"
+import { IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
 import { IRunnable } from "../../core/Interpreter"
 import noop from "../../functions/noop"
@@ -213,8 +213,10 @@ export class Context {
         return this.container.send(this.obj, content)
     }
 
-    public handleNotSuccess(rt: Return) {
-        if (rt.return && this.runtime.allowTopLevelReturn) {
+    public handleNotSuccess(fn: CompiledFunction, rt: Return) {
+        if (fn.data.silent)
+            return false
+        else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return(ReturnType.Return, rt.value as string)
         } else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."

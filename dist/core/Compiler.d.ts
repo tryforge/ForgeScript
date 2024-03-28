@@ -49,6 +49,11 @@ export interface ICompiledFunction {
     index: number;
     id: string;
     name: string;
+    count: string | null;
+    /**
+     * Whether error will be silenced and just exit execution
+     */
+    silent: boolean;
     /**
      * Whether output is not desirable
      */
@@ -67,6 +72,8 @@ export interface IRawFunctionMatch {
     index: number;
     length: number;
     negated: boolean;
+    silent: boolean;
+    count: string | null;
     fn: IRawFunction;
 }
 /**
@@ -79,8 +86,10 @@ export declare class Compiler {
         Open: string;
         Close: string;
         Escape: string;
+        Count: string;
         Negation: string;
         Separator: string;
+        Silent: string;
     };
     private static SystemRegex;
     private static Regex;

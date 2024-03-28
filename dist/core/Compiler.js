@@ -34,8 +34,10 @@ class Compiler {
         Open: "[",
         Close: "]",
         Escape: "\\",
+        Count: "@",
         Negation: "!",
         Separator: ";",
+        Silent: "#"
     };
     static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm;
     static Regex;
@@ -55,8 +57,10 @@ class Compiler {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index,
                 negated: !!x[1],
+                silent: !!x[2],
                 length: x[0].length,
-                fn: this.getFunction(x[2]),
+                count: x[4] ?? null,
+                fn: this.getFunction(x[5]),
             }));
         }
         else
@@ -262,6 +266,8 @@ class Compiler {
             index: this.id - 1,
             id,
             fields,
+            count: match.count,
+            silent: match.silent,
             name: match.fn.name,
             negated: match.negated,
         };
@@ -336,13 +342,8 @@ class Compiler {
                 ?.filter((x) => typeof x === "string")
                 ?.map((alias) => this.Functions.set(alias.toLowerCase(), x));
         });
-        const mapped = new Array();
-        for (const [, fn] of this.Functions) {
-            mapped.push(fn.name);
-            if (fn.aliases?.length)
-                mapped.push(...fn.aliases);
-        }
-        this.Regex = new RegExp(`\\$(\\!)?(${mapped
+        const mapped = Array.from(this.Functions.keys());
+        this.Regex = new RegExp(`\\$(\\!)?(\\#)?(@\\[(.)\\])?(${mapped
             .map((x) => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
             .sort((x, y) => y.length - x.length)
             .join("|")})`, "gim");

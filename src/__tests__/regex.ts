@@ -1,3 +1,4 @@
+import { inspect } from "node:util"
 import { Compiler } from "../core"
 import { FunctionManager } from "../managers"
 FunctionManager.loadNative()
@@ -7,5 +8,5 @@ console.log(
 )
 
 console.log(
-    Compiler.compile("$!authorID")
+    inspect(Compiler.compile("$@[,]authorID"), { colors: true, depth: Infinity })
 )

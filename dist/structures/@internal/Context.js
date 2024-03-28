@@ -135,8 +135,10 @@ class Context {
         this.container.reset();
         return this.container.send(this.obj, content);
     }
-    handleNotSuccess(rt) {
-        if (rt.return && this.runtime.allowTopLevelReturn) {
+    handleNotSuccess(fn, rt) {
+        if (fn.data.silent)
+            return false;
+        else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return_1.Return(Return_1.ReturnType.Return, rt.value);
         }
         else if (rt.return || rt.break || rt.continue) {

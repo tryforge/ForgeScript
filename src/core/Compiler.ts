@@ -71,6 +71,12 @@ export interface ICompiledFunction {
     index: number
     id: string
     name: string
+    count: string | null
+
+    /**
+     * Whether error will be silenced and just exit execution
+     */
+    silent: boolean
 
     /**
      * Whether output is not desirable
@@ -94,6 +100,8 @@ export interface IRawFunctionMatch {
     index: number
     length: number
     negated: boolean
+    silent: boolean
+    count: string | null
     fn: IRawFunction
 }
 
@@ -105,14 +113,16 @@ export class Compiler {
         Open: "[",
         Close: "]",
         Escape: "\\",
+        Count: "@",
         Negation: "!",
         Separator: ";",
+        Silent: "#"
     }
 
     private static SystemRegex = /(\\+)?\[SYSTEM_FUNCTION\(\d+\)\]/gm
     private static Regex: RegExp
     private static InvalidCharRegex = /(\\|\${|`)/g
-    private static Functions = new Collection<string | RegExp, IRawFunction>()
+    private static Functions = new Collection<string, IRawFunction>()
     private static EscapeRegex = /(\.|\$|\(|\)|\*|\[|\]|\{|\}|\?|!|\^)/gim
 
     private id = 0
@@ -131,8 +141,10 @@ export class Compiler {
             this.matches = Array.from(code.matchAll(Compiler.Regex)).map((x) => ({
                 index: x.index!,
                 negated: !!x[1],
+                silent: !!x[2],
                 length: x[0].length,
-                fn: this.getFunction(x[2]),
+                count: x[4] ?? null,
+                fn: this.getFunction(x[5]),
             }))
         } else this.matches = []
     }
@@ -376,6 +388,8 @@ export class Compiler {
             index: this.id - 1,
             id,
             fields,
+            count: match.count,
+            silent: match.silent,
             name: match.fn.name,
             negated: match.negated,
         }
@@ -468,14 +482,10 @@ export class Compiler {
                 ?.map((alias) => this.Functions.set((alias as string).toLowerCase(), x))
         })
 
-        const mapped = new Array<string>()
-        for (const [, fn] of this.Functions) {
-            mapped.push(fn.name)
-            if (fn.aliases?.length) mapped.push(...fn.aliases)
-        }
+        const mapped = Array.from(this.Functions.keys())
 
         this.Regex = new RegExp(
-            `\\$(\\!)?(${mapped
+            `\\$(\\!)?(\\#)?(@\\[(.)\\])?(${mapped
                 .map((x) =>
                     (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(
                         Compiler.EscapeRegex,
