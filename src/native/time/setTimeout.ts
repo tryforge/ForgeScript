@@ -27,7 +27,7 @@ export default new NativeFunction({
         const time: Return = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](time)) return time
 
-        setTimeout(async () => {
+        const t = setTimeout(async () => {
             await this["resolveCode"](ctx, code)
         }, time.value as number)
 

@@ -27,7 +27,7 @@ export default new NativeFunction({
         const time: Return = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](time)) return time
 
-        setInterval(async () => {
+        const t = setInterval(async () => {
             await this["resolveCode"](ctx, code)
         }, time.value as number)
 

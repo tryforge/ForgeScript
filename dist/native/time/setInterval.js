@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         const time = await this["resolveUnhandledArg"](ctx, 1);
         if (!this["isValidReturnType"](time))
             return time;
-        setInterval(async () => {
+        const t = setInterval(async () => {
             await this["resolveCode"](ctx, code);
         }, time.value);
         return this.success();
