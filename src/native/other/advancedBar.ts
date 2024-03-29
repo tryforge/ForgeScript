@@ -1,13 +1,13 @@
-import { generateBar } from "../../functions/generateBar"
+import { generateAdvancedBar, generateBar } from "../../functions/generateBar"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
-    name: "$bar",
+    name: "$advancedBar",
     version: "1.5.0",
     aliases: [
-        "$generateBar"
+        "$generateAdvancedBar"
     ],
-    description: "Generates a progress bar",
+    description: "Generates an advanced progress bar",
     brackets: true,
     args: [
         {
@@ -31,34 +31,21 @@ export default new NativeFunction({
             type: ArgType.Number
         },
         {
-            name: "fill",
-            description: "The string to use as filled points of the bar",
-            rest: false,
+            name: "values",
+            description: "The values to make the bar with, for example `=;~;#` means `0%;33%;66%`",
+            rest: true,
+            required: true,
             type: ArgType.String
-        },
-        {
-            name: "empty",
-            description: "The string to use as empty points of the bar",
-            rest: false,
-            type: ArgType.String
-        },
-        {
-            name: "trunc",
-            description: "Whether to truncate instead of round",
-            rest: false,
-            type: ArgType.Boolean
         }
     ],
     unwrap: true,
-    execute(ctx, [ curr, max, len, fill, empty, trunc ]) {
+    execute(ctx, [ curr, max, len, values ]) {
         return this.success(
-            generateBar(
+            generateAdvancedBar(
                 curr,
                 max,
                 len ?? undefined,
-                fill ?? undefined,
-                empty ?? undefined,
-                !trunc
+                values
             )
         )
     }

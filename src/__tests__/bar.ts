@@ -1,11 +1,14 @@
-import { generateBar } from "../functions/generateBar"
+import { generateAdvancedBar, generateBar } from "../functions/generateBar"
 
 console.log(
-    generateBar(
-        10,
+    generateAdvancedBar(
+        100,
         100,
         10,
-        "█",
-        "▒"
+        [
+            "=",
+            "~",
+            "#"
+        ]
     )
 )

@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const generateBar_1 = require("../../functions/generateBar");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$bar",
+    name: "$advancedBar",
     version: "1.5.0",
     aliases: [
-        "$generateBar"
+        "$generateAdvancedBar"
     ],
-    description: "Generates a progress bar",
+    description: "Generates an advanced progress bar",
     brackets: true,
     args: [
         {
@@ -32,27 +32,16 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number
         },
         {
-            name: "fill",
-            description: "The string to use as filled points of the bar",
-            rest: false,
+            name: "values",
+            description: "The values to make the bar with, for example `=;~;#` means `0%;33%;66%`",
+            rest: true,
+            required: true,
             type: structures_1.ArgType.String
-        },
-        {
-            name: "empty",
-            description: "The string to use as empty points of the bar",
-            rest: false,
-            type: structures_1.ArgType.String
-        },
-        {
-            name: "trunc",
-            description: "Whether to truncate instead of round",
-            rest: false,
-            type: structures_1.ArgType.Boolean
         }
     ],
     unwrap: true,
-    execute(ctx, [curr, max, len, fill, empty, trunc]) {
-        return this.success((0, generateBar_1.generateBar)(curr, max, len ?? undefined, fill ?? undefined, empty ?? undefined, !trunc));
+    execute(ctx, [curr, max, len, values]) {
+        return this.success((0, generateBar_1.generateAdvancedBar)(curr, max, len ?? undefined, values));
     }
 });
-//# sourceMappingURL=bar.js.map
+//# sourceMappingURL=advancedBar.js.map

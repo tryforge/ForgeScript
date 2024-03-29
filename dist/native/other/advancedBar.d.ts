@@ -19,18 +19,9 @@ declare const _default: NativeFunction<[{
 }, {
     name: string;
     description: string;
-    rest: false;
+    rest: true;
+    required: true;
     type: ArgType.String;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    type: ArgType.String;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    type: ArgType.Boolean;
 }], true>;
 export default _default;
-//# sourceMappingURL=bar.d.ts.map
+//# sourceMappingURL=advancedBar.d.ts.map

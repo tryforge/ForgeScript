@@ -343,7 +343,7 @@ class Compiler {
                 ?.map((alias) => this.Functions.set(alias.toLowerCase(), x));
         });
         const mapped = Array.from(this.Functions.keys());
-        this.Regex = new RegExp(`\\$(\\!)?(\\#)?(@\\[(.)\\])?(${mapped
+        this.Regex = new RegExp(`\\$(\\!)?(\\#)?(@\\[(.*?)\\])?(${mapped
             .map((x) => (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(Compiler.EscapeRegex, "\\$1"))
             .sort((x, y) => y.length - x.length)
             .join("|")})`, "gim");

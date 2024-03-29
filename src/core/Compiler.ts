@@ -485,7 +485,7 @@ export class Compiler {
         const mapped = Array.from(this.Functions.keys())
 
         this.Regex = new RegExp(
-            `\\$(\\!)?(\\#)?(@\\[(.)\\])?(${mapped
+            `\\$(\\!)?(\\#)?(@\\[(.*?)\\])?(${mapped
                 .map((x) =>
                     (x.startsWith("$") ? x.slice(1).toLowerCase() : x.toLowerCase()).replace(
                         Compiler.EscapeRegex,
