@@ -11,5 +11,6 @@ export declare class CooldownManager {
     delete(id: string): void;
     clear(): void;
     getTimeLeft(id: string): number;
+    identifier<T extends [...any[]]>(...values: [...T]): string;
 }
 //# sourceMappingURL=CooldownManager.d.ts.map

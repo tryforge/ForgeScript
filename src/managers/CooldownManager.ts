@@ -30,4 +30,8 @@ export class CooldownManager {
         const data = this.cooldowns.get(id)
         return data ? Math.max(data.duration - (Date.now() - data.startedAt), 0) : 0
     }
+
+    public identifier<T extends [...any[]]>(...values: [...T]) {
+        return values.join("_")
+    } 
 }

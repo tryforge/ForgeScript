@@ -24,6 +24,9 @@ class CooldownManager {
         const data = this.cooldowns.get(id);
         return data ? Math.max(data.duration - (Date.now() - data.startedAt), 0) : 0;
     }
+    identifier(...values) {
+        return values.join("_");
+    }
 }
 exports.CooldownManager = CooldownManager;
 //# sourceMappingURL=CooldownManager.js.map
