@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$getGuildCooldownTime",
+    version: "1.5.0",
     description: "Retrieves current cooldown time in ms for given guild id, binded to current command",
     brackets: true,
     aliases: [

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$channelCooldown",
+    version: "1.5.0",
     description: "Adds a cooldown binded to a channel and command",
     brackets: true,
     unwrap: false,

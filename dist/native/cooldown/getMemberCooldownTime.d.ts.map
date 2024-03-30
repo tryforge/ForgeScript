@@ -1,1 +1,1 @@
-{"version":3,"file":"getMemberCooldownTime.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/getMemberCooldownTime.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBAyBE"}
+{"version":3,"file":"getMemberCooldownTime.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/getMemberCooldownTime.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBA0BE"}

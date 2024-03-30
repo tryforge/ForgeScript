@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteUserCooldown",
+    version: "1.5.0",
     description: "Deletes cooldown for given user id, binded to current command",
     brackets: true,
     unwrap: true,

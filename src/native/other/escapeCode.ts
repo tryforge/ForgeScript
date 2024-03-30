@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.4.0",
     description: "Code inside this function will not be executed",
     unwrap: false,
+    brackets: true,
     aliases: [
         "$esc"
     ],
