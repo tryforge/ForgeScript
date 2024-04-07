@@ -6,7 +6,6 @@ export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>;
 export type CommandInteractionTypes = "button" | "modal" | "slashCommand" | "autocomplete" | "contextMenu" | "selectMenu";
 export interface IBaseCommand<T> {
     name?: string;
-    path?: string;
     type: T;
     code: string;
     guildOnly?: boolean;
@@ -14,9 +13,16 @@ export interface IBaseCommand<T> {
     aliases?: string[];
     allowedInteractionTypes?: CommandInteractionTypes[];
     allowBots?: boolean;
-    unloadable?: boolean;
     disableConsoleErrors?: boolean;
     [x: PropertyKey]: unknown;
+    /**
+     * @private Do not define
+     */
+    path?: string;
+    /**
+     * @private Do not define
+     */
+    unloadable?: boolean;
 }
 export interface ICompiledCommand {
     name?: IExtendedCompilationResult;

@@ -17,7 +17,6 @@ export type CommandInteractionTypes =
 
 export interface IBaseCommand<T> {
     name?: string
-    path?: string
     type: T
     code: string
     guildOnly?: boolean
@@ -25,9 +24,18 @@ export interface IBaseCommand<T> {
     aliases?: string[]
     allowedInteractionTypes?: CommandInteractionTypes[]
     allowBots?: boolean
-    unloadable?: boolean
     disableConsoleErrors?: boolean
     [x: PropertyKey]: unknown
+
+    /**
+     * @private Do not define
+     */
+    path?: string
+
+    /**
+     * @private Do not define
+     */
+    unloadable?: boolean
 }
 
 export interface ICompiledCommand {
