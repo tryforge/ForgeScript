@@ -53,6 +53,9 @@ class Context {
     get automod() {
         return this.#cache.automod ??= this.obj instanceof discord_js_1.AutoModerationActionExecution ? this.obj : null;
     }
+    get entitlement() {
+        return this.#cache.entitlement ??= this.obj instanceof discord_js_1.Entitlement ? this.obj : null;
+    }
     get member() {
         return (this.#cache.member ??=
             this.obj instanceof discord_js_1.GuildMember

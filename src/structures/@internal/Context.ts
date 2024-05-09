@@ -5,6 +5,7 @@ import {
     BaseInteraction,
     ChatInputCommandInteraction,
     ContextMenuCommandInteraction,
+    Entitlement,
     Guild,
     GuildEmoji,
     GuildMember,
@@ -57,6 +58,7 @@ export interface IContextCache {
     message: Message | null
     interaction: Interaction | null
     role: Role | null
+    entitlement: Entitlement | null
     reaction: MessageReaction | null
     emoji: GuildEmoji | null
     automod: AutoModerationActionExecution | null
@@ -111,6 +113,10 @@ export class Context {
 
     public get automod() {
         return this.#cache.automod ??= this.obj instanceof AutoModerationActionExecution ? this.obj : null
+    }
+
+    public get entitlement() {
+        return this.#cache.entitlement ??= this.obj instanceof Entitlement ? this.obj : null
     }
 
     public get member() {

@@ -32,7 +32,7 @@ export default new NativeFunction({
             ctx.container.components.push(
                 ...json.map((x) =>
                     new ActionRowBuilder().addComponents(
-                        (x as Array<APIButtonComponent | APISelectMenuComponent>).map((x) =>
+                        (x as any).map((x: any) =>
                             x.type === ComponentType.Button ? ButtonBuilder.from(x) : SelectMenuBuilder.from(x)
                         )
                     )
@@ -43,7 +43,7 @@ export default new NativeFunction({
                 new ActionRowBuilder().addComponents(
                     json.type === ComponentType.Button
                         ? ButtonBuilder.from(json as unknown as APIButtonComponent)
-                        : SelectMenuBuilder.from(json as unknown as APISelectMenuComponent)
+                        : SelectMenuBuilder.from(json as any)
                 )
             )
         }
