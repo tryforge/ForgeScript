@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$entitlementType",
+    version: "1.5.0",
     description: "Returns this entitlement's type",
     output: discord_js_1.EntitlementType,
     unwrap: false,

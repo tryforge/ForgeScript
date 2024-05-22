@@ -4,6 +4,7 @@ const entitlement_1 = require("../../properties/entitlement");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$newEntitlement",
+    version: "1.5.0",
     description: "Retrieves new data from an event whose context was a entitlement instance",
     brackets: true,
     unwrap: true,

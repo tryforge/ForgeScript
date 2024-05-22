@@ -29,10 +29,24 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Boolean,
         },
+        {
+            name: "username",
+            description: "The username for the message",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
+        {
+            name: "avatar",
+            description: "The avatar for the message",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
     ],
-    async execute(ctx, [url, content, returnMessageID]) {
+    async execute(ctx, [url, content, returnMessageID, username, avatarUrl]) {
         const web = new discord_js_1.WebhookClient({ url });
         ctx.container.content = content || undefined;
+        ctx.container.avatarURL = avatarUrl ?? undefined;
+        ctx.container.username = username ?? undefined;
         const m = await ctx.container.send(web);
         return this.success(returnMessageID && m ? m.id : undefined);
     },

@@ -24,6 +24,8 @@ class Container {
     modal;
     choices = new Array();
     allowedMentions = {};
+    avatarURL;
+    username;
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -94,6 +96,8 @@ class Container {
         delete this.content;
         delete this.modal;
         delete this.reference;
+        delete this.avatarURL;
+        delete this.username;
         this.followUp = false;
         this.reply = false;
         this.update = false;
@@ -113,6 +117,8 @@ class Container {
                 content,
             }
             : {
+                username: this.username,
+                avatarURL: this.avatarURL,
                 allowedMentions: Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
                 fetchReply: this.fetchReply,
                 reply: this.reference

@@ -72,6 +72,8 @@ export class Container {
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
     public allowedMentions: MessageMentionOptions = {}
+    public avatarURL?: string
+    public username?: string
 
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
@@ -144,6 +146,8 @@ export class Container {
         delete this.content
         delete this.modal
         delete this.reference
+        delete this.avatarURL
+        delete this.username
 
         this.followUp = false
         this.reply = false
@@ -168,6 +172,8 @@ export class Container {
                       content,
                   }
                 : {
+                      username: this.username,
+                      avatarURL: this.avatarURL,
                       allowedMentions:
                           Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
                       fetchReply: this.fetchReply,

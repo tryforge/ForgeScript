@@ -17,6 +17,8 @@ export declare class Container {
     modal?: ModalBuilder;
     choices: ApplicationCommandOptionChoiceData<string | number>[];
     allowedMentions: MessageMentionOptions;
+    avatarURL?: string;
+    username?: string;
     send<T = unknown>(obj: Sendable, content?: string): Promise<T | null>;
     isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions): boolean;
     embed(index: number): EmbedBuilder;

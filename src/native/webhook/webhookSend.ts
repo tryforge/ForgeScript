@@ -28,11 +28,26 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Boolean,
         },
+        {
+            name: "username",
+            description: "The username for the message",
+            rest: false,
+            type: ArgType.String,
+        },
+        {
+            name: "avatar",
+            description: "The avatar for the message",
+            rest: false,
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [url, content, returnMessageID]) {
+    async execute(ctx, [url, content, returnMessageID, username, avatarUrl]) {
         const web = new WebhookClient({ url })
 
         ctx.container.content = content || undefined
+        ctx.container.avatarURL = avatarUrl ?? undefined
+        ctx.container.username = username ?? undefined
+
         const m = await ctx.container.send<Message>(web)
         return this.success(returnMessageID && m ? m.id : undefined)
     },

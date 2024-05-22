@@ -18,6 +18,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
+    output: ArgType.Boolean,
     execute(ctx, [ names ]) {
         return this.success(ctx.interaction?.entitlements.hasAll(...names))
     },

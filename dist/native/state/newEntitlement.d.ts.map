@@ -1,1 +1,1 @@
-{"version":3,"file":"newEntitlement.d.ts","sourceRoot":"","sources":["../../../src/native/state/newEntitlement.ts"],"names":[],"mappings":"AAAA,OAAO,EAAyB,mBAAmB,EAAE,MAAM,8BAA8B,CAAA;AAEzF,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBAyBE"}
+{"version":3,"file":"newEntitlement.d.ts","sourceRoot":"","sources":["../../../src/native/state/newEntitlement.ts"],"names":[],"mappings":"AAAA,OAAO,EAAyB,mBAAmB,EAAE,MAAM,8BAA8B,CAAA;AAEzF,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBA0BE"}
