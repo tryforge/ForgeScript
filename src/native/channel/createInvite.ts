@@ -4,7 +4,7 @@ import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$createInvite",
-    version: "1.0.0",
+    version: "1.1.0",
     brackets: true,
     description: "Creates an invite, returns the code",
     unwrap: true,
@@ -25,21 +25,27 @@ export default new NativeFunction({
             type: ArgType.Number,
         },
         {
+            name: "max age",
+            description: "The max age for this invite",
+            rest: false,
+            type: ArgType.Number,
+        },
+        {
             name: "reason",
             description: "The reason for creating this invite",
             rest: false,
             type: ArgType.String
         }
     ],
-    async execute(ctx, [ch, maxUses, reason]) {
+    async execute(ctx, [ch, maxUses, maxAge, reason]) {
         const channel = (ch ?? ctx.channel) as TextChannel
         const invite = await channel
             .createInvite({
                 reason: reason || undefined,
                 maxUses: maxUses || undefined,
+                maxAge: maxAge || undefined,
             })
             .catch(ctx.noop)
-
         return this.success(invite ? invite.code : undefined)
     },
 })

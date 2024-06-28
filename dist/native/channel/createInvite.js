@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$createInvite",
-    version: "1.0.0",
+    version: "1.1.0",
     brackets: true,
     description: "Creates an invite, returns the code",
     unwrap: true,
@@ -24,18 +24,25 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number,
         },
         {
+            name: "max age",
+            description: "The max age for this invite",
+            rest: false,
+            type: structures_1.ArgType.Number,
+        },
+        {
             name: "reason",
             description: "The reason for creating this invite",
             rest: false,
             type: structures_1.ArgType.String
         }
     ],
-    async execute(ctx, [ch, maxUses, reason]) {
+    async execute(ctx, [ch, maxUses, maxAge, reason]) {
         const channel = (ch ?? ctx.channel);
         const invite = await channel
             .createInvite({
             reason: reason || undefined,
             maxUses: maxUses || undefined,
+            maxAge: maxAge || undefined,
         })
             .catch(ctx.noop);
         return this.success(invite ? invite.code : undefined);
