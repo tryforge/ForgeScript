@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$applicationCommandOptions",
+    version: "1.5.0",
     description: "Returns an application command options in JSON format",
     brackets: false,
     args: [

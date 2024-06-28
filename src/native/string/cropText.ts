@@ -27,9 +27,16 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Number,
         },
+        {
+            name: "ending",
+            description: "Add extra text to the end",
+            rest: false,
+            type: ArgType.String
+        }
     ],
     unwrap: true,
-    execute(ctx, [text, start, end]) {
-        return this.success(text.slice(start, end || undefined))
+    execute(ctx, [text, start, end, ending]) {
+        const cropped = text.slice(start, end || undefined)
+        return this.success(ending && end && cropped.length > end ? cropped + ending : cropped)
     },
 })
