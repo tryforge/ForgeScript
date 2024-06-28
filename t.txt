@@ -1,0 +1,938 @@
+{| class="sortable mw-collapsible fandom-table" style="text-align: center;"
+|+Weapons
+!Image
+!Name
+!Star
+!Element
+!Base Damage
+!Cooldown
+!Passive Effect
+!Weapon Dkills
+!Skill Details
+!Modifications
+|-
+|[[File:Hellslayer.png|center|thumb|224x224px]]
+|Hellslayer
+|Six stars
+|[[File:Physical.png|alt=Fire|center|thumb|72x72px]]
+|300
+|1.17
+|
+| Chaos Storm
+|Spin the axe,gaining SPD every 0.5s, dealing FIRE DMG to enemies, lasting for 4s
+|
+α：Skill Duration +1s
+
+β：-0.3s Skill CD when landing a CRIT
+
+γ：Gains 10% DMG Reduction during skill duration
+
+δ: New Skill Effect: Suction
+|-
+|[[File:Swordguard.png|center|thumb|224x224px]]
+|Swordguard
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|250
+|1.17
+|
+|Charged Strike
+|Hold [RMB] to charge, pulling in enemies nearby. Immune to Crowd-control effects and gains DMG Reduction during charging. Release [RMB] to deal AoE DMG (increases with DMG Taken during charging and charging duration)
+|
+α：Area of Effect +10%
+
+β：Stuns enemy (charges up to 1s)
+
+γ：-1s Skill CD when stunned
+
+δ: ? Skill suction +30%
+|-
+|[[File:Abyssal Codex.png|center|thumb|224x224px]]
+|Abyssal Codex
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|250
+|0.9
+|
+|Kraken's Touch
+|Summon a Kraken Tentacle to stun enemies and slam the nearest enemy 5 times, dealing Ice DMG and slowing enemies for 3s. Stores up to 2 attempts.
+|
+α：Summon tentacle with a 20% chance to reset CD
+
+β：Tentacle appears under the nearest enemy's every 10s
+
+γ：50% chance to Disarm slammed enemies for 3s
+
+δ: Lifesteal (7% of Skill DMG)
+|-
+|[[File:Weaver .png|center|thumb|220x220px]]
+|Weaver
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|150
+|0.54
+| Basic attack will poison the enemy, dealing 100 DMG per sec and burning 7 STA
+| Weave Web
+|Weaves a giant web,granting +35% SPD buff to those equipped with Weaver, ignoring unit collision while in its vicinity.Inflicts -35% SPD debuff to those without a Weaver equipped in its vicinity
+|
+α：Skills storable for 3 uses
+
+β：Enemies in Webs have 15% chance to be entangled for 0.5s every sec
+
+γ：15% chance to spawn Webs when being attacked (30s CD)
+
+δ: Regain the same amount of stamina that you drain from the enemy
+|-
+|[[File:Headofkeblis.png|center|thumb|224x224px]]
+|Head of Keblis
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|205
+|0.32
+| Basic attack spits flame
+|Keblis Minefield
+|Scatters eggs that detonate on enemy contact,dealing 587 DMG, knocking back enemies and silencing them for 1s
+|
+α：Flame crits, but -30% DMG
+
+β：More Eggs in the minefield
+
+γ：Flame AoE +20%
+
+δ: ? Basic attacks have a 30% chance of burning and seriously injuring the enemy for 3 seconds.
+|-
+|[[File:Heartofoak.png|center|thumb|224x224px]]
+| Heart of Oak
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|170
+|1.08
+|Hitting allies with Basic Attacks to restore HP for them based on the wielder's Max HP
+|Overgrowth
+|Summons a thicket that lasts for 8S at a target location, restoring HP (3% of the wielder's Max HP) per second for allies within
+|
+α：Casts Mini-Forest with fast CD
+
+β：Silence enemies in Forest
+
+γ：Allies gain +20 STA/s in Forest
+
+δ: Allies take 15% less DMG in the Forest
+|-
+|
+|Windforce
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|50
+|0.36
+| Every 6th attack releases an enchanted arrow that knocks back the enemy
+|Zephyr
+|Activate to gains bonus Speed + 200 and Attack Speed of Windforce +100%. Basic Attacks do not cost stamina when the skill is activated.Lasts for 8 seconds.
+|
+α：Shoot an Enhanced Arrow every 4 shots
+
+β：Skill duration +3s
+
+γ：+150 SPD on skill cast
+
+δ: ? Enhance arrow size, knockback effect, damage +50%
+|-
+|
+|Asklepian
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|250
+|0.72
+|/
+|Transfusion
+|When cast on an enemy, it deals 452 Poison DMG and drains equivalent HP from the target enemy every 0.5s. When cQst on an ally, it will drain your own health (452 HP) to heal the ally for equivalent HP every 0.5s. Max Channel Time:10s
+|
+α：Casting range +20%
+
+β：Steal 50 SPD from enemies when casting
+
+γ：50% reduced HP cost when healing allies
+
+δ: Connect 1 more enemy
+|-
+|
+|Static Fist
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|225
+|0.99
+| Basic attacks lock onto the selected target
+|Static Orb
+|Hold [RMB] and consume STA to charge, release to fire a Static Orb (DMG and
+Size enhance with the charging time). Restore 100% of STA charged if the orb hits an enemy
+|
+α：Basic attacks stun for 0.1s
+
+β：Basic attacks deal bonus DMG to all enemies nearby
+
+γ：Skill restores 90% STA when missed
+
+δ: ? Charging speed +50%
+|-
+|
+|Stormstrike
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|80
+|0.45
+|When your basic attack hits an enemy,increase [Stormstrike]'s DMG by, +2% (stacks up to +40%)
+| Burst Thunder
+|Shoots a burst of 20 enchanted arrows,each dealing 417 Thunder DMG
+|
+α：35 Rapid Arrows arrows but with wider spread
+
+β：Fires 10 additional arrows but at 33% reduced fire rate
+
+γ：Basic attacks: 30% chance to stun for 1s
+
+δ: Passive Stacks up to 30
+|-
+|
+|Shepherd's Cane
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|250
+|0.9
+|/
+|Hex
+| Turns an enemy hero into a harmless critter for 2.5s
+|
+α：CD -5s
+
+β：+15% against Hexed target
+
+γ：Basic attacks: 25% chance to Hex for 1s
+
+δ: ? Animal transformation time +0.3 seconds
+|-
+|
+|Ghostflame
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|280
+|0.56
+|Cleaves g large area of effect in front of you for a single strike every 5s,slowing enemies hit for 3s
+|Soulflay
+| Throw a kunai forward,dealing 790 Fire DMG and stunning an enemy on hit for 1s, and fly to the target's location. If the kungi misses, reduce 50% cooldown
+|
+α：Cleave AoE readies every 3s but no longer slows enemies
+
+β：Cleave AoE: 50% chance to reset its CD on hit
+
+γ：Basic attacks reduce skill CD by 1s
+
+δ: ? Damage to enemy units with negative status +15%
+|-
+|
+|Nergal's Thresher
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|200
+|0.81
+|When an attack triggers a critical strike,the cooldown of [Death's Toll] reduces by -1 sec
+|Death's Toll
+|Summons a phantom that attacks the enemy units nearby for 30 sec.Its CRIT DMG +50 and Speed +150, and it ignores unit collision
+|
+α：Skills: +50 SPD and +100 Dodge on use
+
+β：Each CRIT extends Phantom by 1s
+
+γ：Phantom +100% ASPD
+
+δ: Phantom duration extends to 20s. Passive effect becomes 2.5x
+|-
+|
+|Wintertide
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|220
+|1.08
+|Basic Attack slows enemies
+|Frozen Armor
+|Grants a Shield (25% of the wielder's Max HP) to allied heroes for 5s.When the Shieldbreaks or expires, it freezes enemies nearby for 1.5s dealing Ice DMG (50% of DMG absorbed) to them
+|
+α：Basic attack range +20%
+
+β：Shield increased to 40%
+
+γ：Skill Freeze duration +0.5s
+
+δ: ? Skill range +12%
+|-
+|
+|Core of Dumuzi
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|100
+|0.99
+| Throw a cactus that bounces 2 times, and inflicts [Spikes] to nearby enemies each time it lands
+|Parasitic Cactus
+|Throws a Parasitic Cactus that attaches to an enemy. Inflicts [Spikes] to the parasitized unit every time they takes Physical DMG (CD: 1s) [Spikes: Deals AOE DMG to nearby enemies.Deals bonus DMG for every time an enemy.Was hit by Spikes in the last 15s (up to 10 stacks)]
+|
+α：Basic attack bounce +1; But deals less DMG
+
+β：Parasitized Enemy: SPD Down by -15%
+
+γ：Enhanced basic attack DMG and range, but no bounce
+
+δ: ? When the parasitic spike ball is triggered, it will cause dizziness for 0.1 seconds.
+|-
+|
+|Duskbringers
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|170
+|0.36
+|/
+|Dusk Rush
+|Tumbles forward. The next basic attack deals 2X DMG and blinds the enemy on hit. Stores up to 2 attempts
+
+|
+α：Gains +1 Dusk Rush by defeating an enemy
+
+β：After casting Dusk Rush, basic attacks slow enemies
+
+γ：Dusk Rush CD -1s when landing a basic attack
+
+δ: ? After releasing the skill, the movement speed is +200 for 2 seconds.
+|-
+|
+| Jumbo Claw
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|280
+|0.63
+|/
+|Crab Pinch
+|Launches the claw forward, stunning the pinched enemy, dealing 352 Poison DMG every 0.5sfor 2.5s
+|
+α：Gains a Sheild (50% of Grappled enemy's Max HP)
+
+β：Skill missed reduces 50% CD
+
+γ：Skill steals 10 STA on DMG dealt
+
+δ: ? Attacking will poison the enemy, causing damage equal to 15% of the attack power, lasting 5 seconds.
+|-
+|
+| Ghost Shadow
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|50
+|0.54
+|/
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]] Star
+|Throws a shuriken that deals 352 Poison DMG every 0.25 sec to a target area (Consecutive Damage increases with time),slowing enemies by -30%
+|
+α：Basic attack hovers and deals +1 hit, but each hit deals less DMG
+
+β：Poison Star sucks enemies in
+
+γ：Poison Star duration +1s
+
+δ: Skill Range +20%, Casting Range +20%
+|-
+|
+|Eternal Hourglass
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|250
+|0.9
+|/
+|Time Twister
+|Choose an ally hero. Reduces their Skill CD of all equipped weapons by 5s,immediately restores 100 STA, and increases SPD by +300 for 5s
+|
+α：Skill CD reduction effect +2s
+
+β：Skill restores 30% target Max HP
+
+γ：Skill restores +200 STA
+
+δ: If the target is an ally, you gain the same effect
+|-
+|
+|Moonshard
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|200
+|0.54
+| Basic attacks have a 30% chance of disarming the enemy for 3s [Disarm: Unable to perform basic attacks]
+|Sleepy Curse
+|Throws a kunai forward, dealing 821 DMG and putting the enemy into sleep for 2
+seconds [Sleep: Unable to act; Breaks when attacked]
+|
+α：Basic attacks: 30% chance to apply 2s sleep
+
+β：Skills storable for 2 uses
+
+γ：Sleep duration +1.5s
+
+δ: ? When releasing the skill, 2 additional kunai will fly out.
+|-
+|
+|Kiss of Death
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|100
+|0.36
+| Basic Attack deals bonus Poison DMG (1.5% Max HP of the target) to enemy heroes
+|Toxblink
+|Blinks forward and deals Poison DMG 842 DMG to enemies on the path, reducing their SPD by 60% for 1s
+|
+α：Storable 3 times; -33% distance
+
+β：CD -3s
+
+γ：Skill hit applies Chaos for 1s, but no longer storable; CD -7s
+
+δ: Passive effect +0.5%
+|-
+|
+|Durin's Golden Pickaxe
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|170
+|0.58
+| Basic Attack can gather resources [GTH + 50%]
+|Burrow
+|Burrows into the ground, and un-burrows after 3.5s,dealing 621 DMG to nearby enemies,stunning them for 1s
+|
+α：+400 SPD, -1.5s duration during burrow
+
+β：GTH +100%
+
+γ：Skills storable for 2 uses, -0.7s duration during borrow
+
+δ: Skill Range +50%, Stun duration +0.5s
+|-
+|
+|Dune Ballista
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|110
+|0.72
+|Piercing shot DMG +5% per 100 units flown
+|Heartseeker
+|Hold [RMB] to charge a powerful piercing shot,increasing its range,knockback distance,and stun duration (release to shoot)
+|
+α：Basic attacks can knockback
+
+β：Basic attack range +500
+
+γ：Charging state: +200 SPD; +50% Duration
+
+δ: ? Stun duration doubled
+|-
+|
+|Anunnaki's Grasp
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|140
+|0.09
+| Equip to summon 4 lava spirits that orbit around. If a spirit collides with an enemy,it deals 477 DMG
+|Lava Spirits
+|Hold [LMB] to draw spirits near. The closer,the greater [DMG Reduction] (up to -20%); Hold [RMB] to push spirits away. The farther, the greater [SPD UP] (up to +100)
+|
+α：Spirits rotate in reverse with +20% speed
+
+β：+1 Spirit; +5% DMG Reduction
+
+γ：Each spirit hit burns -3 Enemy STA
+
+δ: Spirits -1, may CRIT
+|-
+|
+|Iceberg Basher
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|280
+|1.08
+| Equip to activate [Freeze Aura] that slows enemies by -20%
+|Frosty Exile
+|Swings a powerful bash knocking the target hero back, dealing lce DMG (150% ATK) to the target and any enemies they colide with,stunning them for 2s
+|
+α：CD -8s
+
+β：Skill now instant-cast
+
+γ：Slow Aura AoE +50%, but Slow Effect -30%
+
+δ: ? The ice resistance of enemy heroes within the aura is reduced by 75
+|-
+|
+|Vortex Spire
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|250
+|1.26
+| Basic Attack sucks enemies into a vortex
+|Gale Strike
+|Summons a tornado that sucks in nearby enemies, dealing Ice DMG ([100] + [2% of enemy Max HP])(Reduced DMG to BOSS).The tornado lasts for 20s
+|
+α：Tornado: +200 SPD
+
+β：Basic attack range +33%; +15% ASPD
+
+γ：Tornado follows you with stronger suction
+
+δ: Once unleashed, the Tornado stays in place with stronger suction and AoE +20%
+|-
+|
+|Knight's Oath
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|300
+|1.17
+|Eguip to gain +1 Bonus ATK per sec (stacks up to 100). When Knight's Oath is unequipped or kills a player in any way, the stacks will be reset to 0
+|Dawn
+|Activates the skill at max stacks to release a huge laser beam forward, dealing DMG based on 100% ATK every 0.2s for 2s;Stacks reset to 0 when the skill ends
+|
+α：Charges up to +150 ATK
+
+β：Basic attacks: 50% chance to stun for 1s
+
+γ：Moveable after casting skill
+
+δ: Skill DMG +30%, charging duration now at 25s
+|-
+|
+|Tiamat's Wrath
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|250
+|1.17
+|/
+|Lava Meteors
+|Summons 25 Lava Meteor(s), each dealing 705 DMG
+|
+α：Meteor has a 30% chance to stun on hit
+
+β：Meteor hit reduces skill CD by 0.7s
+
+γ：Basic attacks: 60% chance to summon 6 meteors
+
+δ: Equip to summon 3 Meteors at target location after dealing Fire DMG to target (CD:2s)
+|-
+|
+|Sacred Legacy
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+| Equip to grant 10% Lifesteal effect and 8% ATK to nearby allies. Disables Basic Attacks.
+|Ancestor's Call
+| Place a flag to grant bonus to allies in a larger area for 15s
+|
+α：ATK Aura Effect +4%
+
+β：The placed flag preserves your Lifesteal Aura Buff
+
+γ：Lifesteal Aura Effect +5%
+
+δ: Setting down the flag grants allies within range a shield (15% of their Max HP) for 7s
+|-
+|
+|Thunder Chant
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|50
+|0.23
+| Basic Attack turn into beams, expanding after 2s, DMG +50%
+| Storm Chase
+
+|Strike an enemy and those around it, dealing 903 Thunder DMG and a 0.8s stun
+|
+α：STA consumption of Basic Attack -20%
+
+β：Skill Stun +0.4s
+
+γ：Skill casting range +30%
+
+δ: Basic attacks: 5% chance to stun on hit for 1s
+|-
+|
+|Riptide Scepter
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|250
+|0.72
+|/
+|Tide Ward
+|Summon a Tide Ward that has 90% of the hero's ATK, 90% of their HP, and attacks the nearest unit for 20s
+|
+α：? Tide Spirit is stronger, inheriting 10% more HP and attack power
+
+β：15% chance to summon 1 more Tide Ward
+
+γ：? Summons an extremely powerful tidal spirit, inheriting 130% more HP and 70% more attack power, but the skill cooldown is doubled.
+
+δ: ? Tide Spirit attacks cause a 20% slowdown effect on enemies.
+|-
+|
+|Arrowhead
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+| Equip for Dodge +100, Speed +100; Cannot perform basic attacks
+|Possessed Arrows
+| Equip to make Arrowhead home in on its closest enemy target when in range. Hits deal 1023 DMG. Active by default, can't be toggled on/off (CD: 4s)
+|
+α：? Arrow cooldown -1 second
+
+β：? Dodge +50, movement speed +50
+
+γ：Arrowhead hits knock enemies back
+
+δ: ? Arrows will chase 2 enemy units
+|-
+|
+|King's Holy Grail
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+| Equip to grant 10% DMG reduction to allies within range. Restores 2% HP and 1% STA per sec
+|/
+|/
+|
+α：DMG Taken -3%
+
+β：HP Recovery +0.5%
+
+γ：Stamina Recovery +0.5%
+
+δ: ? Gain 75 physical resistance
+|-
+|
+|Nether Blades
+
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|150
+|0.54
+| Throw a scythe when a basic attack hits, dealing 1104 Physical DMG (CD: 3s)
+|Nether Abyss
+| Spawn a black hole to pull in nearby enemies, dealing 1023 Physical DMG for 1s
+|
+α：Basic attacks: 40% chance to throw an extra scythe
+
+β：Scythe SPD +60%
+
+γ：Scythe Size +50%
+
+δ: Black Hole Duration +0.3s
+|-
+|
+|Xmas Tree
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|250
+|0.9
+|/
+|Giving Tree
+|Summon a Xmas Tree that restores 4% HP per sec for allies within range. When attacked, Xmas Tree tosses a present that can be picked up to restore 6% HP. Weapon Skill CD -1s
+|
+α：Pick the present up to recover 20 STA
+
+β：? Christmas tree healing aura range +25%
+
+γ：Xmas Tree duration +3s
+
+δ: ? 50% chance of dropping two gift boxes
+|-
+|
+|Crunch Lollipop
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|300
+|1.08
+|Unleash a Lollipop upon hit of basic attack, dealing DMG (5% of Hero's Max HP) to enemies and healing allies by the same amount of DMG dealt. One lollipop replenished every 2.5s
+| Sugar Cravings
+|Unleash 4 lollipops to deal 1476 Fire DMG and a 1s stun (guaranteed CRIT)
+|
+α：? Crunch Lollipop replenishing speed -0.5s
+
+β：? Skill stun +0.5s
+
+γ：? Crunch Lollipop size, healing effect +15%
+
+δ: ? Skill range and damage +20%
+|-
+|
+|Winter Edict
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|250
+|0.63
+| Equip to obtain an Ice Aura to deal 949 Ice DMG every 2s
+| Frost Decree
+|Freezes targeted enemies for 1.2s, dealing 421 Ice DMG every 0.3s
+|
+α：? The aura has a 15% chance of freezing the target for 0.5 seconds.
+
+β：Freezing can now silence enemies
+
+γ：? The freezing time is extended by 0.3 seconds
+
+δ: ? Reduces the target's ice resistance by 100 points when frozen
+|-
+|
+|Icebound Shield
+|Six stars
+|[[File:ICE.png|alt=Ice|center|thumb|72x72px]]
+|/
+|/
+| Equip to reduce 20% DMG Taken but unable to deal Basic Attack
+| Frost Guard
+|Provides a Shield (30% of Max HP) to friendly units nearby for 5s. The shield emits shockwaves, dealing Ice DMG (3% of Max HP) per second and enemies' SPD -30%
+|
+α：? Skills add 100 points of ice resistance
+
+β：? Passive effects gain an additional 10% control reduction effect
+
+γ：? Shield duration +2 seconds
+
+δ: Provides the shield to all friendly units including yourself
+|-
+|
+|Lamp of Delirium
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+| Equip to +20% Max HP
+|Delirium
+|Cast Lamp to imprison enemy Hero for 4s during which they are stunned and silenced but immune to player DMG. Enemy Heroes near the lamp will Hallucinate
+|
+α：? Skill release distance +20%
+
+β：Lamp Duration +1s
+
+γ：SKL CD -4s
+
+δ: Passive HP +5%
+|-
+|
+|Quantum Blade
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|280
+|0.63
+|Lengthens your sword for 20s when a basic attack hits, up to 10 stacks
+|Quantum Blink
+| Blink to the target location
+|
+α：Passive Stacks +2
+
+β：? Movement speed +200 after teleportation, lasting 3 seconds
+
+γ：? Skill cooldown time -2 seconds
+
+δ: ? When the passive layer is full, the attack has a 20% chance of causing stun for 0.5 seconds.
+|-
+|
+| Power Generator
+|Six stars
+|[[File:Thunder.png|alt=Thunder|center|thumb|72x72px]]
+|360
+|1.03
+| Basic Attack summons a Thunder Orb at the target that deals Thunder DMG. 2 different stat Thunder Orbs within range of each other generate an electric arc that deals Thunder DMG and Stuns enemies for 0.7s
+|Polarity Switch
+|Switches Thunder Orb stats then summons it at the target
+|
+α：? Attack range +200
+
+β：? Thunderball existence time +2 seconds
+
+γ：SKL CD -1s
+
+δ: ? Thunder ball size +20%
+|-
+|
+|Ishtar's Claymore
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|300
+|0.9
+| Basic attacks reduce Infernal Slash CD by 0.5s
+
+|Infernal Slash
+|Hold [RMB] to charge. Release to cleave, causing Fire DMG and knockback (max 5 stacks)
+|
+α：? Charge speed +20%
+
+β：Basic attacks reduce SKL CD by 1s
+
+γ：AoE +15%
+
+δ: ? Sword Qi knockback distance +20%
+|-
+|
+|No Thoroughfare
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+| Equip for +80 SPD and -8% Weapon SKL CD, but can't use Building [Boost Pad]
+|Bounce Trap
+| Place a Boost Pad at the target location. Heroes who step on it will bounce away
+|
+α：? Movement speed +40
+
+β：? Weapon skill cooldown -3%
+
+γ：Boost Pad CD -1s
+
+δ: ? Use a larger ejection plate for longer ejection distance
+|-
+|
+|Inferno Blade
+|Six stars
+|[[File:Fire.png|alt=Fire|center|thumb|72x72px]]
+|
+|
+|Increases ATK Range and DMG for 20s when a basic attack hits, up to 10 stacks
+|Inferno Blink
+|Teleport to the target location and leave a fire path behind
+|
+α：? Maximum number of passive layers +2
+
+β：? Movement speed +200 after teleportation, lasting 3 seconds
+
+γ：? Skill cooldown -2 seconds
+
+δ: ? When the passive layer is full, the attack has a 25% probability of causing serious damage to the target for 2 seconds.
+|-
+|
+|Mold Atomizer
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|150
+|0.68
+| Basic ATK creates poisonous fog with a small range
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]ous Rot
+|Lobs mold sacs that cover the target area in a poisonous fog which deals 426 + Poison DMG (3% of target's Max HP). Fog wounds enemy units and increases Poison DMG Taken by 15%
+|
+α：? Poison mist damage +15%
+
+β：? When the poisonous mist causes damage, it deducts 12 points of the enemy's physical strength.
+
+γ：SKL CD -2s
+
+δ: Basic ATK: 25% chance to inflict Chaos for 1s
+|-
+|
+|Reaper's Staff
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|250
+|0.72
+| Basic ATK applies a [Pestilence] stack to the target hero, dealing Poison DMG, lowering their Poison RES by 15, and slowing their SPD by 15 (up to 10 stacks)
+| Fatal Dengue
+| Slows target hero for 5s and spawns 1 pursuing mosquito per second
+|
+α：? Skill duration +2 seconds
+
+β：? [Plague]: Each layer of the effect reduces additional poison resistance by 3 points and movement speed by 3 points.
+
+γ：? Mosquito attack, blood volume increase
+
+δ: ? 【Plague】effect increases the damage caused
+|-
+|
+|Pestilence Seeker
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|/
+|/
+| Equip to gain +10% HP and+50 Poison RES. When casting a weapon skill, consumes 10% of your current HP to spawn corrosive venom for 5s, each second dealing (8% of your Max HP as Poison DMG (CD: 5s)
+|/
+|/
+|
+α：? Passive poison resistance +25
+
+β：? Corrosive Venom adds 15% slowing effect
+
+γ：? Corrosive Venom Range +20
+
+δ: ? Corrosive venom adds 30% serious injury effect, lasting 3 seconds
+|-
+|
+|Mole-rat Slingshot
+|Six stars
+
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|
+|
+|
+|
+|
+|
+α：? Normal attack has a 20% chance of shooting 2 stones.
+
+β：? When the basic attack hits, the skill cooldown will be reduced by an additional 0.1 seconds.
+
+γ：? Basic attack adds knockback effect
+
+δ: ? When the skill hits, it reduces the target's physical resistance by 50 points, lasting 2 seconds.
+|-
+|
+| Royal Shield
+|Six stars
+|[[File:Physical.png|alt=Physical|center|thumb|72x72px]]
+|/
+|/
+|
+|/
+|/
+|
+α：? Fire resistance +50
+
+β：? Ice resistance +50
+
+γ：? Lightning Resistance +50
+
+δ: ? Poison resistance +50
+|-
+|
+|Butterfly Staff
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|
+|
+|
+|
+|
+|
+α：?
+
+β：?
+
+γ：?
+
+δ: ?
+|-
+|
+|Bone Crusher
+|Six stars
+|[[File:Poison.png|alt=Poison|center|thumb|72x72px]]
+|
+|
+|
+|
+|
+|
+α：?
+
+β：?
+
+γ：?
+
+δ: ?
+|}
