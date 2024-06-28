@@ -38,7 +38,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [text, start, end, ending]) {
         const cropped = text.slice(start, end || undefined);
-        return this.success(ending && end && cropped.length > end ? cropped + ending : cropped);
+        return this.success(ending && end && text.length > end ? cropped + ending : cropped);
     },
 });
 //# sourceMappingURL=cropText.js.map
