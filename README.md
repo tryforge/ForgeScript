@@ -28,7 +28,7 @@ ForgeScript is a comprehensive package that empowers you to effortlessly interac
 
 Make sure you have <strong>node.js</strong> installed, and greater than version **v16.11.0**. Once done, run the next command in a folder (from any IDE or terminal):
 ```bash
-npm i https://github.com/tryforge/ForgeScript.git
+npm i npm i https://github.com/tryforge/ForgeScript/tree/main
 ```
 
 </details>
