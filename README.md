@@ -1,7 +1,13 @@
-# ForgeScript
-ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
 
-## Index
+<p align="center"><img src="https://media.discordapp.net/stickers/1185413486138904586.png?size=1024" alt="ForgeScript"></p>
+<h1 align="center">ForgeScript</h1><p align="center">ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
+</p>
+
+<p align="center">
+<a href="https://github.com/tryforge/ForgeScript/"><img src="https://img.shields.io/github/package-json/v/tryforge/ForgeScript/main?label=@tryforge/forgescript&color=5c16d4" alt="@tryforge/forgescript"></a>
+<a href="https://discord.gg/hcJgjzPvqb"><img src="https://img.shields.io/discord/739934735387721768?logo=discord" alt="Discord"></a>
+</p>
+<h2 align="center">Index</h2>
 <strong>
 
 1. [Installation](#installation)
@@ -26,9 +32,16 @@ ForgeScript is a comprehensive package that empowers you to effortlessly interac
 
 </summary>
 
-Make sure you have <strong>node.js</strong> installed, and greater than version **v16.11.0**. Once done, run the next command in a folder (from any IDE or terminal):
+Make sure you have <strong>node.js</strong> installed, and greater than version **v16.11.0**. Once done, run **one** of the next commands in a Terminal (from any IDE or terminal):
 ```bash
 npm i https://github.com/tryforge/ForgeScript.git
+```
+
+```bash
+npm i @tryforge/forgescript
+```
+```bash
+npm i github:tryforge/ForgeScript
 ```
 
 > If installing this repository instead of npm, you must have TypeScript as dependency (`npm i typescript --save-dev`)
@@ -43,12 +56,12 @@ npm i https://github.com/tryforge/ForgeScript.git
 
 </summary>
 
-This section will guide you through initializing a client and loading commands from a folder, as well as logging your bot into discord.
+This section will guide you through initializing a client and loading commands from a folder, as well as logging your into discord bot.
 
 ### Client Initialization
 We will write the following for a basic bot initialization, in a `index.js` file:
 ```js
-const { ForgeClient } = require("forgescript")
+const { ForgeClient } = require("@tryforge/forgescript")
 
 const client = new ForgeClient({
     intents: [
@@ -59,6 +72,7 @@ const client = new ForgeClient({
     events: [
         "messageCreate",
         "ready"
+// ...Any Other Events
     ], // Events our bot will act on
     prefixes: [
         "!",
@@ -66,9 +80,9 @@ const client = new ForgeClient({
     ] // The prefixes to use for our bot!
 })
 
-client.login("token")
+client.login("token") // Replace token with your Discord's Application Token 
 ```
-This will be enough to put our bot on.
+This will be enough to boot up our bot.
 
 ### Registering commands
 Registering commands is the way to go when we want something to happen on certain events.
@@ -99,9 +113,14 @@ The previous way to register commands can fill our index file with a lot of junk
     This is essentially the same as the previous command, but will be loaded from a folder!
 2. Now, let's go back to our index file and write the following after client initialization (Make sure you've erased the code to register a command from index file):
     ```js
-    client.commands.load("./<folder>")
+    // If using prefix only commands then use this
+    client.commands.load("./<folder>");
+    // If Using Application only commands then use this
+    client.applicationCommands.load("./<Slashes_folder>");
+
+    // If using Your bot supports both Prefix and Application commands then use both.
     ```
-    Replace `<folder>` with the folder name you used, and every file residing in the root folder (the tree doesn't matter as long as the file is in the folder) will be loaded into your bot!
+    Replace `<folder>` and `<Slashes_folder>` with the folder names you used, and every file residing in the root folder (the tree doesn't matter as long as the file is in the folder) will be loaded into your bot!
 </details>
 
 <details open>
