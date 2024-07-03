@@ -56,7 +56,7 @@ npm i github:tryforge/ForgeScript
 
 </summary>
 
-This section will guide you through initializing a client and loading commands from a folder, as well as logging your into discord bot.
+This section will guide you through initializing a client and loading commands from a folder, as well as logging you into discord bot.
 
 ### Client Initialization
 We will write the following for a basic bot initialization, in a `index.js` file:
