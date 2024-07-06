@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$pollAnswers",
+    version: "1.5.0",
     brackets: true,
     unwrap: true,
     description: "Adds multiple poll answers",
@@ -18,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [texts]) {
         const ref = ctx.container.poll?.answers;
         for (let i = 0, len = texts.length; i < len; i += 2) {
-            const [text, em] = texts.slice(i, i + 1);
+            const [text, em] = texts.slice(i, i + 2);
             ref.push({
                 text,
                 emoji: em || undefined

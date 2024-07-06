@@ -20,7 +20,7 @@ export default new NativeFunction({
         const ref = (ctx.container.poll?.answers as Array<PollAnswerData>)
         
         for (let i = 0, len = texts.length;i < len;i += 2) {
-            const [ text, em ] = texts.slice(i, i + 1)
+            const [ text, em ] = texts.slice(i, i + 2)
             ref.push({ 
                 text,
                 emoji: em || undefined
