@@ -23,6 +23,7 @@ import {
     MessageReaction,
     MessageReplyOptions,
     ModalBuilder,
+    PollData,
     Presence,
     Role,
     Sticker,
@@ -74,6 +75,7 @@ export class Container {
     public allowedMentions: MessageMentionOptions = {}
     public avatarURL?: string
     public username?: string
+    public poll?: PollData
 
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
@@ -133,7 +135,8 @@ export class Container {
             !!options.components?.length ||
             !!options.attachments?.length ||
             !!this.modal ||
-            !!this.choices.length
+            !!this.choices.length ||
+            !!this.poll
         )
     }
 
@@ -146,6 +149,7 @@ export class Container {
         delete this.content
         delete this.modal
         delete this.reference
+        delete this.poll
         delete this.avatarURL
         delete this.username
 
@@ -172,6 +176,7 @@ export class Container {
                       content,
                   }
                 : {
+                      poll: this.poll,
                       username: this.username,
                       avatarURL: this.avatarURL,
                       allowedMentions:

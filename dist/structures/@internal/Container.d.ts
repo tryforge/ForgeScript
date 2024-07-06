@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, GuildScheduledEvent, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, Presence, Role, Sticker, StickerResolvable, User, VoiceState, WebhookClient } from "discord.js";
+import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, GuildScheduledEvent, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, PollData, Presence, Role, Sticker, StickerResolvable, User, VoiceState, WebhookClient } from "discord.js";
 export type Sendable = {} | Sticker | GuildScheduledEvent | Role | Presence | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite | AutoModerationActionExecution;
 export declare class Container {
     content?: string;
@@ -19,6 +19,7 @@ export declare class Container {
     allowedMentions: MessageMentionOptions;
     avatarURL?: string;
     username?: string;
+    poll?: PollData;
     send<T = unknown>(obj: Sendable, content?: string): Promise<T | null>;
     isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions): boolean;
     embed(index: number): EmbedBuilder;

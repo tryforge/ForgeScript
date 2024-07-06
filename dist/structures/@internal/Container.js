@@ -26,6 +26,7 @@ class Container {
     allowedMentions = {};
     avatarURL;
     username;
+    poll;
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -86,7 +87,8 @@ class Container {
             !!options.components?.length ||
             !!options.attachments?.length ||
             !!this.modal ||
-            !!this.choices.length);
+            !!this.choices.length ||
+            !!this.poll);
     }
     embed(index) {
         return (this.embeds[index] ??= new discord_js_1.EmbedBuilder());
@@ -96,6 +98,7 @@ class Container {
         delete this.content;
         delete this.modal;
         delete this.reference;
+        delete this.poll;
         delete this.avatarURL;
         delete this.username;
         this.followUp = false;
@@ -117,6 +120,7 @@ class Container {
                 content,
             }
             : {
+                poll: this.poll,
                 username: this.username,
                 avatarURL: this.avatarURL,
                 allowedMentions: Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
