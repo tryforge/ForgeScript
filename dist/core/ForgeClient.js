@@ -16,6 +16,7 @@ class ForgeClient extends discord_js_1.Client {
     functions = new managers_1.ForgeFunctionManager(this);
     threading = new managers_1.ThreadManager(this);
     websockets = new Map();
+    globalVariables = {};
     constructor(options) {
         super({
             partials: [

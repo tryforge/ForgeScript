@@ -1,0 +1,1 @@
+{"version":3,"file":"pollAnswerID.js","sourceRoot":"","sources":["../../../src/native/poll/pollAnswerID.ts"],"names":[],"mappings":";;AAAA,iDAAiD;AAEjD,kBAAe,IAAI,2BAAc,CAAC;IAC9B,IAAI,EAAE,eAAe;IACrB,WAAW,EAAE,6DAA6D;IAC1E,MAAM,EAAE,KAAK;IACb,OAAO,CAAC,GAAG;QACP,OAAO,IAAI,CAAC,OAAO,CAAC,GAAG,CAAC,MAAM,EAAE,IAAI,EAAE,GAAG,EAAE,EAAE,CAAC,CAAA;IAClD,CAAC;CACJ,CAAC,CAAA"}

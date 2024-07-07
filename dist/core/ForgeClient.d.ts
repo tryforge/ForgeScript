@@ -72,6 +72,7 @@ export declare class ForgeClient extends Client<true> {
     readonly functions: ForgeFunctionManager;
     readonly threading: ThreadManager;
     readonly websockets: Map<number, WebSocket>;
+    readonly globalVariables: Record<string, string>;
     [x: PropertyKey]: unknown;
     constructor(options: IRawForgeClientOptions);
     getExtension<B extends boolean>(name: string, required?: B): B extends true ? ForgeExtension : ForgeExtension | null;

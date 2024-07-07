@@ -1,4 +1,4 @@
-import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent, Entitlement } from "discord.js";
+import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent, Entitlement, PollAnswer } from "discord.js";
 import { IExtendedCompilationResult } from ".";
 import { Sendable, BaseCommand, Context, Container } from "../structures";
 import { ForgeClient } from "./ForgeClient";
@@ -13,6 +13,7 @@ export interface IStates {
     audit: GuildAuditLogsEntry;
     channel: Channel;
     guild: Guild;
+    poll: PollAnswer;
     entitlement: Entitlement;
     ban: GuildBan;
     scheduledEvent: GuildScheduledEvent;

@@ -117,7 +117,8 @@ export class ForgeClient extends Client<true> {
     public readonly cooldowns = new CooldownManager(this)
     public readonly functions = new ForgeFunctionManager(this)
     public readonly threading = new ThreadManager(this)
-    public readonly websockets = new Map<number, WebSocket>();
+    public readonly websockets = new Map<number, WebSocket>()
+    public readonly globalVariables: Record<string, string> = {};
 
     // eslint-disable-next-line no-undef
     [x: PropertyKey]: unknown
