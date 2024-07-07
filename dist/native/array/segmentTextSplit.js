@@ -6,6 +6,7 @@ exports.SplitTextName = "splits";
 exports.Segmenter = new Intl.Segmenter();
 exports.default = new structures_1.NativeFunction({
     name: "$segmentTextSplit",
+    version: "1.5.0",
     description: "Creates an array on given text using segmenter",
     brackets: true,
     unwrap: true,

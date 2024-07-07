@@ -1,1 +1,1 @@
-{"version":3,"file":"segmentTextSplit.d.ts","sourceRoot":"","sources":["../../../src/native/array/segmentTextSplit.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAClE,eAAO,MAAM,aAAa,UAAoB,CAAA;AAE9C,eAAO,MAAM,SAAS,gBAAuB,CAAA;;;;;;;;AAE7C,wBAkBE"}
+{"version":3,"file":"segmentTextSplit.d.ts","sourceRoot":"","sources":["../../../src/native/array/segmentTextSplit.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAClE,eAAO,MAAM,aAAa,UAAoB,CAAA;AAE9C,eAAO,MAAM,SAAS,gBAAuB,CAAA;;;;;;;;AAE7C,wBAmBE"}

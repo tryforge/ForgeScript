@@ -11,6 +11,7 @@ export enum MessageProperty {
     guildID = "guildID",
     authorID = "authorID",
     timestamp = "timestamp",
+    hasPoll = "hasPoll"
 }
 
 export const MessageProperties = defineProperties<typeof MessageProperty, Message>({
@@ -23,4 +24,5 @@ export const MessageProperties = defineProperties<typeof MessageProperty, Messag
     username: (m) => m?.author?.username,
     authorID: (m) => m?.author?.id,
     timestamp: (m) => m?.createdTimestamp,
+    hasPoll: m => !!m?.poll
 })

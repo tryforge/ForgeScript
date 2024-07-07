@@ -8,7 +8,8 @@ export declare enum MessageProperty {
     channelID = "channelID",
     guildID = "guildID",
     authorID = "authorID",
-    timestamp = "timestamp"
+    timestamp = "timestamp",
+    hasPoll = "hasPoll"
 }
 export declare const MessageProperties: import("../functions/defineProperties").Properties<typeof MessageProperty, Message<boolean>>;
 //# sourceMappingURL=message.d.ts.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"messagePollVoteRemove.d.ts","sourceRoot":"","sources":["../../../src/handlers/events/messagePollVoteRemove.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,mBAAmB,EAAE,MAAM,+CAA+C,CAAA;;AAEnF,wBAwBE"}
+{"version":3,"file":"messagePollVoteRemove.d.ts","sourceRoot":"","sources":["../../../src/handlers/events/messagePollVoteRemove.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,mBAAmB,EAAE,MAAM,+CAA+C,CAAA;;AAEnF,wBAyBE"}
