@@ -280,11 +280,12 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return ctx.client.channels.cache.get(str)
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return ctx.client.channels.fetch(str)
     }
 
-    private resolveTextChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        const ch = ctx.client.channels.cache.get(str)
+    private async resolveTextChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const ch = await this.resolveChannel(ctx, arg, str, ref)
         if (!ch || !("messages" in ch)) return
         return ch
     }

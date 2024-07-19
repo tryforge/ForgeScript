@@ -218,10 +218,12 @@ class CompiledFunction {
         return str === ctx.message?.id ? ctx.message : ch?.messages?.fetch(str).catch(ctx.noop);
     }
     resolveChannel(ctx, arg, str, ref) {
-        return ctx.client.channels.cache.get(str);
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        return ctx.client.channels.fetch(str);
     }
-    resolveTextChannel(ctx, arg, str, ref) {
-        const ch = ctx.client.channels.cache.get(str);
+    async resolveTextChannel(ctx, arg, str, ref) {
+        const ch = await this.resolveChannel(ctx, arg, str, ref);
         if (!ch || !("messages" in ch))
             return;
         return ch;
