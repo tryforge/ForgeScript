@@ -215,7 +215,7 @@ class CompiledFunction {
         if (!CompiledFunction.IdRegex.test(str))
             return;
         const ch = this.resolvePointer(arg, ref, ctx.channel);
-        return str === ctx.message?.id ? ctx.message : ch?.messages?.fetch(str).catch(ctx.noop);
+        return ch?.messages?.fetch(str).catch(ctx.noop);
     }
     resolveChannel(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))

@@ -276,7 +276,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!CompiledFunction.IdRegex.test(str)) return
 
         const ch = this.resolvePointer(arg, ref, ctx.channel) as TextChannel | undefined
-        return str === ctx.message?.id ? ctx.message : ch?.messages?.fetch(str).catch(ctx.noop)
+        return ch?.messages?.fetch(str).catch(ctx.noop)
     }
 
     private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

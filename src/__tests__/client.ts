@@ -43,7 +43,10 @@ console.log("Started")
 
 client.commands.add({
     type: Events.MessageReactionAdd,
-    code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
+    code: `
+    $log[hello]
+    $log[$getEmbeds[$channelID;$messageID]]
+`
 })
 
 client.commands.add({
