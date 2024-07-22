@@ -43,9 +43,8 @@ console.log("Started");
 client.commands.add({
     type: discord_js_1.Events.MessageReactionAdd,
     code: `
-    $log[hello]
-    $log[$getEmbeds[$channelID;$messageID]]
-`
+    $log[$reactionEmoji]
+$deleteUserMessageReaction[$channelID;$messageID;$reactionEmoji;$reactionAuthorID]`
 });
 client.commands.add({
     type: "webhooksUpdate",
