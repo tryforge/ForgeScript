@@ -44,8 +44,7 @@ console.log("Started")
 client.commands.add({
     type: Events.MessageReactionAdd,
     code: `
-    $log[$reactionEmoji]
-$deleteUserMessageReaction[$channelID;$messageID;$reactionEmoji;$reactionAuthorID]`
+$log[$getEmbeds[$channelID;$messageID]]`
 })
 
 client.commands.add({
