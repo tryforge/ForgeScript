@@ -15,7 +15,8 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Channel,
             check: (i) => "setDefaultAutoArchiveDuration" in i,
             description: "The channel to modify",
-            rest: false
+            rest: false,
+            required: true
         },
         {
             name: "duration",

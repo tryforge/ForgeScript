@@ -18,7 +18,8 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Channel,
             check: (i) => i.type === discord_js_1.ChannelType.GuildForum,
             description: "The forum to modify",
-            rest: false
+            rest: false,
+            required: true
         },
         {
             name: "duration",

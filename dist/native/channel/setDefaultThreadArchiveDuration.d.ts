@@ -6,6 +6,7 @@ declare const _default: NativeFunction<[{
     check: (i: BaseChannel) => boolean;
     description: string;
     rest: false;
+    required: true;
 }, {
     name: string;
     description: string;

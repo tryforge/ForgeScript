@@ -18,7 +18,8 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Channel,
             check: (i) => i.isThread(),
             description: "The thread to modify",
-            rest: false
+            rest: false,
+            required: true
         },
         {
             name: "duration",

@@ -17,7 +17,8 @@ export default new NativeFunction({
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.type === ChannelType.GuildForum,
             description: "The forum to modify",
-            rest: false
+            rest: false,
+            required: true
         },
         {
             name: "duration",

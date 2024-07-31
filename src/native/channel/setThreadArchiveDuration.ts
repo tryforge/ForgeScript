@@ -17,7 +17,8 @@ export default new NativeFunction({
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isThread(),
             description: "The thread to modify",
-            rest: false
+            rest: false,
+            required: true
         },
         {
             name: "duration",
