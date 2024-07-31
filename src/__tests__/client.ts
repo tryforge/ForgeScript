@@ -1,6 +1,6 @@
 import { ForgeClient } from "../core"
 import { config } from "dotenv"
-import { ActivityType, Events } from "discord.js"
+import { ActivityType, ApplicationCommandType, Events } from "discord.js"
 import { LogPriority } from "../structures/@internal/Logger"
 import { MyExtension } from "./ext"
 config()

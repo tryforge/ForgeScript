@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$createThread",
@@ -30,13 +31,27 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
             type: structures_1.ArgType.Message,
         },
+        {
+            name: "private",
+            description: "Whether this thread is private",
+            rest: false,
+            type: structures_1.ArgType.Boolean
+        },
+        {
+            name: "reason",
+            description: "Reason for creating thread",
+            rest: false,
+            type: structures_1.ArgType.String
+        }
     ],
-    async execute(ctx, [channel, name, m]) {
+    async execute(ctx, [channel, name, m, priv, reason]) {
         const ch = channel;
         const success = await ch.threads
             .create({
             name,
             startMessage: m ?? undefined,
+            reason: reason ?? undefined,
+            type: priv ? discord_js_1.ChannelType.PrivateThread : discord_js_1.ChannelType.PublicThread
         })
             .catch(ctx.noop);
         return this.success(success ? success.id : undefined);

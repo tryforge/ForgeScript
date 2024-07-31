@@ -1,4 +1,4 @@
-import { BaseChannel, TextChannel } from "discord.js"
+import { BaseChannel, ChannelType, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import noop from "../../functions/noop"
 
@@ -31,14 +31,28 @@ export default new NativeFunction({
             pointer: 0,
             type: ArgType.Message,
         },
+        {
+            name: "private",
+            description: "Whether this thread is private",
+            rest: false,
+            type: ArgType.Boolean
+        },
+        {
+            name: "reason",
+            description: "Reason for creating thread",
+            rest: false,
+            type: ArgType.String
+        }
     ],
-    async execute(ctx, [channel, name, m]) {
+    async execute(ctx, [channel, name, m, priv, reason]) {
         const ch = channel as TextChannel
 
         const success = await ch.threads
             .create({
                 name,
                 startMessage: m ?? undefined,
+                reason: reason ?? undefined,
+                type: priv ? ChannelType.PrivateThread : ChannelType.PublicThread
             })
             .catch(ctx.noop)
 

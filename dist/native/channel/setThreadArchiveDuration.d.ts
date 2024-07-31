@@ -1,28 +1,18 @@
-import { BaseChannel } from "discord.js";
+import { BaseChannel, ThreadAutoArchiveDuration } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
-    description: string;
-    rest: false;
     type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
+    description: string;
+    rest: false;
 }, {
     name: string;
     description: string;
+    type: ArgType.Enum;
+    enum: typeof ThreadAutoArchiveDuration;
     rest: false;
-    type: ArgType.String;
     required: true;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    pointer: number;
-    type: ArgType.Message;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    type: ArgType.Boolean;
 }, {
     name: string;
     description: string;
@@ -30,4 +20,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
 }], true>;
 export default _default;
-//# sourceMappingURL=createThread.d.ts.map
+//# sourceMappingURL=setThreadArchiveDuration.d.ts.map
