@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = default_1;
 function default_1(n, max) {
     const splitTimes = n % max === 0 ? Math.floor(n / max) : Math.floor(n / max) + 1;
     const arr = new Array(splitTimes);
@@ -9,5 +10,4 @@ function default_1(n, max) {
         arr[arr.length - 1] = left;
     return arr;
 }
-exports.default = default_1;
 //# sourceMappingURL=splitNumber.js.map

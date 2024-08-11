@@ -34,7 +34,7 @@ const client = new core_1.ForgeClient({
     useInviteSystem: true,
     prefixes: ["!", "<@$botID>"],
     restrictions: {
-        userIDs: ["1096285761365610576"],
+        userIDs: ["1096285761365610576", "590267498192961540"],
     },
     respondOnEdit: 10000,
     optionalGuildID: true,
@@ -107,7 +107,9 @@ client.commands.add({
 client.commands.add({
     type: discord_js_1.Events.ClientReady,
     code: `$log[Ready on client $username[$botID]]
-    $setStatus[online;Custom;hi bro;hi bro]`,
+    $setStatus[online;Custom;hi bro;hi bro]
+    $optra[tst]
+    $optra[waos;5]`,
 });
 client.commands.add({
     name: "eval",
@@ -135,6 +137,17 @@ client.commands.add({
     $log[Command name: $commandName | Focused option name: $focusedOptionName - $focusedOptionValue]
     $addChoice[tmr;land]
     `,
+});
+client.functions.add({
+    name: "optra",
+    params: ["message", "amount?"],
+    code: `
+        $if[$env[amount]==;
+            $djsEval[console.log("$env[message]".repeat(2))];
+            $djsEval[console.log("$env[message]".repeat(Number($env[amount])))]
+        ]
+        $return[]
+    `
 });
 // eslint-disable-next-line no-undef
 client.login(process.env.TOKEN);

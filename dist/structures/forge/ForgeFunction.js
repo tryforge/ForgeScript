@@ -27,11 +27,11 @@ class ForgeFunction {
             description: "Custom function",
             unwrap: (!!this.data.params?.length && !this.data.firstParamCondition),
             args: this.data.params?.length ? this.data.params.map((x, i) => ({
-                name: x,
+                name: x.slice(0, x.endsWith("?") ? -1 : undefined),
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
                 type: __1.ArgType.String,
-                required: true
+                required: !x.endsWith("?")
             })) : undefined,
             brackets: this.data.params?.length ? true : undefined,
             async execute(ctx, args) {
@@ -58,7 +58,7 @@ class ForgeFunction {
         if (this.data.params.length !== args.length)
             return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${this.data.params.length} arguments, received ${args.length}`));
         for (let i = 0, len = this.data.params.length; i < len; i++) {
-            ctx.setEnvironmentKey(this.data.params[i], args[i]);
+            ctx.setEnvironmentKey(this.data.params[i].slice(0, this.data.params[i].endsWith("?") ? -1 : undefined), args[i] ?? "");
         }
         const result = await core_1.Interpreter.run(ctx.clone({
             doNotSend: true,

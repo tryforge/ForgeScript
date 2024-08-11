@@ -32,11 +32,11 @@ export class ForgeFunction {
             description: "Custom function",
             unwrap: (!!this.data.params?.length && !this.data.firstParamCondition) as any,
             args: this.data.params?.length ? this.data.params!.map((x, i) => ({
-                name: x,
+                name: x.slice(0, x.endsWith("?") ? -1 : undefined),
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
                 type: ArgType.String,
-                required: true
+                required: !x.endsWith("?")
             }) as IArg<ArgType.String>) : undefined,
             brackets: this.data.params?.length ? true : undefined,
             async execute(ctx, args: string[]) {
@@ -74,7 +74,7 @@ export class ForgeFunction {
             )
 
         for (let i = 0, len = this.data.params!.length; i < len; i++) {
-            ctx.setEnvironmentKey(this.data.params![i], args[i])
+            ctx.setEnvironmentKey(this.data.params![i].slice(0, this.data.params![i].endsWith("?") ? -1 : undefined), args[i] ?? "")
         }
 
         const result = await Interpreter.run(ctx.clone({
