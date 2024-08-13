@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
         const arr = ctx.getEnvironmentInstance(Array, variable);
         if (arr !== null) {
             if (other)
-                return this.success(ctx.setEnvironmentKey(other, arr.sort()));
+                ctx.setEnvironmentKey(other, arr.sort());
             else
                 return this.successJSON(arr.sort());
         }

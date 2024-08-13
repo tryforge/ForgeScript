@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr))
-            return this.success(arr.shift());
+            return this.successJSON(arr.shift());
         return this.success();
     },
 });

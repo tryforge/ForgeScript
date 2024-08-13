@@ -5,7 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Deletes the last element of the array and returns it",
     unwrap: true,
-    output: ArgType.Json,
+    output: ArgType.Unknown,
     args: [
         {
             name: "name",
@@ -18,7 +18,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name)
-        if (Array.isArray(arr)) return this.success(arr.pop())
+        if (Array.isArray(arr)) return this.successJSON(arr.pop())
         return this.success()
     },
 })

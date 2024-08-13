@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = recursiveReaddirSync;
 const fs_1 = require("fs");
 const path_1 = require("path");
 function recursiveReaddirSync(path) {
@@ -16,5 +17,4 @@ function recursiveReaddirSync(path) {
     }
     return arr;
 }
-exports.default = recursiveReaddirSync;
 //# sourceMappingURL=recursiveReaddirSync.js.map
