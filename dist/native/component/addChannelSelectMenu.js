@@ -38,12 +38,18 @@ exports.default = new structures_1.NativeFunction({
             name: "disabled",
             description: "Whether the menu is disabled by default",
             rest: false,
-            required: false,
             type: structures_1.ArgType.Boolean
+        },
+        {
+            name: "default channels",
+            rest: true,
+            type: structures_1.ArgType.String,
+            description: "The default selected channels to use"
         }
     ],
-    execute(ctx, [id, placeholder, min, max, disabled]) {
+    execute(ctx, [id, placeholder, min, max, disabled, channels]) {
         const menu = new discord_js_1.ChannelSelectMenuBuilder()
+            .setDefaultChannels(channels)
             .setDisabled(disabled ?? false)
             .setCustomId(id);
         if (placeholder)

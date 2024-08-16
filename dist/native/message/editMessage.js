@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$editMessage",
     version: "1.0.0",
-    description: "Edits a message in a channel",
+    description: "Edits a message in a channel, returns bool",
     unwrap: true,
     output: structures_1.ArgType.Boolean,
     args: [

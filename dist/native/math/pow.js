@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$pow",
     version: "1.0.0",
+    aliases: ["$power"],
     description: "Exponentially multiply multiple numbers",
     brackets: true,
     unwrap: true,

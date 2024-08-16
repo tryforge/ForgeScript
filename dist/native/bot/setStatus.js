@@ -58,7 +58,7 @@ exports.default = new structures_1.NativeFunction({
                     url: url || undefined,
                 },
             ],
-            status: status,
+            status: status.toLowerCase(),
         });
         return this.success();
     },

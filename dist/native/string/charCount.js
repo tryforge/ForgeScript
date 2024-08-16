@@ -17,9 +17,20 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
             required: true,
         },
+        {
+            name: "char",
+            description: "The character to count in the text",
+            rest: false,
+            type: structures_1.ArgType.String
+        }
     ],
-    execute(ctx, [str]) {
-        return this.success(str.length);
+    execute(ctx, [str, char]) {
+        if (char === null) {
+            return this.success(str.length);
+        }
+        else {
+            return this.success(str.split(char).length - 1);
+        }
     },
 });
 //# sourceMappingURL=charCount.js.map

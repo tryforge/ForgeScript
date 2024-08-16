@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$trim",
     version: "1.0.6",
+    aliases: ["$trimSpace"],
     description: "Trims a string",
     brackets: true,
     unwrap: true,
