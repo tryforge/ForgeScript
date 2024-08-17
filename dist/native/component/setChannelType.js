@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$addChannelType",
-    version: "1.4.0",
-    aliases: ["$addChannelTypes"],
-    description: "Adds channel types to the last select menu",
+    name: "$setChannelType",
+    version: "1.5.0",
+    aliases: ["$setChannelTypes"],
+    description: "Sets channel types for the last select menu",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "types",
-            description: "The channel types to add",
+            description: "The channel types to set",
             rest: true,
             enum: discord_js_1.ChannelType,
             required: true,
@@ -22,9 +22,9 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [types]) {
         const menu = ctx.container.components.at(-1)?.components.at(0);
         if (menu instanceof discord_js_1.ChannelSelectMenuBuilder) {
-            menu.addChannelTypes(types);
+            menu.setChannelTypes(types);
         }
         return this.success();
     },
 });
-//# sourceMappingURL=addChannelType.js.map
+//# sourceMappingURL=setChannelType.js.map
