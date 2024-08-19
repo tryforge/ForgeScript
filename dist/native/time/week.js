@@ -6,9 +6,8 @@ function getWeekOfMonth(date) {
     return Math.floor((day - 1) / 7);
 }
 exports.default = new structures_1.NativeFunction({
-    name: "$day",
-    version: "1.2.0",
-    description: "Returns current day",
+    name: "$week",
+    description: "Returns current week of month",
     unwrap: true,
     output: structures_1.ArgType.Number,
     execute: function () {

@@ -6,9 +6,9 @@ function getWeekOfMonth(date: Date) {
 }
 
 export default new NativeFunction({
-    name: "$day",
-    version: "1.2.0",
-    description: "Returns current day",
+    name: "$week",
+    version: "1.5.0",
+    description: "Returns current week of month",
     unwrap: true,
     output: ArgType.Number,
     execute: function() {
