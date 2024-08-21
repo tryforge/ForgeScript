@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.encrypt = void 0;
+exports.encrypt = encrypt;
 const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 /**
@@ -16,9 +16,9 @@ function encrypt(text, encryptionKey) {
     encrypted += cipher.final("hex");
     return iv.toString("hex") + ":" + encrypted;
 }
-exports.encrypt = encrypt;
 exports.default = new structures_1.NativeFunction({
     name: "$encrypt",
+    version: "1.5.0",
     description: "Encrypts given text with a key",
     brackets: true,
     output: structures_1.ArgType.String,

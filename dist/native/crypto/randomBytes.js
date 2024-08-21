@@ -4,6 +4,7 @@ const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$randomBytes",
+    version: "1.5.0",
     description: "Generates a string of random bytes, in hex",
     brackets: true,
     output: structures_1.ArgType.String,

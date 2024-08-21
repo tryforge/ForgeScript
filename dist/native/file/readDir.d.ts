@@ -1,26 +1,20 @@
 import { ArgType, NativeFunction } from "../../structures";
-export declare enum CustomStatusType {
-    state = "state",
-    emoji = "emoji"
-}
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
-    required: true;
     rest: false;
-    type: ArgType.Guild;
-}, {
-    name: string;
-    description: string;
     required: true;
-    rest: false;
-    type: ArgType.User;
+    type: ArgType.String;
 }, {
     name: string;
     description: string;
     rest: false;
-    type: ArgType.Enum;
-    enum: typeof CustomStatusType;
+    type: ArgType.String;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.String;
 }], true>;
 export default _default;
-//# sourceMappingURL=userCustomStatus.d.ts.map
+//# sourceMappingURL=readDir.d.ts.map

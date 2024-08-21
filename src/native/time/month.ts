@@ -7,6 +7,6 @@ export default new NativeFunction({
     unwrap: true,
     output: ArgType.Number,
     execute: function() {
-        return this.success(new Date().getMonth())
+        return this.success(new Date().getMonth() + 1)
     }
 })

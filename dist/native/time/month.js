@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     output: structures_1.ArgType.Number,
     execute: function () {
-        return this.success(new Date().getMonth());
+        return this.success(new Date().getMonth() + 1);
     }
 });
 //# sourceMappingURL=month.js.map
