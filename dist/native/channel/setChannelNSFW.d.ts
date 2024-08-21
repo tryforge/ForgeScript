@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is BaseChannel & Record<"setNSFW", unknown>;
     type: ArgType.Channel;
     required: true;
 }, {

@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$repeat",
     version: "1.1.0",
+    aliases: ["$repeatText"],
     description: "Repeats given text for x times",
     brackets: true,
     unwrap: true,

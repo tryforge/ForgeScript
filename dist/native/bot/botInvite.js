@@ -23,8 +23,8 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.URL,
     execute(ctx, [perms]) {
         return this.success(ctx.client.generateInvite({
-            scopes: [discord_js_1.OAuth2Scopes.Bot],
-            permissions: perms || ["Administrator"],
+            scopes: ctx.client.application.installParams?.scopes || [discord_js_1.OAuth2Scopes.Bot],
+            permissions: perms || ctx.client.application.installParams?.permissions,
         }));
     },
 });

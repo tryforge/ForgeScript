@@ -1,27 +1,29 @@
-import { BaseSelectMenuBuilder, ChannelSelectMenuBuilder, ChannelType } from "discord.js"
+import { ChannelSelectMenuBuilder, ChannelType } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 import { MentionableSelectMenuBuilder, RoleSelectMenuBuilder } from "@discordjs/builders"
 
 export default new NativeFunction({
     name: "$addChannelType",
     version: "1.4.0",
-    description: "Adds a channel type to the last select menu",
+    aliases: ["$addChannelTypes"],
+    description: "Adds channel types to the last select menu",
     unwrap: true,
     brackets: true,
     args: [
         {
-            name: "type",
-            description: "The channel type",
-            rest: false,
+            name: "types",
+            description: "The channel types to add",
+            rest: true,
             enum: ChannelType,
             required: true,
             type: ArgType.Enum
         }
     ],
-    execute(ctx, [ type ]) {
-        const menu = ctx.container.components.at(-1)
-        if (menu instanceof ChannelSelectMenuBuilder)
-            menu.addChannelTypes(type)
+    execute(ctx, [ types ]) {
+        const menu = ctx.container.components.at(-1)?.components.at(0)
+        if (menu instanceof ChannelSelectMenuBuilder) {
+            menu.addChannelTypes(types)
+        }
 
         return this.success()
     },

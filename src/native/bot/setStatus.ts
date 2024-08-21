@@ -57,7 +57,7 @@ export default new NativeFunction({
                     url: url || undefined,
                 },
             ],
-            status: status as PresenceStatusData,
+            status: status.toLowerCase() as PresenceStatusData,
         })
         return this.success()
     },

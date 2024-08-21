@@ -5,23 +5,25 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$addChannelType",
     version: "1.4.0",
-    description: "Adds a channel type to the last select menu",
+    aliases: ["$addChannelTypes"],
+    description: "Adds channel types to the last select menu",
     unwrap: true,
     brackets: true,
     args: [
         {
-            name: "type",
-            description: "The channel type",
-            rest: false,
+            name: "types",
+            description: "The channel types to add",
+            rest: true,
             enum: discord_js_1.ChannelType,
             required: true,
             type: structures_1.ArgType.Enum
         }
     ],
-    execute(ctx, [type]) {
-        const menu = ctx.container.components.at(-1);
-        if (menu instanceof discord_js_1.ChannelSelectMenuBuilder)
-            menu.addChannelTypes(type);
+    execute(ctx, [types]) {
+        const menu = ctx.container.components.at(-1)?.components.at(0);
+        if (menu instanceof discord_js_1.ChannelSelectMenuBuilder) {
+            menu.addChannelTypes(types);
+        }
         return this.success();
     },
 });

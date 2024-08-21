@@ -9,23 +9,23 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Boolean,
     args: [
         {
-            name: "str",
+            name: "string",
             description: "The string to check against",
             type: structures_1.ArgType.String,
             rest: false,
             required: true,
         },
         {
-            name: "value",
+            name: "values",
             required: true,
-            description: "The value to match at the end",
-            rest: false,
+            description: "The values to match at the end",
+            rest: true,
             type: structures_1.ArgType.String,
         },
     ],
     brackets: true,
-    execute(ctx, [str, match]) {
-        return this.success(str.endsWith(match));
+    execute(ctx, [str, values]) {
+        return this.success(values.some(match => str.endsWith(match)));
     },
 });
 //# sourceMappingURL=endsWith.js.map

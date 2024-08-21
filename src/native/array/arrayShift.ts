@@ -18,7 +18,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name)
-        if (Array.isArray(arr)) return this.success(arr.shift())
+        if (Array.isArray(arr)) return this.successJSON(arr.shift())
         return this.success()
     },
 })

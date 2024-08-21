@@ -24,8 +24,12 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    required: false;
     type: ArgType.Boolean;
+}, {
+    name: string;
+    rest: true;
+    type: ArgType.String;
+    description: string;
 }], true>;
 export default _default;
 //# sourceMappingURL=addChannelSelectMenu.d.ts.map

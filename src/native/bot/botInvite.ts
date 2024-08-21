@@ -1,4 +1,4 @@
-import { OAuth2Scopes, PermissionFlagsBits, PermissionsString } from "discord.js"
+import { OAuth2Scopes, PermissionFlagsBits, PermissionsBitField, PermissionsString } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -23,8 +23,8 @@ export default new NativeFunction({
     execute(ctx, [perms]) {
         return this.success(
             ctx.client.generateInvite({
-                scopes: [OAuth2Scopes.Bot],
-                permissions: (perms as PermissionsString[]) || ["Administrator"],
+                scopes: ctx.client.application.installParams?.scopes as OAuth2Scopes[] || [OAuth2Scopes.Bot],
+                permissions: perms as PermissionsString[] || ctx.client.application.installParams?.permissions,
             })
         )
     },

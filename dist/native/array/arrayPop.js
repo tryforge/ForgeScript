@@ -6,7 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Deletes the last element of the array and returns it",
     unwrap: true,
-    output: structures_1.ArgType.Json,
+    output: structures_1.ArgType.Unknown,
     args: [
         {
             name: "name",
@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name);
         if (Array.isArray(arr))
-            return this.success(arr.pop());
+            return this.successJSON(arr.pop());
         return this.success();
     },
 });

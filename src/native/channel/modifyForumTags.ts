@@ -5,7 +5,8 @@ import noop from "../../functions/noop"
 export default new NativeFunction({
     name: "$modifyForumTags",
     version: "1.5.0",
-    description: "Modifiers a forum's tags, returns bool",
+    aliases: ["$modifyPostTags"],
+    description: "Modifies tags of a forum post, returns bool",
     unwrap: true,
     output: ArgType.Boolean,
     args: [
@@ -15,7 +16,13 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isThread(),
-            description: "The forum to edit tags on",
+            description: "The post to edit tags on",
+        },
+        {
+            name: "reason",
+            description: "The reason for modifying post tags",
+            rest: false,
+            type: ArgType.String,
         },
         {
             name: "tags",
@@ -23,12 +30,12 @@ export default new NativeFunction({
             rest: true,
             required: true,
             type: ArgType.String,
-        },
+        }
     ],
     brackets: true,
-    async execute(ctx, [channel, tags]) {
-        const forum = channel as ThreadChannel
-
-        return this.success(!!(await forum.setAppliedTags(tags).catch(ctx.noop)))
+    async execute(ctx, [ channel, reason, tags ]) {
+        const post = channel as ThreadChannel
+        
+        return this.success(!!(await post.setAppliedTags([...new Set(post.appliedTags.filter(tag => !tags.includes(tag)).concat(tags.filter(tag => !post.appliedTags.includes(tag))))], reason || undefined).catch(ctx.noop)))
     },
 })

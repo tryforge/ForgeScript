@@ -8,22 +8,22 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     args: [
         {
-            name: "str",
+            name: "string",
             description: "The string to check against",
             type: ArgType.String,
             rest: false,
             required: true,
         },
         {
-            name: "value",
+            name: "values",
             required: true,
-            description: "The value to match at the end",
-            rest: false,
+            description: "The values to match at the end",
+            rest: true,
             type: ArgType.String,
         },
     ],
     brackets: true,
-    execute(ctx, [str, match]) {
-        return this.success(str.endsWith(match))
+    execute(ctx, [str, values]) {
+        return this.success(values.some(match => str.endsWith(match)))
     },
 })

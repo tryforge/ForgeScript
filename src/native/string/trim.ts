@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$trim",
     version: "1.0.6",
+    aliases: ["$trimSpace"],
     description: "Trims a string",
     brackets: true,
     unwrap: true,

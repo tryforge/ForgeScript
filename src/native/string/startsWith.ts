@@ -1,3 +1,4 @@
+import { startsWith } from "lodash"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,22 +9,22 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     args: [
         {
-            name: "str",
+            name: "string",
             description: "The string to check against",
             type: ArgType.String,
             rest: false,
             required: true,
         },
         {
-            name: "value",
+            name: "values",
             required: true,
-            description: "The value to match at the start",
-            rest: false,
+            description: "The values to match at the start",
+            rest: true,
             type: ArgType.String,
         },
     ],
     brackets: true,
-    execute(ctx, [str, match]) {
-        return this.success(str.startsWith(match))
+    execute(ctx, [str, values]) {
+        return this.success(values.some(match => str.startsWith(match)))
     },
 })

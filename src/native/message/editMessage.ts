@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$editMessage",
     version: "1.0.0",
-    description: "Edits a message in a channel",
+    description: "Edits a message in a channel, returns bool",
     unwrap: true,
     output: ArgType.Boolean,
     args: [

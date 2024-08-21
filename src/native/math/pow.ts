@@ -3,6 +3,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$pow",
     version: "1.0.0",
+    aliases: ["$power"],
     description: "Exponentially multiply multiple numbers",
     brackets: true,
     unwrap: true,
