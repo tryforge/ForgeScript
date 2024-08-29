@@ -1,4 +1,3 @@
-import { GuildMember } from "discord.js";
 export declare enum MemberProperty {
     nickname = "nickname",
     displayName = "displayName",

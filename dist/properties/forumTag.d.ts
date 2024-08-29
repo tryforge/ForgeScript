@@ -1,4 +1,3 @@
-import { GuildForumTag } from "discord.js";
 export declare enum ForumTagProperty {
     emoji = "emoji",
     id = "id",

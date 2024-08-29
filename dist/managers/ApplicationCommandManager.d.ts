@@ -1,4 +1,4 @@
-import { ApplicationCommandDataResolvable, Collection, CommandInteraction, ContextMenuCommandBuilder, Guild, Interaction, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
+import { ApplicationCommandDataResolvable, CommandInteraction, ContextMenuCommandBuilder, Guild, Interaction, RESTPostAPIChatInputApplicationCommandsJSONBody, RESTPostAPIContextMenuApplicationCommandsJSONBody, SlashCommandBuilder } from "discord.js";
 import { ApplicationCommand } from "../structures/base/ApplicationCommand";
 import { ForgeClient } from "../core";
 export declare enum RegistrationType {
@@ -43,9 +43,7 @@ export declare class ApplicationCommandManager {
     private validate;
     resolve(value: ApplicationCommand | IApplicationCommandData, path: string | null): ApplicationCommand;
     toJSON(type: Parameters<ApplicationCommand["mustRegisterAs"]>[0]): ApplicationCommandDataResolvable[];
-    registerGlobal(): Promise<Collection<string, import("discord.js").ApplicationCommand<{
-        guild: import("discord.js").GuildResolvable;
-    }>>> | undefined;
-    registerGuild(g: Guild): Promise<Collection<string, import("discord.js").ApplicationCommand<{}>>> | undefined;
+    registerGlobal(): any;
+    registerGuild(g: Guild): any;
 }
 //# sourceMappingURL=ApplicationCommandManager.d.ts.map

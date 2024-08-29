@@ -1,4 +1,3 @@
-import { Entitlement } from "discord.js";
 export declare enum EntitlementProperty {
     userID = "userID",
     consumed = "consumed",

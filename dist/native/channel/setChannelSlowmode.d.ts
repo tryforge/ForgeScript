@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    check: (i: BaseChannel) => i is BaseChannel & Record<"setRateLimitPerUser", unknown>;
+    check: (i: BaseChannel) => boolean;
     type: ArgType.Channel;
     required: true;
 }, {

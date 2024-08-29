@@ -1,11 +1,5 @@
 import { ArgType, NativeFunction } from "../../structures";
-/**
- * Provided to FS by baby lynn
- * @param text
- * @param encryptionKey
- * @returns
- */
-export declare function encrypt(text: string, encryptionKey: string): string;
+export declare function encrypt(text: string, key: string): string;
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
