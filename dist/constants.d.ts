@@ -1,3 +1,2 @@
-import Parser from "ms-utility";
-export declare const TimeParser: Parser;
+export declare const TimeParser: any;
 //# sourceMappingURL=constants.d.ts.map

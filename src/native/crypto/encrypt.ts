@@ -1,19 +1,26 @@
-import { createCipheriv, randomBytes } from "crypto"
+import { createCipheriv, createDecipheriv, scryptSync } from 'crypto';
 import { ArgType, NativeFunction } from "../../structures"
 
 /**
- * Provided to FS by baby lynn
- * @param text 
- * @param encryptionKey 
- * @returns 
+ * Provided to FS by lynnux
+ * @param text
+ * @param encryptionKey
+ * @returns
  */
-export function encrypt(text: string, encryptionKey: string) {
-    const iv = randomBytes(16)
-    const cipher = createCipheriv("aes-256-cbc", Buffer.from(encryptionKey, "hex"), iv)
-    let encrypted = cipher.update(text, "utf-8", "hex")
-    encrypted += cipher.final("hex")
-    return iv.toString("hex") + ":" + encrypted
+
+const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+
+function deriveKey(key: string): Buffer {
+    return scryptSync(key, 'salt', 32);
 }
+export function encrypt(text: string, key: string): string {
+    const idkhowtocallthis = deriveKey(key);
+    const cipher = createCipheriv('aes-256-cbc', idkhowtocallthis, FIXED_IV);
+    let encrypted = cipher.update(text, 'utf-8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+}
+
 
 export default new NativeFunction({
     name: "$encrypt",

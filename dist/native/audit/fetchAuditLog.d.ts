@@ -1,4 +1,3 @@
-import { AuditLogEvent } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 import { AuditProperty } from "../../properties/audit";
 declare const _default: NativeFunction<[{
@@ -13,7 +12,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Enum;
-    enum: typeof AuditLogEvent;
+    enum: any;
 }, {
     name: string;
     description: string;

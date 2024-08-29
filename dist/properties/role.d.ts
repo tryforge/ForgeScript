@@ -1,4 +1,3 @@
-import { Role } from "discord.js";
 export declare enum RoleProperty {
     timestamp = "timestamp",
     id = "id",

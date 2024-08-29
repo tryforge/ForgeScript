@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.decrypt = decrypt;
 const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 /**
- * Provided to FS by baby lynn
+ * Provided to FS by lynnux
  */
-function decrypt(encryptedText, encryptionKey) {
-    const textParts = encryptedText.split(":");
-    // @ts-ignore
-    const iv = Buffer.from(textParts.shift(), "hex");
-    const encrypted = Buffer.from(textParts.join(":"), "hex");
-    const decipher = (0, crypto_1.createDecipheriv)("aes-256-cbc", Buffer.from(encryptionKey, "hex"), iv);
-    // @ts-ignore
-    let decrypted = decipher.update(encrypted, "hex", "utf-8");
-    // @ts-ignore
-    decrypted += decipher.final("utf-8");
+const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+function deriveKey(key) {
+    return (0, crypto_1.scryptSync)(key, 'salt', 32);
+}
+function decrypt(text, key) {
+    const idkhowtocallthis = deriveKey(key);
+    const decipher = (0, crypto_1.createDecipheriv)('aes-256-cbc', idkhowtocallthis, FIXED_IV);
+    let decrypted = decipher.update(text, 'hex', 'utf-8');
+    decrypted += decipher.final('utf-8');
     return decrypted;
 }
 exports.default = new structures_1.NativeFunction({

@@ -4,9 +4,9 @@ export declare class ApplicationCommand {
     readonly options: IApplicationCommandData;
     compiled: IExtendedCompilationResult;
     constructor(options: IApplicationCommandData);
-    get name(): string;
+    get name(): any;
     get registrationType(): RegistrationType;
     mustRegisterAs(type: Exclude<RegistrationType, RegistrationType.All>): boolean;
-    toJSON(): import("discord.js").RESTPostAPIChatInputApplicationCommandsJSONBody | import("discord.js").RESTPostAPIContextMenuApplicationCommandsJSONBody;
+    toJSON(): any;
 }
 //# sourceMappingURL=ApplicationCommand.d.ts.map

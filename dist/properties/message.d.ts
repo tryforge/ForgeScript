@@ -1,4 +1,3 @@
-import { Message } from "discord.js";
 export declare enum MessageProperty {
     id = "id",
     content = "content",
@@ -11,5 +10,5 @@ export declare enum MessageProperty {
     timestamp = "timestamp",
     hasPoll = "hasPoll"
 }
-export declare const MessageProperties: import("../functions/defineProperties").Properties<typeof MessageProperty, Message<boolean>>;
+export declare const MessageProperties: import("../functions/defineProperties").Properties<typeof MessageProperty, Message>;
 //# sourceMappingURL=message.d.ts.map

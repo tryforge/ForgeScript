@@ -1,4 +1,3 @@
-import { ButtonStyle } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
@@ -15,7 +14,7 @@ declare const _default: NativeFunction<[{
 }, {
     name: string;
     description: string;
-    enum: typeof ButtonStyle;
+    enum: any;
     type: ArgType.Enum;
     required: true;
     rest: false;

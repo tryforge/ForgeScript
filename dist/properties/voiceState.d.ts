@@ -1,4 +1,3 @@
-import { VoiceState } from "discord.js";
 export declare enum VoiceStateProperty {
     channelID = "channelID",
     guildID = "guildID",

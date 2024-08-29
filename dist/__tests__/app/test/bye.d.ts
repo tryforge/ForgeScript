@@ -1,4 +1,3 @@
-import { ApplicationCommandOptionType } from "discord.js";
 declare const _default: {
     code: string;
     data: {
@@ -7,7 +6,7 @@ declare const _default: {
         options: {
             name: string;
             description: string;
-            type: ApplicationCommandOptionType;
+            type: any;
             required: boolean;
         }[];
     };

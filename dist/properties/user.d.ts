@@ -1,4 +1,3 @@
-import { User } from "discord.js";
 export declare enum UserProperty {
     id = "id",
     username = "username",

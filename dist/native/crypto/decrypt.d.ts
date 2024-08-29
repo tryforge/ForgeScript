@@ -1,4 +1,5 @@
 import { ArgType, NativeFunction } from "../../structures";
+export declare function decrypt(text: string, key: string): string;
 declare const _default: NativeFunction<[{
     name: string;
     description: string;

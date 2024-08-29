@@ -1,13 +1,12 @@
-import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 declare const _default: {
     data: {
         name: string;
         description: string;
-        type: ApplicationCommandType;
+        type: any;
         options: {
             name: string;
             autocomplete: boolean;
-            type: ApplicationCommandOptionType;
+            type: any;
             required: boolean;
             description: string;
         }[];

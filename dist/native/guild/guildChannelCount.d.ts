@@ -1,4 +1,3 @@
-import { ChannelType } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
@@ -11,7 +10,7 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: true;
     required: true;
-    enum: typeof ChannelType;
+    enum: any;
     type: ArgType.Enum;
 }], true>;
 export default _default;
