@@ -17,6 +17,26 @@ export interface IHttpOptions {
     headers: Record<string, string>;
     method: string;
 }
+export declare enum CalendarType {
+    Buddhist = "buddhist",
+    Chinese = "chinese",
+    Coptic = "coptic",
+    Dangi = "dangi",
+    Ethioaa = "ethioaa",
+    Ethiopic = "ethiopic",
+    Gregory = "gregory",
+    Hebrew = "hebrew",
+    Indian = "indian",
+    Islamic = "islamic",
+    IslamicUmalqura = "islamic-umalqura",
+    IslamicTbla = "islamic-tbla",
+    IslamicCivil = "islamic-civil",
+    IslamicRgsa = "islamic-rgsa",
+    Iso8601 = "iso8601",
+    Japanese = "japanese",
+    Persian = "persian",
+    Roc = "roc"
+}
 export type ClassType = new (...args: any[]) => any;
 export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
 export type FilterProperties<T> = {
@@ -42,6 +62,8 @@ export declare class Context {
     [props: PropertyKey]: unknown;
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
+    timezone: string;
+    calendar?: CalendarType;
     container: Container;
     constructor(runtime: IRunnable);
     get client(): import("../..").ForgeClient;

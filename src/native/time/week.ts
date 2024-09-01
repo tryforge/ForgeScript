@@ -11,7 +11,7 @@ export default new NativeFunction({
     description: "Returns current week of month",
     unwrap: true,
     output: ArgType.Number,
-    execute: function() {
-        return this.success(getWeekOfMonth(new Date()))
+    execute: async function(ctx) {
+        return this.success(getWeekOfMonth(new Date(new Date().toLocaleString("en-US", { timeZone: ctx.timezone, calendar: ctx.calendar }))))
     }
 })

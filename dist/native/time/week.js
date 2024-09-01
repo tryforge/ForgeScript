@@ -11,8 +11,8 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns current week of month",
     unwrap: true,
     output: structures_1.ArgType.Number,
-    execute: function () {
-        return this.success(getWeekOfMonth(new Date()));
+    execute: async function (ctx) {
+        return this.success(getWeekOfMonth(new Date(new Date().toLocaleString("en-US", { timeZone: ctx.timezone, calendar: ctx.calendar }))));
     }
 });
 //# sourceMappingURL=week.js.map

@@ -1,8 +1,5 @@
+import { CalendarType } from "../../structures";
 import { ArgType, NativeFunction } from "../../structures";
-export declare enum CalendarType {
-    Day = 0,
-    Week = 1
-}
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
@@ -12,4 +9,4 @@ declare const _default: NativeFunction<[{
     required: true;
 }], true>;
 export default _default;
-//# sourceMappingURL=calendar.d.ts.map
+//# sourceMappingURL=setCalendar.d.ts.map
