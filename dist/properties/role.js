@@ -9,8 +9,11 @@ var RoleProperty;
 (function (RoleProperty) {
     RoleProperty["timestamp"] = "timestamp";
     RoleProperty["id"] = "id";
+    RoleProperty["name"] = "name";
+    RoleProperty["icon"] = "icon";
     RoleProperty["color"] = "color";
     RoleProperty["hoisted"] = "hoisted";
+    RoleProperty["managed"] = "managed";
     RoleProperty["mentionable"] = "mentionable";
     RoleProperty["rawPosition"] = "rawPosition";
     RoleProperty["position"] = "position";
@@ -21,8 +24,11 @@ var RoleProperty;
 exports.RoleProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.createdTimestamp,
     id: (i) => i?.id,
+    name: (i) => i?.name,
+    icon: (i) => i?.icon,
     color: (i) => i?.hexColor,
     hoisted: (i) => i?.hoist,
+    managed: (i) => i?.managed,
     members: (i, sep) => i?.members.map((x) => x.id).join(sep || ", "),
     mentionable: (i) => i?.mentionable,
     position: (i) => i?.position,

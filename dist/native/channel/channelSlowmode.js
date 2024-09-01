@@ -15,12 +15,12 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased()
+            check: (i) => "rateLimitPerUser" in i,
         },
     ],
     execute(ctx, [ch]) {
-        const channel = (ch ?? ctx.channel);
-        return this.successJSON(channel?.rateLimitPerUser);
+        const chan = ch ?? ctx.channel;
+        return this.success("rateLimitPerUser" in chan ? chan.rateLimitPerUser : 0);
     },
 });
 //# sourceMappingURL=channelSlowmode.js.map

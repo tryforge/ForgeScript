@@ -2,8 +2,11 @@ import { Role } from "discord.js";
 export declare enum RoleProperty {
     timestamp = "timestamp",
     id = "id",
+    name = "name",
+    icon = "icon",
     color = "color",
     hoisted = "hoisted",
+    managed = "managed",
     mentionable = "mentionable",
     rawPosition = "rawPosition",
     position = "position",

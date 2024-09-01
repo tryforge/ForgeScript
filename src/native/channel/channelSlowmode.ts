@@ -1,4 +1,4 @@
-import { BaseChannel, TextChannel } from "discord.js"
+import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -15,12 +15,11 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased()
+            check: (i: BaseChannel) => "rateLimitPerUser" in i,
         },
     ],
     execute(ctx, [ch]) {
-        const channel = (ch ?? ctx.channel) as TextChannel | undefined
-
-        return this.successJSON(channel?.rateLimitPerUser)
+        const chan = ch ?? ctx.channel
+        return this.success("rateLimitPerUser" in chan ? chan.rateLimitPerUser : 0)
     },
 })
