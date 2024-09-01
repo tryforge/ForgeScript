@@ -12,10 +12,10 @@ export declare abstract class BaseCommandManager<T> extends TypedEmitter<IComman
     constructor(client: ForgeClient);
     refresh(): void;
     load(path: string): void;
-    get count(): any;
+    get count(): number;
     get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[];
     add(...commands: (IBaseCommand<T> | BaseCommand<T>)[]): void;
     private addPath;
-    toArray(): unknown[];
+    toArray(): BaseCommand<T>[];
 }
 //# sourceMappingURL=BaseCommandManager.d.ts.map

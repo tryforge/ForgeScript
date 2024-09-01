@@ -9,7 +9,15 @@ declare const _default: NativeFunction<[{
     name: string;
     rest: false;
     required: true;
-    enum: any;
+    enum: {
+        readonly ShortTime: "t";
+        readonly LongTime: "T";
+        readonly ShortDate: "d";
+        readonly LongDate: "D";
+        readonly ShortDateTime: "f";
+        readonly LongDateTime: "F";
+        readonly RelativeTime: "R";
+    };
     type: ArgType.Enum;
     description: string;
 }], true>;

@@ -1,4 +1,3 @@
-import { ClientEvents } from "discord.js";
 import { type ForgeClient } from "../core/ForgeClient";
 import { BaseEventHandler } from "../structures";
 export declare const NativeEventName = "native";
@@ -15,8 +14,8 @@ export declare class EventManager {
         description: string;
         listener: (this: ForgeClient, ...args: unknown[]) => Promise<void> | void;
         version?: string;
-        intents?: ClientEvents[];
+        intents?: import("discord.js").GatewayIntentsString[];
     }[];
-    has(handler: string, type: any): any;
+    has(handler: string, type: any): boolean;
 }
 //# sourceMappingURL=EventManager.d.ts.map

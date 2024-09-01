@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     name: string;
     rest: false;
     description: string;
-    check: (i: BaseChannel) => any;
+    check: (i: BaseChannel) => i is import("discord.js").DMChannel | import("discord.js").NewsChannel | import("discord.js").StageChannel | import("discord.js").TextChannel | import("discord.js").PrivateThreadChannel | import("discord.js").PublicThreadChannel<boolean> | import("discord.js").VoiceChannel;
     required: true;
     type: ArgType.Channel;
 }, {

@@ -1,3 +1,4 @@
+import { PollAnswer } from "discord.js";
 export declare enum PollAnswerProperty {
     text = "text",
     voteCount = "voteCount",

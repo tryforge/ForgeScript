@@ -1,3 +1,4 @@
+import { Guild } from "discord.js";
 export declare enum GuildProperty {
     id = "id",
     ownerID = "ownerID",

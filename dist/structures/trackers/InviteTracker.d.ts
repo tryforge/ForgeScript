@@ -1,4 +1,4 @@
-import { ClientEvents, GatewayIntentsString, Guild, GuildMember, Invite, PartialGuildMember } from "discord.js";
+import { ClientEvents, Collection, GatewayIntentsString, Guild, GuildMember, Invite, PartialGuildMember } from "discord.js";
 import { ForgeClient } from "../../core";
 export interface IGuildInviter {
     inviterId: string;
@@ -10,15 +10,15 @@ export interface IGuildInvite {
     code: string;
 }
 export declare class InviteTracker {
-    static readonly Invites: any;
+    static readonly Invites: Collection<string, IGuildInvite[]>;
     static readonly RequiredIntents: GatewayIntentsString[];
     static readonly RequiredEvents: (keyof ClientEvents)[];
     /**
      * Guild => invited user => invited by
      */
-    static readonly Inviters: any;
+    static readonly Inviters: Collection<string, Collection<string, IGuildInviter>>;
     private static init;
-    static hasPermissions(guild: Guild): any;
+    static hasPermissions(guild: Guild): boolean;
     static uncache(guild: Guild): void;
     static cacheAll(client: ForgeClient): Promise<void>;
     static cache(guild: Guild): Promise<void>;

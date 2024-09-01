@@ -1,3 +1,4 @@
+import { MessageActionRowComponent } from "discord.js";
 export declare enum ComponentProperty {
     type = "type",
     customID = "customID",

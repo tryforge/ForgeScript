@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     rest: false;
     required: true;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is BaseChannel & Record<"clone", unknown>;
 }], true>;
 export default _default;
 //# sourceMappingURL=cloneChannel.d.ts.map

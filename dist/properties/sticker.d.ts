@@ -1,3 +1,4 @@
+import { Sticker } from "discord.js";
 export declare enum StickerProperty {
     guildID = "guildID",
     name = "name",
