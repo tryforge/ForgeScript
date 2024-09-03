@@ -2,19 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 async function asyncSort(array, asyncComparator) {
-    const comparePromises = [];
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = i + 1; j < array.length; j++) {
-            comparePromises.push(asyncComparator(array[i], array[j]));
+            const result = await asyncComparator(array[i], array[j]);
+            if (result > 0) {
+                [array[i], array[j]] = [array[j], array[i]];
+            }
         }
     }
-    const compareResults = await Promise.all(comparePromises);
-    const sortedArray = array.slice().sort((a, b) => compareResults.shift() || 0);
-    return sortedArray;
+    return array;
 }
 // Example asynchronous comparison function
 async function asyncCompare(a, b) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(a - b); // Compare numbers
         }, Math.random() * 1000); // Simulate asynchronous delay
@@ -79,10 +79,12 @@ exports.default = new structures_1.NativeFunction({
             });
             if (result === null)
                 return this.stop();
-            if (otherVar !== null)
+            if (otherVar !== null) {
                 ctx.setEnvironmentKey(otherVar, result);
-            else
+            }
+            else {
                 return this.successJSON(result);
+            }
         }
         return this.success();
     },

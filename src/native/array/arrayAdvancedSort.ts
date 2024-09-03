@@ -1,21 +1,20 @@
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
 
 async function asyncSort<T>(array: T[], asyncComparator: (a: T, b: T) => Promise<number>): Promise<T[]> {
-    const comparePromises: Promise<number>[] = []
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = i + 1; j < array.length; j++) {
-            comparePromises.push(asyncComparator(array[i], array[j]))
+            const result = await asyncComparator(array[i], array[j]);
+            if (result > 0) {
+                [array[i], array[j]] = [array[j], array[i]]
+            }
         }
     }
-
-    const compareResults = await Promise.all(comparePromises)
-    const sortedArray = array.slice().sort((a, b) => compareResults.shift() || 0)
-    return sortedArray
+    return array
 }
 
 // Example asynchronous comparison function
 async function asyncCompare(a: number, b: number): Promise<number> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(a - b) // Compare numbers
         }, Math.random() * 1000) // Simulate asynchronous delay
@@ -67,21 +66,13 @@ export default new NativeFunction({
     ],
     output: ArgType.Json,
     async execute(ctx) {
-        const {
-            return: rt,
-            args
-        } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
-        
-        if (!this["isValidReturnType"](rt)) return rt
-        
-        const [
-            mainVar,
-            var1,
-            var2,
-            otherVar
-        ] = args
+        const { return: rt, args } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
 
+        if (!this["isValidReturnType"](rt)) return rt
+
+        const [ mainVar, var1, var2, otherVar ] = args
         const arr = ctx.getEnvironmentInstance(Array, mainVar)
+
         if (arr != null) {
             const result = await asyncSort(arr, async (x, y) => {
                 ctx.setEnvironmentKey(var1, x)
@@ -91,11 +82,12 @@ export default new NativeFunction({
             })
 
             if (result === null) return this.stop()
-            
-            if (otherVar !== null)
+
+            if (otherVar !== null) {
                 ctx.setEnvironmentKey(otherVar, result)
-            else
+            } else {
                 return this.successJSON(result)
+            }
         }
 
         return this.success()
