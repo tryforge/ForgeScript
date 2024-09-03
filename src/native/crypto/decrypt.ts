@@ -22,7 +22,7 @@ export function decrypt(text: string, key: string): string {
 export default new NativeFunction({
     name: "$decrypt",
     version: "1.5.0",
-    description: "Encrypts given text with a key",
+    description: "Decrypts given text with a key",
     brackets: true,
     output: ArgType.String,
     args: [

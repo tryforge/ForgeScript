@@ -21,7 +21,7 @@ exports.decrypt = decrypt;
 exports.default = new structures_1.NativeFunction({
     name: "$decrypt",
     version: "1.5.0",
-    description: "Encrypts given text with a key",
+    description: "Decrypts given text with a key",
     brackets: true,
     output: structures_1.ArgType.String,
     args: [
