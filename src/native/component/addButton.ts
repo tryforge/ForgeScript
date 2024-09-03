@@ -47,12 +47,15 @@ export default new NativeFunction({
         const btn = new ButtonBuilder()
             .setDisabled(disabled || false)
             .setStyle(style)
-            .setLabel(label)
 
         if (style === ButtonStyle.Link) btn.setURL(id)
-        else btn.setCustomId(id)
+            else if (style === ButtonStyle.Premium) btn.setSKUId(id)
+                else btn.setCustomId(id)
 
-        if (emoji) btn.setEmoji(emoji)
+        if (style !== ButtonStyle.Premium) {
+            btn.setLabel(label)
+            if (emoji) btn.setEmoji(emoji)
+        }
 
         ctx.container.components.at(-1)?.addComponents(btn)
         return this.success()

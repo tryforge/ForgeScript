@@ -47,14 +47,18 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [id, label, style, emoji, disabled]) {
         const btn = new discord_js_1.ButtonBuilder()
             .setDisabled(disabled || false)
-            .setStyle(style)
-            .setLabel(label);
+            .setStyle(style);
         if (style === discord_js_1.ButtonStyle.Link)
             btn.setURL(id);
+        else if (style === discord_js_1.ButtonStyle.Premium)
+            btn.setSKUId(id);
         else
             btn.setCustomId(id);
-        if (emoji)
-            btn.setEmoji(emoji);
+        if (style !== discord_js_1.ButtonStyle.Premium) {
+            btn.setLabel(label);
+            if (emoji)
+                btn.setEmoji(emoji);
+        }
         ctx.container.components.at(-1)?.addComponents(btn);
         return this.success();
     },
