@@ -10,7 +10,7 @@ export default new DiscordEventHandler({
     listener: async function (old, newer) {
         if (newer instanceof Message && this.options.respondOnEdit) {
             if (typeof this.options.respondOnEdit !== "number" || Date.now() - newer.createdTimestamp <= this.options.respondOnEdit) {
-                await messageCreate.listener.call(this, newer)
+                await messageCreate.listener.call(this, newer as any)
             }
         }
 

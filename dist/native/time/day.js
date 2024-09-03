@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
             enum: ExtendedTimeFormat
         }
     ],
-    output: structures_1.ArgType.Number,
+    output: structures_1.ArgType.String,
     execute: async function (ctx, [format]) {
         const options = { timeZone: ctx.timezone, calendar: ctx.calendar };
         if (format === "numeric" || format === "2-digit" || !format) {

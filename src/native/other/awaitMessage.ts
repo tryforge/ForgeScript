@@ -1,4 +1,4 @@
-import { BaseChannel, TextBasedChannel } from "discord.js"
+import { BaseChannel, TextBasedChannel, TextChannel } from "discord.js"
 import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Return } from "../../structures"
 import noop from "../../functions/noop"
 import isTrue from "../../functions/isTrue"
@@ -47,7 +47,7 @@ export default new NativeFunction({
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3)
         if (!this["isValidReturnType"](rt)) return rt
         const [ channel, varName, time ] = args
-        const msg = await (channel as TextBasedChannel).awaitMessages({
+        const msg = await (channel as TextChannel).awaitMessages({
             errors: [ "time" ],
             max: 1,
             time,

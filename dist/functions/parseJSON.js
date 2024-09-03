@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JSONNumberRegex = exports.JSONEndRegex = exports.JSONStartRegex = void 0;
-exports.default = parseJSON;
 exports.JSONStartRegex = /^[[{]/;
 exports.JSONEndRegex = /^[\]}]/;
 exports.JSONNumberRegex = /^\d+$/;
@@ -15,4 +14,5 @@ function parseJSON(str) {
         return str;
     }
 }
+exports.default = parseJSON;
 //# sourceMappingURL=parseJSON.js.map

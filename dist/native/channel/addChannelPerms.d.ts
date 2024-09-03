@@ -1,4 +1,4 @@
-import { BaseChannel, TextChannel } from "discord.js";
+import { BaseChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => i is import("discord.js").NewsChannel | import("discord.js").StageChannel | TextChannel | import("discord.js").VoiceChannel;
+    check: (i: BaseChannel) => boolean;
 }, {
     name: string;
     description: string;
@@ -69,6 +69,7 @@ declare const _default: NativeFunction<[{
         readonly UseExternalSounds: bigint;
         readonly SendVoiceMessages: bigint;
         readonly SendPolls: bigint;
+        readonly UseExternalApps: bigint;
     };
 }], true>;
 export default _default;

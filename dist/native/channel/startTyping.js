@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [ch]) {
-        const channel = ch ?? ctx.channel;
+        const channel = (ch ?? ctx.channel);
         if (channel.isTextBased())
             await channel.sendTyping().catch(() => null);
         return this.success();

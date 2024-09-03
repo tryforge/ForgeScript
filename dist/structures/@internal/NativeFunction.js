@@ -31,6 +31,7 @@ var ArgType;
     ArgType[ArgType["Sticker"] = 25] = "Sticker";
     ArgType[ArgType["Time"] = 26] = "Time";
     ArgType[ArgType["Member"] = 27] = "Member";
+    ArgType[ArgType["ApplicationEmoji"] = 28] = "ApplicationEmoji";
 })(ArgType || (exports.ArgType = ArgType = {}));
 class NativeFunction {
     data;

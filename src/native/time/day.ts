@@ -24,7 +24,7 @@ export default new NativeFunction({
             enum: ExtendedTimeFormat
         }
     ],
-    output: ArgType.Number,
+    output: ArgType.String,
     execute: async function(ctx, [format]) {
         const options: Intl.DateTimeFormatOptions = { timeZone: ctx.timezone, calendar: ctx.calendar }
 

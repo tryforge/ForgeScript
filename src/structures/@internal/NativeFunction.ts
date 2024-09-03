@@ -1,4 +1,5 @@
 import {
+    ApplicationEmoji,
     AttachmentBuilder,
     BaseChannel,
     Emoji,
@@ -56,6 +57,7 @@ export enum ArgType {
     Sticker,
     Time,
     Member,
+    ApplicationEmoji
 }
 
 export interface IArg<
@@ -174,6 +176,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? GuildMember
     : T extends ArgType.GuildEmoji
     ? GuildEmoji
+    : T extends ArgType.ApplicationEmoji
+    ? ApplicationEmoji
     : T extends ArgType.OverwritePermission 
     ? OverwritePermission
     : T extends ArgType.Sticker

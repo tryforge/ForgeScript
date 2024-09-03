@@ -3,7 +3,7 @@ import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => i is BaseChannel & Record<"setDefaultAutoArchiveDuration", unknown>;
+    check: (i: BaseChannel) => boolean;
     description: string;
     rest: false;
     required: true;

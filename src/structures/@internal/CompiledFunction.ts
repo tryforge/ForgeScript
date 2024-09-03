@@ -433,8 +433,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
 
         if (field !== undefined) {
-            field.resolveArg ??= this[CompiledFunction.toResolveArgString(arg.type)].bind(this)
-            value = field.resolveArg(ctx, arg, strValue, ref)
+            field.resolveArg ??= (this[CompiledFunction.toResolveArgString(arg.type) as keyof this] as Function).bind(this)
+            value = field.resolveArg?.(ctx, arg, strValue, ref)
             if (value instanceof Promise) value = await value
         }
 

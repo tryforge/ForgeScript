@@ -5,7 +5,7 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => i is BaseChannel & Record<"threads", unknown>;
+    check: (i: BaseChannel) => boolean;
 }, {
     name: string;
     description: string;

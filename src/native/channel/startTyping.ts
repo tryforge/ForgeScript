@@ -1,4 +1,4 @@
-import { BaseChannel, TextBasedChannel } from "discord.js"
+import { BaseChannel, TextBasedChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -21,7 +21,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [ch]) {
-        const channel = ch ?? ctx.channel
+        const channel = (ch ?? ctx.channel) as TextChannel
         if (channel.isTextBased()) await channel.sendTyping().catch(() => null)
         return this.success()
     },

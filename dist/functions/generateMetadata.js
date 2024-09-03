@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = default_1;
 const fs_1 = require("fs");
 const managers_1 = require("../managers");
 const process_1 = require("process");
@@ -139,4 +138,5 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
         });
     }
 }
+exports.default = default_1;
 //# sourceMappingURL=generateMetadata.js.map

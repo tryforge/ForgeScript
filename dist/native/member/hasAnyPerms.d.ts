@@ -67,6 +67,7 @@ declare const _default: NativeFunction<[{
         readonly UseExternalSounds: bigint;
         readonly SendVoiceMessages: bigint;
         readonly SendPolls: bigint;
+        readonly UseExternalApps: bigint;
     };
     required: true;
 }], true>;

@@ -1,4 +1,4 @@
-import { BaseChannel, TextBasedChannel } from "discord.js"
+import { BaseChannel, TextBasedChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import noop from "../../functions/noop"
 
@@ -35,6 +35,6 @@ export default new NativeFunction({
             const messages = await (ch as TextBasedChannel).messages.fetch({ limit: 100 }).catch(ctx.noop)
             return this.success(messages ? messages.find(x => x.author.id === user.id)?.id : undefined)
         }
-        return this.success((ch as TextBasedChannel).lastMessageId)
+        return this.success((ch as TextChannel).lastMessageId)
     },
 })

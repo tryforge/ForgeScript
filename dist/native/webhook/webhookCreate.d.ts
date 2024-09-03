@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     rest: false;
     required: true;
-    check: (i: BaseChannel) => i is BaseChannel & Record<"createWebhook", unknown>;
+    check: (i: BaseChannel) => boolean;
 }, {
     name: string;
     description: string;

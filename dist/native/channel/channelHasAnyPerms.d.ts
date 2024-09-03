@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => i is BaseChannel & Record<"permissionsFor", unknown>;
+    check: (i: BaseChannel) => boolean;
 }, {
     name: string;
     description: string;
@@ -68,6 +68,7 @@ declare const _default: NativeFunction<[{
         readonly UseExternalSounds: bigint;
         readonly SendVoiceMessages: bigint;
         readonly SendPolls: bigint;
+        readonly UseExternalApps: bigint;
     };
 }], true>;
 export default _default;

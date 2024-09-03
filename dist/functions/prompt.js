@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = default_1;
 const process_1 = require("process");
 const readline_1 = require("readline");
 async function default_1(q) {
@@ -12,4 +11,5 @@ async function default_1(q) {
         });
     });
 }
+exports.default = default_1;
 //# sourceMappingURL=prompt.js.map

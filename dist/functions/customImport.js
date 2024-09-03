@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.customImport = customImport;
+exports.customImport = void 0;
 const child_process_1 = require("child_process");
 const structures_1 = require("../structures");
 async function customImport(pkg) {
@@ -33,4 +33,5 @@ async function customImport(pkg) {
         return customImport(pkg);
     });
 }
+exports.customImport = customImport;
 //# sourceMappingURL=customImport.js.map

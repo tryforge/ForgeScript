@@ -28,6 +28,7 @@ import {
     Role,
     Sticker,
     StickerResolvable,
+    TextChannel,
     TextInputBuilder,
     User,
     VoiceState,
@@ -86,13 +87,13 @@ export class Container {
         }
 
         if (this.channel && this.channel.isTextBased()) {
-            res = this.channel.send(options)
+            res = (this.channel as TextChannel).send(options)
         } else if (obj instanceof AutoModerationActionExecution && obj.channel && "send" in obj.channel) {
             res = obj.channel.send(options)
         } else if (obj instanceof WebhookClient) {
             res = obj.send(options)
         } else if (obj instanceof Message) {
-            res = this.edit ? obj.edit(options) : obj.channel.send(options)
+            res = this.edit ? obj.edit(options) : (obj.channel as TextChannel).send(options)
         } else if (obj instanceof BaseInteraction) {
             if (obj.isRepliable()) {
                 if (this.modal && !obj.replied && "showModal" in obj) {
@@ -113,7 +114,7 @@ export class Container {
                 res = (obj as AutocompleteInteraction).respond(this.choices)
             }
         } else if (obj instanceof BaseChannel && obj.isTextBased()) {
-            res = obj.send(options)
+            res = (obj as TextChannel).send(options)
         } else if (obj instanceof GuildMember || obj instanceof User) {
             res = obj.send(options)
         } else {

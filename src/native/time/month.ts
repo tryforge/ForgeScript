@@ -16,7 +16,7 @@ export default new NativeFunction({
             enum: ExtendedTimeFormat
         }
     ],
-    output: ArgType.Unknown,
+    output: ArgType.String,
     execute: async function(ctx, [format]) {
         return this.success(new Date().toLocaleString("en-US", { month: format || "numeric", timeZone: ctx.timezone, calendar: ctx.calendar }))
     }
