@@ -24,9 +24,15 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
             required: true,
         },
+        {
+            name: "asc",
+            description: "Whether to start counting roles in ascending order (top to bottom)",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    execute(ctx, [, role]) {
-        return this.success((role ?? ctx.role)?.position);
+    execute(ctx, [guild, role, asc]) {
+        return this.success(asc ? guild.roles.cache.size - role.position : role.position);
     },
 });
 //# sourceMappingURL=rolePosition.js.map
