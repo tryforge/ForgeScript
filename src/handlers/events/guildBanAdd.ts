@@ -11,7 +11,10 @@ export default new DiscordEventHandler({
 
         for (const command of commands) {
             Interpreter.run({
-                obj: m.user,
+                obj: { 
+                    guild: m.guild,
+                    user: m.user
+                },
                 command,
                 client: this,
                 states: {
@@ -24,5 +27,5 @@ export default new DiscordEventHandler({
             })
         }
     },
-    intents: ["GuildMembers"],
+    intents: ["GuildMembers", "GuildModeration"],
 })

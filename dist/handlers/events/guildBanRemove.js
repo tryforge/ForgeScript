@@ -10,7 +10,10 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
         const commands = this.commands.get("guildBanRemove");
         for (const command of commands) {
             core_1.Interpreter.run({
-                obj: m.user,
+                obj: {
+                    guild: m.guild,
+                    user: m.user
+                },
                 command,
                 client: this,
                 states: {
@@ -23,6 +26,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    intents: ["GuildMembers"],
+    intents: ["GuildMembers", "GuildModeration"],
 });
 //# sourceMappingURL=guildBanRemove.js.map

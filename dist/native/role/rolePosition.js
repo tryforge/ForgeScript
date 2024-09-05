@@ -25,8 +25,8 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
         {
-            name: "asc",
-            description: "Whether to start counting roles in ascending order (top to bottom)",
+            name: "asc order",
+            description: "Whether to count roles in ascending order (top to bottom)",
             rest: false,
             type: structures_1.ArgType.Boolean,
         },
