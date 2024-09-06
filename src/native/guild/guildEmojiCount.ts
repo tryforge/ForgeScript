@@ -1,4 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
+import { EmojiType } from "../emoji/emojiCount"
 
 export default new NativeFunction({
     name: "$guildEmojiCount",
@@ -18,9 +19,24 @@ export default new NativeFunction({
             type: ArgType.Guild,
             required: true,
         },
+        {
+            name: "type",
+            description: "The type of the emotes to count",
+            rest: false,
+            type: ArgType.Enum,
+            enum: EmojiType
+        },
     ],
-    execute(ctx, [guild]) {
+    execute(ctx, [guild, type]) {
         guild ??= ctx.guild!
-        return this.success(guild.emojis.cache.size)
+        const emojis = guild.emojis.cache
+
+        return this.success(!type ? emojis.size : emojis.filter(emoji =>
+            type === EmojiType.normal
+                ? !emoji.animated
+                : type === EmojiType.animated
+                    ? emoji.animated
+                    : (true as never)
+        ).size)
     },
 })

@@ -1,1 +1,1 @@
-{"version":3,"file":"emojiCount.d.ts","sourceRoot":"","sources":["../../../src/native/emoji/emojiCount.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;AAElE,wBASE"}
+{"version":3,"file":"emojiCount.d.ts","sourceRoot":"","sources":["../../../src/native/emoji/emojiCount.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAElE,oBAAY,SAAS;IACjB,MAAM,WAAW;IACjB,QAAQ,aAAa;CACxB;;;;;;;;;AAED,wBA4BE"}
