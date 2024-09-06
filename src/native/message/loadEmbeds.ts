@@ -5,7 +5,9 @@ export default new NativeFunction({
     name: "$loadEmbeds",
     version: "1.4.0",
     aliases: [
-        "$loadEmbed"
+        "$loadEmbed",
+        "$cloneEmbed",
+        "$cloneEmbeds",
     ],
     description: "Loads embed json (or array) to the response",
     unwrap: true,
