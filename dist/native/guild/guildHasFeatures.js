@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$guidHasFeatures",
+    name: "$guildHasFeatures",
     version: "1.4.0",
     description: "Returns whether this guild has all the given features",
     unwrap: true,
