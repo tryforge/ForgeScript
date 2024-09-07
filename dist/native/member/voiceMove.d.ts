@@ -20,6 +20,11 @@ declare const _default: NativeFunction<[{
     required: false;
     type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=voiceMove.d.ts.map

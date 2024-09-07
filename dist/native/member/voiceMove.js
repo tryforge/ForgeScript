@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$voiceMove",
     version: "1.4.0",
-    description: "Moves a member from a voice channel",
+    description: "Moves a member from a voice channel, returns bool",
     brackets: true,
     aliases: [
         "$memberVoiceMove"
@@ -33,11 +33,17 @@ exports.default = new structures_1.NativeFunction({
             required: false,
             type: structures_1.ArgType.Channel,
             check: (i) => i.isVoiceBased()
+        },
+        {
+            name: "reason",
+            description: "The reason for moving the user",
+            rest: false,
+            type: structures_1.ArgType.String,
         }
     ],
     unwrap: true,
-    async execute(ctx, [, member, voice]) {
-        return this.success(!!(await member.voice.setChannel(voice).catch(ctx.noop)));
+    async execute(ctx, [, member, voice, reason]) {
+        return this.success(!!(await member.voice.setChannel(voice, reason || undefined).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=voiceMove.js.map

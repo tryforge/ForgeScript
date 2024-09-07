@@ -5,7 +5,7 @@ import { ArgType, NativeFunction } from "../../structures"
 export default new NativeFunction({
     name: "$voiceMove",
     version: "1.4.0",
-    description: "Moves a member from a voice channel",
+    description: "Moves a member from a voice channel, returns bool",
     brackets: true,
     aliases: [
         "$memberVoiceMove"
@@ -34,10 +34,16 @@ export default new NativeFunction({
             required: false,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isVoiceBased()
+        },
+        {
+            name: "reason",
+            description: "The reason for moving the user",
+            rest: false,
+            type: ArgType.String,
         }
     ],
     unwrap: true,
-    async execute(ctx, [, member, voice ]) {
-        return this.success(!!(await member.voice.setChannel(voice as GuildVoiceChannelResolvable).catch(ctx.noop)))
+    async execute(ctx, [, member, voice, reason ]) {
+        return this.success(!!(await member.voice.setChannel(voice as GuildVoiceChannelResolvable, reason || undefined).catch(ctx.noop)))
     },
 })
