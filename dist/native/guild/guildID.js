@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [args]) {
         if (!this.hasFields)
-            return this.success(ctx.guild?.id);
+            return this.success(ctx.guild?.id ?? ctx.interaction?.guildId);
         const name = args.join(";");
         return this.success(ctx.client.guilds.cache.find((x) => x.name === name)?.id);
     },

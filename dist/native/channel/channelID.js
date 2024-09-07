@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [args]) {
         if (!this.hasFields)
-            return this.success(ctx.channel?.id);
+            return this.success(ctx.channel?.id ?? ctx.interaction?.channelId);
         const name = args.join(";");
         return this.success(ctx.client.channels.cache.find((x) => "name" in x && x.name === name)?.id);
     },
