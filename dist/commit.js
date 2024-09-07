@@ -34,7 +34,8 @@ async function main() {
         (0, fs_1.writeFileSync)(fileName, JSON.stringify(json), "utf-8");
     }
     const branch = await (0, prompt_1.default)("Write the branch name to push to (defaults to dev): ") || "dev";
-    (0, child_process_1.execSync)("git branch -M " + branch + " && git add . && git commit -m \"" + msg + "\" && git push -u origin " + branch, {
+    const escapedMsg = msg.replace(/\$/g, "\\$");
+    (0, child_process_1.execSync)(`git branch -M ${branch} && git add . && git commit -m "${escapedMsg}" && git push -u origin ${branch}`, {
         stdio: "inherit"
     });
 }

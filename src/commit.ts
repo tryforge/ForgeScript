@@ -43,8 +43,9 @@ async function main() {
     }
 
     const branch = await prompt("Write the branch name to push to (defaults to dev): ") || "dev"
+    const escapedMsg = msg.replace(/\$/g, "\\$")
 
-    execSync("git branch -M " + branch + " && git add . && git commit -m \"" + msg + "\" && git push -u origin " + branch, {
+    execSync(`git branch -M ${branch} && git add . && git commit -m "${escapedMsg}" && git push -u origin ${branch}`, {
         stdio: "inherit"
     })
 }
