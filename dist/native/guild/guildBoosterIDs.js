@@ -32,8 +32,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     async execute(ctx, [guild, sep]) {
         guild ??= ctx.guild;
-        await guild?.members.fetch();
-        const boosters = guild?.members.cache.filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id)).map(m => m.id);
+        const boosters = (await guild?.members.fetch()).filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id)).map(m => m.id);
         return this.success(boosters?.join(sep ?? ", "));
     },
 });
