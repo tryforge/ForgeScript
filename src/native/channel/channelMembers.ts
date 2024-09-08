@@ -7,7 +7,7 @@ export default new NativeFunction({
     version: "1.5.0",
     description: "Returns the members of a channel",
     unwrap: true,
-    output: array<ArgType.String>(),
+    output: array<ArgType.Member>(),
     brackets: false,
     args: [
         {
@@ -26,6 +26,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch, sep]) {
         const chan = ch ?? ctx.channel
-        return this.successJSON("members" in chan ? (chan.members as Collection<string, GuildMember>)?.map(member => member.id).join(sep ?? ", ") : null)
+        return this.success("members" in chan ? (chan.members as Collection<string, GuildMember>)?.map(member => member.id).join(sep ?? ", ") : null)
     },
 })

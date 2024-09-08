@@ -44,6 +44,7 @@ export default new NativeFunction({
                 reason: reason || undefined,
                 maxUses: maxUses || undefined,
                 maxAge: maxAge || undefined,
+                unique: true
             })
             .catch(ctx.noop)
         return this.success(invite ? invite.code : undefined)

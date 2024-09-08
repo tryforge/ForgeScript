@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch, sep]) {
         const chan = ch ?? ctx.channel;
-        return this.successJSON("members" in chan ? chan.members?.map(member => member.id).join(sep ?? ", ") : null);
+        return this.success("members" in chan ? chan.members?.map(member => member.id).join(sep ?? ", ") : null);
     },
 });
 //# sourceMappingURL=channelMembers.js.map
