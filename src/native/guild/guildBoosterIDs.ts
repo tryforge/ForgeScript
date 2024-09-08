@@ -26,9 +26,10 @@ export default new NativeFunction({
     ],
     output: array<ArgType.Member>(),
     unwrap: true,
-    execute(ctx, [guild, sep]) {
+    async execute(ctx, [guild, sep]) {
         guild ??= ctx.guild!
-        const boosters = guild?.members.cache.filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id!)).map(m => m.id)
+        const members = await guild?.members.fetch()
+        const boosters = members.filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id!)).map(m => m.id)
         return this.success(boosters?.join(sep ?? ", "))
     },
 })
