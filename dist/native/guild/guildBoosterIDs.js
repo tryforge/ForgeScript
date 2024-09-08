@@ -32,8 +32,8 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [guild, sep]) {
         guild ??= ctx.guild;
-        const boosters = guild.members.cache.filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id)).toJSON();
-        return this.success(boosters.join(sep ?? ", "));
+        const boosters = guild?.members.cache.filter(member => member.roles.cache.has(guild.roles.premiumSubscriberRole?.id)).toJSON();
+        return this.success(boosters?.join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=guildBoosterIDs.js.map
