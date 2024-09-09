@@ -3,6 +3,7 @@ export declare enum EmojiProperty {
     guildID = "guildID",
     name = "name",
     id = "id",
+    authorID = "authorID",
     identifier = "identifier",
     requiresColons = "requiresColons",
     roles = "roles",

@@ -10,6 +10,7 @@ var EmojiProperty;
     EmojiProperty["guildID"] = "guildID";
     EmojiProperty["name"] = "name";
     EmojiProperty["id"] = "id";
+    EmojiProperty["authorID"] = "authorID";
     EmojiProperty["identifier"] = "identifier";
     EmojiProperty["requiresColons"] = "requiresColons";
     EmojiProperty["roles"] = "roles";
@@ -22,6 +23,7 @@ var EmojiProperty;
 exports.EmojiProperties = (0, defineProperties_1.default)({
     guildID: (i) => i?.guild.id,
     id: (i) => i?.id,
+    authorID: (i) => i?.author?.id,
     identifier: (i) => i?.identifier,
     name: (i) => i?.name,
     managed: (i) => i?.managed,

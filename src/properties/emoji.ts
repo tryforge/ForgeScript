@@ -5,6 +5,7 @@ export enum EmojiProperty {
     guildID = "guildID",
     name = "name",
     id = "id",
+    authorID = "authorID",
     identifier = "identifier",
     requiresColons = "requiresColons",
     roles = "roles",
@@ -18,6 +19,7 @@ export enum EmojiProperty {
 export const EmojiProperties = defineProperties<typeof EmojiProperty, GuildEmoji>({
     guildID: (i) => i?.guild.id,
     id: (i) => i?.id,
+    authorID: (i) => i?.author?.id,
     identifier: (i) => i?.identifier,
     name: (i) => i?.name,
     managed: (i) => i?.managed,

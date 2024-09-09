@@ -32,14 +32,10 @@ export default new NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [ch, property, sep]) {
+    execute(ctx, [ch, prop, sep]) {
         const channel = ch as ForumChannel | undefined
         const tags = channel?.availableTags
 
-        if (!property) {
-            return this.successJSON(tags)
-        }
-
-        return this.success(tags?.map(tag => ForumTagProperties[property](tag)).join(sep ?? ", "))
+        return this.successJSON(!prop ? tags : tags?.map(tag => ForumTagProperties[prop](tag)).join(sep ?? ", "))
     },
 })

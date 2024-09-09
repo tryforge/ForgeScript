@@ -33,13 +33,10 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [ch, property, sep]) {
+    execute(ctx, [ch, prop, sep]) {
         const channel = ch;
         const tags = channel?.availableTags;
-        if (!property) {
-            return this.successJSON(tags);
-        }
-        return this.success(tags?.map(tag => forumTag_1.ForumTagProperties[property](tag)).join(sep ?? ", "));
+        return this.successJSON(!prop ? tags : tags?.map(tag => forumTag_1.ForumTagProperties[prop](tag)).join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=forumTags.js.map
