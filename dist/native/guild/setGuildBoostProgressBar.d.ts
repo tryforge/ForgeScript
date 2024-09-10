@@ -18,4 +18,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
 }], true>;
 export default _default;
-//# sourceMappingURL=setGuildBoostProgressBarEnabled.d.ts.map
+//# sourceMappingURL=setGuildBoostProgressBar.d.ts.map

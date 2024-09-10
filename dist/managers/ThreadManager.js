@@ -60,7 +60,7 @@ class ThreadManager {
         if (this.available.size !== 0)
             return this.available.values().next().value;
         if (this.workerCount >= this.maxWorkerCount)
-            return null;
+            return undefined;
         // eslint-disable-next-line no-undef
         const worker = await (0, thread_1.spawn)("thread");
         worker.on("error", this.onWorkerError.bind(this, worker));

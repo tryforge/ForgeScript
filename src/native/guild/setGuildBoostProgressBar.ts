@@ -1,18 +1,18 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
-    name: "$setGuildBoostProgressBarEnabled",
+    name: "$setGuildBoostProgressBar",
     version: "1.5.0",
     description: "Sets a guild boost progress bar, returns bool",
     aliases: [
-        "$setServerBoostProgressBarEnabled"
+        "$setServerBoostProgressBar"
     ],
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "guild ID",
-            description: "The guild to enable/disable boost progress bar on",
+            description: "The guild to set boost progress bar for",
             rest: false,
             required: true,
             type: ArgType.Guild,

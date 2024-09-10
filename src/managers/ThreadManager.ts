@@ -56,11 +56,11 @@ export class ThreadManager {
                 return
             }
 
-            this.setBusyWorker(worker)
+            this.setBusyWorker(worker!)
             this.queue.delete(task.id)
             this.executing.set(task.id, task)
             
-            worker.postMessage({
+            worker!.postMessage({
                 ...task.context,
                 taskId: task.id
             })
@@ -85,9 +85,9 @@ export class ThreadManager {
         this.busy.add(worker)
     }
 
-    private async getAvailableWorker(): Promise<Worker | null> {
+    private async getAvailableWorker(): Promise<Worker | undefined> {
         if (this.available.size !== 0) return this.available.values().next().value
-        if (this.workerCount >= this.maxWorkerCount) return null
+        if (this.workerCount >= this.maxWorkerCount) return undefined
         // eslint-disable-next-line no-undef
         const worker = await spawn("thread")
         worker.on("error", this.onWorkerError.bind(this, worker))

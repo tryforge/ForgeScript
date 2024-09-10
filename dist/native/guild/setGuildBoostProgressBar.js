@@ -2,18 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$setGuildBoostProgressBarEnabled",
+    name: "$setGuildBoostProgressBar",
     version: "1.5.0",
     description: "Sets a guild boost progress bar, returns bool",
     aliases: [
-        "$setServerBoostProgressBarEnabled"
+        "$setServerBoostProgressBar"
     ],
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "guild ID",
-            description: "The guild to enable/disable boost progress bar on",
+            description: "The guild to set boost progress bar for",
             rest: false,
             required: true,
             type: structures_1.ArgType.Guild,
@@ -37,4 +37,4 @@ exports.default = new structures_1.NativeFunction({
         return this.success((await guild.setPremiumProgressBarEnabled(enabled, reason || undefined).catch(() => false)) !== false);
     },
 });
-//# sourceMappingURL=setGuildBoostProgressBarEnabled.js.map
+//# sourceMappingURL=setGuildBoostProgressBar.js.map
