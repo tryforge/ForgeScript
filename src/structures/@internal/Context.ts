@@ -1,6 +1,8 @@
 import {
     AnySelectMenuInteraction,
     AutoModerationActionExecution,
+    AutoModerationActionOptions,
+    AutoModerationTriggerMetadataOptions,
     BaseChannel,
     BaseInteraction,
     ChatInputCommandInteraction,
@@ -42,6 +44,13 @@ export interface IHttpOptions {
     contentType?: HTTPContentType
     headers: Record<string, string>
     method: string
+}
+
+export interface IAutomodRuleOptions {
+    actions: AutoModerationActionOptions[]
+    triggerMetadata?: AutoModerationTriggerMetadataOptions
+    exemptRoles?: string[]
+    exemptChannels?: string[]
 }
 
 export enum CalendarType {
@@ -94,6 +103,7 @@ export class Context {
 
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
+    automodRule: Partial<IAutomodRuleOptions> = {}
     timezone: string = "UTC"
     calendar?: CalendarType
 

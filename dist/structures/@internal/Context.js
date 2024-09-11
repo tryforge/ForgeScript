@@ -40,6 +40,7 @@ class Context {
     #cache = {};
     executionTimestamp;
     http = {};
+    automodRule = {};
     timezone = "UTC";
     calendar;
     #keywords = {};

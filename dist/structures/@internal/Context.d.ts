@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Entitlement, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Entitlement, Guild, GuildEmoji, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
 import { CompiledFunction } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -16,6 +16,12 @@ export interface IHttpOptions {
     contentType?: HTTPContentType;
     headers: Record<string, string>;
     method: string;
+}
+export interface IAutomodRuleOptions {
+    actions: AutoModerationActionOptions[];
+    triggerMetadata?: AutoModerationTriggerMetadataOptions;
+    exemptRoles?: string[];
+    exemptChannels?: string[];
 }
 export declare enum CalendarType {
     Buddhist = "buddhist",
@@ -62,6 +68,7 @@ export declare class Context {
     [props: PropertyKey]: unknown;
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
+    automodRule: Partial<IAutomodRuleOptions>;
     timezone: string;
     calendar?: CalendarType;
     container: Container;

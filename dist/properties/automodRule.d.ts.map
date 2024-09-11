@@ -1,0 +1,1 @@
+{"version":3,"file":"automodRule.d.ts","sourceRoot":"","sources":["../../src/properties/automodRule.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,YAAY,CAAA;AAG/C,oBAAY,mBAAmB;IAC3B,EAAE,OAAO;IACT,IAAI,SAAS;IACb,QAAQ,aAAa;IACrB,OAAO,YAAY;IACnB,SAAS,cAAc;IACvB,WAAW,gBAAgB;IAC3B,WAAW,gBAAgB;IAC3B,cAAc,mBAAmB;CACpC;AAED,eAAO,MAAM,qBAAqB,oGAShC,CAAA"}
