@@ -12,18 +12,23 @@ export default new NativeFunction({
             description: "The index of the value",
             type: ArgType.Number,
             rest: false,
-            required: true,
+        },
+        {
+            name: "separator",
+            description: "The separator to use for each value",
+            type: ArgType.String,
+            rest: false,
         },
     ],
     output: array<ArgType.String>(),
     unwrap: true,
-    execute(ctx, [index]) {
+    execute(ctx, [index, sep]) {
         if (!ctx.isSelectMenu()) return this.success()
 
-        if (this.hasFields) {
+        if (index) {
             return this.success(ctx.interaction.values[index])
         } else {
-            return this.success(ctx.interaction.values.join(", "))
+            return this.success(ctx.interaction.values.join(sep ?? ", "))
         }
     },
 })

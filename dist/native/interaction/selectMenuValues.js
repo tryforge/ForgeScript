@@ -16,19 +16,24 @@ exports.default = new structures_1.NativeFunction({
             description: "The index of the value",
             type: structures_1.ArgType.Number,
             rest: false,
-            required: true,
+        },
+        {
+            name: "separator",
+            description: "The separator to use for each value",
+            type: structures_1.ArgType.String,
+            rest: false,
         },
     ],
     output: (0, array_1.default)(),
     unwrap: true,
-    execute(ctx, [index]) {
+    execute(ctx, [index, sep]) {
         if (!ctx.isSelectMenu())
             return this.success();
-        if (this.hasFields) {
+        if (index) {
             return this.success(ctx.interaction.values[index]);
         }
         else {
-            return this.success(ctx.interaction.values.join(", "));
+            return this.success(ctx.interaction.values.join(sep ?? ", "));
         }
     },
 });

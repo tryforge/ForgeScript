@@ -4,7 +4,11 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.Number;
     rest: false;
-    required: true;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.String;
+    rest: false;
 }], true>;
 export default _default;
 //# sourceMappingURL=selectMenuValues.d.ts.map
