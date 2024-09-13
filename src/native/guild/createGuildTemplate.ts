@@ -33,6 +33,6 @@ export default new NativeFunction({
     ],
     output: ArgType.String,
     async execute(ctx, [guild, name, desc]) {
-        return this.successJSON((await guild.createTemplate(name, desc || undefined)).code)
+        return this.success((await guild.createTemplate(name, desc || undefined).catch(ctx.noop))?.code)
     },
 })
