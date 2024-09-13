@@ -6,7 +6,9 @@ exports.default = new structures_1.NativeFunction({
     name: "$fetchEmbeds",
     version: "1.4.0",
     aliases: [
-        "$fetchEmbed"
+        "$fetchEmbed",
+        "$cloneEmbed",
+        "$cloneEmbeds"
     ],
     description: "Fetches an embed or all embeds from a message to the next response",
     brackets: false,
