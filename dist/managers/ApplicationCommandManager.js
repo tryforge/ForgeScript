@@ -172,53 +172,90 @@ class ApplicationCommandManager {
     }
     toJSON(type) {
         const arr = new Array();
+        // Helper function to read config.json
+        const readConfig = (folderPath) => {
+            const configPath = (0, path_1.join)(folderPath, "config.json");
+            if ((0, fs_1.existsSync)(configPath)) {
+                try {
+                    return JSON.parse((0, fs_1.readFileSync)(configPath, "utf-8"));
+                }
+                catch (err) {
+                    throw new Error(`Error reading config.json in ${folderPath}: ${err}`);
+                }
+            }
+            return null;
+        };
         for (const [commandName, value] of this.commands) {
             if (value instanceof ApplicationCommand_1.ApplicationCommand) {
                 if (!value.mustRegisterAs(type))
                     continue;
-                arr.push(value.options.data);
+                const folderPath = (0, path_1.join)(this.path, commandName);
+                const config = readConfig(folderPath);
+                const commandData = {
+                    ...value.options.data,
+                    ...(config ? config : {}),
+                };
+                arr.push(commandData);
             }
             else {
+                const folderPath = (0, path_1.join)(this.path, commandName);
+                const config = readConfig(folderPath);
                 const json = {
+                    ...config,
                     name: commandName,
-                    description: "none",
+                    description: config?.description || "none",
                     type: discord_js_1.ApplicationCommandType.ChatInput,
                     options: [],
                 };
                 for (const [nextName, values] of value) {
                     if (values instanceof discord_js_1.Collection) {
+                        const subFolderPath = (0, path_1.join)(folderPath, nextName);
+                        const subConfig = readConfig(subFolderPath);
+                        // Apply only for subcommand groups
                         const raw = {
+                            ...subConfig,
                             name: nextName,
-                            description: "none",
+                            description: subConfig?.description || "none",
                             type: discord_js_1.ApplicationCommandOptionType.SubcommandGroup,
                             options: [],
                         };
-                        for (const [lastName, command] of values) {
-                            if (!command.mustRegisterAs(type))
-                                continue;
-                            raw.options.push({
-                                ...command.toJSON(),
-                                name: lastName,
-                                type: discord_js_1.ApplicationCommandOptionType.Subcommand,
-                            });
+                        // Only assign `options` if this is a SubcommandGroup
+                        if (raw.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup) {
+                            raw.options = [];
+                            for (const [lastName, command] of values) {
+                                if (!command.mustRegisterAs(type))
+                                    continue;
+                                const commandData = command.toJSON();
+                                raw.options.push({
+                                    ...commandData,
+                                    name: lastName,
+                                    type: discord_js_1.ApplicationCommandOptionType.Subcommand,
+                                });
+                            }
                         }
-                        if (!raw.options?.length)
-                            continue;
-                        json.options.push(raw);
+                        // Only push `json.options` if it contains valid data
+                        if (raw.options?.length) {
+                            json.options.push(raw);
+                        }
                     }
                     else {
                         if (!values.mustRegisterAs(type))
                             continue;
+                        const subFolderPath = (0, path_1.join)(folderPath, nextName);
+                        const subConfig = readConfig(subFolderPath);
+                        // Add subcommand if available
                         const raw = values.toJSON();
                         json.options.push({
                             ...raw,
+                            ...subConfig,
                             type: discord_js_1.ApplicationCommandOptionType.Subcommand,
                         });
                     }
                 }
-                if (!json.options?.length)
-                    continue;
-                arr.push(json);
+                // Only push JSON if it contains valid options
+                if (json.options?.length) {
+                    arr.push(json);
+                }
             }
         }
         return arr;

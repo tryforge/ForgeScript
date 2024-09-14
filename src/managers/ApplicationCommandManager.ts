@@ -23,7 +23,7 @@ import { ApplicationCommand } from "../structures/base/ApplicationCommand"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { ForgeClient } from "../core"
 import { NativeEventName } from "./EventManager"
-import { readdirSync, statSync } from "fs"
+import { readdirSync, readFileSync, statSync, existsSync } from "fs"
 import { join } from "path"
 import { cwd } from "process"
 
@@ -223,51 +223,98 @@ export class ApplicationCommandManager {
     toJSON(type: Parameters<ApplicationCommand["mustRegisterAs"]>[0]): ApplicationCommandDataResolvable[] {
         const arr = new Array<ApplicationCommandDataResolvable>()
 
+        // Helper function to read config.json
+        const readConfig = (folderPath: string) => {
+            const configPath = join(folderPath, "config.json")
+            if (existsSync(configPath)) {
+                try {
+                    return JSON.parse(readFileSync(configPath, "utf-8"))
+                } catch (err) {
+                    throw new Error(`Error reading config.json in ${folderPath}: ${err}`)
+                }
+            }
+            return null
+        }
+
         for (const [commandName, value] of this.commands) {
             if (value instanceof ApplicationCommand) {
                 if (!value.mustRegisterAs(type)) continue
-                arr.push(value.options.data)
+
+                const folderPath = join(this.path, commandName)
+                const config = readConfig(folderPath)
+
+                const commandData = {
+                    ...value.options.data,
+                    ...(config ? config : {}),
+                }
+
+                arr.push(commandData)
             } else {
+                const folderPath = join(this.path, commandName)
+                const config = readConfig(folderPath)
+
                 const json: RESTPostAPIChatInputApplicationCommandsJSONBody = {
+                    ...config, // Apply config data if available
                     name: commandName,
-                    description: "none",
+                    description: config?.description || "none",
                     type: ApplicationCommandType.ChatInput,
                     options: [],
                 }
 
                 for (const [nextName, values] of value) {
                     if (values instanceof Collection) {
-                        const raw: APIApplicationCommandOption = {
+                        const subFolderPath = join(folderPath, nextName)
+                        const subConfig = readConfig(subFolderPath)
+
+                        // Apply only for subcommand groups
+                        const raw: Partial<APIApplicationCommandOption> = {
+                            ...subConfig, // Apply subcommand group config data
                             name: nextName,
-                            description: "none",
+                            description: subConfig?.description || "none",
                             type: ApplicationCommandOptionType.SubcommandGroup,
                             options: [],
                         }
 
-                        for (const [lastName, command] of values) {
-                            if (!command.mustRegisterAs(type)) continue
-                            raw.options!.push({
-                                ...command.toJSON(),
-                                name: lastName,
-                                type: ApplicationCommandOptionType.Subcommand,
-                            } as APIApplicationCommandSubcommandOption)
+                        // Only assign `options` if this is a SubcommandGroup
+                        if (raw.type === ApplicationCommandOptionType.SubcommandGroup) {
+                            (raw as APIApplicationCommandOption & { options: APIApplicationCommandSubcommandOption[] }).options = []
+
+                            for (const [lastName, command] of values) {
+                                if (!command.mustRegisterAs(type)) continue
+
+                                const commandData = command.toJSON();
+                                (raw as APIApplicationCommandOption & { options: APIApplicationCommandSubcommandOption[] }).options.push({
+                                    ...commandData,
+                                    name: lastName,
+                                    type: ApplicationCommandOptionType.Subcommand,
+                                } as APIApplicationCommandSubcommandOption)
+                            }
                         }
 
-                        if (!raw.options?.length) continue
-                        json.options!.push(raw)
+                        // Only push `json.options` if it contains valid data
+                        if ((raw as APIApplicationCommandOption & { options?: APIApplicationCommandSubcommandOption[] }).options?.length) {
+                            json.options!.push(raw as APIApplicationCommandOption)
+                        }
                     } else {
                         if (!values.mustRegisterAs(type)) continue
+
+                        const subFolderPath = join(folderPath, nextName)
+                        const subConfig = readConfig(subFolderPath)
+
+                        // Add subcommand if available
                         const raw = values.toJSON()
                         json.options!.push({
                             ...raw,
+                            ...subConfig, // Apply subcommand config data
                             type: ApplicationCommandOptionType.Subcommand,
                         } as APIApplicationCommandOption)
                     }
                 }
 
-                if (!json.options?.length) continue
-
-                arr.push(json)
+                // Only push JSON if it contains valid options
+                if (json.options?.length) {
+                    arr.push(json)
+                }
             }
         }
 
