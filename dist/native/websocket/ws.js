@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
         // CLEANUP
         ws?.on("close", () => {
             ctx.client.websockets.delete(id);
-            ws.removeListener;
+            ws.removeAllListeners();
         });
         ctx.client.websockets.set(id, ws);
         return this.success(id);

@@ -10,8 +10,8 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.String,
     args: [
         {
-            name: "message",
-            description: "The string to trim at the start",
+            name: "text",
+            description: "The text to trim at the start",
             rest: false,
             required: true,
             type: structures_1.ArgType.String,

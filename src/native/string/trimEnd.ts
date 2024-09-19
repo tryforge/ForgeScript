@@ -9,8 +9,8 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "message",
-            description: "The string to trim at the end",
+            name: "text",
+            description: "The text to trim at the end",
             rest: false,
             required: true,
             type: ArgType.String,

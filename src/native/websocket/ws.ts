@@ -32,7 +32,7 @@ export default new NativeFunction({
         // CLEANUP
         ws?.on("close", () => {
             ctx.client.websockets.delete(id)
-            ws.removeListener
+            ws.removeAllListeners()
         })
 
         ctx.client.websockets.set(id, ws)

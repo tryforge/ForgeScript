@@ -10,8 +10,8 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "message",
-            description: "The string to trim at the end",
+            name: "text",
+            description: "The text to trim at the end",
             rest: false,
             required: true,
             type: structures_1.ArgType.String,

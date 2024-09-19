@@ -79,10 +79,13 @@ exports.default = new structures_1.NativeFunction({
         btn.setCustomId(id || btn.data.custom_id)
             .setDisabled(disabled || btn.data.disabled)
             .setStyle(style || btn.data.style)
+            // @ts-ignore
             .setLabel(label || btn.data.label);
         // @ts-ignore
         if (style === discord_js_1.ButtonStyle.Link)
             btn.setURL(id || btn.data.custom_id);
+        else if (style === discord_js_1.ButtonStyle.Premium)
+            btn.setSKUId(id);
         if (emoji)
             btn.setEmoji(emoji);
         return this.success(!!(await m.edit({ components: components }).catch(ctx.noop)));

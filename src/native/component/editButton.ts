@@ -66,10 +66,12 @@ export default new NativeFunction({
         btn.setCustomId(id || btn.data.custom_id)
             .setDisabled(disabled || false)
             .setStyle(style || btn.data.style!)
-            .setLabel(label || (btn.data as any).label!)
+            // @ts-ignore
+            .setLabel(label || btn.data.label!)
 
         // @ts-ignore
         if (style === ButtonStyle.Link) btn.setURL(id || btn.data.custom_id)
+            else if (style === ButtonStyle.Premium) btn.setSKUId(id)
 
         if (emoji) btn.setEmoji(emoji)
 

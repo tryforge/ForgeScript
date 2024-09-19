@@ -11,8 +11,8 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.String,
     args: [
         {
-            name: "message",
-            description: "The string to trim",
+            name: "text",
+            description: "The text to trim",
             rest: false,
             required: true,
             type: structures_1.ArgType.String,
