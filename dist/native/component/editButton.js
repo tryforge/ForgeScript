@@ -63,7 +63,7 @@ exports.default = new structures_1.NativeFunction({
             .setDisabled(disabled || false)
             .setStyle(style || btn.data.style)
             // @ts-ignore
-            .setLabel(label || btn.data.label);
+            .setLabel(label || btn.data.label || "");
         // @ts-ignore
         if (style === discord_js_1.ButtonStyle.Link)
             btn.setURL(id || btn.data.custom_id);

@@ -67,7 +67,7 @@ export default new NativeFunction({
             .setDisabled(disabled || false)
             .setStyle(style || btn.data.style!)
             // @ts-ignore
-            .setLabel(label || btn.data.label!)
+            .setLabel(label || btn.data.label || "")
 
         // @ts-ignore
         if (style === ButtonStyle.Link) btn.setURL(id || btn.data.custom_id)
