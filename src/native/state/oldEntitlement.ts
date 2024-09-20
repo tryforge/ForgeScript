@@ -5,7 +5,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$oldEntitlement",
     version: "1.5.0",
-    description: "Retrieves old data from an event whose context was a entitlement instance",
+    description: "Retrieves old data from an event whose context was an entitlement instance",
     brackets: true,
     unwrap: true,
     output: ArgType.Unknown,

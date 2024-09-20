@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$oldEntitlement",
     version: "1.5.0",
-    description: "Retrieves old data from an event whose context was a entitlement instance",
+    description: "Retrieves old data from an event whose context was an entitlement instance",
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Unknown,

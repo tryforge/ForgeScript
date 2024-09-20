@@ -5,6 +5,7 @@ const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHan
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "autoModerationActionExecution",
     version: "1.2.0",
+    description: "This event is fired when an automod is fired under a message",
     listener: async function (m) {
         const commands = this.commands.get("autoModerationActionExecution");
         for (const command of commands) {
@@ -17,7 +18,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    description: "This event is fired when a automod is fired under a message",
     intents: ["Guilds", "AutoModerationExecution"],
 });
 //# sourceMappingURL=autoModerationActionExecution.js.map

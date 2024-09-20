@@ -6,7 +6,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$bulk",
     version: "1.4.0",
-    description: "Retrieves data from an event whose context was bulk delete event",
+    description: "Retrieves data from an event whose context was a bulk delete event",
     brackets: true,
     unwrap: true,
     output: ArgType.Unknown,

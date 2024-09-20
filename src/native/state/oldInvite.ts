@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$oldInvite",
     version: "1.0.3",
-    description: "Retrieves old data from an event whose context was a invite instance",
+    description: "Retrieves old data from an event whose context was an invite instance",
     brackets: true,
     unwrap: true,
     output: ArgType.Unknown,

@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$auditLog",
     version: "1.0.3",
-    description: "Retrieves new data from an event whose context was audit log instance",
+    description: "Retrieves new data from an event whose context was an audit log instance",
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Unknown,

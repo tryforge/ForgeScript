@@ -4,6 +4,7 @@ import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandl
 export default new DiscordEventHandler({
     name: "autoModerationActionExecution",
     version: "1.2.0",
+    description: "This event is fired when an automod is fired under a message",
     listener: async function (m) {
         const commands = this.commands.get("autoModerationActionExecution")
 
@@ -17,6 +18,5 @@ export default new DiscordEventHandler({
             })
         }
     },
-    description: "This event is fired when a automod is fired under a message",
     intents: ["Guilds", "AutoModerationExecution"],
 })
