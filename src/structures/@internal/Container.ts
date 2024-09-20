@@ -66,6 +66,7 @@ export class Container {
     public followUp = false
     public edit = false
     public ephemeral = false
+    public tts = false
     public update = false
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
@@ -160,6 +161,7 @@ export class Container {
         this.ephemeral = false
         this.fetchReply = false
         this.edit = false
+        this.tts = false
 
         this.stickers.length = 0
         this.choices.length = 0
@@ -196,6 +198,7 @@ export class Container {
                       content: this.content?.trim() || null,
                       components: this.components,
                       embeds: this.embeds,
+                      tts: this.tts
                   }
         ) as T
     }

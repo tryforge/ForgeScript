@@ -16,6 +16,7 @@ class Container {
     followUp = false;
     edit = false;
     ephemeral = false;
+    tts = false;
     update = false;
     files = new Array();
     channel;
@@ -107,6 +108,7 @@ class Container {
         this.ephemeral = false;
         this.fetchReply = false;
         this.edit = false;
+        this.tts = false;
         this.stickers.length = 0;
         this.choices.length = 0;
         this.components.length = 0;
@@ -138,6 +140,7 @@ class Container {
                 content: this.content?.trim() || null,
                 components: this.components,
                 embeds: this.embeds,
+                tts: this.tts
             });
     }
 }

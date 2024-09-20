@@ -9,6 +9,7 @@ export declare class Container {
     followUp: boolean;
     edit: boolean;
     ephemeral: boolean;
+    tts: boolean;
     update: boolean;
     files: AttachmentBuilder[];
     channel?: Channel;
