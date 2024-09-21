@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isCommand",
     version: "1.0.6",
-    description: "Whether the interaction is a command",
+    description: "Returns whether the interaction is a command",
     unwrap: false,
     output: structures_1.ArgType.Boolean,
     execute(ctx) {
