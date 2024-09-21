@@ -1,1 +1,1 @@
-{"version":3,"file":"lockThread.d.ts","sourceRoot":"","sources":["../../../src/native/channel/lockThread.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAiB,MAAM,YAAY,CAAA;AACvD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAkB3C,WAAW;;;;;;;AAflC,wBA+BE"}
+{"version":3,"file":"lockThread.d.ts","sourceRoot":"","sources":["../../../src/native/channel/lockThread.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAiB,MAAM,YAAY,CAAA;AACvD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAkB3C,WAAW;;;;;;;AAflC,wBAgCE"}
