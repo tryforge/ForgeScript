@@ -26,7 +26,7 @@ import { IRunnable } from "../../core/Interpreter"
 import noop from "../../functions/noop"
 import { ForgeError } from "../forge/ForgeError"
 import { Logger } from "./Logger"
-import { FormData } from "undici"
+import { FormData, Headers } from "undici"
 import contextNoop from "../../functions/contextNoop"
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
@@ -44,6 +44,9 @@ export interface IHttpOptions {
     contentType?: HTTPContentType
     headers: Record<string, string>
     method: string
+    response: {
+        headers: Headers
+    }
 }
 
 export interface IAutomodRuleOptions {
