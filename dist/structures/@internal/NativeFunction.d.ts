@@ -66,6 +66,7 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
     description: string;
     examples?: string[];
     experimental?: boolean;
+    deprecated?: boolean;
     /**
      * Resolves all arguments and are passed through execute params.
      */

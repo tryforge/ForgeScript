@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.5.0",
     description: "Requires premium to use this interaction",
     unwrap: false,
+    deprecated: true,
     async execute(ctx) {
         if (ctx.interaction?.isRepliable())
             await ctx.interaction.sendPremiumRequired();
