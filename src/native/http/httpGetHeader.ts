@@ -17,6 +17,6 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        return this.success(ctx.http.response?.headers.get(name))
+        return this.success(ctx.http.response?.headers?.get(name))
     },
 })

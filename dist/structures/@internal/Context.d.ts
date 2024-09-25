@@ -16,8 +16,9 @@ export interface IHttpOptions {
     contentType?: HTTPContentType;
     headers: Record<string, string>;
     method: string;
-    response: {
-        headers: Headers;
+    response?: {
+        headers?: Headers;
+        ping?: number;
     };
 }
 export interface IAutomodRuleOptions {

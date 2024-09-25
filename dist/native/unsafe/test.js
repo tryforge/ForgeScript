@@ -8,6 +8,8 @@ exports.default = new structures_1.NativeFunction({
     description: "This is just a test function",
     unwrap: true,
     brackets: true,
+    deprecated: true,
+    experimental: true,
     args: [
         structures_1.Arg.requiredString("test")
     ],

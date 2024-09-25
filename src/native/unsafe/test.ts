@@ -8,6 +8,8 @@ export default new NativeFunction({
     description: "This is just a test function",
     unwrap: true,
     brackets: true,
+    deprecated: true,
+    experimental: true,
     args: [
         Arg.requiredString("test")
     ],

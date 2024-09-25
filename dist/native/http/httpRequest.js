@@ -38,15 +38,17 @@ exports.default = new NativeFunction_1.NativeFunction({
         if (ctx.http.response) {
             delete ctx.http.response;
         }
+        let ms = performance.now();
         const req = await (0, undici_1.fetch)(url, {
             ...ctx.http,
             method,
             body: ctx.http.body ?? ctx.http.form
         });
+        ms = performance.now() - ms;
         const contentType = req.headers.get("content-type")?.split(";")[0];
         const overrideType = ctx.http.contentType;
         ctx.clearHttpOptions();
-        ctx.http.response = { headers: req.headers };
+        ctx.http.response = { headers: req.headers, ping: ms };
         if (overrideType !== undefined) {
             ctx.setEnvironmentKey(name, await req[structures_1.HTTPContentType[overrideType].toLowerCase()]());
         }
