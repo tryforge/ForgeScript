@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
         "$stickers"
     ],
     output: (0, array_1.default)(),
-    description: "Retrieves all stickers s of this message",
+    description: "Retrieves all stickers of this message",
     brackets: false,
     unwrap: true,
     args: [

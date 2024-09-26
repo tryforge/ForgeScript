@@ -17,7 +17,11 @@ var MessageProperty;
     MessageProperty["guildID"] = "guildID";
     MessageProperty["authorID"] = "authorID";
     MessageProperty["timestamp"] = "timestamp";
+    MessageProperty["editTimestamp"] = "editTimestamp";
     MessageProperty["hasPoll"] = "hasPoll";
+    MessageProperty["system"] = "system";
+    MessageProperty["pinned"] = "pinned";
+    MessageProperty["url"] = "url";
 })(MessageProperty || (exports.MessageProperty = MessageProperty = {}));
 exports.MessageProperties = (0, defineProperties_1.default)({
     content: (m) => m?.content,
@@ -29,6 +33,10 @@ exports.MessageProperties = (0, defineProperties_1.default)({
     username: (m) => m?.author?.username,
     authorID: (m) => m?.author?.id,
     timestamp: (m) => m?.createdTimestamp,
-    hasPoll: m => !!m?.poll
+    editTimestamp: (m) => m?.editedTimestamp,
+    hasPoll: (m) => !!m?.poll,
+    system: (m) => m?.system,
+    pinned: (m) => m?.pinned,
+    url: (m) => m?.url
 });
 //# sourceMappingURL=message.js.map

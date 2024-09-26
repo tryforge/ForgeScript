@@ -9,7 +9,7 @@ export default new NativeFunction({
         "$stickers"
     ],
     output: array<ArgType.Sticker>(),
-    description: "Retrieves all stickers s of this message",
+    description: "Retrieves all stickers of this message",
     brackets: false,
     unwrap: true,
     args: [
