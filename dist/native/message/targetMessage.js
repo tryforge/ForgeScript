@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Unknown,
     execute(ctx, [prop, sep]) {
-        return this.success(ctx.interaction?.isMessageContextMenuCommand() ? message_1.MessageProperties[prop](ctx.interaction.targetMessage, sep ?? ", ") : null);
+        return this.success(ctx.interaction?.isMessageContextMenuCommand() ? message_1.MessageProperties[prop](ctx.interaction.targetMessage, sep) : null);
     },
 });
 //# sourceMappingURL=targetMessage.js.map

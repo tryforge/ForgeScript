@@ -15,13 +15,15 @@ export enum MessageProperty {
     hasPoll = "hasPoll",
     system = "system",
     pinned = "pinned",
-    url = "url"
+    url = "url",
+    attachments = "attachments",
+    stickers = "stickers",
 }
 
 export const MessageProperties = defineProperties<typeof MessageProperty, Message>({
     content: (m) => m?.content,
     id: (m) => m?.id,
-    flags: (m, sep) => m?.flags.toArray().join(sep || ", "),
+    flags: (m, sep) => m?.flags.toArray().join(sep ?? ", "),
     channelID: (m) => m?.channelId,
     guildID: (m) => m?.guildId,
     type: (m) => (m ? MessageType[m.type] : undefined),
@@ -32,5 +34,7 @@ export const MessageProperties = defineProperties<typeof MessageProperty, Messag
     hasPoll: (m) => !!m?.poll,
     system: (m) => m?.system,
     pinned: (m) => m?.pinned,
-    url: (m) => m?.url
+    url: (m) => m?.url,
+    attachments: (m, sep) => m?.attachments.map(x => x.url).join(sep ?? ", "),
+    stickers: (m, sep) => m?.stickers.map(x => x.url).join(sep ?? ", "),
 })

@@ -13,7 +13,9 @@ export declare enum MessageProperty {
     hasPoll = "hasPoll",
     system = "system",
     pinned = "pinned",
-    url = "url"
+    url = "url",
+    attachments = "attachments",
+    stickers = "stickers"
 }
 export declare const MessageProperties: import("../functions/defineProperties").Properties<typeof MessageProperty, Message<boolean>>;
 //# sourceMappingURL=message.d.ts.map

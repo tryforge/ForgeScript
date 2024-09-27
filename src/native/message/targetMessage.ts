@@ -25,6 +25,6 @@ export default new NativeFunction({
     ],
     output: ArgType.Unknown,
     execute(ctx, [prop, sep]) {
-        return this.success(ctx.interaction?.isMessageContextMenuCommand() ? MessageProperties[prop](ctx.interaction.targetMessage, sep ?? ", ") : null)
+        return this.success(ctx.interaction?.isMessageContextMenuCommand() ? MessageProperties[prop](ctx.interaction.targetMessage, sep) : null)
     },
 })
