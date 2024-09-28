@@ -5,6 +5,7 @@ const embed_1 = require("../../properties/embed");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$targetMessageEmbeds",
+    version: "1.5.0",
     description: "Retrieves data of embeds from the target message",
     aliases: ["$targetMessageEmbed"],
     unwrap: true,

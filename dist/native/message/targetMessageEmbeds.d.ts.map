@@ -1,1 +1,1 @@
-{"version":3,"file":"targetMessageEmbeds.d.ts","sourceRoot":"","sources":["../../../src/native/message/targetMessageEmbeds.ts"],"names":[],"mappings":"AACA,OAAO,EAAmB,aAAa,EAAE,MAAM,wBAAwB,CAAA;AACvE,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;AAElE,wBA6CE"}
+{"version":3,"file":"targetMessageEmbeds.d.ts","sourceRoot":"","sources":["../../../src/native/message/targetMessageEmbeds.ts"],"names":[],"mappings":"AACA,OAAO,EAAmB,aAAa,EAAE,MAAM,wBAAwB,CAAA;AACvE,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;AAElE,wBA8CE"}
