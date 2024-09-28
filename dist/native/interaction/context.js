@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$context",
+    version: "1.5.0",
     description: "Returns the context of this interaction",
     unwrap: false,
     output: discord_js_1.InteractionContextType,

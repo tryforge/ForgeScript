@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$inRange",
     version: "1.0.0",
-    description: "Whether a number is in range",
+    description: "Returns whether a number is in range",
     brackets: true,
     output: ArgType.Boolean,
     unwrap: true,

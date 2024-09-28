@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$inRange",
     version: "1.0.0",
-    description: "Whether a number is in range",
+    description: "Returns whether a number is in range",
     brackets: true,
     output: structures_1.ArgType.Boolean,
     unwrap: true,

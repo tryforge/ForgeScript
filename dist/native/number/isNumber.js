@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isNumber",
     version: "1.0.0",
-    description: "Whether the number is valid",
+    description: "Returns whether the number is valid",
     unwrap: true,
     output: structures_1.ArgType.Boolean,
     args: [

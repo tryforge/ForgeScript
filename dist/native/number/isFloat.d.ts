@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     description: string;
     required: true;
     rest: false;
-    type: ArgType.Number;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=isFloat.d.ts.map
