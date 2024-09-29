@@ -17,7 +17,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [name]) {
-        const data = ctx.interaction?.isCommand() ? ctx.interaction.options.get(name) : null
+        const data = ctx.interaction && "options" in ctx.interaction ? ctx.interaction.options.get(name) : null
         return this.success(data?.attachment?.url ?? data?.value)
     },
 })

@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
             const command = await ctx.client.application.commands.fetch(id).catch(ctx.noop);
             return this.success(command ? command.description : undefined);
         }
-        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.command?.description : undefined);
+        return this.success(ctx.interaction && "command" in ctx.interaction ? ctx.interaction.command?.description : undefined);
     },
 });
 //# sourceMappingURL=applicationCommandDescription.js.map

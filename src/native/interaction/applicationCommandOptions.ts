@@ -23,6 +23,6 @@ export default new NativeFunction({
             return this.successJSON(command ? command.options : undefined)
         }
 
-        return this.successJSON(ctx.interaction?.isCommand() ? ctx.interaction.command?.options : undefined)
+        return this.successJSON(ctx.interaction && "command" in ctx.interaction ? ctx.interaction.command?.options : undefined)
     },
 })

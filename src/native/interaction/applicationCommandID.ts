@@ -23,6 +23,6 @@ export default new NativeFunction({
             return this.success(commands?.find((x) => x.name === name)?.id)
         }
 
-        return this.success(ctx.interaction?.isCommand() ? ctx.interaction.commandName : undefined)
+        return this.success(ctx.interaction && "command" in ctx.interaction ? ctx.interaction.commandId : undefined)
     },
 })
