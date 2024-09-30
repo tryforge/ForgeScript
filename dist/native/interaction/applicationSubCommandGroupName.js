@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     output: structures_1.ArgType.String,
     execute(ctx) {
-        return this.success(ctx.interaction?.isChatInputCommand() ? ctx.interaction.options.getSubcommandGroup(false) : undefined);
+        return this.success(ctx.interaction && "options" in ctx.interaction && "getSubcommandGroup" in ctx.interaction.options ? ctx.interaction.options.getSubcommandGroup(false) : undefined);
     },
 });
 //# sourceMappingURL=applicationSubCommandGroupName.js.map

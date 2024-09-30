@@ -8,6 +8,6 @@ export default new NativeFunction({
     unwrap: false,
     output: ArgType.String,
     execute(ctx) {
-        return this.success(ctx.interaction?.isChatInputCommand() ? ctx.interaction.options.getSubcommandGroup(false) : undefined)
+        return this.success(ctx.interaction && "options" in ctx.interaction && "getSubcommandGroup" in ctx.interaction.options ? ctx.interaction.options.getSubcommandGroup(false) : undefined)
     },
 })
