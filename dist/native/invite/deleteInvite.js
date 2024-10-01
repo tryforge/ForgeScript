@@ -5,7 +5,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$deleteInvite",
     version: "1.0.0",
     brackets: true,
-    description: "Deletes an invite, returns the code",
+    description: "Deletes an invite, returns bool",
     unwrap: true,
     output: structures_1.ArgType.Boolean,
     args: [

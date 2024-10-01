@@ -1,6 +1,7 @@
 import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import noop from "../../functions/noop"
+import { isNumber } from "lodash"
 
 export default new NativeFunction({
     name: "$createInvite",
@@ -43,7 +44,7 @@ export default new NativeFunction({
             .createInvite({
                 reason: reason || undefined,
                 maxUses: maxUses || undefined,
-                maxAge: maxAge || undefined,
+                maxAge: isNumber(maxAge) ? maxAge : undefined,
                 unique: true
             })
             .catch(ctx.noop)

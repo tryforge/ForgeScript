@@ -7,9 +7,27 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.3",
     description: "Returns the user who invited this person",
     unwrap: true,
+    brackets: false,
+    args: [
+        {
+            name: "guild ID",
+            description: "The guild to pull member from",
+            rest: false,
+            required: true,
+            type: structures_1.ArgType.Guild,
+        },
+        {
+            name: "user ID",
+            description: "The member to get its inviter",
+            rest: false,
+            required: true,
+            type: structures_1.ArgType.Member,
+            pointer: 0
+        },
+    ],
     output: structures_1.ArgType.User,
-    execute(ctx) {
-        return this.success(InviteTracker_1.InviteTracker.Inviters.get(ctx.guild?.id)?.get(ctx.user?.id)?.inviterId);
+    execute(ctx, [guild, user]) {
+        return this.success(InviteTracker_1.InviteTracker.Inviters.get(guild?.id ?? ctx.guild?.id)?.get(user?.id ?? ctx.user?.id)?.inviterId);
     },
 });
 //# sourceMappingURL=inviterID.js.map

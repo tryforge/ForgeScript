@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
+const lodash_1 = require("lodash");
 exports.default = new structures_1.NativeFunction({
     name: "$createInvite",
     version: "1.1.0",
@@ -42,7 +43,7 @@ exports.default = new structures_1.NativeFunction({
             .createInvite({
             reason: reason || undefined,
             maxUses: maxUses || undefined,
-            maxAge: maxAge || undefined,
+            maxAge: (0, lodash_1.isNumber)(maxAge) ? maxAge : undefined,
             unique: true
         })
             .catch(ctx.noop);
