@@ -317,6 +317,16 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.emojis.cache.get(id)
     }
 
+    private resolveApplicationEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
+        if (fromUrl !== null) return ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop)
+
+        const parsed = parseEmoji(str)
+        const id = parsed?.id ?? str
+        if (!CompiledFunction.IdRegex.test(id)) return
+        return ctx.client.application.emojis.fetch(id).catch(ctx.noop)
+    }
+
     private resolveForumTag(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         return (this.resolvePointer(arg, ref, ctx.channel) as ForumChannel)?.availableTags.find(
             (x) => x.id === str || x.name === str
@@ -353,6 +363,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     private resolveMember(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
         return this.resolvePointer(arg, ref, ctx.guild)?.members.fetch(str).catch(ctx.noop)
+    }
+
+    private resolveAutomodRule(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return this.resolvePointer(arg, ref, ctx.guild)?.autoModerationRules.fetch(str).catch(ctx.noop)
     }
 
     private resolveReaction(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

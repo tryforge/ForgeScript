@@ -252,6 +252,16 @@ class CompiledFunction {
         const id = parsed?.id ?? str;
         return ctx.client.emojis.cache.get(id);
     }
+    resolveApplicationEmoji(ctx, arg, str, ref) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
+        if (fromUrl !== null)
+            return ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop);
+        const parsed = (0, discord_js_1.parseEmoji)(str);
+        const id = parsed?.id ?? str;
+        if (!CompiledFunction.IdRegex.test(id))
+            return;
+        return ctx.client.application.emojis.fetch(id).catch(ctx.noop);
+    }
     resolveForumTag(ctx, arg, str, ref) {
         return this.resolvePointer(arg, ref, ctx.channel)?.availableTags.find((x) => x.id === str || x.name === str);
     }
@@ -282,6 +292,11 @@ class CompiledFunction {
         if (!CompiledFunction.IdRegex.test(str))
             return;
         return this.resolvePointer(arg, ref, ctx.guild)?.members.fetch(str).catch(ctx.noop);
+    }
+    resolveAutomodRule(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        return this.resolvePointer(arg, ref, ctx.guild)?.autoModerationRules.fetch(str).catch(ctx.noop);
     }
     resolveReaction(ctx, arg, str, ref) {
         const reactions = this.resolvePointer(arg, ref, ctx.message)?.reactions;

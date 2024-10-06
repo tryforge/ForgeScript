@@ -37,12 +37,18 @@ export declare class Arg {
     static optionalMember(name?: string, desc?: string): IArg<ArgType.Member, boolean, false, EnumLike>;
     static restMember(name?: string, desc?: string): IArg<ArgType.Member, true, true, EnumLike>;
     static requiredMember(name?: string, desc?: string): IArg<ArgType.Member, true, false, EnumLike>;
+    static optionalAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, boolean, false, EnumLike>;
+    static restAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, true, true, EnumLike>;
+    static requiredAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, true, false, EnumLike>;
     static restTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, true, true, EnumLike>;
     static optionalTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, boolean, false, EnumLike>;
     static requiredTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, true, false, EnumLike>;
     static restGuildEmoji(name?: string, desc?: string): IArg<ArgType.GuildEmoji, true, true, EnumLike>;
     static optionalGuildEmoji(name?: string, desc?: string): IArg<ArgType.GuildEmoji, boolean, false, EnumLike>;
     static requiredGuildEmoji(name?: string, desc?: string): IArg<ArgType.GuildEmoji, true, false, EnumLike>;
+    static restApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, true, true, EnumLike>;
+    static optionalApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, boolean, false, EnumLike>;
+    static requiredApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, true, false, EnumLike>;
     static restAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, true, true, EnumLike>;
     static optionalAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, boolean, false, EnumLike>;
     static requiredAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, true, false, EnumLike>;

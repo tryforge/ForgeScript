@@ -1,4 +1,3 @@
-import { AutoModerationRuleResolvable } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -20,7 +19,8 @@ export default new NativeFunction({
             description: "The id of the automod rule to delete",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.AutomodRule,
+            pointer: 0
         },
         {
             name: "reason",
@@ -30,9 +30,9 @@ export default new NativeFunction({
         },
     ],
     output: ArgType.Boolean,
-    async execute(ctx, [ guild, id, reason ]) {
+    async execute(ctx, [, rule, reason]) {
         try {
-            await guild.autoModerationRules.delete(id as AutoModerationRuleResolvable, reason || undefined)
+            await rule.delete(reason || undefined)
         } catch (error) {
             ctx.noop(error)
             return this.success(false)

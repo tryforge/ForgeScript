@@ -21,6 +21,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.GuildEmoji,
+            pointer: 0,
         },
         {
             name: "name",

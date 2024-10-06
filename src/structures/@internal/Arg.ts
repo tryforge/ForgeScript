@@ -360,6 +360,38 @@ export class Arg {
         })
     }
 
+    public static optionalAutomodRule(name: string = "rule ID", desc: string = "The guild automod rule to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.AutomodRule,
+            pointer: 0
+        })
+    }
+
+    public static restAutomodRule(name: string = "rule IDs", desc: string = "The guild automod rule to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required: true,
+            type: ArgType.AutomodRule,
+            pointer: 0
+        })
+    }
+
+    public static requiredAutomodRule(name: string = "rule ID", desc: string = "The guild automod rule to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.AutomodRule,
+            pointer: 0
+        })
+    }
+
     public static restTextChannel(name: string = "text channel IDs", desc: string = "The text channels to use") {
         return Arg.create({
             name,
@@ -418,6 +450,35 @@ export class Arg {
             required: true,
             type: ArgType.GuildEmoji,
             pointer: 0
+        })
+    }
+
+    public static restApplicationEmoji(name: string = "emoji IDs", desc: string = "The application emojis to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required: true,
+            type: ArgType.ApplicationEmoji,
+        })
+    }
+
+    public static optionalApplicationEmoji(name: string = "emoji ID", desc: string = "The application emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.ApplicationEmoji,
+        })
+    }
+
+    public static requiredApplicationEmoji(name: string = "emoji ID", desc: string = "The application emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.ApplicationEmoji,
         })
     }
 

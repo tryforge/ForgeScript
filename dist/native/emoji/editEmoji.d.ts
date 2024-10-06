@@ -11,6 +11,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.GuildEmoji;
+    pointer: number;
 }, {
     name: string;
     description: string;

@@ -20,7 +20,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The id of the automod rule to delete",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String
+            type: structures_1.ArgType.AutomodRule,
+            pointer: 0
         },
         {
             name: "reason",
@@ -30,9 +31,9 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     output: structures_1.ArgType.Boolean,
-    async execute(ctx, [guild, id, reason]) {
+    async execute(ctx, [, rule, reason]) {
         try {
-            await guild.autoModerationRules.delete(id, reason || undefined);
+            await rule.delete(reason || undefined);
         }
         catch (error) {
             ctx.noop(error);

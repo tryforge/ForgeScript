@@ -1,6 +1,7 @@
 import {
     ApplicationEmoji,
     AttachmentBuilder,
+    AutoModerationRule,
     BaseChannel,
     Emoji,
     Guild,
@@ -46,6 +47,7 @@ export enum ArgType {
     Color,
     Enum,
     ForumTag,
+    Emoji,
     GuildEmoji,
     Boolean,
     Attachment,
@@ -57,7 +59,8 @@ export enum ArgType {
     Sticker,
     Time,
     Member,
-    ApplicationEmoji
+    ApplicationEmoji,
+    AutomodRule
 }
 
 export interface IArg<
@@ -195,6 +198,10 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? number
     : T extends ArgType.Permission
     ? PermissionsString
+    : T extends ArgType.Emoji
+    ? Emoji
+    : T extends ArgType.AutomodRule
+    ? AutoModerationRule
     : null
 
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true
