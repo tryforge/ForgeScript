@@ -6,7 +6,7 @@ export default new NativeFunction({
     description: "Returns the emoji id",
     brackets: false,
     unwrap: true,
-    output: ArgType.GuildEmoji,
+    output: ArgType.Emoji,
     args: [
         {
             name: "emoji name",
@@ -19,6 +19,6 @@ export default new NativeFunction({
     execute(ctx, [emoji]) {
         if (this.hasFields) return this.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id)
 
-        return this.success(ctx.emoji?.name)
+        return this.success(ctx.emoji?.id)
     },
 })

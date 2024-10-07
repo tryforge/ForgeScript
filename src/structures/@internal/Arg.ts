@@ -482,6 +482,35 @@ export class Arg {
         })
     }
 
+    public static restEmoji(name: string = "emoji IDs", desc: string = "The emojis to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required: true,
+            type: ArgType.Emoji,
+        })
+    }
+
+    public static optionalEmoji(name: string = "emoji ID", desc: string = "The emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.Emoji,
+        })
+    }
+
+    public static requiredEmoji(name: string = "emoji ID", desc: string = "The emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.Emoji,
+        })
+    }
+
     public static restAttachment(name: string = "attachments", desc: string = "The attachments to use") {
         return Arg.create({
             name,

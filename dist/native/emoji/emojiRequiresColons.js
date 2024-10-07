@@ -13,13 +13,13 @@ exports.default = new structures_1.NativeFunction({
             name: "emoji ID",
             description: "The emoji id to return its colons state",
             rest: false,
-            type: structures_1.ArgType.GuildEmoji,
+            type: structures_1.ArgType.Emoji,
             required: true,
         },
     ],
     execute(ctx, [emoji]) {
-        emoji ?? ctx.emoji;
-        return this.success(emoji?.requiresColons);
+        emoji ??= ctx.emoji;
+        return this.success(emoji && "requiresColons" in emoji ? emoji.requiresColons : undefined);
     },
 });
 //# sourceMappingURL=emojiRequiresColons.js.map

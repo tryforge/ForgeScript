@@ -13,13 +13,12 @@ exports.default = new structures_1.NativeFunction({
             name: "emoji ID",
             description: "The emoji id to return its animation state",
             rest: false,
-            type: structures_1.ArgType.GuildEmoji,
+            type: structures_1.ArgType.Emoji,
             required: true,
         },
     ],
     execute(ctx, [emoji]) {
-        emoji ?? ctx.emoji;
-        return this.success(emoji?.animated);
+        return this.success((emoji ?? ctx.emoji)?.animated);
     },
 });
 //# sourceMappingURL=emojiAnimated.js.map

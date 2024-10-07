@@ -12,12 +12,11 @@ export default new NativeFunction({
             name: "emoji ID",
             description: "The emoji id to format",
             rest: false,
-            type: ArgType.GuildEmoji,
+            type: ArgType.Emoji,
             required: true,
         },
     ],
     execute(ctx, [emoji]) {
-        emoji ?? ctx.emoji
-        return this.success(emoji?.toString())
+        return this.success((emoji ?? ctx.emoji)?.toString())
     },
 })

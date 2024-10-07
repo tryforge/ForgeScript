@@ -6,7 +6,7 @@ export default new NativeFunction({
     description: "Returns a random emoji ID of a guild",
     unwrap: true,
     brackets: false,
-    output: ArgType.Guild,
+    output: ArgType.GuildEmoji,
     args: [
         {
             name: "guild ID",
@@ -16,9 +16,7 @@ export default new NativeFunction({
             type: ArgType.Guild,
         },
     ],
-    execute(ctx, [g]) {
-        g ??= ctx.guild!
-
-        return this.success(g?.emojis.cache.randomKey())
+    execute(ctx, [guild]) {
+        return this.success((guild ?? ctx.guild)?.emojis.cache.randomKey())
     },
 })

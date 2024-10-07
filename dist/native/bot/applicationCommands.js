@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$applicationCommands",
     version: "1.5.0",
-    description: "Returns all application commands of your app",
+    description: "Returns all application commands",
     output: structures_1.ArgType.Json,
     unwrap: false,
     async execute(ctx) {

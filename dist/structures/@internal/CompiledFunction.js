@@ -252,15 +252,25 @@ class CompiledFunction {
         const id = parsed?.id ?? str;
         return ctx.client.emojis.cache.get(id);
     }
-    resolveApplicationEmoji(ctx, arg, str, ref) {
+    async resolveApplicationEmoji(ctx, arg, str, ref) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
         if (fromUrl !== null)
-            return ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop);
+            return await ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop);
         const parsed = (0, discord_js_1.parseEmoji)(str);
         const id = parsed?.id ?? str;
         if (!CompiledFunction.IdRegex.test(id))
             return;
-        return ctx.client.application.emojis.fetch(id).catch(ctx.noop);
+        return await ctx.client.application.emojis.fetch(id).catch(ctx.noop);
+    }
+    async resolveEmoji(ctx, arg, str, ref) {
+        const fromUrl = CompiledFunction.CDNIdRegex.exec(str);
+        if (fromUrl !== null)
+            return this.resolveGuildEmoji(ctx, arg, fromUrl[2], ref) ?? await this.resolveApplicationEmoji(ctx, arg, fromUrl[2], ref);
+        const parsed = (0, discord_js_1.parseEmoji)(str);
+        const id = parsed?.id ?? str;
+        if (!CompiledFunction.IdRegex.test(id))
+            return;
+        return this.resolveGuildEmoji(ctx, arg, id, ref) ?? await this.resolveApplicationEmoji(ctx, arg, id, ref);
     }
     resolveForumTag(ctx, arg, str, ref) {
         return this.resolvePointer(arg, ref, ctx.channel)?.availableTags.find((x) => x.id === str || x.name === str);

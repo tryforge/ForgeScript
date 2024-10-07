@@ -69,6 +69,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveRoleOrUser;
     private resolveGuildEmoji;
     private resolveApplicationEmoji;
+    private resolveEmoji;
     private resolveForumTag;
     private resolveSticker;
     private resolveAttachment;

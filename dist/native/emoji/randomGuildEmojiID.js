@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns a random emoji ID of a guild",
     unwrap: true,
     brackets: false,
-    output: structures_1.ArgType.Guild,
+    output: structures_1.ArgType.GuildEmoji,
     args: [
         {
             name: "guild ID",
@@ -17,9 +17,8 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Guild,
         },
     ],
-    execute(ctx, [g]) {
-        g ??= ctx.guild;
-        return this.success(g?.emojis.cache.randomKey());
+    execute(ctx, [guild]) {
+        return this.success((guild ?? ctx.guild)?.emojis.cache.randomKey());
     },
 });
 //# sourceMappingURL=randomGuildEmojiID.js.map

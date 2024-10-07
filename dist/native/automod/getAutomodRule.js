@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const automodRule_1 = require("../../properties/automodRule");
 exports.default = new structures_1.NativeFunction({
     name: "$getAutomodRule",
+    version: "1.5.0",
     description: "Returns an automod rule of a guild",
     unwrap: true,
     brackets: true,

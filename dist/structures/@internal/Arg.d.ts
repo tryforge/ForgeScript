@@ -49,6 +49,9 @@ export declare class Arg {
     static restApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, true, true, EnumLike>;
     static optionalApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, boolean, false, EnumLike>;
     static requiredApplicationEmoji(name?: string, desc?: string): IArg<ArgType.ApplicationEmoji, true, false, EnumLike>;
+    static restEmoji(name?: string, desc?: string): IArg<ArgType.Emoji, true, true, EnumLike>;
+    static optionalEmoji(name?: string, desc?: string): IArg<ArgType.Emoji, boolean, false, EnumLike>;
+    static requiredEmoji(name?: string, desc?: string): IArg<ArgType.Emoji, true, false, EnumLike>;
     static restAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, true, true, EnumLike>;
     static optionalAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, boolean, false, EnumLike>;
     static requiredAttachment(name?: string, desc?: string): IArg<ArgType.Attachment, true, false, EnumLike>;

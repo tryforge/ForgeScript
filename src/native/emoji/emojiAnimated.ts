@@ -12,12 +12,11 @@ export default new NativeFunction({
             name: "emoji ID",
             description: "The emoji id to return its animation state",
             rest: false,
-            type: ArgType.GuildEmoji,
+            type: ArgType.Emoji,
             required: true,
         },
     ],
     execute(ctx, [emoji]) {
-        emoji ?? ctx.emoji
-        return this.success(emoji?.animated)
+        return this.success((emoji ?? ctx.emoji)?.animated)
     },
 })

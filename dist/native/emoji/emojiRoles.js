@@ -27,9 +27,9 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    execute(ctx, [emoji, sep]) {
-        emoji ?? ctx.emoji;
-        return this.success(emoji?.roles.cache.map((x) => x.id).join(sep || ", "));
+    execute(ctx, [em, sep]) {
+        const emoji = em ?? ctx.emoji;
+        return this.success(emoji && "roles" in emoji ? emoji.roles.cache.map((x) => x.id).join(sep || ", ") : undefined);
     },
 });
 //# sourceMappingURL=emojiRoles.js.map

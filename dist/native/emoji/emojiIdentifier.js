@@ -13,13 +13,12 @@ exports.default = new structures_1.NativeFunction({
             name: "emoji ID",
             description: "The emoji id to return its identifier",
             rest: false,
-            type: structures_1.ArgType.GuildEmoji,
+            type: structures_1.ArgType.Emoji,
             required: true,
         },
     ],
     execute(ctx, [emoji]) {
-        emoji ?? ctx.emoji;
-        return this.success(emoji?.identifier);
+        return this.success((emoji ?? ctx.emoji)?.identifier);
     },
 });
 //# sourceMappingURL=emojiIdentifier.js.map

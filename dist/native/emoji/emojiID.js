@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the emoji id",
     brackets: false,
     unwrap: true,
-    output: structures_1.ArgType.GuildEmoji,
+    output: structures_1.ArgType.Emoji,
     args: [
         {
             name: "emoji name",
@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [emoji]) {
         if (this.hasFields)
             return this.success(ctx.client.emojis.cache.find((x) => x.name === emoji)?.id);
-        return this.success(ctx.emoji?.name);
+        return this.success(ctx.emoji?.id);
     },
 });
 //# sourceMappingURL=emojiID.js.map

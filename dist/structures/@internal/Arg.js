@@ -435,6 +435,32 @@ class Arg {
             type: NativeFunction_1.ArgType.ApplicationEmoji,
         });
     }
+    static restEmoji(name = "emoji IDs", desc = "The emojis to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required: true,
+            type: NativeFunction_1.ArgType.Emoji,
+        });
+    }
+    static optionalEmoji(name = "emoji ID", desc = "The emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: NativeFunction_1.ArgType.Emoji,
+        });
+    }
+    static requiredEmoji(name = "emoji ID", desc = "The emoji to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: NativeFunction_1.ArgType.Emoji,
+        });
+    }
     static restAttachment(name = "attachments", desc = "The attachments to use") {
         return Arg.create({
             name,
