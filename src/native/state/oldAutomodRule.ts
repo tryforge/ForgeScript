@@ -25,6 +25,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return this.success(AutomodRuleProperties[prop](ctx.states?.automodRule?.old, sep))
+        return this.successJSON(AutomodRuleProperties[prop](ctx.states?.automodRule?.old, sep))
     },
 })

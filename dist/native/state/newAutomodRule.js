@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [prop, sep]) {
-        return this.success(automodRule_1.AutomodRuleProperties[prop](ctx.states?.automodRule?.new, sep));
+        return this.successJSON(automodRule_1.AutomodRuleProperties[prop](ctx.states?.automodRule?.new, sep));
     },
 });
 //# sourceMappingURL=newAutomodRule.js.map

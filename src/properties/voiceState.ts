@@ -12,6 +12,9 @@ export enum VoiceStateProperty {
     selfMuted = "selfMuted",
     guildMuted = "guildMuted",
     timestamp = "timestamp",
+    selfVideo = "selfVideo",
+    streaming = "streaming",
+    suppressed = "suppressed"
 }
 
 export const VoiceStateProperties = defineProperties<typeof VoiceStateProperty, VoiceState>({
@@ -25,4 +28,7 @@ export const VoiceStateProperties = defineProperties<typeof VoiceStateProperty, 
     muted: (i) => i?.mute ?? false,
     selfDeaf: (i) => i?.selfDeaf ?? false,
     selfMuted: (i) => i?.selfMute ?? false,
+    selfVideo: (i) => i?.selfVideo ?? false,
+    streaming: (i) => i?.streaming ?? false,
+    suppressed: (i) => i?.suppress ?? false
 })

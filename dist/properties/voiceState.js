@@ -17,6 +17,9 @@ var VoiceStateProperty;
     VoiceStateProperty["selfMuted"] = "selfMuted";
     VoiceStateProperty["guildMuted"] = "guildMuted";
     VoiceStateProperty["timestamp"] = "timestamp";
+    VoiceStateProperty["selfVideo"] = "selfVideo";
+    VoiceStateProperty["streaming"] = "streaming";
+    VoiceStateProperty["suppressed"] = "suppressed";
 })(VoiceStateProperty || (exports.VoiceStateProperty = VoiceStateProperty = {}));
 exports.VoiceStateProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.channel?.createdTimestamp,
@@ -29,5 +32,8 @@ exports.VoiceStateProperties = (0, defineProperties_1.default)({
     muted: (i) => i?.mute ?? false,
     selfDeaf: (i) => i?.selfDeaf ?? false,
     selfMuted: (i) => i?.selfMute ?? false,
+    selfVideo: (i) => i?.selfVideo ?? false,
+    streaming: (i) => i?.streaming ?? false,
+    suppressed: (i) => i?.suppress ?? false
 });
 //# sourceMappingURL=voiceState.js.map
