@@ -26,10 +26,7 @@ export default new NativeFunction({
         }
     ],
     output: ArgType.Webhook,
-    async execute(ctx, [chan, msg]) {
-        const channel = (chan ?? ctx.channel) as TextChannel
-        const message = await channel.messages.fetch(msg)
-
-        return this.success(message.webhookId)
+    async execute(ctx, [, message]) {
+        return this.success((message ?? ctx.message)?.webhookId)
     },
 })

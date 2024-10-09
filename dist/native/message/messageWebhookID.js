@@ -26,10 +26,8 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     output: structures_1.ArgType.Webhook,
-    async execute(ctx, [chan, msg]) {
-        const channel = (chan ?? ctx.channel);
-        const message = await channel.messages.fetch(msg);
-        return this.success(message.webhookId);
+    async execute(ctx, [, message]) {
+        return this.success((message ?? ctx.message)?.webhookId);
     },
 });
 //# sourceMappingURL=messageWebhookID.js.map
