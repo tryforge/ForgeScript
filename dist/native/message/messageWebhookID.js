@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     output: structures_1.ArgType.Webhook,
-    async execute(ctx, [, message]) {
+    execute(ctx, [, message]) {
         return this.success((message ?? ctx.message)?.webhookId);
     },
 });

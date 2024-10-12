@@ -26,7 +26,7 @@ export default new NativeFunction({
         }
     ],
     output: ArgType.Webhook,
-    async execute(ctx, [, message]) {
+    execute(ctx, [, message]) {
         return this.success((message ?? ctx.message)?.webhookId)
     },
 })

@@ -30,7 +30,7 @@ export default new NativeFunction({
         }
     ],
     output: ArgType.Boolean,
-    async execute(ctx, [, message]) {
+    execute(ctx, [, message]) {
         return this.success((message ?? ctx.message)?.pinned ?? false)
     },
 })
