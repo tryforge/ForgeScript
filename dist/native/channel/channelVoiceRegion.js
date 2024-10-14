@@ -13,6 +13,7 @@ exports.default = new structures_1.NativeFunction({
             name: "channel ID",
             description: "The channel to get its region",
             rest: false,
+            required: true,
             type: structures_1.ArgType.Channel,
             check: (i) => i.isVoiceBased()
         },

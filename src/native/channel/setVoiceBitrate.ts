@@ -5,7 +5,7 @@ import { BaseChannel, VoiceChannel } from "discord.js"
 export default new NativeFunction({
     name: "$setVoiceBitrate",
     version: "1.4.0",
-    description: "Sets the bitrate quality voice channel",
+    description: "Sets the bitrate quality of a voice channel, returns bool",
     brackets: true,
     output: ArgType.Boolean,
     args: [
@@ -33,7 +33,7 @@ export default new NativeFunction({
         }
     ],
     unwrap: true,
-    async execute(ctx, [channel, bitrate, reason ]) {
+    async execute(ctx, [channel, bitrate, reason]) {
         return this.success(!!(await (channel as VoiceChannel).setBitrate(bitrate, reason ?? undefined).catch(ctx.noop)))
     },
 })

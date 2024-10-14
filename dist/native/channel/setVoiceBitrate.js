@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setVoiceBitrate",
     version: "1.4.0",
-    description: "Sets the bitrate quality voice channel",
+    description: "Sets the bitrate quality of a voice channel, returns bool",
     brackets: true,
     output: structures_1.ArgType.Boolean,
     args: [

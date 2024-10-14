@@ -13,6 +13,7 @@ export default new NativeFunction({
             name: "channel ID",
             description: "The channel to get its region",
             rest: false,
+            required: true,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isVoiceBased()
         },
