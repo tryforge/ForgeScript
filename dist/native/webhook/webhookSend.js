@@ -41,12 +41,34 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.String,
         },
+        {
+            name: "thread ID",
+            description: "The thread to send message to",
+            rest: false,
+            type: structures_1.ArgType.Channel,
+            check: (i) => i.isThread(),
+        },
+        {
+            name: "post name",
+            description: "The name for the created forum post",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
+        {
+            name: "tags",
+            description: "The tags for the created forum post",
+            rest: true,
+            type: structures_1.ArgType.String,
+        },
     ],
-    async execute(ctx, [url, content, returnMessageID, username, avatarUrl]) {
+    async execute(ctx, [url, content, returnMessageID, username, avatarUrl, thread, name, tags]) {
         const web = new discord_js_1.WebhookClient({ url });
         ctx.container.content = content || undefined;
-        ctx.container.avatarURL = avatarUrl ?? undefined;
-        ctx.container.username = username ?? undefined;
+        ctx.container.avatarURL = avatarUrl || undefined;
+        ctx.container.username = username || undefined;
+        ctx.container.threadId = thread?.id || undefined;
+        ctx.container.threadName = name || undefined;
+        ctx.container.appliedTags = tags || undefined;
         const m = await ctx.container.send(web);
         return this.success(returnMessageID && m ? m.id : undefined);
     },

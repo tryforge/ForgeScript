@@ -28,6 +28,9 @@ class Container {
     avatarURL;
     username;
     poll;
+    threadId;
+    threadName;
+    appliedTags;
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -102,6 +105,9 @@ class Container {
         delete this.poll;
         delete this.avatarURL;
         delete this.username;
+        delete this.threadId;
+        delete this.threadName;
+        delete this.appliedTags;
         this.followUp = false;
         this.reply = false;
         this.update = false;
@@ -140,7 +146,10 @@ class Container {
                 content: this.content?.trim() || null,
                 components: this.components,
                 embeds: this.embeds,
-                tts: this.tts
+                tts: this.tts,
+                threadId: this.threadId,
+                threadName: this.threadName,
+                appliedTags: this.appliedTags,
             });
     }
 }

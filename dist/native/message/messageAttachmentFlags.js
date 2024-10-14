@@ -8,6 +8,7 @@ const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$messageAttachmentFlags",
+    version: "1.5.0",
     description: "Returns the flags of an attachment from this message",
     brackets: false,
     unwrap: true,

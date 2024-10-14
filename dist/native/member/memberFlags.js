@@ -8,6 +8,7 @@ const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$memberFlags",
+    version: "1.5.0",
     description: "Returns the flags of a member",
     brackets: false,
     unwrap: true,

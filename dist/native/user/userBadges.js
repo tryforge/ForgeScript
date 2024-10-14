@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$userBadges",
     version: "1.0.0",
     description: "Returns the public badges of a user",
+    aliases: ["$userFlags"],
     unwrap: true,
     output: (0, array_1.default)(discord_js_1.UserFlags),
     args: [

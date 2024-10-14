@@ -7,6 +7,7 @@ export default new NativeFunction({
     name: "$userBadges",
     version: "1.0.0",
     description: "Returns the public badges of a user",
+    aliases: ["$userFlags"],
     unwrap: true,
     output: array(UserFlags),
     args: [
