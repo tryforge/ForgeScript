@@ -1,1 +1,1 @@
-{"version":3,"file":"cloneChannelPerms.d.ts","sourceRoot":"","sources":["../../../src/native/channel/cloneChannelPerms.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAgB,MAAM,YAAY,CAAA;AACtD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;eAcnC,WAAW;;;;;;;eAQX,WAAW;;AApBlC,wBA2BE"}
+{"version":3,"file":"cloneChannelPerms.d.ts","sourceRoot":"","sources":["../../../src/native/channel/cloneChannelPerms.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAgB,MAAM,YAAY,CAAA;AACtD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;eAenC,WAAW;;;;;;;eAQX,WAAW;;AArBlC,wBA4BE"}

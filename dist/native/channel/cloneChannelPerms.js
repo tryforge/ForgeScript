@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$cloneChannelPerms",
+    version: "1.5.0",
     description: "Clones the given channel's perms to another channel, returns bool",
     brackets: true,
     unwrap: true,
