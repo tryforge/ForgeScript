@@ -9,7 +9,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$channelPermissionsFor",
     version: "1.4.0",
-    description: "Returns permissions of a role of member in a channel",
+    description: "Returns permissions of a role or member in a channel",
     aliases: [
         "$channelPermsFor",
         "$memberChannelPerms",

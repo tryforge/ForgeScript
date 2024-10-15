@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
         "$channelOverwrites"
     ],
     unwrap: true,
-    brackets: false,
+    brackets: true,
     args: [
         {
             name: "channel ID",
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
             name: "property",
             description: "The property of the overwrites to return",
             rest: false,
-            required: false,
+            required: true,
             type: structures_1.ArgType.Enum,
             enum: permissionOverwrites_1.PermissionOverwritesProperty
         },
@@ -39,8 +39,7 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Unknown,
     execute(ctx, [ch, prop, sep]) {
         const chan = (ch ?? ctx.channel);
-        const perms = chan.permissionOverwrites.cache;
-        return this.successJSON(prop ? perms.map(perm => permissionOverwrites_1.PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", ") : perms);
+        return this.successJSON(chan.permissionOverwrites.cache.map(perm => permissionOverwrites_1.PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=channelPermissions.js.map

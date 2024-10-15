@@ -11,7 +11,7 @@ export default new NativeFunction({
         "$channelOverwrites"
     ],
     unwrap: true,
-    brackets: false,
+    brackets: true,
     args: [
         {
             name: "channel ID",
@@ -25,7 +25,7 @@ export default new NativeFunction({
             name: "property",
             description: "The property of the overwrites to return",
             rest: false,
-            required: false,
+            required: true,
             type: ArgType.Enum,
             enum: PermissionOverwritesProperty
         },
@@ -39,7 +39,6 @@ export default new NativeFunction({
     output: ArgType.Unknown,
     execute(ctx, [ ch, prop, sep ]) {
         const chan = (ch ?? ctx.channel) as GuildChannel
-        const perms = chan.permissionOverwrites.cache
-        return this.successJSON(prop ? perms.map(perm => PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", ") : perms)
+        return this.successJSON(chan.permissionOverwrites.cache.map(perm => PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", "))
     },
 })

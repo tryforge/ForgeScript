@@ -9,7 +9,7 @@ export default new NativeFunction({
         "$isArchived",
         "$threadArchived"
     ],
-    description: "Returns whether a thread is archived, returns bool",
+    description: "Returns whether a thread is archived",
     brackets: false,
     unwrap: true,
     output: ArgType.Boolean,

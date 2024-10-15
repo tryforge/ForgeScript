@@ -5,7 +5,7 @@ export default new NativeFunction({
     name: "$unsuppressEmbeds",
     version: "1.5.0",
     description: "Unsuppresses embeds on a message, returns bool",
-    brackets: true,
+    brackets: false,
     unwrap: true,
     args: [
         {
@@ -27,6 +27,6 @@ export default new NativeFunction({
     ],
     output: ArgType.Boolean,
     async execute(ctx, [, message]) {
-        return this.success(!!(await message.suppressEmbeds(false).catch(ctx.noop)))
+        return this.success(!!(await (message ?? ctx.message)?.suppressEmbeds(false).catch(ctx.noop)))
     },
 })

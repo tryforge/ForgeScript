@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
         "$isArchived",
         "$threadArchived"
     ],
-    description: "Returns whether a thread is archived, returns bool",
+    description: "Returns whether a thread is archived",
     brackets: false,
     unwrap: true,
     output: structures_1.ArgType.Boolean,

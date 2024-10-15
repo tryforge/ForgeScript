@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const discord_js_1 = require("discord.js");
 exports.default = new structures_1.NativeFunction({
     name: "$setVoiceVideoQuality",
+    version: "1.5.0",
     description: "Sets the video quality of a voice channel, returns bool",
     brackets: true,
     output: structures_1.ArgType.Boolean,

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$unsuppressEmbeds",
+    version: "1.5.0",
     description: "Unsuppresses embeds on a message, returns bool",
-    brackets: true,
+    brackets: false,
     unwrap: true,
     args: [
         {
@@ -26,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Boolean,
     async execute(ctx, [, message]) {
-        return this.success(!!(await message.suppressEmbeds(false).catch(ctx.noop)));
+        return this.success(!!(await (message ?? ctx.message)?.suppressEmbeds(false).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=unsuppressEmbeds.js.map
