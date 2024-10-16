@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$modifyChannelPerms",
     version: "1.4.0",
     description: "Modifies given channel perms for a role or user",
+    aliases: ["$editChannelPerms"],
     unwrap: true,
     brackets: true,
     output: structures_1.ArgType.Boolean,

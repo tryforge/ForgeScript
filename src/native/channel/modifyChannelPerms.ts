@@ -7,6 +7,7 @@ export default new NativeFunction({
     name: "$modifyChannelPerms",
     version: "1.4.0",
     description: "Modifies given channel perms for a role or user",
+    aliases: ["$editChannelPerms"],
     unwrap: true,
     brackets: true,
     output: ArgType.Boolean,
