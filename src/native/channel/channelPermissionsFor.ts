@@ -5,7 +5,7 @@ import array from "../../functions/array"
 export default new NativeFunction({
     name: "$channelPermissionsFor",
     version: "1.4.0",
-    description: "Returns permissions of a role or member in a channel",
+    description: "Returns permissions for a role or member in a channel",
     aliases: [
         "$channelPermsFor",
         "$memberChannelPerms",
@@ -24,7 +24,7 @@ export default new NativeFunction({
         },
         {
             name: "id",
-            description: "The role or user to get perms of",
+            description: "The role or user to get perms for",
             rest: false,
             required: true,
             type: ArgType.String

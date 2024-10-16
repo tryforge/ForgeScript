@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
-            check: (i) => i.isTextBased() && "permissionOverwrites" in i,
+            check: (i) => "permissionOverwrites" in i,
         },
         {
             name: "id",

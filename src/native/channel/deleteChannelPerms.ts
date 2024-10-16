@@ -1,4 +1,4 @@
-import { BaseChannel, PermissionFlagsBits, PermissionsString, TextChannel } from "discord.js"
+import { BaseChannel, GuildChannel, PermissionFlagsBits, PermissionsString } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -15,7 +15,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => i.isTextBased() && "permissionOverwrites" in i,
+            check: (i: BaseChannel) => "permissionOverwrites" in i,
         },
         {
             name: "id",
@@ -34,7 +34,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [ch, id, perms]) {
-        const channel = ch as TextChannel
+        const channel = ch as GuildChannel
 
         const obj: Partial<Record<PermissionsString, null>> = {}
 
