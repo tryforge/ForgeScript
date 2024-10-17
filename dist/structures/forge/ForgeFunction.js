@@ -15,7 +15,8 @@ class ForgeFunction {
     compiled;
     constructor(data) {
         this.data = data;
-        data.params ??= [];
+        if (!Array.isArray(data.params))
+            data.params = [];
     }
     populate() {
         managers_1.FunctionManager.add(this.asNative());
@@ -27,15 +28,18 @@ class ForgeFunction {
             description: "Custom function",
             unwrap: (!!this.data.params?.length && !this.data.firstParamCondition),
             args: this.data.params?.length ? this.data.params.map((x, i) => ({
-                name: x,
+                name: typeof x === "string" ? x : x.name,
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
                 type: __1.ArgType.String,
-                required: true
+                required: typeof x === "string" ? true : x.required ?? true
             })) : undefined,
-            brackets: this.data.params?.length ? true : undefined,
+            brackets: this.data.brackets ?? (this.data.params?.length ? true : undefined),
             async execute(ctx, args) {
                 if (!this.fn.data.unwrap) {
+                    if (!this.data.fields || this.data.fields.length === 0) {
+                        return outer.call(ctx, args ?? []);
+                    }
                     const condition = await this["resolveCondition"](ctx, this.data.fields[0]);
                     if (!this["isValidReturnType"](condition))
                         return condition;
@@ -55,10 +59,14 @@ class ForgeFunction {
     }
     async call(ctx, args) {
         this.compiled ??= core_1.Compiler.compile(this.data.code, this.data.path);
-        if (this.data.params.length !== args.length)
-            return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${this.data.params.length} arguments, received ${args.length}`));
-        for (let i = 0, len = this.data.params.length; i < len; i++) {
-            ctx.setEnvironmentKey(this.data.params[i], args[i]);
+        const params = Array.isArray(this.data.params) ? this.data.params : [];
+        const required = params.filter(param => typeof param === "string" || param.required !== false);
+        if (args.length < required.length)
+            return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${required.length} arguments, received ${args.length}`));
+        for (let i = 0, len = params.length; i < len; i++) {
+            const param = params[i];
+            const name = typeof param === "string" ? param : param.name;
+            ctx.setEnvironmentKey(name, args[i]);
         }
         const result = await core_1.Interpreter.run(ctx.clone({
             doNotSend: true,
