@@ -17,7 +17,7 @@ export default new NativeFunction({
             type: ArgType.Guild,
         },
         {
-            name: "type",
+            name: "types",
             description: "The channel types to get an id from",
             type: ArgType.Enum,
             rest: true,
@@ -27,6 +27,8 @@ export default new NativeFunction({
     ],
     execute(ctx, [g, types]) {
         g ??= ctx.guild!
+        types ??= []
+        
         return this.success(
             types.length === 0 ? g?.channels.cache.randomKey() :
                 g?.channels.cache.filter(x => types.includes(x.type)).randomKey()
