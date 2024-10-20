@@ -33,9 +33,15 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Time,
         },
+        {
+            name: "reason",
+            description: "The reason to timeout the member",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
     ],
-    async execute(ctx, [, member, ms]) {
-        const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(ctx.noop);
+    async execute(ctx, [, member, ms, reason]) {
+        const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null, reason || undefined).catch(ctx.noop);
         return this.success(!!timeout);
     },
 });

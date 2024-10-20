@@ -33,9 +33,15 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Time,
         },
+        {
+            name: "reason",
+            description: "The reason to timeout the member",
+            rest: false,
+            type: ArgType.String,
+        },
     ],
-    async execute(ctx, [, member, ms]) {
-        const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null).catch(ctx.noop)
+    async execute(ctx, [, member, ms, reason]) {
+        const timeout = await member.disableCommunicationUntil(ms ? Date.now() + ms : null, reason || undefined).catch(ctx.noop)
         return this.success(!!timeout)
     },
 })
