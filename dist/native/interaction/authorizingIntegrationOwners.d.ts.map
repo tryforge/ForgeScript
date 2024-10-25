@@ -1,1 +1,1 @@
-{"version":3,"file":"authorizingIntegrationOwners.d.ts","sourceRoot":"","sources":["../../../src/native/interaction/authorizingIntegrationOwners.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;AAElE,wBASE"}
+{"version":3,"file":"authorizingIntegrationOwners.d.ts","sourceRoot":"","sources":["../../../src/native/interaction/authorizingIntegrationOwners.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAElE,oBAAY,gCAAgC;IACxC,KAAK,IAAA;IACL,IAAI,IAAA;CACP;;;;;;;;;AAED,wBAqBE"}

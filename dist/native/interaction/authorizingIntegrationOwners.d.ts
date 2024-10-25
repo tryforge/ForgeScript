@@ -1,4 +1,15 @@
 import { ArgType, NativeFunction } from "../../structures";
-declare const _default: NativeFunction<import("../../structures").IArg<ArgType, boolean, boolean, import("../../structures").EnumLike<any>>[], false>;
+export declare enum AuthorizingIntegrationOwnersType {
+    Guild = 0,
+    User = 1
+}
+declare const _default: NativeFunction<[{
+    name: string;
+    description: string;
+    rest: false;
+    required: true;
+    type: ArgType.Enum;
+    enum: typeof AuthorizingIntegrationOwnersType;
+}], true>;
 export default _default;
 //# sourceMappingURL=authorizingIntegrationOwners.d.ts.map
