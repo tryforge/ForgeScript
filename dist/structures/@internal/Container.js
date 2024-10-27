@@ -31,6 +31,7 @@ class Container {
     threadId;
     threadName;
     appliedTags;
+    deleteIn;
     async send(obj, content) {
         let res;
         const options = this.getOptions(content);
@@ -79,6 +80,11 @@ class Container {
             res = Promise.resolve(null);
         }
         const result = (await res.catch(noop_1.default));
+        if (this.deleteIn && result instanceof discord_js_1.Message) {
+            setTimeout(() => {
+                result.delete().catch(noop_1.default);
+            }, this.deleteIn);
+        }
         this.reset();
         return result;
     }
@@ -108,6 +114,7 @@ class Container {
         delete this.threadId;
         delete this.threadName;
         delete this.appliedTags;
+        delete this.deleteIn;
         this.followUp = false;
         this.reply = false;
         this.update = false;

@@ -82,6 +82,7 @@ export class Container {
     public threadId?: ThreadChannelResolvable
     public threadName?: string
     public appliedTags?: string[]
+    public deleteIn?: number
 
     public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
         let res: Promise<unknown>
@@ -127,6 +128,13 @@ export class Container {
         }
 
         const result = (await res.catch(noop)) as T
+
+        if (this.deleteIn && result instanceof Message) {
+            setTimeout(() => {
+                result.delete().catch(noop)
+            }, this.deleteIn)
+        }
+
         this.reset()
         return result
     }
@@ -161,6 +169,7 @@ export class Container {
         delete this.threadId
         delete this.threadName
         delete this.appliedTags
+        delete this.deleteIn
 
         this.followUp = false
         this.reply = false
