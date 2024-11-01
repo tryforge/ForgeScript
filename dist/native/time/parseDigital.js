@@ -12,6 +12,7 @@ function digital(ms) {
 }
 exports.default = new structures_1.NativeFunction({
     name: "$parseDigital",
+    version: "1.5.0",
     description: "Parses given ms to digital format",
     brackets: true,
     unwrap: true,

@@ -33,15 +33,22 @@ export default new NativeFunction({
             type: ArgType.Enum,
             enum: PresenceStatus
         },
+        {
+            name: "count bots",
+            description: "Whether to count bots",
+            rest: false,
+            type: ArgType.Boolean,
+        },
     ],
     unwrap: true,
-    execute(ctx, [guild, status]) {
+    execute(ctx, [guild, status, bots]) {
         guild ??= ctx.guild!
+        bots ??= true
 
-        if (!status) {
-            return this.success(guild?.memberCount)
-        } else {
-            return this.success(guild?.members.cache.filter(member => member.presence?.status === status).size)
+        if (status) {
+            return this.success(guild?.members.cache.filter(member => member.presence?.status === status && (bots ? true : !member.user.bot)).size)
         }
+
+        return this.success(bots ? guild?.memberCount : guild?.members.cache.filter(member => !member.user.bot).size)
     },
 })

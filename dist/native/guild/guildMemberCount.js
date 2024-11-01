@@ -35,16 +35,21 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Enum,
             enum: PresenceStatus
         },
+        {
+            name: "count bots",
+            description: "Whether to count bots",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
     unwrap: true,
-    execute(ctx, [guild, status]) {
+    execute(ctx, [guild, status, bots]) {
         guild ??= ctx.guild;
-        if (!status) {
-            return this.success(guild?.memberCount);
+        bots ??= true;
+        if (status) {
+            return this.success(guild?.members.cache.filter(member => member.presence?.status === status && (bots ? true : !member.user.bot)).size);
         }
-        else {
-            return this.success(guild?.members.cache.filter(member => member.presence?.status === status).size);
-        }
+        return this.success(bots ? guild?.memberCount : guild?.members.cache.filter(member => !member.user.bot).size);
     },
 });
 //# sourceMappingURL=guildMemberCount.js.map

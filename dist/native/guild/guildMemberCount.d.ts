@@ -18,6 +18,11 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof PresenceStatus;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.Boolean;
 }], true>;
 export default _default;
 //# sourceMappingURL=guildMemberCount.d.ts.map
