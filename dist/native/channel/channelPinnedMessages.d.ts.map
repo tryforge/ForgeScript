@@ -1,1 +1,1 @@
-{"version":3,"file":"channelPinnedMessages.d.ts","sourceRoot":"","sources":["../../../src/native/channel/channelPinnedMessages.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAoB,MAAM,YAAY,CAAA;AAC1D,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAmB3C,WAAW;;;;;;;AAhBlC,wBA8BE"}
+{"version":3,"file":"channelPinnedMessages.d.ts","sourceRoot":"","sources":["../../../src/native/channel/channelPinnedMessages.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAoB,MAAM,YAAY,CAAA;AAC1D,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAoB3C,WAAW;;;;;;;AAjBlC,wBA+BE"}

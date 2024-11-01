@@ -1,1 +1,1 @@
-{"version":3,"file":"firstMessageID.d.ts","sourceRoot":"","sources":["../../../src/native/channel/firstMessageID.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAoB,MAAM,YAAY,CAAA;AAC1D,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAkB3C,WAAW;;AAhBlC,wBAwBE"}
+{"version":3,"file":"firstMessageID.d.ts","sourceRoot":"","sources":["../../../src/native/channel/firstMessageID.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAoB,MAAM,YAAY,CAAA;AAC1D,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAmB3C,WAAW;;AAjBlC,wBAyBE"}

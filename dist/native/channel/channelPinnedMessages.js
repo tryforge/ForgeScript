@@ -7,6 +7,7 @@ const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$channelPinnedMessages",
+    version: "1.5.0",
     description: "Returns the pinned messages of a channel",
     brackets: false,
     aliases: [
