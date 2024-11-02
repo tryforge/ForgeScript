@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayLastIndexOf",
+    version: "1.5.0",
     description: "Gets the index of a last found element in the array",
     unwrap: true,
     output: structures_1.ArgType.Number,

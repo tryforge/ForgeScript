@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildEmojiLimit",
+    version: "1.5.0",
     description: "Returns the emoji limit of a guild",
     brackets: false,
     aliases: [

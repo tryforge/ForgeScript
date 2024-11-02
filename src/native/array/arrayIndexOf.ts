@@ -3,7 +3,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$arrayIndexOf",
     version: "1.0.0",
-    description: "Gets the index of an element in the array",
+    description: "Gets the index of a first found element in the array",
     unwrap: true,
     output: ArgType.Number,
     args: [
