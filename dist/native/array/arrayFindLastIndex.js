@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$arrayFindIndex",
-    version: "1.0.0",
-    description: "Finds the index of a first found element in the array",
+    name: "$arrayFindLastIndex",
+    description: "Finds the index of a last found element in the array",
     unwrap: false,
     output: structures_1.ArgType.Number,
     args: [
@@ -49,7 +48,7 @@ exports.default = new structures_1.NativeFunction({
         const varName = variable.value;
         if (!Array.isArray(arr))
             return this.success(-1);
-        for (let i = 0, len = arr.length; i < len; i++) {
+        for (let i = arr.length - 1; i >= 0; i--) {
             const el = arr[i];
             ctx.setEnvironmentKey(varName, el);
             const rt = (await this["resolveCondition"](ctx, code));
@@ -64,4 +63,4 @@ exports.default = new structures_1.NativeFunction({
         return this.success(-1);
     },
 });
-//# sourceMappingURL=arrayFindIndex.js.map
+//# sourceMappingURL=arrayFindLastIndex.js.map

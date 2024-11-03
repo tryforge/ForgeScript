@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Removes x elements starting from y index, returns deleted elements",
     unwrap: true,
+    output: structures_1.ArgType.Json,
     args: [
         {
             name: "variable",

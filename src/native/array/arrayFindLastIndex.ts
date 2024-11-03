@@ -2,9 +2,9 @@ import isTrue from "../../functions/isTrue"
 import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
-    name: "$arrayFindIndex",
-    version: "1.0.0",
-    description: "Finds the index of a first found element in the array",
+    name: "$arrayFindLastIndex",
+    version: "1.5.0",
+    description: "Finds the index of a last found element in the array",
     unwrap: false,
     output: ArgType.Number,
     args: [
@@ -47,7 +47,7 @@ export default new NativeFunction({
 
         if (!Array.isArray(arr)) return this.success(-1)
 
-        for (let i = 0, len = arr.length; i < len; i++) {
+        for (let i = arr.length - 1; i >= 0; i--) {
             const el = arr[i]
             ctx.setEnvironmentKey(varName, el)
             const rt = (await this["resolveCondition"](ctx, code as unknown as IExtendedCompiledFunctionConditionField)) as Return

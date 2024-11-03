@@ -5,6 +5,7 @@ export default new NativeFunction({
     version: "1.0.0",
     description: "Removes x elements starting from y index, returns deleted elements",
     unwrap: true,
+    output: ArgType.Json,
     args: [
         {
             name: "variable",
