@@ -48,11 +48,35 @@ exports.default = new structures_1.NativeFunction({
             description: "Whether to truncate instead of round",
             rest: false,
             type: structures_1.ArgType.Boolean
-        }
+        },
+        {
+            name: "fillStart",
+            description: "The string to use as filled start of the bar",
+            rest: false,
+            type: structures_1.ArgType.String
+        },
+        {
+            name: "fillEnd",
+            description: "The string to use as filled end of the bar",
+            rest: false,
+            type: structures_1.ArgType.String
+        },
+        {
+            name: "emptyStart",
+            description: "The string to use as empty start of the bar",
+            rest: false,
+            type: structures_1.ArgType.String
+        },
+        {
+            name: "emptyEnd",
+            description: "The string to use as empty end of the bar",
+            rest: false,
+            type: structures_1.ArgType.String
+        },
     ],
     unwrap: true,
-    execute(ctx, [curr, max, len, fill, empty, trunc]) {
-        return this.success((0, generateBar_1.generateBar)(curr, max, len ?? undefined, fill ?? undefined, empty ?? undefined, !trunc));
+    execute(ctx, [curr, max, len, fill, empty, trunc, fillStart, fillEnd, emptyStart, emptyEnd]) {
+        return this.success((0, generateBar_1.generateBar)(curr, max, len ?? undefined, fill ?? undefined, empty ?? undefined, !trunc, fillStart || undefined, fillEnd || undefined, emptyStart || undefined, emptyEnd || undefined));
     }
 });
 //# sourceMappingURL=bar.js.map

@@ -1,15 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const digital_1 = require("../../functions/digital");
 const structures_1 = require("../../structures");
-function digital(ms) {
-    const hours = Math.floor(ms / (1000 * 60 * 60));
-    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
-    const HH = String(hours).padStart(2, "0");
-    const MM = String(minutes).padStart(2, "0");
-    const SS = String(seconds).padStart(2, "0");
-    return `${HH}:${MM}:${SS}`;
-}
 exports.default = new structures_1.NativeFunction({
     name: "$parseDigital",
     version: "1.5.0",
@@ -27,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [ms]) {
-        return this.success(digital(ms));
+        return this.success((0, digital_1.digital)(ms));
     },
 });
 //# sourceMappingURL=parseDigital.js.map

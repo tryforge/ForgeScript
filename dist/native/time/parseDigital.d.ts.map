@@ -1,1 +1,1 @@
-{"version":3,"file":"parseDigital.d.ts","sourceRoot":"","sources":["../../../src/native/time/parseDigital.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAclE,wBAmBE"}
+{"version":3,"file":"parseDigital.d.ts","sourceRoot":"","sources":["../../../src/native/time/parseDigital.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAmBE"}

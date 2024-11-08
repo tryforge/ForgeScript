@@ -7,6 +7,7 @@ const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$arrayFindLastIndex",
+    version: "1.5.0",
     description: "Finds the index of a last found element in the array",
     unwrap: false,
     output: structures_1.ArgType.Number,

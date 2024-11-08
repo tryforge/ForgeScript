@@ -47,10 +47,34 @@ export default new NativeFunction({
             description: "Whether to truncate instead of round",
             rest: false,
             type: ArgType.Boolean
-        }
+        },
+        {
+            name: "fillStart",
+            description: "The string to use as filled start of the bar",
+            rest: false,
+            type: ArgType.String
+        },
+        {
+            name: "fillEnd",
+            description: "The string to use as filled end of the bar",
+            rest: false,
+            type: ArgType.String
+        },
+        {
+            name: "emptyStart",
+            description: "The string to use as empty start of the bar",
+            rest: false,
+            type: ArgType.String
+        },
+        {
+            name: "emptyEnd",
+            description: "The string to use as empty end of the bar",
+            rest: false,
+            type: ArgType.String
+        },
     ],
     unwrap: true,
-    execute(ctx, [ curr, max, len, fill, empty, trunc ]) {
+    execute(ctx, [ curr, max, len, fill, empty, trunc, fillStart, fillEnd, emptyStart, emptyEnd ]) {
         return this.success(
             generateBar(
                 curr,
@@ -58,7 +82,11 @@ export default new NativeFunction({
                 len ?? undefined,
                 fill ?? undefined,
                 empty ?? undefined,
-                !trunc
+                !trunc,
+                fillStart || undefined,
+                fillEnd || undefined,
+                emptyStart || undefined,
+                emptyEnd || undefined
             )
         )
     }
