@@ -3,8 +3,7 @@ export declare enum PresenceStatus {
     online = "online",
     idle = "idle",
     dnd = "dnd",
-    offline = "offline",
-    invisible = "invisible"
+    offline = "offline"
 }
 declare const _default: NativeFunction<[{
     name: string;

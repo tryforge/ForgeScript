@@ -4,8 +4,7 @@ export enum PresenceStatus {
     online = "online",
     idle = "idle",
     dnd = "dnd",
-    offline = "offline",
-    invisible = "invisible"
+    offline = "offline"
 }
 
 export default new NativeFunction({
@@ -41,12 +40,15 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [guild, status, bots]) {
+    execute(ctx, [guild, presence, bots]) {
         guild ??= ctx.guild!
         bots ??= true
 
-        if (status) {
-            return this.success(guild?.members.cache.filter(member => member.presence?.status === status && (bots ? true : !member.user.bot)).size)
+        if (presence) {
+            return this.success(guild?.members.cache.filter(member => {
+                const status = member.presence?.status
+                return (presence === PresenceStatus.offline ? status === "offline" || !status : status === presence) && (bots || !member.user.bot)
+            }).size)
         }
 
         return this.success(bots ? guild?.memberCount : guild?.members.cache.filter(member => !member.user.bot).size)

@@ -8,7 +8,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     args: [
         {
             name: "body",
-            description: "the JSON body",
+            description: "The JSON body",
             rest: false,
             required: true,
             type: NativeFunction_1.ArgType.Json,
