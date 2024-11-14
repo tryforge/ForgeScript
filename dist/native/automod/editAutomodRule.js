@@ -65,6 +65,7 @@ exports.default = new structures_1.NativeFunction({
             enabled: (0, lodash_1.isBoolean)(enabled) ? enabled : undefined,
             reason: reason || undefined
         }).catch(ctx.noop);
+        ctx.clearAutomodRuleOptions();
         return this.success(!!success);
     },
 });

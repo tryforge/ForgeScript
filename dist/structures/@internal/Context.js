@@ -181,6 +181,9 @@ class Context {
     clearHttpOptions() {
         this.http = {};
     }
+    clearAutomodRuleOptions() {
+        this.automodRule = {};
+    }
     setEnvironmentKey(name, value) {
         return (this.#environment[name] = value);
     }

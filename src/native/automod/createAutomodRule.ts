@@ -68,6 +68,8 @@ export default new NativeFunction({
             reason: reason || undefined
         }).catch(ctx.noop)
 
+        ctx.clearAutomodRuleOptions()
+        
         return this.success(rule?.id)
     },
 })
