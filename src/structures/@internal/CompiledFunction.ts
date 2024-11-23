@@ -548,7 +548,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public successJSON(value: ReturnValue<ReturnType.Success>) {
-        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value)
+        return this.success(typeof value !== "string" ? JSON.stringify(value, (key, val) => (typeof val === "bigint" ? val.toString() : val), 4) : value)
     }
 
     public successFormatted(value: ReturnValue<ReturnType.Success>) {

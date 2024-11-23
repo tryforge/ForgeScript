@@ -436,7 +436,7 @@ class CompiledFunction {
         return new Return_1.Return(Return_1.ReturnType.Continue, null);
     }
     successJSON(value) {
-        return this.success(typeof value !== "string" ? JSON.stringify(value, undefined, 4) : value);
+        return this.success(typeof value !== "string" ? JSON.stringify(value, (key, val) => (typeof val === "bigint" ? val.toString() : val), 4) : value);
     }
     successFormatted(value) {
         return this.success(typeof value !== "string" ? (0, util_1.inspect)(value, { depth: Infinity }) : value);
