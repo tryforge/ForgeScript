@@ -4,7 +4,7 @@ import { ArgType, NativeFunction } from "../../structures"
 export default new NativeFunction({
     name: "$isUserMentioned",
     version: "1.3.0",
-    description: "Returns whether an user was mentioned in this message",
+    description: "Returns whether a user was mentioned in this message",
     unwrap: true,
     output: ArgType.Boolean,
     brackets: true,

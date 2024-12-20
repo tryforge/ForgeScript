@@ -39,7 +39,10 @@ exports.default = new structures_1.NativeFunction({
             const comp = components[i];
             const index = comp.components.findIndex((x) => "custom_id" in x.data && x.data.custom_id === id);
             if (index !== -1) {
-                comp.components.splice(index, 1);
+                if (comp.components.length === 1)
+                    components.splice(i, 1);
+                else
+                    comp.components.splice(index, 1);
                 break;
             }
         }
