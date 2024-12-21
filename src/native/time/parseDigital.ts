@@ -1,4 +1,4 @@
-import { digital } from "../../functions/digital"
+import { parseDigital } from "../../functions/digital"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -18,6 +18,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [ ms ]) {
-        return this.success(digital(ms))
+        return this.success(parseDigital(ms))
     },
 })

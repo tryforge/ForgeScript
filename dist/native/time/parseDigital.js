@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [ms]) {
-        return this.success((0, digital_1.digital)(ms));
+        return this.success((0, digital_1.parseDigital)(ms));
     },
 });
 //# sourceMappingURL=parseDigital.js.map
