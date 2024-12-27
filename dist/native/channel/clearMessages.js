@@ -28,14 +28,36 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Number,
         },
+        {
+            name: "delete pinned",
+            description: "Whether to delete pinned messages",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
+        {
+            name: "delete bots",
+            description: "Whether to delete messages of bots",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    async execute(ctx, [channel, amount]) {
+    async execute(ctx, [channel, amount, pinned, bots]) {
         let count = 0;
         for (const n of (0, splitNumber_1.default)(amount, 100)) {
-            const col = await channel.bulkDelete(n, true).catch(ctx.noop);
-            if (!col || !col.size)
+            const messages = await channel.messages.fetch({ limit: n }).catch(ctx.noop);
+            if (!messages)
                 break;
-            count += col.size;
+            const col = await channel
+                .bulkDelete(messages.filter(msg => {
+                if (pinned === false && msg.pinned)
+                    return false;
+                if (bots === false && msg.author.bot)
+                    return false;
+                return true;
+            }), true)
+                .catch(() => null);
+            if (col)
+                count += col.size;
         }
         return this.success(count);
     },

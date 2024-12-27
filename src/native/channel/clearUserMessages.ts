@@ -33,8 +33,14 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Number,
         },
+        {
+            name: "delete pinned",
+            description: "Whether to delete pinned messages",
+            rest: false,
+            type: ArgType.Boolean,
+        },
     ],
-    async execute(ctx, [channel, user, amount]) {
+    async execute(ctx, [channel, user, amount, pinned]) {
         let count = 0
 
         for (const n of splitNumber(amount, 100)) {
@@ -43,10 +49,13 @@ export default new NativeFunction({
 
             const col = await (channel as TextChannel)
                 .bulkDelete(
-                    messages.filter((x) => x.author.id === user.id),
+                    messages.filter(msg => {
+                        if (pinned === false && msg.pinned) return false
+                        return !!(msg.author.id === user.id)
+                    }),
                     true
                 )
-                .catch(ctx.noop)
+                .catch(() => null)
 
             if (!col) break
 
