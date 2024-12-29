@@ -65,6 +65,11 @@ export interface IRawForgeClientOptions extends ClientOptions {
     prefixes?: string[]
 
     /**
+     *  Whether prefixes should be case-insensitive, this only affects letters
+     */
+    prefixCaseInsensitive?: boolean
+
+    /**
      * Specifies the logs to be received
      */
     logLevel?: LogPriority
@@ -227,7 +232,7 @@ export class ForgeClient extends Client<true> {
                 doNotSend: true,
             })
 
-            if (resolved !== null && msg.content.startsWith(resolved.toLowerCase())) {
+            if (resolved !== null && (this.options.prefixCaseInsensitive ? msg.content.toLowerCase().startsWith(resolved.toLowerCase()) : msg.content.startsWith(resolved))) {
                 return resolved
             }
         }

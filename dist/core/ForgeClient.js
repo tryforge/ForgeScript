@@ -92,7 +92,7 @@ class ForgeClient extends discord_js_1.Client {
                 redirectErrorsToConsole: true,
                 doNotSend: true,
             });
-            if (resolved !== null && msg.content.startsWith(resolved.toLowerCase())) {
+            if (resolved !== null && (this.options.prefixCaseInsensitive ? msg.content.toLowerCase().startsWith(resolved.toLowerCase()) : msg.content.startsWith(resolved))) {
                 return resolved;
             }
         }

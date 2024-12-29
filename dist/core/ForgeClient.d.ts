@@ -25,6 +25,10 @@ export interface IRawForgeClientOptions extends ClientOptions {
      */
     prefixes?: string[];
     /**
+     *  Whether prefixes should be case-insensitive, this only affects letters
+     */
+    prefixCaseInsensitive?: boolean;
+    /**
      * Specifies the logs to be received
      */
     logLevel?: LogPriority;
