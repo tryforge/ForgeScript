@@ -34,11 +34,16 @@ exports.default = new structures_1.NativeFunction({
         if (!messages.length)
             return this.success(0);
         if (messages.length === 1) {
-            return this.success(
-            // @ts-ignore
-            !!(await ch.messages.delete(messages[0]).catch(ctx.noop)) + 0);
+            try {
+                await ch.messages.delete(messages[0]);
+                return this.success(1);
+            }
+            catch (error) {
+                ctx.noop(error);
+                return this.success(0);
+            }
         }
-        const col = (await channel
+        const col = (await ch
             .bulkDelete(messages, true)
             .then((x) => x.size)
             .catch(ctx.noop)) ?? 0;
