@@ -7,10 +7,13 @@ export enum CustomStatusType {
 }
 
 export default new NativeFunction({
-    name: "$userCustomStatus",
+    name: "$memberCustomStatus",
     version: "1.5.0",
-    aliases: ["$customStatus"],
-    description: "Returns the custom status of a user",
+    aliases: [
+        "$customStatus",
+        "$userCustomStatus"
+    ],
+    description: "Returns the custom status of a member",
     unwrap: true,
     output: ArgType.String,
     args: [
@@ -26,7 +29,7 @@ export default new NativeFunction({
             description: "The user to return its custom status",
             required: true,
             rest: false,
-            type: ArgType.User,
+            type: ArgType.Member,
         },
         {
             name: "type",
@@ -37,14 +40,9 @@ export default new NativeFunction({
         },
     ],
     brackets: false,
-    async execute(ctx, [, user, type]) {
-        const member = await ctx.guild?.members.fetch(user ?? ctx.user?.id).catch(ctx.noop)
-        const status = member?.presence?.activities?.find(x => x.type === ActivityType.Custom)
-
-        if (!type) {
-            return this.success(status?.state)
-        } else {
-            return this.success(status?.[type as CustomStatusType]?.toString())
-        }
-    },
+    async execute(ctx, [, member, type]) {
+        const status = (member ?? ctx.member)?.presence?.activities?.find(x => x.type === ActivityType.Custom)
+        
+        return this.success(type ? status?.[type as CustomStatusType]?.toString() : status?.state)
+    }
 })

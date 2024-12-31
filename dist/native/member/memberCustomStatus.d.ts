@@ -14,7 +14,7 @@ declare const _default: NativeFunction<[{
     description: string;
     required: true;
     rest: false;
-    type: ArgType.User;
+    type: ArgType.Member;
 }, {
     name: string;
     description: string;
@@ -23,4 +23,4 @@ declare const _default: NativeFunction<[{
     enum: typeof CustomStatusType;
 }], true>;
 export default _default;
-//# sourceMappingURL=userCustomStatus.d.ts.map
+//# sourceMappingURL=memberCustomStatus.d.ts.map

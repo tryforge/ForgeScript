@@ -9,10 +9,13 @@ var CustomStatusType;
     CustomStatusType["emoji"] = "emoji";
 })(CustomStatusType || (exports.CustomStatusType = CustomStatusType = {}));
 exports.default = new structures_1.NativeFunction({
-    name: "$userCustomStatus",
+    name: "$memberCustomStatus",
     version: "1.5.0",
-    aliases: ["$customStatus"],
-    description: "Returns the custom status of a user",
+    aliases: [
+        "$customStatus",
+        "$userCustomStatus"
+    ],
+    description: "Returns the custom status of a member",
     unwrap: true,
     output: structures_1.ArgType.String,
     args: [
@@ -28,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to return its custom status",
             required: true,
             rest: false,
-            type: structures_1.ArgType.User,
+            type: structures_1.ArgType.Member,
         },
         {
             name: "type",
@@ -39,15 +42,9 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: false,
-    async execute(ctx, [, user, type]) {
-        const member = await ctx.guild?.members.fetch(user ?? ctx.user?.id).catch(ctx.noop);
-        const status = member?.presence?.activities?.find(x => x.type === discord_js_1.ActivityType.Custom);
-        if (!type) {
-            return this.success(status?.state);
-        }
-        else {
-            return this.success(status?.[type]?.toString());
-        }
-    },
+    async execute(ctx, [, member, type]) {
+        const status = (member ?? ctx.member)?.presence?.activities?.find(x => x.type === discord_js_1.ActivityType.Custom);
+        return this.success(type ? status?.[type]?.toString() : status?.state);
+    }
 });
-//# sourceMappingURL=userCustomStatus.js.map
+//# sourceMappingURL=memberCustomStatus.js.map

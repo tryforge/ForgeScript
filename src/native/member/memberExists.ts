@@ -4,7 +4,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 export default new NativeFunction({
     name: "$memberExists",
     version: "1.0.0",
-    description: "Returns whether an member id exists",
+    description: "Returns whether a member id exists",
     unwrap: true,
     brackets: true,
     output: ArgType.Boolean,
