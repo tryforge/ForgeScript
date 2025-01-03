@@ -23,9 +23,15 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.String,
         },
+        {
+            name: "reason",
+            description: "The reason for this action",
+            rest: false,
+            type: ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [guild, icon]) {
-        return this.success((await guild.setIcon(icon || null).catch(() => false)) !== false)
+    async execute(ctx, [guild, icon, reason]) {
+        return this.success((await guild.setIcon(icon || null, reason || undefined).catch(() => false)) !== false)
     },
 })

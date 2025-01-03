@@ -8,6 +8,7 @@ const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$shardStatus",
+    version: "2.1.0",
     aliases: [
         "$botShardStatus",
         "$clientShardStatus"
