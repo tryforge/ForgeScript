@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberBanner",
+    version: "2.1.0",
     description: "Returns the member banner",
     brackets: false,
     output: structures_1.ArgType.URL,
