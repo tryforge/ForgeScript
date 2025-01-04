@@ -14,7 +14,7 @@ export declare class Container {
     files: AttachmentBuilder[];
     channel?: Channel;
     stickers: StickerResolvable[];
-    fetchReply: boolean;
+    withResponse: boolean;
     modal?: ModalBuilder;
     choices: ApplicationCommandOptionChoiceData<string | number>[];
     allowedMentions: MessageMentionOptions;

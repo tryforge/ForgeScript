@@ -15,6 +15,7 @@ import {
     GuildMember,
     GuildScheduledEvent,
     Interaction,
+    InteractionCallbackResponse,
     InteractionEditReplyOptions,
     InteractionReplyOptions,
     Invite,
@@ -38,6 +39,7 @@ import {
 import noop from "../../functions/noop"
 import { ForgeClient } from "../../core"
 import { RawMessageData } from "discord.js/typings/rawDataTypes"
+import { MessageFlags } from "discord.js"
 
 export type Sendable =
     | {}
@@ -72,7 +74,7 @@ export class Container {
     public files = new Array<AttachmentBuilder>()
     public channel?: Channel
     public stickers = new Array<StickerResolvable>()
-    public fetchReply = false
+    public withResponse = false
     public modal?: ModalBuilder
     public choices = new Array<ApplicationCommandOptionChoiceData<string | number>>()
     public allowedMentions: MessageMentionOptions = {}
@@ -127,7 +129,8 @@ export class Container {
             res = Promise.resolve(null)
         }
 
-        const result = (await res.catch(noop)) as T
+        const response = (await res.catch(noop))
+        const result = (response instanceof InteractionCallbackResponse ? response.resource?.message : response) as T
 
         if (this.deleteIn && result instanceof Message) {
             setTimeout(() => {
@@ -175,7 +178,7 @@ export class Container {
         this.reply = false
         this.update = false
         this.ephemeral = false
-        this.fetchReply = false
+        this.withResponse = false
         this.edit = false
         this.tts = false
 
@@ -200,14 +203,14 @@ export class Container {
                       avatarURL: this.avatarURL,
                       allowedMentions:
                           Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
-                      fetchReply: this.fetchReply,
+                      withResponse: this.withResponse,
                       reply: this.reference
                           ? {
                                 messageReference: this.reference,
                                 failIfNotExists: false,
                             }
                           : undefined,
-                      ephemeral: this.ephemeral,
+                      flags: this.ephemeral ? MessageFlags.Ephemeral : undefined,
                       attachments: [],
                       files: this.files.length === 0 ? null : this.files,
                       stickers: this.stickers.length === 0 ? null : this.stickers,

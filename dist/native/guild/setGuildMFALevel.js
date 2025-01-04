@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setGuildMFALevel",
+    version: "2.1.0",
     description: "Sets the MFA level for a guild, returns bool",
     unwrap: true,
     aliases: [

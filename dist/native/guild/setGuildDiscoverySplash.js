@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setGuildDiscoverySplash",
+    version: "2.1.0",
     description: "Sets the discovery splash for a guild, returns bool",
     unwrap: true,
     aliases: [

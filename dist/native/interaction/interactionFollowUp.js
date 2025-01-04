@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [content, returnMessageID]) {
-        ctx.container.fetchReply = returnMessageID ?? false;
+        ctx.container.withResponse = returnMessageID ?? false;
         ctx.container.followUp = true;
         ctx.container.content = content || undefined;
         if (!this.hasFields) {
