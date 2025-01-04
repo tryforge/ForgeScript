@@ -1,3 +1,4 @@
+import { MessageFlags } from "discord.js"
 import { NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,7 +9,7 @@ export default new NativeFunction({
     async execute(ctx) {
         if (ctx.interaction && ctx.interaction.isRepliable()) {
             await ctx.interaction.deferReply({
-                ephemeral: ctx.container.ephemeral,
+                flags: ctx.container.ephemeral ? MessageFlags.Ephemeral : undefined
             })
         }
         return this.success()

@@ -129,7 +129,7 @@ export class Container {
             res = Promise.resolve(null)
         }
 
-        const response = (await res.catch(noop))
+        const response = await res.catch(noop)
         const result = (response instanceof InteractionCallbackResponse ? response.resource?.message : response) as T
 
         if (this.deleteIn && result instanceof Message) {
