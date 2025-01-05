@@ -25,10 +25,16 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.String,
         },
+        {
+            name: "reason",
+            description: "The reason for this action",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [guild, name]) {
-        return this.success((await guild.setName(name).catch(() => false)) !== false);
+    async execute(ctx, [guild, name, reason]) {
+        return this.success((await guild.setName(name, reason || undefined).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildName.js.map

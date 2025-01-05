@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$else",
     version: "1.2.0",
-    description: "Creates a else statement",
+    description: "Creates an else statement",
     unwrap: true,
     output: structures_1.ArgType.Unknown,
     args: [

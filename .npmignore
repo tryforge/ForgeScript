@@ -1,8 +1,9 @@
 */__tests__/
-\.env
-docs
-./metadata
-act.exe
-\.github
-PUBLISHING.md
-# src
+docs/
+src/
+metadata/
+.vscode/
+.github/
+CONTRIBUTING.md
+EXTENSIONS.md
+.env

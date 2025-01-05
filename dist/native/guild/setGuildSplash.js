@@ -24,10 +24,16 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.String,
         },
+        {
+            name: "reason",
+            description: "The reason for this action",
+            rest: false,
+            type: structures_1.ArgType.String,
+        },
     ],
     brackets: true,
-    async execute(ctx, [guild, icon]) {
-        return this.success((await guild.setSplash(icon || null).catch(() => false)) !== false);
+    async execute(ctx, [guild, icon, reason]) {
+        return this.success((await guild.setSplash(icon || null, reason || undefined).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=setGuildSplash.js.map

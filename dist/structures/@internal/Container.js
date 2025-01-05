@@ -7,6 +7,7 @@ exports.Container = void 0;
 /* eslint-disable indent */
 const discord_js_1 = require("discord.js");
 const noop_1 = __importDefault(require("../../functions/noop"));
+const discord_js_2 = require("discord.js");
 class Container {
     content;
     embeds = new Array();
@@ -21,7 +22,7 @@ class Container {
     files = new Array();
     channel;
     stickers = new Array();
-    fetchReply = false;
+    withResponse = false;
     modal;
     choices = new Array();
     allowedMentions = {};
@@ -79,7 +80,8 @@ class Container {
         else {
             res = Promise.resolve(null);
         }
-        const result = (await res.catch(noop_1.default));
+        const response = await res.catch(noop_1.default);
+        const result = (response instanceof discord_js_1.InteractionCallbackResponse ? response.resource?.message : response);
         if (this.deleteIn && result instanceof discord_js_1.Message) {
             setTimeout(() => {
                 result.delete().catch(noop_1.default);
@@ -119,7 +121,7 @@ class Container {
         this.reply = false;
         this.update = false;
         this.ephemeral = false;
-        this.fetchReply = false;
+        this.withResponse = false;
         this.edit = false;
         this.tts = false;
         this.stickers.length = 0;
@@ -139,14 +141,14 @@ class Container {
                 username: this.username,
                 avatarURL: this.avatarURL,
                 allowedMentions: Object.keys(this.allowedMentions).length === 0 ? undefined : this.allowedMentions,
-                fetchReply: this.fetchReply,
+                withResponse: this.withResponse,
                 reply: this.reference
                     ? {
                         messageReference: this.reference,
                         failIfNotExists: false,
                     }
                     : undefined,
-                ephemeral: this.ephemeral,
+                flags: this.ephemeral ? discord_js_2.MessageFlags.Ephemeral : undefined,
                 attachments: [],
                 files: this.files.length === 0 ? null : this.files,
                 stickers: this.stickers.length === 0 ? null : this.stickers,

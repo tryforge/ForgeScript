@@ -1,10 +1,9 @@
-import { EmbedField } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$editField",
     version: "1.4.0",
-    description: "Edits an embed field, returns true if the field was successfully edited",
+    description: "Edits an embed field",
     unwrap: true,
     args: [
         {
