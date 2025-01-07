@@ -5,10 +5,11 @@ import noop from "../../functions/noop"
 export default new NativeFunction({
     name: "$deleteChannels",
     version: "1.0.5",
+    description: "Deletes given channel ids, returns the count of channels deleted",
+    aliases: ["$deleteChannel"],
     brackets: true,
     unwrap: true,
     output: ArgType.Number,
-    description: "Delete given channel ids, returns the count of channels deleted",
     args: [
         {
             name: "channels",

@@ -5,6 +5,10 @@ export default new NativeFunction({
     name: "$ram",
     version: "1.0.0",
     description: "Returns the current ram usage in MB",
+    aliases: [
+        "$memory",
+        "$ramUsage",
+    ],
     unwrap: false,
     output: ArgType.Number,
     execute() {

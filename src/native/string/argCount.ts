@@ -3,9 +3,10 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$argCount",
     version: "1.0.0",
-    brackets: false,
-    description: "Counts number of args in message",
+    description: "Counts the number of args in a message",
+    aliases: ["$argsCount"],
     unwrap: true,
+    brackets: false,
     output: ArgType.Number,
     args: [
         {

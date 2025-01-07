@@ -4,9 +4,10 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$argCount",
     version: "1.0.0",
-    brackets: false,
-    description: "Counts number of args in message",
+    description: "Counts the number of args in a message",
+    aliases: ["$argsCount"],
     unwrap: true,
+    brackets: false,
     output: structures_1.ArgType.Number,
     args: [
         {

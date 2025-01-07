@@ -6,6 +6,10 @@ exports.default = new structures_1.NativeFunction({
     name: "$ram",
     version: "1.0.0",
     description: "Returns the current ram usage in MB",
+    aliases: [
+        "$memory",
+        "$ramUsage",
+    ],
     unwrap: false,
     output: structures_1.ArgType.Number,
     execute() {
