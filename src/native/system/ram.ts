@@ -12,6 +12,6 @@ export default new NativeFunction({
     unwrap: false,
     output: ArgType.Number,
     execute() {
-        return this.success(process.memoryUsage().heapUsed / 1024 ** 2)
+        return this.success(process.memoryUsage().heapUsed / (1024 ** 2))
     },
 })

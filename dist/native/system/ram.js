@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: false,
     output: structures_1.ArgType.Number,
     execute() {
-        return this.success(process.memoryUsage().heapUsed / 1024 ** 2);
+        return this.success(process.memoryUsage().heapUsed / (1024 ** 2));
     },
 });
 //# sourceMappingURL=ram.js.map

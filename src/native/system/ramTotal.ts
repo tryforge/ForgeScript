@@ -12,6 +12,6 @@ export default new NativeFunction({
     unwrap: false,
     output: ArgType.Number,
     execute(ctx) {
-        return this.success(os.totalmem() / 1024 ** 3)
+        return this.success(os.totalmem() / (1024 ** 3))
     },
 })
