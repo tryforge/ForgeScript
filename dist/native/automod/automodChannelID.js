@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$automodChannelID",
     version: "1.2.0",
-    description: "The channel id for automod",
+    description: "Returns the channel id for automod",
     unwrap: false,
     output: structures_1.ArgType.Channel,
     execute(ctx) {

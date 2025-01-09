@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$version",
     version: "1.0.0",
-    description: "Returns the package version you're using",
+    description: "Returns the package version the client is using",
     unwrap: false,
     output: structures_1.ArgType.String,
     aliases: [

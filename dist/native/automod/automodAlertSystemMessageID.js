@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$automodAlertSystemMessageID",
     version: "1.2.0",
-    description: "The message sent by automod",
+    description: "Returns the message sent by automod",
     unwrap: false,
     output: structures_1.ArgType.String,
     execute(ctx) {

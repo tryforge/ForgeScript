@@ -4,7 +4,7 @@ import { NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$automodActionType",
     version: "1.2.0",
-    description: "The action type automod used",
+    description: "Returns the action type automod used",
     unwrap: false,
     output: AutoModerationActionType,
     execute(ctx) {

@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$automodContent",
     version: "1.2.0",
-    description: "The content automod acted upon",
+    description: "Returns the content automod acted upon",
     unwrap: false,
     output: structures_1.ArgType.String,
     execute(ctx) {
