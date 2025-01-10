@@ -1,5 +1,5 @@
 import { DiscordAPIError } from "discord.js"
-import { ArgType, NativeFunction } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$isUserDMEnabled",
