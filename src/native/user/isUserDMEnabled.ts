@@ -14,8 +14,8 @@ export default new NativeFunction({
             description: "The user to test DMs",
             rest: false,
             required: true,
-            type: ArgType.User,
-        },
+            type: ArgType.User
+        }
     ],
     async execute(ctx, [user]) {
         user ??= ctx.user!
