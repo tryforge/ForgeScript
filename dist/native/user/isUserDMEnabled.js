@@ -29,7 +29,7 @@ exports.default = new structures_1.NativeFunction({
                 if (error.code === 50007)
                     return this.success(false); // DM disabled
                 if (error.code === 50006)
-                    return this.success(true); // Empty message (DM enabled)
+                    return this.success(true); // Empty message (aka DM enabled)
             }
             throw error;
         }
