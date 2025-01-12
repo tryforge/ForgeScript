@@ -1,4 +1,3 @@
-import noop from "../../functions/noop"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -18,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return this.success(!!(await ctx.client.fetchInvite(id).catch(ctx.noop)))
+        return this.success((await ctx.client.fetchInvite(id).catch(() => false)) !== false)
     },
 })

@@ -6,7 +6,7 @@ const audit_1 = require("../../properties/audit");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchUserAuditLog",
     version: "1.4.0",
-    description: "Fetches an audit log from an user using the type of it",
+    description: "Fetches an audit log from a user using the type of it",
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Unknown,

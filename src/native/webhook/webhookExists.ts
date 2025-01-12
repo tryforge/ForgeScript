@@ -1,5 +1,4 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$webhookExists",
@@ -18,7 +17,6 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        const web = await ctx.client.fetchWebhook(id).catch(ctx.noop)
-        return this.success(!!web)
+        return this.success((await ctx.client.fetchWebhook(id).catch(() => false)) !== false)
     },
 })

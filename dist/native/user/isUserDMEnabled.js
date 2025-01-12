@@ -15,8 +15,8 @@ exports.default = new structures_1.NativeFunction({
             description: "The user to test DMs",
             rest: false,
             required: true,
-            type: structures_1.ArgType.User,
-        },
+            type: structures_1.ArgType.User
+        }
     ],
     async execute(ctx, [user]) {
         user ??= ctx.user;

@@ -6,7 +6,7 @@ import { AuditProperties, AuditProperty } from "../../properties/audit"
 export default new NativeFunction({
     name: "$fetchUserAuditLog",
     version: "1.4.0",
-    description: "Fetches an audit log from an user using the type of it",
+    description: "Fetches an audit log from a user using the type of it",
     brackets: true,
     unwrap: true,
     output: ArgType.Unknown,

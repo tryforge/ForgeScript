@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && (ctx.client.emojis.cache.has(id) || !!(await ctx.client.application.emojis.fetch(id).catch(ctx.noop))));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && (ctx.client.emojis.cache.has(id) || (await ctx.client.application.emojis.fetch(id).catch(() => false)) !== false));
     },
 });
 //# sourceMappingURL=emojiExists.js.map
