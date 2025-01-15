@@ -77,7 +77,7 @@ export interface IRunnable {
     redirectErrorsToConsole?: boolean
 
     /**
-     * The old and new states of a event
+     * The old and new states of an event
      */
     states?: States
 

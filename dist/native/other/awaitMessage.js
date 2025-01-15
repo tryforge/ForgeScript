@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "variable name",
-            description: "The variable to load the message id that was sent as response by an user, get it with $env[<variable>]",
+            description: "The variable to load the message id that was sent as response by a user, get it with $env[<variable>]",
             rest: false,
             required: true,
             type: structures_1.ArgType.String

@@ -1,5 +1,5 @@
 # $username
-> Returns an user's username using it's ID
+> Returns a user's username using it's ID
 
 ## Usage
 ```
