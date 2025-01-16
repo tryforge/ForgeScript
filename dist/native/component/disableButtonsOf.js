@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$disableButtonsOf",
+    version: "2.2.0",
     description: "Disables all buttons of a message, returns bool",
     aliases: ["$disableAllButtonsOf"],
     unwrap: true,
