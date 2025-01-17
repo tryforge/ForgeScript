@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$disableComponentsOf",
+    version: "2.2.0",
     description: "Disables all components of a message, returns bool",
     aliases: ["$disableAllComponentsOf"],
     unwrap: true,
@@ -17,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "message ID",
-            description: "The message to disable buttons on",
+            description: "The message to disable components on",
             rest: false,
             required: true,
             type: structures_1.ArgType.Message,

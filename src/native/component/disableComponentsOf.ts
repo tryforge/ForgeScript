@@ -17,7 +17,7 @@ export default new NativeFunction({
         },
         {
             name: "message ID",
-            description: "The message to disable buttons on",
+            description: "The message to disable components on",
             rest: false,
             required: true,
             type: ArgType.Message,
