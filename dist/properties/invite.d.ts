@@ -9,7 +9,14 @@ export declare enum InviteProperty {
     timestamp = "timestamp",
     code = "code",
     url = "url",
-    expiresTimestamp = "expiresTimestamp"
+    type = "type",
+    expiresTimestamp = "expiresTimestamp",
+    temporary = "temporary",
+    deletable = "deletable",
+    memberCount = "memberCount",
+    presenceCount = "presenceCount",
+    targetType = "targetType",
+    targetUser = "targetUser"
 }
 export declare const InviteProperties: import("../functions/defineProperties").Properties<typeof InviteProperty, Invite>;
 //# sourceMappingURL=invite.d.ts.map

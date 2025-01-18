@@ -14,10 +14,17 @@ export default new NativeFunction({
             description: "The invite code",
             rest: false,
             required: true,
-            type: ArgType.Invite,
+            type: ArgType.String,
+        },
+        {
+            name: "reason",
+            description: "The reason for deleting the invite",
+            rest: false,
+            type: ArgType.String,
         },
     ],
-    async execute(ctx, [invite]) {
-        return this.success(!!(await invite.delete().catch(ctx.noop)))
+    async execute(ctx, [code, reason]) {
+        const invite = await ctx.client.fetchInvite(code).catch(ctx.noop)
+        return this.success(!!(await invite?.delete(reason || undefined).catch(ctx.noop)))
     },
 })
