@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const invite_1 = require("../../properties/invite");
 exports.default = new structures_1.NativeFunction({
     name: "$getGuildInvite",
+    version: "2.2.0",
     description: "Returns information about a guild invite",
     brackets: true,
     unwrap: true,

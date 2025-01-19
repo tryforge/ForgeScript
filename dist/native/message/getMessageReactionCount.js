@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ReactionType = void 0;
 const structures_1 = require("../../structures");
+var ReactionType;
+(function (ReactionType) {
+    ReactionType["normal"] = "normal";
+    ReactionType["burst"] = "burst";
+})(ReactionType || (exports.ReactionType = ReactionType = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$getMessageReactionCount",
     version: "1.0.0",
@@ -33,9 +39,16 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Reaction,
         },
+        {
+            name: "type",
+            description: "The type of the reaction to count users for",
+            rest: false,
+            type: structures_1.ArgType.Enum,
+            enum: ReactionType
+        },
     ],
-    execute(ctx, [, , reaction]) {
-        return this.success(reaction.count);
+    execute(ctx, [, , reaction, type]) {
+        return this.success(type ? reaction?.countDetails?.[type] : reaction?.count);
     },
 });
 //# sourceMappingURL=getMessageReactionCount.js.map
