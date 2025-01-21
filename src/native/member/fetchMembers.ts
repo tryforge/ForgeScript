@@ -4,6 +4,7 @@ export default new NativeFunction({
     name: "$fetchMembers",
     version: "1.0.0",
     description: "Caches all members of a guild",
+    aliases: ["$fetchMember"],
     unwrap: true,
     brackets: false,
     args: [
@@ -14,10 +15,18 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Guild,
         },
+        {
+            name: "user ID",
+            description: "The member to fetch",
+            rest: false,
+            type: ArgType.Member,
+            pointer: 0
+        },
     ],
-    async execute(ctx, [guild]) {
+    async execute(ctx, [guild, member]) {
         guild ??= ctx.guild!
-        await guild?.members.fetch()
+        if (member) await guild?.members.fetch(member)
+            else await guild?.members.fetch()
         return this.success()
     },
 })

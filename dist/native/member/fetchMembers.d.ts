@@ -5,6 +5,12 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Guild;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.Member;
+    pointer: number;
 }], true>;
 export default _default;
 //# sourceMappingURL=fetchMembers.d.ts.map
