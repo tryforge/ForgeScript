@@ -7,26 +7,26 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Finds an emoji",
     brackets: true,
-    output: structures_1.ArgType.GuildEmoji,
+    output: structures_1.ArgType.Emoji,
     args: [
         {
             name: "query",
-            description: "The id, mention or emoji name to find",
+            description: "The id, format or emoji name to find",
             rest: false,
             type: structures_1.ArgType.String,
             required: true,
         },
     ],
     unwrap: true,
-    execute(ctx, [q]) {
+    async execute(ctx, [q]) {
         const parsed = (0, discord_js_1.parseEmoji)(q);
         if (structures_1.CompiledFunction.IdRegex.test(q)) {
-            const e = ctx.client.emojis.cache.get(q);
+            const e = ctx.client.emojis.cache.get(q) || await ctx.client.application.emojis.fetch(q).catch(ctx.noop);
             if (e)
                 return this.success(e.id);
         }
         const name = parsed?.name.toLowerCase();
-        return this.success(ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
+        return this.success(ctx.client.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id || (await ctx.client.application.emojis.fetch().catch(ctx.noop))?.find((x) => x.id === q || x.name?.toLowerCase() === name || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findEmoji.js.map

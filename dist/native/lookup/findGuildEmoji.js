@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "query",
-            description: "The id, mention or emoji name to find",
+            description: "The id, format or emoji name to find",
             rest: false,
             type: structures_1.ArgType.String,
             required: true,
@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             if (e)
                 return this.success(e.id);
         }
-        return this.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
+        return this.success(guild.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findGuildEmoji.js.map
