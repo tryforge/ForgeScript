@@ -7,6 +7,7 @@ const path_1 = __importDefault(require("path"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$pathResolve",
+    version: "2.2.0",
     description: "Resolves paths into an absolute path",
     unwrap: true,
     brackets: true,
