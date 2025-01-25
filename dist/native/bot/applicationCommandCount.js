@@ -31,14 +31,19 @@ exports.default = new structures_1.NativeFunction({
         if (sub) {
             let count = 0;
             commands.forEach((command) => {
-                count++;
+                let cont = true;
                 command.options.forEach((cmd) => {
-                    if (cmd.type === discord_js_1.ApplicationCommandOptionType.Subcommand)
+                    if (cmd.type === discord_js_1.ApplicationCommandOptionType.Subcommand) {
                         count++;
+                        cont = false;
+                    }
                     else if (cmd.type === discord_js_1.ApplicationCommandOptionType.SubcommandGroup) {
                         cmd.options?.forEach((x) => count++);
+                        cont = false;
                     }
                 });
+                if (cont)
+                    count++;
             });
             return this.success(count);
         }

@@ -30,13 +30,17 @@ export default new NativeFunction({
         if (sub) {
             let count = 0
             commands.forEach((command) => {
-                count++
+                let cont = true
                 command.options.forEach((cmd) => {
-                    if (cmd.type === ApplicationCommandOptionType.Subcommand) count++
-                    else if (cmd.type === ApplicationCommandOptionType.SubcommandGroup) {
+                    if (cmd.type === ApplicationCommandOptionType.Subcommand) {
+                        count++
+                        cont = false
+                    } else if (cmd.type === ApplicationCommandOptionType.SubcommandGroup) {
                         cmd.options?.forEach((x) => count++)
+                        cont = false
                     }
                 })
+                if (cont) count++
             })
             return this.success(count)
         } else {
