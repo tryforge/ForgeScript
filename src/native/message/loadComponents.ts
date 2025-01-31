@@ -1,21 +1,34 @@
 import {
     APIButtonComponent,
-    APIEmbed,
-    APISelectMenuComponent,
-    ActionRowBuilder,
-    AnyComponentBuilder,
-    ButtonBuilder,
     ComponentType,
-    EmbedBuilder,
-    SelectMenuBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ChannelSelectMenuBuilder,
+    MentionableSelectMenuBuilder,
+    RoleSelectMenuBuilder,
+    StringSelectMenuBuilder,
+    UserSelectMenuBuilder,
 } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
+
+const ComponentBuilders = {
+    [ComponentType.Button as ComponentType]: ButtonBuilder,
+    [ComponentType.StringSelect as ComponentType]: StringSelectMenuBuilder,
+    [ComponentType.UserSelect as ComponentType]: UserSelectMenuBuilder,
+    [ComponentType.ChannelSelect as ComponentType]: ChannelSelectMenuBuilder,
+    [ComponentType.RoleSelect as ComponentType]: RoleSelectMenuBuilder,
+    [ComponentType.MentionableSelect as ComponentType]: MentionableSelectMenuBuilder,
+}
+
+function loadComponent(x: any) {
+    return ComponentBuilders[x.type as ComponentType]?.from(x)
+}
 
 export default new NativeFunction({
     name: "$loadComponents",
     version: "1.4.0",
     aliases: ["$loadComponent"],
-    description: "Loads components json (or array) to the response",
+    description: "Loads components JSON (or array) to the response",
     unwrap: true,
     brackets: true,
     args: [
@@ -28,25 +41,13 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [json]) {
-        if (Array.isArray(json)) {
-            ctx.container.components.push(
-                ...json.map((x) =>
-                    new ActionRowBuilder().addComponents(
-                        (x as any).map((x: any) =>
-                            x.type === ComponentType.Button ? ButtonBuilder.from(x) : SelectMenuBuilder.from(x)
-                        )
-                    )
-                )
-            )
-        } else {
-            ctx.container.components.push(
-                new ActionRowBuilder().addComponents(
-                    json.type === ComponentType.Button
-                        ? ButtonBuilder.from(json as unknown as APIButtonComponent)
-                        : SelectMenuBuilder.from(json as any)
-                )
-            )
-        }
+        const components = Array.isArray(json)
+            ? json[0][0]
+                ? json.map((row) => new ActionRowBuilder().addComponents(row?.map((x: any) => loadComponent(x))))
+                : [new ActionRowBuilder().addComponents(json?.map((x) => loadComponent(x)))]
+            : [new ActionRowBuilder().addComponents(loadComponent(json))]
+            
+        ctx.container.components.push(...components)
 
         return this.success()
     },
