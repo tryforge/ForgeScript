@@ -7,7 +7,7 @@ export default new NativeFunction({
     name: "$hyperlink",
     version: "1.3.0",
     brackets: true,
-    description: "Creates an hyperlink text",
+    description: "Creates a hyperlink text",
     unwrap: true,
     output: ArgType.String,
     args: [
