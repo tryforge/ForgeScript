@@ -18,6 +18,8 @@ export default new NativeFunction({
     output: array<ArgType.Unknown>(),
     unwrap: true,
     execute(ctx, [name]) {
-        return this.successJSON(Object.keys(ctx.getEnvironmentKey(name) as object))
+        const json = ctx.getEnvironmentKey(name)
+        if (!json) return this.success()
+        return this.successJSON(Object.keys(json))
     },
 })
