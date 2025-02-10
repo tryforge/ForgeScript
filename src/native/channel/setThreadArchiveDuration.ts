@@ -4,7 +4,7 @@ import { ArgType, NativeFunction } from "../../structures"
 export default new NativeFunction({
     name: "$setThreadArchiveDuration",
     version: "1.5.0",
-    description: "Modifies a thread's auto archive duration",
+    description: "Sets a thread's auto archive duration",
     unwrap: true,
     output: ArgType.Boolean,
     aliases: [
@@ -14,9 +14,9 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
+            description: "The thread to modify",
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isThread(),
-            description: "The thread to modify",
             rest: false,
             required: true
         },
@@ -36,6 +36,6 @@ export default new NativeFunction({
         }
     ],
     async execute(ctx, [ ch, dur, reason ]) {
-        return this.success(!!((ch as ThreadChannel).setAutoArchiveDuration(dur, reason ?? undefined)))
+        return this.success(!!(await (ch as ThreadChannel).setAutoArchiveDuration(dur, reason || undefined).catch(ctx.noop)))
     },
 })

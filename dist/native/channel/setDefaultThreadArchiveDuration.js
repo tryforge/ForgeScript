@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setDefaultThreadArchiveDuration",
     version: "1.5.0",
-    description: "Modifies a forum's auto archive thread duration",
+    description: "Sets a forum's default auto archive duration of posts",
     unwrap: true,
     output: structures_1.ArgType.Boolean,
     aliases: [
@@ -15,9 +15,9 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "channel ID",
-            type: structures_1.ArgType.Channel,
-            check: (i) => i.type === discord_js_1.ChannelType.GuildForum,
             description: "The forum to modify",
+            type: structures_1.ArgType.Channel,
+            check: (i) => i.isThreadOnly(),
             rest: false,
             required: true
         },
@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [ch, dur, reason]) {
-        return this.success(!!(ch.setDefaultAutoArchiveDuration(dur, reason ?? undefined)));
+        return this.success(!!(await ch.setDefaultAutoArchiveDuration(dur, reason || undefined).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=setDefaultThreadArchiveDuration.js.map

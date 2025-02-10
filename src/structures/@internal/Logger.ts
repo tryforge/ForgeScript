@@ -9,7 +9,7 @@ export enum LogPriority {
     None,
 
     /**
-     * Lows only info
+     * Logs only info
      */
     VeryLow,
 
@@ -24,7 +24,7 @@ export enum LogPriority {
     Medium,
 
     /**
-     * Logs info, debug data, warnings, errors.
+     * Logs info, debug data, warnings and errors
      */
     High
 }

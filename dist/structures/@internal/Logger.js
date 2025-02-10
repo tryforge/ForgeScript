@@ -14,7 +14,7 @@ var LogPriority;
      */
     LogPriority[LogPriority["None"] = 0] = "None";
     /**
-     * Lows only info
+     * Logs only info
      */
     LogPriority[LogPriority["VeryLow"] = 1] = "VeryLow";
     /**
@@ -26,7 +26,7 @@ var LogPriority;
      */
     LogPriority[LogPriority["Medium"] = 3] = "Medium";
     /**
-     * Logs info, debug data, warnings, errors.
+     * Logs info, debug data, warnings and errors
      */
     LogPriority[LogPriority["High"] = 4] = "High";
 })(LogPriority || (exports.LogPriority = LogPriority = {}));

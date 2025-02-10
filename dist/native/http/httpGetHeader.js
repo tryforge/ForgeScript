@@ -6,6 +6,7 @@ exports.default = new NativeFunction_1.NativeFunction({
     version: "1.5.0",
     description: "Gets an HTTP header",
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: "name",
@@ -15,7 +16,7 @@ exports.default = new NativeFunction_1.NativeFunction({
             required: true,
         },
     ],
-    brackets: true,
+    output: NativeFunction_1.ArgType.String,
     execute(ctx, [name]) {
         return this.success(ctx.http.response?.headers?.get(name));
     },

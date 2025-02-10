@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setThreadArchiveDuration",
     version: "1.5.0",
-    description: "Modifies a thread's auto archive duration",
+    description: "Sets a thread's auto archive duration",
     unwrap: true,
     output: structures_1.ArgType.Boolean,
     aliases: [
@@ -15,9 +15,9 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "channel ID",
+            description: "The thread to modify",
             type: structures_1.ArgType.Channel,
             check: (i) => i.isThread(),
-            description: "The thread to modify",
             rest: false,
             required: true
         },
@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [ch, dur, reason]) {
-        return this.success(!!(ch.setAutoArchiveDuration(dur, reason ?? undefined)));
+        return this.success(!!(await ch.setAutoArchiveDuration(dur, reason || undefined).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=setThreadArchiveDuration.js.map

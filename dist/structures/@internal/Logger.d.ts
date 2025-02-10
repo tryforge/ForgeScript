@@ -5,7 +5,7 @@ export declare enum LogPriority {
      */
     None = 0,
     /**
-     * Lows only info
+     * Logs only info
      */
     VeryLow = 1,
     /**
@@ -17,7 +17,7 @@ export declare enum LogPriority {
      */
     Medium = 3,
     /**
-     * Logs info, debug data, warnings, errors.
+     * Logs info, debug data, warnings and errors
      */
     High = 4
 }

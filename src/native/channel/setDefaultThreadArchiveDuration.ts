@@ -1,10 +1,10 @@
-import { BaseChannel, ChannelType, ForumChannel, ThreadAutoArchiveDuration, ThreadChannel } from "discord.js"
+import { BaseChannel, ThreadAutoArchiveDuration, ThreadOnlyChannel } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$setDefaultThreadArchiveDuration",
     version: "1.5.0",
-    description: "Modifies a forum's auto archive thread duration",
+    description: "Sets a forum's default auto archive duration of posts",
     unwrap: true,
     output: ArgType.Boolean,
     aliases: [
@@ -14,9 +14,9 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            type: ArgType.Channel,
-            check: (i: BaseChannel) => i.type === ChannelType.GuildForum,
             description: "The forum to modify",
+            type: ArgType.Channel,
+            check: (i: BaseChannel) => i.isThreadOnly(),
             rest: false,
             required: true
         },
@@ -36,6 +36,6 @@ export default new NativeFunction({
         }
     ],
     async execute(ctx, [ ch, dur, reason ]) {
-        return this.success(!!((ch as ForumChannel).setDefaultAutoArchiveDuration(dur, reason ?? undefined)))
+        return this.success(!!(await (ch as ThreadOnlyChannel).setDefaultAutoArchiveDuration(dur, reason || undefined).catch(ctx.noop)))
     },
 })
