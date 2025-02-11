@@ -4,13 +4,13 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$forumDefaultReactionEmoji",
     version: "2.2.0",
-    description: "Returns the default recation emoji of a forum",
+    description: "Returns the default reaction emoji of a forum",
     unwrap: true,
     brackets: true,
     args: [
         {
             name: "channel ID",
-            description: "The channel to get default recation emoji from",
+            description: "The channel to get default reaction emoji from",
             rest: false,
             type: ArgType.Channel,
             check: (i: BaseChannel) => i.isThreadOnly(),

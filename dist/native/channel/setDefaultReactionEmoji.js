@@ -12,6 +12,7 @@ function parseDefaultReactionEmoji(ctx, str) {
 }
 exports.default = new structures_1.NativeFunction({
     name: "$setDefaultReactionEmoji",
+    version: "2.2.0",
     description: "Sets a forum's default reaction emoji for posts",
     unwrap: true,
     brackets: true,

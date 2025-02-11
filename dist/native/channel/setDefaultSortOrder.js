@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$setDefaultSortOrder",
+    version: "2.2.0",
     description: "Sets a forum's default sort order of posts",
     unwrap: true,
     brackets: true,

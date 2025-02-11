@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$forumDefaultThreadSlowmode",
+    version: "2.2.0",
     description: "Returns the default slowmode for threads of a forum",
     unwrap: true,
     brackets: true,

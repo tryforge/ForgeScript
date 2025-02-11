@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$forumDefaultThreadArchiveDuration",
+    version: "2.2.0",
     description: "Returns the default auto archive duration for threads of a forum",
     aliases: [
         "$forumDefaultThreadAutoArchiveDuration"
