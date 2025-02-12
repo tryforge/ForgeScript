@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$forward",
+    version: "2.2.0",
     description: "Forwards a message to another channel, returns bool",
     aliases: ["$forwardMessage"],
     unwrap: true,
