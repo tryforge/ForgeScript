@@ -1,5 +1,9 @@
 import { TextBasedChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
+export declare enum ReactionType {
+    normal = "normal",
+    burst = "burst"
+}
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
@@ -21,6 +25,12 @@ declare const _default: NativeFunction<[{
     pointer: number;
     rest: false;
     type: ArgType.Reaction;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.Enum;
+    enum: typeof ReactionType;
 }], true>;
 export default _default;
 //# sourceMappingURL=getMessageReactionCount.d.ts.map

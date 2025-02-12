@@ -1,4 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
+import { SortType } from "../statement/loop"
 
 export default new NativeFunction({
     name: "$arraySort",
@@ -20,16 +21,25 @@ export default new NativeFunction({
             rest: false,
             required: false,
             type: ArgType.String
-        }
+        },
+        {
+            name: "sort type",
+            description: "The sort type to use, omit to use default sort order",
+            rest: false,
+            type: ArgType.Enum,
+            enum: SortType
+        },
     ],
     output: ArgType.Json,
-    execute(ctx, [variable, other]) {
+    execute(ctx, [variable, other, order]) {
         const arr = ctx.getEnvironmentInstance(Array, variable)
         if (arr !== null) {
+            const sorted = arr.sort(order !== null ? (a, b) => (order ? Number(a) - Number(b) : Number(b) - Number(a)) : undefined)
+
             if (other)
-                ctx.setEnvironmentKey(other, arr.sort())
+                ctx.setEnvironmentKey(other, sorted)
             else
-                return this.successJSON(arr.sort())
+                return this.successJSON(sorted)
         }
         
         return this.success()

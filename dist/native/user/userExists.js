@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(ctx.noop)));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && (await ctx.client.users.fetch(id).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=userExists.js.map

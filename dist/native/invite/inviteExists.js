@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return this.success(!!(await ctx.client.fetchInvite(id).catch(ctx.noop)));
+        return this.success((await ctx.client.fetchInvite(id).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=inviteExists.js.map

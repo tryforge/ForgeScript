@@ -12,7 +12,7 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The thread to deleteive",
+            description: "The thread to delete",
             rest: false,
             required: true,
             type: ArgType.Channel,
@@ -20,7 +20,7 @@ export default new NativeFunction({
         },
         {
             name: "reason",
-            description: "The reason to archive this thread",
+            description: "The reason to delete this thread",
             rest: false,
             type: ArgType.String,
         },

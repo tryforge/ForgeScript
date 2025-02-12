@@ -43,11 +43,11 @@ exports.default = new structures_1.NativeFunction({
             : type === DateType.ISO
                 ? date.toISOString()
                 : type === DateType.Locale
-                    ? date.toLocaleString()
+                    ? date.toLocaleString("en-US", { timeZone: ctx.timezone, calendar: ctx.calendar })
                     : type === DateType.LocaleDate
-                        ? date.toLocaleDateString()
+                        ? date.toLocaleDateString("en-US", { timeZone: ctx.timezone, calendar: ctx.calendar })
                         : type === DateType.LocaleTime
-                            ? date.toLocaleTimeString()
+                            ? date.toLocaleTimeString("en-US", { timeZone: ctx.timezone, calendar: ctx.calendar })
                             : type === DateType.Time
                                 ? date.toTimeString()
                                 : type === DateType.UTC

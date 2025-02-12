@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The thread to deleteive",
+            description: "The thread to delete",
             rest: false,
             required: true,
             type: structures_1.ArgType.Channel,
@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "reason",
-            description: "The reason to archive this thread",
+            description: "The reason to delete this thread",
             rest: false,
             type: structures_1.ArgType.String,
         },

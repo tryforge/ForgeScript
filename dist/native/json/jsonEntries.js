@@ -22,7 +22,10 @@ exports.default = new structures_1.NativeFunction({
     output: (0, array_1.default)(),
     unwrap: true,
     execute(ctx, [name]) {
-        return this.successJSON(Object.entries(ctx.getEnvironmentKey(name)));
+        const json = ctx.getEnvironmentKey(name);
+        if (!json)
+            return this.success();
+        return this.successJSON(Object.entries(json));
     },
 });
 //# sourceMappingURL=jsonEntries.js.map

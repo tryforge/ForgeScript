@@ -3,7 +3,7 @@ import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structu
 export default new NativeFunction({
     name: "$findGuildEmoji",
     version: "1.0.0",
-    description: "Finds a emoji of a guild",
+    description: "Finds an emoji of a guild",
     brackets: true,
     output: ArgType.GuildEmoji,
     args: [
@@ -16,7 +16,7 @@ export default new NativeFunction({
         },
         {
             name: "query",
-            description: "The id, mention or emoji name to find",
+            description: "The id, format or emoji name to find",
             rest: false,
             type: ArgType.String,
             required: true,
@@ -30,9 +30,7 @@ export default new NativeFunction({
         }
 
         return this.success(
-            guild.channels.cache.find(
-                (x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q
-            )?.id
+            guild.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id
         )
     },
 })

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$threadStarterMessageID",
@@ -23,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
         if (!thread.isThread())
             return this.success();
         const message = await thread.fetchStarterMessage().catch(ctx.noop);
-        return this.success(message?.id);
+        return this.success(message instanceof discord_js_1.Message ? message.id : null);
     },
 });
 //# sourceMappingURL=threadStarterMessageID.js.map

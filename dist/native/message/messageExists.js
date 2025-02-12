@@ -26,7 +26,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [ch, id]) {
-        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await ch.messages.fetch(id).catch(ctx.noop)));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && (await ch.messages.fetch(id).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=messageExists.js.map

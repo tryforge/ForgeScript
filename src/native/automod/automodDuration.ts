@@ -4,7 +4,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$automodDuration",
     version: "1.2.0",
-    description: "The duration in ms by this automod action",
+    description: "Returns the duration in ms by this automod action",
     unwrap: false,
     output: ArgType.Number,
     execute(ctx) {

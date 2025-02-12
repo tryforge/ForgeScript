@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     required: true;
-    type: ArgType.Json;
+    type: ArgType.String;
 }], true>;
 export default _default;
 //# sourceMappingURL=httpSetBody.d.ts.map

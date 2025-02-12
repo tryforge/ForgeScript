@@ -5,7 +5,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$automodActionType",
     version: "1.2.0",
-    description: "The action type automod used",
+    description: "Returns the action type automod used",
     unwrap: false,
     output: discord_js_1.AutoModerationActionType,
     execute(ctx) {

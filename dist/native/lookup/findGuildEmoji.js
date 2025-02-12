@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$findGuildEmoji",
     version: "1.0.0",
-    description: "Finds a emoji of a guild",
+    description: "Finds an emoji of a guild",
     brackets: true,
     output: structures_1.ArgType.GuildEmoji,
     args: [
@@ -17,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "query",
-            description: "The id, mention or emoji name to find",
+            description: "The id, format or emoji name to find",
             rest: false,
             type: structures_1.ArgType.String,
             required: true,
@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             if (e)
                 return this.success(e.id);
         }
-        return this.success(guild.channels.cache.find((x) => x.id === q || x.name.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
+        return this.success(guild.emojis.cache.find((x) => x.id === q || x.name?.toLowerCase() === q.toLowerCase() || x.toString() === q)?.id);
     },
 });
 //# sourceMappingURL=findGuildEmoji.js.map

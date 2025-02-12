@@ -5,6 +5,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$fetchMembers",
     version: "1.0.0",
     description: "Caches all members of a guild",
+    aliases: ["$fetchMember"],
     unwrap: true,
     brackets: false,
     args: [
@@ -15,10 +16,20 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Guild,
         },
+        {
+            name: "user ID",
+            description: "The member to fetch",
+            rest: false,
+            type: structures_1.ArgType.Member,
+            pointer: 0
+        },
     ],
-    async execute(ctx, [guild]) {
+    async execute(ctx, [guild, member]) {
         guild ??= ctx.guild;
-        await guild?.members.fetch();
+        if (member)
+            await guild?.members.fetch(member);
+        else
+            await guild?.members.fetch();
         return this.success();
     },
 });

@@ -1,6 +1,5 @@
 import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structures"
-import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$messageExists",
@@ -28,7 +27,7 @@ export default new NativeFunction({
     ],
     async execute(ctx, [ch, id]) {
         return this.success(
-            CompiledFunction.IdRegex.test(id) && !!(await (ch as TextChannel).messages.fetch(id).catch(ctx.noop))
+            CompiledFunction.IdRegex.test(id) && (await (ch as TextChannel).messages.fetch(id).catch(() => false)) !== false
         )
     },
 })

@@ -5,7 +5,7 @@ import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandl
 export default new DiscordEventHandler({
     name: "messageReactionRemoveEmoji",
     version: "1.4.0",
-    description: "This event is fired when a emoji is removed from a message's reactions",
+    description: "This event is fired when an emoji is removed from a message's reactions",
     intents: ["GuildMessageReactions", "DirectMessageReactions"],
     listener: async function (m) {
         const commands = this.commands.get("messageReactionRemoveEmoji")

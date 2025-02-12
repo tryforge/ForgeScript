@@ -4,7 +4,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberExists",
     version: "1.0.0",
-    description: "Returns whether a member id exists",
+    description: "Returns whether an member id exists",
     unwrap: true,
     brackets: true,
     output: structures_1.ArgType.Boolean,
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx, [guild, id]) {
-        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && !!(await guild.members.fetch(id).catch(ctx.noop)));
+        return this.success(structures_1.CompiledFunction.IdRegex.test(id) && (await guild.members.fetch(id).catch(() => false)) !== false);
     },
 });
 //# sourceMappingURL=memberExists.js.map

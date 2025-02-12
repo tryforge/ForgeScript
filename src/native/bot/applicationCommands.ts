@@ -1,14 +1,23 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import noop from "../../functions/noop"
 
 export default new NativeFunction({
     name: "$applicationCommands",
     version: "1.5.0",
     description: "Returns all application commands",
     output: ArgType.Json,
-    unwrap: false,
-    async execute(ctx) {
-        const commands = await ctx.client.application.commands.fetch().catch(ctx.noop)
+    unwrap: true,
+    brackets: false,
+    args: [
+        {
+            name: "guild ID",
+            description: "The guild to get application commands from",
+            rest: false,
+            required: true,
+            type: ArgType.Guild,
+        },
+    ],
+    async execute(ctx, [guild]) {
+        const commands = await ctx.client.application.commands.fetch({ guildId: guild?.id }).catch(ctx.noop)
         return this.successJSON(commands)
     },
 })

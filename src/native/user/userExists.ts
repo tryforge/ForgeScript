@@ -1,4 +1,3 @@
-import noop from "../../functions/noop"
 import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -18,6 +17,6 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [id]) {
-        return this.success(CompiledFunction.IdRegex.test(id) && !!(await ctx.client.users.fetch(id).catch(ctx.noop)))
+        return this.success(CompiledFunction.IdRegex.test(id) && (await ctx.client.users.fetch(id).catch(() => false)) !== false)
     },
 })

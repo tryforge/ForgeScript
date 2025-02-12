@@ -1,4 +1,10 @@
 import { ArgType, NativeFunction } from "../../structures";
-declare const _default: NativeFunction<import("../../structures").IArg<ArgType, boolean, boolean, import("../../structures").EnumLike<any>>[], false>;
+declare const _default: NativeFunction<[{
+    name: string;
+    description: string;
+    rest: false;
+    required: true;
+    type: ArgType.Guild;
+}], true>;
 export default _default;
 //# sourceMappingURL=applicationCommands.d.ts.map

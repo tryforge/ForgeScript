@@ -49,6 +49,7 @@ exports.default = new structures_1.NativeFunction({
             return rt;
         const [times, varName, type] = args;
         const code = this.data.fields[1];
+        let output = "";
         let condition = type || times === -1;
         for (let i = condition ? 1 : times; (type ? i <= times : i > 0) || times === -1; condition ? i++ : i--) {
             if (varName)
@@ -58,10 +59,12 @@ exports.default = new structures_1.NativeFunction({
                 continue;
             else if (exec.break)
                 break;
+            else if (exec.return)
+                output += exec.value;
             else
                 return exec;
         }
-        return this.success();
+        return this.success(output || null);
     },
 });
 //# sourceMappingURL=loop.js.map

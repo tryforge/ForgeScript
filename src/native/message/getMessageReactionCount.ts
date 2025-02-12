@@ -1,6 +1,11 @@
 import { TextBasedChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
+export enum ReactionType {
+    normal = "normal",
+    burst = "burst"
+}
+
 export default new NativeFunction({
     name: "$getMessageReactionCount",
     version: "1.0.0",
@@ -33,8 +38,15 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Reaction,
         },
+        {
+            name: "type",
+            description: "The type of the reaction to count users for",
+            rest: false,
+            type: ArgType.Enum,
+            enum: ReactionType
+        },
     ],
-    execute(ctx, [, , reaction]) {
-        return this.success(reaction.count)
+    execute(ctx, [, , reaction, type]) {
+        return this.success(type ? reaction?.countDetails?.[type] : reaction?.count)
     },
 })

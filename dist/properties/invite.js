@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InviteProperties = exports.InviteProperty = void 0;
+const discord_js_1 = require("discord.js");
 const defineProperties_1 = __importDefault(require("../functions/defineProperties"));
 var InviteProperty;
 (function (InviteProperty) {
@@ -16,7 +17,14 @@ var InviteProperty;
     InviteProperty["timestamp"] = "timestamp";
     InviteProperty["code"] = "code";
     InviteProperty["url"] = "url";
+    InviteProperty["type"] = "type";
     InviteProperty["expiresTimestamp"] = "expiresTimestamp";
+    InviteProperty["temporary"] = "temporary";
+    InviteProperty["deletable"] = "deletable";
+    InviteProperty["memberCount"] = "memberCount";
+    InviteProperty["presenceCount"] = "presenceCount";
+    InviteProperty["targetType"] = "targetType";
+    InviteProperty["targetUser"] = "targetUser";
 })(InviteProperty || (exports.InviteProperty = InviteProperty = {}));
 exports.InviteProperties = (0, defineProperties_1.default)({
     authorID: (i) => i?.inviterId,
@@ -28,6 +36,13 @@ exports.InviteProperties = (0, defineProperties_1.default)({
     timestamp: (i) => i?.createdTimestamp,
     code: (i) => i?.code,
     url: (i) => i?.url,
+    type: (i) => discord_js_1.InviteType[i?.type],
     expiresTimestamp: (i) => i?.expiresTimestamp,
+    temporary: (i) => i?.temporary,
+    deletable: (i) => i?.deletable,
+    memberCount: (i) => i?.memberCount,
+    presenceCount: (i) => i?.presenceCount,
+    targetType: (i) => discord_js_1.InviteTargetType[i?.targetType],
+    targetUser: (i) => i?.targetUser?.id
 });
 //# sourceMappingURL=invite.js.map
