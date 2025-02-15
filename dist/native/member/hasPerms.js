@@ -38,7 +38,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, member, perms]) {
-        return this.success(member.permissions.has(perms));
+        return this.success(member.permissions.has(perms) && perms.every(perm => perm in discord_js_1.PermissionFlagsBits));
     },
 });
 //# sourceMappingURL=hasPerms.js.map

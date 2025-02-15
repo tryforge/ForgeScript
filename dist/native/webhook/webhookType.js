@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$webhookType",
+    version: "2.3.0",
     description: "Returns the type of a webhook",
     brackets: true,
     unwrap: true,
@@ -16,7 +17,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    output: structures_1.ArgType.Boolean,
+    output: discord_js_1.WebhookType,
     async execute(ctx, [web]) {
         return this.success(discord_js_1.WebhookType[web.type]);
     },

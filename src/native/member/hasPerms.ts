@@ -37,6 +37,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, member, perms]) {
-        return this.success(member.permissions.has(perms as PermissionsString[]))
+        return this.success(member.permissions.has(perms as PermissionsString[]) && perms.every(perm => perm in PermissionFlagsBits))
     },
 })

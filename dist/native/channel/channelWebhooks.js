@@ -8,6 +8,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 const webhook_1 = require("../../properties/webhook");
 exports.default = new structures_1.NativeFunction({
     name: "$channelWebhooks",
+    version: "2.3.0",
     description: "Returns all webhooks of a channel",
     brackets: false,
     unwrap: true,

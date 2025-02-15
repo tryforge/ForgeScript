@@ -16,7 +16,7 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    output: ArgType.Boolean,
+    output: WebhookType,
     async execute(ctx, [web]) {
         return this.success(WebhookType[web.type])
     },
