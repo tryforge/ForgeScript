@@ -31,6 +31,7 @@ export default new NativeFunction({
             name: "permissions",
             description: "The perms to check for",
             rest: true,
+            required: true,
             type: ArgType.Enum,
             enum: PermissionFlagsBits
         }

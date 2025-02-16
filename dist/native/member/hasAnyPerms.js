@@ -30,13 +30,13 @@ exports.default = new structures_1.NativeFunction({
             name: "perms",
             description: "The perms to check for",
             rest: true,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Enum,
             enum: discord_js_1.PermissionFlagsBits,
             required: true,
         },
     ],
     execute(ctx, [, member, perms]) {
-        return this.success(member.permissions.any(perms) && perms.some(perm => perm in discord_js_1.PermissionFlagsBits));
+        return this.success(member.permissions.any(perms));
     },
 });
 //# sourceMappingURL=hasAnyPerms.js.map
