@@ -34,7 +34,6 @@ exports.default = new structures_1.NativeFunction({
             name: "tags",
             description: "The tags for the post",
             rest: true,
-            required: true,
             type: structures_1.ArgType.String,
         },
     ],

@@ -24,7 +24,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [, roles ]) {
-        ctx.container.allowedMentions.roles =  roles.map(x => x.id)
+        ctx.container.allowedMentions.roles = roles.map(x => x.id)
         return this.success()
     },
 })

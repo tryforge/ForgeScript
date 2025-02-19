@@ -9,6 +9,7 @@ declare const _default: NativeFunction<[{
 }, {
     name: string;
     rest: true;
+    required: true;
     type: ArgType.Enum;
     enum: typeof GuildFeature;
     description: string;

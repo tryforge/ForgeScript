@@ -10,7 +10,6 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: true;
-    required: true;
     enum: typeof ChannelType;
     type: ArgType.Enum;
 }], true>;

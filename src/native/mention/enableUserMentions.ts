@@ -16,7 +16,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ users ]) {
-        ctx.container.allowedMentions.users =  users.map(x => x.id)
+        ctx.container.allowedMentions.users = users.map(x => x.id)
         return this.success()
     },
 })

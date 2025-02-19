@@ -31,7 +31,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     type: ArgType.String;
     description: string;
-    required: true;
 }], true>;
 export default _default;
 //# sourceMappingURL=addUserSelectMenu.d.ts.map

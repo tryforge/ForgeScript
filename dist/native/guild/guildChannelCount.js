@@ -24,7 +24,6 @@ exports.default = new structures_1.NativeFunction({
             name: "categories",
             description: "The categories to filter by",
             rest: true,
-            required: true,
             enum: discord_js_1.ChannelType,
             type: structures_1.ArgType.Enum,
         },

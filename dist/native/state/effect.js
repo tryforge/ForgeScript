@@ -4,6 +4,7 @@ const voiceEffect_1 = require("../../properties/voiceEffect");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$effect",
+    version: "2.3.0",
     description: "Retrieves data from an event whose context was a voice channel effect event",
     brackets: true,
     unwrap: true,

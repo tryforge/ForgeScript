@@ -34,7 +34,6 @@ export default new NativeFunction({
             name: "tags",
             description: "The tags for the post",
             rest: true,
-            required: true,
             type: ArgType.String,
         },
     ],

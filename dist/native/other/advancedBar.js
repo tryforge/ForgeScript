@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [curr, max, len, values]) {
-        return this.success((0, generateBar_1.generateAdvancedBar)(curr, max, len ?? undefined, values));
+        return this.success((0, generateBar_1.generateAdvancedBar)(curr, max, len || undefined, values));
     }
 });
 //# sourceMappingURL=advancedBar.js.map

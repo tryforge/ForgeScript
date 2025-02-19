@@ -32,7 +32,6 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "elements",
             description: "The elements to insert in the deleted indexes",
-            required: true,
             rest: true,
             type: structures_1.ArgType.String,
         },

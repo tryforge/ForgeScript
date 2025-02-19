@@ -128,6 +128,8 @@ class CompiledFunction {
             const fields = this.data.fields?.slice(i);
             const values = new Array();
             if (!fields?.length) {
+                if (arg.required)
+                    return this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name);
                 return this.unsafeSuccess(values);
             }
             for (let x = 0, len = fields.length; x < len; x++) {

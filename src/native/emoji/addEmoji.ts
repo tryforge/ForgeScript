@@ -40,7 +40,6 @@ export default new NativeFunction({
             name: "roles",
             description: "The roles to limit usage of this emote",
             rest: true,
-            required: true,
             type: ArgType.Role,
             pointer: 0,
         },

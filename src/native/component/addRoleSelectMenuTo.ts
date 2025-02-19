@@ -61,7 +61,6 @@ export default new NativeFunction({
             rest: true,
             type: ArgType.String,
             description: "The default selected roles to use",
-            required: true
         }
     ],
     async execute(ctx, [ , m, id, placeholder, min, max, disabled, roles ]) {

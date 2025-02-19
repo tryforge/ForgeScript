@@ -173,6 +173,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             const values = new Array()
 
             if (!fields?.length) {
+                if (arg.required) return this.error(ErrorType.MissingArg, this.data.name, arg.name)
                 return this.unsafeSuccess(values)
             }
 

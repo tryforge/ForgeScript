@@ -59,7 +59,6 @@ export default new NativeFunction({
             description: "The role perms",
             rest: true,
             enum: PermissionFlagsBits,
-            required: true,
             type: ArgType.String,
         },
     ],

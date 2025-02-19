@@ -39,7 +39,6 @@ export default new NativeFunction({
             name: "roles",
             description: "The new roles to limit usage of this emoji to",
             rest: true,
-            required: true,
             type: ArgType.Role,
             pointer: 0,
         },

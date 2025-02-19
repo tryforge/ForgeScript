@@ -59,7 +59,6 @@ export default new NativeFunction({
             description: "The new perms for the role",
             rest: true,
             type: ArgType.Permission,
-            required: true,
         },
     ],
     brackets: true,

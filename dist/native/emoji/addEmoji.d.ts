@@ -26,7 +26,6 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: true;
-    required: true;
     type: ArgType.Role;
     pointer: number;
 }], true>;

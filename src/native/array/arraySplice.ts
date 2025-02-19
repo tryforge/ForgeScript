@@ -31,7 +31,6 @@ export default new NativeFunction({
         {
             name: "elements",
             description: "The elements to insert in the deleted indexes",
-            required: true,
             rest: true,
             type: ArgType.String,
         },
