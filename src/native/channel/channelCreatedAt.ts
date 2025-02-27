@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return this.success(chan.createdTimestamp)
+        return this.success(chan?.createdTimestamp)
     },
 })

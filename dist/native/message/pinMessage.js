@@ -27,8 +27,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [, m]) {
-        const msg = m ?? ctx.message;
-        return this.success(!!(await msg.pin().catch(ctx.noop)));
+        return this.success(!!(await (m ?? ctx.message)?.pin().catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=pinMessage.js.map

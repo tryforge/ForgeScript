@@ -32,7 +32,7 @@ export default new NativeFunction({
     ],
     output: ArgType.Unknown,
     async execute(ctx, [ guild, prop, sep ]) {
-        const rules = await (guild ?? ctx.guild).autoModerationRules?.fetch().catch(ctx.noop)
+        const rules = await (guild ?? ctx.guild)?.autoModerationRules?.fetch().catch(ctx.noop)
 
         if (rules && prop) {
             const data = rules.map(rule => AutomodRuleProperties[prop](rule, sep))

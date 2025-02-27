@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$deleteMessages"
     ],
-    description: "Delete given message ids, returns the count of messages deleted",
+    description: "Deletes given messages, returns the count of messages deleted",
     args: [
         {
             name: "channel ID",

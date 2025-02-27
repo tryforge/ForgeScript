@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return this.success("full" in chan ? chan.full : false)
+        return this.success(chan && "full" in chan ? chan.full : false)
     },
 })

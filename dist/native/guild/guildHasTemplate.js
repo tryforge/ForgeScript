@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Boolean,
     async execute(ctx, [guild]) {
-        return this.success((await (guild ?? ctx.guild).fetchTemplates()).size > 0);
+        return this.success((await (guild ?? ctx.guild)?.fetchTemplates())?.size ?? 0 > 0);
     },
 });
 //# sourceMappingURL=guildHasTemplate.js.map

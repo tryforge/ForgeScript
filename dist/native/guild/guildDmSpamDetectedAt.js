@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Number,
     execute(ctx, [guild]) {
-        return this.success((guild ?? ctx.guild).incidentsData?.dmSpamDetectedAt?.getTime() ?? 0);
+        return this.success((guild ?? ctx.guild)?.incidentsData?.dmSpamDetectedAt?.getTime() ?? 0);
     },
 });
 //# sourceMappingURL=guildDmSpamDetectedAt.js.map

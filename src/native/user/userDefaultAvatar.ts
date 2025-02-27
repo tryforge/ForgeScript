@@ -1,4 +1,3 @@
-import { ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -18,6 +17,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user]) {
-        return this.success((user ?? ctx.user).defaultAvatarURL)
+        return this.success((user ?? ctx.user)?.defaultAvatarURL)
     },
 })

@@ -23,6 +23,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return this.success(chan.isVoiceBased() ? chan.members.size : null)
+        return this.success(chan?.isVoiceBased() ? chan.members.size : null)
     },
 })

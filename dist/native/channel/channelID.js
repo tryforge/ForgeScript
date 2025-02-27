@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "name",
-            description: "The channel name to get it's id",
+            description: "The channel name to get its id",
             required: true,
             rest: true,
             type: structures_1.ArgType.String,

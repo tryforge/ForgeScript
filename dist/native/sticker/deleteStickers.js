@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Number,
-    description: "Delete given sticker ids, returns the count of stickers deleted",
+    description: "Deletes given stickers, returns the count of stickers deleted",
     args: [
         {
             name: "guild ID",

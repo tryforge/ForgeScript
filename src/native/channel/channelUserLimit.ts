@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return this.success("userLimit" in chan ? chan.userLimit : 0)
+        return this.success(chan && "userLimit" in chan ? chan.userLimit : 0)
     },
 })

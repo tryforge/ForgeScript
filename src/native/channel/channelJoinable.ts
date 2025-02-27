@@ -18,6 +18,6 @@ export default new NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel
-        return this.success("joinable" in chan ? chan.joinable : false)
+        return this.success(chan && "joinable" in chan ? chan.joinable : false)
     },
 })
