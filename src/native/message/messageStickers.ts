@@ -2,6 +2,11 @@ import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 
+export enum StickerReturnType {
+    id = "id",
+    url = "url"
+}
+
 export default new NativeFunction({
     name: "$messageStickers",
     version: "1.4.0",
@@ -34,9 +39,17 @@ export default new NativeFunction({
             rest: false,
             description: "The separator to use for every sticker",
             type: ArgType.String,
+        },
+        {
+            name: "type",
+            rest: false,
+            description: "The type to return, default is url",
+            type: ArgType.Enum,
+            enum: StickerReturnType
         }
     ],
-    execute(ctx, [, message, sep]) {
-        return this.success((message ?? ctx.message)?.stickers.map(x => x.url).join(sep ?? ", "))
+    execute(ctx, [, message, sep, type]) {
+        type ??= StickerReturnType.url
+        return this.success((message ?? ctx.message)?.stickers.map(x => x[type!]).join(sep ?? ", "))
     },
 })

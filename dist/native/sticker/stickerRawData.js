@@ -6,7 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.5.0",
     description: "Returns the raw data of a sticker",
     unwrap: true,
-    brackets: true,
+    brackets: false,
     args: [
         {
             name: "sticker ID",
@@ -18,7 +18,8 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Json,
     execute(ctx, [sticker]) {
-        return this.successJSON(sticker.toJSON());
+        sticker ??= ctx.sticker;
+        return this.successJSON(sticker?.toJSON());
     },
 });
 //# sourceMappingURL=stickerRawData.js.map
