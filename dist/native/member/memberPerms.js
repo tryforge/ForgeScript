@@ -37,8 +37,9 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [, member, sep]) {
-        return this.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "));
+    execute(ctx, [, user, sep]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member;
+        return this.success(new discord_js_1.PermissionsBitField(member?.permissions).toArray().join(sep || ", "));
     },
 });
 //# sourceMappingURL=memberPerms.js.map

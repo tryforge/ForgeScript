@@ -1,4 +1,4 @@
-import { GuildMemberFlags } from "discord.js"
+import { GuildMemberFlags, GuildMemberFlagsBitField } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 
@@ -33,7 +33,8 @@ export default new NativeFunction({
         },
     ],
     output: array(GuildMemberFlags),
-    execute(ctx, [, member, sep]) {
-        return this.success((member ?? ctx.member)?.flags.toArray().join(sep ?? ", "))
+    execute(ctx, [, user, sep]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
+        return this.success(new GuildMemberFlagsBitField(member?.flags).toArray().join(sep ?? ", "))
     },
 })

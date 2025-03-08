@@ -27,8 +27,8 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [, member]) {
-        member ??= ctx.member!
+    execute(ctx, [, user]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
         return this.success(member && !member.pending)
     },
 })

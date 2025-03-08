@@ -1,8 +1,9 @@
-import noop from "../../functions/noop"
+import { APIInteractionGuildMember, GuildMember } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$isBoosting",
+    description: "Returns whether this member is boosting",
     version: "1.5.0",
     aliases: [
         "$isBooster",
@@ -12,7 +13,6 @@ export default new NativeFunction({
     brackets: false,
     unwrap: true,
     output: ArgType.Boolean,
-    description: "Whether this user is boosting",
     args: [
         {
             name: "guild ID",
@@ -30,8 +30,8 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [, member]) {
-        member ??= ctx.member!
-        return this.success(!!member?.premiumSince)
+    execute(ctx, [, user]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
+        return this.success(!!(member instanceof GuildMember ? member?.premiumSince : (ctx.interaction?.member as APIInteractionGuildMember)?.premium_since))
     },
 })

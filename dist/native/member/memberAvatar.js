@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$memberAvatar",
@@ -37,11 +38,15 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [, member, size, ext]) {
-        return this.success((member ?? ctx.member)?.displayAvatarURL({
-            extension: ext || undefined,
-            size: size || 2048,
-        }));
+    execute(ctx, [, user, size, ext]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member;
+        const hash = member?.avatar ?? member?.user?.avatar;
+        return this.success(member?.user && hash
+            ? new discord_js_1.CDN().avatar(member.user.id, hash, {
+                extension: ext || undefined,
+                size: size || 2048,
+            })
+            : member?.user?.defaultAvatarURL);
     },
 });
 //# sourceMappingURL=memberAvatar.js.map

@@ -1,4 +1,4 @@
-import { ImageExtension, ImageSize } from "discord.js"
+import { CDN, ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -37,12 +37,17 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [, member, size, ext]) {
+    execute(ctx, [, user, size, ext]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
+        const hash = member?.banner ?? member?.user?.banner
+        
         return this.success(
-            (member ?? ctx.member)?.displayBannerURL({
-                extension: (ext as ImageExtension) || undefined,
-                size: (size as ImageSize) || 2048,
-            })
+            member?.user && hash
+                ? new CDN().banner(member.user.id, hash, {
+                    extension: (ext as ImageExtension) || undefined,
+                    size: (size as ImageSize) || 2048,
+                })
+                : null
         )
     },
 })
