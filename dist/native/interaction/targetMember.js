@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const member_1 = require("../../properties/member");
 exports.default = new structures_1.NativeFunction({
     name: "$targetMember",
+    version: "2.3.0",
     description: "Retrieves data of the target member",
     unwrap: true,
     brackets: true,
