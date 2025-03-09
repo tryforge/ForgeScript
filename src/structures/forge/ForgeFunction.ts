@@ -6,14 +6,15 @@ import callFunction from "../../native/other/callFunction"
 import { Return, ReturnType } from "../@internal/Return"
 import { ForgeError, ErrorType } from "./ForgeError"
 
-export interface IForgeFunctionParams {
+export interface IForgeFunctionParam {
     name: string
+    type?: ArgType | keyof typeof ArgType
     required?: boolean
 }
 
 export interface IForgeFunction {
     name: string
-    params?: Array<string | IForgeFunctionParams>
+    params?: Array<string | IForgeFunctionParam>
     firstParamCondition?: boolean
     brackets?: boolean
     code: string
@@ -42,7 +43,7 @@ export class ForgeFunction {
                 name: typeof x === "string" ? x : x.name,
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
-                type: ArgType.String,
+                type: typeof x === "string" ? ArgType.String : (typeof x.type === "number" && x.type in ArgType ? x.type : ArgType[x.type!]) ?? ArgType.String,
                 required: typeof x === "string" ? true : x.required ?? true
             }) as IArg<ArgType.String>) : undefined,
             brackets: this.data.brackets ?? (this.data.params?.length ? true : undefined),

@@ -31,7 +31,7 @@ class ForgeFunction {
                 name: typeof x === "string" ? x : x.name,
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
-                type: __1.ArgType.String,
+                type: typeof x === "string" ? __1.ArgType.String : (typeof x.type === "number" && x.type in __1.ArgType ? x.type : __1.ArgType[x.type]) ?? __1.ArgType.String,
                 required: typeof x === "string" ? true : x.required ?? true
             })) : undefined,
             brackets: this.data.brackets ?? (this.data.params?.length ? true : undefined),

@@ -1,13 +1,14 @@
 import { ArgType, Context, IArg, NativeFunction } from "..";
 import { IExtendedCompilationResult } from "../../core";
 import { Return, ReturnType } from "../@internal/Return";
-export interface IForgeFunctionParams {
+export interface IForgeFunctionParam {
     name: string;
+    type?: ArgType | keyof typeof ArgType;
     required?: boolean;
 }
 export interface IForgeFunction {
     name: string;
-    params?: Array<string | IForgeFunctionParams>;
+    params?: Array<string | IForgeFunctionParam>;
     firstParamCondition?: boolean;
     brackets?: boolean;
     code: string;
