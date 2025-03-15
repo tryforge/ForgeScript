@@ -19,7 +19,7 @@ import {
     Sticker,
     User,
 } from "discord.js"
-import { CompiledFunction } from "./CompiledFunction"
+import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction"
 import { Container, Sendable } from "./Container"
 import { IArg, NativeFunction, UnwrapArgs } from "./NativeFunction"
 import { Return, ReturnType } from "./Return"
@@ -56,6 +56,11 @@ export interface IAutomodRuleOptions {
     triggerMetadata?: AutoModerationTriggerMetadataOptions
     exemptRoles?: string[]
     exemptChannels?: string[]
+}
+
+export interface ILocalFunctionData {
+    code: IExtendedCompiledFunctionField
+    args: string[]
 }
 
 export enum CalendarType {
@@ -111,6 +116,8 @@ export class Context {
     automodRule: Partial<IAutomodRuleOptions> = {}
     timezone: string = "UTC"
     calendar?: CalendarType
+
+    localFunctions: Map<string, ILocalFunctionData> = new Map()
 
     #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}

@@ -2,7 +2,6 @@ import { ArgType, Context, IArg, IExtendedCompiledFunctionConditionField, Native
 import { IExtendedCompilationResult, Compiler, Interpreter } from "../../core"
 import isTrue from "../../functions/isTrue"
 import { FunctionManager } from "../../managers"
-import callFunction from "../../native/other/callFunction"
 import { Return, ReturnType } from "../@internal/Return"
 import { ForgeError, ErrorType } from "./ForgeError"
 
@@ -81,7 +80,7 @@ export class ForgeFunction {
                 new ForgeError(
                     null,
                     ErrorType.Custom,
-                    `Calling custom function ${this.data.name} requires ${required.length} arguments, received ${args.length}`
+                    `Calling custom function ${this.data.name} requires ${required.length} argument${required.length > 1 ? "s" : ""}, received ${args.length}`
                 )
             )
 

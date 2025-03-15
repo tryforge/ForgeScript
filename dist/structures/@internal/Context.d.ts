@@ -1,5 +1,5 @@
 import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
-import { CompiledFunction } from "./CompiledFunction";
+import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
 import { Return } from "./Return";
@@ -26,6 +26,10 @@ export interface IAutomodRuleOptions {
     triggerMetadata?: AutoModerationTriggerMetadataOptions;
     exemptRoles?: string[];
     exemptChannels?: string[];
+}
+export interface ILocalFunctionData {
+    code: IExtendedCompiledFunctionField;
+    args: string[];
 }
 export declare enum CalendarType {
     Buddhist = "buddhist",
@@ -75,6 +79,7 @@ export declare class Context {
     automodRule: Partial<IAutomodRuleOptions>;
     timezone: string;
     calendar?: CalendarType;
+    localFunctions: Map<string, ILocalFunctionData>;
     container: Container;
     constructor(runtime: IRunnable);
     get client(): import("../..").ForgeClient;
