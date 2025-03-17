@@ -26,7 +26,7 @@ export default new NativeFunction({
     async execute(ctx, [guild, member]) {
         guild ??= ctx.guild!
         if (member) await guild?.members.fetch(member)
-            else await guild?.members.fetch()
+        else await guild?.members.fetch()
         return this.success()
     },
 })

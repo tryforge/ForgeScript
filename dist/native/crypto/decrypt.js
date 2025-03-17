@@ -6,15 +6,15 @@ const structures_1 = require("../../structures");
 /**
  * Provided to FS by lynnux
  */
-const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+const FIXED_IV = Buffer.from("12345678901234567890123456789012", "hex");
 function deriveKey(key) {
-    return (0, crypto_1.scryptSync)(key, 'salt', 32);
+    return (0, crypto_1.scryptSync)(key, "salt", 32);
 }
 function decrypt(text, key) {
     const idkhowtocallthis = deriveKey(key);
-    const decipher = (0, crypto_1.createDecipheriv)('aes-256-cbc', idkhowtocallthis, FIXED_IV);
-    let decrypted = decipher.update(text, 'hex', 'utf-8');
-    decrypted += decipher.final('utf-8');
+    const decipher = (0, crypto_1.createDecipheriv)("aes-256-cbc", idkhowtocallthis, FIXED_IV);
+    let decrypted = decipher.update(text, "hex", "utf-8");
+    decrypted += decipher.final("utf-8");
     return decrypted;
 }
 exports.decrypt = decrypt;

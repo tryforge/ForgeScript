@@ -71,7 +71,7 @@ export default new NativeFunction({
 
         // @ts-ignore
         if (style === ButtonStyle.Link) btn.setURL(id || btn.data.custom_id)
-            else if (style === ButtonStyle.Premium) btn.setSKUId(id)
+        else if (style === ButtonStyle.Premium) btn.setSKUId(id)
 
         if (emoji) btn.setEmoji(emoji)
 

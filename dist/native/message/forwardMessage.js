@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$forward",
+    name: "$forwardMessage",
     version: "2.2.0",
     description: "Forwards a message to another channel, returns bool",
-    aliases: ["$forwardMessage"],
+    aliases: ["$forward"],
     unwrap: true,
     brackets: true,
     args: [
@@ -38,4 +38,4 @@ exports.default = new structures_1.NativeFunction({
         return this.success(!!(await message.forward((channel ?? ctx.channel)).catch(ctx.noop)));
     },
 });
-//# sourceMappingURL=forward.js.map
+//# sourceMappingURL=forwardMessage.js.map

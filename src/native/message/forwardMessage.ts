@@ -2,10 +2,10 @@ import { BaseChannel, ChannelType, PartialGroupDMChannel, TextBasedChannel } fro
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
-    name: "$forward",
+    name: "$forwardMessage",
     version: "2.2.0",
     description: "Forwards a message to another channel, returns bool",
-    aliases: ["$forwardMessage"],
+    aliases: ["$forward"],
     unwrap: true,
     brackets: true,
     args: [

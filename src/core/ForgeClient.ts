@@ -123,6 +123,8 @@ export class ForgeClient extends Client<true> {
     public readonly functions = new ForgeFunctionManager(this)
     public readonly threading = new ThreadManager(this)
     public readonly websockets = new Map<number, WebSocket>()
+    public readonly timeouts = new Map<string, globalThis.NodeJS.Timeout>()
+    public readonly intervals = new Map<string, globalThis.NodeJS.Timeout>()
     public readonly globalVariables: Record<string, string> = {};
 
     // eslint-disable-next-line no-undef

@@ -21,8 +21,8 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild!
-        const lowest = guild.roles.cache.filter(role => role.id !== guild.id).sort((a, b) => a.position - b.position).first()
+        const lowest = guild?.roles.cache.filter(role => role.id !== guild.id).sort((a, b) => a.position - b.position).first()
 
-        return this.success(lowest?.id ?? guild.id)
+        return this.success(lowest?.id ?? guild?.id)
     },
 })

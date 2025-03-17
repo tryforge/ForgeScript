@@ -21,4 +21,4 @@ declare const _default: NativeFunction<[{
     check: (i: BaseChannel) => boolean;
 }], true>;
 export default _default;
-//# sourceMappingURL=forward.d.ts.map
+//# sourceMappingURL=forwardMessage.d.ts.map

@@ -62,22 +62,22 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                 raw.fields?.map((x) =>
                     !("op" in x)
                         ? {
-                              ...x,
-                              functions: x.functions.map((x) => new CompiledFunction(x)),
-                          }
+                            ...x,
+                            functions: x.functions.map((x) => new CompiledFunction(x)),
+                        }
                         : {
-                              ...x,
-                              lhs: {
-                                  ...x.lhs,
-                                  functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
-                              },
-                              rhs: x.rhs
-                                  ? {
-                                        ...x.rhs,
-                                        functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
-                                    }
-                                  : undefined,
-                          }
+                            ...x,
+                            lhs: {
+                                ...x.lhs,
+                                functions: x.lhs.functions.map((x) => new CompiledFunction(x)),
+                            },
+                            rhs: x.rhs
+                                ? {
+                                    ...x.rhs,
+                                    functions: x.rhs.functions.map((x) => new CompiledFunction(x)),
+                                }
+                                : undefined,
+                        }
                 ) ?? null,
         }
     }
@@ -527,8 +527,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public getFunctions(fieldIndex: number, ref: NativeFunction) {
         return this.hasFields
             ? (this.data.fields![fieldIndex] as IExtendedCompiledFunctionField).functions.filter(
-                  (x) => x.data.name === ref.name
-              )
+                (x) => x.data.name === ref.name
+            )
             : new Array<CompiledFunction>()
     }
 

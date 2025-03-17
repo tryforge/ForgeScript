@@ -3,7 +3,7 @@ import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from 
 async function asyncSort<T>(array: T[], asyncComparator: (a: T, b: T) => Promise<number>): Promise<T[]> {
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = i + 1; j < array.length; j++) {
-            const result = await asyncComparator(array[i], array[j]);
+            const result = await asyncComparator(array[i], array[j])
             if (result > 0) {
                 [array[i], array[j]] = [array[j], array[i]]
             }
