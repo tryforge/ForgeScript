@@ -1,18 +1,11 @@
-import { includes } from "lodash"
 import { ArgType, NativeFunction, Return } from "../../structures"
-
-export enum ExtendedTimeFormat {
-    Numeric = "numeric",
-    TwoDigit = "2-digit",
-    Long = "long",
-    Short = "short",
-    Narrow = "narrow"
-}
+import { BasicTimeFormat } from "./hour"
 
 export default new NativeFunction({
     name: "$day",
     version: "1.2.0",
-    description: "Returns current day",
+    description: "Returns current day of month",
+    aliases: ["$dayOfMonth"],
     unwrap: true,
     brackets: false,
     args: [
@@ -21,19 +14,11 @@ export default new NativeFunction({
             description: "The format of the day",
             rest: false,
             type: ArgType.Enum,
-            enum: ExtendedTimeFormat
+            enum: BasicTimeFormat
         }
     ],
     output: ArgType.String,
     execute: async function(ctx, [format]) {
-        const options: Intl.DateTimeFormatOptions = { timeZone: ctx.timezone, calendar: ctx.calendar }
-
-        if (format === "numeric" || format === "2-digit" || !format) {
-            options.day = format || "numeric"
-        } else {
-            options.weekday = format
-        }
-
-        return this.success(new Date().toLocaleString("en-US", options))
+        return this.success(new Date().toLocaleString("en-US", { day: format || "numeric", timeZone: ctx.timezone, calendar: ctx.calendar }))
     }
 })

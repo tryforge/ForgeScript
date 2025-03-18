@@ -1,11 +1,11 @@
 import { ArgType, NativeFunction } from "../../structures";
-import { BasicTimeFormat } from "./hour";
+import { ExtendedTimeFormat } from "./month";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
     type: ArgType.Enum;
-    enum: typeof BasicTimeFormat;
+    enum: typeof ExtendedTimeFormat;
 }], true>;
 export default _default;
-//# sourceMappingURL=day.d.ts.map
+//# sourceMappingURL=dayOfWeek.d.ts.map

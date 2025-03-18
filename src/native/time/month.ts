@@ -1,5 +1,12 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { ExtendedTimeFormat } from "./day"
+
+export enum ExtendedTimeFormat {
+    Numeric = "numeric",
+    TwoDigit = "2-digit",
+    Long = "long",
+    Short = "short",
+    Narrow = "narrow"
+}
 
 export default new NativeFunction({
     name: "$month",

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$clearTimeout",
+    version: "2.3.0",
     description: "Clears an active timeout, returns bool",
     aliases: ["$stopTimeout"],
     unwrap: true,
