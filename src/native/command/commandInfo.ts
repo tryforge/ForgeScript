@@ -27,7 +27,6 @@ export default new NativeFunction({
             name: "property",
             description: "The property to retrieve",
             rest: true,
-            required: true,
             type: ArgType.String,
         }
     ],

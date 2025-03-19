@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "param name; param value",
+            name: "param name;param value",
             description: "The param name followed by the value, (param1;value1)",
             rest: true,
             required: true,

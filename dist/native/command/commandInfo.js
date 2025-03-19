@@ -27,7 +27,6 @@ exports.default = new structures_1.NativeFunction({
             name: "property",
             description: "The property to retrieve",
             rest: true,
-            required: true,
             type: structures_1.ArgType.String,
         }
     ],

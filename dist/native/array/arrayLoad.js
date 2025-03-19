@@ -23,7 +23,6 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "values",
             description: "The elements of the array",
-            required: true,
             rest: true,
             type: structures_1.ArgType.String,
         },
