@@ -21,7 +21,7 @@
         "language": "Langue",
         "settingsLabel": "Modifiez les paramètres du site de documentation, y compris les visuels, l'accessibilité et les configurations générales.",
         "refreshNote1": "Remarque : ce paramètre actualisera la page.",
-        "refreshNote2": Remarque : ce paramètre nécessite une actualisation de la page.",
+        "refreshNote2": "Remarque : ce paramètre nécessite une actualisation de la page.",
         "devBranchTitle": "Branche de développement",
         "devBranchLabel": "Activez ce commutateur pour afficher les mises à jour des versions stables et des dernières versions de développement, au lieu des seules versions stables.",
         "hideLoadingTitle": "Masquer l'écran de chargement",
