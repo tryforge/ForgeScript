@@ -1,0 +1,125 @@
+{
+    "main": {
+      "sidebar": {
+        "changelog": "Journal des modifications",
+        "extensions": "Extensions"
+        "guides": "Guides",
+        "functions": "Fonctions",
+        "events": "Événements",
+        "results": "Resultats",
+        "enums": "Énumérations",
+        "support": "Soutien",
+        "version": "Version",
+        "settings": "Paramètres",
+        "search": "Recherche !"
+      },
+      "settings": {
+        "settings": "Paramètres",
+        "general": "Général",
+        "visual": "Visuel",
+        "accessibility": "Accessibilité",
+        "language": "Langue",
+        "settingsLabel": "Modifiez les paramètres du site de documentation, y compris les visuels, l'accessibilité et les configurations générales.",
+        "refreshNote1": "Remarque : ce paramètre actualisera la page.",
+        "refreshNote2": Remarque : ce paramètre nécessite une actualisation de la page.",
+        "devBranchTitle": "Branche de développement",
+        "devBranchLabel": "Activez ce commutateur pour afficher les mises à jour des versions stables et des dernières versions de développement, au lieu des seules versions stables.",
+        "hideLoadingTitle": "Masquer l'écran de chargement",
+        "hideLoadingLabel": "Activez ce commutateur pour arrêter de voir l'écran de chargement lors du chargement du site Web.",
+        "hideSidebarTooltipsTitle": "Masquer les info-bulles de la barre latérale",
+        "hideSidebarTooltipsLabel": "Activez pour masquer les info-bulles de la barre latérale/du menu lorsque vous survolez (PC) ou cliquez/maintenez (Mobile) une fonction.",
+        "disableFoldersTitle": "Désactiver les Dossiers",
+        "disableFoldersLabel": "Activez cette option si vous ne souhaitez pas que les fonctions, les événements et les énumérations soient affichés dans les dossiers si le package le permet.",
+        "lowSaturationTitle": "Mode Faible Saturation",
+        "lowSaturationLabel": "Activez ce commutateur pour activer le mode de faible saturation, désaturant l'ensemble du site Web."
+      },
+      "buttons": {
+        "close": "Fermer",
+        "refresh": "Rafraîchir",
+        "viewSource": "Voir la source sur GitHub",
+        "copyUrl": "Copier l'URL",
+        "copyUrlPressed": "URL copiée !",
+        "functionsAndEvents": "Fonctions & Événements",
+        "notes": "Notes"
+      },
+      "tooltips": {
+        "viewSource": "Afficher le code source sur GitHub ?",
+        "copyUrl": "Copier l'URL de la documentation dans votre presse-papiers ?",
+        "toggleStates": "Activer/Désactiver",
+        "bracketsRequired": "Les crochets sont obligatoires pour cette fonction ! Consultez l'utilisation de la fonction pour connaître les arguments entre crochets.",
+        "guideArgTypes": "Cliquez pour être redirigé vers un guide sur les types d'arguments.",
+        "viewExtensionSource": "Voir la source de l'extension",
+        "languageTip": "Même avec une langue sélectionnée, tout ne peut pas être traduit.",
+        "unallowedDev": "Ce package ne permet pas de branche de développement.",
+        "enumsTip": "La sensibilité à la casse signifie que les distinctions entre les lettres majuscules et minuscules sont importantes. 'Bonjour' et 'bonjour' seraient traités comme différents et non interchangeables.",
+        "aliasesTip": "Alias pour cette fonction.",
+        "typeRedirect": "Cliquez pour être redirigé vers un guide sur les types d'arguments.",
+        "multipleValues": "Plusieurs valeurs de ce type peuvent être données en sortie, en utilisant un séparateur. (Par exemple : Un,Deux,Trois)"
+      },
+      "other": {
+        "yes": "Oui",
+        "no": "Non",
+        "new": "Nouveau",
+        "supportLabel1": "Des problèmes ? Des questions ?",
+        "supportLabel2": "Rejoignez-nous sur Discord !",
+        "official": "Officiel",
+        "community": "Communauté",
+        "documentation": "Documentation",
+        "copyright1": "Tous droits réservés.",
+        "copyright2": "BotForge™ fonctionne de manière indépendante et n'est pas affilié à Discord, Inc.",
+        "loading": "Chargement",
+        "function": "Fonction",
+        "event": "Événement",
+        "experimental": "Expérimental"
+      }
+    },
+    "listContent": {
+      "outputs": {
+        "unknown": "Inconnu",
+        "number": "Nombre",
+        "channel": "Canal",
+        "guild": "Guilde",
+        "invite": "Invitation",
+        "message": "Message",
+        "role": "Rôle",
+        "color": "Couleur",
+        "date": "Date",
+        "user": "Utilisateur",
+        "member": "Membre",
+        "permission": "Permission",
+        "time": "Temps",
+        "reaction": "Réaction" 
+      },
+      "labels": {
+        "usage": "Usage",
+        "fields": "Champs",
+        "output": "Sortie",
+        "list": "Liste",
+        "tableName": "Nom",
+        "tableDescription": "Description",
+        "tableType": "Type",
+        "tableRequired": "Requis",
+        "tableSpread": "Propagé",
+        "orHandler": "Ou avec le gestionnaire de commandes...",
+        "withoutBrackets": "Ou sans crochets...",
+        "requiredIntents": "Cet événement nécessite que les intents suivantes soient activées pour fonctionner :",
+        "enumsLabel": "Les énumérations sont sensibles à la casse ; elles doivent être utilisées exactement comme indiqué dans la liste ci-dessous. 'Playing' n'est pas la même chose que 'playing'.",
+        "eventExample": "Bonjour, je viens d'être appelé !"
+      },
+      "changelog": {
+        "title": "Quoi de neuf ?",
+        "description": "Un aperçu des mises à jour (#PKG), couvrant les nouvelles fonctions, les événements et les notes des dernières mises à jour.",
+        "contributors": "Contributors",
+        "credits": "(#PKG) a été créé par (#AUT)"
+      },
+      "extensions": {
+        "title": "Extensions",
+        "description": "Liste des extensions présentées, allant des extensions officielles aux extensions non officielles, ainsi que leurs informations et documentations respectives, si disponibles.",
+        "subLabel1": "Des problèmes ? Des questions ? ",
+        "subLabel2": "Rejoignez-nous sur Discord !",
+        "contributors": "Contributeurs",
+        "credits": "(#PKG) is made by (#AUT)",
+        "addIncentive": "Interested in adding your own extension? Contact us!"
+      }
+    }
+}
