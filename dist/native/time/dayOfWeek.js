@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         if (format && format !== "numeric" && format !== "2-digit")
             options.weekday = format;
         const day = new Date().toLocaleString("en-US", options);
-        return this.success(options.weekday ? day : new Date(day).getUTCDay() ?? 7);
+        return this.success(options.weekday ? day : new Date(day).getUTCDay());
     }
 });
 //# sourceMappingURL=dayOfWeek.js.map

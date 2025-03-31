@@ -22,6 +22,6 @@ export default new NativeFunction({
         if (format && format !== "numeric" && format !== "2-digit") options.weekday = format
         
         const day = new Date().toLocaleString("en-US", options)
-        return this.success(options.weekday ? day : new Date(day).getUTCDay() ?? 7)
+        return this.success(options.weekday ? day : new Date(day).getUTCDay())
     }
 })
