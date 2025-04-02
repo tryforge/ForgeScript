@@ -30,8 +30,15 @@
     "api",
     "bot"
   ],
-  "author": "ruben40000",
-  "contributors": [],
+  "author": "Plinkie03",
+  "contributors": [
+    "YuzuTheNeko",
+    "xNickyDev",
+    "Natasquare",
+    "Aggelos-007",
+    "Berk404",
+    "Lynnux-useless-codes"
+  ],
   "license": "GPL-3.0",
   "devDependencies": {
     "@iamtraction/google-translate": "^2.0.1",
