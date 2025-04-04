@@ -25,7 +25,7 @@ export default new NativeFunction({
     execute(ctx, [ text, emoji ]) {
         (ctx.container.poll?.answers as Array<PollAnswerData>).push({
             text,
-            emoji: emoji ?? undefined
+            emoji: emoji || undefined
         })
 
         return this.success()
