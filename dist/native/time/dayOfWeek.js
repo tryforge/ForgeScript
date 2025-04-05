@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$dayOfWeek",
     version: "2.3.0",
     description: "Returns current day of week",
+    aliases: ["$weekday"],
     unwrap: true,
     brackets: false,
     args: [

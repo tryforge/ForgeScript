@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$dayOfWeek",
     version: "2.3.0",
     description: "Returns current day of week",
+    aliases: ["$weekday"],
     unwrap: true,
     brackets: false,
     args: [
