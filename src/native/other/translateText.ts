@@ -1,5 +1,5 @@
-import { ArgType, NativeFunction } from "../../structures";
-import translate from "@iamtraction/google-translate";
+import { ArgType, NativeFunction } from "../../structures"
+import translate from "@iamtraction/google-translate"
 
 export default new NativeFunction({
     name: "$translateText",
