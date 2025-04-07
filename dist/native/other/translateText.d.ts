@@ -17,6 +17,11 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     required: false;
     rest: false;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.Boolean;
+    rest: false;
 }], true>;
 export default _default;
 //# sourceMappingURL=translateText.d.ts.map

@@ -13,6 +13,7 @@ function applyStyles(text: string, styles: string[]): string {
 
 export default new NativeFunction({
     name: "$chalkLog",
+    version: "2.3.0",
     description: "Logs styled text to the console using Chalk",
     unwrap: true,
     brackets: true,
