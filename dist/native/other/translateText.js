@@ -9,6 +9,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$translateText",
     version: "2.3.0",
     description: "Translates text into another language",
+    experimental: true,
     brackets: true,
     unwrap: true,
     args: [

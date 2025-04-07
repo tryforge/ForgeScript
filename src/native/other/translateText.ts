@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$translateText",
     version: "2.3.0",
     description: "Translates text into another language",
+    experimental: true,
     brackets: true,
     unwrap: true,
     args: [
