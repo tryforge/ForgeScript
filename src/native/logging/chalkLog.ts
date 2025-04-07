@@ -4,7 +4,7 @@ import chalk from "chalk";
 export default new NativeFunction({
     name: "$chalkLog",
     version: "1.3.0",
-    description: "Logs colored text to the console using Chalk.",
+    description: "Logs styled text to the console using Chalk",
     unwrap: true,
     brackets: true,
     args: [
