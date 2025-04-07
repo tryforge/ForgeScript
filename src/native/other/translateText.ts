@@ -8,7 +8,7 @@ export default new NativeFunction({
     args: [
         {
             name: "text",
-            description: "text to translate",
+            description: "The text to translate",
             type: ArgType.String,
             required: true,
             rest: false
