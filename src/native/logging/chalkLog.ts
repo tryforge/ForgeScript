@@ -18,27 +18,22 @@ export default new NativeFunction({
     brackets: true,
     args: [
         {
-            name: "log color",
-            description: "The log color (e.g., red, green, blue)",
+            name: "text",
+            description: "The text to log",
             type: ArgType.String,
             required: true,
             rest: false
         },
         {
-            name: "text",
-            description: "What to log",
+            name: "styles",
+            description: "The styles to apply to the text",
             type: ArgType.String,
             required: true,
-            rest: false
+            rest: true
         }
     ],
-    execute(ctx, [color, value]) {
-        const fn = (chalk as any)[color];
-        if (typeof fn !== "function") {
-            return this.customError(`Invalid chalk color: "${color}"`);
-        }
-
-        console.log(fn(value));
-        return this.success();
+    execute(ctx, [text, styles]) {
+        console.log(applyStyles(text, styles))
+        return this.success()
     }
-});
+})
