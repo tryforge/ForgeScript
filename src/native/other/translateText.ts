@@ -3,7 +3,7 @@ import translate from "@iamtraction/google-translate";
 
 export default new NativeFunction({
     name: "$translateText",
-    description: "translates text into another language.",
+    description: "Translates text into another language",
     brackets: true,
     args: [
         {
