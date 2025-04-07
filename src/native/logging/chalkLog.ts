@@ -1,5 +1,15 @@
-import { ArgType, NativeFunction } from "../../structures";
-import chalk from "chalk";
+import { ArgType, NativeFunction } from "../../structures"
+import chalk from "chalk"
+
+function applyStyles(text: string, styles: string[]): string {
+    let styled = chalk
+    for (const style of styles) {
+        const fn = (styled as any)[style]
+        if (typeof fn !== "function") continue
+        styled = fn
+    }
+    return styled(text)
+}
 
 export default new NativeFunction({
     name: "$chalkLog",
