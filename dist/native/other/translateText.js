@@ -7,8 +7,10 @@ const structures_1 = require("../../structures");
 const google_translate_1 = __importDefault(require("@iamtraction/google-translate"));
 exports.default = new structures_1.NativeFunction({
     name: "$translateText",
+    version: "2.3.0",
     description: "Translates text into another language",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "text",
@@ -38,7 +40,10 @@ exports.default = new structures_1.NativeFunction({
             rest: false
         }
     ],
-    unwrap: true,
+    output: [
+        structures_1.ArgType.String,
+        structures_1.ArgType.Json
+    ],
     async execute(ctx, [text, toLang, fromLang, json]) {
         const res = await (0, google_translate_1.default)(text, { to: toLang, from: fromLang || "auto" }).catch(ctx.noop);
         if (json)

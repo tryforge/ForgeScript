@@ -4,7 +4,7 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$localFunction",
     version: "2.3.0",
-    description: "Declares a new local function",
+    description: "Defines a new local function",
     aliases: ["$fn"],
     unwrap: false,
     brackets: true,

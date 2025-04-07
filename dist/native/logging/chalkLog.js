@@ -17,6 +17,7 @@ function applyStyles(text, styles) {
 }
 exports.default = new structures_1.NativeFunction({
     name: "$chalkLog",
+    version: "2.3.0",
     description: "Logs styled text to the console using Chalk",
     unwrap: true,
     brackets: true,

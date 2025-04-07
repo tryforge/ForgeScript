@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "separator",
-            description: "Separator to use in case of array",
+            description: "The separator to use in case of array",
             rest: false,
             type: structures_1.ArgType.String,
         },

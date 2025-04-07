@@ -18,7 +18,7 @@ export default new NativeFunction({
         },
         {
             name: "separator",
-            description: "Separator to use in case of array",
+            description: "The separator to use in case of array",
             rest: false,
             type: ArgType.String,
         },

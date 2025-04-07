@@ -4,7 +4,7 @@ import { ArgType, NativeFunction } from "../../structures/@internal/NativeFuncti
 export default new NativeFunction({
     name: "$localFunction",
     version: "2.3.0",
-    description: "Declares a new local function",
+    description: "Defines a new local function",
     aliases: ["$fn"],
     unwrap: false,
     brackets: true,

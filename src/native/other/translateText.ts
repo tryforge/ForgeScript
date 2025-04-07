@@ -6,6 +6,7 @@ export default new NativeFunction({
     version: "2.3.0",
     description: "Translates text into another language",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "text",
@@ -35,7 +36,10 @@ export default new NativeFunction({
             rest: false
         }
     ],
-    unwrap: true,
+    output: [
+        ArgType.String,
+        ArgType.Json
+    ],
     async execute(ctx, [text, toLang, fromLang, json]) {
         const res = await translate(text, { to: toLang, from: fromLang || "auto" }).catch(ctx.noop)
         if (json) return this.successJSON(res)
