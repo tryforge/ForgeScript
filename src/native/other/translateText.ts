@@ -15,7 +15,7 @@ export default new NativeFunction({
         },
         {
             name: "to",
-            description: "The Language to translate to",
+            description: "The language to translate to",
             type: ArgType.String,
             required: true,
             rest: false
