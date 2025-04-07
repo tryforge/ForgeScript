@@ -22,9 +22,15 @@ export default new NativeFunction({
         },
         {
             name: "from",
-            description: "The Language to translate from.",
+            description: "The language to translate from",
             type: ArgType.String,
             required: false,
+            rest: false
+        },
+        {
+            name: "return json",
+            description: "Whether to return the response as json",
+            type: ArgType.Boolean,
             rest: false
         }
     ],
