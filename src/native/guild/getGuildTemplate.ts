@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export enum TemplateProperty {
@@ -37,7 +38,10 @@ export default new NativeFunction({
             enum: TemplateProperty
         },
     ],
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     async execute(ctx, [ code, prop ]) {
         const template = await ctx.client.fetchGuildTemplate(code).catch()
         return this.successJSON(prop ? template[prop] : template)

@@ -16,7 +16,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Sticker
         }
     ],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.URL,
     execute(ctx, [s]) {
         s ??= ctx.sticker;
         return this.success(s?.url);

@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const array_1 = __importDefault(require("../../functions/array"));
 const webhook_1 = require("../../properties/webhook");
+const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$channelWebhooks",
     version: "2.3.0",
@@ -35,7 +35,10 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    output: (0, array_1.default)(),
+    output: [
+        structures_1.ArgType.Json,
+        (0, array_1.default)()
+    ],
     async execute(ctx, [channel, prop, sep]) {
         const webhooks = await (channel ?? ctx.channel)?.fetchWebhooks().catch(ctx.noop);
         if (prop && webhooks)

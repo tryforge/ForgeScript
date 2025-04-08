@@ -1,7 +1,7 @@
 import { BaseChannel, BaseGuildTextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
-import array from "../../functions/array"
 import { WebhookProperties, WebhookProperty } from "../../properties/webhook"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$channelWebhooks",
@@ -32,7 +32,10 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: array<ArgType.Unknown>(),
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     async execute(ctx, [channel, prop, sep]) {
         const webhooks = await ((channel ?? ctx.channel) as BaseGuildTextChannel)?.fetchWebhooks().catch(ctx.noop)
         if (prop && webhooks) return this.success(webhooks.map((x) => WebhookProperties[prop](x)).join(sep ?? ", "))

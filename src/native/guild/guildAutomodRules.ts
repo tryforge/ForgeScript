@@ -1,5 +1,6 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
 import { AutomodRuleProperty, AutomodRuleProperties } from "../../properties/automodRule"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$guildAutomodRules",
@@ -30,7 +31,10 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     async execute(ctx, [ guild, prop, sep ]) {
         const rules = await (guild ?? ctx.guild)?.autoModerationRules?.fetch().catch(ctx.noop)
 

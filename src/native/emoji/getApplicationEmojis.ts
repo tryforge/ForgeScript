@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ApplicationEmojiProperties, ApplicationEmojiProperty } from "../../properties/applicationEmoji"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
@@ -22,7 +23,10 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     async execute(ctx, [prop, sep]) {
         const emojis = await ctx.client.application.emojis.fetch().catch(ctx.noop)
         return this.successJSON(!prop ? emojis : emojis?.map(emoji => ApplicationEmojiProperties[prop](emoji)).join(sep ?? ", "))

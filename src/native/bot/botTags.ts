@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -15,7 +16,7 @@ export default new NativeFunction({
         },
     ],
     brackets: false,
-    output: ArgType.String,
+    output: array<ArgType.String>(),
     execute(ctx, [sep]) {
         return this.success(ctx.client.application.tags?.join(sep ?? ", "))
     },

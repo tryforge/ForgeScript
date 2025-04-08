@@ -34,7 +34,10 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    output: (0, array_1.default)(),
+    output: [
+        structures_1.ArgType.Json,
+        (0, array_1.default)()
+    ],
     async execute(ctx, [guild, prop, sep]) {
         const webhooks = await (guild ?? ctx.guild)?.fetchWebhooks().catch(ctx.noop);
         if (prop && webhooks)

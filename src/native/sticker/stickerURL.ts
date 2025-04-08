@@ -15,7 +15,7 @@ export default new NativeFunction({
             type: ArgType.Sticker
         }
     ],
-    output: ArgType.String,
+    output: ArgType.URL,
     execute(ctx, [ s ]) {
         s ??= ctx.sticker!
         return this.success(s?.url)

@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplateProperty = void 0;
+const array_1 = __importDefault(require("../../functions/array"));
 const structures_1 = require("../../structures");
 var TemplateProperty;
 (function (TemplateProperty) {
@@ -39,7 +43,10 @@ exports.default = new structures_1.NativeFunction({
             enum: TemplateProperty
         },
     ],
-    output: structures_1.ArgType.Unknown,
+    output: [
+        structures_1.ArgType.Json,
+        (0, array_1.default)()
+    ],
     async execute(ctx, [code, prop]) {
         const template = await ctx.client.fetchGuildTemplate(code).catch();
         return this.successJSON(prop ? template[prop] : template);

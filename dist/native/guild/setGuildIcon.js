@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$setServerIcon"
     ],
-    output: structures_1.ArgType.URL,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "guild ID",

@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 const permissionOverwrites_1 = require("../../properties/permissionOverwrites");
+const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$channelPermissions",
     version: "1.5.0",
@@ -36,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         }
     ],
-    output: structures_1.ArgType.Unknown,
+    output: (0, array_1.default)(),
     execute(ctx, [ch, prop, sep]) {
         const chan = (ch ?? ctx.channel);
         return this.successJSON(chan.permissionOverwrites.cache.map(perm => permissionOverwrites_1.PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", "));

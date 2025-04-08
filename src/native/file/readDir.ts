@@ -1,5 +1,6 @@
 import { readdirSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$readDir",
@@ -7,7 +8,10 @@ export default new NativeFunction({
     description: "Reads the contents of a directory",
     unwrap: true,
     brackets: true,
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        array<ArgType.String>()
+    ],
     args: [
         {
             name: "path",
@@ -31,11 +35,7 @@ export default new NativeFunction({
     ],
     execute(ctx, [path, sep, encoding]) {
         const dirs = readdirSync(path, { encoding: (encoding as BufferEncoding) || "utf-8" })
-
-        if (!sep) {
-            return this.successJSON(dirs)
-        }
-
-        return this.success(dirs?.join(sep))
+        if (sep) return this.success(dirs?.join(sep))
+        return this.successJSON(dirs)
     },
 })

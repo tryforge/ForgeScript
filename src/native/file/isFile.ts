@@ -7,7 +7,7 @@ export default new NativeFunction({
     description: "Checks whether a path is a file",
     brackets: true,
     unwrap: true,
-    output: ArgType.Number,
+    output: ArgType.Boolean,
     args: [
         {
             name: "path",

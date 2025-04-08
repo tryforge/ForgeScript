@@ -4,7 +4,7 @@ import { LogType, Logger } from "../../structures/@internal/Logger"
 export default new NativeFunction({
     name: "$logger",
     version: "1.3.0",
-    description: "Implements Logger API of ForgeScript.",
+    description: "Implements Logger API of ForgeScript",
     unwrap: true,
     brackets: true,
     args: [
@@ -18,7 +18,7 @@ export default new NativeFunction({
         },
         {
             name: "text",
-            description: "What to log",
+            description: "The text to log",
             rest: false,
             required: true,
             type: ArgType.String

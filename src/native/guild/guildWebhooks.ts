@@ -30,7 +30,10 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: array<ArgType.Unknown>(),
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     async execute(ctx, [guild, prop, sep]) {
         const webhooks = await (guild ?? ctx.guild)?.fetchWebhooks().catch(ctx.noop)
         if (prop && webhooks) return this.success(webhooks.map((x) => WebhookProperties[prop](x)).join(sep ?? ", "))

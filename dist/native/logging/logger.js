@@ -5,7 +5,7 @@ const Logger_1 = require("../../structures/@internal/Logger");
 exports.default = new structures_1.NativeFunction({
     name: "$logger",
     version: "1.3.0",
-    description: "Implements Logger API of ForgeScript.",
+    description: "Implements Logger API of ForgeScript",
     unwrap: true,
     brackets: true,
     args: [
@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "text",
-            description: "What to log",
+            description: "The text to log",
             rest: false,
             required: true,
             type: structures_1.ArgType.String

@@ -1,4 +1,3 @@
-import { TextChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 

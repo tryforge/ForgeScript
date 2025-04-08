@@ -1,6 +1,7 @@
 import { BaseChannel, GuildChannel } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 import { PermissionOverwritesProperties, PermissionOverwritesProperty } from "../../properties/permissionOverwrites"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$channelPermissions",
@@ -36,7 +37,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
-    output: ArgType.Unknown,
+    output: array<ArgType.Unknown>(),
     execute(ctx, [ ch, prop, sep ]) {
         const chan = (ch ?? ctx.channel) as GuildChannel
         return this.successJSON(chan.permissionOverwrites.cache.map(perm => PermissionOverwritesProperties[prop](perm, sep)).join(sep ?? ", "))

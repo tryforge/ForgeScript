@@ -7,7 +7,10 @@ export default new NativeFunction({
     description: "Returns information about a guild invite",
     brackets: true,
     unwrap: true,
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        ArgType.Unknown
+    ],
     args: [
         {
             name: "guild ID",
