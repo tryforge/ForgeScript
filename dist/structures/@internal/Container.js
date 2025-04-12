@@ -33,7 +33,7 @@ class Container {
     threadName;
     appliedTags;
     deleteIn;
-    async send(obj, content) {
+    async send(obj, content, messageID) {
         let res;
         const options = this.getOptions(content);
         if (!this.isValidMessage(options)) {
@@ -46,7 +46,7 @@ class Container {
             res = obj.channel.send(options);
         }
         else if (obj instanceof discord_js_1.WebhookClient) {
-            res = obj.send(options);
+            res = this.edit && messageID ? obj.editMessage(messageID, options) : obj.send(options);
         }
         else if (obj instanceof discord_js_1.Message) {
             res = this.edit ? obj.edit(options) : obj.channel.send(options);
