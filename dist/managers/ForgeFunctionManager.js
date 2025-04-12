@@ -7,6 +7,8 @@ exports.ForgeFunctionManager = void 0;
 const ForgeFunction_1 = require("../structures/forge/ForgeFunction");
 const recursiveReaddirSync_1 = __importDefault(require("../functions/recursiveReaddirSync"));
 const FunctionManager_1 = require("./FunctionManager");
+const path_1 = require("path");
+const process_1 = require("process");
 class ForgeFunctionManager {
     client;
     functions = new Map();
@@ -37,7 +39,8 @@ class ForgeFunctionManager {
     load(path) {
         const loader = new Array();
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
-            const data = require(file);
+            const path = (0, path_1.join)((0, process_1.cwd)(), file);
+            const data = require(path);
             if (Object.keys(data).length === 0)
                 continue;
             const req = (data.default ?? data);
