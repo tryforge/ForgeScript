@@ -27,7 +27,6 @@ export default new NativeFunction({
             name: "content",
             description: "The new content for the message",
             rest: false,
-            required: true,
             type: ArgType.String,
         }
     ],

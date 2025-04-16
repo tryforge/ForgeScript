@@ -9,6 +9,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     brackets: true,
+    deprecated: true,
     args: [
         {
             name: "name",

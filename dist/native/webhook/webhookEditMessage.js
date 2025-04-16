@@ -28,7 +28,6 @@ exports.default = new structures_1.NativeFunction({
             name: "content",
             description: "The new content for the message",
             rest: false,
-            required: true,
             type: structures_1.ArgType.String,
         }
     ],
