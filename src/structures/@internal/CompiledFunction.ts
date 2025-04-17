@@ -5,6 +5,8 @@ import {
     ForumChannel,
     AttachmentBuilder,
     PermissionsString,
+    StageChannel,
+    StageInstance,
 } from "discord.js"
 import { existsSync } from "fs"
 import { inspect } from "util"
@@ -379,6 +381,20 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     private resolveAutomodRule(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
         return this.resolvePointer(arg, ref, ctx.guild)?.autoModerationRules.fetch(str).catch(ctx.noop)
+    }
+
+    private resolveScheduledEvent(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return this.resolvePointer(arg, ref, ctx.guild)?.scheduledEvents.fetch(str).catch(ctx.noop)
+    }
+
+    private resolveStageInstance(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        const chan = ctx.client.channels.cache.get(str)
+        const data = chan instanceof StageChannel ? chan.stageInstance : this.resolvePointer(arg, ref, ctx.guild)?.stageInstances
+        const instance = data instanceof StageInstance ? data : data?.cache.get(str)
+        if (!instance) return
+        return instance
     }
 
     private async resolveReaction(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {

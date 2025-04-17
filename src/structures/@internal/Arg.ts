@@ -392,6 +392,70 @@ export class Arg {
         })
     }
 
+    public static optionalScheduledEvent(name: string = "event ID", desc: string = "The guild scheduled event to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.ScheduledEvent,
+            pointer: 0
+        })
+    }
+
+    public static restScheduledEvent(name: string = "event IDs", desc: string = "The guild scheduled events to use", required: boolean = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: ArgType.ScheduledEvent,
+            pointer: 0
+        })
+    }
+
+    public static requiredScheduledEvent(name: string = "event ID", desc: string = "The guild scheduled event to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.ScheduledEvent,
+            pointer: 0
+        })
+    }
+
+    public static optionalStageInstance(name: string = "stage ID", desc: string = "The stage instance to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.StageInstance,
+            pointer: 0
+        })
+    }
+
+    public static restStageInstance(name: string = "stage IDs", desc: string = "The stage instances to use", required: boolean = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: ArgType.StageInstance,
+            pointer: 0
+        })
+    }
+
+    public static requiredStageInstance(name: string = "stage ID", desc: string = "The stage instance to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.StageInstance,
+            pointer: 0
+        })
+    }
+
     public static restTextChannel(name: string = "text channel IDs", desc: string = "The text channels to use") {
         return Arg.create({
             name,

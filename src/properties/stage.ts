@@ -1,4 +1,4 @@
-import { Channel, ChannelType, Collection, GuildMember, StageInstance, StageInstancePrivacyLevel } from "discord.js"
+import { StageInstance, StageInstancePrivacyLevel } from "discord.js"
 import defineProperties from "../functions/defineProperties"
 
 export enum StageProperty {

@@ -354,6 +354,64 @@ class Arg {
             pointer: 0
         });
     }
+    static optionalScheduledEvent(name = "event ID", desc = "The guild scheduled event to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: NativeFunction_1.ArgType.ScheduledEvent,
+            pointer: 0
+        });
+    }
+    static restScheduledEvent(name = "event IDs", desc = "The guild scheduled events to use", required = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: NativeFunction_1.ArgType.ScheduledEvent,
+            pointer: 0
+        });
+    }
+    static requiredScheduledEvent(name = "event ID", desc = "The guild scheduled event to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: NativeFunction_1.ArgType.ScheduledEvent,
+            pointer: 0
+        });
+    }
+    static optionalStageInstance(name = "stage ID", desc = "The stage instance to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: NativeFunction_1.ArgType.StageInstance,
+            pointer: 0
+        });
+    }
+    static restStageInstance(name = "stage IDs", desc = "The stage instances to use", required = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: NativeFunction_1.ArgType.StageInstance,
+            pointer: 0
+        });
+    }
+    static requiredStageInstance(name = "stage ID", desc = "The stage instance to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: NativeFunction_1.ArgType.StageInstance,
+            pointer: 0
+        });
+    }
     static restTextChannel(name = "text channel IDs", desc = "The text channels to use") {
         return Arg.create({
             name,

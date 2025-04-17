@@ -310,6 +310,21 @@ class CompiledFunction {
             return;
         return this.resolvePointer(arg, ref, ctx.guild)?.autoModerationRules.fetch(str).catch(ctx.noop);
     }
+    resolveScheduledEvent(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        return this.resolvePointer(arg, ref, ctx.guild)?.scheduledEvents.fetch(str).catch(ctx.noop);
+    }
+    resolveStageInstance(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        const chan = ctx.client.channels.cache.get(str);
+        const data = chan instanceof discord_js_1.StageChannel ? chan.stageInstance : this.resolvePointer(arg, ref, ctx.guild)?.stageInstances;
+        const instance = data instanceof discord_js_1.StageInstance ? data : data?.cache.get(str);
+        if (!instance)
+            return;
+        return instance;
+    }
     async resolveReaction(ctx, arg, str, ref) {
         const parsed = (0, discord_js_1.parseEmoji)(str);
         if (!parsed)
