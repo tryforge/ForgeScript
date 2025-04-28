@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [text, emoji]) {
         (ctx.container.poll?.answers).push({
             text,
-            emoji: emoji ?? undefined
+            emoji: emoji || undefined
         });
         return this.success();
     },

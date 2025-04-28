@@ -43,6 +43,7 @@ class Context {
     automodRule = {};
     timezone = "UTC";
     calendar;
+    localFunctions = new Map();
     #keywords = {};
     #environment = {};
     container;

@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     name: "$context",
     version: "1.5.0",
     description: "Returns the context of this interaction",
+    aliases: ["$interactionContext"],
     unwrap: false,
     output: discord_js_1.InteractionContextType,
     execute(ctx) {

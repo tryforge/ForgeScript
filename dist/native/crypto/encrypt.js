@@ -9,15 +9,15 @@ const structures_1 = require("../../structures");
  * @param encryptionKey
  * @returns
  */
-const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+const FIXED_IV = Buffer.from("12345678901234567890123456789012", "hex");
 function deriveKey(key) {
-    return (0, crypto_1.scryptSync)(key, 'salt', 32);
+    return (0, crypto_1.scryptSync)(key, "salt", 32);
 }
 function encrypt(text, key) {
     const idkhowtocallthis = deriveKey(key);
-    const cipher = (0, crypto_1.createCipheriv)('aes-256-cbc', idkhowtocallthis, FIXED_IV);
-    let encrypted = cipher.update(text, 'utf-8', 'hex');
-    encrypted += cipher.final('hex');
+    const cipher = (0, crypto_1.createCipheriv)("aes-256-cbc", idkhowtocallthis, FIXED_IV);
+    let encrypted = cipher.update(text, "utf-8", "hex");
+    encrypted += cipher.final("hex");
     return encrypted;
 }
 exports.encrypt = encrypt;

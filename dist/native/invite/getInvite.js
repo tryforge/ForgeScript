@@ -8,7 +8,10 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns information about an invite",
     brackets: true,
     unwrap: true,
-    output: structures_1.ArgType.Unknown,
+    output: [
+        structures_1.ArgType.Json,
+        structures_1.ArgType.Unknown
+    ],
     args: [
         {
             name: "code",

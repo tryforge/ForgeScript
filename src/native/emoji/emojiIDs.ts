@@ -3,11 +3,11 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$emojiIDs",
+    description: "Returns every guild emoji id",
     version: "1.3.0",
     unwrap: true,
     brackets: false,
     output: array<ArgType.GuildEmoji>(),
-    description: "Returns every emoji id",
     args: [
         {
             name: "separator",

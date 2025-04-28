@@ -21,7 +21,6 @@ export default new NativeFunction({
             description: "The args to call this function with",
             rest: true,
             type: ArgType.String,
-            required: true,
         },
     ],
     brackets: true,

@@ -31,7 +31,7 @@ class ForgeFunction {
                 name: typeof x === "string" ? x : x.name,
                 rest: false,
                 condition: i === 0 && !!this.data.firstParamCondition,
-                type: __1.ArgType.String,
+                type: typeof x === "string" ? __1.ArgType.String : (typeof x.type === "number" && x.type in __1.ArgType ? x.type : __1.ArgType[x.type]) ?? __1.ArgType.String,
                 required: typeof x === "string" ? true : x.required ?? true
             })) : undefined,
             brackets: this.data.brackets ?? (this.data.params?.length ? true : undefined),
@@ -62,7 +62,7 @@ class ForgeFunction {
         const params = Array.isArray(this.data.params) ? this.data.params : [];
         const required = params.filter(param => typeof param === "string" || param.required !== false);
         if (args.length < required.length)
-            return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${required.length} arguments, received ${args.length}`));
+            return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${required.length} argument${required.length > 1 ? "s" : ""}, received ${args.length}`));
         for (let i = 0, len = params.length; i < len; i++) {
             const param = params[i];
             const name = typeof param === "string" ? param : param.name;

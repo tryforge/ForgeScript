@@ -31,6 +31,7 @@ exports.default = new structures_1.NativeFunction({
             name: "permissions",
             description: "The perms to check for",
             rest: true,
+            required: true,
             type: structures_1.ArgType.Enum,
             enum: discord_js_1.PermissionFlagsBits
         }

@@ -23,7 +23,6 @@ export default new NativeFunction({
             name: "categories",
             description: "The categories to filter by",
             rest: true,
-            required: true,
             enum: ChannelType,
             type: ArgType.Enum,
         },

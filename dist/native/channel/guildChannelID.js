@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
         structures_1.Arg.requiredGuild(),
         {
             name: "name",
-            description: "The channel name to get it's id",
+            description: "The channel name to get its id",
             required: true,
             rest: false,
             type: structures_1.ArgType.String,

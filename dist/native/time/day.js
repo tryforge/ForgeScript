@@ -1,19 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExtendedTimeFormat = void 0;
 const structures_1 = require("../../structures");
-var ExtendedTimeFormat;
-(function (ExtendedTimeFormat) {
-    ExtendedTimeFormat["Numeric"] = "numeric";
-    ExtendedTimeFormat["TwoDigit"] = "2-digit";
-    ExtendedTimeFormat["Long"] = "long";
-    ExtendedTimeFormat["Short"] = "short";
-    ExtendedTimeFormat["Narrow"] = "narrow";
-})(ExtendedTimeFormat || (exports.ExtendedTimeFormat = ExtendedTimeFormat = {}));
+const hour_1 = require("./hour");
 exports.default = new structures_1.NativeFunction({
     name: "$day",
     version: "1.2.0",
-    description: "Returns current day",
+    description: "Returns current day of month",
+    aliases: ["$dayOfMonth"],
     unwrap: true,
     brackets: false,
     args: [
@@ -22,19 +15,12 @@ exports.default = new structures_1.NativeFunction({
             description: "The format of the day",
             rest: false,
             type: structures_1.ArgType.Enum,
-            enum: ExtendedTimeFormat
+            enum: hour_1.BasicTimeFormat
         }
     ],
     output: structures_1.ArgType.String,
     execute: async function (ctx, [format]) {
-        const options = { timeZone: ctx.timezone, calendar: ctx.calendar };
-        if (format === "numeric" || format === "2-digit" || !format) {
-            options.day = format || "numeric";
-        }
-        else {
-            options.weekday = format;
-        }
-        return this.success(new Date().toLocaleString("en-US", options));
+        return this.success(new Date().toLocaleString("en-US", { day: format || "numeric", timeZone: ctx.timezone, calendar: ctx.calendar }));
     }
 });
 //# sourceMappingURL=day.js.map

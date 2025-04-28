@@ -1,4 +1,4 @@
-import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent, Entitlement, PollAnswer, AutoModerationRule } from "discord.js"
+import { Message, VoiceState, Presence, Role, GuildMember, GuildEmoji, User, GuildAuditLogsEntry, Channel, Guild, StageInstance, Invite, PartialMessage, Sticker, GuildBan, GuildScheduledEvent, Entitlement, PollAnswer, AutoModerationRule, VoiceChannelEffect } from "discord.js"
 import { IExtendedCompilationResult } from "."
 import { Sendable, BaseCommand, Context, Logger, Container, Return, ReturnType } from "../structures"
 import { ForgeClient } from "./ForgeClient"
@@ -7,6 +7,7 @@ import { ForgeClient } from "./ForgeClient"
 export interface IStates {
     message: Message
     voiceState: VoiceState
+    voiceEffect: VoiceChannelEffect
     presence: Presence  
     role: Role
     member: GuildMember

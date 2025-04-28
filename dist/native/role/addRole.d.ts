@@ -92,7 +92,6 @@ declare const _default: NativeFunction<[{
         readonly SendPolls: bigint;
         readonly UseExternalApps: bigint;
     };
-    required: true;
     type: ArgType.String;
 }], true>;
 export default _default;

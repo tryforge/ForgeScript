@@ -27,8 +27,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [, m]) {
-        const msg = m ?? ctx.message;
-        return this.success(!!(await msg.crosspost().catch(ctx.noop)));
+        return this.success(!!(await (m ?? ctx.message)?.crosspost().catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=publishMessage.js.map

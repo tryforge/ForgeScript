@@ -11,7 +11,7 @@ export default new NativeFunction({
         Arg.requiredGuild(),
         {
             name: "name",
-            description: "The channel name to get it's id",
+            description: "The channel name to get its id",
             required: true,
             rest: false,
             type: ArgType.String,

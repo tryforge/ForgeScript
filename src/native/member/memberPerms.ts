@@ -1,4 +1,4 @@
-import { PermissionFlagsBits } from "discord.js"
+import { PermissionFlagsBits, PermissionsBitField } from "discord.js"
 import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
@@ -33,7 +33,8 @@ export default new NativeFunction({
             rest: false,
         },
     ],
-    execute(ctx, [, member, sep]) {
-        return this.success((member ?? ctx.member)?.permissions.toArray().join(sep || ", "))
+    execute(ctx, [, user, sep]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
+        return this.success(new PermissionsBitField(member?.permissions).toArray().join(sep || ", "))
     },
 })

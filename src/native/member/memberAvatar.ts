@@ -1,4 +1,4 @@
-import { ImageExtension, ImageSize } from "discord.js"
+import { CDN, GuildMember, ImageExtension, ImageSize } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -37,12 +37,17 @@ export default new NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [, member, size, ext]) {
+    execute(ctx, [, user, size, ext]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
+        const hash = member?.avatar ?? member?.user?.avatar
+
         return this.success(
-            (member ?? ctx.member)?.displayAvatarURL({
-                extension: (ext as ImageExtension) || undefined,
-                size: (size as ImageSize) || 2048,
-            })
+            member?.user && hash
+                ? new CDN().avatar(member.user.id, hash, {
+                    extension: (ext as ImageExtension) || undefined,
+                    size: (size as ImageSize) || 2048,
+                })
+                : (member as GuildMember)?.user?.defaultAvatarURL
         )
     },
 })

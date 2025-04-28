@@ -30,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             name: "perms",
             description: "The perms to check for",
             rest: true,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Enum,
             enum: discord_js_1.PermissionFlagsBits,
             required: true,
         },

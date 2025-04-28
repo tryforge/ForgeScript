@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch, sep]) {
         const chan = ch ?? ctx.channel;
-        return this.success(chan.isVoiceBased() ? chan.members.map(x => x.id).join(sep ?? ", ") : null);
+        return this.success(chan?.isVoiceBased() ? chan.members.map(x => x.id).join(sep ?? ", ") : null);
     },
 });
 //# sourceMappingURL=channelVoiceMemberIDs.js.map

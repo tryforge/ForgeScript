@@ -26,7 +26,7 @@ export default new NativeFunction({
     async execute(ctx, [guild, channel]) {
         guild ??= ctx.guild!
         if (channel) await guild?.channels.fetch(channel.id)
-            else await guild?.channels.fetch()
+        else await guild?.channels.fetch()
         return this.success()
     },
 })

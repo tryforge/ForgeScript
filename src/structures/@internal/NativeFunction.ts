@@ -8,11 +8,13 @@ import {
     GuildEmoji,
     GuildForumTag,
     GuildMember,
+    GuildScheduledEvent,
     Invite,
     Message,
     MessageReaction,
     PermissionsString,
     Role,
+    StageInstance,
     Sticker,
     TextBasedChannel,
     User,
@@ -60,7 +62,9 @@ export enum ArgType {
     Time,
     Member,
     ApplicationEmoji,
-    AutomodRule
+    AutomodRule,
+    ScheduledEvent,
+    StageInstance,
 }
 
 export interface IArg<
@@ -202,6 +206,10 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? Emoji
     : T extends ArgType.AutomodRule
     ? AutoModerationRule
+    : T extends ArgType.ScheduledEvent
+    ? GuildScheduledEvent
+    : T extends ArgType.StageInstance
+    ? StageInstance
     : null
 
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true

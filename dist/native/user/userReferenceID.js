@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     async execute(ctx, [channel, message]) {
         channel ??= ctx.channel;
-        const msg = (message ?? ctx.message).reference?.messageId;
+        const msg = (message ?? ctx.message)?.reference?.messageId;
         return this.success(msg ? (await channel.messages.fetch(msg)).author.id : undefined);
     }
 });

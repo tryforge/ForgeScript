@@ -1,3 +1,4 @@
+import { APIInteractionGuildMember, GuildMember } from "discord.js"
 import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
@@ -31,13 +32,13 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    execute(ctx, [, member, sep]) {
-        member ??= ctx.member!
+    execute(ctx, [, user, sep]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member
         return this.success(
-            member?.roles.cache
-                .filter((x) => x.id !== x.guild.id)
-                .map((x) => x.id)
-                .join(sep || ", ")
+            (member instanceof GuildMember
+                ? member?.roles.cache.filter((x) => x.id !== x.guild.id).map((x) => x.id)
+                : (ctx.interaction?.member as APIInteractionGuildMember)?.roles
+            )?.join(sep || ", ")
         )
     },
 })

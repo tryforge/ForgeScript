@@ -28,7 +28,7 @@ export default new NativeFunction({
     brackets: false,
     async execute(ctx, [channel, message]) {
         channel ??= ctx.channel!
-        const msg = (message ?? ctx.message).reference?.messageId
+        const msg = (message ?? ctx.message)?.reference?.messageId
         return this.success(msg ? (await (channel as TextBasedChannel).messages.fetch(msg as MessageResolvable)).author.id : undefined)
     }
 })

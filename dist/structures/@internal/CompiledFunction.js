@@ -128,6 +128,8 @@ class CompiledFunction {
             const fields = this.data.fields?.slice(i);
             const values = new Array();
             if (!fields?.length) {
+                if (arg.required)
+                    return this.error(ForgeError_1.ErrorType.MissingArg, this.data.name, arg.name);
                 return this.unsafeSuccess(values);
             }
             for (let x = 0, len = fields.length; x < len; x++) {
@@ -308,6 +310,21 @@ class CompiledFunction {
             return;
         return this.resolvePointer(arg, ref, ctx.guild)?.autoModerationRules.fetch(str).catch(ctx.noop);
     }
+    resolveScheduledEvent(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        return this.resolvePointer(arg, ref, ctx.guild)?.scheduledEvents.fetch(str).catch(ctx.noop);
+    }
+    resolveStageInstance(ctx, arg, str, ref) {
+        if (!CompiledFunction.IdRegex.test(str))
+            return;
+        const chan = ctx.client.channels.cache.get(str);
+        const data = chan instanceof discord_js_1.StageChannel ? chan.stageInstance : this.resolvePointer(arg, ref, ctx.guild)?.stageInstances;
+        const instance = data instanceof discord_js_1.StageInstance ? data : data?.cache.get(str);
+        if (!instance)
+            return;
+        return instance;
+    }
     async resolveReaction(ctx, arg, str, ref) {
         const parsed = (0, discord_js_1.parseEmoji)(str);
         if (!parsed)
@@ -350,7 +367,7 @@ class CompiledFunction {
         return this.resolvePointer(arg, ref, ctx.guild)?.roles.cache.get(str);
     }
     resolveDate(ctx, arg, str, ref) {
-        return new Date(str);
+        return new Date(isNaN(Number(str)) ? str : Number(str));
     }
     resolvePointer(arg, ref, fallback) {
         const ptr = ref[arg.pointer] ?? fallback;

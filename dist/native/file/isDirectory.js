@@ -8,7 +8,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Checks whether a path is a directory",
     brackets: true,
     unwrap: true,
-    output: structures_1.ArgType.Number,
+    output: structures_1.ArgType.Boolean,
     args: [
         {
             name: "path",

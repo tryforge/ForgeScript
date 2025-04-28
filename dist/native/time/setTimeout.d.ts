@@ -10,6 +10,11 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Time;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.String;
 }], false>;
 export default _default;
 //# sourceMappingURL=setTimeout.d.ts.map

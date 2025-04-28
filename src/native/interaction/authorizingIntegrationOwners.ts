@@ -21,7 +21,10 @@ export default new NativeFunction({
             enum: AuthorizingIntegrationOwnersType
         },
     ],
-    output: ArgType.Json,
+    output: [
+        ArgType.Json,
+        ArgType.String
+    ],
     execute(ctx, [type]) {
         const owners = ctx.interaction && "authorizingIntegrationOwners" in ctx.interaction ? ctx.interaction.authorizingIntegrationOwners : undefined
         return this.successJSON(owners && this.hasFields ? owners[type] : owners)

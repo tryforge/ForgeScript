@@ -31,12 +31,12 @@ export default new NativeFunction({
             name: "perms",
             description: "The perms to check for",
             rest: true,
-            type: ArgType.String,
+            type: ArgType.Enum,
             enum: PermissionFlagsBits,
             required: true,
         },
     ],
     execute(ctx, [, member, perms]) {
-        return this.success(member.permissions.has(perms as PermissionsString[]))
+        return this.success(member.permissions.has(perms))
     },
 })

@@ -3,22 +3,22 @@ import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
+    type: ArgType.Channel;
     rest: false;
     required: true;
-    type: ArgType.Channel;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    required: true;
-    type: ArgType.Message;
-    pointer: number;
-}, {
-    name: string;
-    description: string;
-    rest: false;
-    type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.Channel;
+    rest: false;
+    required: true;
+    check: (i: BaseChannel) => boolean;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.String;
+    rest: false;
 }], true>;
 export default _default;
-//# sourceMappingURL=forward.d.ts.map
+//# sourceMappingURL=followChannel.d.ts.map

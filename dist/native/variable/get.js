@@ -4,10 +4,7 @@ const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$get",
     version: "1.0.0",
-    output: [
-        NativeFunction_1.ArgType.String,
-        NativeFunction_1.ArgType.Number
-    ],
+    output: NativeFunction_1.ArgType.Unknown,
     description: "Get a keyword value",
     unwrap: true,
     args: [

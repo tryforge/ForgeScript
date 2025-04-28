@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isBoosting",
+    description: "Returns whether this member is boosting",
     version: "1.5.0",
     aliases: [
         "$isBooster",
@@ -12,7 +14,6 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     unwrap: true,
     output: structures_1.ArgType.Boolean,
-    description: "Whether this user is boosting",
     args: [
         {
             name: "guild ID",
@@ -30,9 +31,9 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    execute(ctx, [, member]) {
-        member ??= ctx.member;
-        return this.success(!!member?.premiumSince);
+    execute(ctx, [, user]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member;
+        return this.success(!!(member instanceof discord_js_1.GuildMember ? member?.premiumSince : ctx.interaction?.member?.premium_since));
     },
 });
 //# sourceMappingURL=isBoosting.js.map

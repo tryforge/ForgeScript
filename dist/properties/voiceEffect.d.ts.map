@@ -1,0 +1,1 @@
+{"version":3,"file":"voiceEffect.d.ts","sourceRoot":"","sources":["../../src/properties/voiceEffect.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAuC,MAAM,YAAY,CAAA;AAGpF,oBAAY,mBAAmB;IAC3B,KAAK,UAAU;IACf,SAAS,cAAc;IACvB,OAAO,YAAY;IACnB,MAAM,WAAW;IACjB,OAAO,YAAY;IACnB,WAAW,gBAAgB;IAC3B,WAAW,gBAAgB;IAC3B,aAAa,kBAAkB;CAClC;AAED,eAAO,MAAM,qBAAqB,oGAShC,CAAA"}

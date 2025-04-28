@@ -1,22 +1,22 @@
-import { createCipheriv, createDecipheriv, scryptSync } from 'crypto';
+import { createCipheriv, createDecipheriv, scryptSync } from "crypto"
 import { ArgType, NativeFunction } from "../../structures"
 
 /**
  * Provided to FS by lynnux
  */
 
-const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+const FIXED_IV = Buffer.from("12345678901234567890123456789012", "hex")
 
 function deriveKey(key: string): Buffer {
-    return scryptSync(key, 'salt', 32);
+    return scryptSync(key, "salt", 32)
 }
 
 export function decrypt(text: string, key: string): string {
-    const idkhowtocallthis = deriveKey(key);
-    const decipher = createDecipheriv('aes-256-cbc', idkhowtocallthis, FIXED_IV);
-    let decrypted = decipher.update(text, 'hex', 'utf-8');
-    decrypted += decipher.final('utf-8');
-    return decrypted;
+    const idkhowtocallthis = deriveKey(key)
+    const decipher = createDecipheriv("aes-256-cbc", idkhowtocallthis, FIXED_IV)
+    let decrypted = decipher.update(text, "hex", "utf-8")
+    decrypted += decipher.final("utf-8")
+    return decrypted
 }
 
 export default new NativeFunction({

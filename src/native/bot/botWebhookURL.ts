@@ -6,7 +6,7 @@ export default new NativeFunction({
     description: "Returns the client webhook event url",
     unwrap: false,
     aliases: ["$clientWebhookURL"],
-    output: ArgType.String,
+    output: ArgType.URL,
     execute(ctx) {
         return this.success(ctx.client.application.eventWebhooksURL)
     },

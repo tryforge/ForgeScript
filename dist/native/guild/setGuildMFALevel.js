@@ -7,6 +7,7 @@ exports.default = new structures_1.NativeFunction({
     version: "2.1.0",
     description: "Sets the MFA level for a guild, returns bool",
     unwrap: true,
+    deprecated: true,
     aliases: [
         "$setServerMFALevel"
     ],

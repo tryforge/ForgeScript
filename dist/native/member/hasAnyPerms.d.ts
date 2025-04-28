@@ -16,7 +16,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: true;
-    type: ArgType.String;
+    type: ArgType.Enum;
     enum: {
         readonly CreateInstantInvite: bigint;
         readonly KickMembers: bigint;

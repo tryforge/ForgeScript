@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return this.success("rateLimitPerUser" in chan ? chan.rateLimitPerUser : 0);
+        return this.success(chan && "rateLimitPerUser" in chan ? chan.rateLimitPerUser : 0);
     },
 });
 //# sourceMappingURL=channelSlowmode.js.map

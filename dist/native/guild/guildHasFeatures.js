@@ -22,6 +22,7 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "features",
             rest: true,
+            required: true,
             type: structures_1.ArgType.Enum,
             enum: discord_js_1.GuildFeature,
             description: "The features to check for"

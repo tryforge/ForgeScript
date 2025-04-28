@@ -25,7 +25,7 @@ export declare class Container {
     threadName?: string;
     appliedTags?: string[];
     deleteIn?: number;
-    send<T = unknown>(obj: Sendable, content?: string): Promise<T | null>;
+    send<T = unknown>(obj: Sendable, content?: string, messageID?: string): Promise<T | null>;
     isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions): boolean;
     embed(index: number): EmbedBuilder;
     reset(): void;

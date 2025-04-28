@@ -40,6 +40,12 @@ export declare class Arg {
     static optionalAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, boolean, false, EnumLike>;
     static restAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, true, true, EnumLike>;
     static requiredAutomodRule(name?: string, desc?: string): IArg<ArgType.AutomodRule, true, false, EnumLike>;
+    static optionalScheduledEvent(name?: string, desc?: string): IArg<ArgType.ScheduledEvent, boolean, false, EnumLike>;
+    static restScheduledEvent(name?: string, desc?: string, required?: boolean): IArg<ArgType.ScheduledEvent, boolean, true, EnumLike>;
+    static requiredScheduledEvent(name?: string, desc?: string): IArg<ArgType.ScheduledEvent, true, false, EnumLike>;
+    static optionalStageInstance(name?: string, desc?: string): IArg<ArgType.StageInstance, boolean, false, EnumLike>;
+    static restStageInstance(name?: string, desc?: string, required?: boolean): IArg<ArgType.StageInstance, boolean, true, EnumLike>;
+    static requiredStageInstance(name?: string, desc?: string): IArg<ArgType.StageInstance, true, false, EnumLike>;
     static restTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, true, true, EnumLike>;
     static optionalTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, boolean, false, EnumLike>;
     static requiredTextChannel(name?: string, desc?: string): IArg<ArgType.TextChannel, true, false, EnumLike>;

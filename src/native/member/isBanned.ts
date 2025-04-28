@@ -1,4 +1,3 @@
-import noop from "../../functions/noop"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -10,7 +9,7 @@ export default new NativeFunction({
         "$memberIsBanned"
     ],
     output: ArgType.Boolean,
-    description: "Whether this user is banned",
+    description: "Returns whether this user is banned",
     args: [
         {
             name: "guild ID",
@@ -28,7 +27,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx, [guild, user]) {
-        const isBanned = await guild.bans.fetch(user).catch(ctx.noop)
+        const isBanned = await guild.bans.fetch(user).catch(() => false)
         return this.success(!!isBanned)
     },
 })

@@ -59,7 +59,6 @@ exports.default = new structures_1.NativeFunction({
             description: "The role perms",
             rest: true,
             enum: discord_js_1.PermissionFlagsBits,
-            required: true,
             type: structures_1.ArgType.String,
         },
     ],

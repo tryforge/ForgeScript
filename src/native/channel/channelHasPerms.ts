@@ -8,7 +8,8 @@ export default new NativeFunction({
     description: "Returns whether role or member has perms in a channel",
     output: ArgType.Boolean,
     aliases: [
-        "$hasChannelPerm"
+        "$hasChannelPerm",
+        "$hasChannelPerms"
     ],
     unwrap: true,
     args: [
@@ -31,6 +32,7 @@ export default new NativeFunction({
             name: "permissions",
             description: "The perms to check for",
             rest: true,
+            required: true,
             type: ArgType.Enum,
             enum: PermissionFlagsBits
         }

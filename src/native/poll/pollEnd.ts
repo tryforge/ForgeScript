@@ -1,12 +1,12 @@
 import { Arg, ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
-    aliases: [
-        "$endPoll"
-    ],
     name: "$pollEnd",
     version: "1.5.0",
     description: "Ends a poll",
+    aliases: [
+        "$endPoll"
+    ],
     brackets: false,
     unwrap: true,
     args: [
@@ -27,8 +27,6 @@ export default new NativeFunction({
         }
     ],
     async execute(ctx, [ , msg ]) {
-        const m = msg ?? ctx.message
-
-        return this.success(!!await m.poll?.end().catch(ctx.noop))
+        return this.success(!!(await (msg ?? ctx.message)?.poll?.end().catch(ctx.noop)))
     },
 })

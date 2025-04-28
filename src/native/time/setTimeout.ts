@@ -20,16 +20,28 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Time,
         },
+        {
+            name: "name",
+            description: "The name for this timeout",
+            rest: false,
+            type: ArgType.String,
+        },
     ],
     async execute(ctx) {
-        const [code] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const code = this.data.fields![0] as IExtendedCompiledFunctionField
 
         const time: Return = await this["resolveUnhandledArg"](ctx, 1)
         if (!this["isValidReturnType"](time)) return time
 
-        const t = setTimeout(async () => {
+        const name: Return = await this["resolveUnhandledArg"](ctx, 2)
+        if (!this["isValidReturnType"](name)) return name
+
+        const data = setTimeout(async () => {
             await this["resolveCode"](ctx, code)
+            if (name.value) ctx.client.timeouts.delete(name.value as string)
         }, time.value as number)
+
+        if (name.value) ctx.client.timeouts.set(name.value as string, data)
 
         return this.success()
     },

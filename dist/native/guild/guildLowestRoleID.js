@@ -22,8 +22,8 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        const lowest = guild.roles.cache.filter(role => role.id !== guild.id).sort((a, b) => a.position - b.position).first();
-        return this.success(lowest?.id ?? guild.id);
+        const lowest = guild?.roles.cache.filter(role => role.id !== guild.id).sort((a, b) => a.position - b.position).first();
+        return this.success(lowest?.id ?? guild?.id);
     },
 });
 //# sourceMappingURL=guildLowestRoleID.js.map

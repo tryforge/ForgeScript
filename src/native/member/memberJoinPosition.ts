@@ -26,7 +26,8 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [guild, member]) {
+        guild ??= ctx.guild!
         member ??= ctx.member!
-        return this.success([...(guild ?? ctx.guild)?.members.cache.sort((a, b) => a.joinedTimestamp! - b.joinedTimestamp!).values()].findIndex(x => x.id === member?.id) + 1)
+        return this.success(guild ? [...guild.members.cache.sort((a, b) => a.joinedTimestamp! - b.joinedTimestamp!).values()].findIndex(x => x.id === member?.id) + 1 : 0)
     },
 })

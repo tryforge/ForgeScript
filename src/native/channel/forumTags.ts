@@ -1,13 +1,17 @@
 import { BaseChannel, ChannelType, ForumChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import { ForumTagProperty, ForumTagProperties } from "../../properties/forumTag"
+import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$forumTags",
     version: "1.5.0",
     description: "Returns all available tags of a forum",
     unwrap: true,
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     args: [
         {
             name: "channel ID",

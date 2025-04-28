@@ -24,11 +24,7 @@ export default new NativeFunction({
     unwrap: true,
     execute(ctx, [index, sep]) {
         if (!ctx.isSelectMenu()) return this.success()
-
-        if (index) {
-            return this.success(ctx.interaction.values[index])
-        } else {
-            return this.success(ctx.interaction.values.join(sep ?? ", "))
-        }
+        const values = ctx.interaction.values
+        return this.success(typeof(index) === "number" ? values[index] : values.join(sep ?? ", "))
     },
 })

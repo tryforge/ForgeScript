@@ -20,6 +20,6 @@ export default new NativeFunction({
     ],
     output: ArgType.Number,
     execute(ctx, [guild]) {
-        return this.success((guild ?? ctx.guild).incidentsData?.dmsDisabledUntil?.getTime() ?? 0)
+        return this.success((guild ?? ctx.guild)?.incidentsData?.dmsDisabledUntil?.getTime() ?? 0)
     },
 })

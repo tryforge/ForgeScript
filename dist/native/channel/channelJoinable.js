@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return this.success("joinable" in chan ? chan.joinable : false);
+        return this.success(chan && "joinable" in chan ? chan.joinable : false);
     },
 });
 //# sourceMappingURL=channelJoinable.js.map

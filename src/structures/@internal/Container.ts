@@ -86,7 +86,7 @@ export class Container {
     public appliedTags?: string[]
     public deleteIn?: number
 
-    public async send<T = unknown>(obj: Sendable, content?: string): Promise<T | null> {
+    public async send<T = unknown>(obj: Sendable, content?: string, messageID?: string): Promise<T | null> {
         let res: Promise<unknown>
         const options = this.getOptions<any>(content)
 
@@ -99,7 +99,7 @@ export class Container {
         } else if (obj instanceof AutoModerationActionExecution && obj.channel && "send" in obj.channel) {
             res = obj.channel.send(options)
         } else if (obj instanceof WebhookClient) {
-            res = obj.send(options)
+            res = this.edit && messageID ? obj.editMessage(messageID, options) : obj.send(options)
         } else if (obj instanceof Message) {
             res = this.edit ? obj.edit(options) : (obj.channel as TextChannel).send(options)
         } else if (obj instanceof BaseInteraction) {

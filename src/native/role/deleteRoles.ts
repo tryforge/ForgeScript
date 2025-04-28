@@ -7,7 +7,7 @@ export default new NativeFunction({
     brackets: true,
     unwrap: true,
     output: ArgType.Number,
-    description: "Delete given role ids, returns the count of roles deleted",
+    description: "Deletes given roles, returns the count of roles deleted",
     args: [
         {
             name: "guild ID",

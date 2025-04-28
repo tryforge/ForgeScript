@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    aliases: [
-        "$endPoll"
-    ],
     name: "$pollEnd",
     version: "1.5.0",
     description: "Ends a poll",
+    aliases: [
+        "$endPoll"
+    ],
     brackets: false,
     unwrap: true,
     args: [
@@ -28,8 +28,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [, msg]) {
-        const m = msg ?? ctx.message;
-        return this.success(!!await m.poll?.end().catch(ctx.noop));
+        return this.success(!!(await (msg ?? ctx.message)?.poll?.end().catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=pollEnd.js.map

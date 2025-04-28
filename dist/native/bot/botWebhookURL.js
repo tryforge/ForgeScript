@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     description: "Returns the client webhook event url",
     unwrap: false,
     aliases: ["$clientWebhookURL"],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.URL,
     execute(ctx) {
         return this.success(ctx.client.application.eventWebhooksURL);
     },

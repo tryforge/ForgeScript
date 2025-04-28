@@ -6,6 +6,7 @@ exports.default = new structures_1.NativeFunction({
     version: "2.1.0",
     description: "Sets the owner of a guild, returns bool",
     unwrap: true,
+    deprecated: true,
     aliases: [
         "$setServerOwner"
     ],

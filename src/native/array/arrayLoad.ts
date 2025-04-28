@@ -22,7 +22,6 @@ export default new NativeFunction({
         {
             name: "values",
             description: "The elements of the array",
-            required: true,
             rest: true,
             type: ArgType.String,
         },

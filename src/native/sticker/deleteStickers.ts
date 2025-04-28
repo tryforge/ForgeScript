@@ -7,7 +7,7 @@ export default new NativeFunction({
     brackets: true,
     unwrap: true,
     output: ArgType.Number,
-    description: "Delete given sticker ids, returns the count of stickers deleted",
+    description: "Deletes given stickers, returns the count of stickers deleted",
     args: [
         {
             name: "guild ID",

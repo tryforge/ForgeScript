@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return this.success("name" in chan ? chan.name : undefined);
+        return this.success(chan && "name" in chan ? chan.name : undefined);
     },
 });
 //# sourceMappingURL=channelName.js.map

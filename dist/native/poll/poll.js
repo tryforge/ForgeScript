@@ -40,10 +40,10 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [q, dur, multi, layout]) {
         ctx.container.poll = {
             answers: [],
-            allowMultiselect: multi ?? false,
+            allowMultiselect: multi || false,
             duration: dur / 1000 / 60 / 60,
             question: { text: q },
-            layoutType: layout ?? undefined
+            layoutType: layout || undefined
         };
         return this.success();
     }

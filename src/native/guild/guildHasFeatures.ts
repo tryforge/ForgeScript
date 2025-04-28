@@ -21,6 +21,7 @@ export default new NativeFunction({
         {
             name: "features",
             rest: true,
+            required: true,
             type: ArgType.Enum,
             enum: GuildFeature,
             description: "The features to check for"

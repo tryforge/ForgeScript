@@ -19,6 +19,6 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     execute(ctx, [ s ]) {
         s ??= ctx.sticker!
-        return this.success(s.available)
+        return this.success(s?.available)
     },
 })

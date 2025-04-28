@@ -28,14 +28,14 @@ exports.default = new structures_1.NativeFunction({
             name: "content",
             description: "The new content for the message",
             rest: false,
-            required: true,
             type: structures_1.ArgType.String,
         }
     ],
     async execute(ctx, [url, msg, content]) {
-        const webhook = new discord_js_1.WebhookClient({ url });
-        const edit = await webhook.editMessage(msg, content).catch(ctx.noop);
-        return this.success(!!edit);
+        const web = new discord_js_1.WebhookClient({ url });
+        ctx.container.content = content || undefined;
+        ctx.container.edit = true;
+        return this.success(!!(await ctx.container.send(web, undefined, msg)));
     },
 });
 //# sourceMappingURL=webhookEditMessage.js.map

@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return this.success((guild ?? ctx.guild).roles.highest.id);
+        return this.success((guild ?? ctx.guild)?.roles.highest.id);
     },
 });
 //# sourceMappingURL=guildHighestRoleID.js.map

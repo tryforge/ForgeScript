@@ -37,8 +37,9 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     output: (0, array_1.default)(discord_js_1.GuildMemberFlags),
-    execute(ctx, [, member, sep]) {
-        return this.success((member ?? ctx.member)?.flags.toArray().join(sep ?? ", "));
+    execute(ctx, [, user, sep]) {
+        const member = user ?? ctx.member ?? ctx.interaction?.member;
+        return this.success(new discord_js_1.GuildMemberFlagsBitField(member?.flags).toArray().join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=memberFlags.js.map

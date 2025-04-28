@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Number,
-    description: "Delete given emoji ids, returns the count of emotes deleted",
+    description: "Deletes given emojis from a guild, returns the count of emotes deleted",
     args: [
         {
             name: "guild ID",

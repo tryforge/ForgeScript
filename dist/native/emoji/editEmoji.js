@@ -39,7 +39,6 @@ exports.default = new structures_1.NativeFunction({
             name: "roles",
             description: "The new roles to limit usage of this emoji to",
             rest: true,
-            required: true,
             type: structures_1.ArgType.Role,
             pointer: 0,
         },

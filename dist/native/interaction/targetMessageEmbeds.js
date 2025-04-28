@@ -33,18 +33,19 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number
         },
     ],
-    output: structures_1.ArgType.Unknown,
+    output: [
+        structures_1.ArgType.Json,
+        structures_1.ArgType.Unknown
+    ],
     execute(ctx, [index, prop, fieldIndex]) {
         if (!ctx.interaction?.isMessageContextMenuCommand())
             return this.success();
         const message = ctx.interaction.targetMessage;
-        if (typeof index !== "number") {
+        if (typeof index !== "number")
             return this.successJSON(message.embeds.map(x => x.data));
-        }
         const embed = message.embeds[index];
-        if (prop === null) {
+        if (prop === null)
             return this.successJSON(embed);
-        }
         return this.success(embed_1.EmbedProperties[prop](embed ? discord_js_1.EmbedBuilder.from(embed) : undefined, undefined, fieldIndex));
     },
 });

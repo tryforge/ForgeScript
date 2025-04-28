@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     brackets: true,
+    deprecated: true,
     args: [
         {
             name: "name",

@@ -31,7 +31,6 @@ export default new NativeFunction({
             name: "tags",
             description: "The new tags for the sticker",
             rest: true,
-            required: true,
             type: ArgType.String
         }
     ],

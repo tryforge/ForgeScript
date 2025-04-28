@@ -1,1 +1,1 @@
-{"version":3,"file":"day.d.ts","sourceRoot":"","sources":["../../../src/native/time/day.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAElE,oBAAY,kBAAkB;IAC1B,OAAO,YAAY;IACnB,QAAQ,YAAY;IACpB,IAAI,SAAS;IACb,KAAK,UAAU;IACf,MAAM,WAAW;CACpB;;;;;;;;AAED,wBA2BE"}
+{"version":3,"file":"day.d.ts","sourceRoot":"","sources":["../../../src/native/time/day.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;AAClE,OAAO,EAAE,eAAe,EAAE,MAAM,QAAQ,CAAA;;;;;;;;AAExC,wBAoBE"}

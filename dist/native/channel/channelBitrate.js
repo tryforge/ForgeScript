@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return this.success("bitrate" in chan ? chan.bitrate : 0);
+        return this.success(chan && "bitrate" in chan ? chan.bitrate : 0);
     },
 });
 //# sourceMappingURL=channelBitrate.js.map

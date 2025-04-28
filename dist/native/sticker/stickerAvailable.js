@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Boolean,
     execute(ctx, [s]) {
         s ??= ctx.sticker;
-        return this.success(s.available);
+        return this.success(s?.available);
     },
 });
 //# sourceMappingURL=stickerAvailable.js.map

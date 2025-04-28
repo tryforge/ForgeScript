@@ -7,3 +7,4 @@ metadata/
 CONTRIBUTING.md
 EXTENSIONS.md
 .env
+tsconfig.json

@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [user]) {
-        return this.success((user ?? ctx.user).defaultAvatarURL);
+        return this.success((user ?? ctx.user)?.defaultAvatarURL);
     },
 });
 //# sourceMappingURL=userDefaultAvatar.js.map

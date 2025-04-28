@@ -1,4 +1,4 @@
-import { createCipheriv, createDecipheriv, scryptSync } from 'crypto';
+import { createCipheriv, createDecipheriv, scryptSync } from "crypto"
 import { ArgType, NativeFunction } from "../../structures"
 
 /**
@@ -8,17 +8,17 @@ import { ArgType, NativeFunction } from "../../structures"
  * @returns
  */
 
-const FIXED_IV = Buffer.from('12345678901234567890123456789012', 'hex');
+const FIXED_IV = Buffer.from("12345678901234567890123456789012", "hex")
 
 function deriveKey(key: string): Buffer {
-    return scryptSync(key, 'salt', 32);
+    return scryptSync(key, "salt", 32)
 }
 export function encrypt(text: string, key: string): string {
-    const idkhowtocallthis = deriveKey(key);
-    const cipher = createCipheriv('aes-256-cbc', idkhowtocallthis, FIXED_IV);
-    let encrypted = cipher.update(text, 'utf-8', 'hex');
-    encrypted += cipher.final('hex');
-    return encrypted;
+    const idkhowtocallthis = deriveKey(key)
+    const cipher = createCipheriv("aes-256-cbc", idkhowtocallthis, FIXED_IV)
+    let encrypted = cipher.update(text, "utf-8", "hex")
+    encrypted += cipher.final("hex")
+    return encrypted
 }
 
 

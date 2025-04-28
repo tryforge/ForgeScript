@@ -1,3 +1,4 @@
+import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -22,7 +23,7 @@ export default new NativeFunction({
         },
     ],
     brackets: false,
-    output: ArgType.String,
+    output: array<ArgType.Guild>(),
     execute(ctx, [user, sep]) {
         user ??= ctx.user!
         return this.success(ctx.client.guilds.cache.filter(x => x.members.cache.has(user.id)).map(guild => guild.id).join(sep || ", "))

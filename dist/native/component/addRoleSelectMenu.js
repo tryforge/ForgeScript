@@ -46,7 +46,6 @@ exports.default = new structures_1.NativeFunction({
             rest: true,
             type: structures_1.ArgType.String,
             description: "The default selected roles to use",
-            required: true
         }
     ],
     execute(ctx, [id, placeholder, min, max, disabled, roles]) {

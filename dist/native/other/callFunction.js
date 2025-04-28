@@ -21,7 +21,6 @@ exports.default = new NativeFunction_1.NativeFunction({
             description: "The args to call this function with",
             rest: true,
             type: NativeFunction_1.ArgType.String,
-            required: true,
         },
     ],
     brackets: true,

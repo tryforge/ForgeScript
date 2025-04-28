@@ -20,6 +20,6 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [guild]) {
-        return this.success((guild ?? ctx.guild).roles.highest.id)
+        return this.success((guild ?? ctx.guild)?.roles.highest.id)
     },
 })

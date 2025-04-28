@@ -7,7 +7,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     unwrap: true,
     output: structures_1.ArgType.Number,
-    description: "Delete given role ids, returns the count of roles deleted",
+    description: "Deletes given roles, returns the count of roles deleted",
     args: [
         {
             name: "guild ID",

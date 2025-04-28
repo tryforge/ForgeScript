@@ -32,19 +32,18 @@ export default new NativeFunction({
             type: ArgType.Number
         },
     ],
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        ArgType.Unknown
+    ],
     execute(ctx, [index, prop, fieldIndex]) {
         if (!ctx.interaction?.isMessageContextMenuCommand()) return this.success()
 
         const message = ctx.interaction.targetMessage
-        if (typeof index !== "number") {
-            return this.successJSON(message.embeds.map(x => x.data))
-        }
-        
+        if (typeof index !== "number") return this.successJSON(message.embeds.map(x => x.data))
+
         const embed = message.embeds[index] as Embed | undefined
-        if (prop === null) {
-            return this.successJSON(embed)
-        }
+        if (prop === null) return this.successJSON(embed)
 
         return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, undefined, fieldIndex))
     },

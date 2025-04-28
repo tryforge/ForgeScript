@@ -1,7 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExtendedTimeFormat = void 0;
 const structures_1 = require("../../structures");
-const day_1 = require("./day");
+var ExtendedTimeFormat;
+(function (ExtendedTimeFormat) {
+    ExtendedTimeFormat["Numeric"] = "numeric";
+    ExtendedTimeFormat["TwoDigit"] = "2-digit";
+    ExtendedTimeFormat["Long"] = "long";
+    ExtendedTimeFormat["Short"] = "short";
+    ExtendedTimeFormat["Narrow"] = "narrow";
+})(ExtendedTimeFormat || (exports.ExtendedTimeFormat = ExtendedTimeFormat = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$month",
     version: "1.2.0",
@@ -14,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The format of the month",
             rest: false,
             type: structures_1.ArgType.Enum,
-            enum: day_1.ExtendedTimeFormat
+            enum: ExtendedTimeFormat
         }
     ],
     output: structures_1.ArgType.String,

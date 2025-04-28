@@ -31,7 +31,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     async execute(ctx, [guild, q, rt]) {
-        const id = q.replace(/[\\<>@!]/g, '').trim()
+        const id = q.replace(/[\\<>@!]/g, "").trim()
 
         if (CompiledFunction.IdRegex.test(id)) {
             const m = await guild.members.fetch(id).catch(ctx.noop)

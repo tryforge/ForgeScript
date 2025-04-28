@@ -58,7 +58,6 @@ exports.default = new structures_1.NativeFunction({
             description: "The new perms for the role",
             rest: true,
             type: structures_1.ArgType.Permission,
-            required: true,
         },
     ],
     brackets: true,

@@ -10,7 +10,7 @@ export default new NativeFunction({
     args: [
         {
             name: "name",
-            description: "The channel name to get it's id",
+            description: "The channel name to get its id",
             required: true,
             rest: true,
             type: ArgType.String,

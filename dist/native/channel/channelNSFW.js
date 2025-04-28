@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [ch]) {
         const chan = ch ?? ctx.channel;
-        return this.success("nsfw" in chan ? chan.nsfw : false);
+        return this.success(chan && "nsfw" in chan ? chan.nsfw : false);
     },
 });
 //# sourceMappingURL=channelNSFW.js.map
