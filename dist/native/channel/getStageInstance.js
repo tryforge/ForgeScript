@@ -4,6 +4,7 @@ const stage_1 = require("../../properties/stage");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$getStageInstance",
+    version: "2.3.0",
     description: "Returns a stage instance of a guild",
     unwrap: true,
     brackets: true,
@@ -23,7 +24,10 @@ exports.default = new structures_1.NativeFunction({
             enum: stage_1.StageProperty
         },
     ],
-    output: structures_1.ArgType.Boolean,
+    output: [
+        structures_1.ArgType.Json,
+        structures_1.ArgType.Unknown
+    ],
     async execute(ctx, [instance, prop]) {
         if (prop)
             return this.success(stage_1.StageProperties[prop](instance));

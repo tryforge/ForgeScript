@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$createStageInstance",
+    version: "2.3.0",
     description: "Creates a new stage instance, returns instance id",
     unwrap: true,
     brackets: true,
@@ -40,7 +41,9 @@ exports.default = new structures_1.NativeFunction({
             name: "event ID",
             description: "The scheduled event associated with the stage instance",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.ScheduledEvent,
+            pointer: 0,
+            pointerProperty: "guild",
         },
     ],
     output: structures_1.ArgType.StageInstance,

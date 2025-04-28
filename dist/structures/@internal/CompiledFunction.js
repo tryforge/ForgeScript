@@ -367,7 +367,7 @@ class CompiledFunction {
         return this.resolvePointer(arg, ref, ctx.guild)?.roles.cache.get(str);
     }
     resolveDate(ctx, arg, str, ref) {
-        return new Date(str);
+        return new Date(isNaN(Number(str)) ? str : Number(str));
     }
     resolvePointer(arg, ref, fallback) {
         const ptr = ref[arg.pointer] ?? fallback;

@@ -23,7 +23,10 @@ export default new NativeFunction({
             enum: StageProperty
         },
     ],
-    output: ArgType.Boolean,
+    output: [
+        ArgType.Json,
+        ArgType.Unknown
+    ],
     async execute(ctx, [instance, prop]) {
         if (prop) return this.success(StageProperties[prop](instance))
         return this.successJSON(instance)

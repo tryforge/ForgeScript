@@ -5,6 +5,7 @@ export default new NativeFunction({
     name: "$context",
     version: "1.5.0",
     description: "Returns the context of this interaction",
+    aliases: ["$interactionContext"],
     unwrap: false,
     output: InteractionContextType,
     execute(ctx) {

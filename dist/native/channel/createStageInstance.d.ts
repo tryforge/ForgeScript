@@ -28,7 +28,9 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.String;
+    type: ArgType.ScheduledEvent;
+    pointer: number;
+    pointerProperty: string;
 }], true>;
 export default _default;
 //# sourceMappingURL=createStageInstance.d.ts.map

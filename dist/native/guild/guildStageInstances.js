@@ -8,6 +8,7 @@ const stage_1 = require("../../properties/stage");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$guildStageInstances",
+    version: "2.3.0",
     description: "Returns all active stage instances of a guild",
     unwrap: true,
     brackets: false,
