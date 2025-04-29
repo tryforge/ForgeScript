@@ -76,6 +76,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolveMember;
     private resolveAutomodRule;
     private resolveScheduledEvent;
+    private resolveSoundboardSound;
     private resolveStageInstance;
     private resolveReaction;
     private resolveURL;
@@ -93,7 +94,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     execute(ctx: Context): Promise<Return>;
     private isValidReturnType;
     private fail;
-    static toResolveArgString(type: ArgType): "resolveURL" | "resolveString" | "resolveBigInt" | "resolveUnknown" | "resolveTextChannel" | "resolveOverwritePermission" | "resolveNumber" | "resolveUser" | "resolveDate" | "resolveGuild" | "resolveRoleOrUser" | "resolveInvite" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveEmoji" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveMessage" | "resolveChannel" | "resolveRole" | "resolveWebhook" | "resolveSticker" | "resolveTime" | "resolveMember" | "resolveApplicationEmoji" | "resolveAutomodRule" | "resolveScheduledEvent" | "resolveStageInstance";
+    static toResolveArgString(type: ArgType): "resolveURL" | "resolveString" | "resolveBigInt" | "resolveUnknown" | "resolveTextChannel" | "resolveOverwritePermission" | "resolveNumber" | "resolveUser" | "resolveDate" | "resolveGuild" | "resolveRoleOrUser" | "resolveInvite" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveEmoji" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveMessage" | "resolveChannel" | "resolveRole" | "resolveWebhook" | "resolveSticker" | "resolveTime" | "resolveMember" | "resolveApplicationEmoji" | "resolveAutomodRule" | "resolveScheduledEvent" | "resolveStageInstance" | "resolveSoundboardSound";
     getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean> | undefined;
     getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
     return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;

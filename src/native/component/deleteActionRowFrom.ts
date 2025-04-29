@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder } from "discord.js"
+import { ActionRow, ActionRowBuilder, ButtonBuilder, MessageActionRowComponent } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import { noop } from "lodash"
 
@@ -34,7 +34,7 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     unwrap: true,
     async execute(ctx, [, m, index]) {
-        const components = m.components.map(x => ActionRowBuilder.from(x))
+        const components = m.components.map(x => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>))
         components.splice(index, 1)
         return this.success(
             !!(await m.edit({ components: components as ActionRowBuilder<ButtonBuilder>[] }).catch(noop))

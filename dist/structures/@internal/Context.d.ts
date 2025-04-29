@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, Interaction, Message, MessageReaction, Role, Sticker, User } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, Interaction, Message, MessageReaction, Role, SoundboardSound, Sticker, User } from "discord.js";
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -69,6 +69,7 @@ export interface IContextCache {
     emoji: Emoji | null;
     automod: AutoModerationActionExecution | null;
     sticker: Sticker | null;
+    sound: SoundboardSound | null;
 }
 export declare class Context {
     #private;
@@ -93,6 +94,7 @@ export declare class Context {
     get member(): GuildMember | null;
     get emoji(): Emoji | null;
     get sticker(): Sticker | null;
+    get sound(): SoundboardSound | null;
     get role(): Role | null;
     get reaction(): MessageReaction | null;
     get message(): Message<any> | null;

@@ -1,4 +1,4 @@
-import { ActionRowBuilder } from "discord.js"
+import { ActionRow, ActionRowBuilder, MessageActionRowComponent } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -25,7 +25,7 @@ export default new NativeFunction({
     ],
     brackets: false,
     execute(ctx, [, msg]) {
-        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => ActionRowBuilder.from(x)) ?? []
+        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>)) ?? []
         return this.success()
     },
 })

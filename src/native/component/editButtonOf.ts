@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
+import { ActionRow, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageActionRowComponent } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -67,7 +67,7 @@ export default new NativeFunction({
     ],
     output: ArgType.Boolean,
     async execute(ctx, [, m, oldId, id, label, style, emoji, disabled]) {
-        const components = m.components.map(x => ActionRowBuilder.from(x))
+        const components = m.components.map(x => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>))
 
         const rowIndex = components.findIndex((x) =>
             x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId)

@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
+import { ActionRow, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageActionRowComponent } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -73,7 +73,7 @@ export default new NativeFunction({
             if (emoji) btn.setEmoji(emoji)
         }
 
-        const components = m.components.map(x => ActionRowBuilder.from(x))
+        const components = m.components.map(x => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>))
         components.at(-1)?.addComponents(btn)
 
         return this.success(

@@ -95,6 +95,9 @@ class Context {
     get sticker() {
         return (this.#cache.sticker ??= this.obj instanceof discord_js_1.Sticker ? this.obj : null);
     }
+    get sound() {
+        return (this.#cache.sound ??= this.obj instanceof discord_js_1.SoundboardSound ? this.obj : null);
+    }
     get role() {
         return (this.#cache.role ??= this.obj instanceof discord_js_1.Role ? this.obj : null);
     }

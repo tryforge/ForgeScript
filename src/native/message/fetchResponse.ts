@@ -1,4 +1,4 @@
-import { ActionRowBuilder, AttachmentBuilder, EmbedBuilder } from "discord.js"
+import { ActionRow, ActionRowBuilder, AttachmentBuilder, EmbedBuilder, MessageActionRowComponent } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -28,7 +28,7 @@ export default new NativeFunction({
         msg ??= ctx.message!
         if (msg) {
             ctx.container.embeds.push(...msg.embeds.map(x => EmbedBuilder.from(x)))
-            ctx.container.components.push(...msg.components.map(x => ActionRowBuilder.from(x)))
+            ctx.container.components.push(...msg.components.map(x => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>)))
             ctx.container.files.push(...msg.attachments.map(x => new AttachmentBuilder(x.url, { name: x.name })))
             ctx.container.stickers.push(...msg.stickers.map(x => x.id))
         }

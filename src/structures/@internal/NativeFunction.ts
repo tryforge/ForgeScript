@@ -14,6 +14,7 @@ import {
     MessageReaction,
     PermissionsString,
     Role,
+    SoundboardSound,
     StageInstance,
     Sticker,
     TextBasedChannel,
@@ -65,6 +66,7 @@ export enum ArgType {
     AutomodRule,
     ScheduledEvent,
     StageInstance,
+    SoundboardSound
 }
 
 export interface IArg<
@@ -210,6 +212,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? GuildScheduledEvent
     : T extends ArgType.StageInstance
     ? StageInstance
+    : T extends ArgType.SoundboardSound
+    ? SoundboardSound
     : null
 
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true

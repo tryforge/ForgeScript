@@ -27,18 +27,16 @@ import {
     PollData,
     Presence,
     Role,
+    SoundboardSound,
     Sticker,
     StickerResolvable,
     TextChannel,
-    TextInputBuilder,
     ThreadChannelResolvable,
     User,
     VoiceState,
     WebhookClient,
 } from "discord.js"
 import noop from "../../functions/noop"
-import { ForgeClient } from "../../core"
-import { RawMessageData } from "discord.js/typings/rawDataTypes"
 import { MessageFlags } from "discord.js"
 
 export type Sendable =
@@ -59,6 +57,7 @@ export type Sendable =
     | MessageReaction
     | Invite
     | AutoModerationActionExecution
+    | SoundboardSound
 
 export class Container {
     public content?: string

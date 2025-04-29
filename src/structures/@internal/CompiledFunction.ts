@@ -388,6 +388,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return this.resolvePointer(arg, ref, ctx.guild)?.scheduledEvents.fetch(str).catch(ctx.noop)
     }
 
+    private resolveSoundboardSound(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        if (!CompiledFunction.IdRegex.test(str)) return
+        return this.resolvePointer(arg, ref, ctx.guild)?.soundboardSounds.fetch(str).catch(ctx.noop)
+    }
+
     private resolveStageInstance(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
         const chan = ctx.client.channels.cache.get(str)

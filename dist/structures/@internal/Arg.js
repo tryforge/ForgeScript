@@ -412,6 +412,35 @@ class Arg {
             pointer: 0
         });
     }
+    static optionalSoundboardSound(name = "sound ID", desc = "The soundboard sound to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: NativeFunction_1.ArgType.SoundboardSound,
+            pointer: 0
+        });
+    }
+    static restSoundboardSound(name = "sound IDs", desc = "The soundboard sounds to use", required = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: NativeFunction_1.ArgType.SoundboardSound,
+            pointer: 0
+        });
+    }
+    static requiredSoundboardSound(name = "sound ID", desc = "The soundboard sound to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: NativeFunction_1.ArgType.SoundboardSound,
+            pointer: 0
+        });
+    }
     static restTextChannel(name = "text channel IDs", desc = "The text channels to use") {
         return Arg.create({
             name,

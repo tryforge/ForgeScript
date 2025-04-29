@@ -456,6 +456,38 @@ export class Arg {
         })
     }
 
+    public static optionalSoundboardSound(name: string = "sound ID", desc: string = "The soundboard sound to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: ArgType.SoundboardSound,
+            pointer: 0
+        })
+    }
+
+    public static restSoundboardSound(name: string = "sound IDs", desc: string = "The soundboard sounds to use", required: boolean = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: ArgType.SoundboardSound,
+            pointer: 0
+        })
+    }
+
+    public static requiredSoundboardSound(name: string = "sound ID", desc: string = "The soundboard sound to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: ArgType.SoundboardSound,
+            pointer: 0
+        })
+    }
+
     public static restTextChannel(name: string = "text channel IDs", desc: string = "The text channels to use") {
         return Arg.create({
             name,

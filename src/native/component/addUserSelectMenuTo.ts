@@ -1,4 +1,4 @@
-import { ActionRowBuilder, RoleSelectMenuBuilder, UserSelectMenuBuilder } from "discord.js"
+import { ActionRow, ActionRowBuilder, MessageActionRowComponent, UserSelectMenuBuilder } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -76,7 +76,7 @@ export default new NativeFunction({
         if (max)
             menu.setMaxValues(max)
 
-        const components = m.components.map(x => ActionRowBuilder.from(x))
+        const components = m.components.map(x => ActionRowBuilder.from(x as ActionRow<MessageActionRowComponent>))
         components.at(-1)?.addComponents(menu)
 
         return this.success(

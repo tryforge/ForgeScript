@@ -58,7 +58,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [, m, rowIndex, compIndex, prop, sep]) {
         if (typeof rowIndex !== "number") {
-            return this.successJSON((m ?? ctx.message)?.components.map((x) => x.components));
+            return this.successJSON((m ?? ctx.message)?.components);
         }
         const row = m.components[rowIndex];
         const comp = row?.components[compIndex];
