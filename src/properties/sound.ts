@@ -3,7 +3,7 @@ import defineProperties from "../functions/defineProperties"
 
 export enum SoundboardSoundProperty {
     name = "name",
-    soundID = "soundID",
+    id = "id",
     guildID = "guildID",
     userID = "userID",
     emoji = "emoji",
@@ -18,7 +18,7 @@ export const SoundboardSoundProperties = defineProperties<typeof SoundboardSound
     emoji: (i) => i?.emoji?.toString(),
     guildID: (i) => i?.guildId,
     userID: (i) => i?.user?.id,
-    soundID: (i) => i?.soundId,
+    id: (i) => i?.soundId,
     volume: (i) => i?.volume,
     timestamp: (i) => i?.createdTimestamp,
     available: (i) => i?.available ?? false,

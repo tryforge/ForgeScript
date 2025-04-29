@@ -1,7 +1,7 @@
 import { GuildSoundboardSound, PartialSoundboardSound, SoundboardSound } from "discord.js";
 export declare enum SoundboardSoundProperty {
     name = "name",
-    soundID = "soundID",
+    id = "id",
     guildID = "guildID",
     userID = "userID",
     emoji = "emoji",

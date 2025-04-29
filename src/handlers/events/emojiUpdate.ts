@@ -4,7 +4,7 @@ import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandl
 export default new DiscordEventHandler({
     name: "emojiUpdate",
     version: "1.0.1",
-    intents: ["GuildEmojisAndStickers"],
+    intents: ["GuildExpressions"],
     description: "This event is fired when an emoji is updated",
     listener: async function (old, newer) {
         const commands = this.commands.get("emojiUpdate")

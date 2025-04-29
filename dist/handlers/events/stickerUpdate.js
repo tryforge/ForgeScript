@@ -24,6 +24,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    intents: ["GuildEmojisAndStickers"],
+    intents: ["GuildExpressions"],
 });
 //# sourceMappingURL=stickerUpdate.js.map

@@ -8,6 +8,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 const sound_1 = require("../../properties/sound");
 exports.default = new structures_1.NativeFunction({
     name: "$guildSoundboardSounds",
+    version: "2.4.0",
     description: "Returns all soundboard sounds of a guild",
     unwrap: true,
     brackets: false,

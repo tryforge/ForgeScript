@@ -1,1 +1,1 @@
-{"version":3,"file":"guildSoundboardSoundDelete.d.ts","sourceRoot":"","sources":["../../../src/handlers/events/guildSoundboardSoundDelete.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,mBAAmB,EAAE,MAAM,+CAA+C,CAAA;;AAEnF,wBAuBE"}
+{"version":3,"file":"guildSoundboardSoundDelete.d.ts","sourceRoot":"","sources":["../../../src/handlers/events/guildSoundboardSoundDelete.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,mBAAmB,EAAE,MAAM,+CAA+C,CAAA;;AAEnF,wBAwBE"}

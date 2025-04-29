@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const parseSingleEmoji_1 = require("../../functions/parseSingleEmoji");
 exports.default = new structures_1.NativeFunction({
     name: "$editSoundboardSound",
+    version: "2.4.0",
     description: "Edits given soundboard sound, returns bool",
     brackets: true,
     unwrap: true,

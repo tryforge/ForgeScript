@@ -8,7 +8,7 @@ const defineProperties_1 = __importDefault(require("../functions/definePropertie
 var SoundboardSoundProperty;
 (function (SoundboardSoundProperty) {
     SoundboardSoundProperty["name"] = "name";
-    SoundboardSoundProperty["soundID"] = "soundID";
+    SoundboardSoundProperty["id"] = "id";
     SoundboardSoundProperty["guildID"] = "guildID";
     SoundboardSoundProperty["userID"] = "userID";
     SoundboardSoundProperty["emoji"] = "emoji";
@@ -22,7 +22,7 @@ exports.SoundboardSoundProperties = (0, defineProperties_1.default)({
     emoji: (i) => i?.emoji?.toString(),
     guildID: (i) => i?.guildId,
     userID: (i) => i?.user?.id,
-    soundID: (i) => i?.soundId,
+    id: (i) => i?.soundId,
     volume: (i) => i?.volume,
     timestamp: (i) => i?.createdTimestamp,
     available: (i) => i?.available ?? false,

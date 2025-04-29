@@ -23,5 +23,5 @@ export default new DiscordEventHandler({
             })
         }
     },
-    intents: ["GuildEmojisAndStickers"],
+    intents: ["GuildExpressions"],
 })

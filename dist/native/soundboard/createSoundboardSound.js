@@ -5,6 +5,7 @@ const node_fs_1 = require("node:fs");
 const parseSingleEmoji_1 = require("../../functions/parseSingleEmoji");
 exports.default = new structures_1.NativeFunction({
     name: "$createSoundboardSound",
+    version: "2.4.0",
     description: "Creates a new soundboard sound, returns sound id",
     brackets: true,
     unwrap: true,

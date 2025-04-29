@@ -4,6 +4,7 @@ const structures_1 = require("../../structures");
 const sound_1 = require("../../properties/sound");
 exports.default = new structures_1.NativeFunction({
     name: "$getSoundboardSound",
+    version: "2.4.0",
     description: "Returns a soundboard sound of a guild",
     unwrap: true,
     brackets: false,
