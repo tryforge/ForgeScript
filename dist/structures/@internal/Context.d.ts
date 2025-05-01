@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, Interaction, Message, MessageReaction, Role, SoundboardSound, Sticker, User } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, Interaction, MediaGalleryBuilder, Message, MessageReaction, Role, SectionBuilder, SoundboardSound, Sticker, User } from "discord.js";
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -30,6 +30,10 @@ export interface IAutomodRuleOptions {
 export interface ILocalFunctionData {
     code: IExtendedCompiledFunctionField;
     args: string[];
+}
+export interface IComponentOptions {
+    section: SectionBuilder;
+    gallery: MediaGalleryBuilder;
 }
 export declare enum CalendarType {
     Buddhist = "buddhist",
@@ -78,6 +82,7 @@ export declare class Context {
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
     automodRule: Partial<IAutomodRuleOptions>;
+    component: Partial<IComponentOptions>;
     timezone: string;
     calendar?: CalendarType;
     localFunctions: Map<string, ILocalFunctionData>;

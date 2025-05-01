@@ -19,18 +19,16 @@ export default new NativeFunction({
     brackets: false,
     execute(ctx, [index]) {
         const data = ctx.container.components
-        const components = Number.isFinite(index) ? [data[index]] : data
+        const components = Number.isFinite(index) ? new Array(data[index]) : data
 
-        components.forEach(row => {
+        for (let i = 0, len = components.length; i < len; i++) {
+            const row = components[i]
+            if (!("components" in row)) continue
             const actionRow = new ActionRowBuilder()
             row?.components.forEach(component => {
-                if (component instanceof ButtonBuilder) {
-                    actionRow.addComponents(component.setDisabled(false))
-                } else {
-                    actionRow.addComponents(component)
-                }
+                if (component instanceof ButtonBuilder) actionRow.addComponents(component.setDisabled(false))
             })
-        })
+        }
 
         return this.success()
     },

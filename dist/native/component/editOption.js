@@ -53,6 +53,8 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [old, name, desc, value, emoji, def]) {
         for (let i = 0, len = ctx.container.components.length; i < len; i++) {
             const row = ctx.container.components[i];
+            if (!(row instanceof discord_js_1.ActionRowBuilder))
+                continue;
             const menu = row.components[0];
             if (menu instanceof discord_js_1.StringSelectMenuBuilder) {
                 const index = menu.options.findIndex(x => x.data.label === old);

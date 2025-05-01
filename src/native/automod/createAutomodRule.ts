@@ -54,7 +54,7 @@ export default new NativeFunction({
             type: ArgType.String
         },
     ],
-    output: ArgType.String,
+    output: ArgType.AutomodRule,
     async execute(ctx, [ guild, name, trigger, event, enabled, reason ]) {
         const rule = await guild.autoModerationRules.create({
             name: name,

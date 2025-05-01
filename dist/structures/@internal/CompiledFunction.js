@@ -51,6 +51,8 @@ class CompiledFunction {
     }
     displayField(i) {
         const field = this.data.fields[i];
+        if (!field)
+            return null;
         if ("op" in field) {
             if (field.rhs) {
                 return `${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(field.rhs.functions.map((x) => x.display))}`;
@@ -66,7 +68,9 @@ class CompiledFunction {
         else {
             const args = new Array();
             for (let i = 0, len = this.data.fields.length; i < len; i++) {
-                args.push(this.displayField(i));
+                const field = this.displayField(i);
+                if (field)
+                    args.push(field);
             }
             return `${this.data.name}[${args.join(";")}]`;
         }

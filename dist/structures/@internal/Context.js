@@ -41,6 +41,7 @@ class Context {
     executionTimestamp;
     http = {};
     automodRule = {};
+    component = {};
     timezone = "UTC";
     calendar;
     localFunctions = new Map();

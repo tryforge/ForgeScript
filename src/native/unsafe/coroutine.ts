@@ -20,7 +20,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const code = this.displayField(0)
+        const code = this.displayField(0)!
         return this.success(
             await ctx.client.threading.run({
                 code

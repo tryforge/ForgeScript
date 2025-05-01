@@ -44,7 +44,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [name, desc, value, emoji, def]) {
-        const comp = ctx.container.components.at(-1)?.components[0];
+        const menu = ctx.container.actionRow?.components[0];
         const data = {
             label: name,
             description: desc || undefined,
@@ -56,8 +56,8 @@ exports.default = new structures_1.NativeFunction({
                 }
                 : undefined,
         };
-        if (!!comp && "addOptions" in comp) {
-            comp.addOptions(data);
+        if (menu instanceof discord_js_1.BaseSelectMenuBuilder && "addOptions" in menu) {
+            menu.addOptions(data);
         }
         return this.success();
     },

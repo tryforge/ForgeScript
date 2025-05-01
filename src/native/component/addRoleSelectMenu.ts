@@ -60,7 +60,7 @@ export default new NativeFunction({
         if (max)
             menu.setMaxValues(max)
         
-        ctx.container.components.at(-1)?.addComponents(menu)
+        ctx.container.actionRow?.addComponents(menu)
         return this.success()
     }
 })

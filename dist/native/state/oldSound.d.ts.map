@@ -1,1 +1,1 @@
-{"version":3,"file":"oldSound.d.ts","sourceRoot":"","sources":["../../../src/native/state/oldSound.ts"],"names":[],"mappings":"AAAA,OAAO,EAA6B,uBAAuB,EAAE,MAAM,wBAAwB,CAAA;AAC3F,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBAyBE"}
+{"version":3,"file":"oldSound.d.ts","sourceRoot":"","sources":["../../../src/native/state/oldSound.ts"],"names":[],"mappings":"AAAA,OAAO,EAA6B,uBAAuB,EAAE,MAAM,wBAAwB,CAAA;AAC3F,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;AAElE,wBA0BE"}

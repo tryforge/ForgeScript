@@ -86,6 +86,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     public displayField(i: number) {
         const field = this.data.fields![i]
+        if (!field) return null
         if ("op" in field) {
             if (field.rhs) {
                 return `${field.lhs.resolve(field.lhs.functions.map((x) => x.display))}${field.op}${field.rhs.resolve(
@@ -102,7 +103,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
             const args = new Array<string>()
 
             for (let i = 0, len = this.data.fields.length; i < len; i++) {
-                args.push(this.displayField(i))
+                const field = this.displayField(i)
+                if (field) args.push(field)
             }
 
             return `${this.data.name}[${args.join(";")}]`

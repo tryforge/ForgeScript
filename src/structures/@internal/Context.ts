@@ -13,9 +13,11 @@ import {
     GuildEmoji,
     GuildMember,
     Interaction,
+    MediaGalleryBuilder,
     Message,
     MessageReaction,
     Role,
+    SectionBuilder,
     SoundboardSound,
     Sticker,
     User,
@@ -62,6 +64,11 @@ export interface IAutomodRuleOptions {
 export interface ILocalFunctionData {
     code: IExtendedCompiledFunctionField
     args: string[]
+}
+
+export interface IComponentOptions {
+    section: SectionBuilder
+    gallery: MediaGalleryBuilder
 }
 
 export enum CalendarType {
@@ -116,6 +123,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
     automodRule: Partial<IAutomodRuleOptions> = {}
+    component: Partial<IComponentOptions> = {}
     timezone: string = "UTC"
     calendar?: CalendarType
 

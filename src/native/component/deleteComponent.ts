@@ -18,6 +18,8 @@ export default new NativeFunction({
     execute(ctx, [id]) {
         for (let i = 0, len = ctx.container.components.length; i < len; i++) {
             const comp = ctx.container.components[i]
+            if (!("components" in comp)) continue
+            
             const index = comp.components.findIndex((x) => "custom_id" in x.data && x.data.custom_id === id)
             if (index !== -1) {
                 if (comp.components.length === 1) ctx.container.components.splice(i, 1)

@@ -1,6 +1,5 @@
 import { ChannelSelectMenuBuilder, ChannelType } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
-import { MentionableSelectMenuBuilder, RoleSelectMenuBuilder } from "@discordjs/builders"
 
 export default new NativeFunction({
     name: "$addChannelType",
@@ -20,8 +19,10 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ types ]) {
-        const menu = ctx.container.components.at(-1)?.components.at(0)
-        if (menu instanceof ChannelSelectMenuBuilder) menu.addChannelTypes(types)
+        const menu = ctx.container.actionRow?.components[0]
+        if (menu instanceof ChannelSelectMenuBuilder) {
+            menu.addChannelTypes(types)
+        }
         return this.success()
     },
 })

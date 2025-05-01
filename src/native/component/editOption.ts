@@ -1,4 +1,4 @@
-import { APISelectMenuOption, StringSelectMenuBuilder, parseEmoji } from "discord.js"
+import { ActionRowBuilder, StringSelectMenuBuilder, parseEmoji } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -52,6 +52,7 @@ export default new NativeFunction({
     execute(ctx, [old, name, desc, value, emoji, def]) {
         for (let i = 0, len = ctx.container.components.length;i < len;i++) {
             const row = ctx.container.components[i]
+            if (!(row instanceof ActionRowBuilder)) continue
             const menu = row.components[0]
             if (menu instanceof StringSelectMenuBuilder) {
                 const index = menu.options.findIndex(x => x.data.label === old)

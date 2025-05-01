@@ -55,7 +55,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         },
     ],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.AutomodRule,
     async execute(ctx, [guild, name, trigger, event, enabled, reason]) {
         const rule = await guild.autoModerationRules.create({
             name: name,

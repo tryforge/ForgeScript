@@ -51,6 +51,8 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [old, id, placeholder, disabled, min, max]) {
         for (let i = 0, len = ctx.container.components.length; i < len; i++) {
             const comp = ctx.container.components[i];
+            if (!(comp instanceof discord_js_1.ActionRowBuilder))
+                continue;
             const menu = comp.components[0];
             if (menu instanceof discord_js_1.MentionableSelectMenuBuilder && menu.data.custom_id === old) {
                 menu.setCustomId(id);

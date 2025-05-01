@@ -45,11 +45,11 @@ exports.default = new structures_1.NativeFunction({
         const menu = new discord_js_1.StringSelectMenuBuilder().setCustomId(id).setDisabled(disabled || false);
         if (placeholder)
             menu.setPlaceholder(placeholder);
-        if (min !== null)
+        if (min)
             menu.setMinValues(min);
-        if (max !== null)
+        if (max)
             menu.setMaxValues(max);
-        ctx.container.components.at(-1)?.addComponents(menu);
+        ctx.container.actionRow?.addComponents(menu);
         return this.success();
     },
 });

@@ -1,9 +1,11 @@
-import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, EmbedBuilder, Guild, GuildEmoji, GuildMember, GuildScheduledEvent, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, PollData, Presence, Role, SoundboardSound, Sticker, StickerResolvable, ThreadChannelResolvable, User, VoiceState, WebhookClient } from "discord.js";
+import { ActionRowBuilder, AnyComponentBuilder, ApplicationCommandOptionChoiceData, AttachmentBuilder, AutoModerationActionExecution, BaseChannel, Channel, ComponentType, ContainerBuilder, ContainerComponentBuilder, EmbedBuilder, Guild, GuildEmoji, GuildMember, GuildScheduledEvent, Interaction, InteractionEditReplyOptions, InteractionReplyOptions, Invite, Message, MessageActionRowComponentBuilder, MessageMentionOptions, MessageReaction, MessageReplyOptions, ModalBuilder, PollData, Presence, Role, SoundboardSound, Sticker, StickerResolvable, ThreadChannelResolvable, User, VoiceState, WebhookClient } from "discord.js";
 export type Sendable = {} | Sticker | GuildScheduledEvent | Role | Presence | Message | User | GuildMember | BaseChannel | Interaction | VoiceState | WebhookClient | GuildEmoji | Guild | MessageReaction | Invite | AutoModerationActionExecution | SoundboardSound;
 export declare class Container {
     content?: string;
     embeds: EmbedBuilder[];
-    components: ActionRowBuilder<AnyComponentBuilder>[];
+    components: (ActionRowBuilder<AnyComponentBuilder> | ContainerBuilder | ContainerComponentBuilder)[];
+    actionRow?: ActionRowBuilder<MessageActionRowComponentBuilder>;
+    inside: ComponentType[];
     reference?: string;
     reply: boolean;
     followUp: boolean;
@@ -11,6 +13,7 @@ export declare class Container {
     ephemeral: boolean;
     tts: boolean;
     update: boolean;
+    isComponentsV2: boolean;
     files: AttachmentBuilder[];
     channel?: Channel;
     stickers: StickerResolvable[];
@@ -28,6 +31,12 @@ export declare class Container {
     send<T = unknown>(obj: Sendable, content?: string, messageID?: string): Promise<T | null>;
     isValidMessage(options: MessageReplyOptions & InteractionReplyOptions & InteractionEditReplyOptions): boolean;
     embed(index: number): EmbedBuilder;
+    /**
+     * Checks if current context is inside a component builder function.
+     * @param type The type of the component to check for.
+     * @returns
+     */
+    isInside(type: ComponentType): boolean;
     reset(): void;
     getOptions<T>(content?: string): T;
 }

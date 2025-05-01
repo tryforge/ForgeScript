@@ -58,7 +58,7 @@ exports.default = new structures_1.NativeFunction({
             menu.setMinValues(min);
         if (max)
             menu.setMaxValues(max);
-        ctx.container.components.at(-1)?.addComponents(menu);
+        ctx.container.actionRow?.addComponents(menu);
         return this.success();
     }
 });

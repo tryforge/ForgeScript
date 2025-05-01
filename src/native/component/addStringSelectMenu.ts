@@ -44,11 +44,10 @@ export default new NativeFunction({
         const menu = new StringSelectMenuBuilder().setCustomId(id).setDisabled(disabled || false)
 
         if (placeholder) menu.setPlaceholder(placeholder)
-        if (min !== null) menu.setMinValues(min)
-        if (max !== null) menu.setMaxValues(max)
+        if (min) menu.setMinValues(min)
+        if (max) menu.setMaxValues(max)
 
-        ctx.container.components.at(-1)?.addComponents(menu)
-
+        ctx.container.actionRow?.addComponents(menu)
         return this.success()
     },
 })

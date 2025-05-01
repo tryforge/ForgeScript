@@ -1,4 +1,4 @@
-import { UserSelectMenuBuilder } from "discord.js"
+import { ActionRowBuilder, UserSelectMenuBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -56,6 +56,7 @@ export default new NativeFunction({
     execute(ctx, [old, id, placeholder, disabled, min, max, users]) {
         for (let i = 0, len = ctx.container.components.length;i < len;i++) {
             const comp = ctx.container.components[i]
+            if (!(comp instanceof ActionRowBuilder)) continue
             const menu = comp.components[0]
             if (menu instanceof UserSelectMenuBuilder && menu.data.custom_id === old) {
                 menu.setCustomId(id)

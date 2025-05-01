@@ -12,6 +12,8 @@ class Container {
     content;
     embeds = new Array();
     components = new Array();
+    actionRow;
+    inside = Array();
     reference;
     reply = false;
     followUp = false;
@@ -19,6 +21,7 @@ class Container {
     ephemeral = false;
     tts = false;
     update = false;
+    isComponentsV2 = false;
     files = new Array();
     channel;
     stickers = new Array();
@@ -105,6 +108,14 @@ class Container {
     embed(index) {
         return (this.embeds[index] ??= new discord_js_1.EmbedBuilder());
     }
+    /**
+     * Checks if current context is inside a component builder function.
+     * @param type The type of the component to check for.
+     * @returns
+     */
+    isInside(type) {
+        return this.inside.includes(type);
+    }
     reset() {
         delete this.channel;
         delete this.content;
@@ -117,6 +128,7 @@ class Container {
         delete this.threadName;
         delete this.appliedTags;
         delete this.deleteIn;
+        delete this.actionRow;
         this.followUp = false;
         this.reply = false;
         this.update = false;
@@ -124,14 +136,23 @@ class Container {
         this.withResponse = false;
         this.edit = false;
         this.tts = false;
+        this.isComponentsV2 = false;
         this.stickers.length = 0;
         this.choices.length = 0;
         this.components.length = 0;
+        this.inside.length = 0;
         this.embeds.length = 0;
         this.files.length = 0;
         this.allowedMentions = {};
     }
     getOptions(content) {
+        if (this.actionRow)
+            this.components.push(this.actionRow);
+        const flags = new Array();
+        if (this.ephemeral)
+            flags.push(discord_js_2.MessageFlags.Ephemeral);
+        if (this.isComponentsV2)
+            flags.push(discord_js_2.MessageFlags.IsComponentsV2);
         return (content
             ? {
                 content,
@@ -148,7 +169,7 @@ class Container {
                         failIfNotExists: false,
                     }
                     : undefined,
-                flags: this.ephemeral ? discord_js_2.MessageFlags.Ephemeral : undefined,
+                flags: flags.length === 0 ? undefined : flags,
                 attachments: [],
                 files: this.files.length === 0 ? null : this.files,
                 stickers: this.stickers.length === 0 ? null : this.stickers,
