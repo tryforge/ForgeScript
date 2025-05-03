@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ChannelSelectMenuBuilder } from "discord.js"
+import { ActionRowBuilder, ChannelSelectMenuBuilder, ContainerBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -56,18 +56,19 @@ export default new NativeFunction({
     execute(ctx, [old, id, placeholder, disabled, min, max, channels]) {
         for (let i = 0, len = ctx.container.components.length;i < len;i++) {
             const comp = ctx.container.components[i]
-            if (!(comp instanceof ActionRowBuilder)) continue
-            const menu = comp.components[0]
-            if (menu instanceof ChannelSelectMenuBuilder && menu.data.custom_id === old) {
-                menu.setCustomId(id)
-                
-                if (placeholder) menu.setPlaceholder(placeholder)
-                if (typeof disabled === "boolean") menu.setDisabled(disabled)
-                if (typeof min === "number") menu.setMinValues(min)
-                if (typeof max === "number") menu.setMaxValues(max)
-                if (channels.length) menu.setDefaultChannels(channels.filter(x => x))
-
-                break
+            if (comp instanceof ActionRowBuilder || comp instanceof ContainerBuilder) {
+                const menu = comp.components[0]
+                if (menu instanceof ChannelSelectMenuBuilder && menu.data.custom_id === old) {
+                    menu.setCustomId(id)
+                    
+                    if (placeholder) menu.setPlaceholder(placeholder)
+                    if (typeof disabled === "boolean") menu.setDisabled(disabled)
+                    if (typeof min === "number") menu.setMinValues(min)
+                    if (typeof max === "number") menu.setMaxValues(max)
+                    if (channels.length) menu.setDefaultChannels(channels.filter(x => x))
+                    
+                    break
+                }
             }
         }
 

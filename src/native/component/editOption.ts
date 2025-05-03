@@ -1,4 +1,4 @@
-import { ActionRowBuilder, StringSelectMenuBuilder, parseEmoji } from "discord.js"
+import { ActionRowBuilder, ContainerBuilder, StringSelectMenuBuilder, parseEmoji } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -51,29 +51,22 @@ export default new NativeFunction({
     ],
     execute(ctx, [old, name, desc, value, emoji, def]) {
         for (let i = 0, len = ctx.container.components.length;i < len;i++) {
-            const row = ctx.container.components[i]
-            if (!(row instanceof ActionRowBuilder)) continue
-            const menu = row.components[0]
-            if (menu instanceof StringSelectMenuBuilder) {
-                const index = menu.options.findIndex(x => x.data.label === old)
-                if (index !== -1) {
-                    const option = menu.options[index]
-                    option
-                        .setLabel(name)
-                    
-                    if (value)
-                        option.setValue(value)
-
-                    if (emoji)
-                        option.setEmoji(parseEmoji(emoji)!)
-                    
-                    if (desc)
-                        option.setDescription(desc)
-
-                    if (def)
-                        option.setDefault(def)
-
-                    break
+            const comp = ctx.container.components[i]
+            if (comp instanceof ActionRowBuilder || comp instanceof ContainerBuilder) {
+                const menu = comp.components[0]
+                if (menu instanceof StringSelectMenuBuilder) {
+                    const index = menu.options.findIndex(x => x.data.label === old)
+                    if (index !== -1) {
+                        const option = menu.options[index]
+                        option.setLabel(name)
+                        
+                        if (value) option.setValue(value)
+                        if (emoji) option.setEmoji(parseEmoji(emoji)!)
+                        if (desc) option.setDescription(desc)
+                        if (def) option.setDefault(def)
+                        
+                        break
+                    }
                 }
             }
         }

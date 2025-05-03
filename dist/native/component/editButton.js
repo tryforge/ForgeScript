@@ -52,7 +52,9 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [oldId, id, label, style, emoji, disabled]) {
-        const rowIndex = ctx.container.components.findIndex((x) => x instanceof discord_js_1.ActionRow ? x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId) : false);
+        const rowIndex = ctx.container.components.findIndex((x) => (x instanceof discord_js_1.ActionRowBuilder || x instanceof discord_js_1.ContainerBuilder)
+            ? x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId)
+            : false);
         if (rowIndex === -1)
             return this.success();
         // @ts-ignore

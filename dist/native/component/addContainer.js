@@ -5,6 +5,7 @@ const structures_1 = require("../../structures");
 const buildActionRow_1 = require("../../functions/buildActionRow");
 exports.default = new structures_1.NativeFunction({
     name: "$addContainer",
+    version: "2.4.0",
     description: "Adds a new container component",
     unwrap: false,
     brackets: true,

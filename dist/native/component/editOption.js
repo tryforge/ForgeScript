@@ -52,25 +52,24 @@ exports.default = new structures_1.NativeFunction({
     ],
     execute(ctx, [old, name, desc, value, emoji, def]) {
         for (let i = 0, len = ctx.container.components.length; i < len; i++) {
-            const row = ctx.container.components[i];
-            if (!(row instanceof discord_js_1.ActionRowBuilder))
-                continue;
-            const menu = row.components[0];
-            if (menu instanceof discord_js_1.StringSelectMenuBuilder) {
-                const index = menu.options.findIndex(x => x.data.label === old);
-                if (index !== -1) {
-                    const option = menu.options[index];
-                    option
-                        .setLabel(name);
-                    if (value)
-                        option.setValue(value);
-                    if (emoji)
-                        option.setEmoji((0, discord_js_1.parseEmoji)(emoji));
-                    if (desc)
-                        option.setDescription(desc);
-                    if (def)
-                        option.setDefault(def);
-                    break;
+            const comp = ctx.container.components[i];
+            if (comp instanceof discord_js_1.ActionRowBuilder || comp instanceof discord_js_1.ContainerBuilder) {
+                const menu = comp.components[0];
+                if (menu instanceof discord_js_1.StringSelectMenuBuilder) {
+                    const index = menu.options.findIndex(x => x.data.label === old);
+                    if (index !== -1) {
+                        const option = menu.options[index];
+                        option.setLabel(name);
+                        if (value)
+                            option.setValue(value);
+                        if (emoji)
+                            option.setEmoji((0, discord_js_1.parseEmoji)(emoji));
+                        if (desc)
+                            option.setDescription(desc);
+                        if (def)
+                            option.setDefault(def);
+                        break;
+                    }
                 }
             }
         }

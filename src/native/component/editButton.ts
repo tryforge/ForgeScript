@@ -1,4 +1,4 @@
-import { ActionRow, ButtonBuilder, ButtonStyle } from "discord.js"
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -52,7 +52,9 @@ export default new NativeFunction({
     ],
     execute(ctx, [oldId, id, label, style, emoji, disabled]) {
         const rowIndex = ctx.container.components.findIndex((x) =>
-            x instanceof ActionRow ? x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId) : false
+            (x instanceof ActionRowBuilder || x instanceof ContainerBuilder)
+                ? x.components.some((x) => "custom_id" in x.data && x.data.custom_id === oldId)
+                : false
         )
         if (rowIndex === -1) return this.success()
 

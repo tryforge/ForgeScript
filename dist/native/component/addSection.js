@@ -11,6 +11,7 @@ const addTextDisplay_1 = __importDefault(require("./addTextDisplay"));
 const addThumbnail_1 = __importDefault(require("./addThumbnail"));
 exports.default = new structures_1.NativeFunction({
     name: "$addSection",
+    version: "2.4.0",
     description: "Adds a new section component",
     unwrap: false,
     brackets: true,

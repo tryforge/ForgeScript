@@ -9,6 +9,7 @@ const discord_js_1 = require("discord.js");
 const addItem_1 = __importDefault(require("./addItem"));
 exports.default = new structures_1.NativeFunction({
     name: "$addMediaGallery",
+    version: "2.4.0",
     description: "Adds a new media gallery component",
     unwrap: false,
     brackets: true,

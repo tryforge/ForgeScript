@@ -5,6 +5,7 @@ const structures_1 = require("../../structures");
 const buildActionRow_1 = require("../../functions/buildActionRow");
 exports.default = new structures_1.NativeFunction({
     name: "$addTextDisplay",
+    version: "2.4.0",
     description: "Adds a new text display component",
     unwrap: true,
     brackets: true,
