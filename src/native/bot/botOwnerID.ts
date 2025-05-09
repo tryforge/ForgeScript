@@ -1,12 +1,11 @@
 import { User } from "discord.js"
-import noop from "../../functions/noop"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 
 export default new NativeFunction({
     name: "$botOwnerID",
     version: "1.0.0",
-    description: "Returns the bot owner id",
+    description: "Returns the bot's owner id or team members",
     brackets: false,
     aliases: [
         "$clientOwnerID"

@@ -1,12 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SortType = void 0;
 const structures_1 = require("../../structures");
-var SortType;
-(function (SortType) {
-    SortType[SortType["asc"] = 0] = "asc";
-    SortType[SortType["desc"] = 1] = "desc";
-})(SortType || (exports.SortType = SortType = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$loop",
     version: "1.4.0",
@@ -36,11 +30,10 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         },
         {
-            name: "direction",
-            description: "The direction of the iteration count to use",
+            name: "desc",
+            description: "Whether to use desc order for iteration count",
             rest: false,
-            type: structures_1.ArgType.Enum,
-            enum: SortType
+            type: structures_1.ArgType.Boolean,
         }
     ],
     async execute(ctx) {

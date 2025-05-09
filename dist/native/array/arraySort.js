@@ -1,7 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SortType = void 0;
 const structures_1 = require("../../structures");
-const loop_1 = require("../statement/loop");
+var SortType;
+(function (SortType) {
+    SortType[SortType["asc"] = 0] = "asc";
+    SortType[SortType["desc"] = 1] = "desc";
+})(SortType || (exports.SortType = SortType = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$arraySort",
     version: "1.2.0",
@@ -25,10 +30,10 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "sort type",
-            description: "The sort type to use, omit to use default sort order",
+            description: "The sort type, omit to use default sort order",
             rest: false,
             type: structures_1.ArgType.Enum,
-            enum: loop_1.SortType
+            enum: SortType
         },
     ],
     output: structures_1.ArgType.Json,

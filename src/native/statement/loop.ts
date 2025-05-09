@@ -1,15 +1,4 @@
-import {
-    ArgType,
-    IExtendedCompiledFunctionConditionField,
-    IExtendedCompiledFunctionField,
-    NativeFunction,
-    Return,
-} from "../../structures"
-
-export enum SortType {
-    asc,
-    desc
-}
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$loop",
@@ -40,11 +29,10 @@ export default new NativeFunction({
             type: ArgType.String
         },
         {
-            name: "direction",
-            description: "The direction of the iteration count to use",
+            name: "desc",
+            description: "Whether to use desc order for iteration count",
             rest: false,
-            type: ArgType.Enum,
-            enum: SortType
+            type: ArgType.Boolean,
         }
     ],
     async execute(ctx) {

@@ -9,7 +9,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$botOwnerID",
     version: "1.0.0",
-    description: "Returns the bot owner id",
+    description: "Returns the bot's owner id or team members",
     brackets: false,
     aliases: [
         "$clientOwnerID"
