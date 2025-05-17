@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
-const buildActionRow_1 = require("../../functions/buildActionRow");
+const componentBuilders_1 = require("../../functions/componentBuilders");
 exports.default = new structures_1.NativeFunction({
     name: "$addTextDisplay",
     version: "2.4.0",
@@ -19,7 +19,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [content]) {
-        (0, buildActionRow_1.buildActionRow)(ctx);
+        (0, componentBuilders_1.addActionRow)(ctx);
         const comp = ctx.container.components.at(-1);
         const text = new discord_js_1.TextDisplayBuilder().setContent(content);
         if (ctx.container.isInside(discord_js_1.ComponentType.Section))

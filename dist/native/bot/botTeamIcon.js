@@ -4,6 +4,7 @@ const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$botTeamIcon",
+    version: "2.4.0",
     description: "Returns the client's team icon",
     aliases: [
         "$clientTeamIcon"

@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { buildActionRow } from "../../functions/buildActionRow"
+import { addActionRow } from "../../functions/componentBuilders"
 import { ComponentType, ContainerBuilder, MediaGalleryBuilder } from "discord.js"
 import addItem from "./addItem"
 
@@ -19,7 +19,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx) {
-        buildActionRow(ctx)
+        addActionRow(ctx)
         const comp = ctx.container.components.at(-1)
         ctx.component.gallery = new MediaGalleryBuilder()
 

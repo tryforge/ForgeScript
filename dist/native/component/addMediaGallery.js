@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-const buildActionRow_1 = require("../../functions/buildActionRow");
+const componentBuilders_1 = require("../../functions/componentBuilders");
 const discord_js_1 = require("discord.js");
 const addItem_1 = __importDefault(require("./addItem"));
 exports.default = new structures_1.NativeFunction({
@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx) {
-        (0, buildActionRow_1.buildActionRow)(ctx);
+        (0, componentBuilders_1.addActionRow)(ctx);
         const comp = ctx.container.components.at(-1);
         ctx.component.gallery = new discord_js_1.MediaGalleryBuilder();
         const items = this.getFunctions(0, addItem_1.default);

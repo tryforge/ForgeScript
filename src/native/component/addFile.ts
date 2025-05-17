@@ -1,6 +1,6 @@
 import { ComponentType, ContainerBuilder, FileBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { buildActionRow } from "../../functions/buildActionRow"
+import { addActionRow } from "../../functions/componentBuilders"
 
 export default new NativeFunction({
     name: "$addFile",
@@ -24,7 +24,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [url, spoiler]) {
-        buildActionRow(ctx)
+        addActionRow(ctx)
         const comp = ctx.container.components.at(-1)
         const file = new FileBuilder().setURL(url).setSpoiler(!!spoiler)
 

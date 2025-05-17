@@ -9,6 +9,7 @@ const teamMember_1 = require("../../properties/teamMember");
 const array_1 = __importDefault(require("../../functions/array"));
 exports.default = new structures_1.NativeFunction({
     name: "$botTeamMembers",
+    version: "2.4.0",
     description: "Returns the client's team members",
     aliases: [
         "$clientTeamMembers"

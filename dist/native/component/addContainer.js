@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
-const buildActionRow_1 = require("../../functions/buildActionRow");
+const componentBuilders_1 = require("../../functions/componentBuilders");
 exports.default = new structures_1.NativeFunction({
     name: "$addContainer",
     version: "2.4.0",
@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     async execute(ctx) {
-        (0, buildActionRow_1.buildActionRow)(ctx);
+        (0, componentBuilders_1.addActionRow)(ctx);
         ctx.container.components.push(new discord_js_1.ContainerBuilder());
         ctx.container.inside.push(discord_js_1.ComponentType.Container);
         const comp = ctx.container.components.at(-1);
@@ -51,7 +51,7 @@ exports.default = new structures_1.NativeFunction({
         const resolved = await this["resolveCode"](ctx, code);
         if (!this["isValidReturnType"](resolved))
             return resolved;
-        (0, buildActionRow_1.buildActionRow)(ctx);
+        (0, componentBuilders_1.addActionRow)(ctx);
         ctx.container.inside.pop();
         return this.success();
     },

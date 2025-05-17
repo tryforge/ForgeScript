@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { buildActionRow } from "../../functions/buildActionRow"
+import { addActionRow } from "../../functions/componentBuilders"
 import { ComponentType, ContainerBuilder, SectionBuilder } from "discord.js"
 import addButton from "./addButton"
 import addTextDisplay from "./addTextDisplay"
@@ -21,7 +21,7 @@ export default new NativeFunction({
         },
     ],
     async execute(ctx) {
-        buildActionRow(ctx)
+        addActionRow(ctx)
         const comp = ctx.container.components.at(-1)
         ctx.component.section = new SectionBuilder()
         ctx.container.inside.push(ComponentType.Section)

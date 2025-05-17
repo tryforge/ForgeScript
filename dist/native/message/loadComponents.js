@@ -1,18 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
-const ComponentBuilders = {
-    [discord_js_1.ComponentType.Button]: discord_js_1.ButtonBuilder,
-    [discord_js_1.ComponentType.StringSelect]: discord_js_1.StringSelectMenuBuilder,
-    [discord_js_1.ComponentType.UserSelect]: discord_js_1.UserSelectMenuBuilder,
-    [discord_js_1.ComponentType.ChannelSelect]: discord_js_1.ChannelSelectMenuBuilder,
-    [discord_js_1.ComponentType.RoleSelect]: discord_js_1.RoleSelectMenuBuilder,
-    [discord_js_1.ComponentType.MentionableSelect]: discord_js_1.MentionableSelectMenuBuilder,
-};
-function loadComponent(x) {
-    return ComponentBuilders[x.type]?.from(x);
-}
+const componentBuilders_1 = require("../../functions/componentBuilders");
+const discord_js_1 = require("discord.js");
 exports.default = new structures_1.NativeFunction({
     name: "$loadComponents",
     version: "1.4.0",
@@ -32,9 +22,11 @@ exports.default = new structures_1.NativeFunction({
     execute(ctx, [json]) {
         const components = Array.isArray(json)
             ? Array.isArray(json[0])
-                ? json.map((row) => new discord_js_1.ActionRowBuilder().addComponents(row?.map((x) => loadComponent(x))))
-                : new Array(new discord_js_1.ActionRowBuilder().addComponents(json?.map((x) => loadComponent(x))))
-            : new Array(new discord_js_1.ActionRowBuilder().addComponents(loadComponent(json)));
+                ? json.map((row) => new discord_js_1.ActionRowBuilder().addComponents(row?.map((comp) => (0, componentBuilders_1.buildActionRow)(comp))))
+                : (0, componentBuilders_1.isTopLevel)(json[0]?.type)
+                    ? json.map((comp) => (0, componentBuilders_1.buildComponent)(ctx, comp))
+                    : new Array(new discord_js_1.ActionRowBuilder().addComponents(json?.map((comp) => (0, componentBuilders_1.buildActionRow)(comp))))
+            : new Array((0, componentBuilders_1.isTopLevel)(json?.type) ? (0, componentBuilders_1.buildComponent)(ctx, json) : new discord_js_1.ActionRowBuilder().addComponents((0, componentBuilders_1.buildActionRow)(json)));
         ctx.container.components.push(...components);
         return this.success();
     },

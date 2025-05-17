@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     required: true;
-    type: ArgType.Channel;
+    type: ArgType.TextChannel;
 }, {
     name: string;
     description: string;
@@ -14,4 +14,4 @@ declare const _default: NativeFunction<[{
     required: true;
 }], true>;
 export default _default;
-//# sourceMappingURL=fetchRows.d.ts.map
+//# sourceMappingURL=fetchComponents.d.ts.map

@@ -1,28 +1,6 @@
-import {
-    APIButtonComponent,
-    ComponentType,
-    ActionRowBuilder,
-    ButtonBuilder,
-    ChannelSelectMenuBuilder,
-    MentionableSelectMenuBuilder,
-    RoleSelectMenuBuilder,
-    StringSelectMenuBuilder,
-    UserSelectMenuBuilder,
-} from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
-
-const ComponentBuilders = {
-    [ComponentType.Button as ComponentType]: ButtonBuilder,
-    [ComponentType.StringSelect as ComponentType]: StringSelectMenuBuilder,
-    [ComponentType.UserSelect as ComponentType]: UserSelectMenuBuilder,
-    [ComponentType.ChannelSelect as ComponentType]: ChannelSelectMenuBuilder,
-    [ComponentType.RoleSelect as ComponentType]: RoleSelectMenuBuilder,
-    [ComponentType.MentionableSelect as ComponentType]: MentionableSelectMenuBuilder,
-}
-
-function loadComponent(x: any) {
-    return ComponentBuilders[x.type as ComponentType]?.from(x)
-}
+import { buildActionRow, buildComponent, isTopLevel } from "../../functions/componentBuilders"
+import { ActionRowBuilder, ComponentType } from "discord.js"
 
 export default new NativeFunction({
     name: "$loadComponents",
@@ -43,10 +21,12 @@ export default new NativeFunction({
     execute(ctx, [json]) {
         const components = Array.isArray(json)
             ? Array.isArray(json[0])
-                ? json.map((row) => new ActionRowBuilder().addComponents(row?.map((x: any) => loadComponent(x))))
-                : new Array(new ActionRowBuilder().addComponents(json?.map((x) => loadComponent(x))))
-            : new Array(new ActionRowBuilder().addComponents(loadComponent(json)))
-            
+                ? json.map((row) => new ActionRowBuilder().addComponents(row?.map((comp: any) => buildActionRow(comp))))
+                : isTopLevel(json[0]?.type as ComponentType)
+                    ? json.map((comp) => buildComponent(ctx, comp))
+                    : new Array(new ActionRowBuilder().addComponents(json?.map((comp) => buildActionRow(comp))))
+            : new Array(isTopLevel(json?.type as ComponentType) ? buildComponent(ctx, json) : new ActionRowBuilder().addComponents(buildActionRow(json)))
+
         ctx.container.components.push(...components)
 
         return this.success()

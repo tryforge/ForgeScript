@@ -1,6 +1,6 @@
 import { ComponentType, ContainerBuilder, TextDisplayBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
-import { buildActionRow } from "../../functions/buildActionRow"
+import { addActionRow } from "../../functions/componentBuilders"
 
 export default new NativeFunction({
     name: "$addTextDisplay",
@@ -18,7 +18,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [content]) {
-        buildActionRow(ctx)
+        addActionRow(ctx)
         const comp = ctx.container.components.at(-1)
         const text = new TextDisplayBuilder().setContent(content)
 
