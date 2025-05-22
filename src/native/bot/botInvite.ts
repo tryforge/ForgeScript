@@ -1,4 +1,4 @@
-import { OAuth2Scopes, PermissionFlagsBits, PermissionsBitField, PermissionsString } from "discord.js"
+import { OAuth2Scopes, PermissionsString } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -8,7 +8,8 @@ export default new NativeFunction({
     brackets: false,
     unwrap: true,
     aliases: [
-        "$clientInvite"
+        "$clientInvite",
+        "$getBotInvite"
     ],
     args: [
         {

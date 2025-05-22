@@ -23,7 +23,7 @@ export default new NativeFunction({
             pointer: 0,
         },
     ],
-    output: ArgType.String,
+    output: ArgType.URL,
     execute(ctx, [, sound]) {
         sound ??= ctx.sound!
         return this.success(sound?.url)

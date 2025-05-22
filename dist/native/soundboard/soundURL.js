@@ -24,7 +24,7 @@ exports.default = new structures_1.NativeFunction({
             pointer: 0,
         },
     ],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.URL,
     execute(ctx, [, sound]) {
         sound ??= ctx.sound;
         return this.success(sound?.url);

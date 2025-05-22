@@ -38,15 +38,20 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     unwrap: true,
-    execute(ctx, [, user, size, ext]) {
+    execute(ctx, [guild, user, size, ext]) {
         const member = user ?? ctx.member ?? ctx.interaction?.member;
-        const hash = member?.avatar ?? member?.user?.avatar;
-        return this.success(member?.user && hash
-            ? new discord_js_1.CDN().avatar(member.user.id, hash, {
+        if (member.avatar) {
+            return this.success(new discord_js_1.CDN().guildMemberAvatar(guild?.id ?? ctx.guild?.id ?? ctx.interaction?.guildId, member.user.id, member.avatar, {
+                extension: ext || undefined,
+                size: size || 2048,
+            }));
+        }
+        return this.success(member.user.avatar
+            ? new discord_js_1.CDN().avatar(member.user.id, member.user.avatar, {
                 extension: ext || undefined,
                 size: size || 2048,
             })
-            : member?.user?.defaultAvatarURL);
+            : (member instanceof discord_js_1.GuildMember ? member.user.defaultAvatarURL : null));
     },
 });
 //# sourceMappingURL=memberAvatar.js.map

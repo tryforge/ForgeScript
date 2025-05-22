@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 import {
     ActionRowBuilder,
-    AnyComponentBuilder,
     ApplicationCommandOptionChoiceData,
     AttachmentBuilder,
     AutoModerationActionExecution,
@@ -66,7 +65,7 @@ export type Sendable =
 export class Container {
     public content?: string
     public embeds = new Array<EmbedBuilder>()
-    public components = new Array<ActionRowBuilder<AnyComponentBuilder> | ContainerBuilder | ContainerComponentBuilder>()
+    public components = new Array<ContainerBuilder | ContainerComponentBuilder>()
     public actionRow?: ActionRowBuilder<MessageActionRowComponentBuilder>
     public inside = Array<ComponentType>()
     public reference?: string

@@ -9,7 +9,8 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     unwrap: true,
     aliases: [
-        "$clientInvite"
+        "$clientInvite",
+        "$getBotInvite"
     ],
     args: [
         {

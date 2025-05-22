@@ -19,7 +19,7 @@ export declare function buildActionRow(comp: any): ButtonBuilder | StringSelectM
  * @param comp The component data.
  * @returns
  */
-export declare function buildComponent(ctx: Context, comp: any): ActionRowBuilder<import("@discordjs/builders").AnyComponentBuilder> | ContainerBuilder | FileBuilder | MediaGalleryBuilder | SectionBuilder | SeparatorBuilder | TextDisplayBuilder;
+export declare function buildComponent(ctx: Context, comp: any): ContainerBuilder | FileBuilder | MediaGalleryBuilder | SectionBuilder | SeparatorBuilder | TextDisplayBuilder | ActionRowBuilder<import("@discordjs/builders").AnyComponentBuilder>;
 /**
  * Adds an action row. This is only needed inside ComponentsV2 functions and should never be used outside this context.
  * @param ctx The current context.
