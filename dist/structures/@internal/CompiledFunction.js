@@ -471,7 +471,7 @@ class CompiledFunction {
         return new Return_1.Return(Return_1.ReturnType.Success, value);
     }
     success(value = null) {
-        return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof (value) === "string" ? value.split(this.data.count).length : value);
+        return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof (value) === "string" ? (value !== "" ? value.split(this.data.count).length : 0) : value);
     }
 }
 exports.CompiledFunction = CompiledFunction;
