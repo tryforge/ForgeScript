@@ -1,10 +1,7 @@
 import { execSync } from "child_process"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
-import { argv, stdin, stdout } from "process"
-import { createInterface } from "readline"
 import prompt from "./functions/prompt"
 import { join } from "path"
-
 
 const path = "./metadata"
 if (!existsSync(path)) mkdirSync(path)
@@ -34,11 +31,19 @@ async function main() {
     ).trim()
 
     const fileName = join(path, "changelogs.json")
-    const json: Record<string, string[]> = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : {}
+    const json: Record<string, (string | object)[]> = existsSync(fileName) ? JSON.parse(readFileSync(fileName, "utf-8")) : {}
     json[version] ??= []
 
+    for (const key in json) {
+        json[key] = json[key].map(str => typeof str === "string" ? {message:str} : str)
+    }
+
     if (!skip) {
-        json[version].unshift(msg)
+        json[version].unshift({
+            message: msg,
+            timestamp: new Date(),
+            author: execSync("git config user.name").toString().trim()
+        })
         writeFileSync(fileName, JSON.stringify(json), "utf-8")
     }
 
