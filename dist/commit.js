@@ -29,9 +29,6 @@ async function main() {
     const fileName = (0, path_1.join)(path, "changelogs.json");
     const json = (0, fs_1.existsSync)(fileName) ? JSON.parse((0, fs_1.readFileSync)(fileName, "utf-8")) : {};
     json[version] ??= [];
-    for (const key in json) {
-        json[key] = json[key].map(str => typeof str === "string" ? { message: str } : str);
-    }
     if (!skip) {
         json[version].unshift({
             message: msg,
