@@ -1,4 +1,4 @@
-import { Message, MessageType } from "discord.js"
+import { Message, MessageSnapshot, MessageType } from "discord.js"
 import defineProperties from "../functions/defineProperties"
 
 export enum MessageProperty {
@@ -20,7 +20,7 @@ export enum MessageProperty {
     stickers = "stickers",
 }
 
-export const MessageProperties = defineProperties<typeof MessageProperty, Message>({
+export const MessageProperties = defineProperties<typeof MessageProperty, Message | MessageSnapshot>({
     content: (m) => m?.content,
     id: (m) => m?.id,
     flags: (m, sep) => m?.flags.toArray().join(sep ?? ", "),
