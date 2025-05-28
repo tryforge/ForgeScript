@@ -5,6 +5,7 @@ const structures_1 = require("../../structures");
 exports.BigIntFormatRegex = /^\d+n$/;
 exports.default = new structures_1.NativeFunction({
     name: "$typeof",
+    version: "2.4.0",
     description: "Returns the type of the provided argument",
     unwrap: true,
     brackets: true,

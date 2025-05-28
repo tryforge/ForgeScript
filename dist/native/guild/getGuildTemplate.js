@@ -18,7 +18,7 @@ var TemplateProperty;
 exports.default = new structures_1.NativeFunction({
     name: "$getGuildTemplate",
     version: "1.5.0",
-    description: "Gets the template of a guild",
+    description: "Gets the data of a guild template",
     aliases: [
         "$getServerTemplate"
     ],

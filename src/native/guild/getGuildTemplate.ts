@@ -16,7 +16,7 @@ export enum TemplateProperty {
 export default new NativeFunction({
     name: "$getGuildTemplate",
     version: "1.5.0",
-    description: "Gets the template of a guild",
+    description: "Gets the data of a guild template",
     aliases: [
         "$getServerTemplate"
     ],

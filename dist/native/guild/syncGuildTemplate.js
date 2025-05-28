@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$syncGuildTemplate",
+    version: "2.4.0",
     description: "Syncs this template to the current state of the guild, returns bool",
     aliases: [
         "$syncServerTemplate"
