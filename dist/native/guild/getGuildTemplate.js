@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemplateProperty = void 0;
-const array_1 = __importDefault(require("../../functions/array"));
 const structures_1 = require("../../structures");
 var TemplateProperty;
 (function (TemplateProperty) {
@@ -17,6 +13,7 @@ var TemplateProperty;
     TemplateProperty["updatedTimestamp"] = "updatedTimestamp";
     TemplateProperty["url"] = "url";
     TemplateProperty["usageCount"] = "usageCount";
+    TemplateProperty["unSynced"] = "unSynced";
 })(TemplateProperty || (exports.TemplateProperty = TemplateProperty = {}));
 exports.default = new structures_1.NativeFunction({
     name: "$getGuildTemplate",
@@ -33,7 +30,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The code of the template to get",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Template,
         },
         {
             name: "property",
@@ -45,10 +42,9 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: [
         structures_1.ArgType.Json,
-        (0, array_1.default)()
+        structures_1.ArgType.Unknown
     ],
-    async execute(ctx, [code, prop]) {
-        const template = await ctx.client.fetchGuildTemplate(code).catch();
+    async execute(ctx, [template, prop]) {
         return this.successJSON(prop ? template[prop] : template);
     },
 });

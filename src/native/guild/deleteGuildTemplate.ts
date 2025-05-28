@@ -15,11 +15,11 @@ export default new NativeFunction({
             description: "The code of the template to delete",
             rest: false,
             required: true,
-            type: ArgType.String
+            type: ArgType.Template
         },
     ],
     output: ArgType.Boolean,
-    async execute(ctx, [code]) {
-        return this.success(!!(await (await ctx.client.fetchGuildTemplate(code).catch(ctx.noop))?.delete().catch(ctx.noop)))
+    async execute(ctx, [template]) {
+        return this.success(!!(await template.delete().catch(ctx.noop)))
     },
 })

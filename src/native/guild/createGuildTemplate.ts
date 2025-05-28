@@ -31,7 +31,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: ArgType.String,
+    output: ArgType.Template,
     async execute(ctx, [guild, name, desc]) {
         return this.success((await guild.createTemplate(name, desc || undefined).catch(ctx.noop))?.code)
     },

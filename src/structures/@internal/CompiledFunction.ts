@@ -435,6 +435,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.fetchWebhook(str).catch(ctx.noop)
     }
 
+    private async resolveTemplate(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        return await ctx.client.fetchGuildTemplate(str).catch(ctx.noop)
+    }
+
     private resolveOverwritePermission(
         ctx: Context,
         arg: IArg,

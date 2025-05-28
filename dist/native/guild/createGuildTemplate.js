@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.Template,
     async execute(ctx, [guild, name, desc]) {
         return this.success((await guild.createTemplate(name, desc || undefined).catch(ctx.noop))?.code);
     },

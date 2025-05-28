@@ -41,6 +41,6 @@ export default new NativeFunction({
     output: ArgType.Unknown,
     async execute(ctx, [, message, prop, sep]) {
         const reactions = (await (message ?? ctx.message)?.fetch().catch(ctx.noop))?.reactions.cache
-        return this.success(reactions?.map(reaction => ReactionProperties[prop ? prop : ReactionProperty.emoji](reaction, sep)).join(sep ?? ", "))
+        return this.success(reactions?.map(reaction => ReactionProperties[prop || ReactionProperty.emoji](reaction, sep)).join(sep ?? ", "))
     },
 })

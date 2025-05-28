@@ -8,14 +8,15 @@ export declare enum TemplateProperty {
     timestamp = "createdTimestamp",
     updatedTimestamp = "updatedTimestamp",
     url = "url",
-    usageCount = "usageCount"
+    usageCount = "usageCount",
+    unSynced = "unSynced"
 }
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
     required: true;
-    type: ArgType.String;
+    type: ArgType.Template;
 }, {
     name: string;
     description: string;

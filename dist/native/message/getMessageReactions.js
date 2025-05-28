@@ -42,7 +42,7 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.Unknown,
     async execute(ctx, [, message, prop, sep]) {
         const reactions = (await (message ?? ctx.message)?.fetch().catch(ctx.noop))?.reactions.cache;
-        return this.success(reactions?.map(reaction => reaction_1.ReactionProperties[prop ? prop : reaction_1.ReactionProperty.emoji](reaction, sep)).join(sep ?? ", "));
+        return this.success(reactions?.map(reaction => reaction_1.ReactionProperties[prop || reaction_1.ReactionProperty.emoji](reaction, sep)).join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=getMessageReactions.js.map

@@ -360,6 +360,9 @@ class CompiledFunction {
             return;
         return ctx.client.fetchWebhook(str).catch(ctx.noop);
     }
+    async resolveTemplate(ctx, arg, str, ref) {
+        return await ctx.client.fetchGuildTemplate(str).catch(ctx.noop);
+    }
     resolveOverwritePermission(ctx, arg, str, ref) {
         const symbol = str[0];
         if (!(symbol in CompiledFunction.OverwriteSymbolMapping))

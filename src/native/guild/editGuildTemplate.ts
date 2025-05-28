@@ -15,7 +15,7 @@ export default new NativeFunction({
             description: "The code of the template to edit",
             rest: false,
             required: true,
-            type: ArgType.String,
+            type: ArgType.Template,
         },
         {
             name: "name",
@@ -31,8 +31,8 @@ export default new NativeFunction({
         },
     ],
     output: ArgType.Boolean,
-    async execute(ctx, [code, name, desc]) {
-        const edit = await (await ctx.client.fetchGuildTemplate(code).catch(ctx.noop))?.edit({
+    async execute(ctx, [template, name, desc]) {
+        const edit = await template.edit({
             name: name || undefined,
             description: desc ?? undefined
         }).catch(ctx.noop)

@@ -21,12 +21,12 @@ class Arg {
             type: NativeFunction_1.ArgType.String
         });
     }
-    static restString(name = "strings", desc = "The strings to use") {
+    static restString(name = "strings", desc = "The strings to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.String
         });
     }
@@ -39,11 +39,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Message
         });
     }
-    static restMessage(name = "message IDs", desc = "The messages to use") {
+    static restMessage(name = "message IDs", desc = "The messages to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
+            required,
             type: NativeFunction_1.ArgType.Message,
             pointer: 0
         });
@@ -66,12 +67,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Channel
         });
     }
-    static restChannel(name = "channel IDs", desc = "The channels to use") {
+    static restChannel(name = "channel IDs", desc = "The channels to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Channel
         });
     }
@@ -102,11 +103,12 @@ class Arg {
             enum: en
         });
     }
-    static restEnum(en, name = "enum values", desc = "The enum values to use") {
+    static restEnum(en, name = "enum values", desc = "The enum values to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
+            required,
             type: NativeFunction_1.ArgType.Enum,
             enum: en
         });
@@ -128,12 +130,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Color
         });
     }
-    static restColor(name = "color hex/int(s)", desc = "The colors to use") {
+    static restColor(name = "color hex/int(s)", desc = "The colors to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Color
         });
     }
@@ -145,12 +147,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Guild
         });
     }
-    static restGuild(name = "guild IDs", desc = "The guilds to use") {
+    static restGuild(name = "guild IDs", desc = "The guilds to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Guild
         });
     }
@@ -182,12 +184,12 @@ class Arg {
             pointer: 0
         });
     }
-    static restRole(name = "role IDs", desc = "The roles to use") {
+    static restRole(name = "role IDs", desc = "The roles to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Role,
             pointer: 0
         });
@@ -209,12 +211,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Sticker,
         });
     }
-    static restSticker(name = "sticker IDs", desc = "The stickers to use") {
+    static restSticker(name = "sticker IDs", desc = "The stickers to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Sticker,
         });
     }
@@ -226,12 +228,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Json
         });
     }
-    static restJson(name = "json datas", desc = "The JSON valid values to use") {
+    static restJson(name = "json datas", desc = "The JSON valid values to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Json
         });
     }
@@ -261,21 +263,21 @@ class Arg {
             type: NativeFunction_1.ArgType.Number
         });
     }
-    static restNumber(name = "numbers", desc = "The numbers to use") {
+    static restNumber(name = "numbers", desc = "The numbers to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Number
         });
     }
-    static restUser(name = "user IDs", desc = "The users to use") {
+    static restUser(name = "user IDs", desc = "The users to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.User
         });
     }
@@ -305,12 +307,12 @@ class Arg {
             pointer: 0
         });
     }
-    static restMember(name = "member IDs", desc = "The guild members to use") {
+    static restMember(name = "member IDs", desc = "The guild members to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Member,
             pointer: 0
         });
@@ -334,12 +336,12 @@ class Arg {
             pointer: 0
         });
     }
-    static restAutomodRule(name = "rule IDs", desc = "The guild automod rule to use") {
+    static restAutomodRule(name = "rule IDs", desc = "The guild automod rule to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.AutomodRule,
             pointer: 0
         });
@@ -441,12 +443,12 @@ class Arg {
             pointer: 0
         });
     }
-    static restTextChannel(name = "text channel IDs", desc = "The text channels to use") {
+    static restTextChannel(name = "text channel IDs", desc = "The text channels to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.TextChannel
         });
     }
@@ -467,12 +469,12 @@ class Arg {
             type: NativeFunction_1.ArgType.TextChannel
         });
     }
-    static restGuildEmoji(name = "emoji IDs", desc = "The guild emojis to use") {
+    static restGuildEmoji(name = "emoji IDs", desc = "The guild emojis to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.GuildEmoji,
             pointer: 0
         });
@@ -496,12 +498,12 @@ class Arg {
             pointer: 0
         });
     }
-    static restApplicationEmoji(name = "emoji IDs", desc = "The application emojis to use") {
+    static restApplicationEmoji(name = "emoji IDs", desc = "The application emojis to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.ApplicationEmoji,
         });
     }
@@ -522,12 +524,12 @@ class Arg {
             type: NativeFunction_1.ArgType.ApplicationEmoji,
         });
     }
-    static restEmoji(name = "emoji IDs", desc = "The emojis to use") {
+    static restEmoji(name = "emoji IDs", desc = "The emojis to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Emoji,
         });
     }
@@ -548,12 +550,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Emoji,
         });
     }
-    static restAttachment(name = "attachments", desc = "The attachments to use") {
+    static restAttachment(name = "attachments", desc = "The attachments to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Attachment
         });
     }
@@ -591,12 +593,12 @@ class Arg {
             type: NativeFunction_1.ArgType.BigInt
         });
     }
-    static restBigInt(name = "bigints", desc = "The bigints to use") {
+    static restBigInt(name = "bigints", desc = "The bigints to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.BigInt
         });
     }
@@ -617,12 +619,12 @@ class Arg {
             type: NativeFunction_1.ArgType.URL
         });
     }
-    static restURL(name = "urls", desc = "The urls to use") {
+    static restURL(name = "urls", desc = "The urls to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.URL
         });
     }
@@ -634,12 +636,12 @@ class Arg {
             type: NativeFunction_1.ArgType.Boolean
         });
     }
-    static restBoolean(name = "bools", desc = "The booleans to use") {
+    static restBoolean(name = "bools", desc = "The booleans to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Boolean
         });
     }
@@ -669,21 +671,21 @@ class Arg {
             type: NativeFunction_1.ArgType.Invite
         });
     }
-    static restInvite(name = "invite codes", desc = "The invite codes to use") {
+    static restInvite(name = "invite codes", desc = "The invite codes to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Invite
         });
     }
-    static restWebhook(name = "webhook IDs", desc = "The webhooks to use") {
+    static restWebhook(name = "webhook IDs", desc = "The webhooks to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Webhook
         });
     }
@@ -702,6 +704,32 @@ class Arg {
             description: desc,
             rest: false,
             type: NativeFunction_1.ArgType.Webhook
+        });
+    }
+    static requiredTemplate(name = "template code", desc = "The template code to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            required: true,
+            type: NativeFunction_1.ArgType.Template
+        });
+    }
+    static optionalTemplate(name = "template code", desc = "The template code to use") {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: false,
+            type: NativeFunction_1.ArgType.Template
+        });
+    }
+    static restTemplate(name = "template codes", desc = "The template codes to use", required = false) {
+        return Arg.create({
+            name,
+            description: desc,
+            rest: true,
+            required,
+            type: NativeFunction_1.ArgType.Template
         });
     }
     static optionalReaction(name = "reaction emoji", desc = "The reaction emoji to use") {
@@ -723,22 +751,22 @@ class Arg {
             pointer: 1
         });
     }
-    static restReaction(name = "reaction emojis", desc = "The reaction emojis to use") {
+    static restReaction(name = "reaction emojis", desc = "The reaction emojis to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Reaction,
             pointer: 1
         });
     }
-    static restTime(name = "duration/time", desc = "The duration/time to use") {
+    static restTime(name = "duration/time", desc = "The duration/time to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Time,
         });
     }
@@ -776,21 +804,21 @@ class Arg {
             type: NativeFunction_1.ArgType.Date
         });
     }
-    static restDate(name = "timestamp/date", desc = "The timestamp/date to use") {
+    static restDate(name = "timestamp/date", desc = "The timestamp/date to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Date
         });
     }
-    static restPermission(name = "permissions", desc = "The permissions to use") {
+    static restPermission(name = "permissions", desc = "The permissions to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.Permission
         });
     }
@@ -820,12 +848,12 @@ class Arg {
             type: NativeFunction_1.ArgType.OverwritePermission
         });
     }
-    static restOverwritePermission(name = "overwrite permissions", desc = "The overwrite permissions to use, preceded by (/,-,+)") {
+    static restOverwritePermission(name = "overwrite permissions", desc = "The overwrite permissions to use, preceded by (/,-,+)", required = false) {
         return Arg.create({
             name,
             description: desc,
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.OverwritePermission
         });
     }
@@ -847,14 +875,14 @@ class Arg {
             type: NativeFunction_1.ArgType.RoleOrUser
         });
     }
-    static restRoleOrUser(name = "role/user(s)", desc = "The role/user(s) to use") {
+    static restRoleOrUser(name = "role/user(s)", desc = "The role/user(s) to use", required = false) {
         return Arg.create({
             name,
             description: desc,
             pointer: 0,
             pointerProperty: "guild",
             rest: true,
-            required: true,
+            required,
             type: NativeFunction_1.ArgType.RoleOrUser
         });
     }
