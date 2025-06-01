@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const array_1 = __importDefault(require("../../functions/array"));
 const reaction_1 = require("../../properties/reaction");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
@@ -39,7 +43,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    output: structures_1.ArgType.Unknown,
+    output: (0, array_1.default)(),
     async execute(ctx, [, message, prop, sep]) {
         const reactions = (await (message ?? ctx.message)?.fetch().catch(ctx.noop))?.reactions.cache;
         return this.success(reactions?.map(reaction => reaction_1.ReactionProperties[prop || reaction_1.ReactionProperty.emoji](reaction, sep)).join(sep ?? ", "));

@@ -1,5 +1,5 @@
 import { execSync } from "child_process"
-import { ArgType, ErrorType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$exec",

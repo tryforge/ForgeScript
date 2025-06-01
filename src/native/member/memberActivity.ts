@@ -12,7 +12,7 @@ export default new NativeFunction({
         "$memberActivities"
     ],
     unwrap: true,
-    output: array<ArgType.String>(),
+    output: array<ArgType.Unknown>(),
     args: [
         {
             name: "guild ID",

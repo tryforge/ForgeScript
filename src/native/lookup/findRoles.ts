@@ -1,20 +1,15 @@
-import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 import { RoleProperties, RoleProperty } from "../../properties/role"
 import { RoleMentionCharRegex } from "./findRole"
-
-export enum SearchMethodType {
-    startsWith,
-    endsWith,
-    includes
-}
+import { SearchMethodType } from "./findChannels"
 
 export default new NativeFunction({
     name: "$findRoles",
     version: "1.5.0",
     description: "Finds roles of a guild using a query",
     brackets: true,
-    output: array<ArgType.String>(),
+    output: array<ArgType.Unknown>(),
     args: [
         {
             name: "guild ID",

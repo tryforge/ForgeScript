@@ -23,7 +23,8 @@ export default new NativeFunction({
     ],
     output: [
         ArgType.Json,
-        ArgType.String
+        ArgType.User,
+        ArgType.Guild
     ],
     execute(ctx, [type]) {
         const owners = ctx.interaction && "authorizingIntegrationOwners" in ctx.interaction ? ctx.interaction.authorizingIntegrationOwners : undefined

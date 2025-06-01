@@ -3,17 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SearchMethodType = void 0;
 const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
 const role_1 = require("../../properties/role");
 const findRole_1 = require("./findRole");
-var SearchMethodType;
-(function (SearchMethodType) {
-    SearchMethodType[SearchMethodType["startsWith"] = 0] = "startsWith";
-    SearchMethodType[SearchMethodType["endsWith"] = 1] = "endsWith";
-    SearchMethodType[SearchMethodType["includes"] = 2] = "includes";
-})(SearchMethodType || (exports.SearchMethodType = SearchMethodType = {}));
+const findChannels_1 = require("./findChannels");
 exports.default = new structures_1.NativeFunction({
     name: "$findRoles",
     version: "1.5.0",
@@ -59,7 +53,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The method to use for searching",
             rest: false,
             type: structures_1.ArgType.Enum,
-            enum: SearchMethodType
+            enum: findChannels_1.SearchMethodType
         },
     ],
     unwrap: true,
@@ -69,9 +63,9 @@ exports.default = new structures_1.NativeFunction({
         prop ||= role_1.RoleProperty.id;
         const search = guild.roles.cache.filter(role => {
             switch (method) {
-                case SearchMethodType.startsWith:
+                case findChannels_1.SearchMethodType.startsWith:
                     return (role.id.startsWith(query) || role.name.startsWith(query));
-                case SearchMethodType.endsWith:
+                case findChannels_1.SearchMethodType.endsWith:
                     return (role.id.endsWith(query) || role.name.endsWith(query));
                 default:
                     return (role.id.includes(query) || role.name.includes(query));

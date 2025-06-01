@@ -1,15 +1,11 @@
-import array from "../../functions/array"
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
-import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpResult",
     version: "1.2.0",
     description: "Retrieve an http result value",
-    output: [
-        ArgType.Json,
-        ArgType.String
-    ],
+    brackets: false,
+    unwrap: true,
     args: [
         {
             name: "key",
@@ -19,8 +15,10 @@ export default new NativeFunction({
             rest: true
         },
     ],
-    brackets: false,
-    unwrap: true,
+    output: [
+        ArgType.Json,
+        ArgType.Unknown
+    ],
     execute(ctx, [args]) {
         if (!this.hasFields)
             return this.successJSON(ctx.getEnvironmentKey("result"))

@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     description: "Generates an advanced progress bar",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "current",
@@ -39,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         }
     ],
-    unwrap: true,
+    output: structures_1.ArgType.String,
     execute(ctx, [curr, max, len, values]) {
         return this.success((0, generateBar_1.generateAdvancedBar)(curr, max, len || undefined, values));
     }

@@ -21,7 +21,10 @@ export default new NativeFunction({
             rest: false,
         },
     ],
-    output: array<ArgType.Unknown>(),
+    output: [
+        ArgType.Json,
+        array<ArgType.Unknown>()
+    ],
     unwrap: true,
     execute(ctx, [name, sep]) {
         const json = ctx.getEnvironmentKey(name)

@@ -5,10 +5,8 @@ exports.default = new NativeFunction_1.NativeFunction({
     name: "$httpResult",
     version: "1.2.0",
     description: "Retrieve an http result value",
-    output: [
-        NativeFunction_1.ArgType.Json,
-        NativeFunction_1.ArgType.String
-    ],
+    brackets: false,
+    unwrap: true,
     args: [
         {
             name: "key",
@@ -18,8 +16,10 @@ exports.default = new NativeFunction_1.NativeFunction({
             rest: true
         },
     ],
-    brackets: false,
-    unwrap: true,
+    output: [
+        NativeFunction_1.ArgType.Json,
+        NativeFunction_1.ArgType.Unknown
+    ],
     execute(ctx, [args]) {
         if (!this.hasFields)
             return this.successJSON(ctx.getEnvironmentKey("result"));

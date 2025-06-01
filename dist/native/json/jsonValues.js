@@ -25,7 +25,10 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
         },
     ],
-    output: (0, array_1.default)(),
+    output: [
+        structures_1.ArgType.Json,
+        (0, array_1.default)()
+    ],
     unwrap: true,
     execute(ctx, [name, sep]) {
         const json = ctx.getEnvironmentKey(name);

@@ -1,5 +1,4 @@
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
-import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpRemoveHeader",
@@ -17,10 +16,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        if (ctx.http.headers) {
-            delete ctx.http.headers[name]
-        }
-
+        if (ctx.http.headers) delete ctx.http.headers[name]
         return this.success()
     },
 })

@@ -1,4 +1,3 @@
-import { AutoModerationActionType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -6,7 +5,7 @@ export default new NativeFunction({
     version: "1.2.0",
     description: "Returns the message sent by automod",
     unwrap: false,
-    output: ArgType.String,
+    output: ArgType.Message,
     execute(ctx) {
         return this.success(ctx.automod?.alertSystemMessageId)
     },

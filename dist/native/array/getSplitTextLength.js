@@ -9,7 +9,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$getTextSplitLength"
     ],
-    output: structures_1.ArgType.String,
+    output: structures_1.ArgType.Number,
     unwrap: true,
     execute(ctx) {
         return this.success(ctx.getEnvironmentInstance(Array, textSplit_1.SplitTextName)?.length);

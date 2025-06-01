@@ -9,6 +9,7 @@ export default new NativeFunction({
     ],
     description: "Generates an advanced progress bar",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "current",
@@ -38,7 +39,7 @@ export default new NativeFunction({
             type: ArgType.String
         }
     ],
-    unwrap: true,
+    output: ArgType.String,
     execute(ctx, [ curr, max, len, values ]) {
         return this.success(
             generateAdvancedBar(

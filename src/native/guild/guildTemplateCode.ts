@@ -18,7 +18,7 @@ export default new NativeFunction({
             type: ArgType.Guild
         },
     ],
-    output: ArgType.String,
+    output: ArgType.Template,
     async execute(ctx, [guild]) {
         const template = (await (guild ?? ctx.guild)?.fetchTemplates().catch(ctx.noop))?.first()
         return this.success(template?.code)

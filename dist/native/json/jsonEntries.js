@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const array_1 = __importDefault(require("../../functions/array"));
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$jsonEntries",
@@ -19,7 +15,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         }
     ],
-    output: (0, array_1.default)(),
+    output: structures_1.ArgType.Json,
     unwrap: true,
     execute(ctx, [name]) {
         const json = ctx.getEnvironmentKey(name);

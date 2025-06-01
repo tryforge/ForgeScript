@@ -15,7 +15,7 @@ export default new NativeFunction({
         Arg.optionalEnum(MemberProperty),
         Arg.optionalString("separator", "The separator to use for every result"),
     ],
-    output: array<ArgType.String>(),
+    output: array<ArgType.Unknown>(),
     async execute(ctx, [guild, query, limit, en, sep]) {
         limit ??= 10
         en ??= MemberProperty.id

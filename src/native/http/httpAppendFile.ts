@@ -23,6 +23,7 @@ export default new NativeFunction({
         }
     ],
     execute(ctx, [ key, file ]) {
+        // @ts-ignore
         ctx.http.form?.append(key, new Blob([file.attachment as Buffer]), file.name!)
         return this.success()        
     },

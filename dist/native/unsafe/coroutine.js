@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable no-undef */
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$coroutine",

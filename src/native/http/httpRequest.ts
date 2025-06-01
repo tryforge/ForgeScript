@@ -1,6 +1,5 @@
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
 import { fetch } from "undici"
-import { Return } from "../../structures/@internal/Return"
 import { HTTPContentType } from "../../structures"
 
 export default new NativeFunction({

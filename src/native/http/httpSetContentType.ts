@@ -1,6 +1,5 @@
 import { HTTPContentType } from "../../structures"
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
-import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$httpSetContentType",

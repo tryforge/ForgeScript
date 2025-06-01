@@ -1,7 +1,5 @@
 /* eslint-disable no-undef */
-import { Worker } from "worker_threads"
-import { ArgType, ErrorType, NativeFunction, Return } from "../../structures"
-import { once } from "events"
+import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
     name: "$coroutine",

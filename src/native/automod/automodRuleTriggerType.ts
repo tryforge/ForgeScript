@@ -1,4 +1,4 @@
-import { AutoModerationActionType, AutoModerationRuleTriggerType } from "discord.js"
+import { AutoModerationRuleTriggerType } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({

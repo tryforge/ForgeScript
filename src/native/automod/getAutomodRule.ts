@@ -37,9 +37,13 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    output: ArgType.Unknown,
+    output: [
+        ArgType.Json,
+        ArgType.Unknown
+    ],
     async execute(ctx, [ guild, id, prop, sep ]) {
         const rule = await (guild ?? ctx.guild)?.autoModerationRules.fetch(id).catch(ctx.noop)
-        return this.successJSON(rule && prop ? AutomodRuleProperties[prop](rule, sep) : rule)
+        if (prop && rule) return this.success(AutomodRuleProperties[prop](rule, sep))
+        return this.successJSON(rule)
     },
 })

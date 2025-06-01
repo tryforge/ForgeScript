@@ -5,11 +5,12 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$bar",
     version: "1.5.0",
+    description: "Generates a progress bar",
     aliases: [
         "$generateBar"
     ],
-    description: "Generates a progress bar",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "current",
@@ -74,7 +75,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         },
     ],
-    unwrap: true,
+    output: structures_1.ArgType.String,
     execute(ctx, [curr, max, len, fill, empty, trunc, fillStart, fillEnd, emptyStart, emptyEnd]) {
         return this.success((0, generateBar_1.generateBar)(curr, max, len ?? undefined, fill ?? undefined, empty ?? undefined, !trunc, fillStart || undefined, fillEnd || undefined, emptyStart || undefined, emptyEnd || undefined));
     }

@@ -1,10 +1,6 @@
 import { ArgType, NativeFunction } from "../../structures";
 import { RoleProperty } from "../../properties/role";
-export declare enum SearchMethodType {
-    startsWith = 0,
-    endsWith = 1,
-    includes = 2
-}
+import { SearchMethodType } from "./findChannels";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;

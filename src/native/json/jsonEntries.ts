@@ -1,4 +1,3 @@
-import array from "../../functions/array"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -15,7 +14,7 @@ export default new NativeFunction({
             required: true,
         }
     ],
-    output: array<ArgType.Unknown>(),
+    output: ArgType.Json,
     unwrap: true,
     execute(ctx, [name]) {
         const json = ctx.getEnvironmentKey(name)

@@ -1,8 +1,7 @@
-import { ArgType, CompiledFunction, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 import { ChannelProperties, ChannelProperty } from "../../properties/channel"
 import { ChannelMentionCharRegex } from "./findGuildChannel"
-import { channel } from "diagnostics_channel"
 
 export enum SearchMethodType {
     startsWith,
@@ -15,7 +14,7 @@ export default new NativeFunction({
     version: "1.5.0",
     description: "Finds channels of a guild using a query",
     brackets: true,
-    output: array<ArgType.String>(),
+    output: array<ArgType.Unknown>(),
     args: [
         {
             name: "guild ID",

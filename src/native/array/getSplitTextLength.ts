@@ -8,7 +8,7 @@ export default new NativeFunction({
     aliases: [
         "$getTextSplitLength"
     ],
-    output: ArgType.String,
+    output: ArgType.Number,
     unwrap: true,
     execute(ctx) {
         return this.success(

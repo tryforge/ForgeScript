@@ -22,6 +22,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
+    output: ArgType.String,
     execute(ctx, [lhs, rhs]) {
         return this.success(lhs || rhs)
     },

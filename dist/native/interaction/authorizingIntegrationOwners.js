@@ -25,7 +25,8 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: [
         structures_1.ArgType.Json,
-        structures_1.ArgType.String
+        structures_1.ArgType.User,
+        structures_1.ArgType.Guild
     ],
     execute(ctx, [type]) {
         const owners = ctx.interaction && "authorizingIntegrationOwners" in ctx.interaction ? ctx.interaction.authorizingIntegrationOwners : undefined;

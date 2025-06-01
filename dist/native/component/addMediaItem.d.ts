@@ -17,4 +17,4 @@ declare const _default: NativeFunction<[{
     type: ArgType.Boolean;
 }], true>;
 export default _default;
-//# sourceMappingURL=addItem.d.ts.map
+//# sourceMappingURL=addMediaItem.d.ts.map

@@ -4,11 +4,12 @@ import { ArgType, NativeFunction } from "../../structures"
 export default new NativeFunction({
     name: "$bar",
     version: "1.5.0",
+    description: "Generates a progress bar",
     aliases: [
         "$generateBar"
     ],
-    description: "Generates a progress bar",
     brackets: true,
+    unwrap: true,
     args: [
         {
             name: "current",
@@ -73,7 +74,7 @@ export default new NativeFunction({
             type: ArgType.String
         },
     ],
-    unwrap: true,
+    output: ArgType.String,
     execute(ctx, [ curr, max, len, fill, empty, trunc, fillStart, fillEnd, emptyStart, emptyEnd ]) {
         return this.success(
             generateBar(

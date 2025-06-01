@@ -17,9 +17,8 @@ exports.default = new NativeFunction_1.NativeFunction({
     ],
     brackets: true,
     execute(ctx, [name]) {
-        if (ctx.http.headers) {
+        if (ctx.http.headers)
             delete ctx.http.headers[name];
-        }
         return this.success();
     },
 });
