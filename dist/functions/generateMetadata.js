@@ -61,6 +61,11 @@ async function default_1(functionsAbsolutePath, mainCategoryName, eventName, war
     const metaOutPath = "./metadata";
     if (!(0, fs_1.existsSync)(metaOutPath))
         (0, fs_1.mkdirSync)(metaOutPath);
+    const dir = (0, path_1.join)(__dirname, "..");
+    (0, fs_1.writeFileSync)((0, path_1.join)(metaOutPath, "paths.json"), JSON.stringify({
+        functions: "src/" + (0, path_1.relative)(dir, functionsAbsolutePath),
+        ...(eventsAbsolutePath && { events: "src/" + (0, path_1.relative)(dir, eventsAbsolutePath) })
+    }), "utf-8");
     const v = require((0, process_1.cwd)() + "/package.json").version;
     if (mainCategoryName) {
         for (const [, fn] of managers_1.FunctionManager["Functions"]) {

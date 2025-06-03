@@ -89,6 +89,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     private resolvePointer;
     private resolveArg;
     get hasFields(): boolean;
+    hasField(i: number): boolean;
     error(err: Error): Return<ReturnType.Error>;
     error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): Return<ReturnType.Error>;
     customError(msg: string): Return<ReturnType.Error>;

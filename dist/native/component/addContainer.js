@@ -35,13 +35,13 @@ exports.default = new structures_1.NativeFunction({
         ctx.container.components.push(new discord_js_1.ContainerBuilder());
         ctx.container.inside.push(discord_js_1.ComponentType.Container);
         const comp = ctx.container.components.at(-1);
-        if (this.displayField(1)) {
+        if (this.hasField(1)) {
             const color = await this["resolveUnhandledArg"](ctx, 1);
             if (!this["isValidReturnType"](color))
                 return color;
             comp.setAccentColor(color.value);
         }
-        if (this.displayField(2)) {
+        if (this.hasField(2)) {
             const spoiler = await this["resolveUnhandledArg"](ctx, 2);
             if (!this["isValidReturnType"](spoiler))
                 return spoiler;

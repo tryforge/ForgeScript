@@ -50,7 +50,7 @@ class CompiledFunction {
         };
     }
     displayField(i) {
-        const field = this.data.fields[i];
+        const field = this.data.fields?.[i];
         if (!field)
             return null;
         if ("op" in field) {
@@ -407,6 +407,9 @@ class CompiledFunction {
     }
     get hasFields() {
         return this.data.fields !== null;
+    }
+    hasField(i) {
+        return this.data.fields?.[i] != null;
     }
     error(type, ...args) {
         if (type instanceof Error)

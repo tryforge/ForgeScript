@@ -1,13 +1,11 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs"
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { EventManager, FunctionManager } from "../managers"
-import { execSync } from "child_process"
-import { argv, cwd, exit } from "process"
-import { Arg, ArgType, EnumLike, IArg, IEvent, INativeFunction, Logger, NativeFunction } from "../structures"
+import { cwd, exit } from "process"
+import { EnumLike, IArg, IEvent, INativeFunction, Logger } from "../structures"
 import { enumToArray } from "./enum"
-import { capitalize } from "lodash"
 import { translateData } from "./translate"
-import { Locale, MessageType } from "discord.js"
-import { join } from "path"
+import { Locale } from "discord.js"
+import { join, relative } from "path"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
@@ -74,8 +72,13 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
     Logger.info(`Loaded ${FunctionManager["Functions"].size} functions`)
 
     const metaOutPath = "./metadata"
-
     if (!existsSync(metaOutPath)) mkdirSync(metaOutPath)
+
+    const dir = join(__dirname, "..")
+    writeFileSync(join(metaOutPath, "paths.json"), JSON.stringify({
+        functions: "src/" + relative(dir, functionsAbsolutePath),
+        ...(eventsAbsolutePath && { events: "src/" + relative(dir, eventsAbsolutePath) })
+    }), "utf-8")
 
     const v = require(cwd() + "/package.json").version
 

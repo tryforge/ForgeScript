@@ -85,7 +85,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public displayField(i: number) {
-        const field = this.data.fields![i]
+        const field = this.data.fields?.[i]
         if (!field) return null
         if ("op" in field) {
             if (field.rhs) {
@@ -502,6 +502,10 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     public get hasFields() {
         return this.data.fields !== null
+    }
+
+    public hasField(i: number) {
+        return this.data.fields?.[i] != null
     }
 
     public error(err: Error): Return<ReturnType.Error>
