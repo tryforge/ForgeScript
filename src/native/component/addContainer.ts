@@ -35,13 +35,13 @@ export default new NativeFunction({
         ctx.container.inside.push(ComponentType.Container)
         const comp = ctx.container.components.at(-1) as ContainerBuilder
 
-        if (this.hasField(1)) {
+        if (this.displayField(1)) {
             const color = await this["resolveUnhandledArg"](ctx, 1)
             if (!this["isValidReturnType"](color)) return color
             comp.setAccentColor(color.value as number)
         }
 
-        if (this.hasField(2)) {
+        if (this.displayField(2)) {
             const spoiler = await this["resolveUnhandledArg"](ctx, 2)
             if (!this["isValidReturnType"](spoiler)) return spoiler
             comp.setSpoiler(spoiler.value as boolean)
