@@ -11,7 +11,7 @@ export default new NativeFunction({
     args: [
         {
             name: "url",
-            description: "The url of the file",
+            description: "The url of the file (must use attachment://)",
             rest: false,
             required: true,
             type: ArgType.String,

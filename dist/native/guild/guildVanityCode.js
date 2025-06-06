@@ -22,8 +22,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: false,
     async execute(ctx, [guild]) {
         guild ??= ctx.guild;
-        const vanity = await guild?.fetchVanityData().catch(ctx.noop);
-        return this.success(vanity ? vanity.code : undefined);
+        return this.success(guild?.vanityURLCode ?? (await guild?.fetchVanityData().catch(ctx.noop))?.code);
     },
 });
 //# sourceMappingURL=guildVanityCode.js.map

@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "url",
-            description: "The url of the file",
+            description: "The url of the file (must use attachment://)",
             rest: false,
             required: true,
             type: structures_1.ArgType.String,

@@ -1,3 +1,5 @@
+const DigitalFormatRegex = /^(?:(\d+):)?([0-5]?\d):([0-5]?\d)$/
+
 export function parseDigital(ms: number): string {
     const hours = Math.floor(ms / (1000 * 60 * 60))
     const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60))
@@ -11,13 +13,16 @@ export function parseDigital(ms: number): string {
 }
 
 export function unparseDigital(digital: string): number {
-    const DigitalFormatRegex = /^(\d+):([0-5]?\d):([0-5]?\d)$/
     const match = digital.match(DigitalFormatRegex)
     if (!match) return 0
 
     const [, hours, minutes, seconds] = match
-    const ms = (parseInt(hours, 10) * 60 * 60 * 1000) + (parseInt(minutes, 10) * 60 * 1000) + (parseInt(seconds, 10) * 1000)
-    if (isNaN(ms)) return 0
 
-    return ms
+    const h = parseInt(hours ?? "0", 10)
+    const m = parseInt(minutes, 10)
+    const s = parseInt(seconds, 10)
+    
+    const ms = (h * 3600000) + (m * 60000) + (s * 1000)
+
+    return isNaN(ms) ? 0 : ms
 }
