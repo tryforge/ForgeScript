@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const componentBuilders_1 = require("../../functions/componentBuilders");
+const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$fetchComponents",
@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [, msg]) {
-        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => (0, componentBuilders_1.buildComponent)(ctx, x)) ?? [];
+        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => (0, discord_js_1.createComponentBuilder)(x.toJSON())) ?? [];
         return this.success();
     },
 });

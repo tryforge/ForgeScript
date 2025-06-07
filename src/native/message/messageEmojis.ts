@@ -2,19 +2,12 @@ import { BaseChannel } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 import array from "../../functions/array"
 
-export enum StickerReturnType {
-    id = "id",
-    url = "url"
-}
+const EmojiRegex = /<a?:\w+:(\d+)>|([\p{Emoji_Presentation}\p{Extended_Pictographic}])/gu
 
 export default new NativeFunction({
-    name: "$messageStickers",
-    version: "1.4.0",
-    aliases: [
-        "$stickers"
-    ],
-    output: array<ArgType.Sticker>(),
-    description: "Retrieves all stickers of this message",
+    name: "$messageEmojis",
+    version: "2.4.0",
+    description: "Retrieves all emojis of this message",
     brackets: false,
     unwrap: true,
     args: [
@@ -29,7 +22,7 @@ export default new NativeFunction({
         {
             name: "message ID",
             pointer: 0,
-            description: "The message to get its stickers",
+            description: "The message to get its emojis",
             rest: false,
             required: true,
             type: ArgType.Message,
@@ -37,18 +30,18 @@ export default new NativeFunction({
         {
             name: "separator",
             rest: false,
-            description: "The separator to use for every sticker",
+            description: "The separator to use for every emoji",
             type: ArgType.String,
         },
         {
-            name: "type",
+            name: "return ids",
             rest: false,
-            description: "The type to return, default is url",
-            type: ArgType.Enum,
-            enum: StickerReturnType
-        }
+            description: "Whether to return the emoji ids, excludes unicode emojis",
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [, message, sep, type]) {
-        return this.success((message ?? ctx.message)?.stickers.map(x => x[type || StickerReturnType.url]).join(sep ?? ", "))
+    output: array<ArgType.Emoji>(),
+    execute(ctx, [, message, sep, returnIDs]) {
+        return this.success([...(message ?? ctx.message)?.content.matchAll(EmojiRegex) ?? []].map((x) => x[returnIDs ? 1 : 0]).filter(Boolean).join(sep ?? ", "))
     },
 })

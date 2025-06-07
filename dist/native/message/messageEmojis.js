@@ -3,22 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StickerReturnType = void 0;
 const structures_1 = require("../../structures");
 const array_1 = __importDefault(require("../../functions/array"));
-var StickerReturnType;
-(function (StickerReturnType) {
-    StickerReturnType["id"] = "id";
-    StickerReturnType["url"] = "url";
-})(StickerReturnType || (exports.StickerReturnType = StickerReturnType = {}));
+const EmojiRegex = /<a?:\w+:(\d+)>|([\p{Emoji_Presentation}\p{Extended_Pictographic}])/gu;
 exports.default = new structures_1.NativeFunction({
-    name: "$messageStickers",
-    version: "1.4.0",
-    aliases: [
-        "$stickers"
-    ],
-    output: (0, array_1.default)(),
-    description: "Retrieves all stickers of this message",
+    name: "$messageEmojis",
+    description: "Retrieves all emojis of this message",
     brackets: false,
     unwrap: true,
     args: [
@@ -33,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "message ID",
             pointer: 0,
-            description: "The message to get its stickers",
+            description: "The message to get its emojis",
             rest: false,
             required: true,
             type: structures_1.ArgType.Message,
@@ -41,19 +31,19 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "separator",
             rest: false,
-            description: "The separator to use for every sticker",
+            description: "The separator to use for every emoji",
             type: structures_1.ArgType.String,
         },
         {
-            name: "type",
+            name: "return ids",
             rest: false,
-            description: "The type to return, default is url",
-            type: structures_1.ArgType.Enum,
-            enum: StickerReturnType
-        }
+            description: "Whether to return the emoji ids, excludes unicode emojis",
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    execute(ctx, [, message, sep, type]) {
-        return this.success((message ?? ctx.message)?.stickers.map(x => x[type || StickerReturnType.url]).join(sep ?? ", "));
+    output: (0, array_1.default)(),
+    execute(ctx, [, message, sep, returnIDs]) {
+        return this.success([...(message ?? ctx.message)?.content.matchAll(EmojiRegex) ?? []].map((x) => x[returnIDs ? 1 : 0]).filter(Boolean).join(sep ?? ", "));
     },
 });
-//# sourceMappingURL=messageStickers.js.map
+//# sourceMappingURL=messageEmojis.js.map

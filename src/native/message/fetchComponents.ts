@@ -1,4 +1,4 @@
-import { buildComponent } from "../../functions/componentBuilders"
+import { createComponentBuilder } from "discord.js"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -26,7 +26,7 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [, msg]) {
-        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => buildComponent(ctx, x)) ?? []
+        ctx.container.components = (msg ?? ctx.message)?.components.map((x) => createComponentBuilder(x.toJSON())) ?? []
         return this.success()
     },
 })
