@@ -20,7 +20,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "length",
-            description: "The default length of the array",
+            description: "The default length of the array, defaults to 0",
             rest: false,
             required: false,
             type: structures_1.ArgType.Number
@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [v, n]) {
-        ctx.setEnvironmentKey(v, new Array(n));
+        ctx.setEnvironmentKey(v, new Array(n || 0));
         return this.success();
     },
 });

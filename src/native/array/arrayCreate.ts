@@ -19,7 +19,7 @@ export default new NativeFunction({
         },
         {
             name: "length",
-            description: "The default length of the array",
+            description: "The default length of the array, defaults to 0",
             rest: false,
             required: false,
             type: ArgType.Number
@@ -27,7 +27,7 @@ export default new NativeFunction({
     ],
     unwrap: true,
     execute(ctx, [ v, n ]) {
-        ctx.setEnvironmentKey(v, new Array(n))
+        ctx.setEnvironmentKey(v, new Array(n || 0))
         return this.success()
     },
 })

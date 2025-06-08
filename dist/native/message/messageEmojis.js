@@ -8,6 +8,7 @@ const array_1 = __importDefault(require("../../functions/array"));
 const EmojiRegex = /<a?:\w+:(\d+)>|([\p{Emoji_Presentation}\p{Extended_Pictographic}])/gu;
 exports.default = new structures_1.NativeFunction({
     name: "$messageEmojis",
+    version: "2.4.0",
     description: "Retrieves all emojis of this message",
     brackets: false,
     unwrap: true,
