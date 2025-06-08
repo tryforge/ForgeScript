@@ -1,5 +1,6 @@
-import { AttachmentBuilder, createComponentBuilder, EmbedBuilder } from "discord.js"
+import { AttachmentBuilder, EmbedBuilder } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
+import { buildComponent } from "../../functions/componentBuilders"
 
 export default new NativeFunction({
     name: "$fetchResponse",
@@ -28,7 +29,7 @@ export default new NativeFunction({
         msg ??= ctx.message!
         if (msg) {
             ctx.container.embeds.push(...msg.embeds.map(x => EmbedBuilder.from(x)))
-            ctx.container.components.push(...msg.components.map(x => createComponentBuilder(x.toJSON())))
+            ctx.container.components.push(...msg.components.map(x => buildComponent(ctx, x)))
             ctx.container.files.push(...msg.attachments.map(x => new AttachmentBuilder(x.url, { name: x.name })))
             ctx.container.stickers.push(...msg.stickers.map(x => x.id))
         }
