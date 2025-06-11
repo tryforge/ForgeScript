@@ -1,4 +1,4 @@
-import { copyFileSync, cpSync, statSync, symlinkSync } from "fs"
+import { symlinkSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({

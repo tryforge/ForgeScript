@@ -1,4 +1,4 @@
-import { appendFileSync, readFileSync, truncateSync, writeFileSync } from "fs"
+import { readFileSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
@@ -7,7 +7,7 @@ export default new NativeFunction({
     description: "Reads text from a file",
     unwrap: true,
     brackets: true,
-    output: ArgType.String,
+    output: ArgType.Unknown,
     args: [
         {
             name: "path",

@@ -1,4 +1,4 @@
-import { existsSync, statSync } from "fs"
+import { statSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({

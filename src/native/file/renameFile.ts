@@ -1,4 +1,4 @@
-import { appendFileSync, readFileSync, renameSync, truncateSync, writeFileSync } from "fs"
+import { renameSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({

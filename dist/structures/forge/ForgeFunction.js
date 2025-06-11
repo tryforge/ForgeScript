@@ -29,7 +29,7 @@ class ForgeFunction {
             unwrap: (!!this.data.params?.length && !this.data.firstParamCondition),
             args: this.data.params?.length ? this.data.params.map((x, i) => ({
                 name: typeof x === "string" ? x : x.name,
-                rest: false,
+                rest: typeof x === "string" ? false : !!x.rest,
                 condition: i === 0 && !!this.data.firstParamCondition,
                 type: typeof x === "string" ? __1.ArgType.String : (typeof x.type === "number" && x.type in __1.ArgType ? x.type : __1.ArgType[x.type]) ?? __1.ArgType.String,
                 required: typeof x === "string" ? true : x.required ?? true

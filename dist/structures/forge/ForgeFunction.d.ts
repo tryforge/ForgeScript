@@ -5,6 +5,7 @@ export interface IForgeFunctionParam {
     name: string;
     type?: ArgType | keyof typeof ArgType;
     required?: boolean;
+    rest?: boolean;
 }
 export interface IForgeFunction {
     name: string;

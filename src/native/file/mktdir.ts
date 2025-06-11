@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtemp, mkdtempSync } from "fs"
+import { mkdtempSync } from "fs"
 import { ArgType, NativeFunction, Return } from "../../structures"
 
 export default new NativeFunction({
