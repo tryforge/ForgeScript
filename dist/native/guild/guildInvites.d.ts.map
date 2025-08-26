@@ -1,1 +1,1 @@
-{"version":3,"file":"guildInvites.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildInvites.ts"],"names":[],"mappings":"AAAA,OAAO,EAAoB,cAAc,EAAE,MAAM,yBAAyB,CAAA;AAC1E,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAG1D,wBAsCE"}
+{"version":3,"file":"guildInvites.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildInvites.ts"],"names":[],"mappings":"AAAA,OAAO,EAAoB,cAAc,EAAE,MAAM,yBAAyB,CAAA;AAC1E,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAG1D,wBAuCE"}
