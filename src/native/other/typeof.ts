@@ -29,7 +29,7 @@ export default new NativeFunction({
         if (arg === "undefined") type = "undefined"
         else if (arg === "true" || arg === "false") type = "boolean"
         else if (BigIntFormatRegex.test(arg)) type = "bigint"
-        else if (!!arg.trim() && !isNaN(Number(arg))) type = "number"
+        else if ((!!arg.trim() && !isNaN(Number(arg))) || arg === "NaN") type = "number"
         else {
             try {
                 JSON.parse(arg)
