@@ -11667,7 +11667,7 @@
             "description": ""
         },
         "stickerCreate": {
-            "description": ""
+            "description": "Dieses Event wird ausgelöst, wenn ein Sticker erstellt wird"
         },
         "stickerDelete": {
             "description": ""
