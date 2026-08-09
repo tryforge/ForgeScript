@@ -924,6 +924,9 @@
                 }
             }
         },
+        "$fetchApplication": {
+            "description": ""
+        },
         "$hasExtension": {
             "description": "",
             "args": {
@@ -1171,6 +1174,17 @@
                     "description": ""
                 },
                 "id": {
+                    "description": ""
+                },
+                "perms": {
+                    "description": ""
+                }
+            }
+        },
+        "$addPermissionOverwrite": {
+            "description": "",
+            "args": {
+                "roleOrUser": {
                     "description": ""
                 },
                 "perms": {
