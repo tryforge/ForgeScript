@@ -2423,6 +2423,14 @@
                 }
             }
         },
+        "$threadIsLocked": {
+            "description": "",
+            "args": {
+                "channel ID": {
+                    "description": ""
+                }
+            }
+        },
         "$threadOwnerID": {
             "description": "",
             "args": {
