@@ -8,7 +8,7 @@ const Interpreter_1 = require("../../core/Interpreter");
 const DiscordEventHandler_1 = require("../../structures/extended/DiscordEventHandler");
 exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     name: "messageCreate",
-    version: "1.0.2",
+    version: "1.0.1",
     description: "This event is fired when someone sends a message",
     listener: async function (message) {
         const prefix = await this.getPrefix(message);
@@ -39,6 +39,6 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
             });
         }
     },
-    intents: ["GuildMessages", "DirectMessages", "MessageContent"],
+    intents: ["GuildMessages", "DirectMessages"],
 });
 //# sourceMappingURL=messageCreate.js.map
