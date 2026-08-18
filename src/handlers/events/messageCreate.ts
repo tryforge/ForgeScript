@@ -8,28 +8,28 @@ import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandl
 
 export default new DiscordEventHandler({
     name: "messageCreate",
-    version: "1.0.1",
+    version: "1.0.2",
     description: "This event is fired when someone sends a message",
     listener: async function (message) {
         const prefix = await this.getPrefix(message)
-
-        const args = message.content
-            .slice(prefix?.length ?? 0)
-            .trim()
-            .split(/ +/g)
-        const name = prefix ? args.shift()?.toLowerCase() : args[0]
+        const content = message.content.trim()
+        const hasPrefix = !!prefix && content.toLowerCase().startsWith(prefix.toLowerCase())
+        const rawArgs = (hasPrefix ? content.slice(prefix!.length) : content).trim().split(/ +/g)
+        const name = rawArgs[0]?.toLowerCase()
 
         const commands = this.commands.get("messageCreate").filter(
-            // Allow always execute commands
             (cmd) =>
+                // Allow always execute commands
                 !cmd.name ||
-                (// Check if it matches the command name or one of aliases
-                    (cmd.name === name || !!cmd.data.aliases?.includes(name!)) &&
-                    // If unprefixed there can be no prefix
-                    (cmd.data.unprefixed ? true : !!prefix))
+                // Check if it matches the command name or one of aliases
+                ((cmd.name === name || 
+                    !!cmd.data.aliases?.includes(name!)) &&
+                    (cmd.data.unprefixed ? true : hasPrefix))
         )
 
         for (const command of commands) {
+            const args = command.name ? rawArgs.slice(1) : rawArgs
+
             Interpreter.run({
                 obj: message,
                 command,
@@ -44,5 +44,5 @@ export default new DiscordEventHandler({
             })
         }
     },
-    intents: ["GuildMessages", "DirectMessages"],
+    intents: ["GuildMessages", "DirectMessages", "MessageContent"],
 })
