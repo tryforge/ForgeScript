@@ -13,7 +13,7 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
     listener: async function (message) {
         const prefix = await this.getPrefix(message);
         const content = message.content.trim();
-        const hasPrefix = !!prefix && content.toLowerCase().startsWith(prefix.toLowerCase());
+        const hasPrefix = !!prefix && content.startsWith(prefix);
         const rawArgs = (hasPrefix ? content.slice(prefix.length) : content).trim().split(/ +/g);
         const name = rawArgs[0]?.toLowerCase();
         const commands = this.commands.get("messageCreate").filter((cmd) => 
