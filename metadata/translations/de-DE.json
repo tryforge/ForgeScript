@@ -5685,6 +5685,17 @@
                 }
             }
         },
+        "$guildSystemChannelFlags": {
+            "description": "",
+            "args": {
+                "guild ID": {
+                    "description": ""
+                },
+                "separator": {
+                    "description": ""
+                }
+            }
+        },
         "$guildSystemChannelID": {
             "description": "",
             "args": {
@@ -11082,6 +11093,14 @@
         "$authorID": {
             "description": ""
         },
+        "$deleteDM": {
+            "description": "",
+            "args": {
+                "user ID": {
+                    "description": ""
+                }
+            }
+        },
         "$discriminator": {
             "description": "",
             "args": {
@@ -11301,6 +11320,14 @@
             }
         },
         "$userTag": {
+            "description": "",
+            "args": {
+                "user ID": {
+                    "description": ""
+                }
+            }
+        },
+        "$userURL": {
             "description": "",
             "args": {
                 "user ID": {
