@@ -8,7 +8,7 @@ import { DiscordEventHandler } from "../../structures/extended/DiscordEventHandl
 
 export default new DiscordEventHandler({
     name: "messageCreate",
-    version: "1.0.2",
+    version: "1.0.1",
     description: "This event is fired when someone sends a message",
     listener: async function (message) {
         const prefix = await this.getPrefix(message)
