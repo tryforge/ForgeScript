@@ -1976,6 +1976,20 @@
                 }
             }
         },
+        "$getForumTag": {
+            "description": "",
+            "args": {
+                "channel ID": {
+                    "description": ""
+                },
+                "tag ID": {
+                    "description": ""
+                },
+                "property": {
+                    "description": ""
+                }
+            }
+        },
         "$getStageInstance": {
             "description": "",
             "args": {
