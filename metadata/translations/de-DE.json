@@ -8024,6 +8024,20 @@
                 }
             }
         },
+        "$fetchSnapshot": {
+            "description": "",
+            "args": {
+                "channel ID": {
+                    "description": ""
+                },
+                "message ID": {
+                    "description": ""
+                },
+                "index": {
+                    "description": ""
+                }
+            }
+        },
         "$forwardMessage": {
             "description": "",
             "args": {
@@ -8209,6 +8223,17 @@
             }
         },
         "$hasEmbeds": {
+            "description": "",
+            "args": {
+                "channel ID": {
+                    "description": ""
+                },
+                "message ID": {
+                    "description": ""
+                }
+            }
+        },
+        "$hasSnapshots": {
             "description": "",
             "args": {
                 "channel ID": {
