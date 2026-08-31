@@ -18,11 +18,12 @@ export default new DiscordEventHandler({
         const name = rawArgs[0]?.toLowerCase()
 
         const commands = this.commands.get("messageCreate").filter(
+            // Allow always execute commands
             (cmd) =>
-                // Allow always execute commands
                 !cmd.name ||
-                // Check if it matches the command name or one of aliases
-                ((cmd.name === name || !!cmd.data.aliases?.includes(name!)) &&
+                (
+                    // Check if it matches the command name or one of aliases
+                    (cmd.name === name || !!cmd.data.aliases?.includes(name!)) &&
                     // If unprefixed there can be no prefix
                     (cmd.data.unprefixed ? true : hasPrefix))
         )

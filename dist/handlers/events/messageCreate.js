@@ -16,11 +16,12 @@ exports.default = new DiscordEventHandler_1.DiscordEventHandler({
         const hasPrefix = prefix !== null;
         const rawArgs = (hasPrefix ? content.slice(prefix.length) : content).trim().split(/ +/g);
         const name = rawArgs[0]?.toLowerCase();
-        const commands = this.commands.get("messageCreate").filter((cmd) => 
+        const commands = this.commands.get("messageCreate").filter(
         // Allow always execute commands
-        !cmd.name ||
+        (cmd) => !cmd.name ||
+            (
             // Check if it matches the command name or one of aliases
-            ((cmd.name === name || !!cmd.data.aliases?.includes(name)) &&
+            (cmd.name === name || !!cmd.data.aliases?.includes(name)) &&
                 // If unprefixed there can be no prefix
                 (cmd.data.unprefixed ? true : hasPrefix)));
         for (const command of commands) {
