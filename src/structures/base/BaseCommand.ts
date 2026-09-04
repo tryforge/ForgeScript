@@ -27,27 +27,100 @@ export type CommandInteractionTypes =
     | "activityCommand"
     | "messageComponent"
 
+export enum PrefixMode {
+    /**
+     * The command requires a prefix to be executed. This is the default mode.
+     */
+    Required,
+    /**
+     * The command can be executed with or without a prefix.
+     */
+    Optional,
+    /**
+     * The command requires no prefix to be executed (unprefixed).
+     */
+    None,
+}
+
 export interface IBaseCommand<T> {
+    /**
+     * The name for this command. Used as custom ID filter for `interactionCreate` events.
+     */
     name?: string
-    type: T
-    code: string
-    guildOnly?: boolean
-    unprefixed?: boolean
-    aliases?: string[]
-    allowedInteractionTypes?: CommandInteractionTypes[]
-    allowBots?: boolean
-    disableConsoleErrors?: boolean
-    [x: PropertyKey]: unknown
 
     /**
-     * @private Do not define
+     * The event type the bot will listen to.
+     */
+    type: T
+
+    /**
+     * The code to run when the event fired.
+     */
+    code: string
+
+    /**
+     * Whether this command can only be executed on guilds.
+     * 
+     * @default false
+     */
+    guildOnly?: boolean
+
+    /**
+     * The prefix mode to use for this command.
+     * 
+     * @default PrefixMode.Required
+     */
+    prefixMode?: PrefixMode
+
+    /**
+     * Whether the command can be executed without a prefix.
+     * 
+     * @deprecated This property is considered legacy, {@link prefixMode} is preferred instead.
+     * @default false
+     */
+    unprefixed?: boolean
+
+    /**
+     * The aliases for this command.
+     */
+    aliases?: string[]
+
+    /**
+     * The interaction types to restrict execution of the `interactionCreate` event to.
+     */
+    allowedInteractionTypes?: CommandInteractionTypes[]
+
+    /**
+     * Allows the bot to execute this event triggered by other bots (and itself).
+     * 
+     * @default false
+     */
+    allowBots?: boolean
+
+    /**
+     * Whether to disable all possible console errors for this command.
+     * 
+     * @default false
+     */
+    disableConsoleErrors?: boolean
+
+    /**
+     * Whether the command name and aliases should be case-insensitive, this only affects letters.
+     * 
+     * @default true
+     */
+    nameCaseInsensitive?: boolean
+
+    /**
+     * @private Do not define.
      */
     path?: string
 
     /**
-     * @private Do not define
+     * @private Do not define.
      */
     unloadable?: boolean
+    [x: PropertyKey]: unknown
 }
 
 export interface ICompiledCommand {

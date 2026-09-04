@@ -11,14 +11,14 @@
 <li><a href="" aria-current="page">IForgeClientOptions</a></li></ul>
 <h1>Interface IForgeClientOptions</h1></div>
 <div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">IForgeClientOptions</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#allowbots">allowBots</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#allowedmentions">allowedMentions</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">MessageMentionOptions</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#closetimeout">closeTimeout</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#commands">commands</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#disableconsoleerrors">disableConsoleErrors</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#enforcenonce">enforceNonce</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#events">events</a><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-keyword">keyof</span> <span class="tsd-signature-type">ClientEvents</span>)<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#extensions">extensions</a><span class="tsd-signature-symbol">?:</span> <a href="../classes/ForgeExtension.html" class="tsd-signature-type tsd-kind-class">ForgeExtension</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#failifnotexists">failIfNotExists</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#functions">functions</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#intents">intents</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BitFieldResolvable</span><span class="tsd-signature-symbol">&lt;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Guilds&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMembers&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildModeration&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildBans&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildExpressions&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildEmojisAndStickers&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildIntegrations&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildWebhooks&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildInvites&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildVoiceStates&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildPresences&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessages&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessageReactions&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessageTyping&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessages&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessageReactions&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessageTyping&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MessageContent&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildScheduledEvents&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AutoModerationConfiguration&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AutoModerationExecution&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessagePolls&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessagePolls&quot;</span><span class="tsd-signature-symbol">,</span><br/>        <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#jsontransformer">jsonTransformer</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">obj</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">)</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#loglevel">logLevel</a><span class="tsd-signature-symbol">?:</span> <a href="../enums/LogPriority.html" class="tsd-signature-type tsd-kind-enum">LogPriority</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#makecache">makeCache</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">CacheFactory</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#mobile">mobile</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#optionalguildid">optionalGuildID</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#partials">partials</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-keyword">readonly</span> <span class="tsd-signature-type">Partials</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#prefixcaseinsensitive">prefixCaseInsensitive</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#prefixes">prefixes</a><span class="tsd-signature-symbol">:</span> <a href="IExtendedCompilationResult.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompilationResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#presence">presence</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">PresenceData</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#respondonedit">respondOnEdit</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#rest">rest</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RESTOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#restrictions">restrictions</a><span class="tsd-signature-symbol">?:</span> <a href="IRestrictions.html" class="tsd-signature-type tsd-kind-interface">IRestrictions</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#shardcount">shardCount</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#shards">shards</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-keyword">readonly</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;auto&quot;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#sweepers">sweepers</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">SweeperOptions</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#token">token</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#trackers">trackers</a><span class="tsd-signature-symbol">?:</span> <a href="ITrackers.html" class="tsd-signature-type tsd-kind-interface">ITrackers</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#useinvitesystem">useInviteSystem</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#waitguildtimeout">waitGuildTimeout</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#ws">ws</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">WebSocketOptions</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
-<section class="tsd-panel tsd-hierarchy" data-refl="2356">
+<section class="tsd-panel tsd-hierarchy" data-refl="2362">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
 <li class="tsd-hierarchy-item"><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="IRawForgeClientOptions.html" class="tsd-signature-type tsd-kind-interface">IRawForgeClientOptions</a><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">&quot;prefixes&quot;</span><span class="tsd-signature-symbol">&gt;</span>
 <ul class="tsd-hierarchy">
 <li class="tsd-hierarchy-item"><span class="tsd-hierarchy-target">IForgeClientOptions</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L117">src/core/ForgeClient.ts:117</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L131">src/core/ForgeClient.ts:131</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -64,11 +64,17 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="allowbots"><code class="tsd-tag">Optional</code><span>allow<wbr/>Bots</span><a href="#allowbots" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">allowBots</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
-<div class="tsd-comment tsd-typography"><p>Allows the bot to execute events triggered by other bots (and itself)</p>
-</div><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>Allows the bot to execute events triggered by other bots (and itself).</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-default">
+<h4 class="tsd-anchor-link" id="default">Default<a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="ts"><span class="hl-3">false</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#allowbots">allowBots</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L85">src/core/ForgeClient.ts:85</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L95">src/core/ForgeClient.ts:95</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="allowedmentions"><code class="tsd-tag">Optional</code><span>allowed<wbr/>Mentions</span><a href="#allowedmentions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">allowedMentions</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">MessageMentionOptions</span></div><aside class="tsd-sources">
@@ -84,17 +90,17 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="commands"><code class="tsd-tag">Optional</code><span>commands</span><a href="#commands" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">commands</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>Specifies a folder (path) to load all commands from it</p>
+<div class="tsd-comment tsd-typography"><p>Specifies a folder (path) to load all commands from it.</p>
 </div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#commands">commands</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L59">src/core/ForgeClient.ts:59</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L59">src/core/ForgeClient.ts:59</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="disableconsoleerrors"><code class="tsd-tag">Optional</code><span>disable<wbr/>Console<wbr/>Errors</span><a href="#disableconsoleerrors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">disableConsoleErrors</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#disableconsoleerrors">disableConsoleErrors</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L93">src/core/ForgeClient.ts:93</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L103">src/core/ForgeClient.ts:103</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="enforcenonce"><code class="tsd-tag">Optional</code><span>enforce<wbr/>Nonce</span><a href="#enforcenonce" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">enforceNonce</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
@@ -104,17 +110,17 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="events"><code class="tsd-tag">Optional</code><span>events</span><a href="#events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">events</span><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-keyword">keyof</span> <span class="tsd-signature-type">ClientEvents</span>)<span class="tsd-signature-symbol">[]</span></div>
-<div class="tsd-comment tsd-typography"><p>The discord.js events our bot will use</p>
+<div class="tsd-comment tsd-typography"><p>The discord.js events the bot will listen to.</p>
 </div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#events">events</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L64">src/core/ForgeClient.ts:64</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L64">src/core/ForgeClient.ts:64</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="extensions"><code class="tsd-tag">Optional</code><span>extensions</span><a href="#extensions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">extensions</span><span class="tsd-signature-symbol">?:</span> <a href="../classes/ForgeExtension.html" class="tsd-signature-type tsd-kind-class">ForgeExtension</a><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#extensions">extensions</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L105">src/core/ForgeClient.ts:105</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L117">src/core/ForgeClient.ts:117</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="failifnotexists"><code class="tsd-tag">Optional</code><span>fail<wbr/>If<wbr/>Not<wbr/>Exists</span><a href="#failifnotexists" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">failIfNotExists</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
@@ -123,10 +129,12 @@
 <li>Defined in node_modules/discord.js/typings/index.d.ts:6234</li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="functions"><code class="tsd-tag">Optional</code><span>functions</span><a href="#functions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">functions</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
+<div class="tsd-signature"><span class="tsd-kind-property">functions</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
+<div class="tsd-comment tsd-typography"><p>Specifies a folder (path) to load all custom functions from it.</p>
+</div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#functions">functions</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L80">src/core/ForgeClient.ts:80</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L88">src/core/ForgeClient.ts:88</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="intents"><span>intents</span><a href="#intents" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">intents</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BitFieldResolvable</span><span class="tsd-signature-symbol">&lt;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Guilds&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMembers&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildModeration&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildBans&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildExpressions&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildEmojisAndStickers&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildIntegrations&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildWebhooks&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildInvites&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildVoiceStates&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildPresences&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessages&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessageReactions&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessageTyping&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessages&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessageReactions&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessageTyping&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MessageContent&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildScheduledEvents&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AutoModerationConfiguration&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AutoModerationExecution&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;GuildMessagePolls&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DirectMessagePolls&quot;</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">&gt;</span></div><aside class="tsd-sources">
@@ -142,11 +150,17 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="loglevel"><code class="tsd-tag">Optional</code><span>log<wbr/>Level</span><a href="#loglevel" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">logLevel</span><span class="tsd-signature-symbol">?:</span> <a href="../enums/LogPriority.html" class="tsd-signature-type tsd-kind-enum">LogPriority</a></div>
-<div class="tsd-comment tsd-typography"><p>Specifies the logs to be received</p>
-</div><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>Specifies the logs to be received.</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-default">
+<h4 class="tsd-anchor-link" id="default-1">Default<a href="#default-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="ts"><span class="hl-5">LogPriority</span><span class="hl-1">.</span><span class="hl-5">Medium</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#loglevel">logLevel</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L79">src/core/ForgeClient.ts:79</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L83">src/core/ForgeClient.ts:83</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="makecache"><code class="tsd-tag">Optional</code><span>make<wbr/>Cache</span><a href="#makecache" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">makeCache</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">CacheFactory</span></div><aside class="tsd-sources">
@@ -156,21 +170,27 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="mobile"><code class="tsd-tag">Optional</code><span>mobile</span><a href="#mobile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">mobile</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
-<div class="tsd-comment tsd-typography"><p>This will connect the client to Discord with the mobile status</p>
-</div><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>This will connect the client to Discord with the mobile status.</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-default">
+<h4 class="tsd-anchor-link" id="default-2">Default<a href="#default-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="ts"><span class="hl-3">false</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#mobile">mobile</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L98">src/core/ForgeClient.ts:98</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L110">src/core/ForgeClient.ts:110</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="optionalguildid"><code class="tsd-tag">Optional</code><span class="deprecated">optional<wbr/>Guild<wbr/>ID</span><a href="#optionalguildid" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">optionalGuildID</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-deprecated">
-<h4 class="tsd-anchor-link" id="deprecated">Deprecated<a href="#deprecated" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Does not work</p>
+<h4 class="tsd-anchor-link" id="deprecated">Deprecated<a href="#deprecated" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Does not work.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#optionalguildid">optionalGuildID</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L104">src/core/ForgeClient.ts:104</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L116">src/core/ForgeClient.ts:116</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="partials"><code class="tsd-tag">Optional</code><span>partials</span><a href="#partials" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">partials</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-keyword">readonly</span> <span class="tsd-signature-type">Partials</span><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
@@ -180,16 +200,22 @@
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="prefixcaseinsensitive"><code class="tsd-tag">Optional</code><span>prefix<wbr/>Case<wbr/>Insensitive</span><a href="#prefixcaseinsensitive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">prefixCaseInsensitive</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
-<div class="tsd-comment tsd-typography"><p>Whether prefixes should be case-insensitive, this only affects letters</p>
-</div><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>Whether prefixes should be case-insensitive, this only affects letters.</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-default">
+<h4 class="tsd-anchor-link" id="default-3">Default<a href="#default-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="ts"><span class="hl-3">false</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#prefixcaseinsensitive">prefixCaseInsensitive</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L74">src/core/ForgeClient.ts:74</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L76">src/core/ForgeClient.ts:76</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="prefixes"><span>prefixes</span><a href="#prefixes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">prefixes</span><span class="tsd-signature-symbol">:</span> <a href="IExtendedCompilationResult.html" class="tsd-signature-type tsd-kind-interface">IExtendedCompilationResult</a><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L118">src/core/ForgeClient.ts:118</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L132">src/core/ForgeClient.ts:132</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="presence"><code class="tsd-tag">Optional</code><span>presence</span><a href="#presence" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">presence</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">PresenceData</span></div><aside class="tsd-sources">
@@ -202,10 +228,16 @@
 <div class="tsd-comment tsd-typography"><p>Allows the bot to re-use messages that were edited to find possibly command calls.
 If a number is passed, it's treated as the amount of milliseconds that can pass before
 the message becomes completely unusable.</p>
-</div><aside class="tsd-sources">
+</div>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-default">
+<h4 class="tsd-anchor-link" id="default-4">Default<a href="#default-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="ts"><span class="hl-3">false</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#respondonedit">respondOnEdit</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L114">src/core/ForgeClient.ts:114</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L128">src/core/ForgeClient.ts:128</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="rest"><code class="tsd-tag">Optional</code><span>rest</span><a href="#rest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">rest</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RESTOptions</span><span class="tsd-signature-symbol">&gt;</span></div><aside class="tsd-sources">
@@ -217,7 +249,7 @@ the message becomes completely unusable.</p>
 <div class="tsd-signature"><span class="tsd-kind-property">restrictions</span><span class="tsd-signature-symbol">?:</span> <a href="IRestrictions.html" class="tsd-signature-type tsd-kind-interface">IRestrictions</a></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#restrictions">restrictions</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L107">src/core/ForgeClient.ts:107</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L119">src/core/ForgeClient.ts:119</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="shardcount"><code class="tsd-tag">Optional</code><span>shard<wbr/>Count</span><a href="#shardcount" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">shardCount</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div><aside class="tsd-sources">
@@ -241,23 +273,23 @@ the message becomes completely unusable.</p>
 <div class="tsd-signature"><span class="tsd-kind-property">token</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#token">token</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L86">src/core/ForgeClient.ts:86</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L96">src/core/ForgeClient.ts:96</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="trackers"><code class="tsd-tag">Optional</code><span>trackers</span><a href="#trackers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">trackers</span><span class="tsd-signature-symbol">?:</span> <a href="ITrackers.html" class="tsd-signature-type tsd-kind-interface">ITrackers</a></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#trackers">trackers</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L99">src/core/ForgeClient.ts:99</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L111">src/core/ForgeClient.ts:111</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="useinvitesystem"><code class="tsd-tag">Optional</code><span class="deprecated">use<wbr/>Invite<wbr/>System</span><a href="#useinvitesystem" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">useInviteSystem</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-deprecated">
-<h4 class="tsd-anchor-link" id="deprecated-1">Deprecated<a href="#deprecated-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>use trackers: { invites: true } instead</p>
+<h4 class="tsd-anchor-link" id="deprecated-1">Deprecated<a href="#deprecated-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Use <code>trackers: { invites: true }</code> instead.</p>
 </div></div><aside class="tsd-sources">
 <p>Inherited from <a href="IRawForgeClientOptions.html">IRawForgeClientOptions</a>.<a href="IRawForgeClientOptions.html#useinvitesystem">useInviteSystem</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/ed1e27811dabef95cc041074b18dc269e9ac3872/src/core/ForgeClient.ts#L91">src/core/ForgeClient.ts:91</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/tryforge/ForgeScript/blob/e47531080df06129073f69a83dc60a6e44bd2236/src/core/ForgeClient.ts#L101">src/core/ForgeClient.ts:101</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 <h3 class="tsd-anchor-link" id="waitguildtimeout"><code class="tsd-tag">Optional</code><span>wait<wbr/>Guild<wbr/>Timeout</span><a href="#waitguildtimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">waitGuildTimeout</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div><aside class="tsd-sources">

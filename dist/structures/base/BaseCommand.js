@@ -4,9 +4,24 @@
 * Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BaseCommand = void 0;
+exports.BaseCommand = exports.PrefixMode = void 0;
 const core_1 = require("../../core");
 const ForgeError_1 = require("../forge/ForgeError");
+var PrefixMode;
+(function (PrefixMode) {
+    /**
+     * The command requires a prefix to be executed. This is the default mode.
+     */
+    PrefixMode[PrefixMode["Required"] = 0] = "Required";
+    /**
+     * The command can be executed with or without a prefix.
+     */
+    PrefixMode[PrefixMode["Optional"] = 1] = "Optional";
+    /**
+     * The command requires no prefix to be executed (unprefixed).
+     */
+    PrefixMode[PrefixMode["None"] = 2] = "None";
+})(PrefixMode || (exports.PrefixMode = PrefixMode = {}));
 let id = 0;
 class BaseCommand {
     data;
