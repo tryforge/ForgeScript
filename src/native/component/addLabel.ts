@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ComponentType, LabelBuilder } from "discord.js"
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$addLabel",
@@ -21,40 +21,33 @@ export default new NativeFunction({
             type: ArgType.String,
         },
         {
-            name: "component",
-            description: "The component to attach to the label",
-            rest: false,
-            required: true,
-            type: ArgType.String,
-        },
-        {
             name: "description",
             description: "The description for the label",
             rest: false,
             type: ArgType.String,
         },
         {
-            name: "required",
-            description: "Whether this field is required",
+            name: "component",
+            description: "The component to attach to the label",
             rest: false,
-            type: ArgType.Boolean,
+            required: true,
+            type: ArgType.String,
         },
     ],
     async execute(ctx) {
         if (!ctx.interaction) return this.success()
         ctx.container.inside.push(ComponentType.Label)
 
-        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 2, 3)
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1)
         if (!this["isValidReturnType"](rt)) return rt
-        const [ name, desc, required ] = args
+        const [name, desc] = args
 
         const label = new LabelBuilder().setLabel(name)
         if (desc) label.setDescription(desc)
 
         ctx.component.label = label
-        ctx.component.required = required || false
 
-        const code = this.data.fields![1] as IExtendedCompiledFunctionField
+        const code = this.data.fields![2] as IExtendedCompiledFunctionField
         const resolved = await this["resolveCode"](ctx, code)
         if (!this["isValidReturnType"](resolved)) return resolved
 

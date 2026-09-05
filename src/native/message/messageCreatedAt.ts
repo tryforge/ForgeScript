@@ -1,16 +1,15 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { BaseChannel, MessageType } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { BaseChannel } from "discord.js"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$messageCreatedAt",
     version: "1.0.2",
-    output: ArgType.Number,
-    description: "Returns the timestamp of the message",
+    description: "Returns the timestamp of a message",
     unwrap: true,
     brackets: false,
     args: [
@@ -31,7 +30,8 @@ export default new NativeFunction({
             required: true,
         },
     ],
+    output: ArgType.Number,
     execute(ctx, [, message]) {
-        return this.success((message ?? ctx.message)?.createdTimestamp!)
+        return this.success((message ?? ctx.message)?.createdTimestamp)
     },
 })

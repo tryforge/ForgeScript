@@ -1,10 +1,10 @@
-import { BaseChannel, ThreadAutoArchiveDuration } from "discord.js";
+import { BaseChannel, ThreadAutoArchiveDuration, ThreadOnlyChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 declare const _default: NativeFunction<[{
     name: string;
     description: string;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is ThreadOnlyChannel;
     rest: false;
     required: true;
 }, {

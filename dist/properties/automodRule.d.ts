@@ -17,12 +17,12 @@ export declare enum AutomodRuleProperty {
     mentionTotalLimit = "mentionTotalLimit",
     mentionRaidProtectionEnabled = "mentionRaidProtectionEnabled"
 }
-export declare const AutomodRuleProperties: import("../functions/defineProperties").Properties<typeof AutomodRuleProperty, AutoModerationRule>;
+export declare const AutomodRuleProperties: import("..").Properties<typeof AutomodRuleProperty, AutoModerationRule>;
 export declare enum AutomodRuleActionProperty {
     type = "type",
     channelID = "channelID",
     durationSeconds = "durationSeconds",
     customMessage = "customMessage"
 }
-export declare const AutomodRuleActionProperties: import("../functions/defineProperties").Properties<typeof AutomodRuleActionProperty, AutoModerationAction>;
+export declare const AutomodRuleActionProperties: import("..").Properties<typeof AutomodRuleActionProperty, AutoModerationAction>;
 //# sourceMappingURL=automodRule.d.ts.map

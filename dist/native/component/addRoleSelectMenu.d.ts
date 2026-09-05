@@ -28,9 +28,9 @@ declare const _default: NativeFunction<[{
     type: ArgType.Boolean;
 }, {
     name: string;
-    rest: true;
-    type: ArgType.String;
     description: string;
+    rest: false;
+    type: ArgType.Boolean;
 }], true>;
 export default _default;
 //# sourceMappingURL=addRoleSelectMenu.d.ts.map

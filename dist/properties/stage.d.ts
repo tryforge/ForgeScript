@@ -8,5 +8,5 @@ export declare enum StageProperty {
     privacyLevel = "privacyLevel",
     eventId = "eventId"
 }
-export declare const StageProperties: import("../functions/defineProperties").Properties<typeof StageProperty, StageInstance>;
+export declare const StageProperties: import("..").Properties<typeof StageProperty, StageInstance>;
 //# sourceMappingURL=stage.d.ts.map

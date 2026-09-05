@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -24,19 +24,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx, [user]) {
         user ??= ctx.user;
-        try {
-            await user.send("");
-            return this.success(true);
-        }
-        catch (error) {
-            if (error instanceof discord_js_1.DiscordAPIError) {
-                if (error.code === 50007)
-                    return this.success(false); // DM disabled
-                if (error.code === 50006)
-                    return this.success(true); // Empty message (aka DM enabled)
-            }
-            throw error;
-        }
+        return this.success(!!(await user?.send("").catch((err) => (err instanceof discord_js_1.DiscordAPIError && Number(err.code) === 50006))));
     },
 });
 //# sourceMappingURL=isUserDMEnabled.js.map

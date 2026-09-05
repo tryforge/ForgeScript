@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 /* eslint-disable indent */
@@ -235,7 +235,7 @@ export class ApplicationCommandManager {
                 try {
                     return JSON.parse(readFileSync(configPath, "utf-8"))
                 } catch (err) {
-                    throw new Error(`Error reading config.json in ${folderPath}: ${err}`)
+                    throw new Error(`Error reading config.json in ${folderPath}: `, { cause: err })
                 }
             }
             return null

@@ -1,9 +1,9 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export const BigIntFormatRegex = /^\d+n$/
 
@@ -29,7 +29,7 @@ export default new NativeFunction({
         if (arg === "undefined") type = "undefined"
         else if (arg === "true" || arg === "false") type = "boolean"
         else if (BigIntFormatRegex.test(arg)) type = "bigint"
-        else if (!!arg.trim() && !isNaN(Number(arg))) type = "number"
+        else if (arg === "NaN" || (!!arg.trim() && !isNaN(Number(arg)))) type = "number"
         else {
             try {
                 JSON.parse(arg)

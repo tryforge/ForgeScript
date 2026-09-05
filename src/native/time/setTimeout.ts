@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
@@ -35,19 +35,17 @@ export default new NativeFunction({
     async execute(ctx) {
         const code = this.data.fields![0] as IExtendedCompiledFunctionField
 
-        const time: Return = await this["resolveUnhandledArg"](ctx, 1)
-        if (!this["isValidReturnType"](time)) return time
-
-        const name: Return = await this["resolveUnhandledArg"](ctx, 2)
-        if (!this["isValidReturnType"](name)) return name
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 1, 2)
+        if (!this["isValidReturnType"](rt)) return rt
+        const [ time, name ] = args
 
         const c = ctx.clone(ctx.cloneRuntime())
         const data = setTimeout(async () => {
-            await this["resolveCode"](c, code)
-            if (name.value) ctx.client.timeouts.delete(name.value as string)
-        }, time.value as number)
+            await this["resolveCode"](c, code).catch(ctx.noop)
+            if (name) ctx.client.timeouts.delete(name)
+        }, time || undefined)
 
-        if (name.value) ctx.client.timeouts.set(name.value as string, data)
+        if (name) ctx.client.timeouts.set(name, data)
 
         return this.success()
     },

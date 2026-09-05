@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import path from "path"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { join } from "path"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$pathJoin",
@@ -23,6 +23,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [paths]) {
-        return this.success(path.join(...paths))
+        return this.success(join(...paths))
     },
 })

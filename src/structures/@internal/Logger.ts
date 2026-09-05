@@ -1,9 +1,9 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import clc, { Chalk } from "chalk"
+import clc, { ChalkInstance } from "chalk"
 import { stdout } from "process"
 import { inspect } from "util"
 
@@ -50,7 +50,7 @@ export class Logger {
         [LogType.Warn]: clc.yellow.bold,
         [LogType.Deprecated]: clc.magenta.bold,
         [LogType.Info]: clc.cyan.bold
-    } satisfies Record<LogType, Chalk>
+    } satisfies Record<LogType, ChalkInstance>
     public static readonly DateColor = clc.green.bold
 
     private static log(priority: LogPriority, type: LogType, ...args: unknown[]) {

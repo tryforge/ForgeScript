@@ -1,13 +1,12 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { FunctionManager } from "../managers"
 import { ArgType } from "../structures"
 import { Logger } from "../structures/@internal/Logger"
 
-// eslint-disable-next-line no-undef
 FunctionManager.load("Validator", __dirname + "/../native")
 
 for (const [, fn] of FunctionManager["Functions"]) {

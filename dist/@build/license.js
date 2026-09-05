@@ -1,16 +1,17 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const path_1 = require("path");
 const LICENSE = `/*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © ${new Date().getFullYear()} BotForge
 */`;
 const dir = (0, path_1.resolve)("src");
+const HeaderRegex = /^\s*\/\*[\s\S]*?SPDX-License-Identifier:[\s\S]*?\*\/\s*/;
 function log(msg) {
     const time = new Date().toLocaleTimeString();
     console.log(`[${time}] ${msg}`);
@@ -23,18 +24,11 @@ const isTs = (file) => file.endsWith(".ts");
 function addHeaderIfMissing(filePath) {
     try {
         const content = (0, fs_1.readFileSync)(filePath, "utf8");
-        const c = content.split("\n");
-        const l = LICENSE.split("\n");
-        let i = 0;
-        for (const line of c) {
-            if (line.startsWith(l[i]))
-                i++;
-            else
-                break;
-        }
-        if (i === l.length)
+        const stripped = content.replace(HeaderRegex, "");
+        const updated = `${LICENSE}\n\n${stripped}`;
+        if (updated === content)
             return false;
-        (0, fs_1.writeFileSync)(filePath, `${LICENSE}\n\n${content}`);
+        (0, fs_1.writeFileSync)(filePath, updated);
         log(`Added license header → ${filePath}`);
         return true;
     }

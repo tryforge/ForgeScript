@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, NativeFunction, Return } from "../../structures"
@@ -12,7 +12,7 @@ export default new NativeFunction({
         "$includes"
     ],
     output: ArgType.Boolean,
-    description: "Checks whether a string contains a set of other trings",
+    description: "Checks whether a string contains a set of other strings",
     unwrap: true,
     args: [
         {

@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { execArgv } from "process"
@@ -13,11 +13,6 @@ export default new NativeFunction({
     unwrap: false,
     output: ArgType.Boolean,
     execute(ctx) {
-        return this.success(
-            execArgv.includes("--expose-gc") ?
-                // eslint-disable-next-line no-undef
-                (gc!(), true) : 
-                false
-        )
+        return this.success(execArgv.includes("--expose-gc") ? (gc!(), true) : false)
     },
 })

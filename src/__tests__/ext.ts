@@ -1,12 +1,11 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { join } from "node:path"
 import { ForgeClient } from "../core/ForgeClient"
 import { BaseCommandManager } from "../managers"
-import { FunctionManager } from "../managers/FunctionManager"
 import { ForgeExtension } from "../structures/forge/ForgeExtension"
 
 export class RndManager extends BaseCommandManager<{}> {
@@ -22,7 +21,6 @@ export class MyExtension extends ForgeExtension {
     public random!: RndManager
 
     public init(client: ForgeClient): void {
-        // eslint-disable-next-line no-undef
         this.load(join(__dirname, "custom"))
         this.random = new RndManager(client)
     }

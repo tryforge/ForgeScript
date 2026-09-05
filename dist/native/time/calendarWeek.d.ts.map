@@ -1,1 +1,1 @@
-{"version":3,"file":"calendarWeek.d.ts","sourceRoot":"","sources":["../../../src/native/time/calendarWeek.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;AAQlE,wBASE"}
+{"version":3,"file":"calendarWeek.d.ts","sourceRoot":"","sources":["../../../src/native/time/calendarWeek.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAgB,MAAM,kBAAkB,CAAA;;AAExE,wBA2BE"}

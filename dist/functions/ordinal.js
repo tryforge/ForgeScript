@@ -1,10 +1,10 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ordinal = void 0;
+exports.ordinal = ordinal;
 function ordinal(i) {
     const j = i % 10, k = i % 100;
     if (j == 1 && k !== 11) {
@@ -18,5 +18,4 @@ function ordinal(i) {
     }
     return i + "th";
 }
-exports.ordinal = ordinal;
 //# sourceMappingURL=ordinal.js.map

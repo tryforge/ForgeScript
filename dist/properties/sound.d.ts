@@ -10,5 +10,5 @@ export declare enum SoundboardSoundProperty {
     available = "available",
     url = "url"
 }
-export declare const SoundboardSoundProperties: import("../functions/defineProperties").Properties<typeof SoundboardSoundProperty, SoundboardSound | GuildSoundboardSound | PartialSoundboardSound>;
+export declare const SoundboardSoundProperties: import("..").Properties<typeof SoundboardSoundProperty, SoundboardSound | GuildSoundboardSound | PartialSoundboardSound>;
 //# sourceMappingURL=sound.d.ts.map

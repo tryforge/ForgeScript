@@ -4,7 +4,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is import("discord.js").AnyThreadChannel;
     rest: false;
     required: true;
 }, {

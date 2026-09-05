@@ -1,4 +1,4 @@
-import { BaseChannel } from "discord.js";
+import { BaseChannel, ThreadOnlyChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures";
 import { ForumTagProperty } from "../../properties/forumTag";
 declare const _default: NativeFunction<[{
@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is ThreadOnlyChannel;
     required: true;
 }, {
     name: string;

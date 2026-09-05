@@ -27,5 +27,5 @@ export declare enum ComponentProperty {
     components = "components",
     thumbnailUrl = "thumbnailUrl"
 }
-export declare const ComponentProperties: import("../functions/defineProperties").Properties<typeof ComponentProperty, ContainerComponent | MessageActionRowComponent | ThumbnailComponent | ComponentInContainer>;
+export declare const ComponentProperties: import("..").Properties<typeof ComponentProperty, ContainerComponent | MessageActionRowComponent | ThumbnailComponent | ComponentInContainer>;
 //# sourceMappingURL=component.d.ts.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"deleteComponentFrom.d.ts","sourceRoot":"","sources":["../../../src/native/component/deleteComponentFrom.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;AAElE,wBAgDE"}
+{"version":3,"file":"deleteComponentFrom.d.ts","sourceRoot":"","sources":["../../../src/native/component/deleteComponentFrom.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;AAE1D,wBAgDE"}

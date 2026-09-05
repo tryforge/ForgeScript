@@ -1,1 +1,1 @@
-{"version":3,"file":"isBotVerified.d.ts","sourceRoot":"","sources":["../../../src/native/user/isBotVerified.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAmBE"}
+{"version":3,"file":"isBotVerified.d.ts","sourceRoot":"","sources":["../../../src/native/user/isBotVerified.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAmBE"}

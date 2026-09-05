@@ -19,7 +19,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is import("discord.js").VoiceBasedChannel;
 }, {
     name: string;
     description: string;

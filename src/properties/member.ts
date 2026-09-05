@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { APIInteractionGuildMember, CDN, GuildMember, GuildMemberFlagsBitField, PermissionsBitField, userMention } from "discord.js"
@@ -20,6 +20,7 @@ export enum MemberProperty {
     guildID = "guildID",
     id = "id",
     manageable = "manageable",
+    moderatable = "moderatable",
     timeout = "timeout",
     timedOutUntil = "timedOutUntil",
     status = "status",
@@ -67,6 +68,7 @@ export const MemberProperties = defineProperties<typeof MemberProperty, GuildMem
     bannable: (i) => (i as GuildMember)?.bannable ?? false,
     kickable: (i) => (i as GuildMember)?.kickable ?? false,
     manageable: (i) => (i as GuildMember)?.manageable ?? false,
+    moderatable: (i) => (i as GuildMember)?.moderatable ?? false,
     id: (i) => i?.user?.id,
     guildID: (i) => (i as GuildMember)?.guild?.id,
     timedOutUntil: (i) => i instanceof GuildMember ? (i?.isCommunicationDisabled() ? i.communicationDisabledUntil.getTime() : 0) : (i?.communication_disabled_until ? new Date(i.communication_disabled_until).getTime() : 0),

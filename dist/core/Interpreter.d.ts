@@ -1,10 +1,11 @@
-import { AutoModerationRule, Channel, Entitlement, Guild, GuildAuditLogsEntry, GuildBan, GuildEmoji, GuildMember, GuildScheduledEvent, Invite, Message, PartialMessage, PartialPollAnswer, PartialSoundboardSound, PollAnswer, Presence, Role, SoundboardSound, StageInstance, Sticker, Subscription, User, VoiceChannelEffect, VoiceState } from "discord.js";
+import { AutoModerationRule, Channel, Entitlement, Guild, GuildAuditLogsEntry, GuildBan, GuildEmoji, GuildMember, GuildScheduledEvent, Invite, Message, PartialMessage, PartialPollAnswer, PartialSoundboardSound, PollAnswer, Presence, Role, SoundboardSound, StageInstance, Sticker, Subscription, User, VoiceChannelEffect, VoiceServerUpdateData, VoiceState } from "discord.js";
 import { IExtendedCompilationResult } from ".";
 import { Sendable, BaseCommand, Context, Container, ILocalFunctionData } from "../structures";
 import { ForgeClient } from "./ForgeClient";
 export interface IStates {
     message: Message;
     voiceState: VoiceState;
+    voiceServer: VoiceServerUpdateData;
     voiceEffect: VoiceChannelEffect;
     presence: Presence;
     role: Role;

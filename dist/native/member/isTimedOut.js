@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -9,7 +9,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$isTimedOut",
     version: "1.0.0",
-    description: "Whether an member is timed out",
+    description: "Returns whether a member is timed out",
     unwrap: true,
     brackets: false,
     aliases: [

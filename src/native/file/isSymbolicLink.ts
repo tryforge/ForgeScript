@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { statSync } from "fs"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$isSymbolicLink",
@@ -23,6 +23,10 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [path]) {
-        return this.success(statSync(path).isSymbolicLink())
+        try {
+            return this.success(statSync(path).isSymbolicLink())
+        } catch {
+            return this.success(false)
+        }
     },
 })

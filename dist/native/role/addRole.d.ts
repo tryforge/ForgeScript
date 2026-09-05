@@ -15,7 +15,7 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.String;
+    type: ArgType.Color;
 }, {
     name: string;
     description: string;
@@ -89,6 +89,7 @@ declare const _default: NativeFunction<[{
         readonly CreateEvents: bigint;
         readonly UseExternalSounds: bigint;
         readonly SendVoiceMessages: bigint;
+        readonly SetVoiceChannelStatus: bigint;
         readonly SendPolls: bigint;
         readonly UseExternalApps: bigint;
         readonly PinMessages: bigint;

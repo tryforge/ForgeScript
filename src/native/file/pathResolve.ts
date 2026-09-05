@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import path from "path"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { resolve } from "path"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$pathResolve",
@@ -23,6 +23,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [paths]) {
-        return this.success(path.resolve(...paths))
+        return this.success(resolve(...paths))
     },
 })

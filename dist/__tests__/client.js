@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("../core");
@@ -140,6 +140,5 @@ client.commands.add({
     $addChoice[tmr;land]
     `,
 });
-// eslint-disable-next-line no-undef
 client.login(process.env.TOKEN);
 //# sourceMappingURL=client.js.map

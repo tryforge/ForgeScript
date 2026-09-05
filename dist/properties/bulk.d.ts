@@ -8,5 +8,5 @@ export declare enum BulkProperty {
     users = "users",
     count = "count"
 }
-export declare const BulkProperties: import("../functions/defineProperties").Properties<typeof BulkProperty, (Message<boolean> | import("discord.js").PartialMessage<boolean>)[]>;
+export declare const BulkProperties: import("..").Properties<typeof BulkProperty, (Message<boolean> | import("discord.js").PartialMessage<boolean>)[]>;
 //# sourceMappingURL=bulk.d.ts.map

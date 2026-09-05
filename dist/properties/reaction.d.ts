@@ -8,5 +8,5 @@ export declare enum ReactionProperty {
     meBurst = "meBurst",
     burstColors = "burstColors"
 }
-export declare const ReactionProperties: import("../functions/defineProperties").Properties<typeof ReactionProperty, MessageReaction>;
+export declare const ReactionProperties: import("..").Properties<typeof ReactionProperty, MessageReaction>;
 //# sourceMappingURL=reaction.d.ts.map

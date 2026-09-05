@@ -1,22 +1,22 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { Message } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$sendDM",
     version: "1.0.0",
-    description: "Sends a dm to the user",
+    description: "Sends a DM to the user",
     unwrap: true,
     brackets: true,
     output: ArgType.Message,
     args: [
         {
             name: "user ID",
-            description: "The user to dm",
+            description: "The user to direct message",
             rest: false,
             type: ArgType.User,
             required: true,
@@ -29,7 +29,7 @@ export default new NativeFunction({
         },
         {
             name: "return message ID",
-            description: "Returns the message id of the newly created message",
+            description: "Whether to return the id of the newly created message",
             rest: false,
             type: ArgType.Boolean,
         },

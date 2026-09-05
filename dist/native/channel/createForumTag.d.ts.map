@@ -1,1 +1,1 @@
-{"version":3,"file":"createForumTag.d.ts","sourceRoot":"","sources":["../../../src/native/channel/createForumTag.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,WAAW,EAAwC,MAAM,YAAY,CAAA;AAC9E,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAgB3C,WAAW;;;;;;;;;;;;;;;;;;AAblC,wBA+CE"}
+{"version":3,"file":"createForumTag.d.ts","sourceRoot":"","sources":["../../../src/native/channel/createForumTag.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,WAAW,EAAqB,iBAAiB,EAAE,MAAM,YAAY,CAAA;AAC9E,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;eAgBnC,WAAW;;;;;;;;;;;;;;;;;;AAblC,wBA+CE"}

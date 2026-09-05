@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import {
@@ -17,14 +17,13 @@ import { existsSync } from "fs"
 import { inspect } from "util"
 import { TimeParser } from "../../constants"
 import { ICompiledFunctionConditionField, ICompiledFunctionField, ICompiledFunction } from "../../core"
-import parseJSON from "../../functions/parseJSON"
 import { FunctionManager } from "../../managers"
 import { ErrorType, GetErrorArgs, ForgeError } from "../forge/ForgeError"
 import { Context } from "./Context"
 import { IArg, UnwrapArgs, NativeFunction, ArgType, OverwritePermission } from "./NativeFunction"
 import { Return, ReturnType, ReturnValue } from "./Return"
 import { resolveColor } from "../../functions/hex"
-import noop from "../../functions/noop"
+import parseJSON from "../../functions/parseJSON"
 
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
@@ -118,8 +117,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     /**
      * Resolves fields of a function.
-     * @param ctx
-     * @returns
      */
     private async resolveArgs(ctx: Context): Promise<Return> {
         const args = new Array(this.fn.data.args?.length ?? 0) as UnwrapArgs<T>
@@ -161,9 +158,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     /**
      * Does not account for condition fields.
-     * @param ctx
-     * @param index
-     * @returns
      */
     private async resolveUnhandledArg(ctx: Context, i: number, ref: any[] = []): Promise<Return> {
         const arg = this.fn.data.args![i]
@@ -305,7 +299,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveJson(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return parseJSON(str)
+        return parseJSON(str, false)
     }
 
     private resolveUser(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -523,14 +517,12 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public async execute(ctx: Context): Promise<Return> {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if (!this.fn.data.unwrap) return this.fn.data.execute.call(this, ctx)
 
         const args = await this.resolveArgs(ctx)
         if (!this.isValidReturnType(args)) return args
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return this.fn.data.execute.call(this, ctx, args.value ?? [])
     }
@@ -595,6 +587,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public success(value: ReturnValue<ReturnType.Success> = null) {
-        return new Return(ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof(value) === "string" ? (value !== "" ? value.split(this.data.count).length : 0) : value)
+        return new Return(ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof value === "string" ? (value !== "" ? value.split(this.data.count).length : 0) : value)
     }
 }

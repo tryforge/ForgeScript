@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ComponentType, LabelBuilder, TextInputBuilder, TextInputStyle } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$addTextInput",
@@ -69,7 +69,7 @@ export default new NativeFunction({
         const field = new TextInputBuilder()
             .setCustomId(id)
             .setStyle(type || TextInputStyle.Paragraph)
-            .setRequired(ctx.component.required || required || false)
+            .setRequired(required || false)
 
         if (placeholder) field.setPlaceholder(placeholder)
         if (value) field.setValue(value)

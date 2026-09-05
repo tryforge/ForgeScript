@@ -1,0 +1,1 @@
+{"version":3,"file":"overwritePermissions.d.ts","sourceRoot":"","sources":["../../src/functions/overwritePermissions.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,EAAE,aAAa,EAAwB,MAAM,YAAY,CAAA;AACrE,OAAO,KAAK,EAAE,mBAAmB,EAAE,MAAM,eAAe,CAAA;AAExD,wBAAgB,iCAAiC,CAAC,GAAG,EAAE,mBAAmB,EAAE,ijCAQ3E;AAED,wBAAgB,mCAAmC,CAAC,EAAE,EAAE,MAAM,EAAE,GAAG,EAAE,mBAAmB,EAAE,GAAG,aAAa,CAazG"}

@@ -5,5 +5,5 @@ export declare enum PermissionOverwritesProperty {
     allow = "allow",
     deny = "deny"
 }
-export declare const PermissionOverwritesProperties: import("../functions/defineProperties").Properties<typeof PermissionOverwritesProperty, PermissionOverwrites>;
+export declare const PermissionOverwritesProperties: import("..").Properties<typeof PermissionOverwritesProperty, PermissionOverwrites>;
 //# sourceMappingURL=permissionOverwrites.d.ts.map

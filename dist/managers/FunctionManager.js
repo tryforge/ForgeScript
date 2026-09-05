@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -18,7 +18,6 @@ const path_1 = require("path");
 class FunctionManager {
     static Functions = new Map();
     static loadNative() {
-        // eslint-disable-next-line no-undef
         FunctionManager.load("ForgeScript", (0, path_1.join)(__dirname, "..", "native"));
     }
     static load(provider, path) {
@@ -28,7 +27,6 @@ class FunctionManager {
         const overrideAttempts = new Array();
         const loader = new Array();
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js"))) {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default;
             req.path = file;
             if (this.Functions.has(req.name)) {

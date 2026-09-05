@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const ForgeError_1 = require("../../structures/forge/ForgeError");
@@ -32,7 +32,7 @@ exports.default = new NativeFunction_1.NativeFunction({
         const fn = ctx.client.functions.get(name);
         if (!fn)
             return this.error(ForgeError_1.ErrorType.UnknownXName, "function", name);
-        return fn.call(ctx, args);
+        return fn.call(ctx, this, args);
     },
 });
 //# sourceMappingURL=callFunction.js.map

@@ -1,4 +1,19 @@
+import { BaseChannel } from "discord.js";
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction";
-declare const _default: NativeFunction<import("../../structures/@internal/NativeFunction").IArg<ArgType, boolean, boolean, import("../../structures/@internal/NativeFunction").EnumLike<any>>[], false>;
+declare const _default: NativeFunction<[{
+    name: string;
+    rest: false;
+    required: true;
+    description: string;
+    type: ArgType.Channel;
+    check: (i: BaseChannel) => i is import("discord.js").DMChannel | import("discord.js").PartialGroupDMChannel | import("discord.js").NewsChannel | import("discord.js").StageChannel | import("discord.js").TextChannel | import("discord.js").PublicThreadChannel<boolean> | import("discord.js").PrivateThreadChannel | import("discord.js").VoiceChannel;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    type: ArgType.Message;
+    pointer: number;
+    required: true;
+}], true>;
 export default _default;
 //# sourceMappingURL=messageContent.d.ts.map

@@ -9,7 +9,7 @@ export declare enum PollProperty {
     allowMultiselect = "allowMultiselect",
     resultsFinalized = "resultsFinalized"
 }
-export declare const PollProperties: import("../functions/defineProperties").Properties<typeof PollProperty, Poll>;
+export declare const PollProperties: import("..").Properties<typeof PollProperty, Poll>;
 export declare enum PollAnswerProperty {
     id = "id",
     text = "text",
@@ -17,5 +17,5 @@ export declare enum PollAnswerProperty {
     voteCount = "voteCount",
     messageID = "messageID"
 }
-export declare const PollAnswerProperties: import("../functions/defineProperties").Properties<typeof PollAnswerProperty, PollAnswer>;
+export declare const PollAnswerProperties: import("..").Properties<typeof PollAnswerProperty, PollAnswer>;
 //# sourceMappingURL=poll.d.ts.map

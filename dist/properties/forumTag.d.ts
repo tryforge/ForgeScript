@@ -5,5 +5,5 @@ export declare enum ForumTagProperty {
     moderated = "moderated",
     name = "name"
 }
-export declare const ForumTagProperties: import("../functions/defineProperties").Properties<typeof ForumTagProperty, GuildForumTag>;
+export declare const ForumTagProperties: import("..").Properties<typeof ForumTagProperty, GuildForumTag>;
 //# sourceMappingURL=forumTag.d.ts.map

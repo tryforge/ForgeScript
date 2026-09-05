@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApplicationCommandManager = exports.RegistrationType = void 0;
@@ -185,7 +185,7 @@ class ApplicationCommandManager {
                     return JSON.parse((0, fs_1.readFileSync)(configPath, "utf-8"));
                 }
                 catch (err) {
-                    throw new Error(`Error reading config.json in ${folderPath}: ${err}`);
+                    throw new Error(`Error reading config.json in ${folderPath}: `, { cause: err });
                 }
             }
             return null;
@@ -206,7 +206,7 @@ class ApplicationCommandManager {
                 const folderPath = (0, path_1.join)(this.path, commandName);
                 const config = readConfig(folderPath);
                 const json = {
-                    ...config,
+                    ...config, // Apply config data if available
                     name: commandName,
                     description: config?.description || "none",
                     type: discord_js_1.ApplicationCommandType.ChatInput,
@@ -218,7 +218,7 @@ class ApplicationCommandManager {
                         const subConfig = readConfig(subFolderPath);
                         // Apply only for subcommand groups
                         const raw = {
-                            ...subConfig,
+                            ...subConfig, // Apply subcommand group config data
                             name: nextName,
                             description: subConfig?.description || "none",
                             type: discord_js_1.ApplicationCommandOptionType.SubcommandGroup,
@@ -252,7 +252,7 @@ class ApplicationCommandManager {
                         const raw = values.toJSON();
                         json.options.push({
                             ...raw,
-                            ...subConfig,
+                            ...subConfig, // Apply subcommand config data
                             type: discord_js_1.ApplicationCommandOptionType.Subcommand,
                         });
                     }

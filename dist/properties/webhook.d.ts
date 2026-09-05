@@ -13,5 +13,5 @@ export declare enum WebhookProperty {
     token = "token",
     url = "url"
 }
-export declare const WebhookProperties: import("../functions/defineProperties").Properties<typeof WebhookProperty, Webhook<WebhookType>>;
+export declare const WebhookProperties: import("..").Properties<typeof WebhookProperty, Webhook<WebhookType>>;
 //# sourceMappingURL=webhook.d.ts.map

@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -44,12 +44,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Number,
         },
+        {
+            name: "required",
+            description: "Whether this menu is required inside a modal",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    execute(ctx, [id, placeholder, disabled, min, max]) {
+    execute(ctx, [id, placeholder, disabled, min, max, required]) {
         const menu = new discord_js_1.StringSelectMenuBuilder()
             .setCustomId(id)
             .setDisabled(disabled || false)
-            .setRequired(ctx.component.required);
+            .setRequired(required || false);
         if (placeholder)
             menu.setPlaceholder(placeholder);
         if (min)

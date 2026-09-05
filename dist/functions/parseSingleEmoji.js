@@ -1,10 +1,10 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseSingleEmoji = void 0;
+exports.parseSingleEmoji = parseSingleEmoji;
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../structures");
 function parseSingleEmoji(ctx, str) {
@@ -15,5 +15,4 @@ function parseSingleEmoji(ctx, str) {
     const emoji = ctx.client.emojis.cache.get(id ?? str) ?? parsed;
     return emoji ? { id: emoji.id ?? null, name: emoji.id ? null : emoji.name } : null;
 }
-exports.parseSingleEmoji = parseSingleEmoji;
 //# sourceMappingURL=parseSingleEmoji.js.map

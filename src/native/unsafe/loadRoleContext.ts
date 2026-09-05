@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, NativeFunction } from "../../structures"
@@ -12,7 +12,7 @@ export default new NativeFunction({
         "$useRoleContext",
         "$asRoleContext"
     ],
-    description: "Loads a role instance to the current context, this is not reversible and is adviced to use with $scope.",
+    description: "Loads a role instance to the current context, this is not reversible and is adviced to use with $scope",
     unwrap: true,
     brackets: true,
     args: [

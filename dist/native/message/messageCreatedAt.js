@@ -1,15 +1,14 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$messageCreatedAt",
     version: "1.0.2",
-    output: structures_1.ArgType.Number,
-    description: "Returns the timestamp of the message",
+    description: "Returns the timestamp of a message",
     unwrap: true,
     brackets: false,
     args: [
@@ -30,6 +29,7 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
+    output: structures_1.ArgType.Number,
     execute(ctx, [, message]) {
         return this.success((message ?? ctx.message)?.createdTimestamp);
     },

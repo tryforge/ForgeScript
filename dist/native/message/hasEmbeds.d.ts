@@ -6,14 +6,14 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     rest: false;
     required: true;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is BaseChannel & Record<"messages", unknown>;
 }, {
     name: string;
-    pointer: number;
+    description: string;
     rest: false;
     required: true;
     type: ArgType.Message;
-    description: string;
+    pointer: number;
 }], true>;
 export default _default;
 //# sourceMappingURL=hasEmbeds.d.ts.map

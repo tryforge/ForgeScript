@@ -1,0 +1,8 @@
+pull_request_title: Crowdin Translations
+pull_request_labels:
+  - translations
+pull_request_assignees:
+  - xNickyDev
+files:
+  - source: /metadata/translations/en.json
+    translation: /metadata/translations/%locale%.json

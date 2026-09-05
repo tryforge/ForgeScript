@@ -1,12 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { ClientEvents, Collection } from "discord.js"
+import { Collection } from "discord.js"
 import { type ForgeClient } from "../core/ForgeClient"
-import { CommandType } from "../structures/base/BaseCommand"
-import { readdirSync } from "fs"
 import recursiveReaddirSync from "../functions/recursiveReaddirSync"
 import { BaseEventHandler } from "../structures"
 
@@ -17,13 +15,12 @@ export class EventManager {
 
     private events = new Collection<string, Collection<string, BaseEventHandler>>()
 
-    public constructor(private readonly client: ForgeClient) {}
+    public constructor(private readonly client: ForgeClient) { }
 
     public static loadNative() {
-        // eslint-disable-next-line no-undef
         EventManager.load(NativeEventName, __dirname + "/../handlers/events")
     }
-    
+
     load(name: string, ...events: (string | string[])[]): void {
         for (const eventType of events.flat()) {
             EventManager.Loaded[name] ??= {}

@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import {
@@ -22,6 +22,7 @@ import {
     MediaGalleryBuilder,
     Message,
     MessageReaction,
+    OverwriteResolvable,
     Role,
     SectionBuilder,
     SoundboardSound,
@@ -82,7 +83,6 @@ export interface IComponentOptions {
     section: SectionBuilder
     gallery: MediaGalleryBuilder
     label: LabelBuilder
-    required?: boolean
 }
 
 export enum CalendarType {
@@ -132,7 +132,6 @@ export interface IContextCache {
 export class Context {
     #cache: Partial<IContextCache> = {};
 
-    // eslint-disable-next-line no-undef
     [props: PropertyKey]: unknown
 
     executionTimestamp!: number
@@ -143,6 +142,8 @@ export class Context {
     timezone: string = "UTC"
     calendar?: CalendarType
 
+    permissionOverwrites?: OverwriteResolvable[]
+
     #keywords: Record<string, unknown> = {}
     #environment: Record<string, unknown> = {}
     #localFunctions: Record<string, ILocalFunctionData> = {}
@@ -151,7 +152,6 @@ export class Context {
 
     public container: Container
 
-    // eslint-disable-next-line no-unused-vars
     public constructor(public readonly runtime: IRunnable) {
         if (runtime.environment) this.#environment = runtime.environment
         if (runtime.keywords) this.#keywords = runtime.keywords

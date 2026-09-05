@@ -1,10 +1,11 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.encrypt = exports.deriveKey = void 0;
+exports.deriveKey = deriveKey;
+exports.encrypt = encrypt;
 const crypto_1 = require("crypto");
 const structures_1 = require("../../structures");
 /**
@@ -14,7 +15,6 @@ const FIXED_IV = Buffer.from("12345678901234567890123456789012", "hex");
 function deriveKey(key) {
     return (0, crypto_1.scryptSync)(key, "salt", 32);
 }
-exports.deriveKey = deriveKey;
 function encrypt(text, key) {
     const idkhowtocallthis = deriveKey(key);
     const cipher = (0, crypto_1.createCipheriv)("aes-256-cbc", new Uint8Array(idkhowtocallthis), new Uint8Array(FIXED_IV));
@@ -22,7 +22,6 @@ function encrypt(text, key) {
     encrypted += cipher.final("hex");
     return encrypted;
 }
-exports.encrypt = encrypt;
 exports.default = new structures_1.NativeFunction({
     name: "$encrypt",
     version: "1.5.0",

@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, IArg, INativeFunction, NativeFunction } from "../structures/@internal/NativeFunction"
@@ -16,8 +16,7 @@ export type RecursiveArray<T> = T | T[]
 export class FunctionManager {
     private static readonly Functions = new Map<string, NativeFunction>()
 
-    public static loadNative() {    
-        // eslint-disable-next-line no-undef
+    public static loadNative() {
         FunctionManager.load("ForgeScript", join(__dirname, "..", "native"))
     }
 
@@ -33,10 +32,9 @@ export class FunctionManager {
         const loader = new Array<NativeFunction>()
 
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
             const req = require(file).default as NativeFunction
             req.path = file
-            
+
             if (this.Functions.has(req.name)) {
                 overrideAttempts.push(req.name)
                 continue
@@ -44,7 +42,7 @@ export class FunctionManager {
 
             if (!req.data.args?.length)
                 req.data.unwrap = false
-            
+
             loader.push(req)
         }
 
@@ -55,7 +53,7 @@ export class FunctionManager {
     }
 
     public static addMany(...fns: RecursiveArray<NativeFunction>[]): void {
-        for (let i = 0, len = fns.length;i < len;i++) {
+        for (let i = 0, len = fns.length; i < len; i++) {
             const fn = fns[i]
             if (Array.isArray(fn))
                 this.addMany(...fn)
@@ -79,11 +77,11 @@ export class FunctionManager {
 
     public static toJSON(): INativeFunction<any>[] {
         return Array.from(this.Functions.values()).map((x) => {
-            const d = { ...x.data }            
+            const d = { ...x.data }
             d.args?.forEach((x) => Reflect.deleteProperty(x, "check"))
             Reflect.deleteProperty(d, "execute")
             const data = deserialize(new Uint8Array(serialize(d))) as INativeFunction<any>
-            
+
             data.args?.map((x) => {
                 x.type = ArgType[x.type]
                 if (x.enum) x.enum = enumToArray(x.enum)

@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { parentPort } from "worker_threads"
@@ -11,6 +11,7 @@ export interface ITranslateData {
     locale: string
 }
 
+/* Translation package not installed.
 parentPort?.on("message", async function(msg: ITranslateData) {
     const translate = await import("@iamtraction/google-translate").then(x => x.default)
     for (;;) {
@@ -23,4 +24,4 @@ parentPort?.on("message", async function(msg: ITranslateData) {
         parentPort?.postMessage(txt.text)
         break
     }
-})
+}) */

@@ -6,7 +6,7 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Channel;
-    check: (i: BaseChannel) => boolean;
+    check: (i: BaseChannel) => i is BaseChannel & Record<"permissionOverwrites", unknown>;
 }, {
     name: string;
     description: string;
@@ -68,6 +68,7 @@ declare const _default: NativeFunction<[{
         readonly CreateEvents: bigint;
         readonly UseExternalSounds: bigint;
         readonly SendVoiceMessages: bigint;
+        readonly SetVoiceChannelStatus: bigint;
         readonly SendPolls: bigint;
         readonly UseExternalApps: bigint;
         readonly PinMessages: bigint;

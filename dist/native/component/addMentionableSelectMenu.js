@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -46,23 +46,17 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Boolean
         },
         {
-            name: "default roles/users",
-            rest: true,
-            type: structures_1.ArgType.RoleOrUser,
-            description: "The default selected roles or users to use",
-        }
+            name: "required",
+            description: "Whether this menu is required inside a modal",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    execute(ctx, [id, placeholder, min, max, disabled, defaults]) {
+    execute(ctx, [id, placeholder, min, max, disabled, required]) {
         const menu = new discord_js_1.MentionableSelectMenuBuilder()
             .setDisabled(disabled || false)
-            .setRequired(ctx.component.required)
-            .setCustomId(id)
-            .setDefaultValues(defaults.map(x => {
-            return {
-                id: x.id,
-                type: x instanceof discord_js_1.User ? discord_js_1.SelectMenuDefaultValueType.User : discord_js_1.SelectMenuDefaultValueType.Role
-            };
-        }));
+            .setRequired(required || false)
+            .setCustomId(id);
         if (placeholder)
             menu.setPlaceholder(placeholder);
         if (min)

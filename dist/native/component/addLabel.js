@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -21,39 +21,32 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
         {
-            name: "component",
-            description: "The component to attach to the label",
-            rest: false,
-            required: true,
-            type: structures_1.ArgType.String,
-        },
-        {
             name: "description",
             description: "The description for the label",
             rest: false,
             type: structures_1.ArgType.String,
         },
         {
-            name: "required",
-            description: "Whether this field is required",
+            name: "component",
+            description: "The component to attach to the label",
             rest: false,
-            type: structures_1.ArgType.Boolean,
+            required: true,
+            type: structures_1.ArgType.String,
         },
     ],
     async execute(ctx) {
         if (!ctx.interaction)
             return this.success();
         ctx.container.inside.push(discord_js_1.ComponentType.Label);
-        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 2, 3);
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1);
         if (!this["isValidReturnType"](rt))
             return rt;
-        const [name, desc, required] = args;
+        const [name, desc] = args;
         const label = new discord_js_1.LabelBuilder().setLabel(name);
         if (desc)
             label.setDescription(desc);
         ctx.component.label = label;
-        ctx.component.required = required || false;
-        const code = this.data.fields[1];
+        const code = this.data.fields[2];
         const resolved = await this["resolveCode"](ctx, code);
         if (!this["isValidReturnType"](resolved))
             return resolved;

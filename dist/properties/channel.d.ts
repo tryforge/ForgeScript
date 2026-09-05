@@ -7,6 +7,7 @@ export declare enum ChannelProperty {
     bitrate = "bitrate",
     members = "members",
     timestamp = "timestamp",
+    url = "url",
     nsfw = "nsfw",
     flags = "flags",
     parentID = "parentID",
@@ -16,7 +17,11 @@ export declare enum ChannelProperty {
     appliedTags = "appliedTags",
     availableTags = "availableTags",
     archived = "archived",
-    locked = "locked"
+    locked = "locked",
+    deletable = "deletable",
+    manageable = "manageable",
+    lastMessageID = "lastMessageID",
+    lastPinTimestamp = "lastPinTimestamp"
 }
-export declare const ChannelProperties: import("../functions/defineProperties").Properties<typeof ChannelProperty, Channel>;
+export declare const ChannelProperties: import("..").Properties<typeof ChannelProperty, Channel>;
 //# sourceMappingURL=channel.d.ts.map

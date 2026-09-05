@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -13,7 +13,7 @@ exports.default = new structures_1.NativeFunction({
         "$asChannelContext"
     ],
     brackets: true,
-    description: "Loads a channel instance to the current context, this is not reversible and is adviced to use with $scope.",
+    description: "Loads a channel instance to the current context, this is not reversible and is adviced to use with $scope",
     unwrap: true,
     args: [
         {

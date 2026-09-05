@@ -1,11 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { ArgType, Context, IArg, IExtendedCompiledFunctionConditionField, NativeFunction } from ".."
+import { ArgType, CompiledFunction, Context, IArg, IExtendedCompiledFunctionConditionField, NativeFunction } from ".."
 import { IExtendedCompilationResult, Compiler, Interpreter } from "../../core"
-import isTrue from "../../functions/isTrue"
 import { FunctionManager } from "../../managers"
 import { Return, ReturnType } from "../@internal/Return"
 import { ForgeError, ErrorType } from "./ForgeError"
@@ -15,12 +14,14 @@ export interface IForgeFunctionParam {
     type?: ArgType | keyof typeof ArgType
     required?: boolean
     rest?: boolean
+    [x: PropertyKey]: unknown
 }
 
 export interface IForgeFunction {
     name: string
     params?: Array<string | IForgeFunctionParam>
     firstParamCondition?: boolean
+    [x: PropertyKey]: unknown
     brackets?: boolean
     code: string
     path?: string
@@ -33,7 +34,7 @@ export class ForgeFunction {
         if (!Array.isArray(data.params))
             data.params = []
     }
-    
+
     public populate() {
         FunctionManager.add(this.asNative())
     }
@@ -55,26 +56,23 @@ export class ForgeFunction {
             async execute(ctx, args: string[]) {
                 if (!this.fn.data.unwrap) {
                     if (!this.data.fields || this.data.fields.length === 0) {
-                        return outer.call(ctx, args ?? [])
+                        return outer.call(ctx, this, args ?? [])
                     }
                     const condition = await this["resolveCondition"](ctx, this.data.fields[0] as IExtendedCompiledFunctionConditionField)
                     if (!this["isValidReturnType"](condition))
                         return condition
-                    else if (!isTrue(condition))
-                        return this.stop()
-                    // eslint-disable-next-line no-unsafe-optional-chaining
                     const params = await this["resolveMultipleArgs"](ctx, ...this.data.fields.slice(1).map((_, i) => i + 1))
                     if (!this["isValidReturnType"](params.return))
                         return params.return
-                    return outer.call(ctx, params.args)
+                    return outer.call(ctx, this, [condition.value as string, ...params.args])
                 } else {
-                    return outer.call(ctx, args ?? [])
+                    return outer.call(ctx, this, args ?? [])
                 }
             }
         })
     }
 
-    async call(ctx: Context, args: string[]) {
+    async call(ctx: Context, fn: CompiledFunction, args: string[]) {
         this.compiled ??= Compiler.compile(this.data.code, this.data.path)
 
         const params = Array.isArray(this.data.params) ? this.data.params : []
@@ -90,18 +88,21 @@ export class ForgeFunction {
                 )
             )
 
-        for (let i = 0, len = params.length; i < len; i++) {
-            const param = params[i]
-            const name = typeof param === "string" ? param : param.name
-            ctx.setEnvironmentKey(name, args[i])
-        }
-
-        const result = await Interpreter.run(ctx.clone({
+        const functionCtx = ctx.clone({
             doNotSend: true,
             allowTopLevelReturn: true,
             data: this.compiled
-        }))
+        })
 
-        return new Return(result === null ? ReturnType.Stop : ReturnType.Success, result)
+        for (let i = 0, len = params.length; i < len; i++) {
+            const param = params[i]
+            const name = typeof param === "string" ? param : param.name
+
+            functionCtx.setEnvironmentKey(name, args[i])
+        }
+
+        const result = await Interpreter.run(functionCtx)
+
+        return result === null ? fn.stop() : fn.success(result)
     }
 }

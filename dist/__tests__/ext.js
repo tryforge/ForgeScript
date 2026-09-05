@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MyExtension = exports.RndManager = void 0;
@@ -19,7 +19,6 @@ class MyExtension extends ForgeExtension_1.ForgeExtension {
     version = "1.0.0";
     random;
     init(client) {
-        // eslint-disable-next-line no-undef
         this.load((0, node_path_1.join)(__dirname, "custom"));
         this.random = new RndManager(client);
     }

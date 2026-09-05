@@ -5,5 +5,5 @@ export declare enum PresenceProperty {
     status = "status",
     platform = "platform"
 }
-export declare const PresenceProperties: import("../functions/defineProperties").Properties<typeof PresenceProperty, Presence>;
+export declare const PresenceProperties: import("..").Properties<typeof PresenceProperty, Presence>;
 //# sourceMappingURL=presence.d.ts.map

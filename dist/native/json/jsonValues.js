@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -38,7 +38,7 @@ exports.default = new structures_1.NativeFunction({
         const json = ctx.getEnvironmentKey(name);
         if (!json)
             return this.success();
-        return this.successJSON(Object.values(json).join(sep ?? ", "));
+        return this.successJSON(Object.values(json).map((v) => (typeof v === "string" ? v : JSON.stringify(v))).join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=jsonValues.js.map

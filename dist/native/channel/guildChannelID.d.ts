@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction } from "../../structures";
-declare const _default: NativeFunction<[import("../../structures").IArg<ArgType.Guild, true, false, import("../../structures").EnumLike>, {
+declare const _default: NativeFunction<[import("../..").IArg<ArgType.Guild, true, false, import("../..").EnumLike>, {
     name: string;
     description: string;
     required: true;

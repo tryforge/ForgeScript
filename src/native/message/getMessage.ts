@@ -1,18 +1,17 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { BaseChannel } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 import { MessageProperties, MessageProperty } from "../../properties/message"
 
 export default new NativeFunction({
     name: "$getMessage",
     version: "1.0.3",
-    description: "Retrieves data of a message",
+    description: "Retrieves data of a message, not providing any property returns message json",
     unwrap: true,
-    output: ArgType.Unknown,
     brackets: true,
     args: [
         {
@@ -37,16 +36,17 @@ export default new NativeFunction({
             rest: false,
             type: ArgType.Enum,
             enum: MessageProperty,
-            required: true,
         },
         {
             name: "separator",
-            description: "Separator to use in case of array",
+            description: "The separator to use in case of array",
             rest: false,
             type: ArgType.String,
         },
     ],
+    output: ArgType.Unknown,
     execute(ctx, [, m, prop, sep]) {
+        if (!prop) return this.successJSON(m)
         return this.success(MessageProperties[prop](m, sep || ", "))
     },
 })

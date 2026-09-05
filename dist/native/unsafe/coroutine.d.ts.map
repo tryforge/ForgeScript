@@ -1,1 +1,1 @@
-{"version":3,"file":"coroutine.d.ts","sourceRoot":"","sources":["../../../src/native/unsafe/coroutine.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAwBE"}
+{"version":3,"file":"coroutine.d.ts","sourceRoot":"","sources":["../../../src/native/unsafe/coroutine.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAwBE"}

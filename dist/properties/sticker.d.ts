@@ -13,5 +13,5 @@ export declare enum StickerProperty {
     packID = "packID",
     description = "description"
 }
-export declare const StickerProperties: import("../functions/defineProperties").Properties<typeof StickerProperty, Sticker>;
+export declare const StickerProperties: import("..").Properties<typeof StickerProperty, Sticker>;
 //# sourceMappingURL=sticker.d.ts.map

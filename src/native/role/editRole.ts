@@ -1,17 +1,16 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
-import { ColorResolvable } from "discord.js"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$editRole",
     version: "1.0.7",
     description: "Edits a role on a guild, returns boolean",
     unwrap: true,
-    output: ArgType.Boolean,
+    brackets: true,
     args: [
         {
             name: "guild ID",
@@ -38,7 +37,7 @@ export default new NativeFunction({
             name: "color",
             description: "The new role color, leave empty to not modify",
             rest: false,
-            type: ArgType.String,
+            type: ArgType.Color,
         },
         {
             name: "icon",
@@ -65,15 +64,15 @@ export default new NativeFunction({
             type: ArgType.Permission,
         },
     ],
-    brackets: true,
+    output: ArgType.Boolean,
     async execute(ctx, [, role, name, color, icon, hoist, mentionable, perms]) {
         const edit = await role.edit({
-            colors: !color ? undefined : { primaryColor: color as ColorResolvable },
-            hoist: hoist || undefined,
-            icon: icon || undefined,
-            mentionable: mentionable || undefined,
+            colors: !color ? undefined : { primaryColor: color },
+            mentionable: typeof(mentionable) === "boolean" ? mentionable : undefined,
+            hoist: typeof(hoist) === "boolean" ? hoist : undefined,
             name: name || undefined,
-            permissions: perms || undefined,
+            icon: icon || undefined,
+            permissions: perms?.length ? perms : undefined,
             reason: ctx.reason
         }).catch(ctx.noop)
 

@@ -1,25 +1,29 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { EventManager, FunctionManager } from "../managers"
-import { cwd, exit } from "process"
-import { EnumLike, IArg, IEvent, INativeFunction, Logger } from "../structures"
+import { EnumLike, IArg, INativeFunction, Logger } from "../structures"
 import { enumToArray } from "./enum"
-import { translateData } from "./translate"
 import { Locale } from "discord.js"
 import { join, relative } from "path"
+import { cwd, exit } from "process"
 
 const FunctionNameRegex = /(name: "\$?(\w+)"),?/m
 const FunctionCategoryRegex = /\r?\n(.*)(category: "\$?(\w+)"),?/m
 const ArgEnumRegex = /(?:enum: +(\w+),?|Arg\.(?:\w+)Enum\([\r\n\t ]*(\w+))/gim
 const OutputRegex = /output:(array(<[A-Za-z.]+>)?\((\w+)?\)|(\w+)|ArgType.(\w+)|\[((array(<[A-Za-z.]+>)?\(\w*\)|\w+|ArgType\.\w+),?)+\]),/im
 
+const translations = {
+    functions: {} as Record<string, any>,
+    events: {} as Record<string, any>
+}
+
 function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record<string, string[]>) {
     const output = OutputRegex.exec(txt.replace(/[^0-9A-Za-z:,.[\]<>()|]/gm, ""))?.[1].replace(/[[\]]/g, "").trim()
-    
+
     if (!output) {
         if (fn.output) {
             Logger.error(`OUTPUT LOOKUP FAILURE: in ${fn.name}, out: ${output}`)
@@ -65,7 +69,16 @@ function getOutputValues(fn: INativeFunction<IArg[]>, txt: string, enums: Record
     return arr
 }
 
-export default async function(functionsAbsolutePath: string, mainCategoryName?: string, eventName?: string, warnOnNoOutput = false, expose?: Record<string, EnumLike>, eventsAbsolutePath?: string, translate: Array<string | Locale> = []) {
+export default async function (
+    functionsAbsolutePath: string,
+    mainCategoryName?: string,
+    eventName?: string,
+    warnOnNoOutput = false,
+    expose?: Record<string, EnumLike>,
+    eventsAbsolutePath?: string,
+    /** @deprecated This parameter is no longer being used. */
+    translate: Array<string | Locale> = []
+) {
     let total = 0
     const enums: Record<string, string[]> = {}
 
@@ -106,7 +119,7 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
                     }
                 }
             }
-            
+
             const output = getOutputValues(fn.data, txt, enums)
             if (output?.length)
                 Reflect.set(fn.data, "output", output)
@@ -128,28 +141,46 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
                 txt = txt.replace(FunctionCategoryRegex, "")
                 modified = true
             }
-    
+
             if (!fn.data.version) {
                 fn.data.version = v
                 txt = txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`)
                 modified = true
             }
-    
+
             if (modified)
                 writeFileSync(nativePath, txt)
+
+            const func: Record<string, any> = {}
+            func.description = fn.data.description
+
+            if (fn.data.args?.length) {
+                func.args = {}
+
+                for (const arg of fn.data.args) {
+                    func.args[arg.name] = {
+                        description: arg.description
+                    }
+                }
+
+                if (!Object.keys(func.args).length)
+                    delete func.args
+            }
+
+            translations.functions[fn.name] = func
         }
-    
+
         if (warnOnNoOutput)
             Logger.warn(`${total.toLocaleString()} functions are missing output value`)
 
         writeFileSync(join(metaOutPath, "enums.json"), JSON.stringify(enums), "utf-8")
         writeFileSync(join(metaOutPath, "functions.json"), JSON.stringify(FunctionManager.toJSON()))
     }
-    
+
     if (eventName) {
         if (!eventsAbsolutePath)
             throw new Error("An absolute path to events must be provided")
-            
+
         Logger.info(`Loading events from ${eventsAbsolutePath}`)
         EventManager.load(eventName, eventsAbsolutePath)
         const events = Object.values(EventManager["Loaded"]![eventName]!)
@@ -163,11 +194,27 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
                 event!.data.version = v
                 writeFileSync(nativePath, txt.replace(FunctionNameRegex, `$1,\n    version: "${v}",`))
             }
+
+            const ev: Record<string, any> = {}
+            ev.description = event.data.description
+            translations.events[event.name] = ev
         }
 
         writeFileSync(join(metaOutPath, "events.json"), JSON.stringify(EventManager.toJSON(eventName)))
     }
 
+    const transOutPath = join(metaOutPath, "translations")
+    if (!existsSync(transOutPath)) mkdirSync(transOutPath, { recursive: true })
+
+    const transFile = join(transOutPath, "en.json")
+    const json = JSON.stringify(translations)
+
+    if (!existsSync(transFile) || readFileSync(transFile, "utf8") !== json) {
+        Logger.info("Writing translation metadata...")
+        writeFileSync(transFile, json, "utf8")
+    }
+
+    /* Deprecated.
     if (translate.length) {
         Logger.info("Now translating data, hold tight...")
         await translateData({
@@ -175,5 +222,5 @@ export default async function(functionsAbsolutePath: string, mainCategoryName?: 
             events: eventName ? Object.values(EventManager["Loaded"]![eventName]!).map(x => x.data as unknown as IEvent<unknown, keyof unknown>) : [],
             functions: [...FunctionManager["Functions"].values()].map(x => x.data)
         })
-    }
+    } */
 }

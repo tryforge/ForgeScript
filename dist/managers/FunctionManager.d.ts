@@ -9,7 +9,7 @@ export declare class FunctionManager {
     static addMany(...fns: RecursiveArray<NativeFunction>[]): void;
     static add(fn: NativeFunction<IArg[]>): void;
     static reload(): void;
-    static get(name: string): NativeFunction<IArg<ArgType, boolean, boolean, import("../structures/@internal/NativeFunction").EnumLike<any>>[], boolean>;
+    static get(name: string): NativeFunction<IArg<ArgType, boolean, boolean, import("..").EnumLike<any>>[], boolean>;
     static toJSON(): INativeFunction<any>[];
     static get raw(): IRawFunction[];
 }

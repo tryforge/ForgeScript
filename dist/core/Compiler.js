@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compiler = exports.Conditions = exports.Operators = exports.OperatorType = void 0;
@@ -146,11 +146,14 @@ class Compiler {
         };
     }
     parseFieldMatch(fns, match) {
+        const start = match.index;
         const fn = this.parseFunction();
         fns.push(fn);
+        const raw = this.code.slice(start, this.index);
         // Next match
         return {
             nextMatch: this.match,
+            raw,
             fn,
         };
     }
@@ -169,6 +172,7 @@ class Compiler {
     parseConditionField(ref) {
         const data = {};
         const functions = new Array();
+        let rawValue = "";
         let fieldValue = "";
         let closedGracefully = false;
         let match = this.match;
@@ -178,6 +182,7 @@ class Compiler {
             if (isEscape) {
                 const { char, nextMatch } = this.processEscape();
                 fieldValue += char;
+                rawValue += char;
                 match = nextMatch;
                 continue;
             }
@@ -186,9 +191,10 @@ class Compiler {
                 break;
             }
             if (match?.index === this.index) {
-                const { fn, nextMatch } = this.parseFieldMatch(functions, match);
+                const { fn, raw, nextMatch } = this.parseFieldMatch(functions, match);
                 match = nextMatch;
                 fieldValue += fn.id;
+                rawValue += raw;
                 continue;
             }
             if (data.op === undefined) {
@@ -199,7 +205,9 @@ class Compiler {
                         functions: [...functions],
                         resolve: this.wrap(fieldValue),
                         value: fieldValue,
+                        rawValue
                     };
+                    rawValue = "";
                     fieldValue = "";
                     functions.length = 0;
                     this.index += data.op.length;
@@ -207,12 +215,14 @@ class Compiler {
                 }
             }
             fieldValue += char;
+            rawValue += char;
             this.index++;
         }
         if (!closedGracefully)
             this.error(`Function ${ref.fn.name} is missing brace closure`);
         const out = {
             functions,
+            rawValue,
             value: fieldValue,
             resolve: this.wrap(fieldValue),
         };
@@ -226,6 +236,7 @@ class Compiler {
     }
     parseNormalField(ref) {
         const functions = new Array();
+        let rawValue = "";
         let fieldValue = "";
         let closedGracefully = false;
         let match = this.match;
@@ -235,6 +246,7 @@ class Compiler {
             if (isEscape) {
                 const { char, nextMatch } = this.processEscape();
                 fieldValue += char;
+                rawValue += char;
                 match = nextMatch;
                 continue;
             }
@@ -243,12 +255,14 @@ class Compiler {
                 break;
             }
             if (match?.index === this.index) {
-                const { fn, nextMatch } = this.parseFieldMatch(functions, match);
+                const { fn, raw, nextMatch } = this.parseFieldMatch(functions, match);
                 match = nextMatch;
                 fieldValue += fn.id;
+                rawValue += raw;
                 continue;
             }
             fieldValue += char;
+            rawValue += char;
             this.index++;
         }
         if (!closedGracefully)
@@ -256,6 +270,7 @@ class Compiler {
         return {
             resolve: this.wrap(fieldValue),
             functions,
+            rawValue,
             value: fieldValue,
         };
     }

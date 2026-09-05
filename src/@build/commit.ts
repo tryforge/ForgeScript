@@ -1,14 +1,13 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { stdin, stdout } from "process"
 import { createInterface } from "readline"
-import { execSync } from "child_process"
+import { execFileSync, execSync } from "child_process"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
 import { join } from "path"
-import { platform } from "os"
 
 async function prompt(q: string) {
     const itf = createInterface(stdin, stdout)
@@ -31,7 +30,7 @@ async function main() {
     const msg = (await prompt("Please write the commit message: ")).replace(
         /(--?(\w+))/gim, (match) => {
             const name = /(\w+)/.exec(match)![1].toLowerCase()
-        
+
             switch (name) {
                 case "hide": {
                     skip = true
@@ -44,7 +43,7 @@ async function main() {
             }
 
             return ""
-        } 
+        }
     ).trim()
 
     const fileName = join(path, "changelogs.json")
@@ -61,12 +60,11 @@ async function main() {
     }
 
     const branch = await prompt("Write the branch name to push to (defaults to dev): ") || "dev"
-    let escapedMsg = msg
-    if (platform() === "darwin") escapedMsg = escapedMsg.replace(/\$/g, "\\$")
 
-    execSync("git branch -M " + branch + " && git add . && git commit -m \"" + escapedMsg + "\" && git push -u origin " + branch, {
-        stdio: "inherit"
-    })
+    execFileSync("git", ["branch", "-M", branch], { stdio: "inherit" })
+    execFileSync("git", ["add", "."], { stdio: "inherit" })
+    execFileSync("git", ["commit", "-m", msg], { stdio: "inherit" })
+    execFileSync("git", ["push", "-u", "origin", branch], { stdio: "inherit" })
 }
 
 // Nothing

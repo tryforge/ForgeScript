@@ -1,1 +1,1 @@
-{"version":3,"file":"writeFile.d.ts","sourceRoot":"","sources":["../../../src/native/file/writeFile.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAElE,wBAkCE"}
+{"version":3,"file":"writeFile.d.ts","sourceRoot":"","sources":["../../../src/native/file/writeFile.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAE1D,wBAgCE"}

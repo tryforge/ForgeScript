@@ -18,5 +18,5 @@ export declare enum ScheduledEventProperty {
     privacyLevel = "privacyLevel",
     status = "status"
 }
-export declare const ScheduledEventProperties: import("../functions/defineProperties").Properties<typeof ScheduledEventProperty, GuildScheduledEvent<GuildScheduledEventStatus>>;
+export declare const ScheduledEventProperties: import("..").Properties<typeof ScheduledEventProperty, GuildScheduledEvent<GuildScheduledEventStatus>>;
 //# sourceMappingURL=scheduledEvent.d.ts.map

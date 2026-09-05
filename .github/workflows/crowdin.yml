@@ -1,0 +1,113 @@
+name: crowdin
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  format:
+    name: Format Translations
+    if: |
+      contains(github.event.pull_request.labels.*.name, 'translations') &&
+      startsWith(github.event.pull_request.head.ref, 'l10n_') &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Get files
+        id: files
+        run: |
+          git fetch origin "${{ github.event.pull_request.base.ref }}"
+
+          git diff \
+            --name-only \
+            "origin/${{ github.event.pull_request.base.ref }}...HEAD" \
+            -- '*.json' > files.txt
+
+          cat files.txt
+
+      - name: Format translation files
+        run: |
+          cat > fix.js <<'EOF'
+          const fs = require('fs');
+
+          function clean(value) {
+            if (typeof value === 'string') {
+              return value === '' ? undefined : value;
+            }
+
+            if (Array.isArray(value)) {
+              const arr = value.map(clean).filter(v => v !== undefined);
+              return arr.length ? arr : undefined;
+            }
+
+            if (value && typeof value === 'object') {
+              const result = {};
+
+              for (const [key, val] of Object.entries(value)) {
+                const cleaned = clean(val);
+
+                if (cleaned !== undefined) {
+                  result[key] = cleaned;
+                }
+              }
+
+              return Object.keys(result).length ? result : undefined;
+            }
+
+            return value;
+          }
+
+          const files = fs.readFileSync('files.txt', 'utf8')
+            .split('\n')
+            .map(f => f.trim())
+            .filter(Boolean);
+
+          for (const file of files) {
+            try {
+              const json = JSON.parse(fs.readFileSync(file, 'utf8'));
+              const cleaned = clean(json) ?? {};
+
+              fs.writeFileSync(file, JSON.stringify(cleaned), 'utf8');
+
+              console.log(`Processed ${file}`);
+            } catch (err) {
+              console.warn(`Skipping ${file}: ${err.message}`);
+            }
+          }
+          EOF
+
+          node fix.js
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add $(cat files.txt)
+          git commit -m "Format Crowdin translation exports"
+          git push

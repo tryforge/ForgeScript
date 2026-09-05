@@ -1,17 +1,18 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "fs"
 import { join, resolve } from "path"
 
 const LICENSE = `/*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © ${new Date().getFullYear()} BotForge
 */`
 
 const dir = resolve("src")
+const HeaderRegex = /^\s*\/\*[\s\S]*?SPDX-License-Identifier:[\s\S]*?\*\/\s*/
 
 function log(msg: string) {
     const time = new Date().toLocaleTimeString()
@@ -23,20 +24,15 @@ if (!existsSync(dir)) {
     process.exit(1)
 }
 
-const isTs = (file: string)  => file.endsWith(".ts")
+const isTs = (file: string) => file.endsWith(".ts")
 
 function addHeaderIfMissing(filePath: string) {
     try {
         const content = readFileSync(filePath, "utf8")
-        const c = content.split("\n")
-        const l = LICENSE.split("\n")
-        let i = 0
-        for(const line of c) {
-            if(line.startsWith(l[i])) i++
-            else break
-        }
-        if(i === l.length) return false
-        writeFileSync(filePath, `${LICENSE}\n\n${content}`)
+        const stripped = content.replace(HeaderRegex, "")
+        const updated = `${LICENSE}\n\n${stripped}`
+        if (updated === content) return false
+        writeFileSync(filePath, updated)
         log(`Added license header → ${filePath}`)
         return true
     } catch {

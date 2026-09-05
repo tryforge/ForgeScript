@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "user ID",
-            description: "The user to check ban",
+            description: "The user to check ban status for",
             rest: false,
             type: structures_1.ArgType.User,
             required: true,

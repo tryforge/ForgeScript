@@ -1,10 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { BaseChannel, Embed, EmbedBuilder } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 import { EmbedProperties, EmbedProperty } from "../../properties/embed"
 
 export default new NativeFunction({
@@ -12,7 +12,6 @@ export default new NativeFunction({
     version: "1.0.3",
     description: "Retrieves data of an embed, not providing any property returns embed json",
     unwrap: true,
-    output: ArgType.Unknown,
     brackets: false,
     aliases: [
         "$getEmbed"
@@ -51,20 +50,19 @@ export default new NativeFunction({
         },
         {
             name: "field index",
-            description: "Index of field to get",
+            description: "The index of field to get",
             rest: false,
             type: ArgType.Number
         },
     ],
+    output: ArgType.Unknown,
     execute(ctx, [, m, index, prop, fieldIndex]) {
         if (typeof index !== "number") {
             return this.successJSON((m ?? ctx.message)?.embeds.map(x => x.data))
         }
         
         const embed = m.embeds[index] as Embed | undefined
-        if (prop === null) {
-            return this.successJSON(embed)
-        }
+        if (!prop) return this.successJSON(embed)
 
         return this.success(EmbedProperties[prop](embed ? EmbedBuilder.from(embed) : undefined, undefined, fieldIndex))
     },

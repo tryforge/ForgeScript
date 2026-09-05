@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import {
@@ -54,52 +54,64 @@ export interface IRestrictions {
 
 export interface IRawForgeClientOptions extends ClientOptions {
     /**
-     * Specifies a folder (path) to load all commands from it
+     * Specifies a folder (path) to load all commands from it.
      */
     commands?: string
 
     /**
-     * The discord.js events our bot will use
+     * The discord.js events the bot will listen to.
      */
     events?: CommandType[]
 
     /**
-     * The prefixes our bot will act upon for command messages
+     * The prefixes the bot will act upon for command messages.
      */
     prefixes?: string[]
 
     /**
-     *  Whether prefixes should be case-insensitive, this only affects letters
+     * Whether prefixes should be case-insensitive, this only affects letters.
+     * 
+     * @default false
      */
     prefixCaseInsensitive?: boolean
 
     /**
-     * Specifies the logs to be received
+     * Specifies the logs to be received.
+     * 
+     * @default LogPriority.Medium
      */
     logLevel?: LogPriority
+
+    /**
+     * Specifies a folder (path) to load all custom functions from it.
+     */
     functions?: string
 
     /**
-     * Allows the bot to execute events triggered by other bots (and itself)
+     * Allows the bot to execute events triggered by other bots (and itself).
+     * 
+     * @default false
      */
     allowBots?: boolean
     token?: string
 
     /**
-     * @deprecated use trackers: { invites: true } instead
+     * @deprecated Use `trackers: { invites: true }` instead.
      */
     useInviteSystem?: boolean
 
     disableConsoleErrors?: boolean
 
     /**
-     * This will connect the client to Discord with the mobile status
+     * This will connect the client to Discord with the mobile status.
+     * 
+     * @default false
      */
     mobile?: boolean
     trackers?: ITrackers
 
     /**
-     * @deprecated Does not work
+     * @deprecated Does not work.
      */
     optionalGuildID?: boolean
     extensions?: ForgeExtension[]
@@ -110,6 +122,8 @@ export interface IRawForgeClientOptions extends ClientOptions {
      * Allows the bot to re-use messages that were edited to find possibly command calls.
      * If a number is passed, it's treated as the amount of milliseconds that can pass before
      * the message becomes completely unusable.
+     * 
+     * @default false
      */
     respondOnEdit?: number | boolean
 }
@@ -131,7 +145,6 @@ export class ForgeClient extends Client<true> {
     public readonly intervals = new Map<string, globalThis.NodeJS.Timeout>()
     public readonly globalVariables: Record<string, string> = {};
 
-    // eslint-disable-next-line no-undef
     [x: PropertyKey]: unknown
 
     public constructor(options: IRawForgeClientOptions) {

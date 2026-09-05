@@ -21,6 +21,7 @@ export type WrappedCode = (args: unknown[]) => string;
 export type WrappedConditionCode = (lhs: unknown, rhs: unknown) => boolean;
 export interface ICompiledFunctionField {
     value: string;
+    rawValue: string;
     functions: ICompiledFunction[];
     resolve: WrappedCode;
 }

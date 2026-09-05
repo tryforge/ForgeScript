@@ -1,0 +1,1 @@
+{"version":3,"file":"clientTheme.d.ts","sourceRoot":"","sources":["../../src/properties/clientTheme.ts"],"names":[],"mappings":"AAMA,OAAO,EAAiB,iBAAiB,EAAE,MAAM,YAAY,CAAA;AAE7D,oBAAY,mBAAmB;IAC3B,OAAO,YAAY;IACnB,SAAS,cAAc;IACvB,aAAa,kBAAkB;IAC/B,MAAM,WAAW;CACpB;AAED,eAAO,MAAM,qBAAqB,wEAKhC,CAAA"}

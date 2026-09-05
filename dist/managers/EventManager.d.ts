@@ -12,10 +12,10 @@ export declare class EventManager {
     static toJSON(name: string): {
         name: string;
         description: string;
-        listener: (this: ForgeClient, ...args: unknown[]) => void | Promise<void>;
-        version?: string | undefined;
-        intents?: ("Guilds" | "GuildMembers" | "GuildModeration" | "GuildBans" | "GuildExpressions" | "GuildEmojisAndStickers" | "GuildIntegrations" | "GuildWebhooks" | "GuildInvites" | "GuildVoiceStates" | "GuildPresences" | "GuildMessages" | "GuildMessageReactions" | "GuildMessageTyping" | "DirectMessages" | "DirectMessageReactions" | "DirectMessageTyping" | "MessageContent" | "GuildScheduledEvents" | "AutoModerationConfiguration" | "AutoModerationExecution" | "GuildMessagePolls" | "DirectMessagePolls")[] | undefined;
-        deprecated?: boolean | undefined;
+        listener: (this: ForgeClient, ...args: unknown[]) => Promise<void> | void;
+        version?: string;
+        intents?: import("discord.js").GatewayIntentsString[];
+        deprecated?: boolean;
     }[];
     has(handler: string, type: any): boolean;
 }

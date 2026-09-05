@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ChannelSelectMenuBuilder, ComponentType } from "discord.js"
@@ -45,17 +45,16 @@ export default new NativeFunction({
             type: ArgType.Boolean
         },
         {
-            name: "default channels",
-            rest: true,
-            type: ArgType.String,
-            description: "The default selected channels to use"
-        }
+            name: "required",
+            description: "Whether this menu is required inside a modal",
+            rest: false,
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ id, placeholder, min, max, disabled, channels ]) {
+    execute(ctx, [ id, placeholder, min, max, disabled, required ]) {
         const menu = new ChannelSelectMenuBuilder()
-            .setDefaultChannels(channels)
             .setDisabled(disabled || false)
-            .setRequired(ctx.component.required)
+            .setRequired(required || false)
             .setCustomId(id)
 
         if (placeholder) menu.setPlaceholder(placeholder)

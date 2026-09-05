@@ -11,5 +11,5 @@ export declare enum SubscriptionProperty {
     periodEndTimestamp = "periodEndTimestamp",
     periodStartTimestamp = "periodStartTimestamp"
 }
-export declare const SubscriptionProperties: import("../functions/defineProperties").Properties<typeof SubscriptionProperty, Subscription>;
+export declare const SubscriptionProperties: import("..").Properties<typeof SubscriptionProperty, Subscription>;
 //# sourceMappingURL=subscription.d.ts.map

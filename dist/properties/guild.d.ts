@@ -3,27 +3,46 @@ export declare enum GuildProperty {
     id = "id",
     ownerID = "ownerID",
     name = "name",
+    nameAcronym = "nameAcronym",
     description = "description",
-    features = "features",
-    afkChannelID = "afkChannelID",
-    maximumMembers = "maximumMembers",
-    systemChannelID = "systemChannelID",
-    afkTimeout = "afkTimeout",
-    memberCount = "memberCount",
-    boostCount = "boostCount",
     timestamp = "timestamp",
+    features = "features",
     icon = "icon",
-    splash = "splash",
     banner = "banner",
+    splash = "splash",
+    discoverySplash = "discoverySplash",
+    afkTimeout = "afkTimeout",
+    afkChannelID = "afkChannelID",
+    systemChannelID = "systemChannelID",
+    systemChannelFlags = "systemChannelFlags",
+    publicUpdatesChannelID = "publicUpdatesChannelID",
+    safetyAlertsChannelID = "safetyAlertsChannelID",
+    rulesChannelID = "rulesChannelID",
+    widgetChannelID = "widgetChannelID",
+    widgetEnabled = "widgetEnabled",
+    bans = "bans",
     roles = "roles",
     emojis = "emojis",
     stickers = "stickers",
+    channels = "channels",
+    soundboardSounds = "soundboardSounds",
+    autoModerationRules = "autoModerationRules",
+    memberCount = "memberCount",
+    boostCount = "boostCount",
     boostLevel = "boostLevel",
-    discoverySplash = "discoverySplash",
+    mfaLevel = "mfaLevel",
+    nsfwLevel = "nsfwLevel",
+    verificationLevel = "verificationLevel",
+    preferredLocale = "preferredLocale",
+    large = "large",
+    verified = "verified",
+    partnered = "partnered",
+    maximumMembers = "maximumMembers",
+    maximumStageBitrate = "maximumStageBitrate",
     approximateMemberCount = "approximateMemberCount",
     approximatePresenceCount = "approximatePresenceCount"
 }
-export declare const GuildProperties: import("../functions/defineProperties").Properties<typeof GuildProperty, Guild>;
+export declare const GuildProperties: import("..").Properties<typeof GuildProperty, Guild>;
 export declare enum GuildPreviewProperty {
     id = "id",
     name = "name",
@@ -38,5 +57,5 @@ export declare enum GuildPreviewProperty {
     approximateMemberCount = "approximateMemberCount",
     approximatePresenceCount = "approximatePresenceCount"
 }
-export declare const GuildPreviewProperties: import("../functions/defineProperties").Properties<typeof GuildPreviewProperty, GuildPreview>;
+export declare const GuildPreviewProperties: import("..").Properties<typeof GuildPreviewProperty, GuildPreview>;
 //# sourceMappingURL=guild.d.ts.map

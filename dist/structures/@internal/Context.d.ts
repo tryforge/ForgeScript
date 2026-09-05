@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, GuildScheduledEventEntityMetadataOptions, Interaction, LabelBuilder, MediaGalleryBuilder, Message, MessageReaction, Role, SectionBuilder, SoundboardSound, Sticker, Subscription, User, VoiceBasedChannel } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, GuildScheduledEventEntityMetadataOptions, Interaction, LabelBuilder, MediaGalleryBuilder, Message, MessageReaction, OverwriteResolvable, Role, SectionBuilder, SoundboardSound, Sticker, Subscription, User, VoiceBasedChannel } from "discord.js";
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -39,7 +39,6 @@ export interface IComponentOptions {
     section: SectionBuilder;
     gallery: MediaGalleryBuilder;
     label: LabelBuilder;
-    required?: boolean;
 }
 export declare enum CalendarType {
     Buddhist = "buddhist",
@@ -93,6 +92,7 @@ export declare class Context {
     component: Partial<IComponentOptions>;
     timezone: string;
     calendar?: CalendarType;
+    permissionOverwrites?: OverwriteResolvable[];
     private _reason?;
     container: Container;
     constructor(runtime: IRunnable);
@@ -103,7 +103,7 @@ export declare class Context {
     get cmd(): import("..").BaseCommand<unknown> | null;
     get obj(): Sendable;
     get args(): string[];
-    get states(): import("../../core/Interpreter").States | undefined;
+    get states(): import("../..").States | undefined;
     get automod(): AutoModerationActionExecution | null;
     get entitlement(): Entitlement | null;
     get subscription(): Subscription | null;
@@ -129,7 +129,7 @@ export declare class Context {
      * @param once Whether to fetch only when the collection is empty.
      * @returns
      */
-    fetchApplicationEmojis(once?: boolean): Promise<void | import("@discordjs/collection").Collection<string, import("discord.js").ApplicationEmoji>>;
+    fetchApplicationEmojis(once?: boolean): Promise<void | import("discord.js").Collection<string, import("discord.js").ApplicationEmoji>>;
     setEnvironmentKey(name: string, value: unknown): unknown;
     traverseDeleteEnvironmentKey(...keys: string[]): boolean | any[];
     traverseAddEnvironmentKey(value: unknown, ...keys: string[]): boolean;
@@ -167,8 +167,8 @@ export declare class Context {
     } as K]: ClassInstance<T>; })[K] | null;
     private error;
     get getExtension(): {
-        <B extends boolean>(name: string, required?: B | undefined): B extends true ? import("..").ForgeExtension : import("..").ForgeExtension | null;
-        <T extends ClassType, B_1 extends boolean>(type: string | T, required?: B_1 | undefined): B_1 extends true ? ClassInstance<T> : ClassInstance<T> | null;
+        <B extends boolean>(name: string, required?: B): B extends true ? import("..").ForgeExtension : import("..").ForgeExtension | null;
+        <T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null;
     };
     cloneEmpty(): Context;
     /**

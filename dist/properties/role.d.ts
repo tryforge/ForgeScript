@@ -17,5 +17,5 @@ export declare enum RoleProperty {
     secondaryColor = "secondaryColor",
     tertiaryColor = "tertiaryColor"
 }
-export declare const RoleProperties: import("../functions/defineProperties").Properties<typeof RoleProperty, Role>;
+export declare const RoleProperties: import("..").Properties<typeof RoleProperty, Role>;
 //# sourceMappingURL=role.d.ts.map

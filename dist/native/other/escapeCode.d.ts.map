@@ -1,1 +1,1 @@
-{"version":3,"file":"escapeCode.d.ts","sourceRoot":"","sources":["../../../src/native/other/escapeCode.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAsBE"}
+{"version":3,"file":"escapeCode.d.ts","sourceRoot":"","sources":["../../../src/native/other/escapeCode.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1F,wBAuBE"}

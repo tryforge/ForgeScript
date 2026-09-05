@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -34,20 +34,18 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx) {
         const code = this.data.fields[0];
-        const time = await this["resolveUnhandledArg"](ctx, 1);
-        if (!this["isValidReturnType"](time))
-            return time;
-        const name = await this["resolveUnhandledArg"](ctx, 2);
-        if (!this["isValidReturnType"](name))
-            return name;
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 1, 2);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [time, name] = args;
         const c = ctx.clone(ctx.cloneRuntime());
         const data = setTimeout(async () => {
-            await this["resolveCode"](c, code);
-            if (name.value)
-                ctx.client.timeouts.delete(name.value);
-        }, time.value);
-        if (name.value)
-            ctx.client.timeouts.set(name.value, data);
+            await this["resolveCode"](c, code).catch(ctx.noop);
+            if (name)
+                ctx.client.timeouts.delete(name);
+        }, time || undefined);
+        if (name)
+            ctx.client.timeouts.set(name, data);
         return this.success();
     },
 });

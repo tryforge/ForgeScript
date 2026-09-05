@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -10,7 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.7",
     description: "Edits a role on a guild, returns boolean",
     unwrap: true,
-    output: structures_1.ArgType.Boolean,
+    brackets: true,
     args: [
         {
             name: "guild ID",
@@ -37,7 +37,7 @@ exports.default = new structures_1.NativeFunction({
             name: "color",
             description: "The new role color, leave empty to not modify",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Color,
         },
         {
             name: "icon",
@@ -64,15 +64,15 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Permission,
         },
     ],
-    brackets: true,
+    output: structures_1.ArgType.Boolean,
     async execute(ctx, [, role, name, color, icon, hoist, mentionable, perms]) {
         const edit = await role.edit({
             colors: !color ? undefined : { primaryColor: color },
-            hoist: hoist || undefined,
-            icon: icon || undefined,
-            mentionable: mentionable || undefined,
+            mentionable: typeof (mentionable) === "boolean" ? mentionable : undefined,
+            hoist: typeof (hoist) === "boolean" ? hoist : undefined,
             name: name || undefined,
-            permissions: perms || undefined,
+            icon: icon || undefined,
+            permissions: perms?.length ? perms : undefined,
             reason: ctx.reason
         }).catch(ctx.noop);
         return this.success(!!edit);

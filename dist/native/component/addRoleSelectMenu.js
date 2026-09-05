@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -46,17 +46,16 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Boolean
         },
         {
-            name: "default roles",
-            rest: true,
-            type: structures_1.ArgType.String,
-            description: "The default selected roles to use",
-        }
+            name: "required",
+            description: "Whether this menu is required inside a modal",
+            rest: false,
+            type: structures_1.ArgType.Boolean,
+        },
     ],
-    execute(ctx, [id, placeholder, min, max, disabled, roles]) {
+    execute(ctx, [id, placeholder, min, max, disabled, required]) {
         const menu = new discord_js_1.RoleSelectMenuBuilder()
-            .setDefaultRoles(roles)
             .setDisabled(disabled || false)
-            .setRequired(ctx.component.required)
+            .setRequired(required || false)
             .setCustomId(id);
         if (placeholder)
             menu.setPlaceholder(placeholder);

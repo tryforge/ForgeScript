@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
@@ -23,7 +23,12 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [path]) {
-        return this.success((0, fs_1.statSync)(path).isDirectory());
+        try {
+            return this.success((0, fs_1.statSync)(path).isDirectory());
+        }
+        catch {
+            return this.success(false);
+        }
     },
 });
 //# sourceMappingURL=isDirectory.js.map

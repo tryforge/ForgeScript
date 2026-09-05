@@ -14,5 +14,5 @@ export declare enum VoiceStateProperty {
     streaming = "streaming",
     suppressed = "suppressed"
 }
-export declare const VoiceStateProperties: import("../functions/defineProperties").Properties<typeof VoiceStateProperty, VoiceState>;
+export declare const VoiceStateProperties: import("..").Properties<typeof VoiceStateProperty, VoiceState>;
 //# sourceMappingURL=voiceState.d.ts.map

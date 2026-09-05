@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -12,12 +12,12 @@ const discord_js_1 = require("discord.js");
 const fs_1 = require("fs");
 const util_1 = require("util");
 const constants_1 = require("../../constants");
-const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 const managers_1 = require("../../managers");
 const ForgeError_1 = require("../forge/ForgeError");
 const NativeFunction_1 = require("./NativeFunction");
 const Return_1 = require("./Return");
 const hex_1 = require("../../functions/hex");
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 class CompiledFunction {
     static OverwriteSymbolMapping = {
         "/": null,
@@ -81,8 +81,6 @@ class CompiledFunction {
     }
     /**
      * Resolves fields of a function.
-     * @param ctx
-     * @returns
      */
     async resolveArgs(ctx) {
         const args = new Array(this.fn.data.args?.length ?? 0);
@@ -115,9 +113,6 @@ class CompiledFunction {
     }
     /**
      * Does not account for condition fields.
-     * @param ctx
-     * @param index
-     * @returns
      */
     async resolveUnhandledArg(ctx, i, ref = []) {
         const arg = this.fn.data.args[i];
@@ -242,7 +237,7 @@ class CompiledFunction {
         return ctx.client.guilds.cache.get(str);
     }
     resolveJson(ctx, arg, str, ref) {
-        return (0, parseJSON_1.default)(str);
+        return (0, parseJSON_1.default)(str, false);
     }
     resolveUser(ctx, arg, str, ref) {
         if (!CompiledFunction.IdRegex.test(str))
@@ -424,14 +419,12 @@ class CompiledFunction {
         return this.error(ForgeError_1.ErrorType.Custom, msg);
     }
     async execute(ctx) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if (!this.fn.data.unwrap)
             return this.fn.data.execute.call(this, ctx);
         const args = await this.resolveArgs(ctx);
         if (!this.isValidReturnType(args))
             return args;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return this.fn.data.execute.call(this, ctx, args.value ?? []);
     }
@@ -481,7 +474,7 @@ class CompiledFunction {
         return new Return_1.Return(Return_1.ReturnType.Success, value);
     }
     success(value = null) {
-        return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof (value) === "string" ? (value !== "" ? value.split(this.data.count).length : 0) : value);
+        return new Return_1.Return(Return_1.ReturnType.Success, this.data.negated ? null : this.data.count !== null && typeof value === "string" ? (value !== "" ? value.split(this.data.count).length : 0) : value);
     }
 }
 exports.CompiledFunction = CompiledFunction;

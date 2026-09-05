@@ -1,20 +1,18 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { AttachmentBuilder } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$attachment",
     version: "1.0.0",
-    brackets: true,
     description: "Adds an attachment to the response",
+    aliases: ["$addAttachment"],
     unwrap: true,
-    aliases: [
-        "$addAttachment"
-    ],
+    brackets: true,
     args: [
         {
             name: "path",
@@ -47,11 +45,18 @@ export default new NativeFunction({
             description: "The description for this attachment",
             rest: false,
             type: ArgType.String
+        },
+        {
+            name: "title",
+            description: "The title for this attachment",
+            rest: false,
+            type: ArgType.String
         }
     ],
-    execute(ctx, [url, name, asText, enc, desc]) {
+    execute(ctx, [url, name, asText, enc, desc, title]) {
         const attachment = new AttachmentBuilder(asText ? Buffer.from(url, enc as BufferEncoding ?? "utf-8") : url, {
             name,
+            title: title || undefined,
             description: desc || undefined
         })
 

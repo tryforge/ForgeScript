@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { BaseChannel, TextChannel } from "discord.js"
@@ -20,7 +20,7 @@ export default new NativeFunction({
             rest: false,
             required: true,
             type: ArgType.Channel,
-            check: (i: BaseChannel) => !i.isDMBased(),
+            check: (i: BaseChannel) => "createInvite" in i,
         },
         {
             name: "max uses",

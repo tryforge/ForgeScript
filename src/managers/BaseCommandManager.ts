@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { Collection } from "discord.js"
@@ -29,14 +29,12 @@ export abstract class BaseCommandManager<T> extends TypedEmitter<ICommandManager
         for (const [key, commands] of this.commands) {
             // Unload the ones added thru folders
             const unloadable = commands.filter((x) => !x.data.unloadable)
-            
             // Keep unloadable
             this.commands.set(key, unloadable)
         }
 
         for (const p of this.paths) {
             for (const file of recursiveReaddirSync(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
-                // eslint-disable-next-line no-undef
                 const path = join(cwd(), file)
                 delete require.cache[require.resolve(path)]
             }
@@ -50,12 +48,11 @@ export abstract class BaseCommandManager<T> extends TypedEmitter<ICommandManager
         if (!this.paths.includes(path)) this.paths.push(path)
 
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
-            // eslint-disable-next-line no-undef
             const path = join(cwd(), file)
 
             const req = FileReader.read(file, path)
             if (!req) continue
-            
+
             if (Array.isArray(req)) this.addPath(true, path, ...req)
             else this.addPath(true, path, req)
         }
@@ -64,7 +61,7 @@ export abstract class BaseCommandManager<T> extends TypedEmitter<ICommandManager
     public get count() {
         return this.commands.reduce((x, y) => x + y.length, 0)
     }
-    
+
     public get(type: T, fn?: (cmd: BaseCommand<T>) => boolean): BaseCommand<T>[] {
         const cmds = this.commands.get(type) ?? []
         if (!fn) return cmds
@@ -83,12 +80,12 @@ export abstract class BaseCommandManager<T> extends TypedEmitter<ICommandManager
                 cmd.setPath(path)
 
             cmd.validate()
-            
+
             if (this.handlerName && !this.client.events.has(this.handlerName, cmd.type)) {
                 Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path ?? "index file"})`)
             }
 
-            const col = this.commands.ensure(cmd.type as T, () => new Array())
+            const col = this.commands.ensure(cmd.type as T, () => [])
             cmd.data.unloadable = unloadable
 
             col.push(cmd)

@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, NativeFunction, Return } from "../../structures"
@@ -8,7 +8,7 @@ import { ArgType, NativeFunction, Return } from "../../structures"
 export default new NativeFunction({
     name: "$isBot",
     version: "1.0.0",
-    description: "Whether the user is a bot",
+    description: "Returns whether the user is a bot",
     unwrap: true,
     output: ArgType.Boolean,
     args: [

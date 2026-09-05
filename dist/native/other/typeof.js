@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BigIntFormatRegex = void 0;
@@ -31,7 +31,7 @@ exports.default = new structures_1.NativeFunction({
             type = "boolean";
         else if (exports.BigIntFormatRegex.test(arg))
             type = "bigint";
-        else if (!!arg.trim() && !isNaN(Number(arg)))
+        else if (arg === "NaN" || (!!arg.trim() && !isNaN(Number(arg))))
             type = "number";
         else {
             try {

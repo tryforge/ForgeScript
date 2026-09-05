@@ -17,5 +17,5 @@ export declare enum ActivityProperty {
     smallText = "smallText",
     smallImage = "smallImage"
 }
-export declare const ActivityProperties: import("../functions/defineProperties").Properties<typeof ActivityProperty, Activity>;
+export declare const ActivityProperties: import("..").Properties<typeof ActivityProperty, Activity>;
 //# sourceMappingURL=activity.d.ts.map

@@ -1,11 +1,10 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ErrorType } from "../../structures/forge/ForgeError"
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
-import { Return } from "../../structures/@internal/Return"
 
 export default new NativeFunction({
     name: "$callFunction",
@@ -33,6 +32,6 @@ export default new NativeFunction({
         const fn = ctx.client.functions.get(name)
         if (!fn) return this.error(ErrorType.UnknownXName, "function", name)
 
-        return fn.call(ctx, args)
+        return fn.call(ctx, this, args)
     },
 })

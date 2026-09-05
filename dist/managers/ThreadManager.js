@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreadManager = void 0;
@@ -65,7 +65,6 @@ class ThreadManager {
             return this.available.values().next().value;
         if (this.workerCount >= this.maxWorkerCount)
             return undefined;
-        // eslint-disable-next-line no-undef
         const worker = await (0, thread_1.spawn)("thread");
         worker.on("error", this.onWorkerError.bind(this, worker));
         worker.on("message", this.onWorkerMessage.bind(this, worker));

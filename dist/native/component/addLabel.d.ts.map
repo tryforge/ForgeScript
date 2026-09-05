@@ -1,1 +1,1 @@
-{"version":3,"file":"addLabel.d.ts","sourceRoot":"","sources":["../../../src/native/component/addLabel.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;;;;AAElG,wBA0DE"}
+{"version":3,"file":"addLabel.d.ts","sourceRoot":"","sources":["../../../src/native/component/addLabel.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAE1F,wBAmDE"}

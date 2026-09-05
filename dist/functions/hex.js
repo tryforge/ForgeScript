@@ -1,19 +1,19 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resolveColor = exports.int2hex = exports.hex2int = void 0;
+exports.hex2int = hex2int;
+exports.int2hex = int2hex;
+exports.resolveColor = resolveColor;
 const discord_js_1 = require("discord.js");
 function hex2int(hex) {
     return parseInt(hex.replace("#", ""), 16);
 }
-exports.hex2int = hex2int;
 function int2hex(int) {
     return Number(int).toString(16).padStart(6, "0");
 }
-exports.int2hex = int2hex;
 function resolveColor(value) {
     if (typeof value === "number" || !isNaN(Number(value)))
         return Number(value);
@@ -24,5 +24,4 @@ function resolveColor(value) {
     else
         return hex2int(value);
 }
-exports.resolveColor = resolveColor;
 //# sourceMappingURL=hex.js.map

@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ChannelSelectMenuBuilder, ComponentType, ContainerBuilder, FileBuilder, MediaGalleryBuilder, MentionableSelectMenuBuilder, RoleSelectMenuBuilder, SectionBuilder, SeparatorBuilder, StringSelectMenuBuilder, TextDisplayBuilder, UserSelectMenuBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ChannelSelectMenuBuilder, CheckboxBuilder, CheckboxGroupBuilder, ComponentType, ContainerBuilder, FileBuilder, FileUploadBuilder, MediaGalleryBuilder, MentionableSelectMenuBuilder, MessageActionRowComponentBuilder, RadioGroupBuilder, RoleSelectMenuBuilder, SectionBuilder, SeparatorBuilder, StringSelectMenuBuilder, TextDisplayBuilder, TextInputBuilder, UserSelectMenuBuilder } from "discord.js";
 import { Context } from "../structures";
 /**
  * Checks whether the specified component type is a top level component.
@@ -19,13 +19,13 @@ export declare function buildActionRow(comp: any): ButtonBuilder | StringSelectM
  * @param ctx The current context, if any.
  * @returns
  */
-export declare function buildComponent(comp: any, ctx?: Context): ContainerBuilder | FileBuilder | MediaGalleryBuilder | SectionBuilder | SeparatorBuilder | TextDisplayBuilder | ActionRowBuilder<import("@discordjs/builders").AnyComponentBuilder>;
+export declare function buildComponent(comp: any, ctx?: Context): ContainerBuilder | FileBuilder | MediaGalleryBuilder | SectionBuilder | SeparatorBuilder | TextDisplayBuilder | ActionRowBuilder<import("discord.js").AnyComponentBuilder>;
 /**
  * Gets the last component of the current label or action row.
  * @param ctx The current context.
  * @returns
  */
-export declare function getLastComponent(ctx: Context): import("@discordjs/builders").MessageActionRowComponentBuilder | import("@discordjs/builders").TextInputBuilder | import("@discordjs/builders").FileUploadBuilder | undefined;
+export declare function getLastComponent(ctx: Context): MessageActionRowComponentBuilder | TextInputBuilder | CheckboxBuilder | CheckboxGroupBuilder | FileUploadBuilder | RadioGroupBuilder | undefined;
 /**
  * Adds an action row to the components. This is mostly needed inside ComponentsV2 functions.
  * @param ctx The current context.

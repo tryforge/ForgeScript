@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import {
@@ -27,6 +27,7 @@ import {
     Subscription,
     User,
     VoiceChannelEffect,
+    VoiceServerUpdateData,
     VoiceState
 } from "discord.js"
 import { IExtendedCompilationResult } from "."
@@ -36,6 +37,7 @@ import { ForgeClient } from "./ForgeClient"
 export interface IStates {
     message: Message
     voiceState: VoiceState
+    voiceServer: VoiceServerUpdateData
     voiceEffect: VoiceChannelEffect
     presence: Presence
     role: Role

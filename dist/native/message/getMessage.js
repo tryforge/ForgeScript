@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -9,9 +9,8 @@ const message_1 = require("../../properties/message");
 exports.default = new structures_1.NativeFunction({
     name: "$getMessage",
     version: "1.0.3",
-    description: "Retrieves data of a message",
+    description: "Retrieves data of a message, not providing any property returns message json",
     unwrap: true,
-    output: structures_1.ArgType.Unknown,
     brackets: true,
     args: [
         {
@@ -36,16 +35,18 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Enum,
             enum: message_1.MessageProperty,
-            required: true,
         },
         {
             name: "separator",
-            description: "Separator to use in case of array",
+            description: "The separator to use in case of array",
             rest: false,
             type: structures_1.ArgType.String,
         },
     ],
+    output: structures_1.ArgType.Unknown,
     execute(ctx, [, m, prop, sep]) {
+        if (!prop)
+            return this.successJSON(m);
         return this.success(message_1.MessageProperties[prop](m, sep || ", "));
     },
 });

@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -19,6 +19,7 @@ var ChannelProperty;
     ChannelProperty["bitrate"] = "bitrate";
     ChannelProperty["members"] = "members";
     ChannelProperty["timestamp"] = "timestamp";
+    ChannelProperty["url"] = "url";
     ChannelProperty["nsfw"] = "nsfw";
     ChannelProperty["flags"] = "flags";
     ChannelProperty["parentID"] = "parentID";
@@ -29,19 +30,24 @@ var ChannelProperty;
     ChannelProperty["availableTags"] = "availableTags";
     ChannelProperty["archived"] = "archived";
     ChannelProperty["locked"] = "locked";
+    ChannelProperty["deletable"] = "deletable";
+    ChannelProperty["manageable"] = "manageable";
+    ChannelProperty["lastMessageID"] = "lastMessageID";
+    ChannelProperty["lastPinTimestamp"] = "lastPinTimestamp";
 })(ChannelProperty || (exports.ChannelProperty = ChannelProperty = {}));
 exports.ChannelProperties = (0, defineProperties_1.default)({
-    bitrate: (i) => (i?.isVoiceBased() ? i.bitrate : undefined),
     id: (i) => i?.id,
-    timestamp: (i) => i?.createdTimestamp,
     name: (i) => (i && "name" in i ? i.name : undefined),
+    type: (i) => discord_js_1.ChannelType[i?.type],
+    topic: (i) => (i && "topic" in i ? i.topic : undefined),
+    bitrate: (i) => (i?.isVoiceBased() ? i.bitrate : undefined),
     members: (i, sep) => i && "members" in i
         ? (i.members instanceof discord_js_1.Collection ? i.members : i.members.cache)
             .map((x) => x.id)
             .join(sep ?? ", ")
         : undefined,
-    topic: (i) => (i && "topic" in i ? i.topic : undefined),
-    type: (i) => discord_js_1.ChannelType[i?.type],
+    timestamp: (i) => i?.createdTimestamp,
+    url: (i) => i?.url,
     nsfw: (i) => (i && "nsfw" in i ? i.nsfw : undefined),
     flags: (i, sep) => i?.flags?.toArray().join(sep ?? ", "),
     parentID: (i) => (i && "parentId" in i ? i.parentId : undefined),
@@ -52,5 +58,9 @@ exports.ChannelProperties = (0, defineProperties_1.default)({
     availableTags: (i, sep) => (i && "availableTags" in i ? i.availableTags.join(sep ?? ", ") : undefined),
     archived: (i) => (i && "archived" in i ? i.archived : undefined),
     locked: (i) => (i && "locked" in i ? i.locked : undefined),
+    deletable: (i) => (i && "deletable" in i ? i.deletable : undefined),
+    manageable: (i) => (i && "manageable" in i ? i.manageable : undefined),
+    lastMessageID: (i) => (i && "lastMessageId" in i ? i.lastMessageId : undefined),
+    lastPinTimestamp: (i) => (i && "lastPinTimestamp" in i ? i.lastPinTimestamp : undefined),
 });
 //# sourceMappingURL=channel.js.map

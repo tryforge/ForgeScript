@@ -1,9 +1,9 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { ComponentType, MentionableSelectMenuBuilder, SelectMenuDefaultValueType, User } from "discord.js"
+import { ComponentType, MentionableSelectMenuBuilder } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -46,23 +46,17 @@ export default new NativeFunction({
             type: ArgType.Boolean
         },
         {
-            name: "default roles/users",
-            rest: true,
-            type: ArgType.RoleOrUser,
-            description: "The default selected roles or users to use",
-        }
+            name: "required",
+            description: "Whether this menu is required inside a modal",
+            rest: false,
+            type: ArgType.Boolean,
+        },
     ],
-    execute(ctx, [ id, placeholder, min, max, disabled, defaults ]) {
+    execute(ctx, [ id, placeholder, min, max, disabled, required ]) {
         const menu = new MentionableSelectMenuBuilder()
             .setDisabled(disabled || false)
-            .setRequired(ctx.component.required)
+            .setRequired(required || false)
             .setCustomId(id)
-            .setDefaultValues(defaults.map(x => {
-                return {
-                    id: x.id,
-                    type: x instanceof User ? SelectMenuDefaultValueType.User : SelectMenuDefaultValueType.Role
-                }
-            }))
 
         if (placeholder) menu.setPlaceholder(placeholder)
         if (min) menu.setMinValues(min)

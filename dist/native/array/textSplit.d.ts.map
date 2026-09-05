@@ -1,1 +1,1 @@
-{"version":3,"file":"textSplit.d.ts","sourceRoot":"","sources":["../../../src/native/array/textSplit.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAC1D,eAAO,MAAM,aAAa,UAAoB,CAAA;;;;;;;;;;;;;;AAE9C,wBA0BE"}
+{"version":3,"file":"textSplit.d.ts","sourceRoot":"","sources":["../../../src/native/array/textSplit.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAC1D,eAAO,MAAM,aAAa,EAAG,QAAiB,CAAA;;;;;;;;;;;;;;AAE9C,wBA0BE"}

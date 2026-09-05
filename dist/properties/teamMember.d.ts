@@ -4,5 +4,5 @@ export declare enum TeamMemberProperty {
     role = "role",
     membership = "membership"
 }
-export declare const TeamMemberProperties: import("../functions/defineProperties").Properties<typeof TeamMemberProperty, TeamMember>;
+export declare const TeamMemberProperties: import("..").Properties<typeof TeamMemberProperty, TeamMember>;
 //# sourceMappingURL=teamMember.d.ts.map

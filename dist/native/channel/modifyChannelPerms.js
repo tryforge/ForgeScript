@@ -1,15 +1,12 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const structures_1 = require("../../structures");
-const overwritePermissionsArrayToObject_1 = __importDefault(require("../../functions/overwritePermissionsArrayToObject"));
+const overwritePermissions_1 = require("../../functions/overwritePermissions");
 exports.default = new structures_1.NativeFunction({
     name: "$modifyChannelPerms",
     version: "1.4.0",
@@ -47,7 +44,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     async execute(ctx, [channel, roleOrUser, raw]) {
         const ch = channel;
-        const mapped = (0, overwritePermissionsArrayToObject_1.default)(raw);
+        const mapped = (0, overwritePermissions_1.overwritePermissionsArrayToObject)(raw);
         if (ch.permissionOverwrites.cache.has(roleOrUser.id)) {
             return this.success(!!(await ch.permissionOverwrites.edit(roleOrUser, mapped, { reason: ctx.reason }).catch(ctx.noop)));
         }

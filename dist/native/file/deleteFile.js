@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
@@ -22,7 +22,6 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     execute(ctx, [path]) {
-        // eslint-disable-next-line no-undef
         (0, fs_1.rmSync)(path, { recursive: true });
         return this.success();
     },

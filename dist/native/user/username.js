@@ -1,14 +1,14 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const NativeFunction_1 = require("../../structures/@internal/NativeFunction");
 exports.default = new NativeFunction_1.NativeFunction({
     name: "$username",
     version: "1.0.0",
-    description: "Retrieves a user's username",
+    description: "Returns the username of a user",
     brackets: false,
     output: NativeFunction_1.ArgType.String,
     args: [

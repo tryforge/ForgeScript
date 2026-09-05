@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
@@ -32,7 +32,7 @@ exports.default = new structures_1.NativeFunction({
             name: "color",
             description: "The role color",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Color,
         },
         {
             name: "icon",

@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -32,7 +32,6 @@ class BaseCommandManager extends tiny_typed_emitter_1.TypedEmitter {
         }
         for (const p of this.paths) {
             for (const file of (0, recursiveReaddirSync_1.default)(p).filter((x) => x.endsWith(".js") || x.endsWith)) {
-                // eslint-disable-next-line no-undef
                 const path = (0, path_1.join)((0, process_1.cwd)(), file);
                 delete require.cache[require.resolve(path)];
             }
@@ -44,7 +43,6 @@ class BaseCommandManager extends tiny_typed_emitter_1.TypedEmitter {
         if (!this.paths.includes(path))
             this.paths.push(path);
         for (const file of (0, recursiveReaddirSync_1.default)(path).filter((x) => x.endsWith(".js") || x.endsWith(".fs"))) {
-            // eslint-disable-next-line no-undef
             const path = (0, path_1.join)((0, process_1.cwd)(), file);
             const req = core_1.FileReader.read(file, path);
             if (!req)
@@ -77,7 +75,7 @@ class BaseCommandManager extends tiny_typed_emitter_1.TypedEmitter {
             if (this.handlerName && !this.client.events.has(this.handlerName, cmd.type)) {
                 structures_1.Logger.warn(`Command is using the following listener: ${cmd.type} but the client is not listening to it. (${cmd.data.path ?? "index file"})`);
             }
-            const col = this.commands.ensure(cmd.type, () => new Array());
+            const col = this.commands.ensure(cmd.type, () => []);
             cmd.data.unloadable = unloadable;
             col.push(cmd);
         }

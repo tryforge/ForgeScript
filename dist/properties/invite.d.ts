@@ -18,5 +18,5 @@ export declare enum InviteProperty {
     targetType = "targetType",
     targetUser = "targetUser"
 }
-export declare const InviteProperties: import("../functions/defineProperties").Properties<typeof InviteProperty, Invite>;
+export declare const InviteProperties: import("..").Properties<typeof InviteProperty, Invite>;
 //# sourceMappingURL=invite.d.ts.map

@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -62,7 +62,7 @@ exports.default = new structures_1.NativeFunction({
         const snapshots = (m ?? ctx.message)?.messageSnapshots.toJSON();
         if (typeof index !== "number")
             return this.successJSON(snapshots);
-        if (prop === null)
+        if (!prop)
             return this.successJSON(snapshots[index]);
         return this.success(message_1.MessageProperties[prop](snapshots[index], sep ?? ", "));
     },

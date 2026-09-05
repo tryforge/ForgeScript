@@ -9,5 +9,5 @@ export declare enum VoiceEffectProperty {
     animationID = "animationID",
     animationType = "animationType"
 }
-export declare const VoiceEffectProperties: import("../functions/defineProperties").Properties<typeof VoiceEffectProperty, VoiceChannelEffect>;
+export declare const VoiceEffectProperties: import("..").Properties<typeof VoiceEffectProperty, VoiceChannelEffect>;
 //# sourceMappingURL=voiceEffect.d.ts.map

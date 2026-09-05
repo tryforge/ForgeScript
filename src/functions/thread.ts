@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { once } from "events"
@@ -8,7 +8,6 @@ import { join } from "path"
 import { Worker } from "worker_threads"
 
 export async function spawn(name: string) {
-    // eslint-disable-next-line no-undef
     const worker = new Worker(join(__dirname, "..", "experimental", "threading", `${name}.js`))
     await once(worker, "online")
     return worker

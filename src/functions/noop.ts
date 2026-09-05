@@ -1,10 +1,8 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
-import { DiscordAPIError } from "discord.js"
-import { inspect } from "node:util"
 import { Logger } from "../structures/@internal/Logger"
 
 export default (...args: any[]) => {

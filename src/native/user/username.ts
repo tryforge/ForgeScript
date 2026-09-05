@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { ArgType, NativeFunction } from "../../structures/@internal/NativeFunction"
@@ -8,7 +8,7 @@ import { ArgType, NativeFunction } from "../../structures/@internal/NativeFuncti
 export default new NativeFunction({
     name: "$username",
     version: "1.0.0",
-    description: "Retrieves a user's username",
+    description: "Returns the username of a user",
     brackets: false,
     output: ArgType.String,
     args: [

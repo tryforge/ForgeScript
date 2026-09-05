@@ -13,5 +13,5 @@ export declare enum EmojiProperty {
     url = "url",
     format = "format"
 }
-export declare const EmojiProperties: import("../functions/defineProperties").Properties<typeof EmojiProperty, GuildEmoji>;
+export declare const EmojiProperties: import("..").Properties<typeof EmojiProperty, GuildEmoji>;
 //# sourceMappingURL=emoji.d.ts.map

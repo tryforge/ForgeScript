@@ -16,5 +16,5 @@ export declare enum EmbedProperty {
     fieldInline = "fieldInline",
     fieldValue = "fieldValue"
 }
-export declare const EmbedProperties: import("../functions/defineProperties").Properties<typeof EmbedProperty, EmbedBuilder>;
+export declare const EmbedProperties: import("..").Properties<typeof EmbedProperty, EmbedBuilder>;
 //# sourceMappingURL=embed.d.ts.map

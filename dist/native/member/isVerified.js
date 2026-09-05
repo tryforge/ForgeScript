@@ -1,7 +1,7 @@
 "use strict";
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
@@ -11,7 +11,7 @@ exports.default = new structures_1.NativeFunction({
     aliases: [
         "$memberIsVerified"
     ],
-    description: "Whether a member is verified",
+    description: "Returns whether a member is verified",
     brackets: false,
     unwrap: true,
     output: structures_1.ArgType.Boolean,
@@ -25,7 +25,7 @@ exports.default = new structures_1.NativeFunction({
         },
         {
             name: "user ID",
-            description: "The member to get its voice state",
+            description: "The member to get its verified status",
             rest: false,
             type: structures_1.ArgType.Member,
             pointer: 0,

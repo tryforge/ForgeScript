@@ -1,6 +1,6 @@
 /*
-* SPDX-License-Identifier: GPL-3.0-or-later
-* Copyright © 2025 BotForge
+* SPDX-License-Identifier: LGPL-3.0-or-later
+* Copyright © 2026 BotForge
 */
 
 import { AttachmentBuilder, EmbedBuilder } from "discord.js"
@@ -12,7 +12,7 @@ export default new NativeFunction({
     version: "1.4.0",
     brackets: false,
     unwrap: true,
-    description: "Fetches all data from the message and loads it to response, this includes: embeds, components, attachments, stickers",
+    description: "Fetches all data from the message and loads it to the next response, this includes: embeds, components, attachments, stickers",
     args: [
         {
             name: "channel ID",
