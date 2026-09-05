@@ -9,7 +9,6 @@ const readline_1 = require("readline");
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 const path_1 = require("path");
-const os_1 = require("os");
 async function prompt(q) {
     const itf = (0, readline_1.createInterface)(process_1.stdin, process_1.stdout);
     return new Promise(r => {
@@ -51,12 +50,10 @@ async function main() {
         (0, fs_1.writeFileSync)(fileName, JSON.stringify(json), "utf-8");
     }
     const branch = await prompt("Write the branch name to push to (defaults to dev): ") || "dev";
-    let escapedMsg = msg;
-    if ((0, os_1.platform)() === "darwin")
-        escapedMsg = escapedMsg.replace(/\$/g, "\\$");
-    (0, child_process_1.execSync)("git branch -M " + branch + " && git add . && git commit -m \"" + escapedMsg + "\" && git push -u origin " + branch, {
-        stdio: "inherit"
-    });
+    (0, child_process_1.execFileSync)("git", ["branch", "-M", branch], { stdio: "inherit" });
+    (0, child_process_1.execFileSync)("git", ["add", "."], { stdio: "inherit" });
+    (0, child_process_1.execFileSync)("git", ["commit", "-m", msg], { stdio: "inherit" });
+    (0, child_process_1.execFileSync)("git", ["push", "-u", "origin", branch], { stdio: "inherit" });
 }
 // Nothing
 main();
