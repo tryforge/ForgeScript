@@ -3,14 +3,18 @@
 * SPDX-License-Identifier: LGPL-3.0-or-later
 * Copyright © 2026 BotForge
 */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
+const parseJSON_1 = __importDefault(require("../../functions/parseJSON"));
 exports.default = new structures_1.NativeFunction({
     name: "$arrayIncludes",
     version: "1.0.0",
     description: "Checks whether a value exists in an array",
     unwrap: true,
-    output: structures_1.ArgType.Boolean,
+    brackets: true,
     args: [
         {
             name: "variable",
@@ -27,10 +31,10 @@ exports.default = new structures_1.NativeFunction({
             required: true,
         },
     ],
-    brackets: true,
+    output: structures_1.ArgType.Boolean,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name);
-        return this.success(Array.isArray(arr) ? arr.includes(value) : false);
+        return this.success(Array.isArray(arr) ? arr.includes((0, parseJSON_1.default)(value)) : false);
     },
 });
 //# sourceMappingURL=arrayIncludes.js.map
