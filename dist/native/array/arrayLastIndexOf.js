@@ -3,8 +3,12 @@
 * SPDX-License-Identifier: LGPL-3.0-or-later
 * Copyright © 2026 BotForge
 */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
+const parsePrimitive_1 = __importDefault(require("../../functions/parsePrimitive"));
 exports.default = new structures_1.NativeFunction({
     name: "$arrayLastIndexOf",
     version: "1.5.0",
@@ -30,7 +34,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name);
-        return this.success(Array.isArray(arr) ? arr.lastIndexOf(value) : -1);
+        return this.success(Array.isArray(arr) ? arr.lastIndexOf((0, parsePrimitive_1.default)(value)) : -1);
     },
 });
 //# sourceMappingURL=arrayLastIndexOf.js.map

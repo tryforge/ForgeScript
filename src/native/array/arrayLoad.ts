@@ -3,7 +3,8 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import parsePrimitive from "../../functions/parsePrimitive"
 
 export default new NativeFunction({
     name: "$arrayLoad",
@@ -34,7 +35,7 @@ export default new NativeFunction({
     unwrap: true,
     brackets: true,
     execute(ctx, [name, sep, values]) {
-        ctx.setEnvironmentKey(name, sep === null ? [] : values.join(";").split(sep))
+        ctx.setEnvironmentKey(name, sep === null ? [] : values.join(";").split(sep).map(parsePrimitive))
         return this.success()
     },
 })
