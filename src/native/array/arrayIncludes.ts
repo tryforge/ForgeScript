@@ -3,14 +3,15 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import parseJSON from "../../functions/parseJSON"
 
 export default new NativeFunction({
     name: "$arrayIncludes",
     version: "1.0.0",
     description: "Checks whether a value exists in an array",
     unwrap: true,
-    output: ArgType.Boolean,
+    brackets: true,
     args: [
         {
             name: "variable",
@@ -27,9 +28,9 @@ export default new NativeFunction({
             required: true,
         },
     ],
-    brackets: true,
+    output: ArgType.Boolean,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name)
-        return this.success(Array.isArray(arr) ? arr.includes(value) : false)
+        return this.success(Array.isArray(arr) ? arr.includes(parseJSON(value)) : false)
     },
 })
