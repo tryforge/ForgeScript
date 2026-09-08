@@ -110,4 +110,4 @@ jobs:
 
           git add $(cat files.txt)
           git commit -m "Format Crowdin translation exports"
-          git push
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}

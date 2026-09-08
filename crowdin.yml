@@ -3,6 +3,8 @@ pull_request_labels:
   - translations
 pull_request_assignees:
   - xNickyDev
+commit_message: "New translations %original_file_name% (%language%)"
+append_commit_message: false
 files:
   - source: /metadata/translations/en.json
     translation: /metadata/translations/%locale%.json
