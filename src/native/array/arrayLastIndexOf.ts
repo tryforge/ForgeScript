@@ -3,7 +3,8 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import parsePrimitive from "../../functions/parsePrimitive"
 
 export default new NativeFunction({
     name: "$arrayLastIndexOf",
@@ -30,6 +31,6 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name)
-        return this.success(Array.isArray(arr) ? arr.lastIndexOf(value) : -1)
+        return this.success(Array.isArray(arr) ? arr.lastIndexOf(parsePrimitive(value)) : -1)
     },
 })

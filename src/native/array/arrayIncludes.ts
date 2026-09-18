@@ -4,7 +4,7 @@
 */
 
 import { ArgType, NativeFunction } from "../../structures"
-import parseJSON from "../../functions/parseJSON"
+import parsePrimitive from "../../functions/parsePrimitive"
 
 export default new NativeFunction({
     name: "$arrayIncludes",
@@ -31,6 +31,6 @@ export default new NativeFunction({
     output: ArgType.Boolean,
     execute(ctx, [name, value]) {
         const arr = ctx.getEnvironmentKey(name)
-        return this.success(Array.isArray(arr) ? arr.includes(parseJSON(value)) : false)
+        return this.success(Array.isArray(arr) ? arr.includes(parsePrimitive(value)) : false)
     },
 })

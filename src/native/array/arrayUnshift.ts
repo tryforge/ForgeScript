@@ -3,7 +3,8 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import parsePrimitive from "../../functions/parsePrimitive"
 
 export default new NativeFunction({
     name: "$arrayUnshift",
@@ -29,7 +30,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, values]) {
         const arr = ctx.getEnvironmentKey(name)
-        if (Array.isArray(arr)) arr.unshift(...values)
+        if (Array.isArray(arr)) arr.unshift(...values.map(parsePrimitive))
         return this.success()
     },
 })

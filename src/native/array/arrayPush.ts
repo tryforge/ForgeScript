@@ -3,7 +3,8 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import parsePrimitive from "../../functions/parsePrimitive"
 
 export default new NativeFunction({
     name: "$arrayPush",
@@ -29,7 +30,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name, values]) {
         const arr = ctx.getEnvironmentKey(name)
-        if (Array.isArray(arr)) arr.push(...values)
+        if (Array.isArray(arr)) arr.push(...values.map(parsePrimitive))
         return this.success()
     },
 })

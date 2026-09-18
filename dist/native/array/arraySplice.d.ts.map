@@ -1,1 +1,1 @@
-{"version":3,"file":"arraySplice.d.ts","sourceRoot":"","sources":["../../../src/native/array/arraySplice.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;;;;;AAElE,wBAyCE"}
+{"version":3,"file":"arraySplice.d.ts","sourceRoot":"","sources":["../../../src/native/array/arraySplice.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;;;;;AAG1D,wBAyCE"}
