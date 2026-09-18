@@ -5,3 +5,4 @@ node_modules
 act.exe
 PUBLISHING.md
 __tests__
+.private

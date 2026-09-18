@@ -5,6 +5,7 @@ src/
 metadata/
 .vscode/
 .github/
+.private/
 CONTRIBUTING.md
 EXTENSIONS.md
 .env

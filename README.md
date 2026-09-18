@@ -26,7 +26,7 @@ ForgeScript is a comprehensive package that empowers you to effortlessly interac
 
 </summary>
 
-Make sure you have <strong>node.js</strong> installed, and greater than version **v16.11.0**. Once done, run one of the following commands in a console (from any IDE or terminal):
+Make sure you have <strong>node.js</strong> installed, and greater than or equal to version **v22.19.0**. Once done, run one of the following commands in a console (from any IDE or terminal):
 
 **Main**
 ```bash
