@@ -15,7 +15,7 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The id of the channel",
+            description: "The channel to check",
             rest: false,
             type: ArgType.Channel,
             required: true,

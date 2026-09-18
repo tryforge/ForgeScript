@@ -8,14 +8,14 @@ import { ArgType, NativeFunction } from "../../structures"
 export default new NativeFunction({
     name: "$isThreadOnly",
     version: "2.8.0",
-    description: "Returns whether the channel is a thread only channel",
+    description: "Returns whether the channel is a thread-only channel",
     aliases: ["$channelIsThreadOnly"],
     unwrap: true,
     brackets: false,
     args: [
         {
             name: "channel ID",
-            description: "The id of the channel",
+            description: "The channel to check",
             rest: false,
             type: ArgType.Channel,
             required: true,
