@@ -12,10 +12,10 @@ export class ApplicationCommand {
     compiled: IExtendedCompilationResult
 
     public constructor(public readonly options: IApplicationCommandData) {
-        if (this.options.code === undefined)
+        if (options.code === undefined)
             throw new ForgeError(null, ErrorType.MissingCommandCode, this.path)
 
-        if (typeof this.options.code !== "string")
+        if (typeof options.code !== "string")
             throw new ForgeError(null, ErrorType.InvalidPropertyType, "code", "string", this.path)
 
         this.compiled = Compiler.compile(options.code, options.path)

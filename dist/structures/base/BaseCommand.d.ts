@@ -3,7 +3,7 @@ import { IExtendedCompilationResult, ForgeClient } from "../../core";
 import { Context } from "..";
 export type CommandType = keyof ClientEvents;
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>;
-declare const COMMAND_INTERACTION_TYPES: readonly ["button", "modal", "slashCommand", "autocomplete", "contextMenu", "userContextMenu", "messageContextMenu", "selectMenu", "userSelectMenu", "roleSelectMenu", "channelSelectMenu", "mentionableSelectMenu", "activityCommand", "messageComponent"];
+export declare const COMMAND_INTERACTION_TYPES: readonly ["button", "modal", "slashCommand", "autocomplete", "contextMenu", "userContextMenu", "messageContextMenu", "selectMenu", "userSelectMenu", "roleSelectMenu", "channelSelectMenu", "mentionableSelectMenu", "activityCommand", "messageComponent"];
 export type CommandInteractionTypes = typeof COMMAND_INTERACTION_TYPES[number];
 export declare enum PrefixMode {
     /**
@@ -106,5 +106,4 @@ export declare class BaseCommand<T> {
     matchesInteractionType(i: Interaction): boolean;
     private _validateType;
 }
-export {};
 //# sourceMappingURL=BaseCommand.d.ts.map

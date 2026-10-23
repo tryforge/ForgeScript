@@ -13,9 +13,9 @@ class ApplicationCommand {
     compiled;
     constructor(options) {
         this.options = options;
-        if (this.options.code === undefined)
+        if (options.code === undefined)
             throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.MissingCommandCode, this.path);
-        if (typeof this.options.code !== "string")
+        if (typeof options.code !== "string")
             throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.InvalidPropertyType, "code", "string", this.path);
         this.compiled = core_1.Compiler.compile(options.code, options.path);
     }

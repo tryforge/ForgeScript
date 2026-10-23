@@ -11,7 +11,7 @@ import { Context } from ".."
 export type CommandType = keyof ClientEvents
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>
 
-const COMMAND_INTERACTION_TYPES = [
+export const COMMAND_INTERACTION_TYPES = [
     "button",
     "modal",
     "slashCommand",

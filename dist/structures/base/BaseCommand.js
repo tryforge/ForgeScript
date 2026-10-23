@@ -4,10 +4,10 @@
 * Copyright © 2026 BotForge
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BaseCommand = exports.PrefixMode = void 0;
+exports.BaseCommand = exports.PrefixMode = exports.COMMAND_INTERACTION_TYPES = void 0;
 const core_1 = require("../../core");
 const ForgeError_1 = require("../forge/ForgeError");
-const COMMAND_INTERACTION_TYPES = [
+exports.COMMAND_INTERACTION_TYPES = [
     "button",
     "modal",
     "slashCommand",
@@ -72,7 +72,7 @@ class BaseCommand {
         if (d.aliases !== undefined && (!Array.isArray(d.aliases) || d.aliases.some((x) => typeof x !== "string")))
             throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.InvalidPropertyType, "aliases", "string[]", this.path);
         if (d.allowedInteractionTypes !== undefined && (!Array.isArray(d.allowedInteractionTypes) ||
-            d.allowedInteractionTypes.some((x) => !COMMAND_INTERACTION_TYPES.includes(x)))) {
+            d.allowedInteractionTypes.some((x) => !exports.COMMAND_INTERACTION_TYPES.includes(x)))) {
             throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.InvalidPropertyType, "allowedInteractionTypes", "CommandInteractionTypes[]", this.path);
         }
     }
