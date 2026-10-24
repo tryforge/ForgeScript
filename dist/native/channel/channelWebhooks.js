@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
             rest: false,
             type: structures_1.ArgType.Channel,
             required: true,
-            check: (i) => i.isTextBased(),
+            check: (i) => "fetchWebhooks" in i,
         },
         {
             name: "property",
@@ -44,7 +44,8 @@ exports.default = new structures_1.NativeFunction({
         (0, array_1.default)()
     ],
     async execute(ctx, [channel, prop, sep]) {
-        const webhooks = await (channel ?? ctx.channel)?.fetchWebhooks().catch(ctx.noop);
+        const chan = (channel ?? ctx.channel);
+        const webhooks = await chan?.fetchWebhooks().catch(ctx.noop);
         if (prop && webhooks)
             return this.success(webhooks.map((x) => webhook_1.WebhookProperties[prop](x)).join(sep ?? ", "));
         return this.successJSON(webhooks);

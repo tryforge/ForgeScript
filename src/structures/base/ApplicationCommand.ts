@@ -12,11 +12,18 @@ export class ApplicationCommand {
     compiled: IExtendedCompilationResult
 
     public constructor(public readonly options: IApplicationCommandData) {
+        if (options.code !== undefined && typeof options.code !== "string")
+            throw new ForgeError(null, ErrorType.InvalidPropertyType, "code", "string", this.path)
+
         this.compiled = Compiler.compile(options.code, options.path)
     }
 
     public get name() {
         return this.options.data.name
+    }
+
+    public get path() {
+        return this.options.path ?? "index file"
     }
 
     public get registrationType() {
@@ -29,7 +36,7 @@ export class ApplicationCommand {
 
     public toJSON(): RESTPostAPIApplicationCommandsJSONBody {
         if (!this.options.data)
-            throw new ForgeError(null, ErrorType.MissingApplicationCommandData, this.options.path ?? "index file")
+            throw new ForgeError(null, ErrorType.MissingApplicationCommandData, this.path)
 
         return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data
     }

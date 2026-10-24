@@ -42,7 +42,7 @@ export interface IApplicationCommandData {
         | SlashCommandBuilder
         | ContextMenuCommandBuilder
         | RESTPostAPIApplicationCommandsJSONBody
-    code: string
+    code?: string
     type?: RegistrationType
     independent?: boolean
     path?: string | null

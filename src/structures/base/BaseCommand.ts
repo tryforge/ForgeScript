@@ -11,21 +11,24 @@ import { Context } from ".."
 export type CommandType = keyof ClientEvents
 export type RawExecutableCode = (ctx: Context) => Promise<unknown[] | null>
 
-export type CommandInteractionTypes =
-    | "button"
-    | "modal"
-    | "slashCommand"
-    | "autocomplete"
-    | "contextMenu"
-    | "userContextMenu"
-    | "messageContextMenu"
-    | "selectMenu"
-    | "userSelectMenu"
-    | "roleSelectMenu"
-    | "channelSelectMenu"
-    | "mentionableSelectMenu"
-    | "activityCommand"
-    | "messageComponent"
+export const COMMAND_INTERACTION_TYPES = [
+    "button",
+    "modal",
+    "slashCommand",
+    "autocomplete",
+    "contextMenu",
+    "userContextMenu",
+    "messageContextMenu",
+    "selectMenu",
+    "userSelectMenu",
+    "roleSelectMenu",
+    "channelSelectMenu",
+    "mentionableSelectMenu",
+    "activityCommand",
+    "messageComponent"
+] as const
+
+export type CommandInteractionTypes = typeof COMMAND_INTERACTION_TYPES[number]
 
 export enum PrefixMode {
     /**
@@ -134,6 +137,12 @@ export class BaseCommand<T> {
     public readonly id = ++id
 
     public constructor(public readonly data: IBaseCommand<T>) {
+        if (data.code === undefined)
+            throw new ForgeError(null, ErrorType.MissingCommandCode, this.path)
+
+        this._validateType("name", data.name, "string")
+        this._validateType("code", data.code, "string")
+
         this.compiled = {
             name: Compiler.compile(data.name, this.data.path),
             code: Compiler.compile(data.code, this.data.path),
@@ -146,8 +155,29 @@ export class BaseCommand<T> {
     }
 
     public validate() {
-        if (!this.data.type)
-            throw new ForgeError(null, ErrorType.MissingCommandType, this.data.path)
+        const d = this.data
+
+        if (!d.type)
+            throw new ForgeError(null, ErrorType.MissingCommandType, this.path)
+
+        this._validateType("guildOnly", d.guildOnly, "boolean")
+        this._validateType("unprefixed", d.unprefixed, "boolean")
+        this._validateType("allowBots", d.allowBots, "boolean")
+        this._validateType("disableConsoleErrors", d.disableConsoleErrors, "boolean")
+        this._validateType("nameCaseInsensitive", d.nameCaseInsensitive, "boolean")
+
+        if (d.prefixMode !== undefined && PrefixMode[d.prefixMode] === undefined)
+            throw new ForgeError(null, ErrorType.InvalidPropertyType, "prefixMode", "PrefixMode", this.path)
+
+        if (d.aliases !== undefined && (!Array.isArray(d.aliases) || d.aliases.some((x) => typeof x !== "string")))
+            throw new ForgeError(null, ErrorType.InvalidPropertyType, "aliases", "string[]", this.path)
+
+        if (d.allowedInteractionTypes !== undefined && (
+            !Array.isArray(d.allowedInteractionTypes) ||
+            d.allowedInteractionTypes.some((x) => !(COMMAND_INTERACTION_TYPES as readonly string[]).includes(x))
+        )) {
+            throw new ForgeError(null, ErrorType.InvalidPropertyType, "allowedInteractionTypes", "CommandInteractionTypes[]", this.path)
+        }
     }
 
     public static from(code: string) {
@@ -163,6 +193,10 @@ export class BaseCommand<T> {
 
     public get type() {
         return this.data.type
+    }
+
+    public get path() {
+        return this.data.path ?? "index file"
     }
 
     public hasDisabledConsoleErrors(client: ForgeClient) {
@@ -197,5 +231,10 @@ export class BaseCommand<T> {
                     )
                 )
             )
+    }
+
+    private _validateType(key: string, value: unknown, expected: "string" | "boolean") {
+        if (value !== undefined && typeof value !== expected)
+            throw new ForgeError(null, ErrorType.InvalidPropertyType, key, expected, this.path)
     }
 }

@@ -8,6 +8,7 @@ exports.ForgeError = exports.ErrorType = void 0;
 var ErrorType;
 (function (ErrorType) {
     ErrorType["InvalidArgType"] = "Given value $1 for argument $2 is not of type $3";
+    ErrorType["InvalidPropertyType"] = "Command property $1 must be of type $2 ($3)";
     ErrorType["MissingArg"] = "Function $1 is missing argument $2";
     ErrorType["MissingFields"] = "Function $1 requires brackets";
     ErrorType["UnknownXName"] = "Unknown $1 with name $2";
@@ -15,6 +16,7 @@ var ErrorType;
     ErrorType["MissingApplicationCommandData"] = "An application command is missing data property ($1)";
     ErrorType["ExtensionNotFound"] = "Extension $1 does not seem to be loaded but is being used.";
     ErrorType["MissingCommandType"] = "A command is missing its type ($1)";
+    ErrorType["MissingCommandCode"] = "A command is missing its code ($1)";
     ErrorType["UnsupportedExtensionVersion"] = "Extension $1 does not work for your ForgeScript version: $2";
     ErrorType["RequiredExtension"] = "Extension $1 requires the next extension: $2 loaded to work";
     ErrorType["CompilerError"] = "$1 at $2:$3 ($4)";

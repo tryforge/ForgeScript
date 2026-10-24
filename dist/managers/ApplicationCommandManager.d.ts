@@ -8,7 +8,7 @@ export declare enum RegistrationType {
 }
 export interface IApplicationCommandData {
     data: SlashCommandBuilder | ContextMenuCommandBuilder | RESTPostAPIApplicationCommandsJSONBody;
-    code: string;
+    code?: string;
     type?: RegistrationType;
     independent?: boolean;
     path?: string | null;

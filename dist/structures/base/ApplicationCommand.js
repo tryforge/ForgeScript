@@ -13,10 +13,15 @@ class ApplicationCommand {
     compiled;
     constructor(options) {
         this.options = options;
+        if (options.code !== undefined && typeof options.code !== "string")
+            throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.InvalidPropertyType, "code", "string", this.path);
         this.compiled = core_1.Compiler.compile(options.code, options.path);
     }
     get name() {
         return this.options.data.name;
+    }
+    get path() {
+        return this.options.path ?? "index file";
     }
     get registrationType() {
         return this.options.type ?? ApplicationCommandManager_1.RegistrationType.Global;
@@ -26,7 +31,7 @@ class ApplicationCommand {
     }
     toJSON() {
         if (!this.options.data)
-            throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.MissingApplicationCommandData, this.options.path ?? "index file");
+            throw new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.MissingApplicationCommandData, this.path);
         return "toJSON" in this.options.data ? this.options.data.toJSON() : this.options.data;
     }
 }

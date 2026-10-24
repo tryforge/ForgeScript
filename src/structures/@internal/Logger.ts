@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import clc, { ChalkInstance } from "chalk"
+import clc from "chalk"
 import { stdout } from "process"
 import { inspect } from "util"
 
@@ -50,7 +50,7 @@ export class Logger {
         [LogType.Warn]: clc.yellow.bold,
         [LogType.Deprecated]: clc.magenta.bold,
         [LogType.Info]: clc.cyan.bold
-    } satisfies Record<LogType, ChalkInstance>
+    } satisfies Record<LogType, typeof clc>
     public static readonly DateColor = clc.green.bold
 
     private static log(priority: LogPriority, type: LogType, ...args: unknown[]) {

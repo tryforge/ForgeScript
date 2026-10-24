@@ -6,6 +6,7 @@ export declare class ApplicationCommand {
     compiled: IExtendedCompilationResult;
     constructor(options: IApplicationCommandData);
     get name(): string;
+    get path(): string;
     get registrationType(): RegistrationType;
     mustRegisterAs(type: Exclude<RegistrationType, RegistrationType.All>): boolean;
     toJSON(): RESTPostAPIApplicationCommandsJSONBody;
