@@ -1,121 +1,167 @@
-# ForgeScript
-ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
+<div align="center">
+  <a href="https://docs.botforge.org">
+    <img src="https://api.botforge.org/assets/spot_logotop.png" alt="ForgeScript logo" width="340">
+  </a>
+  <h1>ForgeScript</h1>
 
-## Index
-<strong>
+  <p>A fast, lightweight, and extensible scripting framework for building Discord bots in Node.js.</p>
 
-1. [Installation](#installation)
-2. [Making your first bot](#making-your-first-bot)
-    1. [Client Initialization](#client-initialization)
-    2. [Registering Commands](#registering-commands)
-        1. [Basic registering](#basic-registering)
-        2. [Registering from a root folder](#registering-from-a-root-folder)
-3. [Extensions](#extensions)
-4. [Limitations](#limitations)
-5. [Update Frequency](#update-frequency)
-6. [Function Documentation](https://docs.botforge.org/)
-7. [Library Documentation](https://tryforge.github.io/ForgeScript/index.html)
+  <p>
+    <a href="https://www.npmjs.com/package/@tryforge/forgescript"><img alt="NPM version" src="https://img.shields.io/npm/v/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=462bf7"></a>
+    <a href="https://www.npmjs.com/package/@tryforge/forgescript"><img alt="NPM downloads" src="https://img.shields.io/npm/dm/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=338cf5"></a>
+    <a href="https://github.com/tryforge/ForgeScript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=32cd32"></a>
+    <a href="https://discord.gg/yFW5Ju6JP8"><img alt="Discord" src="https://img.shields.io/badge/Discord-Join%20Community-5865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=000000"></a>
+  </p>
 
-</strong>
+  <p>
+    <a href="https://docs.botforge.org">Documentation</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://docs.botforge.org">Function Reference</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://discord.gg/yFW5Ju6JP8">Discord Community</a>
+  </p>
+</div>
 
-<details open>
+---
 
-<summary>
+## Overview
+
+ForgeScript is a lightweight scripting language built on top of [discord.js](https://discord.js.org/) that makes Discord bot development fast and straightforward. Instead of dealing with massive boilerplate, you write clean code that executes top to bottom.
+
+- **1,100+ Functions**: Built-in support for embeds, components, automod, moderation, math, and string tools.
+- **Prefix & Slash Commands**: Dedicated file loaders for standard message commands and Discord Application (slash) commands.
+- **Extensible**: Easily add custom functions or plug in database and canvas extensions.
+- **TypeScript Ready**: Types included out of the box.
+
+---
 
 ## Installation
 
-</summary>
+Ensure you have **Node.js v22.0.0** or higher installed.
 
-Make sure you have <strong>node.js</strong> installed, and greater than or equal to version **v22.0.0**. Once done, run one of the following commands in a console (from any IDE or terminal):
-
-**Main**
 ```bash
-npm i https://github.com/tryforge/ForgeScript/tree/main
-```
-**Dev**
-```bash
-npm i https://github.com/tryforge/ForgeScript/tree/dev
+npm install @tryforge/forgescript
 ```
 
-</details>
+---
 
-<details open> 
+## Getting Started
 
-<summary>
+### 1. Initialize the Client (`index.js`)
 
-## Making your first Bot
+> **Tip:** You can use the [BotForge Client Generator](https://tools.botforge.org/clientgen) to configure intents, events, and generate this file interactively.
 
-</summary>
-
-This section will guide you through initializing a client and loading commands from a folder, as well as logging your bot into discord.
-
-### Client Initialization
-We will write the following for a basic bot initialization, in a `index.js` file:
-```js
-const { ForgeClient } = require("@tryforge/forgescript")
+```javascript
+const { ForgeClient } = require("@tryforge/forgescript");
 
 const client = new ForgeClient({
-    intents: [
-        "GuildMessages",
-        "Guilds",
-        "MessageContent" // This intent is privileged, must be whitelisted in dev portal, in your application.
-    ],
-    events: [
-        "messageCreate",
-        "clientReady"
-    ], // Events our bot will act on
-    prefixes: [
-        "!",
-        "?"
-    ] // The prefixes to use for our bot!
-})
+  prefixes: ["!"],
+  intents: [
+    "Guilds",
+    "GuildMessages",
+    "MessageContent", // Privileged intent: enable in Discord Developer Portal
+  ],
+  events: [
+    "messageCreate",
+    "interactionCreate", // Required for slash commands and components
+    "clientReady",
+  ],
+});
 
-client.login("token")
-```
-This will be enough to put our bot on.
+// Load standard prefix commands
+client.commands.load("./commands/prefix");
 
-### Registering commands
-Registering commands is the way to go when we want something to happen on certain events.
+// Load slash / application commands
+client.applicationCommands.load("./commands/slash");
 
-#### Basic registering
-Let's write this after our client initialization code:
-```js
-client.commands.add({
-    name: "user", // Not defining this creates a command that will be executed for every event fired of given type
-    code: `Your name is $username!`,
-    type: "messageCreate" // The event to act on
-})
+client.login(process.env.DISCORD_TOKEN);
 ```
 
-And this will register a command with name `user` that will return the name of the user that executed this command.
+### 2. Prefix Command Example (`commands/prefix/ping.js`)
 
-#### Registering from a root folder
-The previous way to register commands can fill our index file with a lot of junk code, so there's a way to put files with commands in folders and load them from the index file.
+In ForgeScript, code runs sequentially from top to bottom. Built-in functions like `$title`, `$description`, and `$addField` make creating rich embeds effortless without constructing complex objects:
 
-1. Create a folder, with any name, and a file inside it, name it whatever you want (must end with .js) and write the following in it:
-    ```js
-    module.exports = {
-        name: "user",
-        type: "messageCreate",
-        code: `Your name is $username!`
-    }
-    ```
-    This is essentially the same as the previous command, but will be loaded from a folder!
-2. Now, let's go back to our index file and write the following after client initialization (Make sure you've erased the code to register a command from index file):
-    ```js
-    client.commands.load("./<folder>")
-    ```
-    Replace `<folder>` with the folder name you used, and every file residing in the root folder (the tree doesn't matter as long as the file is in the folder) will be loaded into your bot!
-</details>
+```javascript
+module.exports = {
+  name: "ping",
+  type: "messageCreate",
+  code: `
+    $title[Pong! 🏓]
+    $description[Current bot performance and connection status:]
+    $addField[Latency;$pingms;true]
+    $addField[Uptime;$parseMS[$uptime];true]
+    $color[#5865F2]
+    $footer[Requested by $username;$userAvatar]
+  `,
+};
+```
 
-<details open>
+<img src="https://api.botforge.org/assets/spot_codeexample.png" alt="Command Output Preview" width="520" />
 
-<summary>
+### 3. Slash Command Example (`commands/slash/ping.js`)
 
-## Limitations
+Slash commands define a Discord `data` object alongside their executable `code`:
 
-</summary>
+```javascript
+module.exports = {
+  data: {
+    name: "ping",
+    description: "Check bot latency",
+  },
+  code: `Pong! Latency: $pingms`,
+};
+```
 
-There's currently no known limitation.
-> ⚠️ Note this library reads codes from **TOP** to **BOTTOM**, and never the opposite.
-</details>
+> **Tip:** You can visually configure options, choices, and subcommands using the [Application Command Builder](https://tools.botforge.org/appbuilder?sc_definition=tree) to generate your `data` structure. For further details, check out the [Slash Commands Guide](https://docs.botforge.org/guide/Slash-Commands-284).
+
+---
+
+## Extensions
+
+ForgeScript can be augmented with extensions. For example, to add database capabilities with **ForgeDB**:
+
+```bash
+npm install @tryforge/forge.db
+```
+
+```javascript
+const { ForgeClient } = require("@tryforge/forgescript");
+const { ForgeDB } = require("@tryforge/forge.db");
+
+const client = new ForgeClient({
+  prefixes: ["!"],
+  intents: ["Guilds", "GuildMessages", "MessageContent"],
+  events: ["messageCreate"],
+  extensions: [
+    new ForgeDB(),
+  ],
+});
+```
+
+---
+
+## Contributors
+
+Thank you to everyone contributing to ForgeScript!
+
+<p align="center">
+  <a href="https://github.com/tryforge/ForgeScript/graphs/contributors">
+    <img src="https://api.botforge.org/v1/contributors.png?package=ForgeScript" alt="ForgeScript Contributors" width="100%" />
+  </a>
+</p>
+
+---
+
+## Resources & Community
+
+- **Official Documentation**: [docs.botforge.org](https://docs.botforge.org)
+- **Slash Commands Guide**: [docs.botforge.org/guide/Slash-Commands-284](https://docs.botforge.org/guide/Slash-Commands-284)
+- **Discord Community**: [Join our Discord Server](https://discord.gg/yFW5Ju6JP8) for support and announcements.
+- **Client Generator**: [tools.botforge.org/clientgen](https://tools.botforge.org/clientgen)
+- **Contributing**: Issues and pull requests are welcome on [GitHub](https://github.com/tryforge/ForgeScript).
+
+---
+
+## License
+
+This project is licensed under the [LGPL-3.0-or-later License](LICENSE).
