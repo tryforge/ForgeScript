@@ -3,10 +3,11 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
-    name: "$getCooldownTime",
+    name: "$getChannelCooldownTime",
+    version: "2.9.0",
     description: "Retrieves current cooldown time in ms for given channel id, binded to current command",
     brackets: true,
     output: ArgType.Number,

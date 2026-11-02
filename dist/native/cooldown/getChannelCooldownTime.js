@@ -6,7 +6,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
-    name: "$getCooldownTime",
+    name: "$getChannelCooldownTime",
     description: "Retrieves current cooldown time in ms for given channel id, binded to current command",
     brackets: true,
     output: structures_1.ArgType.Number,
