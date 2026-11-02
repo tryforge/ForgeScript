@@ -7,8 +7,6 @@ import { FileUploadBuilder, FileUploadType } from "discord.js"
 import { ArgType, NativeFunction } from "../../structures"
 import { getLastComponent } from "../../functions/components"
 
-export const FileTypeRegex = /^(audio|image|video|\..+)$/
-
 export default new NativeFunction({
     name: "$addFileType",
     version: "2.9.0",
@@ -26,9 +24,6 @@ export default new NativeFunction({
         },
     ],
     execute(ctx, [types]) {
-        const badType = types.find((x) => !FileTypeRegex.test(x))
-        if (badType) return this.customError(`Invalid file type "${badType}", expected audio, image, video or an extension like .pdf`)
-
         const upload = getLastComponent(ctx)
         if (upload instanceof FileUploadBuilder) upload.addFileTypes(types as FileUploadType[])
         return this.success()
