@@ -7,7 +7,7 @@
   "scripts": {
     "prepublishOnly": "tsc",
     "build": "tsc -p tsconfig.build.json && node dist/@build/license && tsc -p tsconfig.json",
-    "docgen": "npm run build && typedoc ./src --out ./docs && node dist/docgen",
+    "docgen": "npm run build && typedoc ./src --out ./docs && node dist/docgen && tsc -p tsconfig.json",
     "eslint": "eslint ./src/**/*.ts --fix",
     "commit": "npm run docgen && node dist/@build/commit",
     "test": "npm run build && node dist/__tests__/runner"

@@ -1,1 +1,1 @@
-{"version":3,"file":"getChannelCooldownTime.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/getChannelCooldownTime.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAkBE"}
+{"version":3,"file":"getChannelCooldownTime.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/getChannelCooldownTime.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAmBE"}

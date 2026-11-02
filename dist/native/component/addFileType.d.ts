@@ -6,7 +6,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.String;
-    check: (x: string) => boolean;
 }], true>;
 export default _default;
 //# sourceMappingURL=addFileType.d.ts.map

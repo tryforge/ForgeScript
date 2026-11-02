@@ -23,10 +23,12 @@ export default new NativeFunction({
             rest: true,
             required: true,
             type: ArgType.String,
-            check: (x: string) => FileTypeRegex.test(x),
         },
     ],
     execute(ctx, [types]) {
+        const badType = types.find((x) => !FileTypeRegex.test(x))
+        if (badType) return this.customError(`Invalid file type "${badType}", expected audio, image, video or an extension like .pdf`)
+
         const upload = getLastComponent(ctx)
         if (upload instanceof FileUploadBuilder) upload.addFileTypes(types as FileUploadType[])
         return this.success()
