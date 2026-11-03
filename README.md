@@ -74,7 +74,8 @@ client.commands.load("./commands/prefix");
 // Load slash / application commands
 client.applicationCommands.load("./commands/slash");
 
-client.login(process.env.DISCORD_TOKEN);
+// The use of env variables is encouraged, skipped for simplicity.
+client.login("YOUR BOT'S TOKEN HERE"); // NEVER share your bot token!
 ```
 
 ### 2. Prefix Command Example (`commands/prefix/ping.js`)
