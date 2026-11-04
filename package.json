@@ -1,13 +1,13 @@
 {
   "name": "@tryforge/forgescript",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "prepublishOnly": "tsc",
     "build": "tsc -p tsconfig.build.json && node dist/@build/license && tsc -p tsconfig.json",
-    "docgen": "npm run build && typedoc ./src --out ./docs && node dist/docgen",
+    "docgen": "npm run build && typedoc ./src --out ./docs && node dist/docgen && tsc -p tsconfig.json",
     "eslint": "eslint ./src/**/*.ts --fix",
     "commit": "npm run docgen && node dist/@build/commit",
     "test": "npm run build && node dist/__tests__/runner"
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "chalk": "^6.0.1",
-    "discord.js": "^14.27.0",
+    "discord.js": "^14.28.0",
     "ms-utility": "^3.3.0",
     "tiny-typed-emitter": "^2.1.0",
     "undici": "^7.30.1"

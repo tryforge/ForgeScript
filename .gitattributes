@@ -1,0 +1,4 @@
+* text=auto eol=lf
+dist/** linguist-generated=true
+docs/** linguist-generated=true
+metadata/** linguist-generated=true
