@@ -63,6 +63,7 @@ class ForgeFunction {
         const functionCtx = ctx.clone({
             doNotSend: true,
             allowTopLevelReturn: true,
+            throwErrors: true,
             data: this.compiled
         });
         for (let i = 0, len = params.length; i < len; i++) {
@@ -70,7 +71,13 @@ class ForgeFunction {
             const name = typeof param === "string" ? param : param.name;
             functionCtx.setEnvironmentKey(name, args[i]);
         }
-        const result = await core_1.Interpreter.run(functionCtx);
+        const result = await core_1.Interpreter.run(functionCtx).catch((e) => {
+            if (!(e instanceof ForgeError_1.ForgeError))
+                throw e;
+            return fn.error(e);
+        });
+        if (result instanceof Return_1.Return)
+            return result;
         return result === null ? fn.stop() : fn.success(result);
     }
 }

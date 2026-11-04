@@ -81,6 +81,11 @@ export interface IRunnable {
     allowTopLevelReturn?: boolean
 
     /**
+     * Whether to throw errors instead of reporting them, leaving them to the caller
+     */
+    throwErrors?: boolean
+
+    /**
      * The context this code will run in
      */
     obj: Sendable
@@ -177,9 +182,10 @@ export class Interpreter {
                     args[i] = (!rt.success && !ctx.handleNotSuccess(fn, rt)) ? ctx["error"]() : rt.value
                 }
             } catch (err: unknown) {
-                if (err instanceof Error)
+                if (err instanceof Error) {
+                    if (runtime.throwErrors) throw err
                     Logger.error(err)
-                else if (err instanceof Return) {
+                } else if (err instanceof Return) {
                     if (err.return)
                         return err.value as string
                 }

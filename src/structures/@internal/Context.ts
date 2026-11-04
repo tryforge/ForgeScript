@@ -315,6 +315,8 @@ export class Context {
             return false
         else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return(ReturnType.Return, rt.value as string)
+        } else if (rt.error && this.runtime.throwErrors) {
+            throw rt.value
         } else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
             this.alert(log).catch(Logger.error.bind(null, log))
@@ -360,7 +362,7 @@ export class Context {
         let data = this.#environment
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i]
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false
             data = data[key] as Record<string, unknown>
         }
@@ -375,12 +377,15 @@ export class Context {
         let data = this.#environment
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i]
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false
             data = data[key] as Record<string, unknown>
         }
 
         const lastKey = keys[keys.length - 1]
+        if (lastKey === "__proto__")
+            return false
+
         data[lastKey] = value
 
         return true
@@ -396,7 +401,7 @@ export class Context {
 
         for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i]
-            if (!(key in previous)) return
+            if (!Object.hasOwn(previous, key) && (key in Object.prototype || !(key in previous))) return
             previous = previous[key as keyof typeof previous]
             if (typeof previous !== "object" || previous === null) break
         }
@@ -488,7 +493,7 @@ export class Context {
     }
 
     public cloneEmpty() {
-        return new Context({ ...this.runtime })
+        return new Context({ ...this.runtime, throwErrors: false })
     }
 
     /**

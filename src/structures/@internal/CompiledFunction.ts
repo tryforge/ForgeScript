@@ -517,6 +517,13 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public async execute(ctx: Context): Promise<Return> {
+        if (!this.data.silent) return this.run(ctx)
+
+        const rt = await this.run(ctx)
+        return rt.error ? this.stop() : rt
+    }
+
+    private async run(ctx: Context): Promise<Return> {
         // @ts-ignore
         if (!this.fn.data.unwrap) return this.fn.data.execute.call(this, ctx)
 

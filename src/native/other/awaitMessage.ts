@@ -58,8 +58,9 @@ export default new NativeFunction({
             time,
             filter: async (m) => {
                 ctx.setEnvironmentKey(varName, m.id)
-                const res = await this["resolveCondition"](ctx, filter)
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx, filter).catch(ctx.noop)
+                if (res?.error) ctx.noop(res.value)
+                if (res?.return || res?.success) {
                     return isTrue(res)
                 } else return false
             }

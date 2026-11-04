@@ -40,8 +40,11 @@ class Interpreter {
                 }
             }
             catch (err) {
-                if (err instanceof Error)
+                if (err instanceof Error) {
+                    if (runtime.throwErrors)
+                        throw err;
                     structures_1.Logger.error(err);
+                }
                 else if (err instanceof structures_1.Return) {
                     if (err.return)
                         return err.value;
