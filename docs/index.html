@@ -8,85 +8,94 @@
 <div class="col-content">
 <div class="tsd-page-title">
 <h1>@tryforge/forgescript</h1></div>
-<div class="tsd-panel tsd-typography"><h1 id="forgescript" class="tsd-anchor-link">ForgeScript<a href="#forgescript" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
-<p>ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.</p>
-<h2 id="index" class="tsd-anchor-link">Index<a href="#index" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-<strong>
-<ol>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#making-your-first-bot">Making your first bot</a>
-<ol>
-<li><a href="#client-initialization">Client Initialization</a></li>
-<li><a href="#registering-commands">Registering Commands</a>
-<ol>
-<li><a href="#basic-registering">Basic registering</a></li>
-<li><a href="#registering-from-a-root-folder">Registering from a root folder</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#extensions">Extensions</a></li>
-<li><a href="#limitations">Limitations</a></li>
-<li><a href="#update-frequency">Update Frequency</a></li>
-<li><a href="https://docs.botforge.org/">Function Documentation</a></li>
-<li><a href="https://tryforge.github.io/ForgeScript/index.html">Library Documentation</a></li>
-</ol>
-</strong>
-<details open>
-<summary>
+<div class="tsd-panel tsd-typography"><div align="center">
+  <a href="https://docs.botforge.org">
+    <img src="https://api.botforge.org/assets/spot_logotop.png" alt="ForgeScript logo" width="340">
+  </a>
+  <h1>ForgeScript</h1>
+  <p>A fast, lightweight, and extensible scripting framework for building Discord bots in Node.js.</p>
+  <p>
+    <a href="https://www.npmjs.com/package/@tryforge/forgescript"><img alt="NPM version" src="https://img.shields.io/npm/v/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=462bf7"></a>
+    <a href="https://www.npmjs.com/package/@tryforge/forgescript"><img alt="NPM downloads" src="https://img.shields.io/npm/dm/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=338cf5"></a>
+    <a href="https://github.com/tryforge/ForgeScript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/@tryforge/forgescript.svg?style=for-the-badge&labelColor=000000&color=32cd32"></a>
+    <a href="https://discord.gg/yFW5Ju6JP8"><img alt="Discord" src="https://img.shields.io/badge/Discord-Join%20Community-5865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=000000"></a>
+  </p>
+  <p>
+    <a href="https://docs.botforge.org">Documentation</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://docs.botforge.org">Function Reference</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://discord.gg/yFW5Ju6JP8">Discord Community</a>
+  </p>
+</div>
+<hr>
+<h2 id="overview" class="tsd-anchor-link">Overview<a href="#overview" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>ForgeScript is a lightweight scripting language built on top of <a href="https://discord.js.org/">discord.js</a> that makes Discord bot development fast and straightforward. Instead of dealing with massive boilerplate, you write clean code that executes top to bottom.</p>
+<ul>
+<li><strong>1,100+ Functions</strong>: Built-in support for embeds, components, automod, moderation, math, and string tools.</li>
+<li><strong>Prefix &amp; Slash Commands</strong>: Dedicated file loaders for standard message commands and Discord Application (slash) commands.</li>
+<li><strong>Extensible</strong>: Easily add custom functions or plug in database and canvas extensions.</li>
+<li><strong>TypeScript Ready</strong>: Types included out of the box.</li>
+</ul>
+<hr>
 <h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-</summary>
-<p>Make sure you have <strong>node.js</strong> installed, and greater than or equal to version <strong>v22.0.0</strong>. Once done, run one of the following commands in a console (from any IDE or terminal):</p>
-<p><strong>Main</strong></p>
-<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">i</span><span class="hl-1"> </span><span class="hl-2">https://github.com/tryforge/ForgeScript/tree/main</span>
+<p>Ensure you have <strong>Node.js v22.0.0</strong> or higher installed.</p>
+<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">@tryforge/forgescript</span>
 </code><button type="button">Copy</button></pre>
 
-<p><strong>Dev</strong></p>
-<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">i</span><span class="hl-1"> </span><span class="hl-2">https://github.com/tryforge/ForgeScript/tree/dev</span>
-</code><button type="button">Copy</button></pre>
-
-</details>
-<details open> 
-<summary>
-<h2 id="making-your-first-bot" class="tsd-anchor-link">Making your first Bot<a href="#making-your-first-bot" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-</summary>
-<p>This section will guide you through initializing a client and loading commands from a folder, as well as logging your bot into discord.</p>
-<h3 id="client-initialization" class="tsd-anchor-link">Client Initialization<a href="#client-initialization" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<p>We will write the following for a basic bot initialization, in a <code>index.js</code> file:</p>
-<pre><code class="js"><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">ForgeClient</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&quot;@tryforge/forgescript&quot;</span><span class="hl-1">)</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">ForgeClient</span><span class="hl-1">({</span><br/><span class="hl-1">    </span><span class="hl-5">intents:</span><span class="hl-1"> [</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;GuildMessages&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;Guilds&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;MessageContent&quot;</span><span class="hl-1"> </span><span class="hl-6">// This intent is privileged, must be whitelisted in dev portal, in your application.</span><br/><span class="hl-1">    ],</span><br/><span class="hl-1">    </span><span class="hl-5">events:</span><span class="hl-1"> [</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;clientReady&quot;</span><br/><span class="hl-1">    ], </span><span class="hl-6">// Events our bot will act on</span><br/><span class="hl-1">    </span><span class="hl-5">prefixes:</span><span class="hl-1"> [</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;!&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-2">&quot;?&quot;</span><br/><span class="hl-1">    ] </span><span class="hl-6">// The prefixes to use for our bot!</span><br/><span class="hl-1">})</span><br/><br/><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-0">login</span><span class="hl-1">(</span><span class="hl-2">&quot;token&quot;</span><span class="hl-1">)</span>
-</code><button type="button">Copy</button></pre>
-
-<p>This will be enough to put our bot on.</p>
-<h3 id="registering-commands" class="tsd-anchor-link">Registering commands<a href="#registering-commands" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<p>Registering commands is the way to go when we want something to happen on certain events.</p>
-<h4 id="basic-registering" class="tsd-anchor-link">Basic registering<a href="#basic-registering" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
-<p>Let's write this after our client initialization code:</p>
-<pre><code class="js"><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-5">commands</span><span class="hl-1">.</span><span class="hl-0">add</span><span class="hl-1">({</span><br/><span class="hl-1">    </span><span class="hl-5">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;user&quot;</span><span class="hl-1">, </span><span class="hl-6">// Not defining this creates a command that will be executed for every event fired of given type</span><br/><span class="hl-1">    </span><span class="hl-5">code:</span><span class="hl-1"> </span><span class="hl-2">`Your name is $username!`</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-5">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1"> </span><span class="hl-6">// The event to act on</span><br/><span class="hl-1">})</span>
-</code><button type="button">Copy</button></pre>
-
-<p>And this will register a command with name <code>user</code> that will return the name of the user that executed this command.</p>
-<h4 id="registering-from-a-root-folder" class="tsd-anchor-link">Registering from a root folder<a href="#registering-from-a-root-folder" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
-<p>The previous way to register commands can fill our index file with a lot of junk code, so there's a way to put files with commands in folders and load them from the index file.</p>
-<ol>
-<li>Create a folder, with any name, and a file inside it, name it whatever you want (must end with .js) and write the following in it:<pre><code class="js"><span class="hl-7">module</span><span class="hl-1">.</span><span class="hl-7">exports</span><span class="hl-1"> = {</span><br/><span class="hl-1">    </span><span class="hl-5">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;user&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-5">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-5">code:</span><span class="hl-1"> </span><span class="hl-2">`Your name is $username!`</span><br/><span class="hl-1">}</span>
-</code><button type="button">Copy</button></pre>
-
-This is essentially the same as the previous command, but will be loaded from a folder!</li>
-<li>Now, let's go back to our index file and write the following after client initialization (Make sure you've erased the code to register a command from index file):<pre><code class="js"><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-5">commands</span><span class="hl-1">.</span><span class="hl-0">load</span><span class="hl-1">(</span><span class="hl-2">&quot;./&lt;folder&gt;&quot;</span><span class="hl-1">)</span>
-</code><button type="button">Copy</button></pre>
-
-Replace <code>&lt;folder&gt;</code> with the folder name you used, and every file residing in the root folder (the tree doesn't matter as long as the file is in the folder) will be loaded into your bot!</li>
-</ol>
-</details>
-<details open>
-<summary>
-<h2 id="limitations" class="tsd-anchor-link">Limitations<a href="#limitations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-</summary>
-<p>There's currently no known limitation.</p>
+<hr>
+<h2 id="getting-started" class="tsd-anchor-link">Getting Started<a href="#getting-started" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<h3 id="1-initialize-the-client-" class="tsd-anchor-link">1. Initialize the Client (<code>index.js</code>)<a href="#1-initialize-the-client-" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <blockquote>
-<p>⚠️ Note this library reads codes from <strong>TOP</strong> to <strong>BOTTOM</strong>, and never the opposite.</p>
+<p><strong>Tip:</strong> You can use the <a href="https://tools.botforge.org/clientgen">BotForge Client Generator</a> to configure intents, events, and generate this file interactively.</p>
 </blockquote>
-</details></div></div>
+<pre><code class="javascript"><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">ForgeClient</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&quot;@tryforge/forgescript&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">ForgeClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-5">prefixes:</span><span class="hl-1"> [</span><span class="hl-2">&quot;!&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-5">intents:</span><span class="hl-1"> [</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;Guilds&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;GuildMessages&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;MessageContent&quot;</span><span class="hl-1">, </span><span class="hl-6">// Privileged intent: enable in Discord Developer Portal</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">  </span><span class="hl-5">events:</span><span class="hl-1"> [</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;interactionCreate&quot;</span><span class="hl-1">, </span><span class="hl-6">// Required for slash commands and components</span><br/><span class="hl-1">    </span><span class="hl-2">&quot;clientReady&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-6">// Load standard prefix commands</span><br/><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-5">commands</span><span class="hl-1">.</span><span class="hl-0">load</span><span class="hl-1">(</span><span class="hl-2">&quot;./commands/prefix&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// Load slash / application commands</span><br/><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-5">applicationCommands</span><span class="hl-1">.</span><span class="hl-0">load</span><span class="hl-1">(</span><span class="hl-2">&quot;./commands/slash&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// The use of env variables is encouraged, skipped for simplicity.</span><br/><span class="hl-5">client</span><span class="hl-1">.</span><span class="hl-0">login</span><span class="hl-1">(</span><span class="hl-2">&quot;YOUR BOT&#39;S TOKEN HERE&quot;</span><span class="hl-1">); </span><span class="hl-6">// NEVER share your bot token!</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="2-prefix-command-example-" class="tsd-anchor-link">2. Prefix Command Example (<code>commands/prefix/ping.js</code>)<a href="#2-prefix-command-example-" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>In ForgeScript, code runs sequentially from top to bottom. Built-in functions like <code>$title</code>, <code>$description</code>, and <code>$addField</code> make creating rich embeds effortless without constructing complex objects:</p>
+<pre><code class="javascript"><span class="hl-7">module</span><span class="hl-1">.</span><span class="hl-7">exports</span><span class="hl-1"> = {</span><br/><span class="hl-1">  </span><span class="hl-5">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;ping&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">code:</span><span class="hl-1"> </span><span class="hl-2">`</span><br/><span class="hl-2">    $title[Pong! 🏓]</span><br/><span class="hl-2">    $description[Current bot performance and connection status:]</span><br/><span class="hl-2">    $addField[Latency;$pingms;true]</span><br/><span class="hl-2">    $addField[Uptime;$parseMS[$uptime];true]</span><br/><span class="hl-2">    $color[#5865F2]</span><br/><span class="hl-2">    $footer[Requested by $username;$userAvatar]</span><br/><span class="hl-2">  `</span><span class="hl-1">,</span><br/><span class="hl-1">};</span>
+</code><button type="button">Copy</button></pre>
+
+<img src="https://api.botforge.org/assets/spot_codeexample.png" alt="Command Output Preview" width="520" />
+<h3 id="3-slash-command-example-" class="tsd-anchor-link">3. Slash Command Example (<code>commands/slash/ping.js</code>)<a href="#3-slash-command-example-" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Slash commands define a Discord <code>data</code> object alongside their executable <code>code</code>:</p>
+<pre><code class="javascript"><span class="hl-7">module</span><span class="hl-1">.</span><span class="hl-7">exports</span><span class="hl-1"> = {</span><br/><span class="hl-1">  </span><span class="hl-5">data:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-5">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;ping&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-5">description:</span><span class="hl-1"> </span><span class="hl-2">&quot;Check bot latency&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  </span><span class="hl-5">code:</span><span class="hl-1"> </span><span class="hl-2">`Pong! Latency: $pingms`</span><span class="hl-1">,</span><br/><span class="hl-1">};</span>
+</code><button type="button">Copy</button></pre>
+
+<blockquote>
+<p><strong>Tip:</strong> You can visually configure options, choices, and subcommands using the <a href="https://tools.botforge.org/appbuilder?sc_definition=tree">Application Command Builder</a> to generate your <code>data</code> structure. For further details, check out the <a href="https://docs.botforge.org/guide/Slash-Commands-284">Slash Commands Guide</a>.</p>
+</blockquote>
+<hr>
+<h2 id="extensions" class="tsd-anchor-link">Extensions<a href="#extensions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>ForgeScript can be augmented with extensions. For example, to add database capabilities with <strong>ForgeDB</strong>:</p>
+<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">@tryforge/forge.db</span>
+</code><button type="button">Copy</button></pre>
+
+<pre><code class="javascript"><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">ForgeClient</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&quot;@tryforge/forgescript&quot;</span><span class="hl-1">);</span><br/><span class="hl-3">const</span><span class="hl-1"> { </span><span class="hl-4">ForgeDB</span><span class="hl-1"> } = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&quot;@tryforge/forge.db&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">ForgeClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-5">prefixes:</span><span class="hl-1"> [</span><span class="hl-2">&quot;!&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-5">intents:</span><span class="hl-1"> [</span><span class="hl-2">&quot;Guilds&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;GuildMessages&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;MessageContent&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-5">events:</span><span class="hl-1"> [</span><span class="hl-2">&quot;messageCreate&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-5">extensions:</span><span class="hl-1"> [</span><br/><span class="hl-1">    </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">ForgeDB</span><span class="hl-1">(),</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="contributors" class="tsd-anchor-link">Contributors<a href="#contributors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Thank you to everyone contributing to ForgeScript!</p>
+<p align="center">
+  <a href="https://github.com/tryforge/ForgeScript/graphs/contributors">
+    <img src="https://api.botforge.org/v1/contributors.png?package=ForgeScript" alt="ForgeScript Contributors" width="100%" />
+  </a>
+</p>
+<hr>
+<h2 id="resources-community" class="tsd-anchor-link">Resources &amp; Community<a href="#resources-community" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li><strong>Official Documentation</strong>: <a href="https://docs.botforge.org">docs.botforge.org</a></li>
+<li><strong>Slash Commands Guide</strong>: <a href="https://docs.botforge.org/guide/Slash-Commands-284">docs.botforge.org/guide/Slash-Commands-284</a></li>
+<li><strong>Discord Community</strong>: <a href="https://discord.gg/yFW5Ju6JP8">Join our Discord Server</a> for support and announcements.</li>
+<li><strong>Client Generator</strong>: <a href="https://tools.botforge.org/clientgen">tools.botforge.org/clientgen</a></li>
+<li><strong>Contributing</strong>: Issues and pull requests are welcome on <a href="https://github.com/tryforge/ForgeScript">GitHub</a>.</li>
+</ul>
+<hr>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This project is licensed under the <a href="media/LICENSE">LGPL-3.0-or-later License</a>.</p>
+</div></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -101,20 +110,11 @@ Replace <code>&lt;folder&gt;</code> with the folder name you used, and every fil
 <div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
 <details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
 <h3>On This Page</h3></summary>
-<div class="tsd-accordion-details"><a href="#forgescript"><span>Forge<wbr/>Script</span></a>
+<div class="tsd-accordion-details"><a href="#overview"><span>Overview</span></a><a href="#installation"><span>Installation</span></a><a href="#getting-started"><span>Getting <wbr/>Started</span></a>
 <ul>
-<li><a href="#index"><span>Index</span></a></li>
-<li><a href="#installation"><span>Installation</span></a></li>
-<li><a href="#making-your-first-bot"><span>Making your first <wbr/>Bot</span></a></li>
-<li>
-<ul>
-<li><a href="#client-initialization"><span>Client <wbr/>Initialization</span></a></li>
-<li><a href="#registering-commands"><span>Registering commands</span></a></li>
-<li>
-<ul>
-<li><a href="#basic-registering"><span>Basic registering</span></a></li>
-<li><a href="#registering-from-a-root-folder"><span>Registering from a root folder</span></a></li></ul></li></ul></li>
-<li><a href="#limitations"><span>Limitations</span></a></li></ul></div></details></div>
+<li><a href="#1-initialize-the-client-"><span>1. <wbr/>Initialize the <wbr/>Client ()</span></a></li>
+<li><a href="#2-prefix-command-example-"><span>2. <wbr/>Prefix <wbr/>Command <wbr/>Example ()</span></a></li>
+<li><a href="#3-slash-command-example-"><span>3. <wbr/>Slash <wbr/>Command <wbr/>Example ()</span></a></li></ul><a href="#extensions"><span>Extensions</span></a><a href="#contributors"><span>Contributors</span></a><a href="#resources-community"><span>Resources &amp; <wbr/>Community</span></a><a href="#license"><span>License</span></a></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="modules.html">@tryforge/forgescript</a>
 <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
