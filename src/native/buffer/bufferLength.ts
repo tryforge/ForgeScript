@@ -22,6 +22,6 @@ export default new NativeFunction({
     ],
     output: ArgType.Number,
     execute(ctx, [ name ]) {
-        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.length)
+        return this.success(ctx.getEnvironmentInstance(Buffer, name)?.length ?? 0)
     },
 })

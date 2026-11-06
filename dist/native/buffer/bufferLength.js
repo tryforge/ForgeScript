@@ -22,7 +22,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Number,
     execute(ctx, [name]) {
-        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.length);
+        return this.success(ctx.getEnvironmentInstance(Buffer, name)?.length ?? 0);
     },
 });
 //# sourceMappingURL=bufferLength.js.map

@@ -25,7 +25,7 @@ class CompiledFunction {
         "-": false,
     };
     static IdRegex = /^(\d{16,23})$/;
-    static URLRegex = /^http?s:\/\//;
+    static URLRegex = /^https?:\/\//;
     static CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/;
     data;
     fn;
@@ -350,8 +350,6 @@ class CompiledFunction {
         return str;
     }
     resolveInvite(ctx, arg, str, ref) {
-        if (!CompiledFunction.IdRegex.test(str))
-            return;
         return ctx.client.fetchInvite(str).catch(ctx.noop);
     }
     resolveWebhook(ctx, arg, str, ref) {

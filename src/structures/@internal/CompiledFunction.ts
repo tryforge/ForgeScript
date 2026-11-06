@@ -54,7 +54,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     public static readonly IdRegex = /^(\d{16,23})$/
-    public static readonly URLRegex = /^http?s:\/\//
+    public static readonly URLRegex = /^https?:\/\//
     public static readonly CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/
 
     public readonly data: IExtendedCompiledFunction
@@ -423,7 +423,6 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     }
 
     private resolveInvite(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        if (!CompiledFunction.IdRegex.test(str)) return
         return ctx.client.fetchInvite(str).catch(ctx.noop)
     }
 

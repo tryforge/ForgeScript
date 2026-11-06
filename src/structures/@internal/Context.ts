@@ -85,6 +85,11 @@ export interface IComponentOptions {
     label: LabelBuilder
 }
 
+export interface IInviteOptions {
+    roles: Role[]
+    targetUsers: User[]
+}
+
 export enum CalendarType {
     Buddhist = "buddhist",
     Chinese = "chinese",
@@ -137,6 +142,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
     automodRule: Partial<IAutomodRuleOptions> = {}
+    invite: Partial<IInviteOptions> = {}
     scheduledEvent: Partial<IScheduledEventOptions> = {}
     component: Partial<IComponentOptions> = {}
     timezone: string = "UTC"
@@ -339,6 +345,11 @@ export class Context {
     public clearScheduledEventOptions() {
         this.scheduledEvent = {}
     }
+
+    public clearInviteOptions() {
+        this.invite = {}
+    }
+
 
     /**
      * Fetches all emojis of the application.
