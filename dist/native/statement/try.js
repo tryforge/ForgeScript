@@ -40,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
                 throw e;
             return this.error(e);
         });
-        if (tryExecution.error) {
+        if (tryExecution.error || (tryExecution.stop && tryExecution.value)) {
             const value = tryExecution.value;
             const name = await this["resolveCode"](ctx, varName);
             if (!this["isValidReturnType"](name))

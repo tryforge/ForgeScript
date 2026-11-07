@@ -41,7 +41,7 @@ export default new NativeFunction({
             return this.error(e)
         })
 
-        if (tryExecution.error) {
+        if (tryExecution.error || (tryExecution.stop && tryExecution.value)) {
             const value = tryExecution.value as ForgeError
             const name = await this["resolveCode"](ctx, varName)
             if (!this["isValidReturnType"](name)) return name

@@ -519,7 +519,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!this.data.silent) return this.run(ctx)
 
         const rt = await this.run(ctx)
-        return rt.error ? this.stop() : rt
+        return rt.error ? new Return(ReturnType.Stop, rt.value as ForgeError) : rt
     }
 
     private async run(ctx: Context): Promise<Return> {

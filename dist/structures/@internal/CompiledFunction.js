@@ -420,7 +420,7 @@ class CompiledFunction {
         if (!this.data.silent)
             return this.run(ctx);
         const rt = await this.run(ctx);
-        return rt.error ? this.stop() : rt;
+        return rt.error ? new Return_1.Return(Return_1.ReturnType.Stop, rt.value) : rt;
     }
     async run(ctx) {
         // @ts-ignore
