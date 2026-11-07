@@ -40,6 +40,10 @@ export interface IComponentOptions {
     gallery: MediaGalleryBuilder;
     label: LabelBuilder;
 }
+export interface IInviteOptions {
+    roles: Role[];
+    targetUsers: User[];
+}
 export declare enum CalendarType {
     Buddhist = "buddhist",
     Chinese = "chinese",
@@ -88,6 +92,7 @@ export declare class Context {
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
     automodRule: Partial<IAutomodRuleOptions>;
+    invite: Partial<IInviteOptions>;
     scheduledEvent: Partial<IScheduledEventOptions>;
     component: Partial<IComponentOptions>;
     timezone: string;
@@ -124,6 +129,7 @@ export declare class Context {
     clearHttpOptions(): void;
     clearAutomodRuleOptions(): void;
     clearScheduledEventOptions(): void;
+    clearInviteOptions(): void;
     /**
      * Fetches all emojis of the application.
      * @param once Whether to fetch only when the collection is empty.

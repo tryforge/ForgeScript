@@ -64,7 +64,8 @@ export default new NativeFunction({
                 }
 
                 // We cannot stop this...
-                await this["resolveCode"](ctx, code)
+                const result = await this["resolveCode"](ctx, code).catch(ctx.noop)
+                if (result?.error) ctx.noop(result.value)
             })
         }
 

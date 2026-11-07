@@ -45,6 +45,7 @@ class Context {
     executionTimestamp;
     http = {};
     automodRule = {};
+    invite = {};
     scheduledEvent = {};
     component = {};
     timezone = "UTC";
@@ -192,6 +193,9 @@ class Context {
         else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return_1.Return(Return_1.ReturnType.Return, rt.value);
         }
+        else if (rt.error && this.runtime.throwErrors) {
+            throw rt.value;
+        }
         else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
             this.alert(log).catch(Logger_1.Logger.error.bind(null, log));
@@ -210,6 +214,9 @@ class Context {
     }
     clearScheduledEventOptions() {
         this.scheduledEvent = {};
+    }
+    clearInviteOptions() {
+        this.invite = {};
     }
     /**
      * Fetches all emojis of the application.
@@ -230,7 +237,7 @@ class Context {
         let data = this.#environment;
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i];
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false;
             data = data[key];
         }
@@ -243,11 +250,13 @@ class Context {
         let data = this.#environment;
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i];
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false;
             data = data[key];
         }
         const lastKey = keys[keys.length - 1];
+        if (lastKey === "__proto__")
+            return false;
         data[lastKey] = value;
         return true;
     }
@@ -259,7 +268,7 @@ class Context {
             return previous;
         for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i];
-            if (!(key in previous))
+            if (!Object.hasOwn(previous, key) && (key in Object.prototype || !(key in previous)))
                 return;
             previous = previous[key];
             if (typeof previous !== "object" || previous === null)
@@ -331,7 +340,7 @@ class Context {
         return this.client.getExtension.bind(this.client);
     }
     cloneEmpty() {
-        return new Context({ ...this.runtime });
+        return new Context({ ...this.runtime, throwErrors: false });
     }
     /**
      * Clones keywords, environment vars, and local functions.

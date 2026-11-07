@@ -40,7 +40,9 @@ exports.default = new structures_1.NativeFunction({
         const [time, name] = args;
         const c = ctx.clone(ctx.cloneRuntime());
         const data = setTimeout(async () => {
-            await this["resolveCode"](c, code).catch(ctx.noop);
+            const result = await this["resolveCode"](c, code).catch(ctx.noop);
+            if (result?.error)
+                ctx.noop(result.value);
             if (name)
                 ctx.client.timeouts.delete(name);
         }, time || undefined);

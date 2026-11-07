@@ -91,6 +91,7 @@ export class ForgeFunction {
         const functionCtx = ctx.clone({
             doNotSend: true,
             allowTopLevelReturn: true,
+            throwErrors: true,
             data: this.compiled
         })
 
@@ -101,7 +102,12 @@ export class ForgeFunction {
             functionCtx.setEnvironmentKey(name, args[i])
         }
 
-        const result = await Interpreter.run(functionCtx)
+        const result = await Interpreter.run(functionCtx).catch((e) => {
+            if (!(e instanceof ForgeError)) throw e
+            return fn.error(e)
+        })
+
+        if (result instanceof Return) return result
 
         return result === null ? fn.stop() : fn.success(result)
     }

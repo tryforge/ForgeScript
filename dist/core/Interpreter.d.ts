@@ -44,6 +44,10 @@ export interface IRunnable {
     data: IExtendedCompilationResult;
     allowTopLevelReturn?: boolean;
     /**
+     * Whether to throw errors instead of reporting them, leaving them to the caller
+     */
+    throwErrors?: boolean;
+    /**
      * The context this code will run in
      */
     obj: Sendable;

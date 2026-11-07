@@ -64,8 +64,9 @@ export default new NativeFunction({
         const int = await msg.awaitMessageComponent({
             time,
             filter: async (m) => {
-                const res = await this["resolveCondition"](ctx.clone({ obj: m }), filter)
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx.clone({ obj: m }), filter).catch(ctx.noop)
+                if (res?.error) ctx.noop(res.value)
+                if (res?.return || res?.success) {
                     return isTrue(res)
                 } else return false
             }

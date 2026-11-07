@@ -1,1 +1,1 @@
-{"version":3,"file":"createInvite.d.ts","sourceRoot":"","sources":["../../../src/native/channel/createInvite.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,WAAW,EAAe,MAAM,YAAY,CAAA;AACrD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAgB3C,WAAW;;;;;;;;;;;;;;;;;AAdlC,wBA+CE"}
+{"version":3,"file":"createInvite.d.ts","sourceRoot":"","sources":["../../../src/native/channel/createInvite.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,WAAW,EAAe,MAAM,YAAY,CAAA;AACrD,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;eAgB3C,WAAW;;;;;;;;;;;;;;;;;AAdlC,wBAkDE"}

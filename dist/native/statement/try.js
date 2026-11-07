@@ -35,19 +35,23 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     async execute(ctx) {
         const [tryCode, catchCode, varName] = this.data.fields;
-        const tryExecution = await this["resolveCode"](ctx, tryCode);
-        if (!this["isValidReturnType"](tryExecution)) {
-            if (tryExecution.error) {
-                const value = tryExecution.value;
-                const name = await this["resolveCode"](ctx, varName);
-                if (!this["isValidReturnType"](name))
-                    return name;
-                if (name.value)
-                    ctx.setEnvironmentKey(name.value, value.message);
-            }
+        const tryExecution = await this["resolveCode"](ctx, tryCode).catch((e) => {
+            if (!(e instanceof Error))
+                throw e;
+            return this.error(e);
+        });
+        if (tryExecution.error || (tryExecution.stop && tryExecution.value)) {
+            const value = tryExecution.value;
+            const name = await this["resolveCode"](ctx, varName);
+            if (!this["isValidReturnType"](name))
+                return name;
+            if (name.value)
+                ctx.setEnvironmentKey(name.value, value.message);
             return this["resolveCode"](ctx, catchCode);
         }
-        return this.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined);
+        if (!this["isValidReturnType"](tryExecution))
+            return tryExecution;
+        return this.success(tryExecution.value);
     },
 });
 //# sourceMappingURL=try.js.map

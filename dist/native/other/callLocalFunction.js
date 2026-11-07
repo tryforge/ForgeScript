@@ -39,6 +39,8 @@ exports.default = new NativeFunction_1.NativeFunction({
             ctx.setEnvironmentKey(func.args[i], args[i]);
         }
         const rt = await this["resolveCode"](ctx, func.code);
+        if (rt.error)
+            return rt;
         return this.success(rt.value);
     },
 });

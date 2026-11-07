@@ -42,6 +42,9 @@ export function generateBar(
     return start + fill.repeat(fillN) + empty.repeat(emptyN) + end
 }
 
+// discord's longest text field
+const MaxAdvancedBarLength = 4096
+
 export function generateAdvancedBar(
     current: number,
     max: number,
@@ -49,9 +52,10 @@ export function generateAdvancedBar(
     data: string[],
 ): string {
     let out = ""
+    len = Math.min(len, MaxAdvancedBarLength)
     const portion = max / len
 
-    while (len--) {
+    while (len-- > 0) {
         const diff = Math.max(current, 0) / portion
         out += (current -= portion, data.find((x, i) => diff <= (i + 1) / data.length) ?? data.at(-1))
     }
