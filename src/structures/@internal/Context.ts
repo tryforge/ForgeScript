@@ -399,12 +399,7 @@ export class Context {
             data = data[key] as Record<string, unknown>
         }
 
-        const lastKey = keys[keys.length - 1]
-        if (lastKey === "__proto__")
-            return false
-
-        data[lastKey] = value
-
+        setOwn(data, keys[keys.length - 1], value)
         return true
     }
 

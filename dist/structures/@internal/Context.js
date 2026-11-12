@@ -261,10 +261,7 @@ class Context {
                 return false;
             data = data[key];
         }
-        const lastKey = keys[keys.length - 1];
-        if (lastKey === "__proto__")
-            return false;
-        data[lastKey] = value;
+        setOwn(data, keys[keys.length - 1], value);
         return true;
     }
     deleteEnvironmentKey(name) {
