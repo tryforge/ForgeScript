@@ -41,6 +41,12 @@ import { Logger } from "./Logger"
 import { FormData, Headers } from "undici"
 import contextNoop from "../../functions/contextNoop"
 
+function setOwn<T>(obj: Record<string, T>, key: string, value: T) {
+    if (key === "__proto__") Object.defineProperty(obj, key, { value, writable: true, enumerable: true, configurable: true })
+    else obj[key] = value
+    return value
+}
+
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
 ) => Promise<Return> | Return
@@ -366,7 +372,7 @@ export class Context {
     }
 
     public setEnvironmentKey(name: string, value: unknown) {
-        return (this.#environment[name] = value)
+        return setOwn(this.#environment, name, value)
     }
 
     public traverseDeleteEnvironmentKey(...keys: string[]) {
@@ -425,7 +431,7 @@ export class Context {
     }
 
     public getKeyword(name: string) {
-        return this.#keywords[name]
+        return Object.hasOwn(this.#keywords, name) ? this.#keywords[name] : undefined
     }
 
     public deleteKeyword(name: string) {
@@ -433,15 +439,15 @@ export class Context {
     }
 
     public setKeyword(name: string, value: unknown) {
-        return (this.#keywords[name] = value)
+        return setOwn(this.#keywords, name, value)
     }
 
     public hasKeyword(name: string) {
-        return name in this.#keywords
+        return Object.hasOwn(this.#keywords, name)
     }
 
     public getLocalFunction(name: string) {
-        return this.#localFunctions[name]
+        return Object.hasOwn(this.#localFunctions, name) ? this.#localFunctions[name] : undefined
     }
 
     public deleteLocalFunction(name: string) {
@@ -449,7 +455,7 @@ export class Context {
     }
 
     public setLocalFunction(name: string, data: ILocalFunctionData) {
-        return (this.#localFunctions[name] = data)
+        return setOwn(this.#localFunctions, name, data)
     }
 
     public clearKeywords() {

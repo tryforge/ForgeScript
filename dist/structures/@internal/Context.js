@@ -13,6 +13,13 @@ const Container_1 = require("./Container");
 const Return_1 = require("./Return");
 const Logger_1 = require("./Logger");
 const contextNoop_1 = __importDefault(require("../../functions/contextNoop"));
+function setOwn(obj, key, value) {
+    if (key === "__proto__")
+        Object.defineProperty(obj, key, { value, writable: true, enumerable: true, configurable: true });
+    else
+        obj[key] = value;
+    return value;
+}
 var HTTPContentType;
 (function (HTTPContentType) {
     HTTPContentType[HTTPContentType["Json"] = 0] = "Json";
@@ -231,7 +238,7 @@ class Context {
         return await emojis.fetch().catch(this.noop);
     }
     setEnvironmentKey(name, value) {
-        return (this.#environment[name] = value);
+        return setOwn(this.#environment, name, value);
     }
     traverseDeleteEnvironmentKey(...keys) {
         let data = this.#environment;
@@ -280,25 +287,25 @@ class Context {
         return Context.traverseGetValue(this.#environment, ...args);
     }
     getKeyword(name) {
-        return this.#keywords[name];
+        return Object.hasOwn(this.#keywords, name) ? this.#keywords[name] : undefined;
     }
     deleteKeyword(name) {
         return delete this.#keywords[name];
     }
     setKeyword(name, value) {
-        return (this.#keywords[name] = value);
+        return setOwn(this.#keywords, name, value);
     }
     hasKeyword(name) {
-        return name in this.#keywords;
+        return Object.hasOwn(this.#keywords, name);
     }
     getLocalFunction(name) {
-        return this.#localFunctions[name];
+        return Object.hasOwn(this.#localFunctions, name) ? this.#localFunctions[name] : undefined;
     }
     deleteLocalFunction(name) {
         return delete this.#localFunctions[name];
     }
     setLocalFunction(name, data) {
-        return (this.#localFunctions[name] = data);
+        return setOwn(this.#localFunctions, name, data);
     }
     clearKeywords() {
         this.#keywords = {};

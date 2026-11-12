@@ -48,28 +48,19 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, code, otherVarField] = this.data.fields;
-        const name = await this["resolveCode"](ctx, nameField);
-        if (!this["isValidReturnType"](name))
-            return name;
-        const variable = await this["resolveCode"](ctx, varField);
-        if (!this["isValidReturnType"](variable))
-            return variable;
-        const otherVariable = await this["resolveCode"](ctx, otherVarField);
-        if (!this["isValidReturnType"](otherVariable))
-            return variable;
-        const arr = ctx.getEnvironmentKey(name.value);
-        const varName = variable.value;
-        const otherVarName = otherVariable.value;
+        const code = this.data.fields[2];
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [name, varName, otherVarName] = args;
+        const arr = ctx.getEnvironmentKey(name);
         const newArr = new Array();
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
-                const el = arr[i];
-                ctx.setEnvironmentKey(varName, el);
-                const rt = (await this["resolveCode"](ctx, code));
-                if (rt.return) {
+                ctx.setEnvironmentKey(varName, arr[i]);
+                const rt = await this["resolveCode"](ctx, code);
+                if (rt.return)
                     newArr.push((0, parseJSON_1.default)(rt.value));
-                }
                 else if (!this["isValidReturnType"](rt))
                     return rt;
             }

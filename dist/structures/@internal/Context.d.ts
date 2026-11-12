@@ -146,7 +146,7 @@ export declare class Context {
     deleteKeyword(name: string): boolean;
     setKeyword(name: string, value: unknown): unknown;
     hasKeyword(name: string): boolean;
-    getLocalFunction(name: string): ILocalFunctionData;
+    getLocalFunction(name: string): ILocalFunctionData | undefined;
     deleteLocalFunction(name: string): boolean;
     setLocalFunction(name: string, data: ILocalFunctionData): ILocalFunctionData;
     clearKeywords(): void;
