@@ -103,8 +103,8 @@ export class ForgeFunction {
         }
 
         const result = await Interpreter.run(functionCtx).catch((e) => {
-            if (!(e instanceof ForgeError)) throw e
-            return fn.error(e)
+            if (e instanceof Return) return e as Return<ReturnType.Error>
+            throw e
         })
 
         if (result instanceof Return) return result

@@ -48,6 +48,8 @@ class Interpreter {
                 else if (err instanceof structures_1.Return) {
                     if (err.return)
                         return err.value;
+                    if (err.error && runtime.throwErrors)
+                        throw err;
                 }
                 return null;
             }

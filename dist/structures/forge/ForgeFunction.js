@@ -72,9 +72,9 @@ class ForgeFunction {
             functionCtx.setEnvironmentKey(name, args[i]);
         }
         const result = await core_1.Interpreter.run(functionCtx).catch((e) => {
-            if (!(e instanceof ForgeError_1.ForgeError))
-                throw e;
-            return fn.error(e);
+            if (e instanceof Return_1.Return)
+                return e;
+            throw e;
         });
         if (result instanceof Return_1.Return)
             return result;

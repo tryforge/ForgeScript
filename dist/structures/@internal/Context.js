@@ -201,7 +201,7 @@ class Context {
             throw new Return_1.Return(Return_1.ReturnType.Return, rt.value);
         }
         else if (rt.error && this.runtime.throwErrors) {
-            throw rt.value;
+            throw rt;
         }
         else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
@@ -368,7 +368,7 @@ class Context {
         this.runtime.keywords = this.#keywords;
         this.runtime.environment = this.#environment;
         this.runtime.localFunctions = this.#localFunctions;
-        return this.runtime;
+        return { ...this.runtime, throwErrors: false };
     }
     clearCache() {
         this.#cache = {};
