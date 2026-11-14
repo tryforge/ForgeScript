@@ -200,9 +200,6 @@ class Context {
         else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return_1.Return(Return_1.ReturnType.Return, rt.value);
         }
-        else if (rt.error && this.runtime.throwErrors) {
-            throw rt;
-        }
         else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + Return_1.ReturnType[rt.type] + " statements are not allowed in outer scopes.";
             this.alert(log).catch(Logger_1.Logger.error.bind(null, log));
@@ -344,7 +341,7 @@ class Context {
         return this.client.getExtension.bind(this.client);
     }
     cloneEmpty() {
-        return new Context({ ...this.runtime, throwErrors: false });
+        return new Context({ ...this.runtime });
     }
     /**
      * Clones keywords, environment vars, and local functions.
@@ -368,7 +365,7 @@ class Context {
         this.runtime.keywords = this.#keywords;
         this.runtime.environment = this.#environment;
         this.runtime.localFunctions = this.#localFunctions;
-        return { ...this.runtime, throwErrors: false };
+        return this.runtime;
     }
     clearCache() {
         this.#cache = {};

@@ -23,6 +23,6 @@ export declare class ForgeFunction {
     constructor(data: IForgeFunction);
     populate(): void;
     asNative(): NativeFunction<IArg<ArgType.String, boolean, boolean, import("..").EnumLike<any>>[], any>;
-    call(ctx: Context, fn: CompiledFunction, args: string[]): Promise<Return<ReturnType.Success> | Return<ReturnType.Error> | Return<ReturnType.Stop>>;
+    call(ctx: Context, fn: CompiledFunction, args: string[]): Promise<Return<ReturnType.Success> | Return<ReturnType.Error | ReturnType.Stop | ReturnType.Break | ReturnType.Continue>>;
 }
 //# sourceMappingURL=ForgeFunction.d.ts.map

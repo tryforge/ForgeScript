@@ -60,25 +60,17 @@ class ForgeFunction {
         const required = params.filter(param => typeof param === "string" || param.required !== false);
         if (args.length < required.length)
             return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${required.length} argument${required.length > 1 ? "s" : ""}, received ${args.length}`));
-        const functionCtx = ctx.clone({
-            doNotSend: true,
-            allowTopLevelReturn: true,
-            throwErrors: true,
-            data: this.compiled
-        });
+        const functionCtx = ctx.clone();
+        functionCtx.executionTimestamp = performance.now();
         for (let i = 0, len = params.length; i < len; i++) {
             const param = params[i];
             const name = typeof param === "string" ? param : param.name;
             functionCtx.setEnvironmentKey(name, args[i]);
         }
-        const result = await core_1.Interpreter.run(functionCtx).catch((e) => {
-            if (e instanceof Return_1.Return)
-                return e;
-            throw e;
-        });
-        if (result instanceof Return_1.Return)
-            return result;
-        return result === null ? fn.stop() : fn.success(result);
+        const rt = await fn["resolveCode"](functionCtx, this.compiled);
+        if (rt.success || rt.return)
+            return fn.success(rt.value);
+        return rt;
     }
 }
 exports.ForgeFunction = ForgeFunction;

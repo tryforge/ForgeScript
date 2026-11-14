@@ -327,8 +327,6 @@ export class Context {
             return false
         else if (rt.return && this.runtime.allowTopLevelReturn) {
             throw new Return(ReturnType.Return, rt.value as string)
-        } else if (rt.error && this.runtime.throwErrors) {
-            throw rt
         } else if (rt.return || rt.break || rt.continue) {
             const log = ":x: " + ReturnType[rt.type] + " statements are not allowed in outer scopes."
             this.alert(log).catch(Logger.error.bind(null, log))
@@ -505,7 +503,7 @@ export class Context {
     }
 
     public cloneEmpty() {
-        return new Context({ ...this.runtime, throwErrors: false })
+        return new Context({ ...this.runtime })
     }
 
     /**
@@ -534,7 +532,7 @@ export class Context {
         this.runtime.keywords = this.#keywords
         this.runtime.environment = this.#environment
         this.runtime.localFunctions = this.#localFunctions
-        return { ...this.runtime, throwErrors: false }
+        return this.runtime
     }
 
     private clearCache() {
