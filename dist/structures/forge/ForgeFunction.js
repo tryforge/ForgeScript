@@ -60,7 +60,7 @@ class ForgeFunction {
         const required = params.filter(param => typeof param === "string" || param.required !== false);
         if (args.length < required.length)
             return new Return_1.Return(Return_1.ReturnType.Error, new ForgeError_1.ForgeError(null, ForgeError_1.ErrorType.Custom, `Calling custom function ${this.data.name} requires ${required.length} argument${required.length > 1 ? "s" : ""}, received ${args.length}`));
-        const functionCtx = ctx.clone();
+        const functionCtx = ctx.clone({ doNotSend: true, allowTopLevelReturn: true });
         functionCtx.executionTimestamp = performance.now();
         for (let i = 0, len = params.length; i < len; i++) {
             const param = params[i];

@@ -88,7 +88,7 @@ export class ForgeFunction {
                 )
             )
 
-        const functionCtx = ctx.clone()
+        const functionCtx = ctx.clone({ doNotSend: true, allowTopLevelReturn: true })
         functionCtx.executionTimestamp = performance.now()
 
         for (let i = 0, len = params.length; i < len; i++) {
