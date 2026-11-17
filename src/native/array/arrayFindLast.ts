@@ -43,20 +43,21 @@ export default new NativeFunction({
 
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1)
         if (!this["isValidReturnType"](rt)) return rt
-        const [ name, varName ] = args
+        const [name, varName] = args
 
         const arr = ctx.getEnvironmentKey(name)
-        if (!Array.isArray(arr)) return this.success()
 
-        for (let i = arr.length - 1; i >= 0; i--) {
-            const el = arr[i]
-            ctx.setEnvironmentKey(varName, el)
-            const rt = await this["resolveCondition"](ctx, code)
+        if (Array.isArray(arr)) {
+            for (let i = arr.length - 1; i >= 0; i--) {
+                const el = arr[i]
+                ctx.setEnvironmentKey(varName, el)
+                const rt = await this["resolveCondition"](ctx, code)
 
-            if (rt.return || rt.success) {
-                if (!isTrue(rt)) continue
-                return this.successJSON(el)
-            } else if (!this["isValidReturnType"](rt)) return rt
+                if (rt.return || rt.success) {
+                    if (!isTrue(rt)) continue
+                    return this.successJSON(el)
+                } else if (!this["isValidReturnType"](rt)) return rt
+            }
         }
 
         return this.success()

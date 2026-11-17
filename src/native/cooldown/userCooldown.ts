@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$userCooldown",
@@ -15,8 +15,8 @@ export default new NativeFunction({
         {
             name: "user ID",
             rest: false,
-            description: "The user id to assign the cooldown to",
-            type: ArgType.String,
+            description: "The user to assign the cooldown to",
+            type: ArgType.User,
             required: true,
         },
         {
@@ -35,16 +35,13 @@ export default new NativeFunction({
     ],
     experimental: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const code = this.data.fields![2] as IExtendedCompiledFunctionField
 
-        const dur = await this["resolveUnhandledArg"](ctx, 1)
-        if (!this["isValidReturnType"](dur)) return dur
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1)
+        if (!this["isValidReturnType"](rt)) return rt
+        const [user, duration] = args
 
-        const idV = await this["resolveUnhandledArg"](ctx, 0)
-        if (!this["isValidReturnType"](idV)) return idV
-
-        const id = ctx.client.cooldowns.identifier(ctx.cmd!.id, "user", idV.value as string)
-
+        const id = ctx.client.cooldowns.identifier(ctx.cmd!.id, "user", user.id)
         const cooldown = ctx.client.cooldowns.getTimeLeft(id)
 
         if (cooldown !== 0) {
@@ -55,7 +52,7 @@ export default new NativeFunction({
             return this.stop()
         }
 
-        ctx.client.cooldowns.add(id, dur.value as number)
+        ctx.client.cooldowns.add(id, duration)
 
         return this.success()
     },

@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayClear",
@@ -22,10 +22,7 @@ export default new NativeFunction({
     brackets: true,
     execute(ctx, [name]) {
         const arr = ctx.getEnvironmentKey(name)
-        if (Array.isArray(arr)) {
-            arr.length = 0
-        }
-
+        if (Array.isArray(arr)) arr.length = 0
         return this.success()
     },
 })

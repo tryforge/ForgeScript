@@ -15,8 +15,8 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "user ID",
             rest: false,
-            description: "The user id to assign the cooldown to",
-            type: structures_1.ArgType.String,
+            description: "The user to assign the cooldown to",
+            type: structures_1.ArgType.User,
             required: true,
         },
         {
@@ -35,14 +35,12 @@ exports.default = new structures_1.NativeFunction({
     ],
     experimental: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields;
-        const dur = await this["resolveUnhandledArg"](ctx, 1);
-        if (!this["isValidReturnType"](dur))
-            return dur;
-        const idV = await this["resolveUnhandledArg"](ctx, 0);
-        if (!this["isValidReturnType"](idV))
-            return idV;
-        const id = ctx.client.cooldowns.identifier(ctx.cmd.id, "user", idV.value);
+        const code = this.data.fields[2];
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [user, duration] = args;
+        const id = ctx.client.cooldowns.identifier(ctx.cmd.id, "user", user.id);
         const cooldown = ctx.client.cooldowns.getTimeLeft(id);
         if (cooldown !== 0) {
             const content = await this["resolveCode"](ctx, code);
@@ -52,7 +50,7 @@ exports.default = new structures_1.NativeFunction({
             await ctx.container.send(ctx.obj);
             return this.stop();
         }
-        ctx.client.cooldowns.add(id, dur.value);
+        ctx.client.cooldowns.add(id, duration);
         return this.success();
     },
 });

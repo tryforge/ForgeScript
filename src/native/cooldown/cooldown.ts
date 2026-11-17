@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$cooldown",
@@ -45,15 +45,13 @@ Hello!
     ],
     experimental: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const code = this.data.fields![2] as IExtendedCompiledFunctionField
 
-        const dur = await this["resolveUnhandledArg"](ctx, 1)
-        if (!this["isValidReturnType"](dur)) return dur
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1)
+        if (!this["isValidReturnType"](rt)) return rt
+        const [id, duration] = args
 
-        const idV = await this["resolveUnhandledArg"](ctx, 0)
-        if (!this["isValidReturnType"](idV)) return idV
-
-        const cooldown = ctx.client.cooldowns.getTimeLeft(idV.value as string)
+        const cooldown = ctx.client.cooldowns.getTimeLeft(id)
 
         if (cooldown !== 0) {
             const content = await this["resolveCode"](ctx, code)
@@ -63,7 +61,7 @@ Hello!
             return this.stop()
         }
 
-        ctx.client.cooldowns.add(idV.value as string, dur.value as number)
+        ctx.client.cooldowns.add(id, duration)
 
         return this.success()
     },

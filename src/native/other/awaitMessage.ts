@@ -3,9 +3,8 @@
 * Copyright © 2026 BotForge
 */
 
-import { BaseChannel, TextBasedChannel, TextChannel } from "discord.js"
+import { BaseChannel, TextChannel } from "discord.js"
 import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Return } from "../../structures"
-import noop from "../../functions/noop"
 import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({
@@ -49,11 +48,13 @@ export default new NativeFunction({
     ],
     async execute(ctx): Promise<Return> {
         const filter = this.data.fields![2] as IExtendedCompiledFunctionConditionField
+
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3)
         if (!this["isValidReturnType"](rt)) return rt
-        const [ channel, varName, time ] = args
+        const [channel, varName, time] = args
+
         const msg = await (channel as TextChannel).awaitMessages({
-            errors: [ "time" ],
+            errors: ["time"],
             max: 1,
             time,
             filter: async (m) => {

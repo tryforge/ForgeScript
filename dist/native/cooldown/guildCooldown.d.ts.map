@@ -1,1 +1,1 @@
-{"version":3,"file":"guildCooldown.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/guildCooldown.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAElG,wBAyDE"}
+{"version":3,"file":"guildCooldown.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/guildCooldown.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAE1F,wBAsDE"}

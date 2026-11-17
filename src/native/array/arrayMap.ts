@@ -4,7 +4,7 @@
 */
 
 import parseJSON from "../../functions/parseJSON"
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayMap",
@@ -45,28 +45,20 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, code, otherVarField] = this.data.fields! as IExtendedCompiledFunctionField[]
+        const code = this.data.fields![2] as IExtendedCompiledFunctionField
 
-        const name = await this["resolveCode"](ctx, nameField)
-        if (!this["isValidReturnType"](name)) return name
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3)
+        if (!this["isValidReturnType"](rt)) return rt
+        const [name, varName, otherVarName] = args
 
-        const variable = await this["resolveCode"](ctx, varField)
-        if (!this["isValidReturnType"](variable)) return variable
-
-        const otherVariable = await this["resolveCode"](ctx, otherVarField)
-        if (!this["isValidReturnType"](otherVariable)) return variable
-
-        const arr = ctx.getEnvironmentKey(name.value as string)
-        const varName = variable.value as string
-        const otherVarName = otherVariable.value as string | null
-
+        const arr = ctx.getEnvironmentKey(name)
         const newArr = new Array<unknown>()
 
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i]
                 ctx.setEnvironmentKey(varName, el)
-                const rt = (await this["resolveCode"](ctx, code)) as Return
+                const rt = await this["resolveCode"](ctx, code)
 
                 if (rt.return) {
                     newArr.push(parseJSON(rt.value))
@@ -74,7 +66,7 @@ export default new NativeFunction({
             }
         }
 
-        return otherVarName ? 
+        return otherVarName ?
             this.success(void ctx.setEnvironmentKey(otherVarName, newArr)) :
             this.successJSON(newArr)
     },

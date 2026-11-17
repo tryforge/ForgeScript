@@ -3,9 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { BaseChannel, TextBasedChannel } from "discord.js"
 import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
-import noop from "../../functions/noop"
 import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({
@@ -36,7 +34,15 @@ export default new NativeFunction({
             required: true,
             type: ArgType.Time,
             description: "The max time to wait for a component"
-        }
+        },
+        {
+            name: "filter",
+            description: "The filter to run for every interaction received after this, this is called with interaction context",
+            rest: false,
+            required: false,
+            condition: true,
+            type: ArgType.String
+        },
     ],
     async execute(ctx): Promise<Return> {
         if (!ctx.interaction || !("awaitModalSubmit" in ctx.interaction))
@@ -44,15 +50,28 @@ export default new NativeFunction({
 
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 2)
         if (!this["isValidReturnType"](rt)) return rt
-        const [ id, time ] = args
+        const [id, time] = args
 
         const int = await ctx.interaction.awaitModalSubmit({
             time,
-            filter: i => i.customId === id
+            filter: async (i) => {
+                if (i.customId !== id) return false
+                if (!this.hasField(3)) return true
+                const res = await this["resolveCondition"](
+                    ctx.clone({ obj: i }),
+                    this.data.fields![3] as IExtendedCompiledFunctionConditionField
+                )
+                if (res.return || res.success) {
+                    return isTrue(res)
+                } else return false
+            }
         }).catch(ctx.noop)
-        
+
         if (int) {
-            const rt = await this["resolveCode"](ctx.clone({ obj: int }), this.data.fields![0] as IExtendedCompiledFunctionField)
+            const rt = await this["resolveCode"](
+                ctx.clone({ obj: int }),
+                this.data.fields![1] as IExtendedCompiledFunctionField
+            )
             if (!this["isValidReturnType"](rt))
                 return rt
         }

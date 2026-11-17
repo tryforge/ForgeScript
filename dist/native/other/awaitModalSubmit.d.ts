@@ -17,6 +17,13 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Time;
     description: string;
+}, {
+    name: string;
+    description: string;
+    rest: false;
+    required: false;
+    condition: true;
+    type: ArgType.String;
 }], false>;
 export default _default;
 //# sourceMappingURL=awaitModalSubmit.d.ts.map

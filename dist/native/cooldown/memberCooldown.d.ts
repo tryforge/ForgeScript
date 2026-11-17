@@ -3,14 +3,15 @@ declare const _default: NativeFunction<[{
     name: string;
     rest: false;
     description: string;
-    type: ArgType.String;
+    type: ArgType.Guild;
     required: true;
 }, {
     name: string;
     rest: false;
     description: string;
-    type: ArgType.String;
+    type: ArgType.Member;
     required: true;
+    pointer: number;
 }, {
     name: string;
     description: string;

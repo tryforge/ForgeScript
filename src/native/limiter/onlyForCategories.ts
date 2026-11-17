@@ -4,7 +4,7 @@
 */
 
 import { BaseChannel, CategoryChannel, ChannelType } from "discord.js"
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$onlyForCategories",
@@ -21,7 +21,7 @@ export default new NativeFunction({
             type: ArgType.String
         },
         {
-            name: "channels",
+            name: "categories",
             pointer: 0,
             description: "The categories to check for",
             rest: true,

@@ -42,28 +42,25 @@ exports.default = new structures_1.NativeFunction({
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const [nameField, varField, code] = this.data.fields;
-        const name = await this["resolveCode"](ctx, nameField);
-        if (!this["isValidReturnType"](name))
-            return name;
-        const variable = await this["resolveCode"](ctx, varField);
-        if (!this["isValidReturnType"](variable))
-            return variable;
-        const arr = ctx.getEnvironmentKey(name.value);
-        const varName = variable.value;
-        if (!Array.isArray(arr))
-            return this.success(-1);
-        for (let i = 0, len = arr.length; i < len; i++) {
-            const el = arr[i];
-            ctx.setEnvironmentKey(varName, el);
-            const rt = (await this["resolveCondition"](ctx, code));
-            if (rt.return || rt.success) {
-                if (!(0, isTrue_1.default)(rt))
-                    continue;
-                return this.success(i);
+        const code = this.data.fields[2];
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [name, varName] = args;
+        const arr = ctx.getEnvironmentKey(name);
+        if (Array.isArray(arr)) {
+            for (let i = 0, len = arr.length; i < len; i++) {
+                const el = arr[i];
+                ctx.setEnvironmentKey(varName, el);
+                const rt = await this["resolveCondition"](ctx, code);
+                if (rt.return || rt.success) {
+                    if (!(0, isTrue_1.default)(rt))
+                        continue;
+                    return this.success(i);
+                }
+                else if (!this["isValidReturnType"](rt))
+                    return rt;
             }
-            else if (!this["isValidReturnType"](rt))
-                return rt;
         }
         return this.success(-1);
     },

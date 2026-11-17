@@ -18,7 +18,7 @@ exports.default = new structures_1.NativeFunction({
             description: "The invite code",
             rest: false,
             required: true,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Invite,
         },
         {
             name: "reason",
@@ -27,9 +27,8 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String,
         },
     ],
-    async execute(ctx, [code, reason]) {
-        const invite = await ctx.client.fetchInvite(code).catch(ctx.noop);
-        return this.success(!!(await invite?.delete(reason || ctx.reason).catch(ctx.noop)));
+    async execute(ctx, [invite, reason]) {
+        return this.success(!!(await invite.delete(reason || ctx.reason).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=deleteInvite.js.map

@@ -3,18 +3,18 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteGuildCooldown",
     version: "1.5.0",
-    description: "Deletes cooldown for given guild id, binded to current command",
+    description: "Deletes a cooldown for given guild id, binded to current command",
     brackets: true,
     unwrap: true,
     args: [
         {
             name: "guild ID",
-            description: "The id to delete its cooldown",
+            description: "The guild to delete its cooldown",
             rest: false,
             type: ArgType.String,
             required: true,

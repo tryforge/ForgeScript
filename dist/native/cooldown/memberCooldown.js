@@ -15,16 +15,17 @@ exports.default = new structures_1.NativeFunction({
         {
             name: "guild ID",
             rest: false,
-            description: "The guild id to assign the cooldown to",
-            type: structures_1.ArgType.String,
+            description: "The guild to assign the cooldown to",
+            type: structures_1.ArgType.Guild,
             required: true,
         },
         {
             name: "user ID",
             rest: false,
-            description: "The user id to assign the cooldown to",
-            type: structures_1.ArgType.String,
+            description: "The user to assign the cooldown to",
+            type: structures_1.ArgType.Member,
             required: true,
+            pointer: 0,
         },
         {
             name: "duration",
@@ -42,17 +43,12 @@ exports.default = new structures_1.NativeFunction({
     ],
     experimental: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields;
-        const dur = await this["resolveUnhandledArg"](ctx, 2);
-        if (!this["isValidReturnType"](dur))
-            return dur;
-        const guildId = await this["resolveUnhandledArg"](ctx, 0);
-        if (!this["isValidReturnType"](guildId))
-            return guildId;
-        const userId = await this["resolveUnhandledArg"](ctx, 1);
-        if (!this["isValidReturnType"](userId))
-            return userId;
-        const id = ctx.client.cooldowns.identifier(ctx.cmd.id, "member", guildId.value, userId.value);
+        const code = this.data.fields[3];
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [guild, member, duration] = args;
+        const id = ctx.client.cooldowns.identifier(ctx.cmd.id, "member", guild.id, member.id);
         const cooldown = ctx.client.cooldowns.getTimeLeft(id);
         if (cooldown !== 0) {
             const content = await this["resolveCode"](ctx, code);
@@ -62,7 +58,7 @@ exports.default = new structures_1.NativeFunction({
             await ctx.container.send(ctx.obj);
             return this.stop();
         }
-        ctx.client.cooldowns.add(id, dur.value);
+        ctx.client.cooldowns.add(id, duration);
         return this.success();
     },
 });

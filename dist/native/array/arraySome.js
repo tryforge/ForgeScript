@@ -41,7 +41,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields;
+        const code = this.data.fields[2];
         const { args: { "0": name, "1": variable }, return: rt, } = await this["resolveMultipleArgs"](ctx, 0, 1);
         if (!this["isValidReturnType"](rt))
             return rt;
@@ -50,7 +50,7 @@ exports.default = new structures_1.NativeFunction({
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i];
                 ctx.setEnvironmentKey(variable, el);
-                const rt = (await this["resolveCondition"](ctx, code));
+                const rt = await this["resolveCondition"](ctx, code);
                 if (rt.return || rt.success) {
                     if (!(0, isTrue_1.default)(rt))
                         continue;

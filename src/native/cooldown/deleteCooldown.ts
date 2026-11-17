@@ -3,12 +3,12 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteCooldown",
     version: "1.0.3",
-    description: "Deletes cooldown of given id",
+    description: "Deletes a cooldown of given id",
     brackets: true,
     unwrap: true,
     args: [

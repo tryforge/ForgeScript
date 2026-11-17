@@ -3,8 +3,12 @@
 * SPDX-License-Identifier: LGPL-3.0-or-later
 * Copyright © 2026 BotForge
 */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
+const isTrue_1 = __importDefault(require("../../functions/isTrue"));
 exports.default = new structures_1.NativeFunction({
     name: "$awaitModalSubmit",
     version: "1.4.0",
@@ -33,7 +37,15 @@ exports.default = new structures_1.NativeFunction({
             required: true,
             type: structures_1.ArgType.Time,
             description: "The max time to wait for a component"
-        }
+        },
+        {
+            name: "filter",
+            description: "The filter to run for every interaction received after this, this is called with interaction context",
+            rest: false,
+            required: false,
+            condition: true,
+            type: structures_1.ArgType.String
+        },
     ],
     async execute(ctx) {
         if (!ctx.interaction || !("awaitModalSubmit" in ctx.interaction))
@@ -44,10 +56,21 @@ exports.default = new structures_1.NativeFunction({
         const [id, time] = args;
         const int = await ctx.interaction.awaitModalSubmit({
             time,
-            filter: i => i.customId === id
+            filter: async (i) => {
+                if (i.customId !== id)
+                    return false;
+                if (!this.hasField(3))
+                    return true;
+                const res = await this["resolveCondition"](ctx.clone({ obj: i }), this.data.fields[3]);
+                if (res.return || res.success) {
+                    return (0, isTrue_1.default)(res);
+                }
+                else
+                    return false;
+            }
         }).catch(ctx.noop);
         if (int) {
-            const rt = await this["resolveCode"](ctx.clone({ obj: int }), this.data.fields[0]);
+            const rt = await this["resolveCode"](ctx.clone({ obj: int }), this.data.fields[1]);
             if (!this["isValidReturnType"](rt))
                 return rt;
         }

@@ -1,1 +1,1 @@
-{"version":3,"file":"cooldown.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/cooldown.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAElG,wBA8DE"}
+{"version":3,"file":"cooldown.d.ts","sourceRoot":"","sources":["../../../src/native/cooldown/cooldown.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAkC,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;AAE1F,wBA4DE"}

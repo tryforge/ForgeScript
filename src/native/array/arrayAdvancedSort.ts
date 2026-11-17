@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 async function asyncSort<T>(array: T[], asyncComparator: (a: T, b: T) => Promise<number>): Promise<T[]> {
     for (let i = 0; i < array.length - 1; i++) {
@@ -71,11 +71,10 @@ export default new NativeFunction({
     ],
     output: ArgType.Json,
     async execute(ctx) {
-        const { return: rt, args } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
-
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
         if (!this["isValidReturnType"](rt)) return rt
+        const [mainVar, var1, var2, otherVar] = args
 
-        const [ mainVar, var1, var2, otherVar ] = args
         const arr = ctx.getEnvironmentInstance(Array, mainVar)
 
         if (arr != null) {

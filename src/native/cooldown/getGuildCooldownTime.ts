@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$getGuildCooldownTime",
@@ -18,13 +18,15 @@ export default new NativeFunction({
     args: [
         {
             name: "guild ID",
-            description: "The guild id to get its cooldown",
+            description: "The guild to get its cooldown",
             rest: false,
-            type: ArgType.String,
+            type: ArgType.Guild,
             required: true,
         },
     ],
-    execute(ctx, [id]) {
-        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd!.id, "guild", id)))
+    execute(ctx, [guild]) {
+        return this.success(
+            ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd!.id, "guild", guild.id))
+        )
     },
 })
