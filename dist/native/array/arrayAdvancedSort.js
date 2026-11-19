@@ -69,7 +69,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Json,
     async execute(ctx) {
-        const { return: rt, args } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4);
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4);
         if (!this["isValidReturnType"](rt))
             return rt;
         const [mainVar, var1, var2, otherVar] = args;

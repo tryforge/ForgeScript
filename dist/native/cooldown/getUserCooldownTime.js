@@ -15,14 +15,14 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "user ID",
-            description: "The user id to get its cooldown",
+            description: "The user to get its cooldown",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.User,
             required: true,
         },
     ],
-    execute(ctx, [id]) {
-        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd.id, "user", id)));
+    execute(ctx, [user]) {
+        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd.id, "user", user.id)));
     },
 });
 //# sourceMappingURL=getUserCooldownTime.js.map

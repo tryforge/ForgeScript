@@ -45,14 +45,12 @@ Hello!
     ],
     experimental: true,
     async execute(ctx) {
-        const [, , code] = this.data.fields;
-        const dur = await this["resolveUnhandledArg"](ctx, 1);
-        if (!this["isValidReturnType"](dur))
-            return dur;
-        const idV = await this["resolveUnhandledArg"](ctx, 0);
-        if (!this["isValidReturnType"](idV))
-            return idV;
-        const cooldown = ctx.client.cooldowns.getTimeLeft(idV.value);
+        const code = this.data.fields[2];
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1);
+        if (!this["isValidReturnType"](rt))
+            return rt;
+        const [id, duration] = args;
+        const cooldown = ctx.client.cooldowns.getTimeLeft(id);
         if (cooldown !== 0) {
             const content = await this["resolveCode"](ctx, code);
             if (!this["isValidReturnType"](content))
@@ -61,7 +59,7 @@ Hello!
             await ctx.container.send(ctx.obj);
             return this.stop();
         }
-        ctx.client.cooldowns.add(idV.value, dur.value);
+        ctx.client.cooldowns.add(id, duration);
         return this.success();
     },
 });

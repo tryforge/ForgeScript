@@ -18,14 +18,14 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "guild ID",
-            description: "The guild id to get its cooldown",
+            description: "The guild to get its cooldown",
             rest: false,
-            type: structures_1.ArgType.String,
+            type: structures_1.ArgType.Guild,
             required: true,
         },
     ],
-    execute(ctx, [id]) {
-        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd.id, "guild", id)));
+    execute(ctx, [guild]) {
+        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd.id, "guild", guild.id)));
     },
 });
 //# sourceMappingURL=getGuildCooldownTime.js.map

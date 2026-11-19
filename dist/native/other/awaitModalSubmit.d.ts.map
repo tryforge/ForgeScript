@@ -1,1 +1,1 @@
-{"version":3,"file":"awaitModalSubmit.d.ts","sourceRoot":"","sources":["../../../src/native/other/awaitModalSubmit.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAA2E,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;AAI3I,wBAmDE"}
+{"version":3,"file":"awaitModalSubmit.d.ts","sourceRoot":"","sources":["../../../src/native/other/awaitModalSubmit.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAA2E,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;AAGnI,wBAyEE"}

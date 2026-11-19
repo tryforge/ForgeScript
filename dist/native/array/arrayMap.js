@@ -57,7 +57,8 @@ exports.default = new structures_1.NativeFunction({
         const newArr = new Array();
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
-                ctx.setEnvironmentKey(varName, arr[i]);
+                const el = arr[i];
+                ctx.setEnvironmentKey(varName, el);
                 const rt = await this["resolveCode"](ctx, code);
                 if (rt.return)
                     newArr.push((0, parseJSON_1.default)(rt.value));

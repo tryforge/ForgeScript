@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.String
         },
         {
-            name: "channels",
+            name: "categories",
             pointer: 0,
             description: "The categories to check for",
             rest: true,

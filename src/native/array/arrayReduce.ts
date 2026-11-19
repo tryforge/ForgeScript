@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$arrayReduce",
@@ -50,11 +50,10 @@ export default new NativeFunction({
     experimental: true,
     brackets: true,
     async execute(ctx) {
-        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
-        if (!this["isValidReturnType"](rt)) return rt
-
         const code = this.data.fields![3] as IExtendedCompiledFunctionField
 
+        const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 2, 4)
+        if (!this["isValidReturnType"](rt)) return rt
         const [name, variable, otherVariable, defaultValue] = args
 
         const arr = ctx.getEnvironmentKey(name)
@@ -64,10 +63,8 @@ export default new NativeFunction({
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
                 const el = arr[i]
-
                 ctx.setEnvironmentKey(otherVariable, el)
-
-                const rt = (await this["resolveCode"](ctx, code)) as Return
+                const rt = await this["resolveCode"](ctx, code)
 
                 if (rt.return) {
                     ctx.setEnvironmentKey(variable, rt.value)

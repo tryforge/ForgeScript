@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$deleteInvite",
@@ -18,7 +18,7 @@ export default new NativeFunction({
             description: "The invite code",
             rest: false,
             required: true,
-            type: ArgType.String,
+            type: ArgType.Invite,
         },
         {
             name: "reason",
@@ -27,8 +27,7 @@ export default new NativeFunction({
             type: ArgType.String,
         },
     ],
-    async execute(ctx, [code, reason]) {
-        const invite = await ctx.client.fetchInvite(code).catch(ctx.noop)
-        return this.success(!!(await invite?.delete(reason || ctx.reason).catch(ctx.noop)))
+    async execute(ctx, [invite, reason]) {
+        return this.success(!!(await invite.delete(reason || ctx.reason).catch(ctx.noop)))
     },
 })

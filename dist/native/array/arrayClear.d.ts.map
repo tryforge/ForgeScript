@@ -1,1 +1,1 @@
-{"version":3,"file":"arrayClear.d.ts","sourceRoot":"","sources":["../../../src/native/array/arrayClear.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAU,MAAM,kBAAkB,CAAA;;;;;;;;AAElE,wBAuBE"}
+{"version":3,"file":"arrayClear.d.ts","sourceRoot":"","sources":["../../../src/native/array/arrayClear.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;AAE1D,wBAoBE"}

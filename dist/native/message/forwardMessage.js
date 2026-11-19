@@ -37,9 +37,11 @@ exports.default = new structures_1.NativeFunction({
             check: (i) => i.isTextBased() && i.type !== discord_js_1.ChannelType.GroupDM,
         },
     ],
-    output: structures_1.ArgType.Boolean,
+    output: structures_1.ArgType.Message,
     async execute(ctx, [, message, channel]) {
-        return this.success(!!(await message.forward((channel ?? ctx.channel)).catch(ctx.noop)));
+        const chan = (channel ?? ctx.channel);
+        const msg = await message.forward(chan).catch(ctx.noop);
+        return this.success(msg ? msg.id : null);
     },
 });
 //# sourceMappingURL=forwardMessage.js.map

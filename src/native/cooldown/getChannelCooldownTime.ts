@@ -7,7 +7,7 @@ import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$getChannelCooldownTime",
-    version: "2.9.0",
+    version: "1.5.0",
     description: "Retrieves current cooldown time in ms for given channel id, binded to current command",
     brackets: true,
     output: ArgType.Number,
@@ -15,13 +15,15 @@ export default new NativeFunction({
     args: [
         {
             name: "channel ID",
-            description: "The channel id to get its cooldown",
+            description: "The channel to get its cooldown",
             rest: false,
-            type: ArgType.String,
+            type: ArgType.Channel,
             required: true,
         },
     ],
-    execute(ctx, [id]) {
-        return this.success(ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd!.id, "channel", id)))
+    execute(ctx, [channel]) {
+        return this.success(
+            ctx.client.cooldowns.getTimeLeft(ctx.client.cooldowns.identifier(ctx.cmd!.id, "channel", channel.id))
+        )
     },
 })

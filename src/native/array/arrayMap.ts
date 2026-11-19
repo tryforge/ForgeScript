@@ -56,7 +56,8 @@ export default new NativeFunction({
 
         if (Array.isArray(arr)) {
             for (let i = 0, len = arr.length; i < len; i++) {
-                ctx.setEnvironmentKey(varName, arr[i])
+                const el = arr[i]
+                ctx.setEnvironmentKey(varName, el)
                 const rt = await this["resolveCode"](ctx, code)
 
                 if (rt.return) newArr.push(parseJSON(rt.value))

@@ -285,7 +285,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
 
     private resolveChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         if (!CompiledFunction.IdRegex.test(str)) return
-        return ctx.client.channels.fetch(str)
+        return ctx.client.channels.fetch(str).catch(ctx.noop)
     }
 
     private async resolveTextChannel(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -321,24 +321,24 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.emojis.cache.get(id)
     }
 
-    private async resolveApplicationEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+    private resolveApplicationEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
-        if (fromUrl !== null) return await ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop)
+        if (fromUrl !== null) return ctx.client.application.emojis.fetch(fromUrl[2]).catch(ctx.noop)
 
         const parsed = parseEmoji(str)
         const id = parsed?.id ?? str
         if (!CompiledFunction.IdRegex.test(id)) return
-        return await ctx.client.application.emojis.fetch(id).catch(ctx.noop)
+        return ctx.client.application.emojis.fetch(id).catch(ctx.noop)
     }
 
-    private async resolveEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+    private resolveEmoji(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
         const fromUrl = CompiledFunction.CDNIdRegex.exec(str)
-        if (fromUrl !== null) return this.resolveGuildEmoji(ctx, arg, fromUrl[2], ref) ?? await this.resolveApplicationEmoji(ctx, arg, fromUrl[2], ref)
+        if (fromUrl !== null) return this.resolveGuildEmoji(ctx, arg, fromUrl[2], ref) ?? this.resolveApplicationEmoji(ctx, arg, fromUrl[2], ref)
 
         const parsed = parseEmoji(str)
         const id = parsed?.id ?? str
         if (!CompiledFunction.IdRegex.test(id)) return
-        return this.resolveGuildEmoji(ctx, arg, id, ref) ?? await this.resolveApplicationEmoji(ctx, arg, id, ref)
+        return this.resolveGuildEmoji(ctx, arg, id, ref) ?? this.resolveApplicationEmoji(ctx, arg, id, ref)
     }
 
     private resolveForumTag(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
@@ -431,8 +431,8 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return ctx.client.fetchWebhook(str).catch(ctx.noop)
     }
 
-    private async resolveTemplate(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
-        return await ctx.client.fetchGuildTemplate(str).catch(ctx.noop)
+    private resolveTemplate(ctx: Context, arg: IArg, str: string, ref: Array<unknown>) {
+        return ctx.client.fetchGuildTemplate(str).catch(ctx.noop)
     }
 
     private resolveOverwritePermission(

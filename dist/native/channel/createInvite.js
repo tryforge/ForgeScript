@@ -34,20 +34,29 @@ exports.default = new structures_1.NativeFunction({
             type: structures_1.ArgType.Number,
         },
         {
-            name: "reason",
-            description: "The reason for creating this invite",
+            name: "temporary",
+            description: "Whether members should be automatically kicked after 24 hours",
             rest: false,
-            type: structures_1.ArgType.String
-        }
+            type: structures_1.ArgType.Boolean
+        },
+        {
+            name: "roles",
+            description: "The roles assigned to the user upon accepting the invite",
+            type: structures_1.ArgType.Role,
+            rest: true,
+            pointer: 0,
+            pointerProperty: "guild"
+        },
     ],
-    async execute(ctx, [ch, maxUses, maxAge, reason]) {
+    async execute(ctx, [ch, maxUses, maxAge, temp, roles]) {
         const channel = (ch ?? ctx.channel);
         const invite = await channel
             .createInvite({
-            reason: reason || ctx.reason,
+            reason: ctx.reason,
+            temporary: temp || undefined,
             maxUses: maxUses || undefined,
-            maxAge: typeof (maxAge) === "number" ? maxAge : undefined,
-            roles: ctx.invite.roles,
+            maxAge: typeof maxAge === "number" ? maxAge : undefined,
+            roles: roles.length ? roles : ctx.invite.roles,
             targetUsersFile: ctx.invite.targetUsers,
             unique: true
         })

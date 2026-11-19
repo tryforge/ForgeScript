@@ -21,7 +21,14 @@ declare const _default: NativeFunction<[{
     name: string;
     description: string;
     rest: false;
-    type: ArgType.String;
+    type: ArgType.Boolean;
+}, {
+    name: string;
+    description: string;
+    type: ArgType.Role;
+    rest: true;
+    pointer: number;
+    pointerProperty: string;
 }], true>;
 export default _default;
 //# sourceMappingURL=createInvite.d.ts.map

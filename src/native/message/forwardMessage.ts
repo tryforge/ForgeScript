@@ -4,7 +4,7 @@
 */
 
 import { BaseChannel, ChannelType, PartialGroupDMChannel, TextBasedChannel } from "discord.js"
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$forwardMessage",
@@ -37,8 +37,10 @@ export default new NativeFunction({
             check: (i: BaseChannel) => i.isTextBased() && i.type !== ChannelType.GroupDM,
         },
     ],
-    output: ArgType.Boolean,
+    output: ArgType.Message,
     async execute(ctx, [, message, channel]) {
-        return this.success(!!(await message.forward((channel ?? ctx.channel) as Exclude<TextBasedChannel, PartialGroupDMChannel>).catch(ctx.noop)))
+        const chan = (channel ?? ctx.channel) as Exclude<TextBasedChannel, PartialGroupDMChannel>
+        const msg = await message.forward(chan).catch(ctx.noop)
+        return this.success(msg ? msg.id : null)
     },
 })

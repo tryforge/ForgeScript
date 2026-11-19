@@ -8,7 +8,7 @@ const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$deleteCooldown",
     version: "1.0.3",
-    description: "Deletes cooldown of given id",
+    description: "Deletes a cooldown of given id",
     brackets: true,
     unwrap: true,
     args: [
