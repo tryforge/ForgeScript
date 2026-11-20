@@ -57,7 +57,7 @@ export default new NativeFunction({
                 temporary: temp || undefined,
                 maxUses: maxUses || undefined,
                 maxAge: typeof maxAge === "number" ? maxAge : undefined,
-                roles: roles.length ? roles : ctx.invite.roles,
+                roles: roles.length ? roles : undefined,
                 targetUsersFile: ctx.invite.targetUsers,
                 unique: true
             })

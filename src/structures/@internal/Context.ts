@@ -29,6 +29,7 @@ import {
     Sticker,
     Subscription,
     User,
+    UserResolvable,
     VoiceBasedChannel,
 } from "discord.js"
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction"
@@ -92,8 +93,7 @@ export interface IComponentOptions {
 }
 
 export interface IInviteOptions {
-    roles: Role[]
-    targetUsers: User[]
+    targetUsers: UserResolvable[]
 }
 
 export enum CalendarType {
