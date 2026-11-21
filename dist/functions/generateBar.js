@@ -32,10 +32,13 @@ function generateBar(current, max, len = 10, fill = "█", empty = "▒", round 
     emptyN = Math.max(emptyN, 0);
     return start + fill.repeat(fillN) + empty.repeat(emptyN) + end;
 }
+// discord's longest text field
+const MaxAdvancedBarLength = 4096;
 function generateAdvancedBar(current, max, len = 10, data) {
     let out = "";
+    len = Math.min(len, MaxAdvancedBarLength);
     const portion = max / len;
-    while (len--) {
+    while (len-- > 0) {
         const diff = Math.max(current, 0) / portion;
         out += (current -= portion, data.find((x, i) => diff <= (i + 1) / data.length) ?? data.at(-1));
     }

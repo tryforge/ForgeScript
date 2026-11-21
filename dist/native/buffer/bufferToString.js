@@ -28,7 +28,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.String,
     execute(ctx, [name, encoding]) {
-        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding || "utf-8"));
+        return this.success(ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding || "utf-8"));
     },
 });
 //# sourceMappingURL=bufferToString.js.map

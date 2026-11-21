@@ -24,6 +24,7 @@ export enum InviteProperty {
     presenceCount = "presenceCount",
     targetType = "targetType",
     targetUser = "targetUser",
+    roles = "roles",
 }
 
 export const InviteProperties = defineProperties<typeof InviteProperty, Invite>({
@@ -43,5 +44,6 @@ export const InviteProperties = defineProperties<typeof InviteProperty, Invite>(
     memberCount: (i) => i?.memberCount,
     presenceCount: (i) => i?.presenceCount,
     targetType: (i) => InviteTargetType[i?.targetType!],
-    targetUser: (i) => i?.targetUser?.id
+    targetUser: (i) => i?.targetUser?.id,
+    roles: (i, sep) => i?.roles?.map((x) => x.id).join(sep || ", "),
 })

@@ -68,7 +68,7 @@ export class CompiledFunction<
     }
 
     public static readonly IdRegex = /^(\d{16,23})$/
-    public static readonly URLRegex = /^http?s:\/\//
+    public static readonly URLRegex = /^https?:\/\//
     public static readonly CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/
 
     public readonly data: IExtendedCompiledFunction<Brackets>
@@ -528,6 +528,13 @@ export class CompiledFunction<
     }
 
     public async execute(ctx: Context): Promise<Return> {
+        if (!this.data.silent) return this.run(ctx)
+
+        const rt = await this.run(ctx)
+        return rt.error ? new Return(ReturnType.Stop, rt.value as ForgeError) : rt
+    }
+
+    private async run(ctx: Context): Promise<Return> {
         // @ts-ignore
         if (!this.fn.data.unwrap) return this.fn.data.execute.call(this, ctx)
 

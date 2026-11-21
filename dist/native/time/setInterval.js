@@ -40,7 +40,9 @@ exports.default = new structures_1.NativeFunction({
         const [time, name] = args;
         const c = ctx.clone(ctx.cloneRuntime());
         const data = setInterval(async () => {
-            await this["resolveCode"](c, code).catch(ctx.noop);
+            const result = await this["resolveCode"](c, code).catch(ctx.noop);
+            if (result?.error)
+                ctx.noop(result.value);
         }, time || undefined);
         if (name)
             ctx.client.intervals.set(name, data);

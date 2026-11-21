@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, GuildScheduledEventEntityMetadataOptions, Interaction, LabelBuilder, MediaGalleryBuilder, Message, MessageReaction, OverwriteResolvable, Role, SectionBuilder, SoundboardSound, Sticker, Subscription, User, VoiceBasedChannel } from "discord.js";
+import { AnySelectMenuInteraction, AutoModerationActionExecution, AutoModerationActionOptions, AutoModerationTriggerMetadataOptions, BaseChannel, ChatInputCommandInteraction, ContextMenuCommandInteraction, Emoji, Entitlement, Guild, GuildMember, GuildScheduledEventEntityMetadataOptions, Interaction, LabelBuilder, MediaGalleryBuilder, Message, MessageReaction, OverwriteResolvable, Role, SectionBuilder, SoundboardSound, Sticker, Subscription, User, UserResolvable, VoiceBasedChannel } from "discord.js";
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction";
 import { Container, Sendable } from "./Container";
 import { IArg, UnwrapArgs } from "./NativeFunction";
@@ -39,6 +39,9 @@ export interface IComponentOptions {
     section: SectionBuilder;
     gallery: MediaGalleryBuilder;
     label: LabelBuilder;
+}
+export interface IInviteOptions {
+    targetUsers: UserResolvable[];
 }
 export declare enum CalendarType {
     Buddhist = "buddhist",
@@ -88,6 +91,7 @@ export declare class Context {
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
     automodRule: Partial<IAutomodRuleOptions>;
+    invite: Partial<IInviteOptions>;
     scheduledEvent: Partial<IScheduledEventOptions>;
     component: Partial<IComponentOptions>;
     timezone: string;
@@ -124,6 +128,7 @@ export declare class Context {
     clearHttpOptions(): void;
     clearAutomodRuleOptions(): void;
     clearScheduledEventOptions(): void;
+    clearInviteOptions(): void;
     /**
      * Fetches all emojis of the application.
      * @param once Whether to fetch only when the collection is empty.
@@ -140,7 +145,7 @@ export declare class Context {
     deleteKeyword(name: string): boolean;
     setKeyword(name: string, value: unknown): unknown;
     hasKeyword(name: string): boolean;
-    getLocalFunction(name: string): ILocalFunctionData;
+    getLocalFunction(name: string): ILocalFunctionData | undefined;
     deleteLocalFunction(name: string): boolean;
     setLocalFunction(name: string, data: ILocalFunctionData): ILocalFunctionData;
     clearKeywords(): void;

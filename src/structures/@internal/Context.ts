@@ -29,6 +29,7 @@ import {
     Sticker,
     Subscription,
     User,
+    UserResolvable,
     VoiceBasedChannel,
 } from "discord.js"
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction"
@@ -40,6 +41,12 @@ import { ForgeError } from "../forge/ForgeError"
 import { Logger } from "./Logger"
 import { FormData, Headers } from "undici"
 import contextNoop from "../../functions/contextNoop"
+
+function setOwn<T>(obj: Record<string, T>, key: string, value: T) {
+    if (key === "__proto__") Object.defineProperty(obj, key, { value, writable: true, enumerable: true, configurable: true })
+    else obj[key] = value
+    return value
+}
 
 export type ExpectCallback<T extends [...IArg[]], Unwrap extends boolean> = (
     args: UnwrapArgs<T>
@@ -83,6 +90,10 @@ export interface IComponentOptions {
     section: SectionBuilder
     gallery: MediaGalleryBuilder
     label: LabelBuilder
+}
+
+export interface IInviteOptions {
+    targetUsers: UserResolvable[]
 }
 
 export enum CalendarType {
@@ -137,6 +148,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
     automodRule: Partial<IAutomodRuleOptions> = {}
+    invite: Partial<IInviteOptions> = {}
     scheduledEvent: Partial<IScheduledEventOptions> = {}
     component: Partial<IComponentOptions> = {}
     timezone: string = "UTC"
@@ -338,6 +350,11 @@ export class Context {
         this.scheduledEvent = {}
     }
 
+    public clearInviteOptions() {
+        this.invite = {}
+    }
+
+
     /**
      * Fetches all emojis of the application.
      * @param once Whether to fetch only when the collection is empty.
@@ -353,14 +370,14 @@ export class Context {
     }
 
     public setEnvironmentKey(name: string, value: unknown) {
-        return (this.#environment[name] = value)
+        return setOwn(this.#environment, name, value)
     }
 
     public traverseDeleteEnvironmentKey(...keys: string[]) {
         let data = this.#environment
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i]
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false
             data = data[key] as Record<string, unknown>
         }
@@ -375,14 +392,12 @@ export class Context {
         let data = this.#environment
         for (let i = 0, len = keys.length - 1; i < len; i++) {
             const key = keys[i]
-            if (!(key in data))
+            if (!Object.hasOwn(data, key))
                 return false
             data = data[key] as Record<string, unknown>
         }
 
-        const lastKey = keys[keys.length - 1]
-        data[lastKey] = value
-
+        setOwn(data, keys[keys.length - 1], value)
         return true
     }
 
@@ -396,7 +411,7 @@ export class Context {
 
         for (let i = 0, len = args.length; i < len; i++) {
             const key = args[i]
-            if (!(key in previous)) return
+            if (!Object.hasOwn(previous, key) && (key in Object.prototype || !(key in previous))) return
             previous = previous[key as keyof typeof previous]
             if (typeof previous !== "object" || previous === null) break
         }
@@ -409,7 +424,7 @@ export class Context {
     }
 
     public getKeyword(name: string) {
-        return this.#keywords[name]
+        return Object.hasOwn(this.#keywords, name) ? this.#keywords[name] : undefined
     }
 
     public deleteKeyword(name: string) {
@@ -417,15 +432,15 @@ export class Context {
     }
 
     public setKeyword(name: string, value: unknown) {
-        return (this.#keywords[name] = value)
+        return setOwn(this.#keywords, name, value)
     }
 
     public hasKeyword(name: string) {
-        return name in this.#keywords
+        return Object.hasOwn(this.#keywords, name)
     }
 
     public getLocalFunction(name: string) {
-        return this.#localFunctions[name]
+        return Object.hasOwn(this.#localFunctions, name) ? this.#localFunctions[name] : undefined
     }
 
     public deleteLocalFunction(name: string) {
@@ -433,7 +448,7 @@ export class Context {
     }
 
     public setLocalFunction(name: string, data: ILocalFunctionData) {
-        return (this.#localFunctions[name] = data)
+        return setOwn(this.#localFunctions, name, data)
     }
 
     public clearKeywords() {

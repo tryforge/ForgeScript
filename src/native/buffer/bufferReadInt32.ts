@@ -30,6 +30,6 @@ export default new NativeFunction({
     output: ArgType.Number,
     execute(ctx, [ name, begin ]) {
         const buffer = ctx.getEnvironmentInstance(Buffer, name)
-        return this.success(void (buffer ? buffer.readInt32LE(begin) : 0))
+        return this.success(buffer ? buffer.readInt32LE(begin) : 0)
     },
 })

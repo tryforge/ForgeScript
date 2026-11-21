@@ -25,7 +25,7 @@ class CompiledFunction {
         "-": false,
     };
     static IdRegex = /^(\d{16,23})$/;
-    static URLRegex = /^http?s:\/\//;
+    static URLRegex = /^https?:\/\//;
     static CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/;
     data;
     fn;
@@ -417,6 +417,12 @@ class CompiledFunction {
         return this.error(ForgeError_1.ErrorType.Custom, msg);
     }
     async execute(ctx) {
+        if (!this.data.silent)
+            return this.run(ctx);
+        const rt = await this.run(ctx);
+        return rt.error ? new Return_1.Return(Return_1.ReturnType.Stop, rt.value) : rt;
+    }
+    async run(ctx) {
         // @ts-ignore
         if (!this.fn.data.unwrap)
             return this.fn.data.execute.call(this, ctx);

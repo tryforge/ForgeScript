@@ -60,9 +60,8 @@ export default new NativeFunction({
                 ctx.setEnvironmentKey(varName, el)
                 const rt = await this["resolveCode"](ctx, code)
 
-                if (rt.return) {
-                    newArr.push(parseJSON(rt.value))
-                } else if (!this["isValidReturnType"](rt)) return rt
+                if (rt.return) newArr.push(parseJSON(rt.value))
+                else if (!this["isValidReturnType"](rt)) return rt
             }
         }
 

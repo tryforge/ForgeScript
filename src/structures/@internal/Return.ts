@@ -21,7 +21,9 @@ export type ReturnValue<T extends ReturnType> = T extends ReturnType.Error
     ? string
     : T extends ReturnType.Success
     ? unknown
-    : T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue
+    : T extends ReturnType.Stop
+    ? ForgeError | null
+    : T extends ReturnType.Break | ReturnType.Continue
     ? null
     : never
 

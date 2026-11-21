@@ -28,6 +28,6 @@ export default new NativeFunction({
     ],
     output: ArgType.String,
     execute(ctx, [ name, encoding ]) {
-        return this.success(void ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding as BufferEncoding || "utf-8"))
+        return this.success(ctx.getEnvironmentInstance(Buffer, name)?.toString(encoding as BufferEncoding || "utf-8"))
     },
 })

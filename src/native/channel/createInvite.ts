@@ -58,9 +58,11 @@ export default new NativeFunction({
                 maxUses: maxUses || undefined,
                 maxAge: typeof maxAge === "number" ? maxAge : undefined,
                 roles: roles.length ? roles : undefined,
+                targetUsersFile: ctx.invite.targetUsers,
                 unique: true
             })
             .catch(ctx.noop)
+        ctx.clearInviteOptions()
         return this.success(invite ? invite.code : undefined)
     },
 })

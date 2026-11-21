@@ -36,19 +36,22 @@ export default new NativeFunction({
     async execute(ctx) {
         const [tryCode, catchCode, varName] = this.data.fields! as IExtendedCompiledFunctionField[]
 
-        const tryExecution: Return = await this["resolveCode"](ctx, tryCode)
+        const tryExecution: Return = await this["resolveCode"](ctx, tryCode).catch((e) => {
+            if (!(e instanceof Error)) throw e
+            return this.error(e)
+        })
 
-        if (!this["isValidReturnType"](tryExecution)) {
-            if (tryExecution.error) {
-                const value = tryExecution.value as ForgeError
-                const name = await this["resolveCode"](ctx, varName)
-                if (!this["isValidReturnType"](name)) return name
-                if (name.value) ctx.setEnvironmentKey(name.value as string, value.message)
-            }
+        if (tryExecution.error || (tryExecution.stop && tryExecution.value)) {
+            const value = tryExecution.value as ForgeError
+            const name = await this["resolveCode"](ctx, varName)
+            if (!this["isValidReturnType"](name)) return name
+            if (name.value) ctx.setEnvironmentKey(name.value as string, value.message)
 
             return this["resolveCode"](ctx, catchCode)
         }
 
-        return this.success(this["isValidReturnType"](tryExecution) ? tryExecution.value : undefined)
+        if (!this["isValidReturnType"](tryExecution)) return tryExecution
+
+        return this.success(tryExecution.value)
     },
 })
