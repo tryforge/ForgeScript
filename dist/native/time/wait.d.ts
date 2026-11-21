@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Time;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=wait.d.ts.map

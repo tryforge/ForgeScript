@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Json;
     required: true;
     rest: false;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=jsonLoad.d.ts.map

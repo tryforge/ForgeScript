@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Member;
     pointer: number;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=isTimedOut.d.ts.map

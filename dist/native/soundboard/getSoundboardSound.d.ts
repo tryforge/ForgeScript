@@ -19,6 +19,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof SoundboardSoundProperty;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=getSoundboardSound.d.ts.map

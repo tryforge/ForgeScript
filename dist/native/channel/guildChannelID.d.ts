@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[import("../..").IArg<ArgType.Guild, true
     required: true;
     rest: false;
     type: ArgType.String;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildChannelID.d.ts.map

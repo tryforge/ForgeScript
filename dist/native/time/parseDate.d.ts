@@ -21,6 +21,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Enum;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=parseDate.d.ts.map

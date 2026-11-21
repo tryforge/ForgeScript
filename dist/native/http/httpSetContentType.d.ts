@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Enum;
     enum: typeof HTTPContentType;
     rest: false;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=httpSetContentType.d.ts.map

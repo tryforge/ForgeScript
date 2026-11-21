@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Sticker;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=sticker.d.ts.map

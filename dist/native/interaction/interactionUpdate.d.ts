@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.String;
     rest: false;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=interactionUpdate.d.ts.map

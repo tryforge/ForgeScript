@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Member;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=memberDisplayColor.d.ts.map

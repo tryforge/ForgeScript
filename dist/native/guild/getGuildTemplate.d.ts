@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof TemplateProperty;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getGuildTemplate.d.ts.map

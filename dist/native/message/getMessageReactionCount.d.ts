@@ -31,6 +31,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof ReactionType;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getMessageReactionCount.d.ts.map

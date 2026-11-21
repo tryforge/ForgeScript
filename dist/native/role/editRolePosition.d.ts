@@ -18,6 +18,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Number;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=editRolePosition.d.ts.map

@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Enum;
     enum: typeof AutoModerationRuleKeywordPresetType;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setAutomodPresets.d.ts.map

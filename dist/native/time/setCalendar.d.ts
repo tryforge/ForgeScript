@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Enum;
     enum: typeof CalendarType;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setCalendar.d.ts.map

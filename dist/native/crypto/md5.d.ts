@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     required: false;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=md5.d.ts.map

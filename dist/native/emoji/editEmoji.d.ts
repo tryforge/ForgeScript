@@ -28,6 +28,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     type: ArgType.Role;
     pointer: number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=editEmoji.d.ts.map

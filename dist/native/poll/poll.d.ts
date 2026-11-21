@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     enum: typeof PollLayoutType;
     type: ArgType.Enum;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=poll.d.ts.map

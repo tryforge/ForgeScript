@@ -21,6 +21,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof ForumTagProperty;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getForumTag.d.ts.map

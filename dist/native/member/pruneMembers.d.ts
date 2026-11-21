@@ -25,6 +25,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: true;
     type: ArgType.Role;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=pruneMembers.d.ts.map

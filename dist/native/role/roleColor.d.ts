@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof RoleColor;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=roleColor.d.ts.map

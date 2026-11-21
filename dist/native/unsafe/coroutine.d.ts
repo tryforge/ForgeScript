@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.String;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=coroutine.d.ts.map

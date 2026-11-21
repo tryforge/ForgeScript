@@ -22,7 +22,7 @@ export declare class ForgeFunction {
     compiled?: IExtendedCompilationResult;
     constructor(data: IForgeFunction);
     populate(): void;
-    asNative(): NativeFunction<IArg<ArgType.String, boolean, boolean, import("..").EnumLike<any>>[], any>;
+    asNative(): NativeFunction<IArg<ArgType.String, boolean, boolean, import("..").EnumLike<any>>[], any, boolean>;
     call(ctx: Context, fn: CompiledFunction, args: string[]): Promise<Return<ReturnType.Success> | Return<ReturnType.Error> | Return<ReturnType.Stop>>;
 }
 //# sourceMappingURL=ForgeFunction.d.ts.map

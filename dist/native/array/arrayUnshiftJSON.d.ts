@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.Json;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=arrayUnshiftJSON.d.ts.map

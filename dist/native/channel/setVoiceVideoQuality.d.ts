@@ -20,6 +20,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setVoiceVideoQuality.d.ts.map

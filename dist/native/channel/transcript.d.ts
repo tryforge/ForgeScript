@@ -28,6 +28,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.Boolean;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=transcript.d.ts.map

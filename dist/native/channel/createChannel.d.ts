@@ -31,6 +31,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
     pointer: number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=createChannel.d.ts.map

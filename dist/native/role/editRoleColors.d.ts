@@ -28,6 +28,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Color;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=editRoleColors.d.ts.map

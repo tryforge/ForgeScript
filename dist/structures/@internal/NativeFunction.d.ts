@@ -66,8 +66,8 @@ export interface IArg<Type extends ArgType = ArgType, Required extends boolean =
      */
     rest: Rest;
 }
-export type NativeFunctionExecutor<T extends [...IArg[]], Unwrap extends boolean = boolean> = Unwrap extends true ? (this: CompiledFunction<T, Unwrap>, ctx: Context, args: UnwrapArgs<T>) => Promise<Return> | Return : (this: CompiledFunction<T, Unwrap>, ctx: Context) => Promise<Return> | Return;
-export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean = boolean> {
+export type NativeFunctionExecutor<T extends [...IArg[]], Unwrap extends boolean = boolean, Brackets extends boolean | undefined = boolean | undefined> = Unwrap extends true ? (this: CompiledFunction<T, Unwrap, Brackets>, ctx: Context, args: UnwrapArgs<T>) => Promise<Return> | Return : (this: CompiledFunction<T, Unwrap, Brackets>, ctx: Context) => Promise<Return> | Return;
+export interface INativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean, Brackets extends boolean | undefined = undefined> {
     name: `$${string}`;
     description: string;
     experimental?: boolean;
@@ -97,8 +97,8 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
      *
      * If `true`, function must have brackets.
      */
-    brackets?: boolean;
-    execute: NativeFunctionExecutor<T, Unwrap>;
+    brackets?: Brackets;
+    execute: NativeFunctionExecutor<T, Unwrap, Brackets>;
 }
 export type OverwritePermission = {
     permission: PermissionsString;
@@ -109,11 +109,11 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
 export type MarkNullable<T, Req extends boolean, Rest extends boolean = boolean> = Rest extends true ? T : Req extends true ? T : T | null;
 export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest, infer Enum> ? MarkRest<MarkNullable<GetArgType<Type, Enum>, Required, Rest>, Rest> : never;
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : [];
-export declare class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
-    readonly data: INativeFunction<T, Unwrap>;
+export declare class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean, Brackets extends boolean | undefined = undefined> {
+    readonly data: INativeFunction<T, Unwrap, Brackets>;
     readonly async: boolean;
     path: string;
-    constructor(data: INativeFunction<T, Unwrap>);
+    constructor(data: INativeFunction<T, Unwrap, Brackets>);
     get name(): `$${string}`;
 }
 //# sourceMappingURL=NativeFunction.d.ts.map

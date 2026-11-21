@@ -13,6 +13,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: false;
     enum: typeof ChannelType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=randomGuildChannelID.d.ts.map

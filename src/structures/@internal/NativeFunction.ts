@@ -108,11 +108,19 @@ export interface IArg<
     rest: Rest
 }
 
-export type NativeFunctionExecutor<T extends [...IArg[]], Unwrap extends boolean = boolean> = Unwrap extends true
-    ? (this: CompiledFunction<T, Unwrap>, ctx: Context, args: UnwrapArgs<T>) => Promise<Return> | Return
-    : (this: CompiledFunction<T, Unwrap>, ctx: Context) => Promise<Return> | Return
+export type NativeFunctionExecutor<
+    T extends [...IArg[]],
+    Unwrap extends boolean = boolean,
+    Brackets extends boolean | undefined = boolean | undefined
+> = Unwrap extends true
+    ? (this: CompiledFunction<T, Unwrap, Brackets>, ctx: Context, args: UnwrapArgs<T>) => Promise<Return> | Return
+    : (this: CompiledFunction<T, Unwrap, Brackets>, ctx: Context) => Promise<Return> | Return
 
-export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean = boolean> {
+export interface INativeFunction<
+    T extends [...IArg[]] = IArg[],
+    Unwrap extends boolean = boolean,
+    Brackets extends boolean | undefined = undefined
+> {
     name: `$${string}`
     description: string
     experimental?: boolean
@@ -147,8 +155,8 @@ export interface INativeFunction<T extends [...IArg[]], Unwrap extends boolean =
      *
      * If `true`, function must have brackets.
      */
-    brackets?: boolean
-    execute: NativeFunctionExecutor<T, Unwrap>
+    brackets?: Brackets
+    execute: NativeFunctionExecutor<T, Unwrap, Brackets>
 }
 
 export type OverwritePermission = {
@@ -171,8 +179,8 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? Role | User
     : T extends ArgType.Guild
     ? Guild
-    : T extends ArgType.Color 
-    ? number 
+    : T extends ArgType.Color
+    ? number
     : T extends ArgType.Role
     ? Role
     : T extends ArgType.TextChannel
@@ -181,12 +189,12 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? AttachmentBuilder
     : T extends ArgType.BigInt
     ? bigint
-    : T extends ArgType.Unknown 
+    : T extends ArgType.Unknown
     ? unknown
     : T extends ArgType.Boolean
     ? boolean
     : T extends ArgType.Date
-    ? Date 
+    ? Date
     : T extends ArgType.Enum
     ? GetEnum<Enum>
     : T extends ArgType.Channel
@@ -199,7 +207,7 @@ export type GetArgType<T extends ArgType, Enum extends EnumLike> = T extends Arg
     ? GuildEmoji
     : T extends ArgType.ApplicationEmoji
     ? ApplicationEmoji
-    : T extends ArgType.OverwritePermission 
+    : T extends ArgType.OverwritePermission
     ? OverwritePermission
     : T extends ArgType.Sticker
     ? Sticker
@@ -241,16 +249,20 @@ export type UnwrapArg<T> = T extends IArg<infer Type, infer Required, infer Rest
 
 export type UnwrapArgs<T> = T extends [infer L, ...infer R] ? [UnwrapArg<L>, ...UnwrapArgs<R>] : []
 
-export class NativeFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
+export class NativeFunction<
+    T extends [...IArg[]] = IArg[],
+    Unwrap extends boolean = boolean,
+    Brackets extends boolean | undefined = undefined
+> {
     public readonly async: boolean
     public path!: string
-    
-    public constructor(public readonly data: INativeFunction<T, Unwrap>) {
+
+    public constructor(public readonly data: INativeFunction<T, Unwrap, Brackets>) {
         // @ts-ignore
         this.async = data.execute[Symbol.toStringTag] === "AsyncFunction"
     }
 
     public get name() {
         return this.data.name
-    } 
+    }
 }

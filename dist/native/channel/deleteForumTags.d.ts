@@ -14,6 +14,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.ForumTag;
     pointer: number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=deleteForumTags.d.ts.map

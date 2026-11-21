@@ -22,6 +22,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: true;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=arraySplice.d.ts.map

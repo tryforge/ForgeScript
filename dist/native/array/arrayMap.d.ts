@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.String;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=arrayMap.d.ts.map

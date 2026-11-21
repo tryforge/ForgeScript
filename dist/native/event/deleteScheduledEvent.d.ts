@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.ScheduledEvent;
     pointer: number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=deleteScheduledEvent.d.ts.map

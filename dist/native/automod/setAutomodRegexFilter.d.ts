@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setAutomodRegexFilter.d.ts.map

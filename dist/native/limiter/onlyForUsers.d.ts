@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.User;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=onlyForUsers.d.ts.map

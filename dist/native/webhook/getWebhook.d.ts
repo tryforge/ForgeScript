@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof WebhookProperty;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getWebhook.d.ts.map

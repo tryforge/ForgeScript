@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is import("discord.js").VoiceBasedChannel;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=channelVoiceRegion.d.ts.map

@@ -20,6 +20,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.User;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=isUserMentioned.d.ts.map

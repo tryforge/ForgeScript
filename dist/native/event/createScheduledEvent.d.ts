@@ -40,6 +40,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.URL;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=createScheduledEvent.d.ts.map

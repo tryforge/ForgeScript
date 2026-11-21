@@ -32,7 +32,7 @@ export default new NativeFunction({
         const ifRun = await ifStatement.execute(ctx)
         if (!this["isValidReturnType"](ifRun) || ifRun.value !== null) return ifRun
 
-        for (let i = 0, len = elseIfStatements.length;i < len;i++) {
+        for (let i = 0, len = elseIfStatements.length; i < len; i++) {
             const statement = elseIfStatements[i]
             const statementRun = await statement.execute(ctx)
             if (!this["isValidReturnType"](statementRun) || statementRun.value !== null) return statementRun

@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Member;
     required: true;
     pointer: number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getMemberCooldownTime.d.ts.map

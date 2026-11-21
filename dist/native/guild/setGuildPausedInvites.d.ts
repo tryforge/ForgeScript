@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Boolean;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setGuildPausedInvites.d.ts.map

@@ -13,10 +13,10 @@ import { cwd } from "process"
 export class ForgeFunctionManager {
     private readonly functions = new Map<string, ForgeFunction>()
 
-    public constructor(private readonly client: ForgeClient) {}
+    public constructor(private readonly client: ForgeClient) { }
 
     public add(...options: RecursiveArray<IForgeFunction | ForgeFunction>[]) {
-        for (let i = 0, len = options.length;i < len;i++) {
+        for (let i = 0, len = options.length; i < len; i++) {
             const option = options[i]
             if (Array.isArray(option))
                 this.add(...option)
@@ -44,11 +44,11 @@ export class ForgeFunctionManager {
         const loader = new Array<IForgeFunction | ForgeFunction>()
         for (const file of recursiveReaddirSync(path).filter((x) => x.endsWith(".js"))) {
             const path = join(cwd(), file)
-            
+
             const data = require(path)
             if (Object.keys(data).length === 0)
                 continue
-            
+
             const req = (data.default ?? data) as ForgeFunction | IForgeFunction
             loader.push(req)
         }

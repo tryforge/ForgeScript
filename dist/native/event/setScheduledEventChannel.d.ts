@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is VoiceBasedChannel;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setScheduledEventChannel.d.ts.map

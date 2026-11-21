@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     required: true;
     rest: false;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=escapeCode.d.ts.map

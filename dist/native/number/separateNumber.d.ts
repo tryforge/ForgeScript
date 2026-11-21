@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.String;
     rest: false;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=separateNumber.d.ts.map

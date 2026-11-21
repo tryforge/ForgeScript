@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     required: true;
     rest: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=chalkLog.d.ts.map

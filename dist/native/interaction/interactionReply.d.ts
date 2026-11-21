@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Boolean;
     required: false;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=interactionReply.d.ts.map

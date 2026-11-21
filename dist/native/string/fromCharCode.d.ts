@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Number;
     rest: true;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=fromCharCode.d.ts.map

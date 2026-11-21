@@ -18,6 +18,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof InviteProperty;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=getGuildInvite.d.ts.map

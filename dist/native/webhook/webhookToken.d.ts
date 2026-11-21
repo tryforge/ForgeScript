@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Webhook;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=webhookToken.d.ts.map

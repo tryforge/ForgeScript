@@ -21,6 +21,6 @@ declare const _default: NativeFunction<[{
     pointer: number;
     rest: true;
     type: ArgType.Reaction;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=deleteEmojiMessageReactions.d.ts.map

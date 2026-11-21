@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.Boolean;
     rest: false;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=rolePerms.d.ts.map

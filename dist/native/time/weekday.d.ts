@@ -6,6 +6,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof ExtendedTimeFormat;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=weekday.d.ts.map

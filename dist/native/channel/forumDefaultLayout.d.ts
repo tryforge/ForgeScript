@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=forumDefaultLayout.d.ts.map

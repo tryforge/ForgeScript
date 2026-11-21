@@ -25,6 +25,20 @@ import { Return, ReturnType, ReturnValue } from "./Return"
 import { resolveColor } from "../../functions/hex"
 import parseJSON from "../../functions/parseJSON"
 
+export type ExtendedField = IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField
+
+export type ResolveFields<B extends boolean | undefined> = B extends true
+    ? ExtendedField[]
+    : B extends false
+    ? ExtendedField[] | null
+    : null
+
+export interface IExtendedCompiledFunction<
+    B extends boolean | undefined = boolean | undefined
+> extends Omit<ICompiledFunction, "fields"> {
+    fields: ResolveFields<B>
+}
+
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField
     rhs?: IExtendedCompiledFunctionField
@@ -35,10 +49,6 @@ export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionFi
     resolveArg?: (ctx: Context, arg: IArg, value: string, ref: Array<unknown>) => unknown | Promise<unknown>
 }
 
-export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fields"> {
-    fields: (IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField)[] | null
-}
-
 export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number[]]> {
     args: {
         [P in keyof X]: UnwrapArgs<T>[X[P]]
@@ -46,7 +56,11 @@ export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number
     return: Return
 }
 
-export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
+export class CompiledFunction<
+    T extends [...IArg[]] = IArg[],
+    Unwrap extends boolean = boolean,
+    Brackets extends boolean | undefined = boolean | undefined
+> {
     public static readonly OverwriteSymbolMapping = {
         "/": null,
         "+": true,
@@ -57,11 +71,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     public static readonly URLRegex = /^http?s:\/\//
     public static readonly CDNIdRegex = /https?:\/\/cdn.discordapp.com\/(emojis|stickers)\/(\d+)/
 
-    public readonly data: IExtendedCompiledFunction
-    public readonly fn: NativeFunction<T, Unwrap>
+    public readonly data: IExtendedCompiledFunction<Brackets>
+    public readonly fn: NativeFunction<T, Unwrap, Brackets>
 
     public constructor(raw: ICompiledFunction) {
-        this.fn = FunctionManager.get(raw.name) as NativeFunction<T, Unwrap>
+        this.fn = FunctionManager.get(raw.name) as NativeFunction<T, Unwrap, Brackets>
         this.data = {
             ...raw,
             fields:
@@ -85,7 +99,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
                                 : undefined,
                         }
                 ) ?? null,
-        }
+        } as IExtendedCompiledFunction<Brackets>
     }
 
     public displayField(i: number) {
@@ -118,7 +132,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     /**
      * Resolves fields of a function.
      */
-    private async resolveArgs(ctx: Context): Promise<Return> {
+    protected async resolveArgs(ctx: Context): Promise<Return> {
         const args = new Array(this.fn.data.args?.length ?? 0) as UnwrapArgs<T>
 
         if (!this.fn.data.args?.length || (this.fn.data.brackets === false && !this.hasFields))
@@ -133,7 +147,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return this.unsafeSuccess(args)
     }
 
-    private async resolveMultipleArgs<X extends [...number[]]>(
+    protected async resolveMultipleArgs<X extends [...number[]]>(
         ctx: Context,
         ...indexes: [...X]
     ): Promise<IMultipleArgResolve<T, X>> {
@@ -159,7 +173,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
     /**
      * Does not account for condition fields.
      */
-    private async resolveUnhandledArg(ctx: Context, i: number, ref: any[] = []): Promise<Return> {
+    protected async resolveUnhandledArg(ctx: Context, i: number, ref: any[] = []): Promise<Return> {
         const arg = this.fn.data.args![i]
 
         if (!arg.rest) {
@@ -196,7 +210,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         }
     }
 
-    private async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
+    protected async resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField) {
         const lhs = await this.resolveCode(ctx, field.lhs)
         if (!this.isValidReturnType(lhs)) return lhs
 
@@ -210,7 +224,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return this.unsafeSuccess(field.resolve(lhs.value, rhs.value))
     }
 
-    private async resolveCode(
+    protected async resolveCode(
         ctx: Context,
         { resolve: resolver, functions }: Partial<Omit<IExtendedCompiledFunctionField, "value">> = {}
     ): Promise<Return> {
@@ -413,9 +427,7 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         if (!CompiledFunction.URLRegex.test(str)) {
             const em = parseEmoji(str)
             if (em !== null)
-                return `https://cdn.discordapp.com/emojis/${em.id}.${
-                    em.animated ? "gif" : "png"
-                }?size=128&quality=lossless`
+                return `https://cdn.discordapp.com/emojis/${em.id}.${em.animated ? "gif" : "png"}?size=128&quality=lossless`
             return
         }
 
@@ -526,14 +538,14 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return this.fn.data.execute.call(this, ctx, args.value ?? [])
     }
 
-    private isValidReturnType(rt: Return) {
+    protected isValidReturnType(rt: Return) {
         return rt.success
     }
 
-    private async fail(ctx: Context, code?: IExtendedCompiledFunctionField) {
+    protected async fail(ctx: Context, code?: IExtendedCompiledFunctionField) {
         if (code) {
             const resolved = await this.resolveCode(ctx, code)
-            if (!this["isValidReturnType"](resolved)) return resolved
+            if (!this.isValidReturnType(resolved)) return resolved
             ctx.container.content = resolved.value as string
             await ctx.container.send(ctx.obj)
         }
@@ -545,11 +557,11 @@ export class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boo
         return `resolve${ArgType[type] as keyof typeof ArgType}` as const
     }
 
-    public getFunction(fieldIndex: number, ref: NativeFunction) {
+    public getFunction(fieldIndex: number, ref: NativeFunction<any, any, any>) {
         return this.getFunctions(fieldIndex, ref)?.[0] as CompiledFunction | undefined
     }
 
-    public getFunctions(fieldIndex: number, ref: NativeFunction) {
+    public getFunctions(fieldIndex: number, ref: NativeFunction<any, any, any>) {
         return this.hasFields
             ? (this.data.fields![fieldIndex] as IExtendedCompiledFunctionField).functions.filter(
                 (x) => x.data.name === ref.name

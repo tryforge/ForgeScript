@@ -14,6 +14,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Channel;
     check: (i: BaseChannel) => boolean;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=onlyForCategories.d.ts.map

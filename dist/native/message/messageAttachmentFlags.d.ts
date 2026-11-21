@@ -26,6 +26,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     required: false;
     rest: false;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=messageAttachmentFlags.d.ts.map

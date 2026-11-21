@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     description: string;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=pollAnswer.d.ts.map

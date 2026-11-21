@@ -432,7 +432,7 @@ class CompiledFunction {
     async fail(ctx, code) {
         if (code) {
             const resolved = await this.resolveCode(ctx, code);
-            if (!this["isValidReturnType"](resolved))
+            if (!this.isValidReturnType(resolved))
                 return resolved;
             ctx.container.content = resolved.value;
             await ctx.container.send(ctx.obj);

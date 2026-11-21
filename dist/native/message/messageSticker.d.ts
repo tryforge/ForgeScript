@@ -20,6 +20,6 @@ declare const _default: NativeFunction<[{
     required: true;
     description: string;
     type: ArgType.Number;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=messageSticker.d.ts.map

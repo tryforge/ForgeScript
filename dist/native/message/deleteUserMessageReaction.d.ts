@@ -27,6 +27,6 @@ declare const _default: NativeFunction<[{
     required: true;
     rest: false;
     type: ArgType.User;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=deleteUserMessageReaction.d.ts.map

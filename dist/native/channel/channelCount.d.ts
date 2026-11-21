@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     enum: typeof ChannelType;
     type: ArgType.Enum;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=channelCount.d.ts.map

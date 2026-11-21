@@ -25,6 +25,6 @@ declare const _default: NativeFunction<[{
     };
     type: ArgType.Enum;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=discordTimestamp.d.ts.map

@@ -20,6 +20,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     description: string;
     type: ArgType.Boolean;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=parseMS.d.ts.map

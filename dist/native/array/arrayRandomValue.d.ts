@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     rest: false;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=arrayRandomValue.d.ts.map
