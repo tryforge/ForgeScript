@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Enum;
     enum: typeof VoiceEffectProperty;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=effect.d.ts.map

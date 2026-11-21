@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is import("discord.js").AnyThreadChannel;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=webhookEditMessage.d.ts.map

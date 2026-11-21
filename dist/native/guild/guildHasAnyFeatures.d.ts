@@ -13,6 +13,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Enum;
     enum: typeof GuildFeature;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=guildHasAnyFeatures.d.ts.map

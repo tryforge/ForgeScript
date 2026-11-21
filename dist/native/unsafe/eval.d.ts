@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Boolean;
     rest: false;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=eval.d.ts.map

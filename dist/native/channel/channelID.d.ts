@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     required: true;
     rest: true;
     type: ArgType.String;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=channelID.d.ts.map

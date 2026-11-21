@@ -16,6 +16,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=padStart.d.ts.map

@@ -20,6 +20,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Member;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=removeThreadMember.d.ts.map

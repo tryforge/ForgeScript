@@ -13,6 +13,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=encrypt.d.ts.map

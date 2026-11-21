@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Message;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=fetchComponents.d.ts.map

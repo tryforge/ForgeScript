@@ -14,6 +14,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Message;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=isPinned.d.ts.map

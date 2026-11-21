@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.Guild;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=onlyForGuilds.d.ts.map

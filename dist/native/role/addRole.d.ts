@@ -96,6 +96,6 @@ declare const _default: NativeFunction<[{
         readonly BypassSlowmode: bigint;
     };
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=addRole.d.ts.map

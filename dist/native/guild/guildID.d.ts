@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     type: ArgType.String;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildID.d.ts.map

@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     pointer: number;
     required: true;
     type: ArgType.GuildEmoji;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=deleteEmojis.d.ts.map

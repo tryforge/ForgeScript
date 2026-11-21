@@ -21,7 +21,7 @@ class FunctionManager {
         FunctionManager.load("ForgeScript", (0, path_1.join)(__dirname, "..", "native"));
     }
     static load(provider, path) {
-        // Backwards compatibility smh
+        // Backwards compatibility
         if (!path)
             return this.load("Unknown", provider);
         const overrideAttempts = new Array();

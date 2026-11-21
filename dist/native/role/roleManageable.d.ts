@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Role;
     pointer: number;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=roleManageable.d.ts.map

@@ -74,6 +74,6 @@ declare const _default: NativeFunction<[{
         readonly PinMessages: bigint;
         readonly BypassSlowmode: bigint;
     };
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=channelHasAnyPerms.d.ts.map

@@ -17,6 +17,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof StageInstancePrivacyLevel;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=editStageInstance.d.ts.map

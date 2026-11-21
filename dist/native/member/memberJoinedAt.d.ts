@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     pointer: number;
     type: ArgType.Member;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=memberJoinedAt.d.ts.map

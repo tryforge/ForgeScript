@@ -23,6 +23,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     type: ArgType.String;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=wsOn.d.ts.map

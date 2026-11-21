@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Number;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=truncateFile.d.ts.map

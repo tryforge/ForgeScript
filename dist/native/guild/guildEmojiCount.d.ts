@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof EmojiType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildEmojiCount.d.ts.map

@@ -14,6 +14,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     check: (i: BaseChannel) => i is BaseChannel & Record<"permissionOverwrites", unknown>;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=cloneChannelPerms.d.ts.map

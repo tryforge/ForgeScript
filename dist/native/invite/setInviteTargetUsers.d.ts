@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.User;
     required: true;
     rest: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setInviteTargetUsers.d.ts.map

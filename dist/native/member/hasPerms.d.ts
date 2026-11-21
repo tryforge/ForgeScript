@@ -73,6 +73,6 @@ declare const _default: NativeFunction<[{
         readonly BypassSlowmode: bigint;
     };
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=hasPerms.d.ts.map

@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.String;
     required: true;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=switch.d.ts.map

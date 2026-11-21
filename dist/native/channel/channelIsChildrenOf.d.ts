@@ -13,6 +13,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     required: true;
     check: (i: BaseChannel) => boolean;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=channelIsChildrenOf.d.ts.map

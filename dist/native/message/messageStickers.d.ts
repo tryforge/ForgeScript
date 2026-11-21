@@ -29,6 +29,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.Enum;
     enum: typeof StickerReturnType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=messageStickers.d.ts.map

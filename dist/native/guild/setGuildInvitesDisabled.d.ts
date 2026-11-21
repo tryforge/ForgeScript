@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Time;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=setGuildInvitesDisabled.d.ts.map

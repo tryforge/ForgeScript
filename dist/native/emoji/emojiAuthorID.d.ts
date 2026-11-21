@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.Emoji;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=emojiAuthorID.d.ts.map

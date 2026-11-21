@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is BaseChannel & Record<"rateLimitPerUser", unknown>;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=channelSlowmode.d.ts.map

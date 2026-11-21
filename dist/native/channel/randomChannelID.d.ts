@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     required: true;
     enum: typeof ChannelType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=randomChannelID.d.ts.map

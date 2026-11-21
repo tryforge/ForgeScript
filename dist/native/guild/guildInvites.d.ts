@@ -17,6 +17,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.String;
     description: string;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildInvites.d.ts.map

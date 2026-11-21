@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is BaseChannel & Record<"lastPinTimestamp", unknown>;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=lastPinTimestamp.d.ts.map

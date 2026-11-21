@@ -13,6 +13,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.User;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=lastMessageID.d.ts.map

@@ -18,6 +18,6 @@ declare const _default: NativeFunction<[{
     condition: true;
     required: true;
     type: ArgType.String;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=arrayFindLastIndex.d.ts.map

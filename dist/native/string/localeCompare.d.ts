@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     required: true;
     rest: false;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=localeCompare.d.ts.map

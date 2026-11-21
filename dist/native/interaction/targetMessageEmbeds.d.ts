@@ -18,6 +18,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.Number;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=targetMessageEmbeds.d.ts.map

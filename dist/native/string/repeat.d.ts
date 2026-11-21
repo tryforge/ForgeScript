@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Number;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=repeat.d.ts.map

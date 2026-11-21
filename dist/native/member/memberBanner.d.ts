@@ -22,6 +22,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     type: ArgType.String;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=memberBanner.d.ts.map

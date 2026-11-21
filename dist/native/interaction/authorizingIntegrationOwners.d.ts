@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Enum;
     enum: typeof AuthorizingIntegrationOwnersType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=authorizingIntegrationOwners.d.ts.map

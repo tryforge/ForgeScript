@@ -29,6 +29,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     pointer: number;
     pointerProperty: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=createInvite.d.ts.map

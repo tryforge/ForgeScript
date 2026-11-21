@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Number;
     rest: false;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=bufferReadInt32.d.ts.map

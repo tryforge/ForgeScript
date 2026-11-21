@@ -1,4 +1,4 @@
 import { NativeFunction } from "../../structures";
-declare const _default: NativeFunction<import("../..").IArg<import("../..").ArgType, boolean, boolean, import("../..").EnumLike<any>>[], false>;
+declare const _default: NativeFunction<import("../..").IArg<import("../..").ArgType, boolean, boolean, import("../..").EnumLike<any>>[], false, undefined>;
 export default _default;
 //# sourceMappingURL=tts.d.ts.map

@@ -12,6 +12,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     enum: typeof ChannelType;
     type: ArgType.Enum;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildChannelCount.d.ts.map

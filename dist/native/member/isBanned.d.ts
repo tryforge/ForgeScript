@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.User;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=isBanned.d.ts.map

@@ -3,6 +3,11 @@ import { ErrorType, GetErrorArgs } from "../forge/ForgeError";
 import { Context } from "./Context";
 import { IArg, UnwrapArgs, NativeFunction, ArgType } from "./NativeFunction";
 import { Return, ReturnType, ReturnValue } from "./Return";
+export type ExtendedField = IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField;
+export type ResolveFields<B extends boolean | undefined> = B extends true ? ExtendedField[] : B extends false ? ExtendedField[] | null : null;
+export interface IExtendedCompiledFunction<B extends boolean | undefined = boolean | undefined> extends Omit<ICompiledFunction, "fields"> {
+    fields: ResolveFields<B>;
+}
 export interface IExtendedCompiledFunctionConditionField extends Omit<ICompiledFunctionConditionField, "rhs" | "lhs"> {
     lhs: IExtendedCompiledFunctionField;
     rhs?: IExtendedCompiledFunctionField;
@@ -11,16 +16,13 @@ export interface IExtendedCompiledFunctionField extends Omit<ICompiledFunctionFi
     functions: CompiledFunction[];
     resolveArg?: (ctx: Context, arg: IArg, value: string, ref: Array<unknown>) => unknown | Promise<unknown>;
 }
-export interface IExtendedCompiledFunction extends Omit<ICompiledFunction, "fields"> {
-    fields: (IExtendedCompiledFunctionField | IExtendedCompiledFunctionConditionField)[] | null;
-}
 export interface IMultipleArgResolve<T extends [...IArg[]], X extends [...number[]]> {
     args: {
         [P in keyof X]: UnwrapArgs<T>[X[P]];
     };
     return: Return;
 }
-export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean> {
+export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap extends boolean = boolean, Brackets extends boolean | undefined = boolean | undefined> {
     static readonly OverwriteSymbolMapping: {
         "/": null;
         "+": boolean;
@@ -29,22 +31,22 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     static readonly IdRegex: RegExp;
     static readonly URLRegex: RegExp;
     static readonly CDNIdRegex: RegExp;
-    readonly data: IExtendedCompiledFunction;
-    readonly fn: NativeFunction<T, Unwrap>;
+    readonly data: IExtendedCompiledFunction<Brackets>;
+    readonly fn: NativeFunction<T, Unwrap, Brackets>;
     constructor(raw: ICompiledFunction);
     displayField(i: number): string | null;
     get display(): string;
     /**
      * Resolves fields of a function.
      */
-    private resolveArgs;
-    private resolveMultipleArgs;
+    protected resolveArgs(ctx: Context): Promise<Return>;
+    protected resolveMultipleArgs<X extends [...number[]]>(ctx: Context, ...indexes: [...X]): Promise<IMultipleArgResolve<T, X>>;
     /**
      * Does not account for condition fields.
      */
-    private resolveUnhandledArg;
-    private resolveCondition;
-    private resolveCode;
+    protected resolveUnhandledArg(ctx: Context, i: number, ref?: any[]): Promise<Return>;
+    protected resolveCondition(ctx: Context, field: IExtendedCompiledFunctionConditionField): Promise<Return<ReturnType>>;
+    protected resolveCode(ctx: Context, { resolve: resolver, functions }?: Partial<Omit<IExtendedCompiledFunctionField, "value">>): Promise<Return>;
     private argTypeRejection;
     private resolveNumber;
     private resolveBigInt;
@@ -90,11 +92,11 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     customError(msg: string): Return<ReturnType.Error>;
     execute(ctx: Context): Promise<Return>;
     private run;
-    private isValidReturnType;
-    private fail;
+    protected isValidReturnType(rt: Return): boolean;
+    protected fail(ctx: Context, code?: IExtendedCompiledFunctionField): Promise<Return<ReturnType>>;
     static toResolveArgString(type: ArgType): "resolveURL" | "resolveString" | "resolveBigInt" | "resolveUnknown" | "resolveTextChannel" | "resolveOverwritePermission" | "resolveNumber" | "resolveUser" | "resolveDate" | "resolveGuild" | "resolveRoleOrUser" | "resolveInvite" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveEmoji" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveMessage" | "resolveChannel" | "resolveRole" | "resolveWebhook" | "resolveSticker" | "resolveTime" | "resolveMember" | "resolveApplicationEmoji" | "resolveAutomodRule" | "resolveScheduledEvent" | "resolveStageInstance" | "resolveSoundboardSound" | "resolveTemplate";
-    getFunction(fieldIndex: number, ref: NativeFunction): CompiledFunction | undefined;
-    getFunctions(fieldIndex: number, ref: NativeFunction): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean>[];
+    getFunction(fieldIndex: number, ref: NativeFunction<any, any, any>): CompiledFunction | undefined;
+    getFunctions(fieldIndex: number, ref: NativeFunction<any, any, any>): CompiledFunction<IArg<ArgType, boolean, boolean, import("./NativeFunction").EnumLike<any>>[], boolean, boolean | undefined>[];
     return(value: ReturnValue<ReturnType.Return>): Return<ReturnType.Return>;
     stop(): Return<ReturnType.Stop>;
     break(): Return<ReturnType.Break>;

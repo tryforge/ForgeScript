@@ -46,6 +46,6 @@ declare const _default: NativeFunction<[{
     description: string;
     pointer: number;
     pointerProperty: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=addMentionableSelectMenuTo.d.ts.map

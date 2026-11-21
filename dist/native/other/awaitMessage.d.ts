@@ -26,6 +26,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Time;
     description: string;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=awaitMessage.d.ts.map

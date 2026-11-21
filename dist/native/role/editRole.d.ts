@@ -42,6 +42,6 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: true;
     type: ArgType.Permission;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=editRole.d.ts.map

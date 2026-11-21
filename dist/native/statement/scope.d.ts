@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     description: string;
     type: ArgType.Boolean;
     rest: false;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=scope.d.ts.map

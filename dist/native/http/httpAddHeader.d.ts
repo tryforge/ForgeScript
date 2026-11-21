@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: true;
     type: ArgType.String;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=httpAddHeader.d.ts.map

@@ -24,6 +24,6 @@ declare const _default: NativeFunction<[{
     required: false;
     condition: true;
     type: ArgType.String;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=awaitModalSubmit.d.ts.map

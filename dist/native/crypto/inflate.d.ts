@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     required: false;
     description: string;
     type: ArgType.String;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=inflate.d.ts.map

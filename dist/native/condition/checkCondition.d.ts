@@ -6,6 +6,6 @@ declare const _default: NativeFunction<[{
     condition: true;
     type: ArgType.String;
     required: true;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=checkCondition.d.ts.map

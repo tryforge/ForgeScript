@@ -50,6 +50,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof ComponentProperty;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=getComponents.d.ts.map

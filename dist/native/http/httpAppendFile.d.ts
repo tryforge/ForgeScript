@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=httpAppendFile.d.ts.map

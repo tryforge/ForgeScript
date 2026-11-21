@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.String;
     rest: false;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=elseif.d.ts.map

@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.Number;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=messageSlice.d.ts.map

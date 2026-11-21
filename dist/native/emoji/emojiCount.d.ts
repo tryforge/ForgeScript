@@ -10,6 +10,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.Enum;
     enum: typeof EmojiType;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=emojiCount.d.ts.map

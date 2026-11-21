@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Channel;
     check: (i: BaseChannel) => i is ThreadOnlyChannel;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=forumDefaultThreadArchiveDuration.d.ts.map

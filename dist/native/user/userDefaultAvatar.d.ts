@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: true;
     type: ArgType.User;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=userDefaultAvatar.d.ts.map

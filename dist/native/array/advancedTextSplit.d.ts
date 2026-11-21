@@ -11,6 +11,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.String;
     required: true;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=advancedTextSplit.d.ts.map

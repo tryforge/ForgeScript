@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Guild;
     required: true;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=guildRawData.d.ts.map

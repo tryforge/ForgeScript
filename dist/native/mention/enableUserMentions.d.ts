@@ -5,6 +5,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.User;
     description: string;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=enableUserMentions.d.ts.map

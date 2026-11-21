@@ -6,6 +6,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Enum;
     enum: typeof BasicTimeFormat;
-}], true>;
+}], true, false>;
 export default _default;
 //# sourceMappingURL=year.d.ts.map

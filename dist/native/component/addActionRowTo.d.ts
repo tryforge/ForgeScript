@@ -24,6 +24,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     required: false;
     type: ArgType.Boolean;
-}], false>;
+}], false, true>;
 export default _default;
 //# sourceMappingURL=addActionRowTo.d.ts.map

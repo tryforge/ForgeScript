@@ -45,7 +45,7 @@ export default new NativeFunction({
     ],
     brackets: true,
     async execute(ctx) {
-        const code = this.data.fields![2] as IExtendedCompiledFunctionField
+        const code = this.data.fields[2] as IExtendedCompiledFunctionField
 
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3)
         if (!this["isValidReturnType"](rt)) return rt

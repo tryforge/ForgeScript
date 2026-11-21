@@ -42,6 +42,6 @@ declare const _default: NativeFunction<[{
     rest: false;
     type: ArgType.Boolean;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=addButtonTo.d.ts.map

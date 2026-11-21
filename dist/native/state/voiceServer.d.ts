@@ -7,6 +7,6 @@ declare const _default: NativeFunction<[{
     type: ArgType.Enum;
     enum: typeof VoiceServerProperty;
     required: true;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=voiceServer.d.ts.map

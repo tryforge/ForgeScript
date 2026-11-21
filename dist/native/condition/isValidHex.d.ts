@@ -8,6 +8,6 @@ declare const _default: NativeFunction<[{
     required: true;
     type: ArgType.String;
     description: string;
-}], true>;
+}], true, true>;
 export default _default;
 //# sourceMappingURL=isValidHex.d.ts.map
