@@ -4,7 +4,7 @@
 */
 
 import { ArgType, CompiledFunction, Context, IArg, IExtendedCompiledFunctionConditionField, NativeFunction } from ".."
-import { IExtendedCompilationResult, Compiler, Interpreter } from "../../core"
+import { IExtendedCompilationResult, Compiler } from "../../core"
 import { FunctionManager } from "../../managers"
 import { Return, ReturnType } from "../@internal/Return"
 import { ForgeError, ErrorType } from "./ForgeError"
@@ -88,11 +88,8 @@ export class ForgeFunction {
                 )
             )
 
-        const functionCtx = ctx.clone({
-            doNotSend: true,
-            allowTopLevelReturn: true,
-            data: this.compiled
-        })
+        const functionCtx = ctx.clone({ doNotSend: true, allowTopLevelReturn: true, data: this.compiled })
+        functionCtx.executionTimestamp = performance.now()
 
         for (let i = 0, len = params.length; i < len; i++) {
             const param = params[i]
@@ -101,8 +98,9 @@ export class ForgeFunction {
             functionCtx.setEnvironmentKey(name, args[i])
         }
 
-        const result = await Interpreter.run(functionCtx)
+        const rt = await fn["resolveCode"](functionCtx, this.compiled)
+        if (rt.success || rt.return) return fn.success(rt.value)
 
-        return result === null ? fn.stop() : fn.success(result)
+        return rt as Return<ReturnType.Error | ReturnType.Stop | ReturnType.Break | ReturnType.Continue>
     }
 }

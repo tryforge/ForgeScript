@@ -44,6 +44,8 @@ export default new NativeFunction({
         }
 
         const rt = await this["resolveCode"](ctx, func.code)
+        if (!rt.success && !rt.return) return rt
+
         return this.success(rt.value)
     },
 })
