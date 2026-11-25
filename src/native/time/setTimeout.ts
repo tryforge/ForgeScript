@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$setTimeout",
@@ -41,7 +41,8 @@ export default new NativeFunction({
 
         const c = ctx.clone(ctx.cloneRuntime())
         const data = setTimeout(async () => {
-            await this["resolveCode"](c, code).catch(ctx.noop)
+            const result = await this["resolveCode"](c, code).catch(ctx.noop)
+            if (result?.error) ctx.noop(result.value)
             if (name) ctx.client.timeouts.delete(name)
         }, time || undefined)
 

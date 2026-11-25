@@ -61,8 +61,10 @@ exports.default = new structures_1.NativeFunction({
                     return false;
                 if (!this.hasField(3))
                     return true;
-                const res = await this["resolveCondition"](ctx.clone({ obj: i }), this.data.fields[3]);
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx.clone({ obj: i }), this.data.fields[3]).catch(ctx.noop);
+                if (res?.error)
+                    ctx.noop(res.value);
+                if (res?.return || res?.success) {
                     return (0, isTrue_1.default)(res);
                 }
                 else

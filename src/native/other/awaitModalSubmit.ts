@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionConditionField, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({
@@ -44,7 +44,7 @@ export default new NativeFunction({
             type: ArgType.String
         },
     ],
-    async execute(ctx): Promise<Return> {
+    async execute(ctx) {
         if (!ctx.interaction || !("awaitModalSubmit" in ctx.interaction))
             return this.success(false)
 
@@ -60,8 +60,9 @@ export default new NativeFunction({
                 const res = await this["resolveCondition"](
                     ctx.clone({ obj: i }),
                     this.data.fields![3] as IExtendedCompiledFunctionConditionField
-                )
-                if (res.return || res.success) {
+                ).catch(ctx.noop)
+                if (res?.error) ctx.noop(res.value)
+                if (res?.return || res?.success) {
                     return isTrue(res)
                 } else return false
             }
