@@ -29,6 +29,7 @@ var InviteProperty;
     InviteProperty["presenceCount"] = "presenceCount";
     InviteProperty["targetType"] = "targetType";
     InviteProperty["targetUser"] = "targetUser";
+    InviteProperty["roles"] = "roles";
 })(InviteProperty || (exports.InviteProperty = InviteProperty = {}));
 exports.InviteProperties = (0, defineProperties_1.default)({
     authorID: (i) => i?.inviterId,
@@ -47,6 +48,7 @@ exports.InviteProperties = (0, defineProperties_1.default)({
     memberCount: (i) => i?.memberCount,
     presenceCount: (i) => i?.presenceCount,
     targetType: (i) => discord_js_1.InviteTargetType[i?.targetType],
-    targetUser: (i) => i?.targetUser?.id
+    targetUser: (i) => i?.targetUser?.id,
+    roles: (i, sep) => i?.roles?.map((x) => x.id).join(sep || ", "),
 });
 //# sourceMappingURL=invite.js.map
