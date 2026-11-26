@@ -91,6 +91,7 @@ export declare class CompiledFunction<T extends [...IArg[]] = IArg[], Unwrap ext
     error<T extends ErrorType>(type: T, ...args: GetErrorArgs<T>): Return<ReturnType.Error>;
     customError(msg: string): Return<ReturnType.Error>;
     execute(ctx: Context): Promise<Return>;
+    private run;
     protected isValidReturnType(rt: Return): boolean;
     protected fail(ctx: Context, code?: IExtendedCompiledFunctionField): Promise<Return<ReturnType>>;
     static toResolveArgString(type: ArgType): "resolveURL" | "resolveString" | "resolveBigInt" | "resolveUnknown" | "resolveTextChannel" | "resolveOverwritePermission" | "resolveNumber" | "resolveUser" | "resolveDate" | "resolveGuild" | "resolveRoleOrUser" | "resolveInvite" | "resolvePermission" | "resolveJson" | "resolveColor" | "resolveEnum" | "resolveForumTag" | "resolveEmoji" | "resolveGuildEmoji" | "resolveBoolean" | "resolveAttachment" | "resolveReaction" | "resolveMessage" | "resolveChannel" | "resolveRole" | "resolveWebhook" | "resolveSticker" | "resolveTime" | "resolveMember" | "resolveApplicationEmoji" | "resolveAutomodRule" | "resolveScheduledEvent" | "resolveStageInstance" | "resolveSoundboardSound" | "resolveTemplate";

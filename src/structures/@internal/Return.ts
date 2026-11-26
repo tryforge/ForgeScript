@@ -3,7 +3,6 @@
 * Copyright © 2026 BotForge
 */
 
-import { inspect } from "util"
 import { ForgeError } from "../forge/ForgeError"
 
 export enum ReturnType {
@@ -21,7 +20,9 @@ export type ReturnValue<T extends ReturnType> = T extends ReturnType.Error
     ? string
     : T extends ReturnType.Success
     ? unknown
-    : T extends ReturnType.Stop | ReturnType.Break | ReturnType.Continue
+    : T extends ReturnType.Stop
+    ? Error | null
+    : T extends ReturnType.Break | ReturnType.Continue
     ? null
     : never
 
