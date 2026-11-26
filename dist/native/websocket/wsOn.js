@@ -65,7 +65,9 @@ exports.default = new structures_1.NativeFunction({
                     ctx.setEnvironmentKey(param, arg instanceof Buffer ? (0, parseJSON_1.default)(arg.toString("utf-8")) : arg);
                 }
                 // We cannot stop this...
-                await this["resolveCode"](ctx, code);
+                const result = await this["resolveCode"](ctx, code).catch(ctx.noop);
+                if (result?.error)
+                    ctx.noop(result.value);
             });
         }
         return this.success();
