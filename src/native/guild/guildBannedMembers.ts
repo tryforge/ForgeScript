@@ -4,7 +4,6 @@
 */
 
 import array from "../../functions/array"
-import noop from "../../functions/noop"
 import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
@@ -34,7 +33,15 @@ export default new NativeFunction({
     output: array<ArgType.User>(),
     async execute(ctx, [ g, sep ]) {
         g ??= ctx.guild!
-        const bans = await g?.bans.fetch().catch(ctx.noop)
-        return this.success(bans ? bans.map(x => x.user.id).join(sep ?? ", ") : null)
+        const ids: string[] = []
+        let after: string | undefined
+        do {
+            const bans = await g?.bans.fetch({ limit: 1000, after }).catch(ctx.noop)
+            if (!bans) break
+            ids.push(...bans.keys())
+            after = bans.size === 1000 ? bans.lastKey() : undefined
+        } while (after)
+
+        return this.success(ids.join(sep ?? ", "))
     },
 })

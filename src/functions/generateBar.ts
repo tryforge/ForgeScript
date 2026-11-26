@@ -51,7 +51,7 @@ export function generateAdvancedBar(
     let out = ""
     const portion = max / len
 
-    while (len--) {
+    while (len-- > 0) {
         const diff = Math.max(current, 0) / portion
         out += (current -= portion, data.find((x, i) => diff <= (i + 1) / data.length) ?? data.at(-1))
     }

@@ -13,8 +13,8 @@ export default new NativeFunction({
     ],
     description: "Destroys the discord.js client",
     unwrap: true,
-    execute(ctx) {
-        ctx.client.destroy()
+    async execute(ctx) {
+        await ctx.client.destroy().catch(ctx.noop)
         return this.success()
     },
 })

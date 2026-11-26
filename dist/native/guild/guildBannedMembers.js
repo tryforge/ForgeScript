@@ -36,8 +36,16 @@ exports.default = new structures_1.NativeFunction({
     output: (0, array_1.default)(),
     async execute(ctx, [g, sep]) {
         g ??= ctx.guild;
-        const bans = await g?.bans.fetch().catch(ctx.noop);
-        return this.success(bans ? bans.map(x => x.user.id).join(sep ?? ", ") : null);
+        const ids = [];
+        let after;
+        do {
+            const bans = await g?.bans.fetch({ limit: 1000, after }).catch(ctx.noop);
+            if (!bans)
+                break;
+            ids.push(...bans.keys());
+            after = bans.size === 1000 ? bans.lastKey() : undefined;
+        } while (after);
+        return this.success(ids.join(sep ?? ", "));
     },
 });
 //# sourceMappingURL=guildBannedMembers.js.map
