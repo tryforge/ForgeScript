@@ -1,0 +1,11 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": ["./src"],
+    "out": "./docs",
+    "sourceLinkTemplate": "https://github.com/tryforge/ForgeScript/blob/{gitRevision}/{path}#L{line}",
+    "excludeInternal": true,
+    "sourceLinkExternal": true,
+    "markdownLinkExternal": true,
+    "hideGenerator": true,
+    "favicon": "https://github.com/tryforge.png"
+}
