@@ -54,7 +54,9 @@ exports.default = new structures_1.NativeFunction({
             ws.send(JSON.stringify(value), cb ? async (err) => {
                 if (param)
                     ctx.setEnvironmentKey(param, err);
-                await this["resolveCode"](ctx, cb);
+                const result = await this["resolveCode"](ctx, cb).catch(ctx.noop);
+                if (result?.error)
+                    ctx.noop(result.value);
             } : undefined);
         }
         return this.success();

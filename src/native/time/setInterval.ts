@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, IExtendedCompiledFunctionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionField, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$setInterval",
@@ -41,7 +41,8 @@ export default new NativeFunction({
 
         const c = ctx.clone(ctx.cloneRuntime())
         const data = setInterval(async () => {
-            await this["resolveCode"](c, code).catch(ctx.noop)
+            const result = await this["resolveCode"](c, code).catch(ctx.noop)
+            if (result?.error) ctx.noop(result.value)
         }, time || undefined)
 
         if (name) ctx.client.intervals.set(name, data)

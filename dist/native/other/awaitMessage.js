@@ -60,8 +60,10 @@ exports.default = new structures_1.NativeFunction({
             time,
             filter: async (m) => {
                 ctx.setEnvironmentKey(varName, m.id);
-                const res = await this["resolveCondition"](ctx, filter);
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx, filter).catch(ctx.noop);
+                if (res?.error)
+                    ctx.noop(res.value);
+                if (res?.return || res?.success) {
                     return (0, isTrue_1.default)(res);
                 }
                 else

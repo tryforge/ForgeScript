@@ -29,6 +29,7 @@ import {
     Sticker,
     Subscription,
     User,
+    UserResolvable,
     VoiceBasedChannel,
 } from "discord.js"
 import { CompiledFunction, IExtendedCompiledFunctionField } from "./CompiledFunction"
@@ -85,6 +86,10 @@ export interface IComponentOptions {
     label: LabelBuilder
 }
 
+export interface IInviteOptions {
+    targetUsers: UserResolvable[]
+}
+
 export enum CalendarType {
     Buddhist = "buddhist",
     Chinese = "chinese",
@@ -137,6 +142,7 @@ export class Context {
     executionTimestamp!: number
     http: Partial<IHttpOptions> = {}
     automodRule: Partial<IAutomodRuleOptions> = {}
+    invite: Partial<IInviteOptions> = {}
     scheduledEvent: Partial<IScheduledEventOptions> = {}
     component: Partial<IComponentOptions> = {}
     timezone: string = "UTC"
@@ -336,6 +342,10 @@ export class Context {
 
     public clearScheduledEventOptions() {
         this.scheduledEvent = {}
+    }
+
+    public clearInviteOptions() {
+        this.invite = {}
     }
 
     /**

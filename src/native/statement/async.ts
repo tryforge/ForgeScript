@@ -3,7 +3,7 @@
 * Copyright © 2026 BotForge
 */
 
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
 
 export default new NativeFunction({
     name: "$async",
@@ -22,7 +22,10 @@ export default new NativeFunction({
     ],
     experimental: true,
     execute(ctx) {
-        void this["resolveArgs"](ctx).catch(() => {})
+        void this["resolveArgs"](ctx).then((rt) => {
+            if (rt.error) ctx.noop(rt.value)
+        }).catch(ctx.noop)
+
         return this.success()
     },
 })

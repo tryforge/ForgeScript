@@ -65,8 +65,10 @@ exports.default = new structures_1.NativeFunction({
         const int = await msg.awaitMessageComponent({
             time,
             filter: async (m) => {
-                const res = await this["resolveCondition"](ctx.clone({ obj: m }), filter);
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx.clone({ obj: m }), filter).catch(ctx.noop);
+                if (res?.error)
+                    ctx.noop(res.value);
+                if (res?.return || res?.success) {
                     return (0, isTrue_1.default)(res);
                 }
                 else
