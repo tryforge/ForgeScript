@@ -38,7 +38,7 @@ exports.default = new structures_1.NativeFunction({
         }
     ],
     async execute(ctx, [ch, dur, reason]) {
-        return this.success(!!(ch.setDefaultAutoArchiveDuration(dur, reason || ctx.reason)));
+        return this.success(!!(await ch.setDefaultAutoArchiveDuration(dur, reason || ctx.reason).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=setChannelArchiveDuration.js.map

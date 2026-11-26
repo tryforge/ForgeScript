@@ -5,27 +5,6 @@
 
 import { ArgType, NativeFunction } from "../../structures"
 
-async function asyncSort<T>(array: T[], asyncComparator: (a: T, b: T) => Promise<number>): Promise<T[]> {
-    for (let i = 0; i < array.length - 1; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            const result = await asyncComparator(array[i], array[j])
-            if (result > 0) {
-                [array[i], array[j]] = [array[j], array[i]]
-            }
-        }
-    }
-    return array
-}
-
-// Example asynchronous comparison function
-async function asyncCompare(a: number, b: number): Promise<number> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(a - b) // Compare numbers
-        }, Math.random() * 1000) // Simulate asynchronous delay
-    })
-}
-
 export default new NativeFunction({
     name: "$arrayAdvancedSort",
     version: "1.4.0",
@@ -78,19 +57,20 @@ export default new NativeFunction({
         const arr = ctx.getEnvironmentInstance(Array, mainVar)
 
         if (arr != null) {
-            const result = await asyncSort(arr, async (x, y) => {
-                ctx.setEnvironmentKey(var1, x)
-                ctx.setEnvironmentKey(var2, y)
-                const exec = await this["resolveUnhandledArg"](ctx, 3)
-                return Number(exec.value)
-            })
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    ctx.setEnvironmentKey(var1, arr[i])
+                    ctx.setEnvironmentKey(var2, arr[j])
+                    const exec = await this["resolveUnhandledArg"](ctx, 3)
+                    if (!exec.return && !this["isValidReturnType"](exec)) return exec
+                    if (Number(exec.value) > 0) [arr[i], arr[j]] = [arr[j], arr[i]]
+                }
+            }
 
-            if (result === null) return this.stop()
-
-            if (otherVar !== null) {
-                ctx.setEnvironmentKey(otherVar, result)
+            if (otherVar) {
+                ctx.setEnvironmentKey(otherVar, arr)
             } else {
-                return this.successJSON(result)
+                return this.successJSON(arr)
             }
         }
 

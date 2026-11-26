@@ -1,1 +1,1 @@
-{"version":3,"file":"guildBannedMembers.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildBannedMembers.ts"],"names":[],"mappings":"AAOA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;AAE1D,wBA8BE"}
+{"version":3,"file":"guildBannedMembers.d.ts","sourceRoot":"","sources":["../../../src/native/guild/guildBannedMembers.ts"],"names":[],"mappings":"AAMA,OAAO,EAAE,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;;;;;;;;;;;;;AAE1D,wBAsCE"}

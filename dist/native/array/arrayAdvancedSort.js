@@ -5,25 +5,6 @@
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 const structures_1 = require("../../structures");
-async function asyncSort(array, asyncComparator) {
-    for (let i = 0; i < array.length - 1; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            const result = await asyncComparator(array[i], array[j]);
-            if (result > 0) {
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-    }
-    return array;
-}
-// Example asynchronous comparison function
-async function asyncCompare(a, b) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(a - b); // Compare numbers
-        }, Math.random() * 1000); // Simulate asynchronous delay
-    });
-}
 exports.default = new structures_1.NativeFunction({
     name: "$arrayAdvancedSort",
     version: "1.4.0",
@@ -75,19 +56,22 @@ exports.default = new structures_1.NativeFunction({
         const [mainVar, var1, var2, otherVar] = args;
         const arr = ctx.getEnvironmentInstance(Array, mainVar);
         if (arr != null) {
-            const result = await asyncSort(arr, async (x, y) => {
-                ctx.setEnvironmentKey(var1, x);
-                ctx.setEnvironmentKey(var2, y);
-                const exec = await this["resolveUnhandledArg"](ctx, 3);
-                return Number(exec.value);
-            });
-            if (result === null)
-                return this.stop();
-            if (otherVar !== null) {
-                ctx.setEnvironmentKey(otherVar, result);
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    ctx.setEnvironmentKey(var1, arr[i]);
+                    ctx.setEnvironmentKey(var2, arr[j]);
+                    const exec = await this["resolveUnhandledArg"](ctx, 3);
+                    if (!exec.return && !this["isValidReturnType"](exec))
+                        return exec;
+                    if (Number(exec.value) > 0)
+                        [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+            }
+            if (otherVar) {
+                ctx.setEnvironmentKey(otherVar, arr);
             }
             else {
-                return this.successJSON(result);
+                return this.successJSON(arr);
             }
         }
         return this.success();

@@ -21,8 +21,6 @@ export default new NativeFunction({
     ],
     output: ArgType.Boolean,
     async execute(ctx, [ name ]) {
-        return this.success(
-            ctx.interaction?.entitlements.get(name)?.consume().then(() => true).catch(ctx.noop) ?? false
-        )
+        return this.success(!!(await ctx.interaction?.entitlements.get(name)?.consume().then(() => true).catch(ctx.noop)))
     },
 })

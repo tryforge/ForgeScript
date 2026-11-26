@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     ],
     output: structures_1.ArgType.Boolean,
     async execute(ctx, [name]) {
-        return this.success(ctx.interaction?.entitlements.get(name)?.consume().then(() => true).catch(ctx.noop) ?? false);
+        return this.success(!!(await ctx.interaction?.entitlements.get(name)?.consume().then(() => true).catch(ctx.noop)));
     },
 });
 //# sourceMappingURL=entitlementConsume.js.map

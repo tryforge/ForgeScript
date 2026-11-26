@@ -21,7 +21,19 @@ export default new NativeFunction({
         }
     ],
     output: array<ArgType.User>(),
-    execute(ctx, [ sep ]) {
-        return this.success(ctx.states?.poll?.new?.fetchVoters().then(x => x.map(x => x.id).join(sep ?? ", ")))
+    async execute(ctx, [ sep ]) {
+        const answer = ctx.states?.poll?.new
+        if (!answer) return this.success()
+
+        const ids: string[] = []
+        let after: string | undefined
+        do {
+            const voters = await answer.voters.fetch({ limit: 100, after }).catch(ctx.noop)
+            if (!voters) break
+            ids.push(...voters.keys())
+            after = voters.size === 100 ? voters.lastKey() : undefined
+        } while (after)
+
+        return this.success(ids.join(sep ?? ", "))
     },
 })
