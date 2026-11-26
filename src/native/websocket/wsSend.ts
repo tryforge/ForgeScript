@@ -55,7 +55,8 @@ export default new NativeFunction({
             ws.send(JSON.stringify(value), cb ? async (err) => {
                 if (param)
                     ctx.setEnvironmentKey(param, err)
-                await this["resolveCode"](ctx, cb)
+                const result = await this["resolveCode"](ctx, cb).catch(ctx.noop)
+                if (result?.error) ctx.noop(result.value)
             } : undefined)
         }
 

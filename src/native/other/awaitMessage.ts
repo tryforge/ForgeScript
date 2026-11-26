@@ -4,7 +4,7 @@
 */
 
 import { BaseChannel, TextChannel } from "discord.js"
-import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction, Return } from "../../structures"
+import { ArgType, IExtendedCompiledFunctionConditionField, NativeFunction } from "../../structures"
 import isTrue from "../../functions/isTrue"
 
 export default new NativeFunction({
@@ -46,7 +46,7 @@ export default new NativeFunction({
             description: "The max time to wait for a message"
         }
     ],
-    async execute(ctx): Promise<Return> {
+    async execute(ctx) {
         const filter = this.data.fields![2] as IExtendedCompiledFunctionConditionField
 
         const { args, return: rt } = await this["resolveMultipleArgs"](ctx, 0, 1, 3)
@@ -59,8 +59,9 @@ export default new NativeFunction({
             time,
             filter: async (m) => {
                 ctx.setEnvironmentKey(varName, m.id)
-                const res = await this["resolveCondition"](ctx, filter)
-                if (res.return || res.success) {
+                const res = await this["resolveCondition"](ctx, filter).catch(ctx.noop)
+                if (res?.error) ctx.noop(res.value)
+                if (res?.return || res?.success) {
                     return isTrue(res)
                 } else return false
             }
