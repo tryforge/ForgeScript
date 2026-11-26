@@ -10,6 +10,7 @@ export default new NativeFunction({
     version: "1.5.0",
     description: "Consumes an entitlement from an interaction",
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: "entitlement name",

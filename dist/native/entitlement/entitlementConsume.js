@@ -10,6 +10,7 @@ exports.default = new structures_1.NativeFunction({
     version: "1.5.0",
     description: "Consumes an entitlement from an interaction",
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: "entitlement name",
